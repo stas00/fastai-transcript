@@ -1,0 +1,83 @@
+<p><strong>Lesson 2</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1m1s">00:01:01</a> Lesson 1 review, image classifier,<br>
+PATH structure for training, learning rate,<br>
+what are the four columns of numbers in “A Jupyter Widget”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=4m45s">00:04:45</a> What is a Learning Rate (LR), LR Finder, mini-batch, ‘learn.sched.plot_lr()’ &amp; ‘learn.sched.plot()’, ADAM optimizer intro</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=15m">00:15:00</a> How to improve your model with more data,<br>
+avoid overfitting, use different data augmentation ‘aug_tfms=’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=18m30s">00:18:30</a> More questions on using Learning Rate Finder</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=24m10s">00:24:10</a> Back to Data Augmentation (DA),<br>
+‘tfms=’ and ‘precompute=True’, visual examples of Layer detection and activation in pre-trained<br>
+networks like ImageNet. Difference between your own computer or AWS, and Crestle.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=29m10s">00:29:10</a> Why use ‘learn.precompute=False’ for Data Augmentation, impact on Accuracy / Train Loss / Validation Loss</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=30m15s">00:30:15</a> Why use ‘cycle_len=1’, learning rate annealing,<br>
+cosine annealing, Stochastic Gradient Descent (SGD) with Restart approach, Ensemble; “Jeremy’s superpower”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=40m35s">00:40:35</a> Save your model weights with ‘learn.save()’ &amp; ‘learn.load()’, the folders ‘tmp’ &amp; ‘models’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=42m45s">00:42:45</a> Question on training a model “from scratch”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=43m45s">00:43:45</a> Fine-tuning and differential learning rate,<br>
+‘learn.unfreeze()’, ‘lr=np.array()’, ‘learn.fit(lr, 3, cycle_len=1, cycle_mult=2)’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=55m30s">00:55:30</a> Advanced questions: “why do smoother services correlate to more generalized networks ?” and more.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h5m30s">01:05:30</a> “Is the <a href="http://fast.ai/">Fast.ai</a> library used in this course, on top of PyTorch, open-source ?” and why <a href="http://fast.ai/">Fast.ai</a> switched from Keras+TensorFlow to PyTorch, creating a high-level library on top.</p>
+</li>
+</ul>
+<p>PAUSE</p>
+<ul>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h11m45s">01:11:45</a> Classification matrix ‘plot_confusion_matrix()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h13m45s">01:13:45</a> Easy 8-steps to train a world-class image classifier</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h16m30s">01:16:30</a> New demo with Dog_Breeds_Identification competition on Kaggle, download/import data from Kaggle with ‘kaggle-cli’, using CSV files with Pandas. ‘pd.read_csv()’, ‘df.pivot_table()’, ‘val_idxs = get_cv_idxs()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h29m15s">01:29:15</a> Dog_Breeds initial model, image_size = 64,<br>
+CUDA Out Of Memory (OOM) error</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h32m45s">01:32:45</a> Undocumented Pro-Tip from Jeremy: train on a small size, then use ‘learn.set_data()’ with a larger data set (like 299 over 224 pixels)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h36m15s">01:36:15</a> Using Test Time Augmentation (‘learn.TTA()’) again</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h48m10s">01:48:10</a> How to improve a model/notebook on Dog_Breeds: increase the image size and use a better architecture.<br>
+ResneXt (with an X) compared to Resnet. Warning for GPU users: the X version can 2-4 times memory, thus need to reduce Batch_Size to avoid OOM error</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h53m">01:53:00</a> Quick test on Amazon Satellite imagery competition on Kaggle, with multi-labels</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h56m30s">01:56:30</a> Back to your hardware deep learning setup: Crestle vs Paperspace, and AWS who gave approx $200,000 of computing credits to <a href="http://fast.ai/">Fast.ai</a> Part1 V2.<br>
+More tips on setting up your AWS system as a <a href="http://fast.ai/">Fast.ai</a> student, Amazon Machine Image (AMI), ‘p2.xlarge’,<br>
+‘aws key pair’, ‘ssh-keygen’, ‘id_rsa.pub’, ‘import key pair’, ‘git pull’, ‘conda env update’, and how to shut down your $0.90 a minute with ‘Instance State =&gt; Stop’<br>
+</p>
+</li>
+</ul>
+
+

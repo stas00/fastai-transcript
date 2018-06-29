@@ -1,0 +1,10076 @@
+1
+00:00:00,319 --> 00:00:08,309
+okay well welcome to part two of deep
+
+2
+00:00:06,660 --> 00:00:10,349
+learning for coders part one was
+
+3
+00:00:08,308 --> 00:00:12,899
+practical deep learning for coders that
+
+4
+00:00:10,349 --> 00:00:16,440
+too is not impractical deep learning for
+
+5
+00:00:12,900 --> 00:00:19,469
+coders but it is a little different as
+
+6
+00:00:16,440 --> 00:00:21,630
+well discuss this is probably a really
+
+7
+00:00:19,469 --> 00:00:24,089
+dumb idea that last year I started like
+
+8
+00:00:21,629 --> 00:00:27,179
+not starting part two with part two
+
+9
+00:00:24,089 --> 00:00:29,670
+lesson one but part two lesson 8 because
+
+10
+00:00:27,179 --> 00:00:32,189
+it's kind of out of the same sequence so
+
+11
+00:00:29,670 --> 00:00:34,170
+I've done that again but sometimes I'll
+
+12
+00:00:32,189 --> 00:00:34,859
+probably forget and call things lesson
+
+13
+00:00:34,170 --> 00:00:36,870
+one
+
+14
+00:00:34,859 --> 00:00:38,429
+so clap to lesson one in part two less
+
+15
+00:00:36,869 --> 00:00:40,799
+than eight or the same thing if you ever
+
+16
+00:00:38,429 --> 00:00:43,259
+make that mistake so we're going to be
+
+17
+00:00:40,799 --> 00:00:45,780
+talking about object detection today
+
+18
+00:00:43,259 --> 00:00:47,729
+which refers to not just blending out
+
+19
+00:00:45,780 --> 00:00:52,789
+what a picture is a picture of but also
+
+20
+00:00:47,729 --> 00:00:57,030
+where abouts the thing is but in general
+
+21
+00:00:52,789 --> 00:01:01,260
+the idea of each lesson in this part is
+
+22
+00:00:57,030 --> 00:01:03,120
+not so much because I particularly want
+
+23
+00:01:01,259 --> 00:01:05,099
+you to care about say object rotation
+
+24
+00:01:03,119 --> 00:01:08,879
+but rather because I'm trying to pick
+
+25
+00:01:05,099 --> 00:01:11,309
+topics which allow me to teach you some
+
+26
+00:01:08,879 --> 00:01:12,899
+foundational skills that you haven't got
+
+27
+00:01:11,310 --> 00:01:16,400
+yet right so for example object
+
+28
+00:01:12,900 --> 00:01:20,009
+detection is going to be all about
+
+29
+00:01:16,400 --> 00:01:21,900
+creating much richer convolutional
+
+30
+00:01:20,009 --> 00:01:23,549
+network structures which have kind of a
+
+31
+00:01:21,900 --> 00:01:25,500
+lot more interesting stuff going on and
+
+32
+00:01:23,549 --> 00:01:27,540
+a lot more stuff going on in the first
+
+33
+00:01:25,500 --> 00:01:30,359
+day I library that we have to customize
+
+34
+00:01:27,540 --> 00:01:33,630
+to get there so like at the end of these
+
+35
+00:01:30,359 --> 00:01:34,920
+seven weeks I can't possibly cover the
+
+36
+00:01:33,629 --> 00:01:37,199
+hundreds of interesting things that
+
+37
+00:01:34,920 --> 00:01:40,200
+people are doing with deep learning
+
+38
+00:01:37,200 --> 00:01:42,299
+right now but the good news is that all
+
+39
+00:01:40,200 --> 00:01:44,250
+of those hundreds of things are you'll
+
+40
+00:01:42,299 --> 00:01:46,860
+see once you later read the papers like
+
+41
+00:01:44,250 --> 00:01:49,709
+minor tweaks on a reasonably small
+
+42
+00:01:46,859 --> 00:01:51,810
+number of concepts and so we covered a
+
+43
+00:01:49,709 --> 00:01:53,039
+bunch of those concepts in part one and
+
+44
+00:01:51,810 --> 00:01:54,719
+we're going to go a lot deeper into
+
+45
+00:01:53,040 --> 00:02:01,549
+those concepts and build on them to get
+
+46
+00:01:54,719 --> 00:02:05,658
+just in deeper concepts in part two so
+
+47
+00:02:01,549 --> 00:02:09,599
+in terms of what we covered in part one
+
+48
+00:02:05,659 --> 00:02:11,530
+there's a few key takeaways we'll go
+
+49
+00:02:09,598 --> 00:02:14,349
+through each of these takeaways into it
+
+50
+00:02:11,530 --> 00:02:17,259
+one is the idea and you might have seen
+
+51
+00:02:14,349 --> 00:02:19,629
+recently Young Buck Owens been promoting
+
+52
+00:02:17,259 --> 00:02:22,419
+the idea that we don't call this deep
+
+53
+00:02:19,629 --> 00:02:25,569
+learning but differentiable programming
+
+54
+00:02:22,419 --> 00:02:29,259
+and the idea is that you've noticed all
+
+55
+00:02:25,569 --> 00:02:32,590
+the stuff we did in part one was really
+
+56
+00:02:29,259 --> 00:02:35,769
+about setting up a differentiable
+
+57
+00:02:32,590 --> 00:02:38,170
+function and a loss function that
+
+58
+00:02:35,770 --> 00:02:41,490
+describes how good the parameters are
+
+59
+00:02:38,169 --> 00:02:44,859
+and then pressing go and it kind of
+
+60
+00:02:41,490 --> 00:02:46,480
+makes it work you know and so this is
+
+61
+00:02:44,860 --> 00:02:47,920
+kind of I think it's quite a good way of
+
+62
+00:02:46,479 --> 00:02:49,869
+thinking about it differentiable
+
+63
+00:02:47,919 --> 00:02:53,589
+programming this idea that if you can
+
+64
+00:02:49,870 --> 00:02:57,459
+configure a loss function that does but
+
+65
+00:02:53,590 --> 00:03:00,219
+you know describes you have scores how
+
+66
+00:02:57,459 --> 00:03:02,050
+good something is it doing your task and
+
+67
+00:03:00,219 --> 00:03:04,919
+you have a reasonably flexible neural
+
+68
+00:03:02,050 --> 00:03:08,560
+network architecture you're kind of done
+
+69
+00:03:04,919 --> 00:03:11,019
+okay so that's one key way of thinking
+
+70
+00:03:08,560 --> 00:03:13,300
+about this this example here comes from
+
+71
+00:03:11,020 --> 00:03:15,280
+playground tensorflow dot org which is a
+
+72
+00:03:13,300 --> 00:03:16,989
+cool website where you can play
+
+73
+00:03:15,280 --> 00:03:21,989
+interactively with creating your own
+
+74
+00:03:16,989 --> 00:03:21,989
+little differentiable functions manually
+
+75
+00:03:23,489 --> 00:03:29,709
+the second thing then we learnt is about
+
+76
+00:03:27,189 --> 00:03:33,219
+transfer learning and it's basically
+
+77
+00:03:29,709 --> 00:03:35,890
+that transfer learning is like the most
+
+78
+00:03:33,219 --> 00:03:40,750
+important single thing to be able to do
+
+79
+00:03:35,889 --> 00:03:43,509
+to use deep wound effectively nearly all
+
+80
+00:03:40,750 --> 00:03:46,269
+courses nearly all papers nearly
+
+81
+00:03:43,509 --> 00:03:48,729
+everything in deep learning education
+
+82
+00:03:46,269 --> 00:03:53,620
+and research focuses on starting with
+
+83
+00:03:48,729 --> 00:03:57,578
+random words which is ridiculous because
+
+84
+00:03:53,620 --> 00:03:59,709
+you almost never would want to or need
+
+85
+00:03:57,579 --> 00:04:02,379
+to do that you would only want to or
+
+86
+00:03:59,709 --> 00:04:05,140
+need to do that if nobody had ever
+
+87
+00:04:02,379 --> 00:04:07,719
+trained and model on a vaguely similar
+
+88
+00:04:05,139 --> 00:04:11,319
+set of data with an even remotely
+
+89
+00:04:07,719 --> 00:04:15,389
+connected kind of problem to solve as
+
+90
+00:04:11,319 --> 00:04:20,620
+what you're doing now you know which
+
+91
+00:04:15,389 --> 00:04:22,719
+almost so this is where kind of the
+
+92
+00:04:20,620 --> 00:04:24,280
+faster library and the stuff we talk
+
+93
+00:04:22,720 --> 00:04:25,139
+about in this class is vastly different
+
+94
+00:04:24,279 --> 00:04:28,859
+too
+
+95
+00:04:25,139 --> 00:04:31,079
+any other library or course is that it's
+
+96
+00:04:28,860 --> 00:04:33,000
+all focused on transfer learning and it
+
+97
+00:04:31,079 --> 00:04:36,658
+turns out that you do a lot of things
+
+98
+00:04:33,000 --> 00:04:39,000
+quite differently so the basic idea of
+
+99
+00:04:36,658 --> 00:04:42,269
+transfer learning is here's a network
+
+100
+00:04:39,000 --> 00:04:45,870
+that does thing a remove the last layer
+
+101
+00:04:42,269 --> 00:04:49,948
+or so replace it with a few random
+
+102
+00:04:45,870 --> 00:04:52,530
+layers at the end fine-tune those layers
+
+103
+00:04:49,949 --> 00:04:54,650
+to do things be taking advantage of the
+
+104
+00:04:52,529 --> 00:04:58,079
+features at the original network word
+
+105
+00:04:54,649 --> 00:05:00,359
+and then optionally find you in the
+
+106
+00:04:58,079 --> 00:05:03,628
+whole thing into end and you've now got
+
+107
+00:05:00,360 --> 00:05:05,430
+something which probably uses orders of
+
+108
+00:05:03,629 --> 00:05:08,310
+magnitude less data and if you start
+
+109
+00:05:05,430 --> 00:05:12,629
+with random weights it's probably a lot
+
+110
+00:05:08,310 --> 00:05:22,079
+more accurate and probably trained a lot
+
+111
+00:05:12,629 --> 00:05:24,449
+faster you know we didn't talk a hell of
+
+112
+00:05:22,079 --> 00:05:25,859
+a lot about architecture design in part
+
+113
+00:05:24,449 --> 00:05:28,680
+one and that's because kind of
+
+114
+00:05:25,860 --> 00:05:32,729
+architecture design is getting less and
+
+115
+00:05:28,680 --> 00:05:34,680
+less interesting there's a pretty small
+
+116
+00:05:32,728 --> 00:05:36,120
+range of architectures that generally
+
+117
+00:05:34,680 --> 00:05:40,620
+works pretty well quite a lot of the
+
+118
+00:05:36,120 --> 00:05:44,908
+time we've been focusing on using CNN's
+
+119
+00:05:40,620 --> 00:05:49,050
+for generally fixed size somehow ordered
+
+120
+00:05:44,908 --> 00:05:52,139
+data era tins for sequences at some
+
+121
+00:05:49,050 --> 00:05:55,528
+state fiddling around a tiny bit with
+
+122
+00:05:52,139 --> 00:05:57,000
+activation functions I soft maps if
+
+123
+00:05:55,528 --> 00:05:58,649
+you've got a single categorical outcome
+
+124
+00:05:57,000 --> 00:06:02,810
+or sigmoid if you've got multiple
+
+125
+00:05:58,649 --> 00:06:05,338
+outcomes and so forth
+
+126
+00:06:02,810 --> 00:06:07,769
+some of the architecture design we'll be
+
+127
+00:06:05,338 --> 00:06:10,110
+doing in this part gets kind of more
+
+128
+00:06:07,769 --> 00:06:14,938
+interesting particularly this first
+
+129
+00:06:10,110 --> 00:06:16,169
+session about object detection but you
+
+130
+00:06:14,939 --> 00:06:17,460
+know on the whole I think we probably
+
+131
+00:06:16,168 --> 00:06:19,588
+spend less time talking about
+
+132
+00:06:17,459 --> 00:06:23,218
+architecture design than most courses or
+
+133
+00:06:19,588 --> 00:06:27,240
+papers because it's it's not it's you
+
+134
+00:06:23,218 --> 00:06:29,610
+know it's generally not too happy okay
+
+135
+00:06:27,240 --> 00:06:31,740
+so the third thing is we looked at was
+
+136
+00:06:29,610 --> 00:06:34,500
+out of word overfitting and so did the
+
+137
+00:06:31,740 --> 00:06:38,269
+general idea that I tried to explain is
+
+138
+00:06:34,500 --> 00:06:39,589
+is the way I like to build a model is to
+
+139
+00:06:38,269 --> 00:06:42,289
+of all create something that's
+
+140
+00:06:39,589 --> 00:06:45,949
+definitely terribly over parameterised
+
+141
+00:06:42,290 --> 00:06:47,420
+will massively overfit for sure trainer
+
+142
+00:06:45,949 --> 00:06:49,639
+and make sure it does over the it
+
+143
+00:06:47,420 --> 00:06:51,740
+factors at that point you know okay I've
+
+144
+00:06:49,639 --> 00:06:54,199
+got a model that is capable of
+
+145
+00:06:51,740 --> 00:06:57,980
+reflecting the training set and then
+
+146
+00:06:54,199 --> 00:07:00,680
+it's as simple as doing these things to
+
+147
+00:06:57,980 --> 00:07:02,180
+then reduce that overfitting and if you
+
+148
+00:07:00,680 --> 00:07:04,550
+can't start if you don't start with
+
+149
+00:07:02,180 --> 00:07:06,230
+something's overfitting then you you're
+
+150
+00:07:04,550 --> 00:07:08,569
+kind of lost right so you start with
+
+151
+00:07:06,230 --> 00:07:10,460
+something else overfitting and then to
+
+152
+00:07:08,569 --> 00:07:13,240
+make it over fit less you can add more
+
+153
+00:07:10,459 --> 00:07:18,529
+data you can add more data augmentation
+
+154
+00:07:13,240 --> 00:07:23,509
+you can do things like more batch norm
+
+155
+00:07:18,529 --> 00:07:25,009
+layers or dense Nets or you know various
+
+156
+00:07:23,509 --> 00:07:28,189
+things that can handle those a few nice
+
+157
+00:07:25,009 --> 00:07:31,370
+data you can add regularization like
+
+158
+00:07:28,189 --> 00:07:33,769
+weight decay and drop out and then
+
+159
+00:07:31,370 --> 00:07:35,389
+finally this is often the thing people
+
+160
+00:07:33,769 --> 00:07:38,120
+do first but this should be the thing
+
+161
+00:07:35,389 --> 00:07:41,120
+you do last is reduce the complexity of
+
+162
+00:07:38,120 --> 00:07:48,439
+your architecture have less layers or
+
+163
+00:07:41,120 --> 00:07:49,069
+less activations we talked quite a bit
+
+164
+00:07:48,439 --> 00:07:53,209
+about
+
+165
+00:07:49,069 --> 00:07:55,610
+betting's both for NLP and the general
+
+166
+00:07:53,209 --> 00:07:57,709
+idea of any kind of categorical data as
+
+167
+00:07:55,610 --> 00:07:59,480
+being something you can now model with
+
+168
+00:07:57,709 --> 00:08:04,069
+neural nets and it's been interesting to
+
+169
+00:07:59,480 --> 00:08:06,770
+see how since part one came out at which
+
+170
+00:08:04,069 --> 00:08:08,659
+point there were almost no examples of
+
+171
+00:08:06,769 --> 00:08:12,979
+kind of papers or blogs or anything
+
+172
+00:08:08,660 --> 00:08:15,860
+about using kind of tabular data at
+
+173
+00:08:12,980 --> 00:08:18,290
+categorical data in deep learning
+
+174
+00:08:15,860 --> 00:08:21,470
+suddenly it's kind of taken off and it's
+
+175
+00:08:18,290 --> 00:08:23,050
+it's kind of everywhere so this is
+
+176
+00:08:21,470 --> 00:08:27,170
+becoming a more and more popular
+
+177
+00:08:23,050 --> 00:08:28,879
+approach it's it's still little enough
+
+178
+00:08:27,170 --> 00:08:31,910
+known that when I say to people like oh
+
+179
+00:08:28,879 --> 00:08:34,039
+you know we use neural nets for time
+
+180
+00:08:31,910 --> 00:08:37,100
+series and tabular data analysis is
+
+181
+00:08:34,039 --> 00:08:40,849
+often like wait really but it's
+
+182
+00:08:37,100 --> 00:08:42,139
+definitely not such a far-out idea yeah
+
+183
+00:08:40,850 --> 00:08:46,399
+and there's more and more resources
+
+184
+00:08:42,139 --> 00:08:47,809
+available including casual competition
+
+185
+00:08:46,399 --> 00:08:54,250
+recent capital competition winning
+
+186
+00:08:47,809 --> 00:08:57,769
+approaches using this technique okay so
+
+187
+00:08:54,250 --> 00:09:00,100
+the part one you know which kind of
+
+188
+00:08:57,769 --> 00:09:03,009
+particularly had those five messages
+
+189
+00:09:00,100 --> 00:09:07,370
+really was all about introducing you to
+
+190
+00:09:03,009 --> 00:09:11,899
+best practices in deep learning and so
+
+191
+00:09:07,370 --> 00:09:16,070
+it's like trying to show you techniques
+
+192
+00:09:11,899 --> 00:09:20,179
+which were mature enough that they
+
+193
+00:09:16,070 --> 00:09:21,800
+definitely work reasonably reliably for
+
+194
+00:09:20,179 --> 00:09:26,239
+practical real world problems
+
+195
+00:09:21,799 --> 00:09:28,159
+and that I had researched and tuned
+
+196
+00:09:26,240 --> 00:09:30,379
+enough over quite a long period of time
+
+197
+00:09:28,159 --> 00:09:32,539
+that I could kind of say okay here's the
+
+198
+00:09:30,379 --> 00:09:35,240
+sequence of steps and architectures and
+
+199
+00:09:32,539 --> 00:09:37,579
+whatever that if you use this you'll
+
+200
+00:09:35,240 --> 00:09:41,779
+almost certainly get pretty good results
+
+201
+00:09:37,580 --> 00:09:43,490
+and then had kind of put that into the
+
+202
+00:09:41,779 --> 00:09:45,319
+first day I bring into a way that you
+
+203
+00:09:43,490 --> 00:09:47,690
+could do that pretty quickly and easily
+
+204
+00:09:45,320 --> 00:09:51,910
+so that's kind of what practical deep
+
+205
+00:09:47,690 --> 00:09:55,130
+learning pakodas was designed to do so
+
+206
+00:09:51,909 --> 00:09:57,559
+this part two is cutting edge deep
+
+207
+00:09:55,129 --> 00:10:04,090
+learning for coders and what that means
+
+208
+00:09:57,559 --> 00:10:06,529
+is I often don't know the exact best
+
+209
+00:10:04,090 --> 00:10:09,019
+parameters architecture details and so
+
+210
+00:10:06,529 --> 00:10:11,629
+forth to solve Euler problem we don't
+
+211
+00:10:09,019 --> 00:10:13,309
+necessarily know if it's going to solve
+
+212
+00:10:11,629 --> 00:10:16,490
+a problem well enough to be practically
+
+213
+00:10:13,309 --> 00:10:18,679
+useful it almost certainly won't be
+
+214
+00:10:16,490 --> 00:10:20,750
+integrated well enough in too fast AI or
+
+215
+00:10:18,679 --> 00:10:23,599
+any library that you can just press a
+
+216
+00:10:20,750 --> 00:10:27,110
+few buttons it'll start working it's
+
+217
+00:10:23,600 --> 00:10:30,950
+it's all about stuff which I'm not going
+
+218
+00:10:27,110 --> 00:10:33,620
+to teach it unless I'm very confident
+
+219
+00:10:30,950 --> 00:10:37,960
+that you know there is now or will be
+
+220
+00:10:33,620 --> 00:10:41,980
+soon very practically useful technique
+
+221
+00:10:37,960 --> 00:10:44,690
+so like I don't kind of take stuff which
+
+222
+00:10:41,980 --> 00:10:46,580
+just appeared and I don't know enough
+
+223
+00:10:44,690 --> 00:10:48,110
+about it to kind of know like what's a
+
+224
+00:10:46,580 --> 00:10:50,180
+trajectory gonna be so if I'm teaching
+
+225
+00:10:48,110 --> 00:10:53,870
+it in this course and saying like you
+
+226
+00:10:50,179 --> 00:10:56,629
+know this is you know either works well
+
+227
+00:10:53,870 --> 00:10:58,399
+in the research literature now and it's
+
+228
+00:10:56,629 --> 00:11:01,139
+gonna be well worth learning about or
+
+229
+00:10:58,399 --> 00:11:04,259
+we're pretty close to being there
+
+230
+00:11:01,139 --> 00:11:06,359
+it's got to take a lot of freaking often
+
+231
+00:11:04,259 --> 00:11:08,159
+and experimenting to get it to work on
+
+232
+00:11:06,359 --> 00:11:11,519
+your particular problem because we don't
+
+233
+00:11:08,159 --> 00:11:12,778
+know you know the details well enough to
+
+234
+00:11:11,519 --> 00:11:19,678
+know how to kind of make it work for
+
+235
+00:11:12,778 --> 00:11:23,759
+every dataset or every example so it's
+
+236
+00:11:19,678 --> 00:11:28,078
+kind of exciting to be working at this
+
+237
+00:11:23,759 --> 00:11:32,369
+point it means that rather than fast AI
+
+238
+00:11:28,078 --> 00:11:35,188
+and pi torch being obscure black boxes
+
+239
+00:11:32,369 --> 00:11:37,678
+which you just know these recipes for
+
+240
+00:11:35,188 --> 00:11:40,528
+you're going to learn the details of
+
+241
+00:11:37,678 --> 00:11:43,198
+them well enough that you can customize
+
+242
+00:11:40,528 --> 00:11:45,688
+them exactly the way you want that you
+
+243
+00:11:43,198 --> 00:11:48,678
+can debug them that you can read the
+
+244
+00:11:45,688 --> 00:11:53,688
+source code or to see what's happening
+
+245
+00:11:48,678 --> 00:11:57,058
+and so if you're not pretty confident of
+
+246
+00:11:53,688 --> 00:11:59,248
+you know object-oriented Python and
+
+247
+00:11:57,058 --> 00:12:03,558
+stuff like that then that's something
+
+248
+00:11:59,249 --> 00:12:06,989
+you don't want to focus on studying
+
+249
+00:12:03,558 --> 00:12:08,578
+during this course because we we assume
+
+250
+00:12:06,989 --> 00:12:13,559
+that I'm not going to spending time on
+
+251
+00:12:08,578 --> 00:12:16,828
+that but I will be trying to introduce
+
+252
+00:12:13,558 --> 00:12:19,019
+you to some some tools that I think are
+
+253
+00:12:16,828 --> 00:12:22,078
+particularly helpful like the Python
+
+254
+00:12:19,019 --> 00:12:23,789
+debugger like how to use your editor to
+
+255
+00:12:22,078 --> 00:12:26,128
+kind of jump through the code stuff like
+
+256
+00:12:23,789 --> 00:12:30,269
+that and in fact in general there'll be
+
+257
+00:12:26,129 --> 00:12:32,548
+a lot more detailed specific code
+
+258
+00:12:30,269 --> 00:12:35,399
+walkthroughs coding technique
+
+259
+00:12:32,548 --> 00:12:38,489
+discussions and stuff like that as well
+
+260
+00:12:35,399 --> 00:12:43,048
+as more detailed walkthroughs of papers
+
+261
+00:12:38,489 --> 00:12:44,610
+and stuff and so anytime we cover one of
+
+262
+00:12:43,048 --> 00:12:47,338
+these things if you notice something
+
+263
+00:12:44,610 --> 00:12:48,839
+where you're like you know this is
+
+264
+00:12:47,339 --> 00:12:51,509
+assuming some knowledge that I don't
+
+265
+00:12:48,839 --> 00:12:53,100
+have that's fine
+
+266
+00:12:51,509 --> 00:12:54,749
+you know it just means like that's
+
+267
+00:12:53,100 --> 00:12:57,899
+something you could ask from the forum
+
+268
+00:12:54,749 --> 00:13:02,220
+and say hey you know Jeremy kind of was
+
+269
+00:12:57,899 --> 00:13:04,409
+talking about whatever static methods in
+
+270
+00:13:02,220 --> 00:13:05,910
+Python I don't really know what a static
+
+271
+00:13:04,409 --> 00:13:08,100
+method is or like he was using it here
+
+272
+00:13:05,909 --> 00:13:09,118
+because only some resources like you
+
+273
+00:13:08,100 --> 00:13:11,129
+know these are kind of things at all
+
+274
+00:13:09,119 --> 00:13:12,449
+they're not rocket science it's just
+
+275
+00:13:11,129 --> 00:13:14,320
+just because you don't happen to have
+
+276
+00:13:12,448 --> 00:13:21,278
+come across it yet doesn't mean it
+
+277
+00:13:14,320 --> 00:13:25,420
+ha it's just something you learn I will
+
+278
+00:13:21,278 --> 00:13:29,019
+mention that as I cover these research
+
+279
+00:13:25,419 --> 00:13:32,708
+level topics and develop these courses I
+
+280
+00:13:29,019 --> 00:13:34,269
+often refer to code that academics have
+
+281
+00:13:32,708 --> 00:13:36,129
+put up you know to go along with it
+
+282
+00:13:34,269 --> 00:13:38,379
+papers or kind of example code that
+
+283
+00:13:36,129 --> 00:13:41,730
+somebody else is written on github I
+
+284
+00:13:38,379 --> 00:13:47,708
+nearly always find that there's some
+
+285
+00:13:41,730 --> 00:13:51,149
+massive critical flaw so be careful of
+
+286
+00:13:47,708 --> 00:13:53,919
+like taking code from you know online
+
+287
+00:13:51,149 --> 00:13:55,208
+resources and just assuming that if it
+
+288
+00:13:53,919 --> 00:13:57,009
+doesn't work for you that you've made a
+
+289
+00:13:55,208 --> 00:14:00,159
+mistake or something you know this kind
+
+290
+00:13:57,009 --> 00:14:02,079
+of like research level code it's it's
+
+291
+00:14:00,159 --> 00:14:04,059
+just good enough that they were able to
+
+292
+00:14:02,078 --> 00:14:09,758
+run their particular experiments you
+
+293
+00:14:04,059 --> 00:14:11,528
+know every second Tuesday so you should
+
+294
+00:14:09,759 --> 00:14:21,759
+you know you should be ready to kind of
+
+295
+00:14:11,528 --> 00:14:23,169
+do some debugging so on that that's
+
+296
+00:14:21,759 --> 00:14:25,208
+since I just wanted to remind you about
+
+297
+00:14:23,169 --> 00:14:26,979
+something from our old course wiki that
+
+298
+00:14:25,208 --> 00:14:30,068
+we sometimes talk about which is like
+
+299
+00:14:26,980 --> 00:14:33,399
+people often ask what should I do after
+
+300
+00:14:30,068 --> 00:14:36,969
+the less and like had away how do I know
+
+301
+00:14:33,399 --> 00:14:39,129
+if I've got it right and we basically
+
+302
+00:14:36,970 --> 00:14:41,670
+have this thing called how to use the
+
+303
+00:14:39,129 --> 00:14:44,828
+provided notebooks and the idea is this
+
+304
+00:14:41,669 --> 00:14:46,240
+part don't open up the notebook and I
+
+305
+00:14:44,828 --> 00:14:47,948
+know I said this in part one as well but
+
+306
+00:14:46,240 --> 00:14:50,079
+I'll say it again and go shift and a
+
+307
+00:14:47,948 --> 00:14:51,789
+shift and a shift enter until a bag
+
+308
+00:14:50,078 --> 00:14:55,568
+appears and then go to the forums and
+
+309
+00:14:51,789 --> 00:14:57,938
+say it notebooks broken right the idea
+
+310
+00:14:55,568 --> 00:15:00,909
+of the notebook is to kind of be like a
+
+311
+00:14:57,938 --> 00:15:02,649
+little crutch to help you get through
+
+312
+00:15:00,909 --> 00:15:04,838
+step the idea is that you start with
+
+313
+00:15:02,649 --> 00:15:07,419
+like an empty notebook and think like
+
+314
+00:15:04,839 --> 00:15:11,139
+okay I now want to complete this process
+
+315
+00:15:07,419 --> 00:15:16,208
+right and and that might be initially
+
+316
+00:15:11,139 --> 00:15:18,459
+require you op tabbing to to the
+
+317
+00:15:16,208 --> 00:15:20,438
+notebook and reading it figuring it out
+
+318
+00:15:18,458 --> 00:15:23,229
+what it says but whatever you do don't
+
+319
+00:15:20,438 --> 00:15:26,059
+copy and paste it your notebook type it
+
+320
+00:15:23,230 --> 00:15:30,860
+out yourself right back
+
+321
+00:15:26,059 --> 00:15:32,659
+so try to make sure you can repeat the
+
+322
+00:15:30,860 --> 00:15:33,950
+process and as you're typing it out and
+
+323
+00:15:32,659 --> 00:15:36,919
+you'd be thinking like well what am i
+
+324
+00:15:33,950 --> 00:15:40,610
+typing why don't i okay so if you can
+
+325
+00:15:36,919 --> 00:15:43,360
+get to the point where you can you know
+
+326
+00:15:40,610 --> 00:15:47,300
+solve an object detection problem
+
+327
+00:15:43,360 --> 00:15:48,889
+yourself in a new empty notebook even if
+
+328
+00:15:47,299 --> 00:15:51,319
+it's using the exact same data set we
+
+329
+00:15:48,889 --> 00:15:54,110
+used in the course that's a great sign
+
+330
+00:15:51,320 --> 00:15:56,690
+that you're getting it right and that'll
+
+331
+00:15:54,110 --> 00:15:58,550
+take a while but the idea is that by
+
+332
+00:15:56,690 --> 00:15:59,780
+practicing you know the second time you
+
+333
+00:15:58,549 --> 00:16:02,750
+try to do it the third time you try to
+
+334
+00:15:59,779 --> 00:16:05,449
+do it your check the notebook glass yes
+
+335
+00:16:02,750 --> 00:16:08,480
+right and if there's anything in the
+
+336
+00:16:05,450 --> 00:16:10,460
+notebook where you think if you think I
+
+337
+00:16:08,480 --> 00:16:12,320
+don't know what it's doing I hope to
+
+338
+00:16:10,460 --> 00:16:14,360
+teach you enough techniques in this
+
+339
+00:16:12,320 --> 00:16:16,190
+course in this past that you'll know how
+
+340
+00:16:14,360 --> 00:16:17,930
+to experiment to find out what it's
+
+341
+00:16:16,190 --> 00:16:21,110
+doing right so you shouldn't have to ask
+
+342
+00:16:17,929 --> 00:16:23,029
+that but you may well want to ask like
+
+343
+00:16:21,110 --> 00:16:24,409
+why is it doing that you know that's the
+
+344
+00:16:23,029 --> 00:16:26,779
+conceptual bit and that's something
+
+345
+00:16:24,409 --> 00:16:29,990
+which you may need to go to the forums
+
+346
+00:16:26,779 --> 00:16:32,569
+and say like you know before this tip
+
+347
+00:16:29,990 --> 00:16:35,000
+jeremy had done this after this tip
+
+348
+00:16:32,570 --> 00:16:36,500
+jeremy had done that this is bit in the
+
+349
+00:16:35,000 --> 00:16:38,929
+middle way who does this other thing I
+
+350
+00:16:36,500 --> 00:16:40,159
+don't quite know why you know so then
+
+351
+00:16:38,929 --> 00:16:42,169
+you can try and say like here my
+
+352
+00:16:40,159 --> 00:16:44,469
+policies as to why like try and work
+
+353
+00:16:42,169 --> 00:16:46,939
+through it as much as possible and that
+
+354
+00:16:44,470 --> 00:16:48,500
+way you'll both be helping yourself and
+
+355
+00:16:46,940 --> 00:16:55,160
+other people will help you fill in the
+
+356
+00:16:48,500 --> 00:16:57,559
+gaps right if you wish and you have the
+
+357
+00:16:55,159 --> 00:17:00,079
+financial resources now is a good time
+
+358
+00:16:57,559 --> 00:17:03,979
+to build a deep learning box for
+
+359
+00:17:00,080 --> 00:17:05,480
+yourself when I say a good time I don't
+
+360
+00:17:03,980 --> 00:17:08,390
+mean a good time in the history of the
+
+361
+00:17:05,480 --> 00:17:09,980
+pricing of GPUs GPUs are currently by
+
+362
+00:17:08,390 --> 00:17:11,870
+far the most expensive they've ever been
+
+363
+00:17:09,980 --> 00:17:18,470
+as I say this because of the
+
+364
+00:17:11,869 --> 00:17:22,189
+cryptocurrency mining boom I mean it's a
+
+365
+00:17:18,470 --> 00:17:25,190
+good time in your study cycle I mean the
+
+366
+00:17:22,190 --> 00:17:29,019
+fact is if you're paying somewhere
+
+367
+00:17:25,190 --> 00:17:33,080
+between 60 cents and 90 cents an hour
+
+368
+00:17:29,019 --> 00:17:35,539
+for doing your deep learning on a cloud
+
+369
+00:17:33,079 --> 00:17:39,109
+provider particularly if you're still on
+
+370
+00:17:35,539 --> 00:17:42,319
+a k80 like an Amazon p2
+
+371
+00:17:39,109 --> 00:17:45,649
+or google collab actually I haven't come
+
+372
+00:17:42,319 --> 00:17:49,279
+across it now let's you train on a kad
+
+373
+00:17:45,650 --> 00:17:52,759
+for free but those are very slow jeez
+
+374
+00:17:49,279 --> 00:17:57,769
+you know you can buy one it's gonna be
+
+375
+00:17:52,759 --> 00:18:01,129
+like three times faster for maybe six
+
+376
+00:17:57,769 --> 00:18:05,420
+hundred seven hundred dollars you need a
+
+377
+00:18:01,130 --> 00:18:07,520
+box to put it in of course but you know
+
+378
+00:18:05,420 --> 00:18:09,019
+the example in the bottom right here
+
+379
+00:18:07,519 --> 00:18:11,389
+from the forum was something that
+
+380
+00:18:09,019 --> 00:18:13,129
+somebody put together in last year's
+
+381
+00:18:11,390 --> 00:18:14,870
+cost so like a year ago they were able
+
+382
+00:18:13,130 --> 00:18:17,410
+to put together a decent box referred
+
+383
+00:18:14,869 --> 00:18:21,409
+over five hundred dollars
+
+384
+00:18:17,410 --> 00:18:24,440
+generally speaking your problem I
+
+385
+00:18:21,410 --> 00:18:28,009
+created a veneer forum thread where you
+
+386
+00:18:24,440 --> 00:18:32,230
+can talk about you know options and
+
+387
+00:18:28,009 --> 00:18:32,230
+parts and ask questions and so forth
+
+388
+00:18:33,759 --> 00:18:40,119
+afford it right now that gtx 980ti is
+
+389
+00:18:37,559 --> 00:18:43,179
+almost certainly what you want in terms
+
+390
+00:18:40,119 --> 00:18:45,759
+of the best price performance MIPS if
+
+391
+00:18:43,180 --> 00:18:47,920
+you can't afford it at ten seventy is
+
+392
+00:18:45,759 --> 00:18:50,980
+fine if you can't afford that you should
+
+393
+00:18:47,920 --> 00:18:54,480
+probably be looking for a secondhand 980
+
+394
+00:18:50,980 --> 00:18:57,450
+or a second Amazonia something like that
+
+395
+00:18:54,480 --> 00:19:00,370
+if you can afford to spend more money
+
+396
+00:18:57,450 --> 00:19:02,740
+it's worth getting a second GPU so you
+
+397
+00:19:00,369 --> 00:19:06,699
+can do what I do which is to have one
+
+398
+00:19:02,740 --> 00:19:08,349
+GPU training and another GPU which I'm
+
+399
+00:19:06,700 --> 00:19:16,509
+running an interactive Cupid in the
+
+400
+00:19:08,349 --> 00:19:18,429
+clock session Ram is very useful try and
+
+401
+00:19:16,509 --> 00:19:23,950
+get 32 gig if you can Ram is not
+
+402
+00:19:18,430 --> 00:19:25,960
+terribly expensive a lot of people find
+
+403
+00:19:23,950 --> 00:19:28,120
+that their vendor or person to buy one
+
+404
+00:19:25,960 --> 00:19:30,730
+of these business classes they on CPUs
+
+405
+00:19:28,119 --> 00:19:32,709
+that's a total waste of time you can get
+
+406
+00:19:30,730 --> 00:19:35,829
+one of them into our eye five or I seven
+
+407
+00:19:32,710 --> 00:19:39,549
+consumers to CPUs far far cheaper but
+
+408
+00:19:35,829 --> 00:19:41,129
+actually a lot of them are faster often
+
+409
+00:19:39,549 --> 00:19:43,569
+you're here CPU speed doesn't matter
+
+410
+00:19:41,130 --> 00:19:44,580
+that's if you're doing computer vision
+
+411
+00:19:43,569 --> 00:19:47,169
+that's definitely not true
+
+412
+00:19:44,579 --> 00:19:49,599
+it's very common now with these like
+
+413
+00:19:47,170 --> 00:19:51,490
+1080 TRS and so forth to find that the
+
+414
+00:19:49,599 --> 00:19:52,839
+speed of the data augmentation is
+
+415
+00:19:51,490 --> 00:19:55,630
+actually this mo bit that's happening on
+
+416
+00:19:52,839 --> 00:20:02,319
+the CPU so it's worth getting a decency
+
+417
+00:19:55,630 --> 00:20:04,270
+to you your again your GPU if it's
+
+418
+00:20:02,319 --> 00:20:06,490
+running quickly but the hard drives got
+
+419
+00:20:04,269 --> 00:20:09,009
+fast enough to give it data then that's
+
+420
+00:20:06,490 --> 00:20:11,589
+a waste as well so if you can afford an
+
+421
+00:20:09,009 --> 00:20:13,089
+nvme drive they're super super fast you
+
+422
+00:20:11,589 --> 00:20:14,980
+don't have to get a big one you can just
+
+423
+00:20:13,089 --> 00:20:17,649
+get a little one you just copy your
+
+424
+00:20:14,980 --> 00:20:19,480
+current set of data onto and have some
+
+425
+00:20:17,650 --> 00:20:20,830
+big raid array that sits there for the
+
+426
+00:20:19,480 --> 00:20:23,009
+rest of your data when you're not using
+
+427
+00:20:20,829 --> 00:20:23,009
+it
+
+428
+00:20:23,779 --> 00:20:30,029
+there's a slightly arcane thing about
+
+429
+00:20:27,690 --> 00:20:32,340
+PCI lanes which is basically like
+
+430
+00:20:30,029 --> 00:20:35,430
+they're kind of the size of the highway
+
+431
+00:20:32,339 --> 00:20:40,470
+that connects your GPU to your computer
+
+432
+00:20:35,430 --> 00:20:45,690
+and a lot of people claim that you need
+
+433
+00:20:40,470 --> 00:20:48,079
+to have a 16 lanes to feed your GPU it
+
+434
+00:20:45,690 --> 00:20:51,390
+actually turns out based on some
+
+435
+00:20:48,079 --> 00:20:54,359
+analysis that I've seen recently that
+
+436
+00:20:51,390 --> 00:20:58,980
+that's not true you need you need eight
+
+437
+00:20:54,359 --> 00:21:00,169
+lanes GPU so again so like hopefully
+
+438
+00:20:58,980 --> 00:21:02,579
+help you save some money on your
+
+439
+00:21:00,170 --> 00:21:04,620
+motherboard if you've never heard of PCI
+
+440
+00:21:02,579 --> 00:21:06,480
+lanes before trust me by the end of
+
+441
+00:21:04,619 --> 00:21:12,269
+putting together this bus you'll be sick
+
+442
+00:21:06,480 --> 00:21:13,769
+of hearing about you can buy all the
+
+443
+00:21:12,269 --> 00:21:16,319
+parts and put it together yourself it's
+
+444
+00:21:13,769 --> 00:21:18,359
+not that hard can be a useful learning
+
+445
+00:21:16,319 --> 00:21:20,220
+experience it can also be kind of
+
+446
+00:21:18,359 --> 00:21:22,319
+frustrating and annoying so you can
+
+447
+00:21:20,220 --> 00:21:24,240
+always go to like central computers and
+
+448
+00:21:22,319 --> 00:21:25,679
+they'll put it together for you there's
+
+449
+00:21:24,240 --> 00:21:28,200
+lots of online and vendors that will do
+
+450
+00:21:25,680 --> 00:21:30,380
+the same thing now generally like make
+
+451
+00:21:28,200 --> 00:21:32,730
+sure it turns on and runs properly
+
+452
+00:21:30,380 --> 00:21:39,270
+generally not much of a markup so it's
+
+453
+00:21:32,730 --> 00:21:40,680
+not a bad idea we're going to be doing a
+
+454
+00:21:39,269 --> 00:21:43,019
+lot of reading papers basically each
+
+455
+00:21:40,680 --> 00:21:45,539
+week we'll be implementing a paper or a
+
+456
+00:21:43,019 --> 00:21:47,549
+few papers and if you haven't looked at
+
+457
+00:21:45,539 --> 00:21:51,569
+papers before they look something like
+
+458
+00:21:47,549 --> 00:21:53,849
+on the left that thing on the left is an
+
+459
+00:21:51,569 --> 00:21:56,960
+extract from the paper that implements
+
+460
+00:21:53,849 --> 00:21:59,219
+atom you may also have seen atom as a
+
+461
+00:21:56,960 --> 00:22:02,210
+single excel formula on the spreadsheet
+
+462
+00:21:59,220 --> 00:22:04,319
+that are in there the same thing okay
+
+463
+00:22:02,210 --> 00:22:08,819
+the difference is in academic papers
+
+464
+00:22:04,319 --> 00:22:12,000
+people love to use Greek letters they
+
+465
+00:22:08,819 --> 00:22:15,539
+also hate to refactor so you'll often
+
+466
+00:22:12,000 --> 00:22:16,500
+see like like a page long formula where
+
+467
+00:22:15,539 --> 00:22:19,680
+when you actually look at it carefully
+
+468
+00:22:16,500 --> 00:22:22,230
+you'll realize like the same and a sub
+
+469
+00:22:19,680 --> 00:22:23,640
+equation of his eight times you know
+
+470
+00:22:22,230 --> 00:22:25,980
+they didn't know if they didn't think to
+
+471
+00:22:23,640 --> 00:22:28,620
+say about it like that T equal like this
+
+472
+00:22:25,980 --> 00:22:32,450
+that equation announced one I don't know
+
+473
+00:22:28,619 --> 00:22:32,449
+why this is a thing but
+
+474
+00:22:33,589 --> 00:22:39,379
+I guess all this is to say like once
+
+475
+00:22:37,160 --> 00:22:40,970
+you've read and understood a paper you
+
+476
+00:22:39,380 --> 00:22:43,340
+then go back to it and you look at it
+
+477
+00:22:40,970 --> 00:22:46,460
+you just like wow how did they make such
+
+478
+00:22:43,339 --> 00:22:51,669
+a simple feeling so complicated like
+
+479
+00:22:46,460 --> 00:22:53,930
+Adam Wright is like momentum and
+
+480
+00:22:51,670 --> 00:22:55,340
+momentum on this momentum on the
+
+481
+00:22:53,930 --> 00:22:59,600
+gradient and momentum on the squared
+
+482
+00:22:55,339 --> 00:23:00,740
+already that's it right and and speak
+
+483
+00:22:59,599 --> 00:23:02,269
+long things and the other reason it's a
+
+484
+00:23:00,740 --> 00:23:03,589
+big long thing is because they have
+
+485
+00:23:02,269 --> 00:23:05,750
+things like this where they have like
+
+486
+00:23:03,589 --> 00:23:08,750
+theorems and calories and stuff where
+
+487
+00:23:05,750 --> 00:23:11,269
+they're kind of saying like here's or
+
+488
+00:23:08,750 --> 00:23:14,359
+our theoretical reasoning behind why
+
+489
+00:23:11,269 --> 00:23:16,160
+this ought to work or whatever and for
+
+490
+00:23:14,359 --> 00:23:19,189
+whatever reason you know a lot of
+
+491
+00:23:16,160 --> 00:23:21,170
+conferences and journals don't like to
+
+492
+00:23:19,190 --> 00:23:23,600
+accept papers that don't have a lot of
+
+493
+00:23:21,170 --> 00:23:25,550
+this theoretical justification Geoffrey
+
+494
+00:23:23,599 --> 00:23:27,980
+Hinton's talked about this a bit how
+
+495
+00:23:25,549 --> 00:23:30,559
+particularly you know a decade or two
+
+496
+00:23:27,980 --> 00:23:33,860
+ago when no conferences would really
+
+497
+00:23:30,559 --> 00:23:36,440
+accept any neural network papers then
+
+498
+00:23:33,859 --> 00:23:39,289
+there was this like one abstract
+
+499
+00:23:36,440 --> 00:23:41,240
+theoretical result that came out where
+
+500
+00:23:39,289 --> 00:23:44,839
+suddenly they could show this you know I
+
+501
+00:23:41,240 --> 00:23:46,339
+don't like practically unimportant but
+
+502
+00:23:44,839 --> 00:23:47,359
+theoretically interesting thing and then
+
+503
+00:23:46,339 --> 00:23:49,399
+suddenly they could then start
+
+504
+00:23:47,359 --> 00:23:50,750
+submitting things to journals because
+
+505
+00:23:49,400 --> 00:23:53,600
+they have this like theoretical
+
+506
+00:23:50,750 --> 00:23:55,819
+justification so it's kind of yeah
+
+507
+00:23:53,599 --> 00:23:58,609
+academic papers are a bit weird but in
+
+508
+00:23:55,819 --> 00:24:01,759
+the end it's the way that the research
+
+509
+00:23:58,609 --> 00:24:04,519
+community communicates their their
+
+510
+00:24:01,759 --> 00:24:07,940
+findings and so we need to learn to read
+
+511
+00:24:04,519 --> 00:24:11,509
+them but something that could be a great
+
+512
+00:24:07,940 --> 00:24:13,820
+thing to do is to take a paper put in
+
+513
+00:24:11,509 --> 00:24:17,059
+the effort to understand it and then
+
+514
+00:24:13,819 --> 00:24:21,559
+write a blog where you explain it in you
+
+515
+00:24:17,059 --> 00:24:24,589
+know code in normal English and lots of
+
+516
+00:24:21,559 --> 00:24:26,629
+people who do that you know end up
+
+517
+00:24:24,589 --> 00:24:28,879
+getting quite a following end up getting
+
+518
+00:24:26,630 --> 00:24:30,500
+some pretty great job offers and so
+
+519
+00:24:28,880 --> 00:24:32,800
+forth because you know it's such a
+
+520
+00:24:30,500 --> 00:24:35,000
+useful skill to show like okay I can I
+
+521
+00:24:32,799 --> 00:24:36,769
+can understand these papers I can
+
+522
+00:24:35,000 --> 00:24:39,009
+implement code I can explain them in
+
+523
+00:24:36,769 --> 00:24:39,009
+English
+
+524
+00:24:40,759 --> 00:24:48,089
+one thing I will mention is it's very
+
+525
+00:24:43,259 --> 00:24:51,329
+hard to read or understand something
+
+526
+00:24:48,089 --> 00:24:53,399
+which you can't localize which means if
+
+527
+00:24:51,329 --> 00:24:55,529
+you don't know the names of the Greek
+
+528
+00:24:53,400 --> 00:24:58,430
+letters like it sounds weird but it's
+
+529
+00:24:55,529 --> 00:25:01,529
+actually very difficult to understand
+
+530
+00:24:58,430 --> 00:25:04,380
+remember take in a formula that appears
+
+531
+00:25:01,529 --> 00:25:06,599
+again and again that's got like squiggle
+
+532
+00:25:04,380 --> 00:25:08,280
+right you need to know that that
+
+533
+00:25:06,599 --> 00:25:10,079
+squiggle is called Delta or that screw
+
+534
+00:25:08,279 --> 00:25:11,639
+or the Sigma or whatever so like just
+
+535
+00:25:10,079 --> 00:25:14,220
+spending some time learning the names of
+
+536
+00:25:11,640 --> 00:25:16,080
+the Greek letters is like sounds like a
+
+537
+00:25:14,220 --> 00:25:17,220
+strange thing to do but suddenly you
+
+538
+00:25:16,079 --> 00:25:19,470
+don't look at these things anymore and
+
+539
+00:25:17,220 --> 00:25:21,240
+go like squiggle iovers people beat us
+
+540
+00:25:19,470 --> 00:25:26,029
+other weird squiggle looks like a why
+
+541
+00:25:21,240 --> 00:25:26,029
+thing right they've all got notes
+
+542
+00:25:29,180 --> 00:25:36,170
+okay so now that we're kind of at the
+
+543
+00:25:30,380 --> 00:25:38,480
+cutting edge stage a lot of the stuff
+
+544
+00:25:36,170 --> 00:25:43,850
+we'll be learning this class is stuff
+
+545
+00:25:38,480 --> 00:25:45,950
+that almost nobody else knows about so
+
+546
+00:25:43,849 --> 00:25:49,569
+that's a great opportunity for you to be
+
+547
+00:25:45,950 --> 00:25:51,470
+kind of like it's the first person to
+
+548
+00:25:49,569 --> 00:25:53,119
+create an understandable and
+
+549
+00:25:51,470 --> 00:25:54,950
+generalizable code library that
+
+550
+00:25:53,119 --> 00:25:56,809
+implements it or the first person to
+
+551
+00:25:54,950 --> 00:25:58,970
+write a blog post explains it in clear
+
+552
+00:25:56,809 --> 00:26:01,399
+English for the first person to try
+
+553
+00:25:58,970 --> 00:26:03,470
+applying it to this slightly different
+
+554
+00:26:01,400 --> 00:26:07,790
+area but it's obviously going to work
+
+555
+00:26:03,470 --> 00:26:10,460
+just as well or so so when we say
+
+556
+00:26:07,789 --> 00:26:13,190
+cutting-edge research that doesn't mean
+
+557
+00:26:10,460 --> 00:26:15,200
+you have to come up with like the next
+
+558
+00:26:13,190 --> 00:26:18,769
+batch norm or the next atom or the next
+
+559
+00:26:15,200 --> 00:26:21,500
+five liter convoluted convolution it can
+
+560
+00:26:18,769 --> 00:26:26,480
+mean like okay take this thing that was
+
+561
+00:26:21,500 --> 00:26:29,599
+used for translation and apply it to
+
+562
+00:26:26,480 --> 00:26:31,519
+this very similar other parallel and LP
+
+563
+00:26:29,599 --> 00:26:35,209
+task or take this thing that was tested
+
+564
+00:26:31,519 --> 00:26:39,109
+on skin lesions and trusted on this data
+
+565
+00:26:35,210 --> 00:26:42,470
+set of this other clarifications that
+
+566
+00:26:39,109 --> 00:26:44,709
+kind of stuff is super great learning
+
+567
+00:26:42,470 --> 00:26:47,170
+experience and incredibly useful because
+
+568
+00:26:44,710 --> 00:26:49,880
+the vast majority of the world that
+
+569
+00:26:47,170 --> 00:26:52,009
+knows nothing about this whole field it
+
+570
+00:26:49,880 --> 00:26:54,590
+just looks like magic you know you're
+
+571
+00:26:52,009 --> 00:26:57,410
+like a I've for the first time shown
+
+572
+00:26:54,589 --> 00:26:59,809
+greater than 90 percent accuracy at you
+
+573
+00:26:57,410 --> 00:27:02,650
+know finding this kind of lesion in this
+
+574
+00:26:59,809 --> 00:27:02,649
+kind of data
+
+575
+00:27:04,359 --> 00:27:09,259
+[Music]
+
+576
+00:27:06,609 --> 00:27:12,139
+so you know when I say here experiment
+
+577
+00:27:09,259 --> 00:27:13,519
+in your area of expertise you know one
+
+578
+00:27:12,140 --> 00:27:15,710
+of the things we particularly look for
+
+579
+00:27:13,519 --> 00:27:19,789
+in this class is to kind of bring in
+
+580
+00:27:15,710 --> 00:27:23,179
+people who are pretty good at something
+
+581
+00:27:19,789 --> 00:27:26,960
+else you know pretty good at meteorology
+
+582
+00:27:23,179 --> 00:27:32,120
+or pretty good at denovo drug design or
+
+583
+00:27:26,960 --> 00:27:35,779
+pretty good at goat dairy farming or
+
+584
+00:27:32,119 --> 00:27:42,918
+whatever you know examples people we had
+
+585
+00:27:35,779 --> 00:27:45,410
+in the class so probably the thing you
+
+586
+00:27:42,919 --> 00:27:46,820
+can do the best would be to take that
+
+587
+00:27:45,410 --> 00:27:49,460
+thing you're already pretty good at and
+
+588
+00:27:46,819 --> 00:27:52,490
+that on these new skills right because
+
+589
+00:27:49,460 --> 00:27:53,750
+otherwise if you try to go into some
+
+590
+00:27:52,490 --> 00:27:55,099
+different domain you're gonna have to
+
+591
+00:27:53,750 --> 00:27:57,740
+figure out how do I get data for that
+
+592
+00:27:55,099 --> 00:28:00,009
+domain problems are solved in that
+
+593
+00:27:57,740 --> 00:28:00,009
+domain
+
+594
+00:28:00,380 --> 00:28:05,030
+where else often it'll seem pretty
+
+595
+00:28:02,000 --> 00:28:06,410
+trivial to you to take this technique
+
+596
+00:28:05,029 --> 00:28:07,509
+apply to this data set that you've
+
+597
+00:28:06,410 --> 00:28:09,980
+already got sitting on your hard drive
+
+598
+00:28:07,509 --> 00:28:12,230
+but that's often going to be that super
+
+599
+00:28:09,980 --> 00:28:14,360
+interesting thing you know for the rest
+
+600
+00:28:12,230 --> 00:28:15,710
+of the world to see like oh that's
+
+601
+00:28:14,359 --> 00:28:18,939
+interesting you know when you apply it
+
+602
+00:28:15,710 --> 00:28:20,690
+to meteorology data and you use this
+
+603
+00:28:18,940 --> 00:28:24,019
+eridan or whatever
+
+604
+00:28:20,690 --> 00:28:29,860
+and allows you to forecast over larger
+
+605
+00:28:24,019 --> 00:28:29,859
+areas or a longer time periods so
+
+606
+00:28:31,119 --> 00:28:35,509
+communicating what you're doing is super
+
+607
+00:28:33,950 --> 00:28:38,390
+helpful we've we've talked about that
+
+608
+00:28:35,509 --> 00:28:40,879
+before but I know something that a lot
+
+609
+00:28:38,390 --> 00:28:43,700
+of people in the forum's ask people who
+
+610
+00:28:40,880 --> 00:28:45,049
+have already written is that when
+
+611
+00:28:43,700 --> 00:28:46,960
+somebody's written a blog often people
+
+612
+00:28:45,048 --> 00:28:49,668
+on the forum will be like how did you
+
+613
+00:28:46,960 --> 00:28:51,048
+get up the guts to do that or what did
+
+614
+00:28:49,669 --> 00:28:52,400
+you what up the process you got to
+
+615
+00:28:51,048 --> 00:28:54,589
+before you decided to start publishing
+
+616
+00:28:52,400 --> 00:28:59,419
+something or whatever and the answer is
+
+617
+00:28:54,589 --> 00:29:01,019
+always the same it's always just you
+
+618
+00:28:59,419 --> 00:29:02,820
+know
+
+619
+00:29:01,019 --> 00:29:04,769
+I was sure I wasn't good enough to do it
+
+620
+00:29:02,819 --> 00:29:06,899
+I felt terrified and intimidated of
+
+621
+00:29:04,769 --> 00:29:10,769
+doing it but I wrote it and posted it
+
+622
+00:29:06,900 --> 00:29:13,350
+anyway but you just like never a time I
+
+623
+00:29:10,769 --> 00:29:17,490
+think any of us actually feel like we're
+
+624
+00:29:13,349 --> 00:29:19,289
+not total frauds and imposters but we
+
+625
+00:29:17,490 --> 00:29:22,019
+know more about what we're doing then us
+
+626
+00:29:19,289 --> 00:29:23,039
+of six months ago right and there's
+
+627
+00:29:22,019 --> 00:29:24,569
+somebody else in the world
+
+628
+00:29:23,039 --> 00:29:26,730
+who knows as much as you did six months
+
+629
+00:29:24,569 --> 00:29:28,019
+ago so if you act something now that
+
+630
+00:29:26,730 --> 00:29:30,660
+would have helped you at six months ago
+
+631
+00:29:28,019 --> 00:29:33,869
+you're helping some people and honestly
+
+632
+00:29:30,660 --> 00:29:35,700
+if you wait another six months then the
+
+633
+00:29:33,869 --> 00:29:37,019
+you of 12 months ago probably won't even
+
+634
+00:29:35,700 --> 00:29:40,620
+understand that any more offices to
+
+635
+00:29:37,019 --> 00:29:44,849
+advanced it know so Mike it's great to
+
+636
+00:29:40,619 --> 00:29:46,549
+communicate wherever you're up to in a
+
+637
+00:29:44,849 --> 00:29:49,109
+way that you think could be helpful to
+
+638
+00:29:46,549 --> 00:29:52,230
+the person you were before you knew that
+
+639
+00:29:49,109 --> 00:29:54,679
+thing um and of course something that
+
+640
+00:29:52,230 --> 00:29:57,930
+the forum's have been useful for is
+
+641
+00:29:54,680 --> 00:30:02,880
+getting feedback about drafts you know
+
+642
+00:29:57,930 --> 00:30:06,090
+and if you post a draft of something
+
+643
+00:30:02,880 --> 00:30:08,430
+that you're thinking of releasing and
+
+644
+00:30:06,089 --> 00:30:11,250
+the folks here can point out things that
+
+645
+00:30:08,430 --> 00:30:15,259
+they find clear or they think need some
+
+646
+00:30:11,250 --> 00:30:15,259
+Corrections whatever so
+
+647
+00:30:15,400 --> 00:30:21,880
+the kind of overarching theme with part
+
+648
+00:30:19,690 --> 00:30:24,279
+two I've described as generative models
+
+649
+00:30:21,880 --> 00:30:25,900
+but unfortunately then Rachel asked me
+
+650
+00:30:24,279 --> 00:30:27,369
+this afternoon exactly what I meant by
+
+651
+00:30:25,900 --> 00:30:32,620
+generative models and I realize I don't
+
+652
+00:30:27,369 --> 00:30:36,369
+really know so what I really mean is in
+
+653
+00:30:32,619 --> 00:30:39,669
+part one that the output of our neural
+
+654
+00:30:36,369 --> 00:30:46,449
+networks was generally like like a
+
+655
+00:30:39,670 --> 00:30:48,730
+number you know our category where else
+
+656
+00:30:46,450 --> 00:30:51,100
+the outputs a lot of the stuff in part
+
+657
+00:30:48,730 --> 00:30:56,170
+two are going to be like a whole lot of
+
+658
+00:30:51,099 --> 00:30:58,359
+things you know like the top left and
+
+659
+00:30:56,170 --> 00:31:00,160
+bottom right location of every object in
+
+660
+00:30:58,359 --> 00:31:03,939
+an image along with what the object is
+
+661
+00:31:00,160 --> 00:31:08,050
+or a complete picture with the class of
+
+662
+00:31:03,940 --> 00:31:11,680
+every single pixel in that picture or an
+
+663
+00:31:08,049 --> 00:31:16,720
+enhanced super resolution version of the
+
+664
+00:31:11,680 --> 00:31:22,420
+input image or the entire original input
+
+665
+00:31:16,720 --> 00:31:27,730
+paragraph translated into fish or you
+
+666
+00:31:22,420 --> 00:31:30,190
+know it's kind of like often it just
+
+667
+00:31:27,730 --> 00:31:31,960
+requires some different ways of thinking
+
+668
+00:31:30,190 --> 00:31:34,059
+about things and some kind of different
+
+669
+00:31:31,960 --> 00:31:36,730
+architectures and and so forth and so
+
+670
+00:31:34,059 --> 00:31:39,250
+that's kind of like I guess the main
+
+671
+00:31:36,730 --> 00:31:43,000
+theme of the kind of techniques we'll be
+
+672
+00:31:39,250 --> 00:31:45,759
+looking at the vast majority possibly
+
+673
+00:31:43,000 --> 00:31:53,440
+all of the data we'll be looking at will
+
+674
+00:31:45,759 --> 00:31:56,740
+be either text or image data the it
+
+675
+00:31:53,440 --> 00:31:58,990
+would be fairly trivial to do most of
+
+676
+00:31:56,740 --> 00:32:00,339
+these things with audio as well it's
+
+677
+00:31:58,990 --> 00:32:03,819
+just not something I've spent much time
+
+678
+00:32:00,339 --> 00:32:05,230
+on myself yet somebody asked on the
+
+679
+00:32:03,819 --> 00:32:07,869
+forum about like welcoming doing more
+
+680
+00:32:05,230 --> 00:32:11,500
+stuff with time-series and tabular data
+
+681
+00:32:07,869 --> 00:32:13,149
+and my answer was like I've already
+
+682
+00:32:11,500 --> 00:32:15,039
+taught you everything I know about that
+
+683
+00:32:13,150 --> 00:32:17,560
+and I'm not sure there's much else to
+
+684
+00:32:15,039 --> 00:32:21,579
+say particularly if you check out the
+
+685
+00:32:17,559 --> 00:32:23,799
+machine learning course which goes into
+
+686
+00:32:21,579 --> 00:32:27,099
+a lot of that in a lot more detail so I
+
+687
+00:32:23,799 --> 00:32:28,240
+don't feel that there's more stuff to
+
+688
+00:32:27,099 --> 00:32:30,009
+tell you I think that's a super
+
+689
+00:32:28,240 --> 00:32:35,169
+important area
+
+690
+00:32:30,009 --> 00:32:41,048
+but I think we're done we're done with
+
+691
+00:32:35,169 --> 00:32:43,330
+that we'll be looking at some larger
+
+692
+00:32:41,048 --> 00:32:45,129
+data sets both in terms of the number of
+
+693
+00:32:43,329 --> 00:32:48,039
+objects in the data search and the size
+
+694
+00:32:45,130 --> 00:32:49,540
+of each of those objects for those of
+
+695
+00:32:48,039 --> 00:32:51,730
+you that are working with limited
+
+696
+00:32:49,539 --> 00:32:52,418
+computational resources please don't let
+
+697
+00:32:51,730 --> 00:32:54,548
+that put you off
+
+698
+00:32:52,419 --> 00:32:58,480
+feel free to replace it with something
+
+699
+00:32:54,548 --> 00:33:00,039
+small at the simpler in fact when I was
+
+700
+00:32:58,480 --> 00:33:02,710
+designing this course so did quite a lot
+
+701
+00:33:00,039 --> 00:33:05,889
+of it in Australia when I went to visit
+
+702
+00:33:02,710 --> 00:33:10,480
+my mom and my mom decided to book a nice
+
+703
+00:33:05,890 --> 00:33:12,850
+holiday house for us with fast Wi-Fi and
+
+704
+00:33:10,480 --> 00:33:15,700
+we turned up to the holiday house with
+
+705
+00:33:12,849 --> 00:33:16,599
+fast Wi-Fi and indeed it did have Wi-Fi
+
+706
+00:33:15,700 --> 00:33:22,480
+that was fast
+
+707
+00:33:16,599 --> 00:33:24,759
+but the Wi-Fi was not the internet so I
+
+708
+00:33:22,480 --> 00:33:28,539
+caught up the agent and I said like I
+
+709
+00:33:24,759 --> 00:33:31,900
+found thee a DSL router and it's got an
+
+710
+00:33:28,539 --> 00:33:32,980
+ADSL thing plugged in and I followed the
+
+711
+00:33:31,900 --> 00:33:36,130
+cable down and the other end of the
+
+712
+00:33:32,980 --> 00:33:40,509
+cable has nothing to plug into so she
+
+713
+00:33:36,130 --> 00:33:45,250
+called the she called the people you
+
+714
+00:33:40,509 --> 00:33:48,069
+know renting the house ona and called me
+
+715
+00:33:45,250 --> 00:33:50,759
+back the next day and she said actually
+
+716
+00:33:48,069 --> 00:33:56,740
+the tambaran is quite quickly I actually
+
+717
+00:33:50,759 --> 00:33:58,240
+point leo has known internet wait what
+
+718
+00:33:56,740 --> 00:34:01,450
+and so the good old Australian
+
+719
+00:33:58,240 --> 00:34:03,069
+government had decided to replace ADSL
+
+720
+00:34:01,450 --> 00:34:05,080
+in point Leo with a new National
+
+721
+00:34:03,069 --> 00:34:05,740
+Broadband Network and therefore they had
+
+722
+00:34:05,079 --> 00:34:08,710
+disconnected
+
+723
+00:34:05,740 --> 00:34:10,989
+ADSL that had not yet connected and
+
+724
+00:34:08,710 --> 00:34:15,010
+after brought that down so we had fast
+
+725
+00:34:10,989 --> 00:34:16,148
+Wi-Fi which we could use to Skype chat
+
+726
+00:34:15,010 --> 00:34:17,710
+from one side of the house to the other
+
+727
+00:34:16,148 --> 00:34:20,500
+but I had no internet
+
+728
+00:34:17,710 --> 00:34:26,010
+luckily I did have a news surface book
+
+729
+00:34:20,500 --> 00:34:29,500
+fifteen-inch which has a gtx 1070 in it
+
+730
+00:34:26,010 --> 00:34:32,710
+and so I wrote a live German of this
+
+731
+00:34:29,500 --> 00:34:36,389
+course entirely on my laptop which means
+
+732
+00:34:32,710 --> 00:34:39,668
+I had to practice with relatively small
+
+733
+00:34:36,389 --> 00:34:42,070
+resources I mean not tiny like 16 gig
+
+734
+00:34:39,668 --> 00:34:46,599
+ram and
+
+735
+00:34:42,070 --> 00:34:48,910
+six gig GP here so I can definitely you
+
+736
+00:34:46,599 --> 00:34:50,980
+know III definitely and it was all in
+
+737
+00:34:48,909 --> 00:34:52,480
+Windows so I can tell you that most of
+
+738
+00:34:50,980 --> 00:34:57,099
+this you know much one where this course
+
+739
+00:34:52,480 --> 00:34:58,960
+works well on Windows on a laptop so you
+
+740
+00:34:57,099 --> 00:35:00,699
+can always use smaller batch sizes you
+
+741
+00:34:58,960 --> 00:35:02,440
+could use a cut-down version of the data
+
+742
+00:35:00,699 --> 00:35:04,419
+set whatever but if you have the
+
+743
+00:35:02,440 --> 00:35:06,460
+resources you'll get better results if
+
+744
+00:35:04,420 --> 00:35:11,019
+you can use the bigger data sets when
+
+745
+00:35:06,460 --> 00:35:13,000
+they're available okay now it's a good
+
+746
+00:35:11,019 --> 00:35:14,559
+time I think to take a somewhat early
+
+747
+00:35:13,000 --> 00:35:22,590
+break so we can fix the floor so the
+
+748
+00:35:14,559 --> 00:35:22,590
+forum's chill down okay so it was it
+
+749
+00:35:25,829 --> 00:35:37,150
+okay let's come back at 7:25 so let's
+
+750
+00:35:33,969 --> 00:35:40,569
+start talking about object detection and
+
+751
+00:35:37,150 --> 00:35:44,260
+so here is an example object detection
+
+752
+00:35:40,570 --> 00:35:46,809
+and so hopefully you'll see two main
+
+753
+00:35:44,260 --> 00:35:49,990
+differences from what we're used to when
+
+754
+00:35:46,809 --> 00:35:54,250
+it comes to classification the first is
+
+755
+00:35:49,989 --> 00:35:57,250
+that we have multiple things that were
+
+756
+00:35:54,250 --> 00:35:59,679
+classifying which is not unheard of we
+
+757
+00:35:57,250 --> 00:36:02,739
+did that in the planets satellite data
+
+758
+00:35:59,679 --> 00:36:05,529
+for example but what is kind of unheard
+
+759
+00:36:02,739 --> 00:36:07,689
+of is that as well as saying what we see
+
+760
+00:36:05,530 --> 00:36:10,900
+we've also got what's called bounding
+
+761
+00:36:07,690 --> 00:36:15,309
+boxes around what we see a bounding box
+
+762
+00:36:10,900 --> 00:36:18,490
+has a very specific definition which is
+
+763
+00:36:15,309 --> 00:36:22,869
+it's a box all right it's a rectangle
+
+764
+00:36:18,489 --> 00:36:27,279
+and the rectangle has the object
+
+765
+00:36:22,869 --> 00:36:29,920
+entirely fitting within it but it's no
+
+766
+00:36:27,280 --> 00:36:33,070
+bigger than it has to be okay you'll see
+
+767
+00:36:29,920 --> 00:36:36,250
+this bounding box is perhaps for the
+
+768
+00:36:33,070 --> 00:36:37,420
+horse at least slightly imperfect in
+
+769
+00:36:36,250 --> 00:36:40,090
+that this looks like there's a bit of
+
+770
+00:36:37,420 --> 00:36:41,889
+tail here so it probably should be a bit
+
+771
+00:36:40,090 --> 00:36:43,450
+wider and maybe there's leaving a little
+
+772
+00:36:41,889 --> 00:36:46,239
+bit of hoof here maybe there should be a
+
+773
+00:36:43,449 --> 00:36:47,409
+bit longer so like the bounding box this
+
+774
+00:36:46,239 --> 00:36:51,929
+won't be perfect but they're generally
+
+775
+00:36:47,409 --> 00:36:51,929
+pretty good in most data
+
+776
+00:36:52,369 --> 00:37:00,989
+so our job will be to take data that has
+
+777
+00:36:57,690 --> 00:37:02,940
+been labeled in this way and on data
+
+778
+00:37:00,989 --> 00:37:05,639
+that was unlabeled to generate their
+
+779
+00:37:02,940 --> 00:37:11,340
+classes of the objects and each one of
+
+780
+00:37:05,639 --> 00:37:14,279
+those their bounding losses one thing
+
+781
+00:37:11,340 --> 00:37:16,769
+I'll note to start with is that labeling
+
+782
+00:37:14,280 --> 00:37:19,860
+this kind of data is generally more
+
+783
+00:37:16,769 --> 00:37:23,039
+expensive it's generally quicker to say
+
+784
+00:37:19,860 --> 00:37:27,390
+horse person person horse car dog
+
+785
+00:37:23,039 --> 00:37:29,340
+jumbo jet than it is to say you know if
+
+786
+00:37:27,389 --> 00:37:31,230
+there's a whole like horse race going on
+
+787
+00:37:29,340 --> 00:37:33,840
+to label the exact location of every
+
+788
+00:37:31,230 --> 00:37:36,360
+rider and a very horse and then of
+
+789
+00:37:33,840 --> 00:37:37,890
+course it also depends like what classes
+
+790
+00:37:36,360 --> 00:37:40,079
+do you want to label you know if you
+
+791
+00:37:37,889 --> 00:37:43,559
+want to label everything fence post or
+
+792
+00:37:40,079 --> 00:37:47,940
+whatever so generally always just like
+
+793
+00:37:43,559 --> 00:37:50,460
+in like imagenet it's not like tell me
+
+794
+00:37:47,940 --> 00:37:51,869
+any object you see in this picture it's
+
+795
+00:37:50,460 --> 00:37:55,650
+an image notice like here are the
+
+796
+00:37:51,869 --> 00:37:57,179
+thousand classes that we asked you to
+
+797
+00:37:55,650 --> 00:38:00,360
+look for tell us which one of those
+
+798
+00:37:57,179 --> 00:38:03,569
+thousand classes you find just tell me
+
+799
+00:38:00,360 --> 00:38:04,620
+one thing for these object detection
+
+800
+00:38:03,570 --> 00:38:07,680
+datasets
+
+801
+00:38:04,619 --> 00:38:09,420
+it's here's a list of object classes
+
+802
+00:38:07,679 --> 00:38:11,399
+that we want you to tell us about you
+
+803
+00:38:09,420 --> 00:38:13,680
+know find every single one of them at
+
+804
+00:38:11,400 --> 00:38:15,930
+any time in the picture along with where
+
+805
+00:38:13,679 --> 00:38:19,799
+they are so in this case why isn't there
+
+806
+00:38:15,929 --> 00:38:21,149
+tree or jump labeled that's because for
+
+807
+00:38:19,800 --> 00:38:23,580
+this particular data set they weren't
+
+808
+00:38:21,150 --> 00:38:25,920
+one of the classes that the annotators
+
+809
+00:38:23,579 --> 00:38:27,750
+were asked to find and therefore not
+
+810
+00:38:25,920 --> 00:38:30,510
+part of this particular problem okay so
+
+811
+00:38:27,750 --> 00:38:33,679
+that's kind of the specification of the
+
+812
+00:38:30,510 --> 00:38:33,680
+object detection problem
+
+813
+00:38:33,949 --> 00:38:43,889
+so let me describe stage 1 and stage 1
+
+814
+00:38:41,608 --> 00:38:46,650
+is actually going to be surprisingly
+
+815
+00:38:43,889 --> 00:38:48,868
+straightforward and we're going to start
+
+816
+00:38:46,650 --> 00:38:53,190
+at the top and work down we're going to
+
+817
+00:38:48,869 --> 00:38:55,710
+start out by classifying the largest
+
+818
+00:38:53,190 --> 00:38:58,470
+object in each image so we're going to
+
+819
+00:38:55,710 --> 00:39:01,019
+try and say the person actually this one
+
+820
+00:38:58,469 --> 00:39:03,179
+is wrong dog is not the largest object
+
+821
+00:39:01,019 --> 00:39:04,820
+sofa is the largest object all right so
+
+822
+00:39:03,179 --> 00:39:09,569
+here's an example of a misclassified one
+
+823
+00:39:04,820 --> 00:39:10,800
+bird correct person correct okay that'll
+
+824
+00:39:09,570 --> 00:39:13,200
+be the first thing we try to do that's
+
+825
+00:39:10,800 --> 00:39:14,730
+not going to require anything new so
+
+826
+00:39:13,199 --> 00:39:20,368
+it'll just be a bit of a warm-up for us
+
+827
+00:39:14,730 --> 00:39:23,070
+the second thing will be to tell us the
+
+828
+00:39:20,369 --> 00:39:24,630
+location of the largest object at each
+
+829
+00:39:23,070 --> 00:39:26,130
+image again here this is actually
+
+830
+00:39:24,630 --> 00:39:28,470
+incorrect it should have labeled the
+
+831
+00:39:26,130 --> 00:39:31,380
+sofa but you can see where it's coming
+
+832
+00:39:28,469 --> 00:39:33,839
+from and then finally we will try and do
+
+833
+00:39:31,380 --> 00:39:35,608
+both at the same time which is to label
+
+834
+00:39:33,840 --> 00:39:39,890
+what it is and where it is for the
+
+835
+00:39:35,608 --> 00:39:42,690
+largest thing and this is going to be
+
+836
+00:39:39,889 --> 00:39:44,519
+obviously straightforward actually so to
+
+837
+00:39:42,690 --> 00:39:46,889
+be kind of good warm-up to get us going
+
+838
+00:39:44,519 --> 00:39:48,960
+again but what I'm going to do is I'm
+
+839
+00:39:46,889 --> 00:39:53,509
+going to use it as an opportunity to
+
+840
+00:39:48,960 --> 00:39:57,690
+show you some useful coding techniques
+
+841
+00:39:53,510 --> 00:40:01,160
+and a couple of little faster I Andy
+
+842
+00:39:57,690 --> 00:40:03,840
+details before we then get on to
+
+843
+00:40:01,159 --> 00:40:07,639
+multi-label classification and then
+
+844
+00:40:03,840 --> 00:40:15,108
+object specification so let's start here
+
+845
+00:40:07,639 --> 00:40:18,239
+the logbook that we're using is Pascal
+
+846
+00:40:15,108 --> 00:40:21,079
+notebook and it's all of the notebooks
+
+847
+00:40:18,239 --> 00:40:21,079
+are in the DL too
+
+848
+00:40:21,530 --> 00:40:27,109
+one thing you'll see in some of my
+
+849
+00:40:23,960 --> 00:40:28,490
+notebooks is torch Dakota dot set device
+
+850
+00:40:27,108 --> 00:40:29,929
+you may have even seen it in the last
+
+851
+00:40:28,489 --> 00:40:33,469
+part just in case you're wondering why
+
+852
+00:40:29,929 --> 00:40:35,989
+that's there I have four GPUs on the
+
+853
+00:40:33,469 --> 00:40:37,639
+university server that I use and so I
+
+854
+00:40:35,989 --> 00:40:41,000
+can put a number from North to three in
+
+855
+00:40:37,639 --> 00:40:43,039
+here to pick one this is how I prefer to
+
+856
+00:40:41,000 --> 00:40:45,590
+use multiple GPUs rather than run a
+
+857
+00:40:43,039 --> 00:40:47,150
+model on multiple GPUs which doesn't
+
+858
+00:40:45,590 --> 00:40:49,130
+always beat it up that much and it's
+
+859
+00:40:47,150 --> 00:40:51,349
+kind of awkward I generally like to have
+
+860
+00:40:49,130 --> 00:40:56,119
+different GPUs running different things
+
+861
+00:40:51,349 --> 00:40:58,309
+so I in this case I was running
+
+862
+00:40:56,119 --> 00:41:00,260
+something in this on device one and
+
+863
+00:40:58,309 --> 00:41:02,539
+doing something else another booking
+
+864
+00:41:00,260 --> 00:41:04,190
+device to obviously if you see this in a
+
+865
+00:41:02,539 --> 00:41:06,949
+notebook left behind that was a mistake
+
+866
+00:41:04,190 --> 00:41:08,780
+if you don't have more than one GPU
+
+867
+00:41:06,949 --> 00:41:10,460
+you're going to get an error done so you
+
+868
+00:41:08,780 --> 00:41:15,580
+just change it to zero or delete that
+
+869
+00:41:10,460 --> 00:41:18,440
+line entire so there's a number of
+
+870
+00:41:15,579 --> 00:41:21,019
+standard object detection data sets
+
+871
+00:41:18,440 --> 00:41:23,329
+just like imagenet kind of a standard
+
+872
+00:41:21,019 --> 00:41:26,900
+object classification data set and kind
+
+873
+00:41:23,329 --> 00:41:31,719
+of the the old classic kind of image net
+
+874
+00:41:26,900 --> 00:41:31,720
+equivalent if you like is Pascal vo see
+
+875
+00:41:32,289 --> 00:41:42,079
+visual object class and it's something
+
+876
+00:41:36,139 --> 00:41:45,529
+like that yeah the actual main website
+
+877
+00:41:42,079 --> 00:41:48,348
+for it is like I don't know it's running
+
+878
+00:41:45,530 --> 00:41:50,390
+on somebody's coffee warmer or something
+
+879
+00:41:48,349 --> 00:41:53,088
+it goes down all the time every time he
+
+880
+00:41:50,389 --> 00:41:54,529
+makes coffee I don't know so some folks
+
+881
+00:41:53,088 --> 00:41:56,480
+with mérida it's very kind of thin so
+
+882
+00:41:54,530 --> 00:41:59,180
+you might find it easier to grab from
+
+883
+00:41:56,480 --> 00:42:01,940
+the mirror you'll see when you
+
+884
+00:41:59,179 --> 00:42:05,750
+downloaded that there's a 2007 dataset
+
+885
+00:42:01,940 --> 00:42:07,909
+of 2012 data set that there basically
+
+886
+00:42:05,750 --> 00:42:09,469
+were like academic competitions in those
+
+887
+00:42:07,909 --> 00:42:11,239
+different years just like the Internet
+
+888
+00:42:09,469 --> 00:42:15,969
+data set we tend to use is like actually
+
+889
+00:42:11,239 --> 00:42:15,969
+the image net 2012 competition producer
+
+890
+00:42:16,849 --> 00:42:22,130
+now we'll be using the 2007 version in
+
+891
+00:42:19,369 --> 00:42:24,318
+this particular notebook feel free to
+
+892
+00:42:22,130 --> 00:42:26,660
+use of 2012 and stared it's a bit bigger
+
+893
+00:42:24,318 --> 00:42:28,478
+you might get better results a lot of
+
+894
+00:42:26,659 --> 00:42:31,210
+people in fact most people now in
+
+895
+00:42:28,478 --> 00:42:33,318
+research papers actually combine the two
+
+896
+00:42:31,210 --> 00:42:34,548
+you do have to be careful because
+
+897
+00:42:33,318 --> 00:42:37,068
+there's some leakage between the
+
+898
+00:42:34,548 --> 00:42:39,228
+validation sets between the two so if
+
+899
+00:42:37,068 --> 00:42:40,849
+you do decide to do that make sure you
+
+900
+00:42:39,228 --> 00:42:42,199
+do some reading about the data set to
+
+901
+00:42:40,849 --> 00:42:45,170
+make sure you know how to combine them
+
+902
+00:42:42,199 --> 00:42:51,798
+correctly the first thing you'll notice
+
+903
+00:42:45,170 --> 00:42:53,568
+in terms of coding here is this we
+
+904
+00:42:51,798 --> 00:42:55,579
+haven't used this before I'm going to be
+
+905
+00:42:53,568 --> 00:42:58,038
+using this all the time now this is part
+
+906
+00:42:55,579 --> 00:43:01,700
+of the Python 3 standard library called
+
+907
+00:42:58,039 --> 00:43:04,180
+path Lib and it's super handy
+
+908
+00:43:01,699 --> 00:43:07,669
+it's basically gives you an
+
+909
+00:43:04,179 --> 00:43:15,858
+object-oriented access to directory or a
+
+910
+00:43:07,670 --> 00:43:20,479
+file so you can see if I go path dot
+
+911
+00:43:15,858 --> 00:43:25,159
+something it there's lots of things I
+
+912
+00:43:20,478 --> 00:43:32,498
+can do one of them is iterative
+
+913
+00:43:25,159 --> 00:43:36,348
+directory however path iterate directory
+
+914
+00:43:32,498 --> 00:43:38,959
+returns that hopefully you've come
+
+915
+00:43:36,349 --> 00:43:40,249
+across generators by now because we do
+
+916
+00:43:38,960 --> 00:43:41,749
+quite a lot of stuff that use them
+
+917
+00:43:40,248 --> 00:43:43,939
+behind the scenes without talking about
+
+918
+00:43:41,748 --> 00:43:49,879
+them too much but basically a generator
+
+919
+00:43:43,940 --> 00:43:52,009
+is something in in Python 3 which you
+
+920
+00:43:49,880 --> 00:43:57,910
+can iterate over right so basically you
+
+921
+00:43:52,009 --> 00:44:06,259
+go for oh in that grid Oh for instance
+
+922
+00:43:57,909 --> 00:44:08,528
+right ok
+
+923
+00:44:06,259 --> 00:44:16,880
+or of course you could do the same thing
+
+924
+00:44:08,528 --> 00:44:20,239
+as a list comprehension right or you can
+
+925
+00:44:16,880 --> 00:44:23,059
+just stick the word list around it to
+
+926
+00:44:20,239 --> 00:44:24,920
+turn a generator into the list ok so
+
+927
+00:44:23,059 --> 00:44:26,509
+anytime you see me put mist around
+
+928
+00:44:24,920 --> 00:44:28,880
+something that's normally because it
+
+929
+00:44:26,509 --> 00:44:30,329
+pretend a generator it's not
+
+930
+00:44:28,880 --> 00:44:31,890
+particularly interests
+
+931
+00:44:30,329 --> 00:44:34,440
+ding the reason that things generally
+
+932
+00:44:31,889 --> 00:44:37,139
+return generators is that like what if
+
+933
+00:44:34,440 --> 00:44:39,389
+the directory had 10 million items in
+
+934
+00:44:37,139 --> 00:44:42,690
+you don't necessarily 1 to 10 million
+
+935
+00:44:39,389 --> 00:44:45,389
+long list so we were the for loop just
+
+936
+00:44:42,690 --> 00:44:45,929
+grep 1 do the thing thrown over wait a
+
+937
+00:44:45,389 --> 00:44:47,549
+second
+
+938
+00:44:45,929 --> 00:44:51,509
+throw it away and lets you do things
+
+939
+00:44:47,550 --> 00:44:54,630
+lazily you'll see that the things that's
+
+940
+00:44:51,510 --> 00:44:56,730
+returning aren't actually strings but
+
+941
+00:44:54,630 --> 00:44:58,410
+they're some kind of object
+
+942
+00:44:56,730 --> 00:45:00,539
+if you're using Windows it'll be a
+
+943
+00:44:58,409 --> 00:45:03,869
+Windows path of Linux would be a POSIX
+
+944
+00:45:00,539 --> 00:45:06,360
+path most of the time you can use them
+
+945
+00:45:03,869 --> 00:45:08,819
+as if they're strings so most like if
+
+946
+00:45:06,360 --> 00:45:11,579
+you pass it you know any of the OS path
+
+947
+00:45:08,820 --> 00:45:16,050
+dot whatever functions in Python it'll
+
+948
+00:45:11,579 --> 00:45:21,389
+just work at some external libraries it
+
+949
+00:45:16,050 --> 00:45:23,100
+won't work so that's fine if you grab
+
+950
+00:45:21,389 --> 00:45:29,460
+one of these let's say let's say o
+
+951
+00:45:23,099 --> 00:45:34,619
+equals let's just grab one of these so
+
+952
+00:45:29,460 --> 00:45:37,019
+in general you can change data types in
+
+953
+00:45:34,619 --> 00:45:39,630
+Python just by naming the data type that
+
+954
+00:45:37,019 --> 00:45:42,360
+you want and treating it like a function
+
+955
+00:45:39,630 --> 00:45:45,079
+and that will cast it I had so many time
+
+956
+00:45:42,360 --> 00:45:47,789
+you try to use one of these paths Lib
+
+957
+00:45:45,079 --> 00:45:49,469
+objects and you pass it to something
+
+958
+00:45:47,789 --> 00:45:53,610
+which says like I was expecting a stream
+
+959
+00:45:49,469 --> 00:45:54,599
+this is not a string that's okay so
+
+960
+00:45:53,610 --> 00:45:56,340
+you'll see there's quite a lot of
+
+961
+00:45:54,599 --> 00:46:03,599
+convenient things you can do one kind of
+
+962
+00:45:56,340 --> 00:46:08,400
+fun thing is the slash operator is not
+
+963
+00:46:03,599 --> 00:46:10,679
+divided by but its path slash so like
+
+964
+00:46:08,400 --> 00:46:13,170
+they've overwritten the slash operator
+
+965
+00:46:10,679 --> 00:46:15,779
+in Python so that it works so you can
+
+966
+00:46:13,170 --> 00:46:17,159
+say path slash whatever and that gets
+
+967
+00:46:15,780 --> 00:46:19,110
+you you'll see like see how that's not
+
+968
+00:46:17,159 --> 00:46:21,989
+inside a stream right so this is
+
+969
+00:46:19,110 --> 00:46:24,240
+actually applying not the division
+
+970
+00:46:21,989 --> 00:46:27,029
+operator but the overridden slash
+
+971
+00:46:24,239 --> 00:46:30,119
+operator which means get the child thing
+
+972
+00:46:27,030 --> 00:46:33,420
+in that path that makes sense and you'll
+
+973
+00:46:30,119 --> 00:46:37,859
+see if you run that it doesn't return a
+
+974
+00:46:33,420 --> 00:46:39,690
+string it returns a pathway object okay
+
+975
+00:46:37,860 --> 00:46:41,789
+and so part one of the things the path
+
+976
+00:46:39,690 --> 00:46:43,300
+the object can do is it has an open
+
+977
+00:46:41,789 --> 00:46:45,159
+method
+
+978
+00:46:43,300 --> 00:46:47,110
+right so this it's it's kind of it's
+
+979
+00:46:45,159 --> 00:46:48,909
+actually pretty cool once you start
+
+980
+00:46:47,110 --> 00:46:52,300
+getting the hang of it and you'll also
+
+981
+00:46:48,909 --> 00:46:53,529
+find that like the open method takes all
+
+982
+00:46:52,300 --> 00:46:55,720
+the kind of arguments you're familiar
+
+983
+00:46:53,530 --> 00:47:00,970
+with it's a right for binary your
+
+984
+00:46:55,719 --> 00:47:06,159
+encoding order so in this case I want to
+
+985
+00:47:00,969 --> 00:47:09,730
+load up these these JSON files which
+
+986
+00:47:06,159 --> 00:47:13,989
+contain not the images but the bounding
+
+987
+00:47:09,730 --> 00:47:17,559
+boxes and the classes of the objects and
+
+988
+00:47:13,989 --> 00:47:19,989
+so in Python the easiest way to do that
+
+989
+00:47:17,559 --> 00:47:22,210
+is with the JSON library or there's some
+
+990
+00:47:19,989 --> 00:47:23,769
+faster API equivalent versions but this
+
+991
+00:47:22,210 --> 00:47:27,250
+is pretty small so you won't need them
+
+992
+00:47:23,769 --> 00:47:30,880
+and you go json dot load and you pass it
+
+993
+00:47:27,250 --> 00:47:32,530
+and open file object and so the easy way
+
+994
+00:47:30,880 --> 00:47:35,170
+to do that since we're using path live
+
+995
+00:47:32,530 --> 00:47:37,720
+is just go path open
+
+996
+00:47:35,170 --> 00:47:39,340
+so these JSON files that we're going to
+
+997
+00:47:37,719 --> 00:47:41,889
+look inside in a moment if you haven't
+
+998
+00:47:39,340 --> 00:47:44,050
+used it before JSON is JavaScript object
+
+999
+00:47:41,889 --> 00:47:48,759
+notation it's kind of the most standard
+
+1000
+00:47:44,050 --> 00:47:52,960
+way to pass around hierarchical
+
+1001
+00:47:48,760 --> 00:47:55,420
+structure don't yet know obviously not
+
+1002
+00:47:52,960 --> 00:47:57,099
+just with JavaScript you'll see I've got
+
+1003
+00:47:55,420 --> 00:47:59,650
+some JSON files in here they actually
+
+1004
+00:47:57,099 --> 00:48:02,710
+did not come from the mirror I mentioned
+
+1005
+00:47:59,650 --> 00:48:07,000
+the the original pascal annotations were
+
+1006
+00:48:02,710 --> 00:48:08,920
+an xml format but cool kids club uses
+
+1007
+00:48:07,000 --> 00:48:10,900
+email anymore we have to use JSON so
+
+1008
+00:48:08,920 --> 00:48:12,940
+somebody's converted them all to JSON
+
+1009
+00:48:10,900 --> 00:48:15,880
+and so you'll find the second link here
+
+1010
+00:48:12,940 --> 00:48:17,619
+has all the JSON files so if you just
+
+1011
+00:48:15,880 --> 00:48:24,300
+pop them in the same location that I've
+
+1012
+00:48:17,619 --> 00:48:26,079
+put them here everything will so these
+
+1013
+00:48:24,300 --> 00:48:29,580
+annotation files
+
+1014
+00:48:26,079 --> 00:48:32,559
+jaison's basically contain a dictionary
+
+1015
+00:48:29,579 --> 00:48:34,509
+once you open up the JSON it becomes a
+
+1016
+00:48:32,559 --> 00:48:38,889
+Python dictionary and they've got a few
+
+1017
+00:48:34,510 --> 00:48:41,320
+different things in the first is we can
+
+1018
+00:48:38,889 --> 00:48:43,659
+look at images it's got a list of all of
+
+1019
+00:48:41,320 --> 00:48:46,360
+the images how big they are and the
+
+1020
+00:48:43,659 --> 00:48:49,139
+unique ID for each one one thing you'll
+
+1021
+00:48:46,360 --> 00:48:49,140
+notice here is
+
+1022
+00:48:49,849 --> 00:48:56,210
+taken the word images and put it inside
+
+1023
+00:48:53,090 --> 00:48:59,000
+a constant court images that may seem
+
+1024
+00:48:56,210 --> 00:49:01,099
+kind of weird but if you're using you
+
+1025
+00:48:59,000 --> 00:49:02,840
+can a notebook or any kind of IDE or
+
+1026
+00:49:01,099 --> 00:49:06,139
+whatever this down means I can tap
+
+1027
+00:49:02,840 --> 00:49:08,420
+complete all of my strings and I won't
+
+1028
+00:49:06,139 --> 00:49:12,799
+accidentally type it slightly wrong so
+
+1029
+00:49:08,420 --> 00:49:14,900
+it's just a handy trick okay so here's
+
+1030
+00:49:12,800 --> 00:49:18,560
+the contents first few things and the
+
+1031
+00:49:14,900 --> 00:49:20,059
+images more interestingly here are some
+
+1032
+00:49:18,559 --> 00:49:21,710
+of the annotations right
+
+1033
+00:49:20,059 --> 00:49:26,480
+so you'll see basically an annotation
+
+1034
+00:49:21,710 --> 00:49:32,780
+contains a bounding box and the bounding
+
+1035
+00:49:26,480 --> 00:49:36,280
+box tells you the column and row if the
+
+1036
+00:49:32,780 --> 00:49:39,260
+top left and it's height and width and
+
+1037
+00:49:36,280 --> 00:49:41,870
+that it tells you that that particular
+
+1038
+00:49:39,260 --> 00:49:44,420
+bounding box is for this particular
+
+1039
+00:49:41,869 --> 00:49:47,269
+image so you'd have to join that up to
+
+1040
+00:49:44,420 --> 00:49:54,260
+over here to find it sexually Oh to top
+
+1041
+00:49:47,269 --> 00:49:56,539
+jpg okay and it's of category ID 7 um it
+
+1042
+00:49:54,260 --> 00:49:58,690
+also some of them at least has a polygon
+
+1043
+00:49:56,539 --> 00:50:02,750
+segmentation not just a bounding box
+
+1044
+00:49:58,690 --> 00:50:04,519
+we're not going to be using that some of
+
+1045
+00:50:02,750 --> 00:50:06,739
+them have an ignore flag so we'll ignore
+
+1046
+00:50:04,519 --> 00:50:08,449
+the ignore flags and some of them have
+
+1047
+00:50:06,739 --> 00:50:11,229
+something telling you it's a crowd of
+
+1048
+00:50:08,449 --> 00:50:15,139
+that object not just one of them right
+
+1049
+00:50:11,230 --> 00:50:17,119
+so that's that's what these annotations
+
+1050
+00:50:15,139 --> 00:50:21,199
+look like so then you saw here there's a
+
+1051
+00:50:17,119 --> 00:50:22,969
+category ID so then the categories for
+
+1052
+00:50:21,199 --> 00:50:29,989
+examples they're basically each ID he
+
+1053
+00:50:22,969 --> 00:50:33,709
+has a name here we go okay so what I did
+
+1054
+00:50:29,989 --> 00:50:36,709
+then was turned the his categories list
+
+1055
+00:50:33,710 --> 00:50:38,929
+into a dictionary from ID to name
+
+1056
+00:50:36,710 --> 00:50:42,980
+I created a dictionary from ID to name
+
+1057
+00:50:38,929 --> 00:50:46,789
+of the image file names and I created a
+
+1058
+00:50:42,980 --> 00:50:48,409
+list all of the image IDs just to make
+
+1059
+00:50:46,789 --> 00:50:51,110
+life easier so you know generally like
+
+1060
+00:50:48,409 --> 00:50:52,399
+when you're working with a new data set
+
+1061
+00:50:51,110 --> 00:50:56,030
+at least when I work with a new dataset
+
+1062
+00:50:52,400 --> 00:50:58,789
+I try to make it look the way I would
+
+1063
+00:50:56,030 --> 00:50:59,940
+want it to if I designed that data set
+
+1064
+00:50:58,789 --> 00:51:02,190
+so
+
+1065
+00:50:59,940 --> 00:51:04,619
+kind of do a quick manipulation and so
+
+1066
+00:51:02,190 --> 00:51:06,320
+like the the steps you see here and
+
+1067
+00:51:04,619 --> 00:51:09,269
+you'll see an h-class
+
+1068
+00:51:06,320 --> 00:51:12,870
+basically like the sequence of steps I
+
+1069
+00:51:09,269 --> 00:51:16,050
+talk as I started working with is this
+
+1070
+00:51:12,869 --> 00:51:21,960
+bead onus it except like without the
+
+1071
+00:51:16,050 --> 00:51:25,680
+thousands of screw-ups that I did I find
+
+1072
+00:51:21,960 --> 00:51:28,980
+like the the one thing people most
+
+1073
+00:51:25,679 --> 00:51:32,059
+comment on when they see me working in
+
+1074
+00:51:28,980 --> 00:51:34,500
+real time having seen my classes is like
+
+1075
+00:51:32,059 --> 00:51:38,309
+wow you actually don't know what you're
+
+1076
+00:51:34,500 --> 00:51:40,500
+doing it's like 99 some of the things I
+
+1077
+00:51:38,309 --> 00:51:44,549
+do don't work more percentage of the
+
+1078
+00:51:40,500 --> 00:51:47,329
+things that do work end up here so like
+
+1079
+00:51:44,550 --> 00:51:49,470
+this is like I mentioned that because
+
+1080
+00:51:47,329 --> 00:51:51,179
+machine learning and particularly deep
+
+1081
+00:51:49,469 --> 00:51:54,719
+learning is kind of incredibly
+
+1082
+00:51:51,179 --> 00:51:56,250
+frustrating because you know in theory
+
+1083
+00:51:54,719 --> 00:51:58,500
+you just to find the correct must
+
+1084
+00:51:56,250 --> 00:52:01,289
+function and flexible enough
+
+1085
+00:51:58,500 --> 00:52:04,409
+architecture and you press train and you
+
+1086
+00:52:01,289 --> 00:52:08,639
+don't all right but if that was actually
+
+1087
+00:52:04,409 --> 00:52:12,509
+all a talk then like nothing would take
+
+1088
+00:52:08,639 --> 00:52:15,359
+any time the problem is that all the
+
+1089
+00:52:12,510 --> 00:52:18,120
+steps along the way until what works it
+
+1090
+00:52:15,360 --> 00:52:21,780
+doesn't work you know like it it goes
+
+1091
+00:52:18,119 --> 00:52:24,420
+straight to infinity or crashes with an
+
+1092
+00:52:21,780 --> 00:52:27,840
+incorrect answer size or whatever and I
+
+1093
+00:52:24,420 --> 00:52:31,500
+will endeavour to show you some kind of
+
+1094
+00:52:27,840 --> 00:52:32,850
+debugging techniques as we go but it's
+
+1095
+00:52:31,500 --> 00:52:36,539
+one of the hardest things to teach
+
+1096
+00:52:32,849 --> 00:52:41,250
+because like I don't know maybe I just
+
+1097
+00:52:36,539 --> 00:52:44,210
+have quite a few get it out yet but it's
+
+1098
+00:52:41,250 --> 00:52:46,769
+like the main thing it requires is
+
+1099
+00:52:44,210 --> 00:52:48,630
+tenacity I find like the biggest
+
+1100
+00:52:46,769 --> 00:52:51,239
+difference between the people I've
+
+1101
+00:52:48,630 --> 00:52:53,130
+worked with who are super effective and
+
+1102
+00:52:51,239 --> 00:52:57,419
+the ones who don't seem to go very far
+
+1103
+00:52:53,130 --> 00:53:00,510
+has never been about intellect it's
+
+1104
+00:52:57,420 --> 00:53:04,440
+always been about you know sticking with
+
+1105
+00:53:00,510 --> 00:53:06,030
+it basically never never giving up so
+
+1106
+00:53:04,440 --> 00:53:07,289
+it's particularly important with this
+
+1107
+00:53:06,030 --> 00:53:11,430
+kind of deep learning stuff because you
+
+1108
+00:53:07,289 --> 00:53:12,858
+don't get that continuous reward cycle
+
+1109
+00:53:11,429 --> 00:53:14,929
+like with normal programming
+
+1110
+00:53:12,858 --> 00:53:16,489
+you've got like 12 things to do until
+
+1111
+00:53:14,929 --> 00:53:18,798
+you've got your Flash endpoints staged
+
+1112
+00:53:16,489 --> 00:53:21,380
+up you know in at each stage it's like
+
+1113
+00:53:18,798 --> 00:53:23,389
+okay we have successfully processing the
+
+1114
+00:53:21,380 --> 00:53:25,548
+JSON and now we successfully you know
+
+1115
+00:53:23,389 --> 00:53:27,469
+I've got the callback from that promise
+
+1116
+00:53:25,548 --> 00:53:30,199
+and now I successfully created the
+
+1117
+00:53:27,469 --> 00:53:32,208
+authentication system like you know it's
+
+1118
+00:53:30,199 --> 00:53:34,248
+this constant sequence of like stuff
+
+1119
+00:53:32,208 --> 00:53:37,278
+that works where else generally with
+
+1120
+00:53:34,248 --> 00:53:39,348
+training the model it's a constant
+
+1121
+00:53:37,278 --> 00:53:43,539
+stream of life it doesn't work it
+
+1122
+00:53:39,349 --> 00:53:43,539
+doesn't work it does
+
+1123
+00:53:45,949 --> 00:53:53,208
+okay so let's see a look at the images
+
+1124
+00:53:49,478 --> 00:53:58,718
+so you'll find inside the GOC dev kit
+
+1125
+00:53:53,208 --> 00:54:01,278
+there's 20 toy 2007 and 2012 directories
+
+1126
+00:53:58,719 --> 00:54:03,469
+and in there there's a bunch of stuff
+
+1127
+00:54:01,278 --> 00:54:09,139
+that's mainly these XML files the one we
+
+1128
+00:54:03,469 --> 00:54:11,989
+care about the JPEG images and so again
+
+1129
+00:54:09,139 --> 00:54:14,058
+here you've got path tips slash operator
+
+1130
+00:54:11,989 --> 00:54:20,778
+and inside there's a few examples of the
+
+1131
+00:54:14,059 --> 00:54:26,180
+images okay so what I wanted to do was
+
+1132
+00:54:20,778 --> 00:54:31,369
+to create a dictionary where the key was
+
+1133
+00:54:26,179 --> 00:54:34,669
+the image ID and the value was a list of
+
+1134
+00:54:31,369 --> 00:54:38,088
+all of its annotations so basically what
+
+1135
+00:54:34,670 --> 00:54:43,130
+I wanted to do was go through each of
+
+1136
+00:54:38,088 --> 00:54:47,478
+the annotations that doesn't say to
+
+1137
+00:54:43,130 --> 00:54:51,670
+ignore it and append it the bounding box
+
+1138
+00:54:47,478 --> 00:54:54,198
+and the class to the appropriate
+
+1139
+00:54:51,670 --> 00:54:58,249
+dictionary item where that dictionary
+
+1140
+00:54:54,199 --> 00:54:59,989
+item is a list but the annoying thing is
+
+1141
+00:54:58,248 --> 00:55:03,468
+of course is that if that dictionary
+
+1142
+00:54:59,989 --> 00:55:06,920
+item doesn't exist yet then there's no
+
+1143
+00:55:03,469 --> 00:55:10,338
+list to the pen too so one super handy
+
+1144
+00:55:06,920 --> 00:55:13,459
+trick in Python is that there's a class
+
+1145
+00:55:10,338 --> 00:55:16,400
+called collections default depth which
+
+1146
+00:55:13,458 --> 00:55:19,940
+is just like a dictionary but if you try
+
+1147
+00:55:16,400 --> 00:55:22,910
+and access a key that doesn't exist it
+
+1148
+00:55:19,940 --> 00:55:25,409
+magically makes itself exist and it sets
+
+1149
+00:55:22,909 --> 00:55:29,759
+itself equal to the return value
+
+1150
+00:55:25,409 --> 00:55:32,789
+this function now this could be the name
+
+1151
+00:55:29,760 --> 00:55:34,950
+of some function that you've defined or
+
+1152
+00:55:32,789 --> 00:55:37,050
+it can be a lambda function a lambda
+
+1153
+00:55:34,949 --> 00:55:40,139
+function simply means it's a function
+
+1154
+00:55:37,050 --> 00:55:43,350
+that you define in place we'll be seeing
+
+1155
+00:55:40,139 --> 00:55:46,049
+lots of them so here's an example of a
+
+1156
+00:55:43,349 --> 00:55:47,819
+function all the arguments to the
+
+1157
+00:55:46,050 --> 00:55:49,590
+function are listed on the left so
+
+1158
+00:55:47,820 --> 00:55:51,600
+there's no arguments to the function and
+
+1159
+00:55:49,590 --> 00:55:54,000
+lambda functions a special you don't
+
+1160
+00:55:51,599 --> 00:55:56,190
+have to write return as there a return
+
+1161
+00:55:54,000 --> 00:55:57,869
+is assumed so in this case this is a
+
+1162
+00:55:56,190 --> 00:56:00,690
+lambda function that takes no arguments
+
+1163
+00:55:57,869 --> 00:56:03,719
+and returns an empty list so in other
+
+1164
+00:56:00,690 --> 00:56:07,400
+words every time I try and access
+
+1165
+00:56:03,719 --> 00:56:11,250
+something in train annotations that
+
+1166
+00:56:07,400 --> 00:56:13,650
+doesn't exist now does exist it as an
+
+1167
+00:56:11,250 --> 00:56:24,920
+empty list which means I can go into it
+
+1168
+00:56:13,650 --> 00:56:28,410
+okay one comment on variable naming is
+
+1169
+00:56:24,920 --> 00:56:30,960
+when I read through these notebooks I'll
+
+1170
+00:56:28,409 --> 00:56:33,329
+generally try and like speak out the
+
+1171
+00:56:30,960 --> 00:56:36,960
+English words that the variable name is
+
+1172
+00:56:33,329 --> 00:56:39,869
+a limit for a reasonable question would
+
+1173
+00:56:36,960 --> 00:56:41,550
+be well why didn't I write the full name
+
+1174
+00:56:39,869 --> 00:56:43,889
+of the variable in English rather than
+
+1175
+00:56:41,550 --> 00:56:46,920
+using a short demonic
+
+1176
+00:56:43,889 --> 00:56:49,139
+it's a personal preference I have based
+
+1177
+00:56:46,920 --> 00:56:53,400
+on a number of programming communities
+
+1178
+00:56:49,139 --> 00:56:57,690
+where the basic kind of thesis is that
+
+1179
+00:56:53,400 --> 00:57:00,809
+the more that you can see in a single
+
+1180
+00:56:57,690 --> 00:57:03,720
+kind of I grab of the screen the more
+
+1181
+00:57:00,809 --> 00:57:06,509
+you can like understand intuitively that
+
+1182
+00:57:03,719 --> 00:57:08,489
+won't go every time you have to your eye
+
+1183
+00:57:06,510 --> 00:57:10,710
+has to jump around it's kind of like a
+
+1184
+00:57:08,489 --> 00:57:12,929
+context change that reduces your
+
+1185
+00:57:10,710 --> 00:57:16,440
+understanding it's a style of
+
+1186
+00:57:12,929 --> 00:57:18,359
+programming I found super helpful and so
+
+1187
+00:57:16,440 --> 00:57:20,369
+generally speaking I try to I
+
+1188
+00:57:18,360 --> 00:57:22,950
+particularly try to reduce the vertical
+
+1189
+00:57:20,369 --> 00:57:25,409
+height so things don't scroll off the
+
+1190
+00:57:22,949 --> 00:57:27,869
+screen but I also try to reduce the size
+
+1191
+00:57:25,409 --> 00:57:30,989
+of things so that there's a mnemonic
+
+1192
+00:57:27,869 --> 00:57:33,839
+there which if you know it's training
+
+1193
+00:57:30,989 --> 00:57:36,919
+annotations it doesn't take long view to
+
+1194
+00:57:33,840 --> 00:57:38,240
+see the patient's you know
+
+1195
+00:57:36,920 --> 00:57:40,280
+throughout the whole thing yet so I'm
+
+1196
+00:57:38,239 --> 00:57:42,049
+not saying you have to do it this way
+
+1197
+00:57:40,280 --> 00:57:43,370
+I'm just saying there's some very light
+
+1198
+00:57:42,050 --> 00:57:44,860
+programming communities some of which
+
+1199
+00:57:43,369 --> 00:57:51,349
+have been around for 50 or 60 years
+
+1200
+00:57:44,860 --> 00:57:55,210
+which refused this approach and it's
+
+1201
+00:57:51,349 --> 00:57:58,929
+interesting to compare like I guess my
+
+1202
+00:57:55,210 --> 00:58:00,079
+philosophy is somewhere between math and
+
+1203
+00:57:58,929 --> 00:58:03,589
+Java
+
+1204
+00:58:00,079 --> 00:58:06,049
+you know like in math everything is a
+
+1205
+00:58:03,590 --> 00:58:07,640
+single character the same single
+
+1206
+00:58:06,050 --> 00:58:10,550
+character can be used in the same paper
+
+1207
+00:58:07,639 --> 00:58:12,409
+for five different things and depending
+
+1208
+00:58:10,550 --> 00:58:20,420
+on whether it's in italics or bold faced
+
+1209
+00:58:12,409 --> 00:58:22,519
+with capitals another fire in Java you
+
+1210
+00:58:20,420 --> 00:58:28,210
+know variable names sometimes require a
+
+1211
+00:58:22,519 --> 00:58:32,750
+few pages well so for me I personally
+
+1212
+00:58:28,210 --> 00:58:35,059
+like names which are you know short
+
+1213
+00:58:32,750 --> 00:58:39,500
+enough to not take too much of my you
+
+1214
+00:58:35,059 --> 00:58:44,170
+know perception to see it once but long
+
+1215
+00:58:39,500 --> 00:58:47,389
+enough to have a mnemonic also however a
+
+1216
+00:58:44,170 --> 00:58:49,940
+lot of the time the variable will be
+
+1217
+00:58:47,389 --> 00:58:52,069
+describing a mathematical object as it
+
+1218
+00:58:49,940 --> 00:58:53,990
+exists in the paper and there isn't
+
+1219
+00:58:52,070 --> 00:58:56,510
+really an English name for it and so in
+
+1220
+00:58:53,989 --> 00:58:59,029
+those cases I will use the same like
+
+1221
+00:58:56,510 --> 00:59:02,350
+often single letter that the paper uses
+
+1222
+00:58:59,030 --> 00:59:06,710
+right and so if you see something called
+
+1223
+00:59:02,349 --> 00:59:08,420
+Delta or a or something and it's like
+
+1224
+00:59:06,710 --> 00:59:10,849
+something inside an equation from a
+
+1225
+00:59:08,420 --> 00:59:17,300
+paper I generally try to use the same
+
+1226
+00:59:10,849 --> 00:59:18,529
+thing just to explain that yeah and by
+
+1227
+00:59:17,300 --> 00:59:20,240
+no means do you have to do the same
+
+1228
+00:59:18,530 --> 00:59:22,519
+thing I will say however if you
+
+1229
+00:59:20,239 --> 00:59:24,889
+contribute to first day I I'm not
+
+1230
+00:59:22,519 --> 00:59:26,929
+particularly fastidious about coding
+
+1231
+00:59:24,889 --> 00:59:29,329
+style or whatever but if you write
+
+1232
+00:59:26,929 --> 00:59:35,719
+things more like the way I do than the
+
+1233
+00:59:29,329 --> 00:59:37,250
+wage are but people do okay so by the
+
+1234
+00:59:35,719 --> 00:59:41,839
+end of this we now have a dictionary
+
+1235
+00:59:37,250 --> 00:59:45,440
+from file names to at Apple and so
+
+1236
+00:59:41,840 --> 00:59:48,980
+here's an example of looking up that
+
+1237
+00:59:45,440 --> 00:59:50,550
+dictionary and we get back a bounding
+
+1238
+00:59:48,980 --> 00:59:54,780
+box
+
+1239
+00:59:50,550 --> 00:59:56,640
+and a-plus you'll see when I create the
+
+1240
+00:59:54,780 --> 00:59:58,860
+bounding box I've done a couple of
+
+1241
+00:59:56,639 --> 01:00:01,739
+things the first years I've switched the
+
+1242
+00:59:58,860 --> 01:00:03,180
+X&amp;Y coordinates and the reason for this
+
+1243
+01:00:01,739 --> 01:00:05,609
+I think we mentioned this briefly in the
+
+1244
+01:00:03,179 --> 01:00:09,359
+last course the kind of computer vision
+
+1245
+01:00:05,610 --> 01:00:11,010
+world when you say like oh my screen is
+
+1246
+01:00:09,360 --> 01:00:14,610
+640 by 480
+
+1247
+01:00:11,010 --> 01:00:17,850
+that's width by height or else the math
+
+1248
+01:00:14,610 --> 01:00:22,230
+world when you say my array is 640 by
+
+1249
+01:00:17,849 --> 01:00:26,670
+480 it's rows by colors so you'll see
+
+1250
+01:00:22,230 --> 01:00:28,860
+that a lot of things like pil pillow
+
+1251
+01:00:26,670 --> 01:00:31,139
+image library in Python tend to do
+
+1252
+01:00:28,860 --> 01:00:34,470
+things in this kind of width by height
+
+1253
+01:00:31,139 --> 01:00:37,679
+or columns by rows way numpy is the
+
+1254
+01:00:34,469 --> 01:00:41,029
+opposite way around so I again my view
+
+1255
+01:00:37,679 --> 01:00:44,339
+is don't put up with it's kind of
+
+1256
+01:00:41,030 --> 01:00:49,019
+incredibly annoying inconsistency fix it
+
+1257
+01:00:44,340 --> 01:00:51,420
+right so I've decided fast AI is you
+
+1258
+01:00:49,019 --> 01:00:55,949
+know the lump I PI torch way is the
+
+1259
+01:00:51,420 --> 01:00:57,960
+right way so I'm always rows by cons so
+
+1260
+01:00:55,949 --> 01:01:03,419
+you'll see here I sketched my rows of
+
+1261
+01:00:57,960 --> 01:01:05,639
+columns I've also decided that we're
+
+1262
+01:01:03,420 --> 01:01:08,789
+going to do things by describing the top
+
+1263
+01:01:05,639 --> 01:01:11,519
+left XY coordinate and the bottom right
+
+1264
+01:01:08,789 --> 01:01:14,969
+XY coordinate the bounding box rather
+
+1265
+01:01:11,519 --> 01:01:20,039
+than the XY and the eye width okay so
+
+1266
+01:01:14,969 --> 01:01:25,949
+you'll see here I was converting the the
+
+1267
+01:01:20,039 --> 01:01:27,690
+height and width to the top so you know
+
+1268
+01:01:25,949 --> 01:01:29,609
+again it's kind of like I often find
+
+1269
+01:01:27,690 --> 01:01:31,409
+dealing with junior programmers and
+
+1270
+01:01:29,610 --> 01:01:33,539
+particular junior data scientists that
+
+1271
+01:01:31,409 --> 01:01:35,969
+they kind of get given datasets that are
+
+1272
+01:01:33,539 --> 01:01:39,179
+in shitty formats or happy api's and
+
+1273
+01:01:35,969 --> 01:01:42,059
+they just act as if everything has to be
+
+1274
+01:01:39,179 --> 01:01:43,500
+that way but your life would be much
+
+1275
+01:01:42,059 --> 01:01:45,420
+easier if you take a couple of moments
+
+1276
+01:01:43,500 --> 01:01:52,170
+to make things consistent make them the
+
+1277
+01:01:45,420 --> 01:01:55,440
+way you want to be okay so earlier on I
+
+1278
+01:01:52,170 --> 01:01:58,530
+took all of our classes and created a
+
+1279
+01:01:55,440 --> 01:02:00,900
+categories list and so if we look up
+
+1280
+01:01:58,530 --> 01:02:03,970
+category number 7 which is what this
+
+1281
+01:02:00,900 --> 01:02:05,660
+year's veteran on the 7 is car
+
+1282
+01:02:03,969 --> 01:02:10,659
+let's have a look at another example
+
+1283
+01:02:05,659 --> 01:02:13,429
+image number 17 has two bounding boxes
+
+1284
+01:02:10,659 --> 01:02:16,848
+one of them is of type 15 one some type
+
+1285
+01:02:13,429 --> 01:02:18,169
+13 that is a person and a horse so this
+
+1286
+01:02:16,849 --> 01:02:21,230
+would be much easier to understand if we
+
+1287
+01:02:18,170 --> 01:02:24,108
+can see a picture of these things so
+
+1288
+01:02:21,230 --> 01:02:29,929
+let's create some pictures so having
+
+1289
+01:02:24,108 --> 01:02:32,328
+just turned our height width stuff into
+
+1290
+01:02:29,929 --> 01:02:34,219
+top left bottom right stuff we're now
+
+1291
+01:02:32,329 --> 01:02:37,430
+going to create a method to do the exact
+
+1292
+01:02:34,219 --> 01:02:40,038
+opposite because anytime I want to call
+
+1293
+01:02:37,429 --> 01:02:41,568
+some library that expects the opposite
+
+1294
+01:02:40,039 --> 01:02:43,220
+I'm going to need to pass it in the
+
+1295
+01:02:41,568 --> 01:02:45,710
+opposite so here is something that
+
+1296
+01:02:43,219 --> 01:02:47,179
+converts a bounding box to a hiking with
+
+1297
+01:02:45,710 --> 01:02:51,108
+B bhw
+
+1298
+01:02:47,179 --> 01:02:53,750
+the bounding box - okay so it's again
+
+1299
+01:02:51,108 --> 01:02:59,779
+reversing the order and credit and
+
+1300
+01:02:53,750 --> 01:03:06,920
+giving us the height width so we can now
+
+1301
+01:02:59,780 --> 01:03:09,170
+open an image in order to display it and
+
+1302
+01:03:06,920 --> 01:03:12,170
+where we going to get to is we're going
+
+1303
+01:03:09,170 --> 01:03:14,990
+to get it to show that sets that car we
+
+1304
+01:03:12,170 --> 01:03:17,750
+just sorts it out right so one thing
+
+1305
+01:03:14,989 --> 01:03:21,379
+that I often get asked on the forums or
+
+1306
+01:03:17,750 --> 01:03:24,039
+through github is like well how do I
+
+1307
+01:03:21,380 --> 01:03:26,990
+find out about this open image thing
+
+1308
+01:03:24,039 --> 01:03:31,220
+where did it come from what does it mean
+
+1309
+01:03:26,989 --> 01:03:33,259
+who uses it and so I wanted to just to
+
+1310
+01:03:31,219 --> 01:03:34,338
+take a moment because what other things
+
+1311
+01:03:33,260 --> 01:03:37,849
+are going to be doing a lot and although
+
+1312
+01:03:34,338 --> 01:03:39,858
+a lot of you aren't professional coders
+
+1313
+01:03:37,849 --> 01:03:42,079
+you have backgrounds in statistics or
+
+1314
+01:03:39,858 --> 01:03:44,328
+you know meteorology your physics or
+
+1315
+01:03:42,079 --> 01:03:45,619
+whatever and I apologize for those of
+
+1316
+01:03:44,329 --> 01:03:48,230
+you that are professional coders you
+
+1317
+01:03:45,619 --> 01:03:49,608
+know this already you need because we're
+
+1318
+01:03:48,230 --> 01:03:51,260
+gonna be a lot doing about a stuck with
+
+1319
+01:03:49,608 --> 01:03:53,239
+the fast AI library and other libraries
+
+1320
+01:03:51,260 --> 01:03:56,270
+you need to go to navigate very quickly
+
+1321
+01:03:53,239 --> 01:03:58,179
+through them okay and so let me give you
+
+1322
+01:03:56,269 --> 01:04:00,679
+a quick overview of how to navigate
+
+1323
+01:03:58,179 --> 01:04:04,250
+through code and for those of you that
+
+1324
+01:04:00,679 --> 01:04:05,690
+haven't used an editor properly before
+
+1325
+01:04:04,250 --> 01:04:06,949
+this is going to blow your months right
+
+1326
+01:04:05,690 --> 01:04:11,809
+for those of you that have you're going
+
+1327
+01:04:06,949 --> 01:04:14,348
+to be like so for the demo I'm going to
+
+1328
+01:04:11,809 --> 01:04:16,790
+show you in Visual Studio code
+
+1329
+01:04:14,349 --> 01:04:19,580
+personally my view is that
+
+1330
+01:04:16,789 --> 01:04:23,119
+on pretty much every platform unless
+
+1331
+01:04:19,579 --> 01:04:24,799
+you're prepared to put in the decades of
+
+1332
+01:04:23,119 --> 01:04:27,469
+your life to learn beer more in apps
+
+1333
+01:04:24,800 --> 01:04:30,530
+well Visual Studio code is probably the
+
+1334
+01:04:27,469 --> 01:04:32,299
+best editor out there it's free it's
+
+1335
+01:04:30,530 --> 01:04:34,190
+open source there are other perfectly
+
+1336
+01:04:32,300 --> 01:04:36,320
+good ones as well okay also if you
+
+1337
+01:04:34,190 --> 01:04:38,360
+download a recent version of anaconda it
+
+1338
+01:04:36,320 --> 01:04:41,720
+will offer to install Visual Studio code
+
+1339
+01:04:38,360 --> 01:04:43,370
+for you it integrates with anaconda sets
+
+1340
+01:04:41,719 --> 01:04:45,619
+it up with your Python interpreter and
+
+1341
+01:04:43,369 --> 01:04:47,269
+comes with the Python extensions and
+
+1342
+01:04:45,619 --> 01:04:49,519
+everything so it's it's a it's a good
+
+1343
+01:04:47,269 --> 01:04:52,130
+choice if you're not sure if you've got
+
+1344
+01:04:49,519 --> 01:04:53,809
+some other editor you like you know
+
+1345
+01:04:52,130 --> 01:04:55,519
+search for the right keywords in the
+
+1346
+01:04:53,809 --> 01:04:59,440
+health so if I fire up Visual Studio
+
+1347
+01:04:55,519 --> 01:05:02,719
+code the first thing to do of course is
+
+1348
+01:04:59,440 --> 01:05:07,039
+do a git loan of the faster I library to
+
+1349
+01:05:02,719 --> 01:05:10,189
+your laptop you'll find in the root of
+
+1350
+01:05:07,039 --> 01:05:12,349
+the repo as well as the environment yml
+
+1351
+01:05:10,190 --> 01:05:15,139
+file that sets up a condor environment
+
+1352
+01:05:12,349 --> 01:05:17,929
+52 you one of the students has been kind
+
+1353
+01:05:15,139 --> 01:05:21,230
+enough to create an environment - CPU
+
+1354
+01:05:17,929 --> 01:05:22,639
+yml file and perhaps one of you that
+
+1355
+01:05:21,230 --> 01:05:25,159
+knows how to do this can add some notes
+
+1356
+01:05:22,639 --> 01:05:30,170
+to the wiki but basically you can use
+
+1357
+01:05:25,159 --> 01:05:32,960
+that to create a local CPU only fast AI
+
+1358
+01:05:30,170 --> 01:05:35,240
+installation and the reason you might
+
+1359
+01:05:32,960 --> 01:05:37,579
+want to do that is so that as you
+
+1360
+01:05:35,239 --> 01:05:39,289
+navigate the code you know you'll be
+
+1361
+01:05:37,579 --> 01:05:42,769
+able to navigate into PI torch you'll
+
+1362
+01:05:39,289 --> 01:05:46,009
+see all the status is there anyway so I
+
+1363
+01:05:42,769 --> 01:05:48,710
+open up visual studio code and it's as
+
+1364
+01:05:46,010 --> 01:05:49,850
+simple as saying open folder right and
+
+1365
+01:05:48,710 --> 01:05:52,369
+then you can just point it out the
+
+1366
+01:05:49,849 --> 01:05:56,029
+faster I get hub folder that you just
+
+1367
+01:05:52,369 --> 01:05:59,089
+downloaded and so the next thing you
+
+1368
+01:05:56,030 --> 01:06:01,150
+need to do is to set up visual studio
+
+1369
+01:05:59,090 --> 01:06:05,750
+code to say I want to use the fast AI
+
+1370
+01:06:01,150 --> 01:06:07,639
+Condor environment place so the way you
+
+1371
+01:06:05,750 --> 01:06:09,530
+do that is with the select interpreter
+
+1372
+01:06:07,639 --> 01:06:11,569
+command and there's a really nice idea
+
+1373
+01:06:09,530 --> 01:06:13,370
+which is kind of like the best of both
+
+1374
+01:06:11,570 --> 01:06:17,690
+worlds between a command-line interface
+
+1375
+01:06:13,369 --> 01:06:19,549
+and a GUI which is you hit this is the
+
+1376
+01:06:17,690 --> 01:06:22,099
+only command in each mode ctrl shift P
+
+1377
+01:06:19,550 --> 01:06:24,140
+you hit ctrl shift P and then you start
+
+1378
+01:06:22,099 --> 01:06:24,679
+typing what you want to do and watch
+
+1379
+01:06:24,139 --> 01:06:26,389
+what happens
+
+1380
+01:06:24,679 --> 01:06:28,619
+Joseph P I want to changed my
+
+1381
+01:06:26,389 --> 01:06:31,839
+interpreter in
+
+1382
+01:06:28,619 --> 01:06:32,829
+okay and it appears if you're not sure
+
+1383
+01:06:31,840 --> 01:06:37,180
+you can kind of try a few different
+
+1384
+01:06:32,829 --> 01:06:39,009
+things right so here we are Python
+
+1385
+01:06:37,179 --> 01:06:40,539
+select interpreter and you can see
+
+1386
+01:06:39,010 --> 01:06:42,730
+generally you can type stuff in it'll
+
+1387
+01:06:40,539 --> 01:06:43,960
+give you a list of things if it can and
+
+1388
+01:06:42,730 --> 01:06:45,639
+so here's a list of all of the
+
+1389
+01:06:43,960 --> 01:06:50,679
+environments interpreters I have set up
+
+1390
+01:06:45,639 --> 01:06:54,039
+and here's my fast AI environment okay
+
+1391
+01:06:50,679 --> 01:06:56,049
+so that's basically the only setup that
+
+1392
+01:06:54,039 --> 01:06:58,029
+you have to do the only other thing you
+
+1393
+01:06:56,050 --> 01:07:00,010
+might want to do is to know there's an
+
+1394
+01:06:58,030 --> 01:07:03,120
+integrated terminal and so if you hit
+
+1395
+01:07:00,010 --> 01:07:06,190
+ctrl backtick it brings up the terminal
+
+1396
+01:07:03,119 --> 01:07:08,650
+and you can the first time you do it
+
+1397
+01:07:06,190 --> 01:07:09,490
+it'll ask you what terminal do you want
+
+1398
+01:07:08,650 --> 01:07:11,619
+if you're in Windows
+
+1399
+01:07:09,489 --> 01:07:14,799
+it'll be like PowerShell or command
+
+1400
+01:07:11,619 --> 01:07:16,900
+prompt or - if you're on Linux you've
+
+1401
+01:07:14,800 --> 01:07:18,340
+got more shells installed and asked so
+
+1402
+01:07:16,900 --> 01:07:21,070
+as you can see I've got it set up to use
+
+1403
+01:07:18,340 --> 01:07:22,420
+- okay
+
+1404
+01:07:21,070 --> 01:07:28,720
+and you'll see it automatically goes to
+
+1405
+01:07:22,420 --> 01:07:30,099
+the directory alright so the main thing
+
+1406
+01:07:28,719 --> 01:07:32,919
+we want to do right now let's find out
+
+1407
+01:07:30,099 --> 01:07:34,449
+what I couldn't understand is so the
+
+1408
+01:07:32,920 --> 01:07:39,309
+only thing you need to know to do that
+
+1409
+01:07:34,449 --> 01:07:40,869
+is control teeth if you hit ctrl T you
+
+1410
+01:07:39,309 --> 01:07:42,820
+can now type the name of a class
+
+1411
+01:07:40,869 --> 01:07:46,509
+function pretty much anything and you
+
+1412
+01:07:42,820 --> 01:07:48,640
+find out about it so open image you can
+
+1413
+01:07:46,510 --> 01:07:49,930
+see it appears and it's kind of cool if
+
+1414
+01:07:48,639 --> 01:07:52,059
+there's something that's got like
+
+1415
+01:07:49,929 --> 01:07:53,949
+camelcase capitalized or something that
+
+1416
+01:07:52,059 --> 01:07:55,570
+underscore you can just type the first
+
+1417
+01:07:53,949 --> 01:08:00,549
+few letters of each pitch so I could be
+
+1418
+01:07:55,570 --> 01:08:02,830
+like open image for example look I do
+
+1419
+01:08:00,550 --> 01:08:04,269
+that and it's found the function it's
+
+1420
+01:08:02,829 --> 01:08:09,549
+also found some other things that match
+
+1421
+01:08:04,269 --> 01:08:11,079
+oh there it is okay so that's kind of a
+
+1422
+01:08:09,550 --> 01:08:12,880
+good way you can see exactly where it's
+
+1423
+01:08:11,079 --> 01:08:15,279
+come from when you can find out exactly
+
+1424
+01:08:12,880 --> 01:08:17,770
+what it is and then the next thing I
+
+1425
+01:08:15,280 --> 01:08:20,980
+guess would be like well what's it used
+
+1426
+01:08:17,770 --> 01:08:24,549
+for so if it's used inside fast AI you
+
+1427
+01:08:20,979 --> 01:08:29,399
+could say find references which is shift
+
+1428
+01:08:24,548 --> 01:08:29,399
+o smoke set up should say shift
+
+1429
+01:08:34,399 --> 01:08:41,068
+open image shift f12 and it brings up
+
+1430
+01:08:38,759 --> 01:08:42,779
+something saying oh it's used twice in
+
+1431
+01:08:41,069 --> 01:08:45,059
+this codebase and I can go and I can
+
+1432
+01:08:42,779 --> 01:08:48,179
+have a look at each of those examples
+
+1433
+01:08:45,059 --> 01:08:50,190
+okay if it's used in multiple different
+
+1434
+01:08:48,179 --> 01:08:54,539
+files it'll tell you the different files
+
+1435
+01:08:50,189 --> 01:08:56,698
+that it's used in it another thing
+
+1436
+01:08:54,539 --> 01:08:59,548
+that's really handy then is as you look
+
+1437
+01:08:56,698 --> 01:09:01,828
+at the code you'll find that certain
+
+1438
+01:08:59,548 --> 01:09:04,229
+bits of the code call other parts of the
+
+1439
+01:09:01,828 --> 01:09:06,630
+code so for example if you're inside
+
+1440
+01:09:04,229 --> 01:09:08,039
+files data set and you're like oh this
+
+1441
+01:09:06,630 --> 01:09:10,889
+is calling something called open image
+
+1442
+01:09:08,039 --> 01:09:12,750
+what is that well you can wave your
+
+1443
+01:09:10,889 --> 01:09:17,940
+pointer over it and it'll give you the
+
+1444
+01:09:12,750 --> 01:09:19,738
+doc string or you can hit f12 and it
+
+1445
+01:09:17,939 --> 01:09:21,868
+jumps straight to its definition right
+
+1446
+01:09:19,738 --> 01:09:24,238
+so like often it's easy to get a bit
+
+1447
+01:09:21,868 --> 01:09:25,769
+lost in like things call things cool
+
+1448
+01:09:24,238 --> 01:09:28,318
+things and if you have to manually go to
+
+1449
+01:09:25,770 --> 01:09:30,029
+each bit it's if you're ready for us
+
+1450
+01:09:28,319 --> 01:09:32,579
+this way it's always one button way
+
+1451
+01:09:30,029 --> 01:09:34,520
+right ctrl T to go to something that
+
+1452
+01:09:32,578 --> 01:09:37,229
+you're specific you know the name of or
+
+1453
+01:09:34,520 --> 01:09:39,630
+f12 to jump to the name the definition
+
+1454
+01:09:37,229 --> 01:09:41,158
+of something that you're clicking on and
+
+1455
+01:09:39,630 --> 01:09:42,088
+when you're done you probably want to go
+
+1456
+01:09:41,158 --> 01:09:45,238
+back where you came from
+
+1457
+01:09:42,088 --> 01:09:52,250
+so alt left takes you back to where you
+
+1458
+01:09:45,238 --> 01:09:56,638
+were okay so whatever you use BM Emacs
+
+1459
+01:09:52,250 --> 01:09:59,130
+Adam whatever they all have this
+
+1460
+01:09:56,639 --> 01:10:02,969
+functionality as long as you have an
+
+1461
+01:09:59,130 --> 01:10:03,868
+appropriate extension installed if you
+
+1462
+01:10:02,969 --> 01:10:06,029
+use pycharm
+
+1463
+01:10:03,868 --> 01:10:07,889
+you can get that for free that doesn't
+
+1464
+01:10:06,029 --> 01:10:09,658
+need any exchange it's Python you know
+
+1465
+01:10:07,889 --> 01:10:15,828
+whatever you're using you want to know
+
+1466
+01:10:09,658 --> 01:10:18,388
+how to do this stuff finally I mentioned
+
+1467
+01:10:15,828 --> 01:10:22,469
+there's a nice thing called sin mode
+
+1468
+01:10:18,389 --> 01:10:24,630
+ctrl K Z which basically gets rid of
+
+1469
+01:10:22,469 --> 01:10:26,099
+everything else so you can focus but it
+
+1470
+01:10:24,630 --> 01:10:28,819
+does keep this nice little thing on the
+
+1471
+01:10:26,099 --> 01:10:31,819
+right hand side which kind of shows you
+
+1472
+01:10:28,819 --> 01:10:31,819
+whele
+
+1473
+01:10:32,099 --> 01:10:38,578
+okay so that's something that you should
+
+1474
+01:10:36,779 --> 01:10:40,590
+practice if you haven't played around
+
+1475
+01:10:38,578 --> 01:10:42,420
+with it before during the week because
+
+1476
+01:10:40,590 --> 01:10:44,578
+we're increasingly going to be you know
+
+1477
+01:10:42,420 --> 01:10:47,699
+digging deeper and deeper into faster
+
+1478
+01:10:44,578 --> 01:10:49,049
+iron pipe or fibers as I say if you're
+
+1479
+01:10:47,698 --> 01:10:49,439
+already a professional coders know all
+
+1480
+01:10:49,050 --> 01:10:52,429
+this stuff
+
+1481
+01:10:49,439 --> 01:10:56,848
+apologies for telling you stuff you know
+
+1482
+01:10:52,429 --> 01:10:58,590
+okay so we're going to well actually
+
+1483
+01:10:56,849 --> 01:11:04,949
+since we did that let's just talk about
+
+1484
+01:10:58,590 --> 01:11:08,789
+open image you'll see that we're using
+
+1485
+01:11:04,948 --> 01:11:12,779
+cv 2 cv 2 is the library is actually the
+
+1486
+01:11:08,789 --> 01:11:15,539
+opencv library you might wonder why
+
+1487
+01:11:12,779 --> 01:11:19,259
+we're using open CV and I want to
+
+1488
+01:11:15,539 --> 01:11:21,179
+explain some of the units of fast AI to
+
+1489
+01:11:19,260 --> 01:11:24,989
+you because some of them are kind of
+
+1490
+01:11:21,179 --> 01:11:27,420
+interesting and might be helpful to the
+
+1491
+01:11:24,988 --> 01:11:31,189
+torch vision like the standard kind of
+
+1492
+01:11:27,420 --> 01:11:34,469
+Pi torch vision library actually uses
+
+1493
+01:11:31,189 --> 01:11:36,299
+apply torch tensors for all of its you
+
+1494
+01:11:34,469 --> 01:11:41,939
+know data augmentation and stuff like
+
+1495
+01:11:36,300 --> 01:11:43,639
+that a lot of people use pillow Pio a
+
+1496
+01:11:41,939 --> 01:11:47,759
+standard of Python imaging library I
+
+1497
+01:11:43,639 --> 01:11:51,929
+found I did like a lot of testing of all
+
+1498
+01:11:47,760 --> 01:11:54,060
+of these I found open CV was about 5 to
+
+1499
+01:11:51,929 --> 01:11:56,819
+10 times faster than to watch vision so
+
+1500
+01:11:54,060 --> 01:11:58,679
+early on actually teamed up with one of
+
+1501
+01:11:56,819 --> 01:12:00,569
+the students from an earlier class to do
+
+1502
+01:11:58,679 --> 01:12:02,219
+the planetlab satellite competition back
+
+1503
+01:12:00,569 --> 01:12:06,299
+when that was on and we used to watch
+
+1504
+01:12:02,219 --> 01:12:09,029
+vision and because it was so slow we
+
+1505
+01:12:06,300 --> 01:12:10,980
+could only get like 25% GPU utilization
+
+1506
+01:12:09,029 --> 01:12:13,198
+because we were doing a lot of data
+
+1507
+01:12:10,979 --> 01:12:15,178
+augmentation and so then I use the
+
+1508
+01:12:13,198 --> 01:12:17,399
+profiler to find out what's going on and
+
+1509
+01:12:15,179 --> 01:12:22,770
+realized it was all in in to watch
+
+1510
+01:12:17,399 --> 01:12:26,779
+vision pillow or PIL is quite a bit
+
+1511
+01:12:22,770 --> 01:12:34,650
+faster but it's not as fast as open CV
+
+1512
+01:12:26,779 --> 01:12:37,259
+it also is not nearly as threadsafe so I
+
+1513
+01:12:34,649 --> 01:12:40,529
+actually talked to the guy who developed
+
+1514
+01:12:37,260 --> 01:12:43,170
+the the thing that python has this thing
+
+1515
+01:12:40,529 --> 01:12:45,210
+called the global interpreter lock this
+
+1516
+01:12:43,170 --> 01:12:45,810
+before the GI L which basically means
+
+1517
+01:12:45,210 --> 01:12:48,989
+that true
+
+1518
+01:12:45,810 --> 01:12:51,660
+fred's can't do do pythonic things at
+
+1519
+01:12:48,989 --> 01:12:54,000
+the same time yes but it makes python a
+
+1520
+01:12:51,659 --> 01:12:55,800
+really shitty language actually the
+
+1521
+01:12:54,000 --> 01:12:58,130
+modern programming but they're stuck
+
+1522
+01:12:55,800 --> 01:12:58,130
+with it
+
+1523
+01:12:58,560 --> 01:13:02,810
+so I spoke to the guy on Twitter who
+
+1524
+01:13:00,090 --> 01:13:05,340
+actually made it so that open CV
+
+1525
+01:13:02,810 --> 01:13:07,860
+releases the GIM
+
+1526
+01:13:05,340 --> 01:13:10,440
+so one of the reasons the faster your
+
+1527
+01:13:07,859 --> 01:13:12,689
+library is so amazingly fast is because
+
+1528
+01:13:10,439 --> 01:13:14,219
+we don't use multiple processors like
+
+1529
+01:13:12,689 --> 01:13:15,509
+every other library does for our data
+
+1530
+01:13:14,220 --> 01:13:17,699
+organization we actually do multiple
+
+1531
+01:13:15,510 --> 01:13:19,650
+threats and the reason we can do
+
+1532
+01:13:17,699 --> 01:13:23,429
+multiple threads is because we use it
+
+1533
+01:13:19,649 --> 01:13:26,460
+and see bit unfortunately OpenCV is like
+
+1534
+01:13:23,430 --> 01:13:28,980
+a really shitty API it's kind of
+
+1535
+01:13:26,460 --> 01:13:31,680
+inscrutable a lot of stuff it does this
+
+1536
+01:13:28,979 --> 01:13:35,489
+point documented as they're poorly
+
+1537
+01:13:31,680 --> 01:13:39,210
+documented it's documented but like in
+
+1538
+01:13:35,489 --> 01:13:42,689
+really obtuse kind of ways so that's why
+
+1539
+01:13:39,210 --> 01:13:44,640
+I try to make it so like no one using
+
+1540
+01:13:42,689 --> 01:13:46,469
+fast AI needs to know that it's using a
+
+1541
+01:13:44,640 --> 01:13:48,090
+CD you know like if you want to open an
+
+1542
+01:13:46,470 --> 01:13:50,250
+image do you really need to know that
+
+1543
+01:13:48,090 --> 01:13:51,989
+you have to pass these flags to open to
+
+1544
+01:13:50,250 --> 01:13:54,539
+actually make it work do you actually
+
+1545
+01:13:51,989 --> 01:13:56,159
+need to know that if the reading fails
+
+1546
+01:13:54,539 --> 01:13:59,159
+it doesn't show an exception it just
+
+1547
+01:13:56,159 --> 01:14:01,079
+silently returns now you know it's these
+
+1548
+01:13:59,159 --> 01:14:03,359
+kinds of things that we try to do to
+
+1549
+01:14:01,079 --> 01:14:04,979
+actually make it work
+
+1550
+01:14:03,359 --> 01:14:07,289
+lastly right but as you start to dig
+
+1551
+01:14:04,979 --> 01:14:08,789
+into it you'll find yourself in these
+
+1552
+01:14:07,289 --> 01:14:11,640
+places and you're kind of want to know
+
+1553
+01:14:08,789 --> 01:14:15,359
+you want to know what and I mentioned
+
+1554
+01:14:11,640 --> 01:14:18,329
+this in particular to say don't start
+
+1555
+01:14:15,359 --> 01:14:19,920
+using you know height or your data
+
+1556
+01:14:18,329 --> 01:14:22,409
+orientation don't start bringing in
+
+1557
+01:14:19,920 --> 01:14:24,000
+pillow you'll find suddenly things slow
+
+1558
+01:14:22,409 --> 01:14:25,970
+down horribly or the body threatening
+
+1559
+01:14:24,000 --> 01:14:29,130
+won't work anymore or whatever I try to
+
+1560
+01:14:25,970 --> 01:14:36,600
+stick to using OpenCV for your
+
+1561
+01:14:29,130 --> 01:14:38,489
+processing okay so so we've got our
+
+1562
+01:14:36,600 --> 01:14:46,530
+image we're just going to use it to to
+
+1563
+01:14:38,489 --> 01:14:48,029
+demonstrate the pascal library and so
+
+1564
+01:14:46,529 --> 01:14:49,949
+the next thing I wanted to show you in
+
+1565
+01:14:48,029 --> 01:14:51,029
+terms of like important coding stuff
+
+1566
+01:14:49,949 --> 01:14:54,269
+we're going to be using throughout this
+
+1567
+01:14:51,029 --> 01:14:58,800
+course is is using matplotlib a lot
+
+1568
+01:14:54,270 --> 01:14:59,580
+better so matplotlib is so named because
+
+1569
+01:14:58,800 --> 01:15:04,739
+it was a rich
+
+1570
+01:14:59,579 --> 01:15:08,189
+a clone of matlab's flooding later
+
+1571
+01:15:04,739 --> 01:15:13,109
+unfortunately MATLAB matlab's plotting
+
+1572
+01:15:08,189 --> 01:15:19,799
+library is awful but at the time it was
+
+1573
+01:15:13,109 --> 01:15:22,439
+what everybody knew so at some point the
+
+1574
+01:15:19,800 --> 01:15:24,480
+matplotlib folks realized or they
+
+1575
+01:15:22,439 --> 01:15:27,089
+probably always view that the MATLAB
+
+1576
+01:15:24,479 --> 01:15:29,399
+plotting library is lawful so they added
+
+1577
+01:15:27,090 --> 01:15:31,039
+a second API to it which was an
+
+1578
+01:15:29,399 --> 01:15:33,960
+object-oriented API
+
+1579
+01:15:31,039 --> 01:15:35,880
+unfortunately because nobody who
+
+1580
+01:15:33,960 --> 01:15:38,310
+originally learned that plot let let the
+
+1581
+01:15:35,880 --> 01:15:40,319
+OO API they then taught the next
+
+1582
+01:15:38,310 --> 01:15:42,930
+generation of people the old MATLAB
+
+1583
+01:15:40,319 --> 01:15:45,059
+style API and now there's basically no
+
+1584
+01:15:42,930 --> 01:15:48,119
+examples or tutorials online I'm aware
+
+1585
+01:15:45,060 --> 01:15:51,750
+of that use the much much better easier
+
+1586
+01:15:48,119 --> 01:15:52,619
+to understand simpler ago so one of the
+
+1587
+01:15:51,750 --> 01:15:54,869
+things are going to try and show you
+
+1588
+01:15:52,619 --> 01:15:57,869
+because plotting is so important in deep
+
+1589
+01:15:54,869 --> 01:16:00,840
+learning is how to use this API and I've
+
+1590
+01:15:57,869 --> 01:16:04,710
+discovered some simple little tricks one
+
+1591
+01:16:00,840 --> 01:16:06,750
+simple little trick is plot subplots is
+
+1592
+01:16:04,710 --> 01:16:11,880
+just a super handy wrapper I'm going to
+
+1593
+01:16:06,750 --> 01:16:13,770
+use it lots right and what it does is it
+
+1594
+01:16:11,880 --> 01:16:15,720
+returns two things one of the things you
+
+1595
+01:16:13,770 --> 01:16:18,870
+probably won't care about the other
+
+1596
+01:16:15,720 --> 01:16:21,600
+thing is an axes object and basically
+
+1597
+01:16:18,869 --> 01:16:24,720
+anywhere where you used to say PLT dot
+
+1598
+01:16:21,600 --> 01:16:27,660
+something you now say ax dot something
+
+1599
+01:16:24,720 --> 01:16:31,980
+and it will now do that plotting to that
+
+1600
+01:16:27,659 --> 01:16:33,989
+particular sub bike so a lot of the time
+
+1601
+01:16:31,979 --> 01:16:36,179
+you'll use this or I'll use this during
+
+1602
+01:16:33,989 --> 01:16:37,859
+this course to kind of plot multiple
+
+1603
+01:16:36,180 --> 01:16:43,530
+plots that we can compare next to each
+
+1604
+01:16:37,859 --> 01:16:46,019
+other but even in this case I'm I'm
+
+1605
+01:16:43,529 --> 01:16:47,880
+creating a single plot alright but it's
+
+1606
+01:16:46,020 --> 01:16:49,800
+just it's just nice to only know one
+
+1607
+01:16:47,880 --> 01:16:51,060
+thing rather than lots of things so
+
+1608
+01:16:49,800 --> 01:16:51,960
+regardless of whether you doing one plot
+
+1609
+01:16:51,060 --> 01:16:55,140
+and lots of plots
+
+1610
+01:16:51,960 --> 01:16:57,689
+I always start now with with this that I
+
+1611
+01:16:55,140 --> 01:17:01,650
+was right and the nice thing is that
+
+1612
+01:16:57,689 --> 01:17:05,579
+this way I can pass in an access object
+
+1613
+01:17:01,649 --> 01:17:09,479
+if I want to plot it into a figure I've
+
+1614
+01:17:05,579 --> 01:17:10,859
+already created or if it hasn't been
+
+1615
+01:17:09,479 --> 01:17:13,109
+passed you know I can create
+
+1616
+01:17:10,859 --> 01:17:15,839
+so this is also a nice way to make your
+
+1617
+01:17:13,109 --> 01:17:17,729
+matplotlib functions like really
+
+1618
+01:17:15,840 --> 01:17:21,150
+versatile and you're kind of see this
+
+1619
+01:17:17,729 --> 01:17:23,789
+used throughout this course so now
+
+1620
+01:17:21,149 --> 01:17:26,129
+rather than plot that I am show it's a
+
+1621
+01:17:23,789 --> 01:17:29,850
+yesterday on show okay and then rather
+
+1622
+01:17:26,130 --> 01:17:33,929
+than kind of weird stateful setting
+
+1623
+01:17:29,850 --> 01:17:36,389
+things in in the old-style API you can
+
+1624
+01:17:33,929 --> 01:17:38,908
+now use ooohs you know get access that
+
+1625
+01:17:36,389 --> 01:17:41,429
+returns an object except visible that's
+
+1626
+01:17:38,908 --> 01:17:44,069
+a property it's all pretty normal
+
+1627
+01:17:41,429 --> 01:17:45,810
+straightforward stuff so once you start
+
+1628
+01:17:44,069 --> 01:17:49,198
+getting the hang of a small number of
+
+1629
+01:17:45,810 --> 01:17:51,510
+these oo matplotlib things hopefully
+
+1630
+01:17:49,198 --> 01:17:52,589
+you'll find life a little easier so I'm
+
+1631
+01:17:51,510 --> 01:17:55,530
+going to show you a few right now
+
+1632
+01:17:52,590 --> 01:17:58,550
+actually so let me show you a cool
+
+1633
+01:17:55,529 --> 01:18:01,079
+example what I think is a cool example
+
+1634
+01:17:58,550 --> 01:18:05,039
+so one thing that kind of drives me
+
+1635
+01:18:01,079 --> 01:18:08,010
+crazy with people putting text on images
+
+1636
+01:18:05,039 --> 01:18:10,829
+whether it be subtitles on TV or people
+
+1637
+01:18:08,010 --> 01:18:12,449
+doing stuff with computer vision is that
+
+1638
+01:18:10,829 --> 01:18:14,969
+it's like white text on a black
+
+1639
+01:18:12,448 --> 01:18:17,069
+background or black text on a black
+
+1640
+01:18:14,969 --> 01:18:19,079
+background you can't read it and so a
+
+1641
+01:18:17,069 --> 01:18:22,170
+really simple thing that I like to do
+
+1642
+01:18:19,079 --> 01:18:25,500
+every time I draw on an image is to
+
+1643
+01:18:22,170 --> 01:18:28,710
+either make my text in boxes white with
+
+1644
+01:18:25,500 --> 01:18:31,170
+a little black border or vice versa and
+
+1645
+01:18:28,710 --> 01:18:34,130
+so here's a like cool little thing you
+
+1646
+01:18:31,170 --> 01:18:39,000
+can do in matplotlib is you can take a
+
+1647
+01:18:34,130 --> 01:18:44,819
+matplotlib plotting object and you can
+
+1648
+01:18:39,000 --> 01:18:48,300
+go set path effects and say add a black
+
+1649
+01:18:44,819 --> 01:18:51,299
+stroke around it and you can see that
+
+1650
+01:18:48,300 --> 01:18:54,239
+then when you draw that like it doesn't
+
+1651
+01:18:51,300 --> 01:18:56,460
+matter that here it's white on a white
+
+1652
+01:18:54,238 --> 01:18:59,488
+background right or here at some black
+
+1653
+01:18:56,460 --> 01:19:02,189
+background it's equal and like it's just
+
+1654
+01:18:59,488 --> 01:19:03,988
+I know it's a simple little thing but it
+
+1655
+01:19:02,189 --> 01:19:06,448
+kind of just makes life so much better
+
+1656
+01:19:03,988 --> 01:19:08,549
+when you can actually see your bounding
+
+1657
+01:19:06,448 --> 01:19:12,629
+boxes and actually read the text so you
+
+1658
+01:19:08,550 --> 01:19:13,529
+can see rather than just saying add a
+
+1659
+01:19:12,630 --> 01:19:17,400
+rectangle
+
+1660
+01:19:13,529 --> 01:19:19,559
+I get the object that it creates and
+
+1661
+01:19:17,399 --> 01:19:21,899
+then pass that object to draw outline
+
+1662
+01:19:19,560 --> 01:19:24,660
+now everything I do that again this nice
+
+1663
+01:19:21,899 --> 01:19:27,389
+path effect runner
+
+1664
+01:19:24,659 --> 01:19:30,149
+you can see matplotlib is perfectly
+
+1665
+01:19:27,390 --> 01:19:33,079
+convenient way of drawing stuff alright
+
+1666
+01:19:30,149 --> 01:19:36,239
+so when I want to draw a rectangle
+
+1667
+01:19:33,079 --> 01:19:38,479
+matplotlib calls that a patch and then
+
+1668
+01:19:36,239 --> 01:19:41,579
+you can pass it all different kinds of
+
+1669
+01:19:38,479 --> 01:19:43,889
+patches so here's again you know rather
+
+1670
+01:19:41,579 --> 01:19:46,079
+than having to remember all that every
+
+1671
+01:19:43,890 --> 01:19:48,030
+time please take another function
+
+1672
+01:19:46,079 --> 01:19:50,130
+alright now you can use that function
+
+1673
+01:19:48,029 --> 01:19:52,500
+every time you know you don't have to
+
+1674
+01:19:50,130 --> 01:19:54,779
+put it in a library somewhere I always
+
+1675
+01:19:52,500 --> 01:19:58,949
+put lots of functions inside my notebook
+
+1676
+01:19:54,779 --> 01:20:00,269
+if I use it in like three notebooks then
+
+1677
+01:19:58,949 --> 01:20:05,340
+I know it's useful enough that I'll
+
+1678
+01:20:00,270 --> 01:20:07,890
+stick it in a separate library you can
+
+1679
+01:20:05,340 --> 01:20:10,440
+draw text and notice all of these take
+
+1680
+01:20:07,890 --> 01:20:12,030
+an axis object right so this is always
+
+1681
+01:20:10,439 --> 01:20:13,859
+going to be added to whatever thing I
+
+1682
+01:20:12,029 --> 01:20:18,449
+want to add it to right so I can add
+
+1683
+01:20:13,859 --> 01:20:22,829
+text and outline around it so having
+
+1684
+01:20:18,449 --> 01:20:25,439
+done all that I can now take my show
+
+1685
+01:20:22,829 --> 01:20:27,809
+image which and notice here the show
+
+1686
+01:20:25,439 --> 01:20:29,849
+image if you didn't pass it an axis it
+
+1687
+01:20:27,810 --> 01:20:32,490
+returns the axis it created right so
+
+1688
+01:20:29,850 --> 01:20:35,100
+show image returns returns the axis that
+
+1689
+01:20:32,489 --> 01:20:37,079
+image is on I then turn my bounding box
+
+1690
+01:20:35,100 --> 01:20:40,440
+into height width for this particular
+
+1691
+01:20:37,079 --> 01:20:45,630
+images bounding box I can then draw the
+
+1692
+01:20:40,439 --> 01:20:48,269
+rectangle I can then draw the text in
+
+1693
+01:20:45,630 --> 01:20:50,310
+the topple in the top left corner so
+
+1694
+01:20:48,270 --> 01:20:52,380
+remember the bounding box x and y are
+
+1695
+01:20:50,310 --> 01:20:59,100
+the first two coordinates right so the
+
+1696
+01:20:52,380 --> 01:21:01,289
+column to the top left this is the
+
+1697
+01:20:59,100 --> 01:21:04,079
+remember the top all contains two things
+
+1698
+01:21:01,289 --> 01:21:06,269
+the bounding box and then the class so
+
+1699
+01:21:04,079 --> 01:21:08,010
+this is the class and then to get the
+
+1700
+01:21:06,270 --> 01:21:11,850
+text of it I just pass it into my
+
+1701
+01:21:08,010 --> 01:21:13,350
+categories list and there we go okay so
+
+1702
+01:21:11,850 --> 01:21:15,329
+now that I've kind of got all that set
+
+1703
+01:21:13,350 --> 01:21:21,510
+up I can use that for all of my object
+
+1704
+01:21:15,329 --> 01:21:23,159
+detection stuff from here all right what
+
+1705
+01:21:21,510 --> 01:21:24,960
+I really want to do though is to kind of
+
+1706
+01:21:23,159 --> 01:21:26,489
+package all that up so here it is
+
+1707
+01:21:24,960 --> 01:21:28,920
+packaging it all it up so here's
+
+1708
+01:21:26,489 --> 01:21:31,529
+something that draws an image with some
+
+1709
+01:21:28,920 --> 01:21:34,380
+annotations right so it shows the image
+
+1710
+01:21:31,529 --> 01:21:35,909
+that goes through each annotation turns
+
+1711
+01:21:34,380 --> 01:21:36,590
+it into height and width draws the
+
+1712
+01:21:35,909 --> 01:21:41,029
+rectangle
+
+1713
+01:21:36,590 --> 01:21:41,810
+Roza test okay if you haven't seen this
+
+1714
+01:21:41,029 --> 01:21:43,609
+before
+
+1715
+01:21:41,810 --> 01:21:46,909
+each annotation remember contains a
+
+1716
+01:21:43,609 --> 01:21:51,559
+bounding box and a class so rather than
+
+1717
+01:21:46,908 --> 01:21:52,069
+going for o in a and n and going o 0 or
+
+1718
+01:21:51,560 --> 01:21:55,219
+1
+
+1719
+01:21:52,069 --> 01:21:57,170
+I can D structure it okay this is a D
+
+1720
+01:21:55,219 --> 01:21:59,029
+structuring assignment so if you put
+
+1721
+01:21:57,170 --> 01:22:01,368
+something on there something on the left
+
+1722
+01:21:59,029 --> 01:22:04,099
+then that's going to put the two parts
+
+1723
+01:22:01,368 --> 01:22:08,329
+of a top-off or a list into those two
+
+1724
+01:22:04,099 --> 01:22:12,409
+things to bandy so for the bounding box
+
+1725
+01:22:08,329 --> 01:22:13,099
+and the class in the annotations go
+
+1726
+01:22:12,408 --> 01:22:16,759
+ahead and do that
+
+1727
+01:22:13,099 --> 01:22:19,789
+and so then I can then say ok draw a
+
+1728
+01:22:16,760 --> 01:22:23,389
+image of particular index by grabbing
+
+1729
+01:22:19,789 --> 01:22:25,429
+the image ID opening it up and then
+
+1730
+01:22:23,389 --> 01:22:30,500
+calling that draw and so let's test it
+
+1731
+01:22:25,429 --> 01:22:34,639
+out and there it is okay so you know
+
+1732
+01:22:30,500 --> 01:22:38,118
+that kind of seems like quite a few
+
+1733
+01:22:34,639 --> 01:22:40,279
+steps but to me when you're working with
+
+1734
+01:22:38,118 --> 01:22:45,139
+a new data set like getting to the point
+
+1735
+01:22:40,279 --> 01:22:47,118
+that you can rapidly explore it it pays
+
+1736
+01:22:45,139 --> 01:22:48,590
+off right you'll see as we start
+
+1737
+01:22:47,118 --> 01:22:52,429
+building our model we're going to keep
+
+1738
+01:22:48,590 --> 01:22:54,909
+using these functions now to kind of see
+
+1739
+01:22:52,429 --> 01:22:54,908
+how things go
+
+1740
+01:22:56,560 --> 01:23:05,210
+alright so step one from our
+
+1741
+01:23:00,639 --> 01:23:07,639
+presentation is to do a classifier okay
+
+1742
+01:23:05,210 --> 01:23:09,889
+and so I think it's always good like for
+
+1743
+01:23:07,639 --> 01:23:11,750
+me I didn't really have much experience
+
+1744
+01:23:09,889 --> 01:23:14,929
+before I started preparing this course a
+
+1745
+01:23:11,750 --> 01:23:17,750
+few months ago in doing this kind of
+
+1746
+01:23:14,929 --> 01:23:20,359
+object detection stuff so I was like
+
+1747
+01:23:17,750 --> 01:23:22,639
+alright I want I want to get this
+
+1748
+01:23:20,359 --> 01:23:25,609
+feeling of even though it's deep
+
+1749
+01:23:22,639 --> 01:23:29,420
+learning of continual progress all right
+
+1750
+01:23:25,609 --> 01:23:31,339
+so like what could I make work all right
+
+1751
+01:23:29,420 --> 01:23:34,279
+well why don't I find the biggest object
+
+1752
+01:23:31,340 --> 01:23:37,489
+in each image and classifier I know how
+
+1753
+01:23:34,279 --> 01:23:39,139
+to do that all right so it's like this
+
+1754
+01:23:37,488 --> 01:23:42,019
+is one of the biggest problems I find
+
+1755
+01:23:39,139 --> 01:23:46,130
+today with the younger students if they
+
+1756
+01:23:42,020 --> 01:23:47,989
+figure out the whole big solution they
+
+1757
+01:23:46,130 --> 01:23:49,920
+want generally which involves a whole
+
+1758
+01:23:47,988 --> 01:23:52,500
+lot of new speculative ideas
+
+1759
+01:23:49,920 --> 01:23:54,960
+I tried before and they spend six months
+
+1760
+01:23:52,500 --> 01:23:59,189
+doing it and then the day before the
+
+1761
+01:23:54,960 --> 01:24:01,560
+presentation none of it works and this
+
+1762
+01:23:59,189 --> 01:24:03,210
+roof right where else like I've talked
+
+1763
+01:24:01,560 --> 01:24:04,830
+about my approach to Kabul competitions
+
+1764
+01:24:03,210 --> 01:24:07,109
+before I was just like half an hour if
+
+1765
+01:24:04,829 --> 01:24:09,689
+you go at the end of that half an hour
+
+1766
+01:24:07,109 --> 01:24:10,920
+submit something right and try and make
+
+1767
+01:24:09,689 --> 01:24:13,139
+it a little bit better than yesterday's
+
+1768
+01:24:10,920 --> 01:24:16,940
+so I kind of tried to do the same thing
+
+1769
+01:24:13,140 --> 01:24:19,260
+in preparing this lesson right which is
+
+1770
+01:24:16,939 --> 01:24:21,149
+try to create something that's bit
+
+1771
+01:24:19,260 --> 01:24:22,980
+better than lasting okay so the first
+
+1772
+01:24:21,149 --> 01:24:24,689
+thing was like the easiest thing I could
+
+1773
+01:24:22,979 --> 01:24:28,109
+come up with was my largest item
+
+1774
+01:24:24,689 --> 01:24:33,919
+classifier so the first thing I needed
+
+1775
+01:24:28,109 --> 01:24:39,000
+to do was to go through each of those
+
+1776
+01:24:33,920 --> 01:24:43,829
+each of the bounding boxes in an image
+
+1777
+01:24:39,000 --> 01:24:46,500
+and get the largest one right so I
+
+1778
+01:24:43,829 --> 01:24:49,019
+actually didn't write that first I
+
+1779
+01:24:46,500 --> 01:24:51,329
+actually wrote this first right so
+
+1780
+01:24:49,020 --> 01:24:53,370
+normally I like pretend that somebody
+
+1781
+01:24:51,329 --> 01:24:56,670
+else has created the exact API I want
+
+1782
+01:24:53,369 --> 01:24:59,099
+and then go back and write right so I
+
+1783
+01:24:56,670 --> 01:25:00,510
+kind of I wrote this phone first and
+
+1784
+01:24:59,100 --> 01:25:06,480
+it's like okay I need something which
+
+1785
+01:25:00,510 --> 01:25:08,460
+takes all of the bounding boxes for a
+
+1786
+01:25:06,479 --> 01:25:12,479
+particular image and finds the largest
+
+1787
+01:25:08,460 --> 01:25:16,159
+and well that's pretty straightforward I
+
+1788
+01:25:12,479 --> 01:25:18,000
+can just sort the bounding boxes and
+
+1789
+01:25:16,159 --> 01:25:20,159
+here again we've got a lambda function
+
+1790
+01:25:18,000 --> 01:25:21,810
+so again if you haven't used lambda
+
+1791
+01:25:20,159 --> 01:25:23,250
+functions before this is something you
+
+1792
+01:25:21,810 --> 01:25:25,350
+should study during the week right
+
+1793
+01:25:23,250 --> 01:25:26,819
+they're used all over the place to
+
+1794
+01:25:25,350 --> 01:25:30,989
+quickly define a function or like a
+
+1795
+01:25:26,819 --> 01:25:34,399
+once-off function and in this case the
+
+1796
+01:25:30,988 --> 01:25:38,039
+pythons dead the Python built-in sorted
+
+1797
+01:25:34,399 --> 01:25:40,229
+function lets you pass in a function to
+
+1798
+01:25:38,039 --> 01:25:42,960
+say how do you decide whether
+
+1799
+01:25:40,229 --> 01:25:48,269
+something's earlier or later in the sort
+
+1800
+01:25:42,960 --> 01:25:58,560
+order and so in this case I took the
+
+1801
+01:25:48,270 --> 01:26:00,989
+product of the last two items of my
+
+1802
+01:25:58,560 --> 01:26:03,520
+bounding box list ie the bottom right
+
+1803
+01:26:00,988 --> 01:26:05,709
+hand corner - the
+
+1804
+01:26:03,520 --> 01:26:08,410
+two items of my bounding box vest a the
+
+1805
+01:26:05,710 --> 01:26:11,829
+top left corner so bottom right - couple
+
+1806
+01:26:08,409 --> 01:26:13,449
+left is the size the two sizes and if
+
+1807
+01:26:11,829 --> 01:26:16,390
+you take the product of those two things
+
+1808
+01:26:13,449 --> 01:26:17,829
+you get the size of any boss and so then
+
+1809
+01:26:16,390 --> 01:26:23,950
+that's the function do that in
+
+1810
+01:26:17,829 --> 01:26:25,149
+descending order I mean often um often
+
+1811
+01:26:23,949 --> 01:26:27,220
+you can take something it's gonna be a
+
+1812
+01:26:25,149 --> 01:26:30,909
+few lines of code and turn it into one
+
+1813
+01:26:27,220 --> 01:26:33,880
+line of code and sometimes you can take
+
+1814
+01:26:30,909 --> 01:26:37,119
+that too far but for me I like to do
+
+1815
+01:26:33,880 --> 01:26:39,760
+that you know where I reasonably can
+
+1816
+01:26:37,119 --> 01:26:42,699
+because again it means like rather than
+
+1817
+01:26:39,760 --> 01:26:45,130
+having to understand a whole big chain
+
+1818
+01:26:42,699 --> 01:26:47,019
+of things my brain can just say like I
+
+1819
+01:26:45,130 --> 01:26:50,079
+can just look at that at once and say
+
+1820
+01:26:47,020 --> 01:26:52,660
+okay there it is and also I find it over
+
+1821
+01:26:50,079 --> 01:26:56,109
+time my brain kind of builds up this
+
+1822
+01:26:52,659 --> 01:26:57,699
+little library of idioms you know and
+
+1823
+01:26:56,109 --> 01:27:01,859
+like more and more things I can look at
+
+1824
+01:26:57,699 --> 01:27:01,859
+a single line and know what's going on
+
+1825
+01:27:02,130 --> 01:27:10,029
+okay so this bill is a dictionary and
+
+1826
+01:27:08,890 --> 01:27:15,640
+it's a dictionary because this is a
+
+1827
+01:27:10,029 --> 01:27:17,079
+dictionary comprehension a dictionary
+
+1828
+01:27:15,640 --> 01:27:18,880
+comprehension is just like a list
+
+1829
+01:27:17,079 --> 01:27:21,430
+comprehension I'm gonna use it a lot in
+
+1830
+01:27:18,880 --> 01:27:24,909
+this part of the course except it goes
+
+1831
+01:27:21,430 --> 01:27:29,619
+inside curly brackets and it's got a key
+
+1832
+01:27:24,909 --> 01:27:33,909
+colon value all right so here the key is
+
+1833
+01:27:29,619 --> 01:27:39,819
+going to be the image ID and the value
+
+1834
+01:27:33,909 --> 01:27:43,949
+is the largest angles okay so now that
+
+1835
+01:27:39,819 --> 01:27:48,399
+we've got that we can look at an example
+
+1836
+01:27:43,949 --> 01:27:51,069
+and here's an example of the largest
+
+1837
+01:27:48,399 --> 01:27:53,259
+bounding box for this image okay so
+
+1838
+01:27:51,069 --> 01:27:56,170
+obviously there's a lot of objects here
+
+1839
+01:27:53,260 --> 01:28:00,659
+there's three bicycles and three people
+
+1840
+01:27:56,170 --> 01:28:02,680
+okay but here's the largest bus and I
+
+1841
+01:28:00,659 --> 01:28:04,989
+feel like this ought to go without
+
+1842
+01:28:02,680 --> 01:28:06,490
+saying but it definitely needs to be
+
+1843
+01:28:04,989 --> 01:28:09,639
+said because so many people don't do it
+
+1844
+01:28:06,489 --> 01:28:10,809
+you need to look at every stage when
+
+1845
+01:28:09,640 --> 01:28:15,369
+you've got any kind of processing
+
+1846
+01:28:10,810 --> 01:28:16,280
+pipeline if if you're as bad at coding
+
+1847
+01:28:15,369 --> 01:28:18,019
+as I am
+
+1848
+01:28:16,279 --> 01:28:20,509
+everything you do will be wrong the
+
+1849
+01:28:18,020 --> 01:28:21,770
+first time you do it right but like
+
+1850
+01:28:20,510 --> 01:28:23,930
+there's lots of people that are as bad
+
+1851
+01:28:21,770 --> 01:28:26,420
+as be according and yet lots of people
+
+1852
+01:28:23,930 --> 01:28:28,039
+write lines minds of code assuming
+
+1853
+01:28:26,420 --> 01:28:30,529
+they're all correct and then at the very
+
+1854
+01:28:28,039 --> 01:28:31,460
+end they've got a mistake and they don't
+
+1855
+01:28:30,529 --> 01:28:33,590
+know where it came from
+
+1856
+01:28:31,460 --> 01:28:36,199
+right so particularly when you're
+
+1857
+01:28:33,590 --> 01:28:38,539
+working with images write or text like
+
+1858
+01:28:36,199 --> 01:28:41,869
+things that humans can look at and
+
+1859
+01:28:38,539 --> 01:28:44,569
+understand keep looking at it right so
+
+1860
+01:28:41,869 --> 01:28:46,399
+here I have it yep that looks like the
+
+1861
+01:28:44,569 --> 01:28:49,960
+biggest thing and that certainly looks
+
+1862
+01:28:46,399 --> 01:28:49,960
+like this so let's move on
+
+1863
+01:28:50,029 --> 01:28:56,719
+here's another nice thing in path Lib
+
+1864
+01:28:51,739 --> 01:29:00,949
+make directory okay method so I'm going
+
+1865
+01:28:56,720 --> 01:29:07,190
+to create a path called CSB which is a
+
+1866
+01:29:00,949 --> 01:29:09,679
+path to my large objects CSV file why am
+
+1867
+01:29:07,189 --> 01:29:11,779
+I going to create a CSV file pure
+
+1868
+01:29:09,680 --> 01:29:15,650
+laziness right we have an image
+
+1869
+01:29:11,779 --> 01:29:17,090
+classifier dot from CSV but I could go
+
+1870
+01:29:15,649 --> 01:29:19,219
+through a whole lot of work to create a
+
+1871
+01:29:17,090 --> 01:29:22,940
+custom data set and blah blah blah to
+
+1872
+01:29:19,220 --> 01:29:26,090
+use this particular format I have but
+
+1873
+01:29:22,939 --> 01:29:28,789
+why you know it's so easy to create the
+
+1874
+01:29:26,090 --> 01:29:30,770
+CSB check it inside a temporary folder
+
+1875
+01:29:28,789 --> 01:29:33,920
+and then use something they already have
+
+1876
+01:29:30,770 --> 01:29:35,990
+right so this is kind of a something
+
+1877
+01:29:33,920 --> 01:29:39,170
+I've seen a lot of times on the forum is
+
+1878
+01:29:35,989 --> 01:29:42,139
+people will say like how do I convert
+
+1879
+01:29:39,170 --> 01:29:44,810
+this weird structure into a way that
+
+1880
+01:29:42,140 --> 01:29:46,400
+first day I can accept it and then
+
+1881
+01:29:44,810 --> 01:29:52,039
+normally somebody on the forum will say
+
+1882
+01:29:46,399 --> 01:29:54,139
+like print it to a CSV file so that's a
+
+1883
+01:29:52,039 --> 01:29:56,359
+good simple tip and the easiest way to
+
+1884
+01:29:54,140 --> 01:29:58,490
+create a CSV file is to create a panda's
+
+1885
+01:29:56,359 --> 01:30:02,329
+data frame all right so here's my
+
+1886
+01:29:58,489 --> 01:30:04,219
+panda's data frame I can just give it a
+
+1887
+01:30:02,329 --> 01:30:06,649
+dictionary with the name of a column and
+
+1888
+01:30:04,220 --> 01:30:07,670
+the list of things in that column so
+
+1889
+01:30:06,649 --> 01:30:11,839
+there's the file name
+
+1890
+01:30:07,670 --> 01:30:13,640
+there's the category and then you'll see
+
+1891
+01:30:11,840 --> 01:30:15,710
+here why do I have this I've already
+
+1892
+01:30:13,640 --> 01:30:18,260
+named the columns in the dictionary why
+
+1893
+01:30:15,710 --> 01:30:21,109
+is it here because the order of columns
+
+1894
+01:30:18,260 --> 01:30:24,710
+matters all right and a dictionary does
+
+1895
+01:30:21,109 --> 01:30:26,269
+not have an order okay so this says the
+
+1896
+01:30:24,710 --> 01:30:28,579
+file name comes first in the category
+
+1897
+01:30:26,270 --> 01:30:30,370
+list all right so that's a good trick to
+
+1898
+01:30:28,579 --> 01:30:33,500
+creating a CSV
+
+1899
+01:30:30,369 --> 01:30:36,229
+so now it's just dogs and cats right I
+
+1900
+01:30:33,500 --> 01:30:38,600
+have a CSV file it contains a bunch of
+
+1901
+01:30:36,229 --> 01:30:43,369
+file names and for each one it contains
+
+1902
+01:30:38,600 --> 01:30:48,950
+the plus of that object so this is the
+
+1903
+01:30:43,369 --> 01:30:52,430
+same two lines of code 15,000 times what
+
+1904
+01:30:48,949 --> 01:30:56,779
+we will do though is to like take a look
+
+1905
+01:30:52,430 --> 01:31:02,690
+at this the one thing that's different
+
+1906
+01:30:56,779 --> 01:31:07,849
+is crop type so you might remember the
+
+1907
+01:31:02,689 --> 01:31:11,089
+default strategy for creating whatsis is
+
+1908
+01:31:07,850 --> 01:31:15,350
+here to 24 a to 24 by to 24 image in
+
+1909
+01:31:11,090 --> 01:31:19,310
+fast AI is to first of all resize it so
+
+1910
+01:31:15,350 --> 01:31:22,760
+the largest side sorry the smallest side
+
+1911
+01:31:19,310 --> 01:31:24,920
+is to 24 and then to take a random crop
+
+1912
+01:31:22,760 --> 01:31:27,829
+assuming it's rectangular a random
+
+1913
+01:31:24,920 --> 01:31:30,020
+square run during training and then
+
+1914
+01:31:27,829 --> 01:31:32,899
+during validation we take the center
+
+1915
+01:31:30,020 --> 01:31:38,350
+crop unless we use data augmentation in
+
+1916
+01:31:32,899 --> 01:31:40,579
+which case we do a few ran across for
+
+1917
+01:31:38,350 --> 01:31:44,060
+bounding boxes we don't want to do that
+
+1918
+01:31:40,579 --> 01:31:46,010
+because unlike an image net where the
+
+1919
+01:31:44,060 --> 01:31:48,320
+thing we care about is pretty much in
+
+1920
+01:31:46,010 --> 01:31:51,470
+the middle and it's pretty big a lot of
+
+1921
+01:31:48,319 --> 01:31:54,409
+the stuff in object detection is quite
+
+1922
+01:31:51,470 --> 01:31:57,640
+small and close to the edge so we could
+
+1923
+01:31:54,409 --> 01:32:00,019
+crop it out and that would be bad so
+
+1924
+01:31:57,640 --> 01:32:02,539
+when you create your transforms you can
+
+1925
+01:32:00,020 --> 01:32:06,350
+choose crop type equals crop type got no
+
+1926
+01:32:02,539 --> 01:32:10,130
+and no means don't crop and therefore to
+
+1927
+01:32:06,350 --> 01:32:12,260
+make it square instead it squishes it so
+
+1928
+01:32:10,130 --> 01:32:15,050
+you'll see this guy now looks kind of a
+
+1929
+01:32:12,260 --> 01:32:18,460
+bit strangely wide right and that's
+
+1930
+01:32:15,050 --> 01:32:24,789
+because he's been squished like this
+
+1931
+01:32:18,460 --> 01:32:27,980
+okay and generally speaking a lot of
+
+1932
+01:32:24,789 --> 01:32:30,789
+computer vision models work a little bit
+
+1933
+01:32:27,979 --> 01:32:33,019
+better if you crop rather than squish
+
+1934
+01:32:30,789 --> 01:32:35,119
+but they still work pretty well if you
+
+1935
+01:32:33,020 --> 01:32:38,390
+squish right and in this case we
+
+1936
+01:32:35,119 --> 01:32:40,609
+definitely don't want to crop so this is
+
+1937
+01:32:38,390 --> 01:32:43,440
+perfectly fine right so we you know if
+
+1938
+01:32:40,609 --> 01:32:46,769
+you had like very long or very
+
+1939
+01:32:43,439 --> 01:32:48,839
+or images that you know such that if a
+
+1940
+01:32:46,770 --> 01:32:51,239
+human looked at the squashed version if
+
+1941
+01:32:48,840 --> 01:32:53,699
+you like that looks really weird then
+
+1942
+01:32:51,238 --> 01:33:03,769
+that difficult but in this case we're
+
+1943
+01:32:53,698 --> 01:33:06,809
+just like so the computer whoa okay so
+
+1944
+01:33:03,770 --> 01:33:09,390
+I'm going to kind of quite often just
+
+1945
+01:33:06,810 --> 01:33:12,690
+dig a little bit into some more depths
+
+1946
+01:33:09,390 --> 01:33:15,119
+of fast AI and pipe torch in this case I
+
+1947
+01:33:12,689 --> 01:33:18,479
+want to just look at data loaders a
+
+1948
+01:33:15,119 --> 01:33:25,859
+little bit more so you already know that
+
+1949
+01:33:18,479 --> 01:33:27,389
+let's just make sure this is all run so
+
+1950
+01:33:25,859 --> 01:33:29,309
+you already know that inside a model
+
+1951
+01:33:27,390 --> 01:33:31,199
+data object when there's lots of model
+
+1952
+01:33:29,310 --> 01:33:34,440
+data subclasses like image classifier
+
+1953
+01:33:31,198 --> 01:33:37,198
+data we have a bunch of things which
+
+1954
+01:33:34,439 --> 01:33:39,149
+include training data loader and the
+
+1955
+01:33:37,198 --> 01:33:42,629
+training data set all right and we'll
+
+1956
+01:33:39,149 --> 01:33:44,099
+talk much more about this so but the
+
+1957
+01:33:42,630 --> 01:33:46,819
+main thing to know about training about
+
+1958
+01:33:44,100 --> 01:33:49,579
+a data loader is that it's an iterator
+
+1959
+01:33:46,819 --> 01:33:52,229
+that each time you grab the next
+
+1960
+01:33:49,579 --> 01:33:54,719
+iteration of stuff from it you get a
+
+1961
+01:33:52,229 --> 01:33:57,359
+mini batch okay and the mini that you
+
+1962
+01:33:54,719 --> 01:34:03,060
+get is of whatever size you asked for
+
+1963
+01:33:57,359 --> 01:34:09,198
+and by default the batch size is 64 okay
+
+1964
+01:34:03,060 --> 01:34:11,580
+you can pass below um however so in
+
+1965
+01:34:09,198 --> 01:34:14,939
+Python the way you grab the next thing
+
+1966
+01:34:11,579 --> 01:34:18,539
+from an iterator is with next right you
+
+1967
+01:34:14,939 --> 01:34:20,488
+can't just do that right and why can't
+
+1968
+01:34:18,539 --> 01:34:23,689
+you just do that the reason you can't do
+
+1969
+01:34:20,488 --> 01:34:27,509
+that is because you need to say like
+
+1970
+01:34:23,689 --> 01:34:29,669
+start a new epoch now right in general
+
+1971
+01:34:27,510 --> 01:34:31,619
+like this isn't just in pi choice but
+
+1972
+01:34:29,670 --> 01:34:33,930
+for any Python iterator you're kind of
+
+1973
+01:34:31,619 --> 01:34:36,238
+need to say start at the beginning of
+
+1974
+01:34:33,930 --> 01:34:37,920
+the sequence please all right and so the
+
+1975
+01:34:36,238 --> 01:34:43,229
+way you do that and this is a general
+
+1976
+01:34:37,920 --> 01:34:48,090
+Python concept is you write it up and it
+
+1977
+01:34:43,229 --> 01:34:50,339
+says please grab an iterator out of this
+
+1978
+01:34:48,090 --> 01:34:50,909
+object right specifically as we will
+
+1979
+01:34:50,340 --> 01:34:53,819
+learn later
+
+1980
+01:34:50,909 --> 01:34:55,319
+it means this class has to have to find
+
+1981
+01:34:53,819 --> 01:34:57,599
+an underscore underscore header
+
+1982
+01:34:55,319 --> 01:34:59,729
+underscore underscore method
+
+1983
+01:34:57,599 --> 01:35:01,770
+which returns some different object
+
+1984
+01:34:59,729 --> 01:35:05,428
+which then has an underscore underscore
+
+1985
+01:35:01,770 --> 01:35:09,719
+next underscore underscore yes right so
+
+1986
+01:35:05,429 --> 01:35:12,539
+that's how I do that right and so if you
+
+1987
+01:35:09,719 --> 01:35:15,000
+want to grab just a single batch this is
+
+1988
+01:35:12,539 --> 01:35:19,738
+how you do it X comma y equals next in a
+
+1989
+01:35:15,000 --> 01:35:21,779
+data load that Y X comma Y because our
+
+1990
+01:35:19,738 --> 01:35:25,049
+our lab data loader is our data sets
+
+1991
+01:35:21,779 --> 01:35:27,448
+behind the daily loaders always have an
+
+1992
+01:35:25,050 --> 01:35:32,550
+X you know the independent in the Y the
+
+1993
+01:35:27,448 --> 01:35:37,439
+dependent variable so here we can grab a
+
+1994
+01:35:32,550 --> 01:35:38,730
+mini batch of X's and Y's and now I'm
+
+1995
+01:35:37,439 --> 01:35:45,059
+going to pass that to that show image
+
+1996
+01:35:38,729 --> 01:35:50,118
+command we had earlier but we can't send
+
+1997
+01:35:45,060 --> 01:35:50,119
+that straight to show image for example
+
+1998
+01:35:56,689 --> 01:36:08,428
+here it is for one thing it's not an
+
+1999
+01:36:02,939 --> 01:36:11,309
+umpire right it's not on the CPU and its
+
+2000
+01:36:08,429 --> 01:36:15,630
+shape is all wrong it's not to 24 by 2
+
+2001
+01:36:11,310 --> 01:36:19,280
+24 3 it's 3 by 2 3 4 30 24 furthermore
+
+2002
+01:36:15,630 --> 01:36:24,770
+these are not numbers between 0 &amp; 1
+
+2003
+01:36:19,279 --> 01:36:27,929
+why not because remember all of the
+
+2004
+01:36:24,770 --> 01:36:29,820
+standard imagenet pre-trained models
+
+2005
+01:36:27,929 --> 01:36:31,560
+expect our data to have been normalized
+
+2006
+01:36:29,819 --> 01:36:36,328
+to have a 0 mean and a 1 standard
+
+2007
+01:36:31,560 --> 01:36:37,770
+deviation so if you look inside see
+
+2008
+01:36:36,328 --> 01:36:40,049
+let's use Visual Studio code for this
+
+2009
+01:36:37,770 --> 01:36:45,800
+that's what we've been doing so if you
+
+2010
+01:36:40,050 --> 01:36:52,730
+look inside transform the strong model
+
+2011
+01:36:45,800 --> 01:37:00,079
+so ctrl T transforms from model TFM egg
+
+2012
+01:36:52,729 --> 01:37:03,078
+alright which in turn calls transforms
+
+2013
+01:37:00,078 --> 01:37:03,078
+12
+
+2014
+01:37:08,510 --> 01:37:15,590
+ashle transports model calls
+
+2015
+01:37:11,340 --> 01:37:18,750
+transport stats and here you can see
+
+2016
+01:37:15,590 --> 01:37:21,150
+normalize and it normalizes with some
+
+2017
+01:37:18,750 --> 01:37:22,800
+set of image statistics and the set of
+
+2018
+01:37:21,149 --> 01:37:25,349
+image statistics they're basically
+
+2019
+01:37:22,800 --> 01:37:27,300
+hard-coded this is the image snap
+
+2020
+01:37:25,350 --> 01:37:29,940
+statistics this is statistics user
+
+2021
+01:37:27,300 --> 01:37:32,250
+insertion models right so there's a
+
+2022
+01:37:29,939 --> 01:37:35,669
+whole bunch of stuff that's been done to
+
+2023
+01:37:32,250 --> 01:37:39,750
+the input to get it ready to be passed
+
+2024
+01:37:35,670 --> 01:37:45,630
+to a pre train model so we have a
+
+2025
+01:37:39,750 --> 01:37:47,579
+function called denim for denormalize it
+
+2026
+01:37:45,630 --> 01:37:50,340
+doesn't only do normalize it also fixes
+
+2027
+01:37:47,579 --> 01:37:53,039
+up the dimension order and all that
+
+2028
+01:37:50,340 --> 01:37:56,010
+stuff right and they look the
+
+2029
+01:37:53,039 --> 01:37:59,460
+denormalization depends on the transport
+
+2030
+01:37:56,010 --> 01:38:01,650
+okay and the data set knows what
+
+2031
+01:37:59,460 --> 01:38:04,079
+transform was used to create it so
+
+2032
+01:38:01,649 --> 01:38:07,529
+that's why you have to go model data dot
+
+2033
+01:38:04,079 --> 01:38:09,119
+and then some data set dot d norm and
+
+2034
+01:38:07,529 --> 01:38:12,300
+that's a function that it's stored for
+
+2035
+01:38:09,119 --> 01:38:18,119
+you that will undo that all right and
+
+2036
+01:38:12,300 --> 01:38:19,699
+then you can pass that a mini batch but
+
+2037
+01:38:18,119 --> 01:38:21,989
+you have to turn it into non bio first
+
+2038
+01:38:19,699 --> 01:38:23,519
+okay so this is like all the stuff that
+
+2039
+01:38:21,989 --> 01:38:27,539
+you need to be able to do to kind of
+
+2040
+01:38:23,520 --> 01:38:28,770
+grab batches and unlock them and so
+
+2041
+01:38:27,539 --> 01:38:31,319
+after you've done all that you can show
+
+2042
+01:38:28,770 --> 01:38:37,740
+the image and we've got that catalyst so
+
+2043
+01:38:31,319 --> 01:38:39,029
+that's looking good so in the end we've
+
+2044
+01:38:37,739 --> 01:38:40,559
+just got this to end of four lines of
+
+2045
+01:38:39,029 --> 01:38:43,349
+code we've got our transforms we've got
+
+2046
+01:38:40,560 --> 01:38:46,680
+our model data come learn about
+
+2047
+01:38:43,350 --> 01:38:50,090
+pre-trained we're using your resna 34
+
+2048
+01:38:46,680 --> 01:38:53,579
+here I'm gonna add accuracy as a metric
+
+2049
+01:38:50,090 --> 01:38:57,180
+fix some optimization function to an LR
+
+2050
+01:38:53,579 --> 01:38:58,529
+find and that looks kind of weird not
+
+2051
+01:38:57,180 --> 01:39:01,500
+particularly helpful normally we would
+
+2052
+01:38:58,529 --> 01:39:03,739
+expect to see a uptick on the right the
+
+2053
+01:39:01,500 --> 01:39:07,890
+reason we don't see it is because we
+
+2054
+01:39:03,739 --> 01:39:09,960
+intentionally remove the first few
+
+2055
+01:39:07,890 --> 01:39:12,240
+points in the last few points the reason
+
+2056
+01:39:09,960 --> 01:39:13,980
+is that often the last few points shoots
+
+2057
+01:39:12,239 --> 01:39:16,139
+so high up towards infinity that you
+
+2058
+01:39:13,979 --> 01:39:18,419
+basically can't see anything so the vast
+
+2059
+01:39:16,140 --> 01:39:21,269
+majority of the time removing the last
+
+2060
+01:39:18,420 --> 01:39:22,788
+few points is a good idea however
+
+2061
+01:39:21,269 --> 01:39:25,588
+when you've got very few mini batches
+
+2062
+01:39:22,788 --> 01:39:26,759
+sometimes it's not a good idea and so a
+
+2063
+01:39:25,588 --> 01:39:29,010
+lot of people asked us on the forum
+
+2064
+01:39:26,760 --> 01:39:31,798
+here's how you fix it all right just say
+
+2065
+01:39:29,010 --> 01:39:34,349
+skip by default it skips 10 at the start
+
+2066
+01:39:31,798 --> 01:39:36,269
+so in this case we just say 5 by default
+
+2067
+01:39:34,349 --> 01:39:38,639
+it's gives 5 at the end we'll just say 1
+
+2068
+01:39:36,269 --> 01:39:42,479
+and so now we can see that the shape
+
+2069
+01:39:38,639 --> 01:39:44,729
+properly um if your data sets really
+
+2070
+01:39:42,479 --> 01:39:47,819
+tiny he made it he's a smaller batch
+
+2071
+01:39:44,729 --> 01:39:50,429
+size like if you only have like three or
+
+2072
+01:39:47,819 --> 01:39:53,669
+four batches worth this one is not going
+
+2073
+01:39:50,429 --> 01:39:55,109
+to see that in this case so it's it's
+
+2074
+01:39:53,668 --> 01:39:58,948
+fine we just have to plot a little bit
+
+2075
+01:39:55,109 --> 01:40:04,349
+more okay so we pick a learning rate we
+
+2076
+01:39:58,948 --> 01:40:06,838
+say fit after 1 Apoc just training the
+
+2077
+01:40:04,349 --> 01:40:10,409
+last player it's a descent
+
+2078
+01:40:06,838 --> 01:40:14,639
+let's unfreeze a couple of players do
+
+2079
+01:40:10,408 --> 01:40:19,469
+another epoch 2% and freeze the whole
+
+2080
+01:40:14,639 --> 01:40:22,618
+thing not really improving why are we
+
+2081
+01:40:19,469 --> 01:40:26,668
+stuck at 80% kind of makes sense right
+
+2082
+01:40:22,618 --> 01:40:29,368
+like unlike imagenet or dogs versus cats
+
+2083
+01:40:26,668 --> 01:40:30,538
+where each image has one major thing
+
+2084
+01:40:29,368 --> 01:40:32,128
+they were kicked because they have one
+
+2085
+01:40:30,538 --> 01:40:34,648
+major thing and the one major thing is
+
+2086
+01:40:32,128 --> 01:40:37,948
+what they're asked to look for a lot of
+
+2087
+01:40:34,649 --> 01:40:42,529
+the Pascal data set has lots of little
+
+2088
+01:40:37,948 --> 01:40:46,048
+things and so a largest classifier is
+
+2089
+01:40:42,529 --> 01:40:49,229
+not necessarily going to do great but of
+
+2090
+01:40:46,048 --> 01:40:51,988
+course we really need to be able to see
+
+2091
+01:40:49,229 --> 01:40:54,628
+the results to kind of see like whether
+
+2092
+01:40:51,988 --> 01:40:56,818
+it makes sense so we're going to write
+
+2093
+01:40:54,628 --> 01:41:00,510
+something that creates this and in this
+
+2094
+01:40:56,819 --> 01:41:03,048
+case I'm kind of like I after working
+
+2095
+01:41:00,510 --> 01:41:05,729
+with this a while I know what the 20
+
+2096
+01:41:03,048 --> 01:41:07,319
+Pascal classes are so I know there's a
+
+2097
+01:41:05,729 --> 01:41:09,298
+person and a bicycle class I know
+
+2098
+01:41:07,319 --> 01:41:10,649
+there's a dog and I so for class so I
+
+2099
+01:41:09,298 --> 01:41:13,979
+know this is wrong it should be so
+
+2100
+01:41:10,649 --> 01:41:15,689
+forever that's correct yes yes chair
+
+2101
+01:41:13,979 --> 01:41:17,399
+that's wrong I think the tables bigger
+
+2102
+01:41:15,689 --> 01:41:20,579
+motorbikes correct because there's no
+
+2103
+01:41:17,399 --> 01:41:23,099
+cactus there should be a bus person's
+
+2104
+01:41:20,578 --> 01:41:24,748
+correct that's correct Kasper if plants
+
+2105
+01:41:23,099 --> 01:41:30,409
+great cars correct so that's looking
+
+2106
+01:41:24,748 --> 01:41:30,408
+pretty good all right so um
+
+2107
+01:41:30,529 --> 01:41:36,739
+when you see a piece of code like this
+
+2108
+01:41:34,300 --> 01:41:39,159
+if you're not familiar with all the
+
+2109
+01:41:36,739 --> 01:41:40,460
+steps to get there it can be a little
+
+2110
+01:41:39,159 --> 01:41:45,289
+overwhelming
+
+2111
+01:41:40,460 --> 01:41:46,819
+alright and I feel the same way when I
+
+2112
+01:41:45,289 --> 01:41:48,470
+see a few lines of code in something I'm
+
+2113
+01:41:46,819 --> 01:41:50,960
+not familiar with I feel like a 1 as
+
+2114
+01:41:48,470 --> 01:41:54,170
+well but it turns out there's two ways
+
+2115
+01:41:50,960 --> 01:41:58,220
+to make it super super simple to
+
+2116
+01:41:54,170 --> 01:41:59,930
+understand the code or there's one high
+
+2117
+01:41:58,220 --> 01:42:05,079
+level where the high level way is run
+
+2118
+01:41:59,930 --> 01:42:05,079
+each line of code step yeah step
+
+2119
+01:42:05,439 --> 01:42:11,659
+printout the inputs print out the
+
+2120
+01:42:08,300 --> 01:42:14,960
+efforts most of the time that'll be
+
+2121
+01:42:11,659 --> 01:42:16,550
+enough if there's a line of code where
+
+2122
+01:42:14,960 --> 01:42:19,399
+you don't understand how the outputs
+
+2123
+01:42:16,550 --> 01:42:22,310
+relate to the inputs go and have a look
+
+2124
+01:42:19,399 --> 01:42:24,829
+for the sauce so now all you need to
+
+2125
+01:42:22,310 --> 01:42:26,210
+know is what are the two ways you can
+
+2126
+01:42:24,829 --> 01:42:29,750
+step through the lines of code one at a
+
+2127
+01:42:26,210 --> 01:42:35,779
+time um the way I use paths the most
+
+2128
+01:42:29,750 --> 01:42:38,449
+often is to take the contents of the
+
+2129
+01:42:35,779 --> 01:42:43,159
+loop copy it create a cell above it
+
+2130
+01:42:38,449 --> 01:42:45,710
+paste it out dent it right I equals
+
+2131
+01:42:43,159 --> 01:42:49,729
+naught and then put them all in separate
+
+2132
+01:42:45,710 --> 01:42:50,210
+cells and then run each one one at a
+
+2133
+01:42:49,729 --> 01:42:52,909
+time
+
+2134
+01:42:50,210 --> 01:42:55,430
+printing out the inputs now I mean I
+
+2135
+01:42:52,909 --> 01:42:57,229
+know that's obvious but the number of
+
+2136
+01:42:55,430 --> 01:42:59,390
+times I actually see people do that when
+
+2137
+01:42:57,229 --> 01:43:01,219
+they asked me for help is basically zero
+
+2138
+01:42:59,390 --> 01:43:05,960
+because if they had done that they
+
+2139
+01:43:01,220 --> 01:43:08,390
+wouldn't be asking for help another
+
+2140
+01:43:05,960 --> 01:43:10,010
+method that's super handy and there's
+
+2141
+01:43:08,390 --> 01:43:12,200
+particular situations where a super
+
+2142
+01:43:10,010 --> 01:43:12,680
+super super handy is to use the Python
+
+2143
+01:43:12,199 --> 01:43:17,619
+debugger
+
+2144
+01:43:12,680 --> 01:43:20,980
+who here is used a debugger before so
+
+2145
+01:43:17,619 --> 01:43:23,510
+after two thirds so for the other half
+
+2146
+01:43:20,979 --> 01:43:26,059
+of here this would be life-changing
+
+2147
+01:43:23,510 --> 01:43:28,480
+actually a guy I know this morning is
+
+2148
+01:43:26,060 --> 01:43:31,970
+actually a deep learning researcher
+
+2149
+01:43:28,479 --> 01:43:34,399
+wrote on Twitter and his his message on
+
+2150
+01:43:31,970 --> 01:43:36,619
+Twitter was how come nobody told me
+
+2151
+01:43:34,399 --> 01:43:40,759
+about the Python debugger before my life
+
+2152
+01:43:36,619 --> 01:43:43,319
+has changed and like this guy's an
+
+2153
+01:43:40,760 --> 01:43:44,880
+expert but because like nobody
+
+2154
+01:43:43,319 --> 01:43:48,509
+teaches basic software engineering
+
+2155
+01:43:44,880 --> 01:43:51,750
+skills in academic courses you know
+
+2156
+01:43:48,510 --> 01:43:53,579
+nobody thought to say to him hey Mark
+
+2157
+01:43:51,750 --> 01:43:56,039
+you know what there's something that
+
+2158
+01:43:53,578 --> 01:43:59,309
+shows you everything your code does one
+
+2159
+01:43:56,039 --> 01:44:01,590
+stair at a time so I replied on Twitter
+
+2160
+01:43:59,310 --> 01:44:04,770
+and I said good news mark not only that
+
+2161
+01:44:01,590 --> 01:44:06,810
+every single language in existence in
+
+2162
+01:44:04,770 --> 01:44:09,210
+every single operating system also has a
+
+2163
+01:44:06,810 --> 01:44:11,400
+debugger and if you google for language
+
+2164
+01:44:09,210 --> 01:44:13,828
+named debugger it will tell you Harry's
+
+2165
+01:44:11,399 --> 01:44:16,710
+right so there's a metal piece of
+
+2166
+01:44:13,828 --> 01:44:21,029
+information point in Python the standard
+
+2167
+01:44:16,710 --> 01:44:22,529
+debugger is called PDB ok and there's
+
+2168
+01:44:21,029 --> 01:44:24,779
+two main ways to use it
+
+2169
+01:44:22,529 --> 01:44:27,929
+the first is to go into your code and
+
+2170
+01:44:24,779 --> 01:44:32,009
+the reason I'm mentioning this now is
+
+2171
+01:44:27,929 --> 01:44:34,980
+because during the next few weeks if
+
+2172
+01:44:32,010 --> 01:44:36,780
+you're anything like me 99% at the time
+
+2173
+01:44:34,979 --> 01:44:39,750
+you'll be in a situation where your
+
+2174
+01:44:36,779 --> 01:44:41,908
+codes not working right and very often
+
+2175
+01:44:39,750 --> 01:44:44,488
+it all have been on the fourteenth
+
+2176
+01:44:41,908 --> 01:44:47,549
+mini-batch inside the forward method of
+
+2177
+01:44:44,488 --> 01:44:48,149
+your custom module that it's like what
+
+2178
+01:44:47,550 --> 01:44:50,849
+do you do
+
+2179
+01:44:48,149 --> 01:44:54,420
+right and the answer is you go inside
+
+2180
+01:44:50,849 --> 01:44:56,039
+your module and you wrap that right and
+
+2181
+01:44:54,420 --> 01:45:02,840
+if you know it was only happening on the
+
+2182
+01:44:56,039 --> 01:45:05,670
+14th iteration you type if I equals 13
+
+2183
+01:45:02,840 --> 01:45:09,960
+right so you can set a conditional
+
+2184
+01:45:05,670 --> 01:45:12,029
+breakpoint that's put a breakpoint PDB
+
+2185
+01:45:09,960 --> 01:45:13,710
+is the Python debugger fast AI imports
+
+2186
+01:45:12,029 --> 01:45:15,539
+it for you if you get the message that
+
+2187
+01:45:13,710 --> 01:45:20,399
+PDB spots there then you can just say
+
+2188
+01:45:15,539 --> 01:45:21,539
+import PD Lee ok so let's try that and
+
+2189
+01:45:20,399 --> 01:45:24,899
+justly it's not the most user-friendly
+
+2190
+01:45:21,539 --> 01:45:26,670
+experience it just pops up a boss right
+
+2191
+01:45:24,899 --> 01:45:28,500
+but the first cool thing to notice is
+
+2192
+01:45:26,670 --> 01:45:30,239
+holders should the debugger even works
+
+2193
+01:45:28,500 --> 01:45:33,060
+in a notebook all right so that's pretty
+
+2194
+01:45:30,238 --> 01:45:37,198
+nifty you can also work in the terminal
+
+2195
+01:45:33,060 --> 01:45:40,619
+plus and so what can you do you can type
+
+2196
+01:45:37,198 --> 01:45:43,109
+a trip right and there are plenty of
+
+2197
+01:45:40,618 --> 01:45:44,789
+tutorials here and the main thing to
+
+2198
+01:45:43,109 --> 01:45:46,109
+know is this is one of these situations
+
+2199
+01:45:44,789 --> 01:45:48,448
+where you definitely want to know the
+
+2200
+01:45:46,109 --> 01:45:50,578
+one letter mnemonics right so you could
+
+2201
+01:45:48,448 --> 01:45:52,919
+type next but you definitely want to
+
+2202
+01:45:50,578 --> 01:45:54,449
+talk right you could type continue
+
+2203
+01:45:52,920 --> 01:45:57,239
+you're definitely less
+
+2204
+01:45:54,449 --> 01:45:59,789
+I've listed the main ones you need so
+
+2205
+01:45:57,239 --> 01:46:03,479
+what I can do now that I'm sitting here
+
+2206
+01:45:59,789 --> 01:46:09,060
+is like it shows me the line I'm Kara
+
+2207
+01:46:03,479 --> 01:46:12,029
+it's about to run okay so one thing I
+
+2208
+01:46:09,060 --> 01:46:14,340
+might want to do is to print out
+
+2209
+01:46:12,029 --> 01:46:19,429
+something and I can write any Python
+
+2210
+01:46:14,340 --> 01:46:23,130
+expression and hit them up and find it
+
+2211
+01:46:19,430 --> 01:46:26,280
+okay so that's that's a useful thing to
+
+2212
+01:46:23,130 --> 01:46:29,250
+do a might want to find out like more
+
+2213
+01:46:26,279 --> 01:46:30,659
+about like well where am I in the code
+
+2214
+01:46:29,250 --> 01:46:32,340
+more generally I just want to see this
+
+2215
+01:46:30,659 --> 01:46:35,340
+line but what's the before it and after
+
+2216
+01:46:32,340 --> 01:46:37,020
+it okay so I want a whole forest right
+
+2217
+01:46:35,340 --> 01:46:39,810
+and so you can see I'm about to run that
+
+2218
+01:46:37,020 --> 01:46:44,460
+line these are the lines above it in the
+
+2219
+01:46:39,810 --> 01:46:46,860
+blower okay um so I might be like okay
+
+2220
+01:46:44,460 --> 01:46:50,550
+let's run this line and see what happens
+
+2221
+01:46:46,859 --> 01:46:51,869
+so go to the next line is ten okay and
+
+2222
+01:46:50,550 --> 01:46:56,699
+you can see now it's about to run the
+
+2223
+01:46:51,869 --> 01:46:59,099
+next one one handy tip you don't even
+
+2224
+01:46:56,699 --> 01:47:00,269
+have to type n if you just hit enter it
+
+2225
+01:46:59,100 --> 01:47:03,660
+repeats the last thing you did
+
+2226
+01:47:00,270 --> 01:47:05,630
+so that's okay so I now should have a
+
+2227
+01:47:03,659 --> 01:47:08,909
+thing called beep right
+
+2228
+01:47:05,630 --> 01:47:11,310
+unfortunately single letters are often
+
+2229
+01:47:08,909 --> 01:47:13,529
+used for debugger commands so if I just
+
+2230
+01:47:11,310 --> 01:47:16,140
+type B it'll run the big man rather than
+
+2231
+01:47:13,529 --> 01:47:24,229
+print B for me that's so to force it to
+
+2232
+01:47:16,140 --> 01:47:24,230
+print use P print okay so there's bird
+
+2233
+01:47:25,130 --> 01:47:31,529
+all right fine let's do next again right
+
+2234
+01:47:29,369 --> 01:47:35,039
+at this point if I hit next it'll draw
+
+2235
+01:47:31,529 --> 01:47:36,479
+the text but I don't want to just draw
+
+2236
+01:47:35,039 --> 01:47:38,729
+the text I want to know how it's going
+
+2237
+01:47:36,479 --> 01:47:41,939
+to draw the text so I don't put no next
+
+2238
+01:47:38,729 --> 01:47:45,179
+over it I want to ask step into it so if
+
+2239
+01:47:41,939 --> 01:47:48,049
+I now hit s to step into it I'm now
+
+2240
+01:47:45,180 --> 01:47:52,260
+inside draw test and I now hit n I
+
+2241
+01:47:48,050 --> 01:47:55,650
+concede your text and so forth okay and
+
+2242
+01:47:52,260 --> 01:47:57,300
+then I'm like okay I know everything I
+
+2243
+01:47:55,649 --> 01:48:00,500
+want to know about this I will continue
+
+2244
+01:47:57,300 --> 01:48:06,600
+until I hit the next breakpoint so C
+
+2245
+01:48:00,500 --> 01:48:07,659
+will continue what if I was zipping
+
+2246
+01:48:06,600 --> 01:48:10,000
+along
+
+2247
+01:48:07,659 --> 01:48:14,920
+this happens quite often that like let's
+
+2248
+01:48:10,000 --> 01:48:17,109
+step into Dean on here I am inside Dean
+
+2249
+01:48:14,920 --> 01:48:20,020
+on and what will often happen is if
+
+2250
+01:48:17,109 --> 01:48:23,229
+you're debugging something in your PI
+
+2251
+01:48:20,020 --> 01:48:25,960
+torch module and it's hidden exception
+
+2252
+01:48:23,229 --> 01:48:28,539
+and you're trying to debug you'll find
+
+2253
+01:48:25,960 --> 01:48:30,579
+yourself like six layers deep inside pi
+
+2254
+01:48:28,539 --> 01:48:33,130
+torch but you want to actually see
+
+2255
+01:48:30,579 --> 01:48:35,529
+backup what's happening when you called
+
+2256
+01:48:33,130 --> 01:48:37,420
+it from right so in this case I'm inside
+
+2257
+01:48:35,529 --> 01:48:40,359
+this property but I actually want to
+
+2258
+01:48:37,420 --> 01:48:43,300
+know what was going on up the call stack
+
+2259
+01:48:40,359 --> 01:48:46,329
+I just hit you and that doesn't actually
+
+2260
+01:48:43,300 --> 01:48:50,050
+run in a thing it just changes the
+
+2261
+01:48:46,329 --> 01:48:54,569
+context of the debugger to show me what
+
+2262
+01:48:50,050 --> 01:48:57,430
+called it and now I can type you know
+
+2263
+01:48:54,569 --> 01:48:58,029
+things to find out about that
+
+2264
+01:48:57,430 --> 01:49:00,780
+environment
+
+2265
+01:48:58,029 --> 01:49:04,449
+okay and then if I'm gonna go down again
+
+2266
+01:49:00,779 --> 01:49:05,649
+it's deep okay so like I'm not gonna
+
+2267
+01:49:04,449 --> 01:49:07,599
+show you everything about the debugger
+
+2268
+01:49:05,649 --> 01:49:11,589
+but I just showed you all of those
+
+2269
+01:49:07,600 --> 01:49:14,380
+commands right yes there's a Oh
+
+2270
+01:49:11,590 --> 01:49:15,940
+something that we found helpful as we've
+
+2271
+01:49:14,380 --> 01:49:18,340
+been doing this is using from ipython
+
+2272
+01:49:15,939 --> 01:49:20,439
+court a debugger imports a trace and
+
+2273
+01:49:18,340 --> 01:49:26,949
+then you get a all prettily colored it's
+
+2274
+01:49:20,439 --> 01:49:28,659
+usually excellent tip let's learn about
+
+2275
+01:49:26,949 --> 01:49:29,529
+some of our students here is it tell us
+
+2276
+01:49:28,659 --> 01:49:33,329
+I know you were doing an interesting
+
+2277
+01:49:29,529 --> 01:49:37,630
+project can you tell us about it okay
+
+2278
+01:49:33,329 --> 01:49:41,019
+hello everyone I mean is a here with my
+
+2279
+01:49:37,630 --> 01:49:44,529
+uh my collaborator Britt and we're using
+
+2280
+01:49:41,020 --> 01:49:46,330
+this kind of stuff to try to build a
+
+2281
+01:49:44,529 --> 01:49:49,960
+Google Translate for animal
+
+2282
+01:49:46,329 --> 01:49:51,100
+communication yeah so that involves
+
+2283
+01:49:49,960 --> 01:49:53,439
+playing around a lot with like
+
+2284
+01:49:51,100 --> 01:49:56,230
+unsupervised machine neural translation
+
+2285
+01:49:53,439 --> 01:49:58,659
+and doing it on top of audio where do
+
+2286
+01:49:56,229 --> 01:49:59,949
+you get data for that from ah that's
+
+2287
+01:49:58,659 --> 01:50:01,659
+sort of the hard problem so there you
+
+2288
+01:49:59,949 --> 01:50:03,460
+have to go and like we're talking to a
+
+2289
+01:50:01,659 --> 01:50:05,409
+number of researchers to try to collect
+
+2290
+01:50:03,460 --> 01:50:06,730
+and collate large data sets but if we
+
+2291
+01:50:05,409 --> 01:50:10,300
+can't get it that way we're thinking
+
+2292
+01:50:06,729 --> 01:50:11,919
+about building a living library of the
+
+2293
+01:50:10,300 --> 01:50:13,329
+audio of the species of Earth that
+
+2294
+01:50:11,920 --> 01:50:15,340
+involves going out and like collecting a
+
+2295
+01:50:13,329 --> 01:50:19,170
+hundred thousand hours of like gelada
+
+2296
+01:50:15,340 --> 01:50:19,170
+monkey vocalization so
+
+2297
+01:50:20,349 --> 01:50:29,050
+all right that's great here okay so
+
+2298
+01:50:26,948 --> 01:50:31,948
+let's get rid of that set trace um the
+
+2299
+01:50:29,050 --> 01:50:35,260
+other place that the debugger comes in
+
+2300
+01:50:31,948 --> 01:50:36,428
+particularly handy is as I say if you've
+
+2301
+01:50:35,260 --> 01:50:37,630
+got an exception
+
+2302
+01:50:36,429 --> 01:50:39,670
+all right particularly if it's deep
+
+2303
+01:50:37,630 --> 01:50:41,889
+inside pipes watch so if I like when I
+
+2304
+01:50:39,670 --> 01:50:43,840
+times 100 here obviously that's gonna in
+
+2305
+01:50:41,889 --> 01:50:49,328
+exception I've got rid of the set trace
+
+2306
+01:50:43,840 --> 01:50:49,980
+so if I run this now okay something's
+
+2307
+01:50:49,328 --> 01:50:52,210
+wrong
+
+2308
+01:50:49,979 --> 01:50:53,049
+now in this case it's easy to see what's
+
+2309
+01:50:52,210 --> 01:50:56,969
+wrong right
+
+2310
+01:50:53,050 --> 01:51:01,630
+but like often it's not so what do I do
+
+2311
+01:50:56,969 --> 01:51:05,319
+percent debug pops open the debugger at
+
+2312
+01:51:01,630 --> 01:51:09,960
+the point the exception that okay so now
+
+2313
+01:51:05,319 --> 01:51:09,960
+I can check like okay creds
+
+2314
+01:51:10,289 --> 01:51:21,340
+Len crits 64 5 times 100 I've got a
+
+2315
+01:51:17,050 --> 01:51:28,060
+print that size and 100 oh no one okay
+
+2316
+01:51:21,340 --> 01:51:33,250
+and you can go down the list okay so I
+
+2317
+01:51:28,060 --> 01:51:35,139
+do all of my development both with the
+
+2318
+01:51:33,250 --> 01:51:40,658
+library end of the lessons in G but a
+
+2319
+01:51:35,139 --> 01:51:44,618
+notebook I do it all interactively and I
+
+2320
+01:51:40,658 --> 01:51:46,658
+use you know percent debug you know all
+
+2321
+01:51:44,618 --> 01:51:48,130
+the time along with this idea of like
+
+2322
+01:51:46,658 --> 01:51:49,899
+copying stuff out of a function of
+
+2323
+01:51:48,130 --> 01:51:51,190
+putting in a desert of cells running it
+
+2324
+01:51:49,899 --> 01:51:53,408
+step by step
+
+2325
+01:51:51,189 --> 01:51:55,629
+there are similar things you can do
+
+2326
+01:51:53,408 --> 01:51:58,719
+inside for example Visual Studio code
+
+2327
+01:51:55,630 --> 01:52:01,239
+there's actually Jupiter extension which
+
+2328
+01:51:58,719 --> 01:52:04,179
+lets you select any line of code inside
+
+2329
+01:52:01,238 --> 01:52:06,759
+Visual Studio code and it'll and say run
+
+2330
+01:52:04,179 --> 01:52:08,710
+in Jupiter and it will run it in Jupiter
+
+2331
+01:52:06,760 --> 01:52:10,090
+and create a little window showing you
+
+2332
+01:52:08,710 --> 01:52:11,760
+the output
+
+2333
+01:52:10,090 --> 01:52:14,500
+there's neat little stuff like that
+
+2334
+01:52:11,760 --> 01:52:18,639
+personally I think Jupiter notebook is
+
+2335
+01:52:14,500 --> 01:52:21,158
+better and perhaps by the time you watch
+
+2336
+01:52:18,639 --> 01:52:22,690
+this on the video you know the lab or me
+
+2337
+01:52:21,158 --> 01:52:24,098
+the main thing give it a lab selection
+
+2338
+01:52:22,689 --> 01:52:31,089
+in the next version of Jupiter notebook
+
+2339
+01:52:24,099 --> 01:52:33,480
+pretty similar Wow I just broke it
+
+2340
+01:52:31,090 --> 01:52:33,480
+totally
+
+2341
+01:52:41,010 --> 01:52:45,429
+okay well we know exactly how to fix it
+
+2342
+01:52:43,988 --> 01:52:53,289
+so we were worried about that another
+
+2343
+01:52:45,429 --> 01:52:58,569
+time hey debug it this evening okay so
+
+2344
+01:52:53,289 --> 01:53:01,000
+to kind of do the next stage we want to
+
+2345
+01:52:58,569 --> 01:53:02,799
+create the bounding box okay and now
+
+2346
+01:53:01,000 --> 01:53:05,738
+creating the bounding box around the
+
+2347
+01:53:02,800 --> 01:53:08,409
+largest object may seem like something
+
+2348
+01:53:05,738 --> 01:53:09,459
+you haven't done before but actually
+
+2349
+01:53:08,409 --> 01:53:12,939
+it's totally something you've done
+
+2350
+01:53:09,460 --> 01:53:18,850
+before okay and the reason is something
+
+2351
+01:53:12,939 --> 01:53:21,609
+you've done before is we know that we
+
+2352
+01:53:18,850 --> 01:53:23,739
+can create a regression rather than a
+
+2353
+01:53:21,609 --> 01:53:25,719
+classification here all right in other
+
+2354
+01:53:23,738 --> 01:53:27,939
+words a classification year on there is
+
+2355
+01:53:25,719 --> 01:53:30,279
+just one that has a sigmoid or soft
+
+2356
+01:53:27,939 --> 01:53:35,649
+mapped out port and that we use across
+
+2357
+01:53:30,279 --> 01:53:37,509
+entropy or binary cross entropy loss
+
+2358
+01:53:35,649 --> 01:53:42,009
+function like that's basically what
+
+2359
+01:53:37,510 --> 01:53:45,579
+makes it if we don't have the softmax it
+
+2360
+01:53:42,010 --> 01:53:47,890
+boys at the end and we use means Guidera
+
+2361
+01:53:45,579 --> 01:53:50,050
+as a loss function it's now our
+
+2362
+01:53:47,890 --> 01:53:51,969
+regression model right and so we can now
+
+2363
+01:53:50,050 --> 01:53:55,829
+use it to predict a continuous number
+
+2364
+01:53:51,969 --> 01:53:58,840
+rather than the category we also know
+
+2365
+01:53:55,829 --> 01:54:01,390
+that we can have multiple outputs like
+
+2366
+01:53:58,840 --> 01:54:06,369
+in the planet competition we did a
+
+2367
+01:54:01,390 --> 01:54:08,640
+multiple object classification what if
+
+2368
+01:54:06,369 --> 01:54:13,300
+we combine the two ideas and to a
+
+2369
+01:54:08,640 --> 01:54:15,640
+multiple column regression so in this
+
+2370
+01:54:13,300 --> 01:54:19,869
+case we've got four numbers top left out
+
+2371
+01:54:15,640 --> 01:54:21,369
+and why bottom-right X&amp;Y yeah and we
+
+2372
+01:54:19,869 --> 01:54:24,670
+could create a neural net with four
+
+2373
+01:54:21,369 --> 01:54:26,679
+activations we could have no softmax or
+
+2374
+01:54:24,670 --> 01:54:29,399
+sigmoid and use a mean squared error
+
+2375
+01:54:26,679 --> 01:54:31,719
+loss function and this is kind of like
+
+2376
+01:54:29,399 --> 01:54:33,759
+where you're thinking about it like
+
+2377
+01:54:31,719 --> 01:54:37,329
+differentiable programming it's not like
+
+2378
+01:54:33,760 --> 01:54:40,600
+how do I create a bounding box model
+
+2379
+01:54:37,329 --> 01:54:42,850
+it's like all right what do I need I
+
+2380
+01:54:40,600 --> 01:54:46,090
+need four numbers therefore I need a
+
+2381
+01:54:42,850 --> 01:54:49,450
+neural network with four activations
+
+2382
+01:54:46,090 --> 01:54:51,520
+okay that's traffic what I need to know
+
+2383
+01:54:49,449 --> 01:54:54,699
+the other half I need to know is a loss
+
+2384
+01:54:51,520 --> 01:54:57,820
+function in other words what's a
+
+2385
+01:54:54,699 --> 01:55:00,130
+function that when it is lower means
+
+2386
+01:54:57,819 --> 01:55:01,689
+that the four numbers are better because
+
+2387
+01:55:00,130 --> 01:55:08,400
+if I can do those two things I'm going
+
+2388
+01:55:01,689 --> 01:55:10,329
+okay well if the X is close to the first
+
+2389
+01:55:08,399 --> 01:55:14,199
+activation and the wires close to the
+
+2390
+01:55:10,329 --> 01:55:17,050
+second so forth then I'm done so that's
+
+2391
+01:55:14,199 --> 01:55:19,809
+it I just need to create a model with
+
+2392
+01:55:17,050 --> 01:55:22,300
+four activations with a mean squared
+
+2393
+01:55:19,810 --> 01:55:25,420
+error loss function and that should be
+
+2394
+01:55:22,300 --> 01:55:31,180
+it right like we don't need anything new
+
+2395
+01:55:25,420 --> 01:55:35,190
+so let's try it so again we'll use a CSV
+
+2396
+01:55:31,180 --> 01:55:39,280
+right and if you remember from part one
+
+2397
+01:55:35,189 --> 01:55:41,559
+to do a multiple label classification
+
+2398
+01:55:39,279 --> 01:55:44,439
+your multiple labels have to be spaced
+
+2399
+01:55:41,560 --> 01:55:48,820
+separated okay and then your file name
+
+2400
+01:55:44,439 --> 01:55:57,699
+is comma separated so I'll take my
+
+2401
+01:55:48,819 --> 01:55:59,829
+largest item dictionary create a bunch
+
+2402
+01:55:57,699 --> 01:56:01,510
+of bounding boxes for each one separated
+
+2403
+01:55:59,829 --> 01:56:03,369
+by a space no use you know this
+
+2404
+01:56:01,510 --> 01:56:05,440
+comprehension I'll then create a data
+
+2405
+01:56:03,369 --> 01:56:07,510
+frame like I did before I'll turn that
+
+2406
+01:56:05,439 --> 01:56:09,849
+into a CSV and now I've got something
+
+2407
+01:56:07,510 --> 01:56:13,150
+that's got the file name and the four
+
+2408
+01:56:09,850 --> 01:56:18,520
+bounding box corners I will then pass
+
+2409
+01:56:13,149 --> 01:56:23,170
+that to from CSV again I will use crop
+
+2410
+01:56:18,520 --> 01:56:24,790
+type equals crop type dot no real next
+
+2411
+01:56:23,170 --> 01:56:27,340
+week we'll look at transform type dot
+
+2412
+01:56:24,789 --> 01:56:28,930
+coordinate for now just realize that
+
+2413
+01:56:27,340 --> 01:56:30,909
+when we're doing scaling and data
+
+2414
+01:56:28,930 --> 01:56:34,480
+augmentation that needs to happen to the
+
+2415
+01:56:30,909 --> 01:56:38,079
+bounding boxes not just images image
+
+2416
+01:56:34,479 --> 01:56:41,379
+classifier data dot CSV gets us to a
+
+2417
+01:56:38,079 --> 01:56:44,920
+situation where we can now grab one mini
+
+2418
+01:56:41,380 --> 01:56:46,449
+batch of data we can do normalize it we
+
+2419
+01:56:44,920 --> 01:56:48,250
+can turn the bounding box back into a
+
+2420
+01:56:46,449 --> 01:56:50,859
+height width so that we can show it and
+
+2421
+01:56:48,250 --> 01:56:52,689
+here it is okay remember we're not doing
+
+2422
+01:56:50,859 --> 01:56:55,210
+classification so I don't know what kind
+
+2423
+01:56:52,689 --> 01:56:59,678
+of thing this is it's just a thing but
+
+2424
+01:56:55,210 --> 01:57:03,550
+there is the thing okay so I now
+
+2425
+01:56:59,679 --> 01:57:07,719
+to create a comic debt based on
+
+2426
+01:57:03,550 --> 01:57:10,869
+President 34 but I don't want to add the
+
+2427
+01:57:07,719 --> 01:57:14,948
+standard a set of fully connected layers
+
+2428
+01:57:10,868 --> 01:57:17,259
+that create a classifier I want to just
+
+2429
+01:57:14,948 --> 01:57:20,348
+add a single linear layer with four
+
+2430
+01:57:17,260 --> 01:57:24,610
+outputs so first AI has this concept of
+
+2431
+01:57:20,349 --> 01:57:26,650
+a custom head if you say my model has a
+
+2432
+01:57:24,609 --> 01:57:28,569
+custom head the head being the thing
+
+2433
+01:57:26,649 --> 01:57:31,118
+that's added to the top of the model
+
+2434
+01:57:28,569 --> 01:57:33,908
+then it's not going to create any of
+
+2435
+01:57:31,118 --> 01:57:36,518
+that fully connected Network for you
+
+2436
+01:57:33,908 --> 01:57:39,368
+it's not going to add the adaptive
+
+2437
+01:57:36,519 --> 01:57:41,708
+average pooling for you but instead
+
+2438
+01:57:39,368 --> 01:57:43,899
+it'll add whatever model you asked for
+
+2439
+01:57:41,708 --> 01:57:47,229
+so in this case I've created a tiny
+
+2440
+01:57:43,899 --> 01:57:50,708
+model it's a model that flattens out the
+
+2441
+01:57:47,229 --> 01:57:52,689
+previous layer so remember I'm normally
+
+2442
+01:57:50,708 --> 01:57:55,868
+would have a seven by seven by I think
+
+2443
+01:57:52,689 --> 01:57:57,099
+512 previous layer in risen at 34 so it
+
+2444
+01:57:55,868 --> 01:57:59,859
+has flattens that out into a single
+
+2445
+01:57:57,099 --> 01:58:02,590
+vector of length 2508
+
+2446
+01:57:59,859 --> 01:58:04,808
+fat and then I just add a linear layer
+
+2447
+01:58:02,590 --> 01:58:07,389
+that goes from 2508 eight to four
+
+2448
+01:58:04,809 --> 01:58:10,900
+there's my four yeah so like that's the
+
+2449
+01:58:07,389 --> 01:58:13,420
+simplest possible kind of final layer
+
+2450
+01:58:10,899 --> 01:58:15,998
+you could add I stick that on top of my
+
+2451
+01:58:13,420 --> 01:58:18,038
+pre-trained risen at 34 model so this is
+
+2452
+01:58:15,998 --> 01:58:20,309
+exactly the same as usual except I've
+
+2453
+01:58:18,038 --> 01:58:23,649
+just got this custom here all right
+
+2454
+01:58:20,309 --> 01:58:25,179
+optimize it with atom user criteria I'm
+
+2455
+01:58:23,649 --> 01:58:27,879
+actually not going to use MSC I'm going
+
+2456
+01:58:25,179 --> 01:58:30,340
+to use l1 loss so I can't remember
+
+2457
+01:58:27,880 --> 01:58:32,498
+recover this last week we can revise it
+
+2458
+01:58:30,340 --> 01:58:34,719
+next week if we did it but l1 loss means
+
+2459
+01:58:32,498 --> 01:58:37,899
+rather than adding up the squared errors
+
+2460
+01:58:34,719 --> 01:58:40,059
+add up the absolute values of years so
+
+2461
+01:58:37,899 --> 01:58:42,308
+it's like it's it's normally actually
+
+2462
+01:58:40,059 --> 01:58:46,179
+what you want adding up the squared
+
+2463
+01:58:42,309 --> 01:58:48,699
+errors really penalize --is bad misses
+
+2464
+01:58:46,179 --> 01:58:53,708
+by too much so l1 loss is generally
+
+2465
+01:58:48,698 --> 01:58:55,478
+better to work with okay I'll come back
+
+2466
+01:58:53,708 --> 01:58:57,809
+to this next week but basically you can
+
+2467
+01:58:55,479 --> 01:59:01,889
+see what we do now is we do our ela find
+
+2468
+01:58:57,809 --> 01:59:05,409
+find our learning rate learn for a while
+
+2469
+01:59:01,889 --> 01:59:08,469
+freeze - - to learn a bit more freeze -
+
+2470
+01:59:05,408 --> 01:59:10,779
+- three learn a bit more and you can see
+
+2471
+01:59:08,469 --> 01:59:13,180
+this validation loss which remember is
+
+2472
+01:59:10,779 --> 01:59:15,000
+the absolute value mean of
+
+2473
+01:59:13,180 --> 01:59:18,940
+absolute value with pixels were off by
+
+2474
+01:59:15,000 --> 01:59:21,729
+gets lower and lower and then when we're
+
+2475
+01:59:18,939 --> 01:59:25,449
+done we can print out the bounding boxes
+
+2476
+01:59:21,729 --> 01:59:29,829
+and lo and behold it's done a damn good
+
+2477
+01:59:25,449 --> 01:59:33,489
+job okay so well revise this a bit more
+
+2478
+01:59:29,829 --> 01:59:34,899
+next week but like you can see this idea
+
+2479
+01:59:33,489 --> 01:59:37,149
+of like if I said to you before this
+
+2480
+01:59:34,899 --> 01:59:39,879
+class do you know how to create a
+
+2481
+01:59:37,149 --> 01:59:42,460
+bounding box model you might have said
+
+2482
+01:59:39,880 --> 01:59:45,039
+no nobody's taught me that all right
+
+2483
+01:59:42,460 --> 01:59:46,840
+but the question actually is can you
+
+2484
+01:59:45,039 --> 01:59:50,229
+create a model with for continuous
+
+2485
+01:59:46,840 --> 01:59:52,480
+outputs yes can you create a loss
+
+2486
+01:59:50,229 --> 01:59:54,759
+function that is lower if those poor
+
+2487
+01:59:52,479 --> 01:59:56,849
+outputs are near to four other numbers
+
+2488
+01:59:54,760 --> 01:59:59,260
+yes then you're done
+
+2489
+01:59:56,850 --> 02:00:01,539
+okay now you'll see if I scroll a bit
+
+2490
+01:59:59,260 --> 02:00:03,940
+further down it starts looking a bit
+
+2491
+02:00:01,539 --> 02:00:06,729
+crappy anytime we've got more than one
+
+2492
+02:00:03,939 --> 02:00:09,759
+object and that's not surprising right
+
+2493
+02:00:06,729 --> 02:00:12,339
+because like how the hell do you decide
+
+2494
+02:00:09,760 --> 02:00:15,940
+which birds so it's just said I'll just
+
+2495
+02:00:12,340 --> 02:00:18,250
+pick the middle which cow I'll pick the
+
+2496
+02:00:15,939 --> 02:00:22,029
+middle how much of this is actually
+
+2497
+02:00:18,250 --> 02:00:24,159
+potted plant right this one it could
+
+2498
+02:00:22,029 --> 02:00:26,489
+probably improve but you know it's got
+
+2499
+02:00:24,159 --> 02:00:29,319
+close to the car but it's pretty weird
+
+2500
+02:00:26,489 --> 02:00:31,989
+right but nonetheless you know for the
+
+2501
+02:00:29,319 --> 02:00:33,479
+ones that are reasonably clear I would
+
+2502
+02:00:31,989 --> 02:00:38,380
+say it's done a pretty good job
+
+2503
+02:00:33,479 --> 02:00:40,359
+okay all right so that's time for this
+
+2504
+02:00:38,380 --> 02:00:43,150
+week I think J you know it's been a kind
+
+2505
+02:00:40,359 --> 02:00:45,699
+of gentle introduction for the first
+
+2506
+02:00:43,149 --> 02:00:48,099
+lesson if you're a professional coder
+
+2507
+02:00:45,699 --> 02:00:50,710
+there's probably like not heaps of new
+
+2508
+02:00:48,100 --> 02:00:52,560
+stuff here for you and so you know in
+
+2509
+02:00:50,710 --> 02:00:54,520
+that case I would suggest like
+
+2510
+02:00:52,560 --> 02:00:57,070
+practicing learning you know about
+
+2511
+02:00:54,520 --> 02:00:59,620
+bounding boxes and stuff if you answer
+
+2512
+02:00:57,069 --> 02:01:02,859
+experienced with things like debuggers
+
+2513
+02:00:59,619 --> 02:01:04,180
+and that flat live api and stuff like
+
+2514
+02:01:02,859 --> 02:01:05,529
+that there's gonna be a lot for you to
+
+2515
+02:01:04,180 --> 02:01:07,659
+practice because we're going to be
+
+2516
+02:01:05,529 --> 02:01:10,149
+really assuming you know well from next
+
+2517
+02:01:07,659 --> 02:01:12,449
+week okay thanks everybody see you next
+
+2518
+02:01:10,149 --> 02:01:12,449
+Monday
+
+2519
+02:01:13,289 --> 02:01:16,198
+[Applause]
+

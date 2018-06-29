@@ -1,0 +1,8396 @@
+1
+00:00:00,690 --> 00:00:05,250
+well welcome back to machine learning
+
+2
+00:00:02,600 --> 00:00:08,580
+one of the most exciting things this
+
+3
+00:00:05,250 --> 00:00:10,530
+week almost certainly the most exciting
+
+4
+00:00:08,580 --> 00:00:14,580
+the thing this week is that fast AI is
+
+5
+00:00:10,529 --> 00:00:19,618
+now on Pitt so you can pip install fast
+
+6
+00:00:14,580 --> 00:00:23,070
+AI and so thank you to Prince and perk
+
+7
+00:00:19,618 --> 00:00:24,899
+to creme for making that happen to USF
+
+8
+00:00:23,070 --> 00:00:26,368
+students who had never published a hit
+
+9
+00:00:24,899 --> 00:00:27,989
+package before and this is one of the
+
+10
+00:00:26,368 --> 00:00:33,390
+harder ones to publish because it's got
+
+11
+00:00:27,989 --> 00:00:34,979
+a lot of dependencies so it's you know
+
+12
+00:00:33,390 --> 00:00:38,128
+probably still easiest just to do the
+
+13
+00:00:34,979 --> 00:00:40,229
+Condor end of update thing but a couple
+
+14
+00:00:38,128 --> 00:00:42,210
+of places that it would be handy instead
+
+15
+00:00:40,229 --> 00:00:45,179
+to pip install fast AI would be well
+
+16
+00:00:42,210 --> 00:00:47,700
+obviously if you're working outside of
+
+17
+00:00:45,179 --> 00:00:50,628
+the the repo in the notebooks then this
+
+18
+00:00:47,700 --> 00:00:53,219
+gives you access to fast AI everywhere
+
+19
+00:00:50,628 --> 00:00:54,839
+also I believe they submitted a pull
+
+20
+00:00:53,219 --> 00:00:56,308
+request to CAG or to try and get it
+
+21
+00:00:54,840 --> 00:00:57,420
+added to the Capitol kernels so
+
+22
+00:00:56,308 --> 00:01:01,738
+hopefully you'll be able to use it on
+
+23
+00:00:57,420 --> 00:01:05,820
+Kapil kernels soon and yeah you can use
+
+24
+00:01:01,738 --> 00:01:07,200
+it at your work or whatever else so
+
+25
+00:01:05,819 --> 00:01:08,699
+that's that's exciting
+
+26
+00:01:07,200 --> 00:01:11,010
+I mean I I'm not gonna say it's like
+
+27
+00:01:08,700 --> 00:01:13,650
+officially released yet you know it's
+
+28
+00:01:11,010 --> 00:01:16,200
+still very early obviously and we're
+
+29
+00:01:13,650 --> 00:01:18,750
+still you're helping add documentation
+
+30
+00:01:16,200 --> 00:01:23,280
+and all that kind of stuff but it's
+
+31
+00:01:18,750 --> 00:01:26,390
+great that that's now there a couple of
+
+32
+00:01:23,280 --> 00:01:28,710
+cool kernels from USF students this week
+
+33
+00:01:26,390 --> 00:01:32,909
+thought of highlight two that were both
+
+34
+00:01:28,709 --> 00:01:37,649
+from the text normalization competition
+
+35
+00:01:32,909 --> 00:01:43,618
+which was about trying to take text
+
+36
+00:01:37,650 --> 00:01:45,329
+which was written out you know wrote a
+
+37
+00:01:43,618 --> 00:01:47,340
+standard English text they also had one
+
+38
+00:01:45,328 --> 00:01:50,429
+per Russian and you're trying to kind of
+
+39
+00:01:47,340 --> 00:01:51,960
+identify things that could be like first
+
+40
+00:01:50,430 --> 00:01:53,670
+second third and say like that's a
+
+41
+00:01:51,959 --> 00:01:56,188
+cardinal number or this is a phone
+
+42
+00:01:53,670 --> 00:01:57,950
+number or whatever and I did a quick
+
+43
+00:01:56,188 --> 00:02:01,109
+little bit of searching and I saw that
+
+44
+00:01:57,950 --> 00:02:04,469
+there had been some attempts in academia
+
+45
+00:02:01,109 --> 00:02:06,739
+to use deep learning for this but they
+
+46
+00:02:04,468 --> 00:02:10,288
+hadn't managed to make much progress and
+
+47
+00:02:06,739 --> 00:02:12,329
+actually noticed so up here is Colonel
+
+48
+00:02:10,288 --> 00:02:14,878
+here which gets 0.99 two on the leader
+
+49
+00:02:12,330 --> 00:02:17,609
+board which i think is like top
+
+50
+00:02:14,878 --> 00:02:20,068
+is yeah it's kind of entirely heuristic
+
+51
+00:02:17,609 --> 00:02:21,629
+and it's a great example of kind of
+
+52
+00:02:20,068 --> 00:02:22,858
+feature engineering that's in this case
+
+53
+00:02:21,628 --> 00:02:25,169
+the whole thing is basically entirely
+
+54
+00:02:22,859 --> 00:02:26,670
+feature engineering so it's basically
+
+55
+00:02:25,169 --> 00:02:28,828
+looking through and using most of
+
+56
+00:02:26,669 --> 00:02:32,369
+regular expressions to figure out for
+
+57
+00:02:28,829 --> 00:02:33,750
+each token what is it you know and I
+
+58
+00:02:32,370 --> 00:02:35,639
+think she's done a great job here kind
+
+59
+00:02:33,750 --> 00:02:37,500
+of laying it all out clearly as to what
+
+60
+00:02:35,639 --> 00:02:40,709
+all the different pieces are and how
+
+61
+00:02:37,500 --> 00:02:42,090
+they all fit together and she mentioned
+
+62
+00:02:40,709 --> 00:02:43,259
+that she's maybe hoping to turn this
+
+63
+00:02:42,090 --> 00:02:44,729
+into a library which I think would be
+
+64
+00:02:43,259 --> 00:02:48,628
+great right you know you could use this
+
+65
+00:02:44,729 --> 00:02:51,179
+to grab a piece of text and pull out
+
+66
+00:02:48,628 --> 00:02:54,628
+what are all the pieces in it
+
+67
+00:02:51,180 --> 00:02:56,400
+it's the kind of thing that the the
+
+68
+00:02:54,628 --> 00:02:58,138
+natural language can like natural
+
+69
+00:02:56,400 --> 00:03:01,169
+language processing community hopes to
+
+70
+00:02:58,139 --> 00:03:03,540
+be able to do without like lots of hand
+
+71
+00:03:01,169 --> 00:03:05,849
+written code like this but for now this
+
+72
+00:03:03,539 --> 00:03:07,560
+is I'll be interesting to see like what
+
+73
+00:03:05,848 --> 00:03:10,649
+the winners turn out to have done but I
+
+74
+00:03:07,560 --> 00:03:13,639
+haven't seen machine learning being used
+
+75
+00:03:10,650 --> 00:03:15,840
+really to do this particularly well
+
+76
+00:03:13,639 --> 00:03:17,280
+perhaps the best approaches or ones
+
+77
+00:03:15,840 --> 00:03:19,500
+which combine this kind of feature
+
+78
+00:03:17,280 --> 00:03:22,408
+engineering along with some machine
+
+79
+00:03:19,500 --> 00:03:24,000
+learning but I think this is a great
+
+80
+00:03:22,408 --> 00:03:27,989
+example of effective feature engineering
+
+81
+00:03:24,000 --> 00:03:30,090
+and this is a another USF student who
+
+82
+00:03:27,989 --> 00:03:33,658
+has done much the same thing got a
+
+83
+00:03:30,090 --> 00:03:35,719
+similar kind of score but used used her
+
+84
+00:03:33,658 --> 00:03:38,310
+own different set of rules
+
+85
+00:03:35,719 --> 00:03:40,199
+again this is gets you it would get you
+
+86
+00:03:38,310 --> 00:03:42,000
+a good leader board position with these
+
+87
+00:03:40,199 --> 00:03:44,489
+as well so I thought that was
+
+88
+00:03:42,000 --> 00:03:47,848
+interesting to see examples of some of
+
+89
+00:03:44,489 --> 00:03:51,269
+our students entering a competition and
+
+90
+00:03:47,848 --> 00:03:53,158
+getting kind of top 20 ish results by
+
+91
+00:03:51,269 --> 00:03:56,579
+you know basically just handwritten
+
+92
+00:03:53,158 --> 00:04:01,078
+heuristics and this is where for example
+
+93
+00:03:56,579 --> 00:04:03,989
+computer vision was six years ago still
+
+94
+00:04:01,079 --> 00:04:05,699
+basically all the best approaches was a
+
+95
+00:04:03,989 --> 00:04:08,519
+whole lot of like carefully handwritten
+
+96
+00:04:05,699 --> 00:04:11,819
+heuristics often combined with some
+
+97
+00:04:08,519 --> 00:04:15,799
+simple machine learning and so I think
+
+98
+00:04:11,818 --> 00:04:18,620
+over time you know the field is kind of
+
+99
+00:04:15,799 --> 00:04:20,848
+definitely trying to move towards
+
+100
+00:04:18,620 --> 00:04:23,340
+automating much more of this and
+
+101
+00:04:20,848 --> 00:04:27,289
+actually interestingly very
+
+102
+00:04:23,339 --> 00:04:30,789
+interestingly in the safe driver
+
+103
+00:04:27,290 --> 00:04:33,740
+diction competition was just finished
+
+104
+00:04:30,790 --> 00:04:37,030
+one of the Netflix Prize winners won
+
+105
+00:04:33,740 --> 00:04:39,889
+this competition and he invented a new
+
+106
+00:04:37,029 --> 00:04:42,649
+algorithm for dealing with structured
+
+107
+00:04:39,889 --> 00:04:45,349
+data which basically doesn't require any
+
+108
+00:04:42,649 --> 00:04:50,239
+feature engineering at all so he came
+
+109
+00:04:45,350 --> 00:04:52,970
+first place using nothing but five deep
+
+110
+00:04:50,240 --> 00:04:56,060
+learning models and one gradient
+
+111
+00:04:52,970 --> 00:04:58,790
+boosting machine and his his basic
+
+112
+00:04:56,060 --> 00:05:00,530
+approach was very similar to what we've
+
+113
+00:04:58,790 --> 00:05:03,280
+been learning in this class so far and
+
+114
+00:05:00,529 --> 00:05:05,959
+what we'll be learning also tomorrow
+
+115
+00:05:03,279 --> 00:05:07,959
+which is using fully connected neural
+
+116
+00:05:05,959 --> 00:05:10,699
+network somewhere and one hot encoding
+
+117
+00:05:07,959 --> 00:05:12,799
+and specifically embedding which we'll
+
+118
+00:05:10,699 --> 00:05:14,990
+learn about but he had a very clever
+
+119
+00:05:12,800 --> 00:05:16,639
+technique which was there was a lot of
+
+120
+00:05:14,990 --> 00:05:19,699
+data in this competition which was
+
+121
+00:05:16,639 --> 00:05:23,060
+unlabeled so in other words where they
+
+122
+00:05:19,699 --> 00:05:25,759
+didn't know whether that driver would go
+
+123
+00:05:23,060 --> 00:05:27,769
+under claim or not or or whatever so
+
+124
+00:05:25,759 --> 00:05:30,050
+unlabeled data so when you've got some
+
+125
+00:05:27,769 --> 00:05:32,509
+labeled in some unlabeled data we call
+
+126
+00:05:30,050 --> 00:05:34,759
+that semi-supervised learning and in
+
+127
+00:05:32,509 --> 00:05:36,379
+real life most learning is
+
+128
+00:05:34,759 --> 00:05:38,509
+semi-supervised learning like in real
+
+129
+00:05:36,379 --> 00:05:39,649
+life normally you have some things that
+
+130
+00:05:38,509 --> 00:05:41,480
+are labeled and some things that are
+
+131
+00:05:39,649 --> 00:05:44,179
+unlabeled so this is kind of the most
+
+132
+00:05:41,480 --> 00:05:47,000
+practically useful kind of learning and
+
+133
+00:05:44,180 --> 00:05:48,829
+then structured data is it's the most
+
+134
+00:05:47,000 --> 00:05:50,600
+common kind of data that companies deal
+
+135
+00:05:48,829 --> 00:05:53,139
+with day to day so the fact that this
+
+136
+00:05:50,600 --> 00:05:55,879
+competition was a semi-supervised
+
+137
+00:05:53,139 --> 00:05:58,759
+structured data competition made it
+
+138
+00:05:55,879 --> 00:06:00,459
+incredibly practically useful and so
+
+139
+00:05:58,759 --> 00:06:06,170
+what his technique for winning this was
+
+140
+00:06:00,459 --> 00:06:07,129
+was to through data augmentation which
+
+141
+00:06:06,170 --> 00:06:08,360
+those of you doing the deep learning
+
+142
+00:06:07,129 --> 00:06:09,939
+course have learned about which is
+
+143
+00:06:08,360 --> 00:06:11,930
+basically the idea like if you had
+
+144
+00:06:09,939 --> 00:06:13,939
+pictures you would like flip them
+
+145
+00:06:11,930 --> 00:06:15,709
+horizontally or rotate them a bit later
+
+146
+00:06:13,939 --> 00:06:18,410
+orientation means creating new data
+
+147
+00:06:15,709 --> 00:06:20,719
+examples which are kind of slightly
+
+148
+00:06:18,410 --> 00:06:23,750
+different versions of ones you already
+
+149
+00:06:20,720 --> 00:06:27,200
+have and the way he did it was for each
+
+150
+00:06:23,750 --> 00:06:31,430
+row from the data he would like at
+
+151
+00:06:27,199 --> 00:06:34,670
+random replaced 15% of the variables
+
+152
+00:06:31,430 --> 00:06:36,769
+with a different row so each row now
+
+153
+00:06:34,670 --> 00:06:40,189
+would represent like a mix of like 80%
+
+154
+00:06:36,769 --> 00:06:42,168
+85% of the original row the 15% randomly
+
+155
+00:06:40,189 --> 00:06:45,199
+selected from a different
+
+156
+00:06:42,168 --> 00:06:47,870
+and so this was a way of like randomly
+
+157
+00:06:45,199 --> 00:06:50,600
+changing the data a little bit and then
+
+158
+00:06:47,870 --> 00:06:53,569
+he used something called an autoencoder
+
+159
+00:06:50,600 --> 00:06:54,949
+which we will probably won't study into
+
+160
+00:06:53,569 --> 00:06:56,870
+a part too with a deep learning course
+
+161
+00:06:54,949 --> 00:06:59,810
+but the basic idea of an autoencoder is
+
+162
+00:06:56,870 --> 00:07:01,728
+your dependent variable is the same as
+
+163
+00:06:59,810 --> 00:07:04,728
+your independent variable so in other
+
+164
+00:07:01,728 --> 00:07:09,139
+words you try to predict your input
+
+165
+00:07:04,728 --> 00:07:11,750
+which obviously is trivial if you're
+
+166
+00:07:09,139 --> 00:07:13,939
+allowed to like like you know the
+
+167
+00:07:11,750 --> 00:07:15,439
+identity transporting for example Rivoli
+
+168
+00:07:13,939 --> 00:07:16,189
+predicts the input but the trick with an
+
+169
+00:07:15,439 --> 00:07:20,269
+autoencoder
+
+170
+00:07:16,189 --> 00:07:23,540
+is to have less activations in at least
+
+171
+00:07:20,269 --> 00:07:25,129
+one of your layers than your input right
+
+172
+00:07:23,540 --> 00:07:27,229
+so if your input was like a hundred
+
+173
+00:07:25,129 --> 00:07:31,339
+dimensional vector and you put it
+
+174
+00:07:27,228 --> 00:07:33,500
+through a 100 by 10 matrix okay create
+
+175
+00:07:31,339 --> 00:07:35,899
+ten activations and then have to
+
+176
+00:07:33,500 --> 00:07:38,149
+recreate the original 100 long vector
+
+177
+00:07:35,899 --> 00:07:40,310
+from that then you've basically come you
+
+178
+00:07:38,149 --> 00:07:43,728
+had to have compressed it effectively
+
+179
+00:07:40,310 --> 00:07:46,970
+and so it turns out that that kind of
+
+180
+00:07:43,728 --> 00:07:50,629
+neural network you know is forced to
+
+181
+00:07:46,970 --> 00:07:52,580
+find correlations and features and
+
+182
+00:07:50,629 --> 00:07:55,069
+interesting relationships in the data
+
+183
+00:07:52,579 --> 00:07:57,348
+even when it's not labeled so he used
+
+184
+00:07:55,069 --> 00:07:59,149
+that rather than doing any he didn't do
+
+185
+00:07:57,348 --> 00:07:59,719
+any hand engineering he just used an
+
+186
+00:07:59,149 --> 00:08:02,629
+autoencoder
+
+187
+00:07:59,720 --> 00:08:04,490
+so you know these are some interesting
+
+188
+00:08:02,629 --> 00:08:06,949
+kind of directions that if you keep
+
+189
+00:08:04,490 --> 00:08:10,400
+going with your machine learning studies
+
+190
+00:08:06,949 --> 00:08:11,899
+you know particularly if you do a part
+
+191
+00:08:10,399 --> 00:08:17,569
+two with a deep learning course next
+
+192
+00:08:11,899 --> 00:08:20,299
+year your your lone about and you can
+
+193
+00:08:17,569 --> 00:08:22,728
+kind of see how feature engineering is
+
+194
+00:08:20,300 --> 00:08:25,699
+going away and this was just yeah an
+
+195
+00:08:22,728 --> 00:08:27,110
+hour ago so this is very recent using to
+
+196
+00:08:25,699 --> 00:08:29,269
+eat but it's one of this is one of the
+
+197
+00:08:27,110 --> 00:08:36,229
+most important breakthroughs I've seen
+
+198
+00:08:29,269 --> 00:08:42,439
+in a long time okay so we were working
+
+199
+00:08:36,229 --> 00:08:46,900
+through a simple logistic regression
+
+200
+00:08:42,440 --> 00:08:46,900
+trained with SJD for MS
+
+201
+00:08:49,610 --> 00:08:58,879
+and here's the summary of where we got
+
+202
+00:08:51,649 --> 00:09:01,459
+to we have nearly built a module a model
+
+203
+00:08:58,879 --> 00:09:02,960
+module and a training loop from scratch
+
+204
+00:09:01,460 --> 00:09:04,639
+and we were going to kind of try and
+
+205
+00:09:02,960 --> 00:09:06,139
+finish that and after we finished that
+
+206
+00:09:04,639 --> 00:09:09,409
+and then going to go through this entire
+
+207
+00:09:06,139 --> 00:09:11,029
+notebook backwards right so having gone
+
+208
+00:09:09,409 --> 00:09:16,129
+like top to bottom but I'm going to go
+
+209
+00:09:11,029 --> 00:09:18,860
+back through bottom to top okay so you
+
+210
+00:09:16,129 --> 00:09:22,789
+know this was that little handwritten
+
+211
+00:09:18,860 --> 00:09:25,519
+and end module class we created we
+
+212
+00:09:22,789 --> 00:09:27,379
+defined our loss we defined our learning
+
+213
+00:09:25,519 --> 00:09:28,250
+rate and we defined our optimizer and
+
+214
+00:09:27,379 --> 00:09:30,950
+this is the thing that we're going to
+
+215
+00:09:28,250 --> 00:09:35,419
+try and write by hand in a moment so
+
+216
+00:09:30,950 --> 00:09:37,220
+that stuff that and that we're stealing
+
+217
+00:09:35,419 --> 00:09:38,599
+with from pi torch but that we've
+
+218
+00:09:37,220 --> 00:09:40,160
+written ourselves and this week written
+
+219
+00:09:38,600 --> 00:09:42,440
+us all so the basic idea was we're going
+
+220
+00:09:40,159 --> 00:09:45,289
+to go through some number of epochs so
+
+221
+00:09:42,440 --> 00:09:46,940
+let's go through one epoch okay and
+
+222
+00:09:45,289 --> 00:09:49,789
+we're going to keep track of how much
+
+223
+00:09:46,940 --> 00:09:52,370
+for each mini batch what was the loss so
+
+224
+00:09:49,789 --> 00:09:54,139
+that we can report it at the end we're
+
+225
+00:09:52,370 --> 00:09:56,840
+going to turn our training data loader
+
+226
+00:09:54,139 --> 00:09:58,340
+into an iterator so that we can loop
+
+227
+00:09:56,840 --> 00:10:00,320
+through it live through every mini batch
+
+228
+00:09:58,340 --> 00:10:05,330
+and so now we can go and go ahead and
+
+229
+00:10:00,320 --> 00:10:08,000
+say for tensor in the length of the data
+
+230
+00:10:05,330 --> 00:10:10,580
+loader and then we can call next to grab
+
+231
+00:10:08,000 --> 00:10:13,100
+the next independent variables and the
+
+232
+00:10:10,580 --> 00:10:16,879
+dependent variables from our data loader
+
+233
+00:10:13,100 --> 00:10:20,779
+from that iterator okay so then remember
+
+234
+00:10:16,879 --> 00:10:23,090
+we can then pass the X tensor into our
+
+235
+00:10:20,779 --> 00:10:25,370
+model by calling the model as if it was
+
+236
+00:10:23,090 --> 00:10:27,950
+a function but first of all we have to
+
+237
+00:10:25,370 --> 00:10:30,799
+turn into a variable last week we were
+
+238
+00:10:27,950 --> 00:10:32,870
+typing variable blog CUDA to turn it
+
+239
+00:10:30,799 --> 00:10:35,120
+into a variable a shorthand for that is
+
+240
+00:10:32,870 --> 00:10:37,220
+just the capital V now it's a capital T
+
+241
+00:10:35,120 --> 00:10:39,409
+for a tensor capital B for a fever
+
+242
+00:10:37,220 --> 00:10:42,730
+variable that's just a shortcut in fast
+
+243
+00:10:39,409 --> 00:10:44,809
+AI okay so that returns our predictions
+
+244
+00:10:42,730 --> 00:10:48,409
+and so the next thing we needed was to
+
+245
+00:10:44,809 --> 00:10:50,089
+calculate our loss because we can't
+
+246
+00:10:48,409 --> 00:10:51,799
+calculate the derivatives of the loss of
+
+247
+00:10:50,090 --> 00:10:54,230
+U and calculate the loss so the loss
+
+248
+00:10:51,799 --> 00:10:56,929
+takes the predictions and the actuals
+
+249
+00:10:54,230 --> 00:10:59,090
+okay so the actuals again are the the Y
+
+250
+00:10:56,929 --> 00:11:01,879
+tensor and again we have to turn that
+
+251
+00:10:59,090 --> 00:11:03,269
+into a variable now can anybody remind
+
+252
+00:11:01,879 --> 00:11:05,970
+me what a
+
+253
+00:11:03,269 --> 00:11:13,379
+variable is and why we would want to use
+
+254
+00:11:05,970 --> 00:11:15,240
+a variable here I think once you turn it
+
+255
+00:11:13,379 --> 00:11:16,470
+to variable then it tracks it so then
+
+256
+00:11:15,240 --> 00:11:17,549
+you can do a backward on that so you can
+
+257
+00:11:16,470 --> 00:11:19,860
+yeah what sorry when you turned a
+
+258
+00:11:17,549 --> 00:11:21,359
+variable it it contract like this
+
+259
+00:11:19,860 --> 00:11:22,590
+process of like you know as you add the
+
+260
+00:11:21,360 --> 00:11:24,389
+function as the function starting
+
+261
+00:11:22,590 --> 00:11:25,860
+earlier than each other they can track
+
+262
+00:11:24,389 --> 00:11:30,110
+it and I may need to backward on it back
+
+263
+00:11:25,860 --> 00:11:30,110
+propagates and those days yeah right so
+
+264
+00:11:30,649 --> 00:11:41,250
+right so a variable keeps track of all
+
+265
+00:11:36,840 --> 00:11:44,220
+of the steps to get computed and so
+
+266
+00:11:41,250 --> 00:11:54,600
+there's actually a fantastic tutorial on
+
+267
+00:11:44,220 --> 00:11:56,700
+the PI torch website so on the pipe
+
+268
+00:11:54,600 --> 00:11:59,100
+torch website there's a tutorial section
+
+269
+00:11:56,700 --> 00:12:01,140
+and there's a tutorial there about Auto
+
+270
+00:11:59,100 --> 00:12:03,149
+grad Auto grad is the name of the
+
+271
+00:12:01,139 --> 00:12:05,490
+automatic differentiation package that
+
+272
+00:12:03,149 --> 00:12:07,019
+comes with a torch and it's a it's an
+
+273
+00:12:05,490 --> 00:12:09,509
+implementation of automatic
+
+274
+00:12:07,019 --> 00:12:14,100
+differentiation and so the variable
+
+275
+00:12:09,509 --> 00:12:15,929
+class is really the key the key class
+
+276
+00:12:14,100 --> 00:12:17,940
+here because that's the thing that makes
+
+277
+00:12:15,929 --> 00:12:20,399
+turns a tensor into something where we
+
+278
+00:12:17,940 --> 00:12:22,410
+can keep track of its gradients so
+
+279
+00:12:20,399 --> 00:12:25,230
+basically here they show how to create
+
+280
+00:12:22,409 --> 00:12:27,959
+their variable do an operation to a
+
+281
+00:12:25,230 --> 00:12:30,389
+variable and then you can go back and
+
+282
+00:12:27,960 --> 00:12:32,940
+actually look at the grand function
+
+283
+00:12:30,389 --> 00:12:35,699
+which is the the function that it's
+
+284
+00:12:32,940 --> 00:12:38,880
+keeping track of basically to calculate
+
+285
+00:12:35,700 --> 00:12:42,120
+the gradient right so as we do more and
+
+286
+00:12:38,879 --> 00:12:43,470
+more operations to this very variable
+
+287
+00:12:42,120 --> 00:12:45,899
+and the variable calculated from that
+
+288
+00:12:43,470 --> 00:12:48,930
+variable it keeps keeping track of it so
+
+289
+00:12:45,899 --> 00:12:52,559
+later on we can go dot backward and then
+
+290
+00:12:48,929 --> 00:12:54,959
+print grad and find out the gradient
+
+291
+00:12:52,559 --> 00:12:57,000
+right and so you notice we never defined
+
+292
+00:12:54,960 --> 00:13:02,400
+the gradient we just defined it as being
+
+293
+00:12:57,000 --> 00:13:06,470
+X plus 2 squared times 3 whatever and it
+
+294
+00:13:02,399 --> 00:13:06,470
+can calculate the gradient
+
+295
+00:13:11,610 --> 00:13:18,339
+okay so that's why we need to turn that
+
+296
+00:13:14,049 --> 00:13:20,439
+into a variable so L is now a variable
+
+297
+00:13:18,339 --> 00:13:23,380
+containing the loss so it contains a
+
+298
+00:13:20,440 --> 00:13:25,990
+single number for this mini batch which
+
+299
+00:13:23,379 --> 00:13:28,360
+is the loss for this mini batch but it's
+
+300
+00:13:25,990 --> 00:13:29,950
+not just a number it's a it's a number
+
+301
+00:13:28,360 --> 00:13:33,459
+as a variable so it's a number that
+
+302
+00:13:29,950 --> 00:13:35,440
+knows how it was calculated all right so
+
+303
+00:13:33,458 --> 00:13:39,009
+we're going to append that loss to our
+
+304
+00:13:35,440 --> 00:13:42,970
+array just so we can get the average of
+
+305
+00:13:39,009 --> 00:13:45,129
+it later basically and now we're going
+
+306
+00:13:42,970 --> 00:13:49,120
+to calculate the gradient so L drop
+
+307
+00:13:45,129 --> 00:13:51,458
+backward is a thing that says calculate
+
+308
+00:13:49,120 --> 00:13:54,129
+the gradient so remember when you recall
+
+309
+00:13:51,458 --> 00:13:56,439
+the the network it's actually calling
+
+310
+00:13:54,129 --> 00:13:58,899
+our forward function so that's like cap
+
+311
+00:13:56,440 --> 00:14:00,700
+go through it forward and then backward
+
+312
+00:13:58,899 --> 00:14:03,970
+is like using the chain rule to
+
+313
+00:14:00,700 --> 00:14:05,379
+calculate the gradients backwards okay
+
+314
+00:14:03,970 --> 00:14:07,750
+and then this is the thing we're about
+
+315
+00:14:05,379 --> 00:14:10,088
+to write which is update the weights
+
+316
+00:14:07,750 --> 00:14:13,539
+based on the gradients and the learning
+
+317
+00:14:10,089 --> 00:14:17,740
+rate okay zero grad will explain when we
+
+318
+00:14:13,539 --> 00:14:20,559
+write this out by hand okay and so then
+
+319
+00:14:17,740 --> 00:14:23,589
+at the end we can turn our validation
+
+320
+00:14:20,559 --> 00:14:27,869
+data loader into an iterator and we can
+
+321
+00:14:23,589 --> 00:14:31,839
+then go through its length grabbing each
+
+322
+00:14:27,870 --> 00:14:35,230
+X and way out of that and asking for the
+
+323
+00:14:31,839 --> 00:14:38,950
+score which we defined up here to be
+
+324
+00:14:35,230 --> 00:14:42,250
+equal to which thing did you predict
+
+325
+00:14:38,950 --> 00:14:44,528
+which thing was actual and so check
+
+326
+00:14:42,250 --> 00:14:48,039
+whether they're equal right and then the
+
+327
+00:14:44,528 --> 00:14:53,100
+main of that is going to be our accuracy
+
+328
+00:14:48,039 --> 00:14:55,809
+okay could you pass that over to Chen XI
+
+329
+00:14:53,100 --> 00:14:58,000
+what's the advantage that you found
+
+330
+00:14:55,809 --> 00:15:01,559
+converted into iterator resident like
+
+331
+00:14:58,000 --> 00:15:05,799
+used normal and on a Python loop or
+
+332
+00:15:01,559 --> 00:15:07,449
+we're using a normal Python loop so it's
+
+333
+00:15:05,799 --> 00:15:10,449
+still them this is a normal Python loop
+
+334
+00:15:07,450 --> 00:15:14,470
+so the question really is like compared
+
+335
+00:15:10,450 --> 00:15:16,060
+to what right so like the alternative
+
+336
+00:15:14,470 --> 00:15:18,160
+perhaps nothing here could be like we
+
+337
+00:15:16,059 --> 00:15:21,369
+could use like a something like a list
+
+338
+00:15:18,159 --> 00:15:22,360
+with an index oh okay so you know the
+
+339
+00:15:21,370 --> 00:15:26,440
+problem there is the
+
+340
+00:15:22,360 --> 00:15:28,180
+we want as a few things I mean one key
+
+341
+00:15:26,440 --> 00:15:30,310
+one is we want each time we grab a new
+
+342
+00:15:28,179 --> 00:15:32,769
+mini batch we want to be random we want
+
+343
+00:15:30,309 --> 00:15:35,708
+a different different shuffled thing so
+
+344
+00:15:32,769 --> 00:15:38,470
+this you can actually kind of iterate
+
+345
+00:15:35,708 --> 00:15:39,849
+from forever you know you can look
+
+346
+00:15:38,470 --> 00:15:42,670
+through it as many times as you like
+
+347
+00:15:39,850 --> 00:15:44,170
+so this is kind of idea it's called
+
+348
+00:15:42,669 --> 00:15:46,778
+different things in different languages
+
+349
+00:15:44,169 --> 00:15:49,149
+but a lot of languages a lot like stream
+
+350
+00:15:46,778 --> 00:15:50,559
+processing and it's this basic idea that
+
+351
+00:15:49,149 --> 00:15:52,419
+rather than saying I want the third
+
+352
+00:15:50,559 --> 00:15:54,549
+thing or the ninth thing is just like I
+
+353
+00:15:52,419 --> 00:15:56,649
+want the next thing right it's great for
+
+354
+00:15:54,549 --> 00:15:58,870
+like network programming it's like grab
+
+355
+00:15:56,649 --> 00:16:02,500
+the next thing from the network it's
+
+356
+00:15:58,870 --> 00:16:03,610
+great for UI programming it's like we
+
+357
+00:16:02,500 --> 00:16:05,350
+have the next event where there's
+
+358
+00:16:03,610 --> 00:16:08,169
+somebody clicked a button it also turns
+
+359
+00:16:05,350 --> 00:16:09,519
+out to be great for this kind of numeric
+
+360
+00:16:08,169 --> 00:16:13,539
+programming's it's like I just want the
+
+361
+00:16:09,519 --> 00:16:16,659
+next batch of data it means that the
+
+362
+00:16:13,539 --> 00:16:18,250
+data like can be kind of arbitrarily
+
+363
+00:16:16,659 --> 00:16:23,588
+long as we're just grabbing one piece at
+
+364
+00:16:18,250 --> 00:16:26,019
+a time yeah so you know I mean and also
+
+365
+00:16:23,589 --> 00:16:28,329
+I guess the short answer is because it's
+
+366
+00:16:26,019 --> 00:16:30,159
+our PI approach works if I torch that
+
+367
+00:16:28,328 --> 00:16:32,859
+light torches data loaders are designed
+
+368
+00:16:30,159 --> 00:16:36,000
+to be poured in this way and then so
+
+369
+00:16:32,860 --> 00:16:39,159
+Python has this concept of a generator
+
+370
+00:16:36,000 --> 00:16:40,328
+which is like an and and just a
+
+371
+00:16:39,159 --> 00:16:42,159
+different type of generator
+
+372
+00:16:40,328 --> 00:16:43,929
+I want to physical gonna be a snake
+
+373
+00:16:42,159 --> 00:16:48,309
+generator or a computer of generator
+
+374
+00:16:43,929 --> 00:16:49,899
+okay a generator is a way that you can
+
+375
+00:16:48,309 --> 00:16:51,909
+create a function that as it says
+
+376
+00:16:49,899 --> 00:16:53,948
+behaves like an iterator so like python
+
+377
+00:16:51,909 --> 00:16:56,169
+has recognized that this stream
+
+378
+00:16:53,948 --> 00:16:57,958
+processing approach to programming is
+
+379
+00:16:56,169 --> 00:17:00,519
+like super handy and helpful and
+
+380
+00:16:57,958 --> 00:17:03,250
+supports it everywhere so basically
+
+381
+00:17:00,519 --> 00:17:06,939
+anywhere that you user for in loop any
+
+382
+00:17:03,250 --> 00:17:08,769
+way you use a list comprehension those
+
+383
+00:17:06,939 --> 00:17:11,380
+things can always be generators or
+
+384
+00:17:08,769 --> 00:17:15,129
+iterators so by programming this way we
+
+385
+00:17:11,380 --> 00:17:17,260
+just get a lot of flexibility I guess
+
+386
+00:17:15,130 --> 00:17:18,549
+does that sound about right Terrence
+
+387
+00:17:17,259 --> 00:17:21,220
+you're the programming language expert
+
+388
+00:17:18,548 --> 00:17:24,189
+did you do you want to grab that box so
+
+389
+00:17:21,220 --> 00:17:25,808
+you can hear so Terrence actually does
+
+390
+00:17:24,189 --> 00:17:27,970
+programming languages for a living so we
+
+391
+00:17:25,808 --> 00:17:31,629
+should ask him yeah I mean the short
+
+392
+00:17:27,970 --> 00:17:33,130
+answer is what you said you might say
+
+393
+00:17:31,630 --> 00:17:35,770
+something about space but in this case
+
+394
+00:17:33,130 --> 00:17:38,740
+that all that data has to be in memory
+
+395
+00:17:35,769 --> 00:17:40,960
+because we've got no doesn't have to be
+
+396
+00:17:38,740 --> 00:17:42,579
+a memory so that most of the time if we
+
+397
+00:17:40,960 --> 00:17:44,170
+could pull a mini batch from something
+
+398
+00:17:42,579 --> 00:17:46,990
+that most of the time with pipe torch
+
+399
+00:17:44,170 --> 00:17:49,570
+the mini batch will be read from like
+
+400
+00:17:46,990 --> 00:17:51,370
+separate images spread over your disk on
+
+401
+00:17:49,569 --> 00:17:53,470
+demand so most of the time it's not in
+
+402
+00:17:51,369 --> 00:17:56,199
+memory but in in general you want to
+
+403
+00:17:53,470 --> 00:17:57,700
+keep his little in memory as possible at
+
+404
+00:17:56,200 --> 00:17:59,590
+a time and so the idea of stream
+
+405
+00:17:57,700 --> 00:18:01,750
+processing also is great because you can
+
+406
+00:17:59,589 --> 00:18:04,119
+do compositions you can pipe the data to
+
+407
+00:18:01,750 --> 00:18:05,440
+a different machine you can yeah yeah
+
+408
+00:18:04,119 --> 00:18:06,909
+the composition is great you can grab
+
+409
+00:18:05,440 --> 00:18:08,289
+scrap the next thing from here and then
+
+410
+00:18:06,910 --> 00:18:09,509
+send it off to the next stream which you
+
+411
+00:18:08,289 --> 00:18:11,680
+can then grab it and do something else
+
+412
+00:18:09,509 --> 00:18:13,150
+which you guys all recognize of course
+
+413
+00:18:11,680 --> 00:18:18,570
+in the command-line pipes and
+
+414
+00:18:13,150 --> 00:18:20,920
+redirection yes okay thanks Terrence
+
+415
+00:18:18,569 --> 00:18:21,819
+it's a benefit of working with people
+
+416
+00:18:20,920 --> 00:18:26,500
+that actually know what they're talking
+
+417
+00:18:21,819 --> 00:18:30,159
+about all right so let's know take that
+
+418
+00:18:26,500 --> 00:18:31,299
+and get rid of the optimizer okay so the
+
+419
+00:18:30,160 --> 00:18:33,400
+only thing that we're going to be left
+
+420
+00:18:31,299 --> 00:18:36,490
+with is the negative log likelihood loss
+
+421
+00:18:33,400 --> 00:18:39,190
+function which we could also replace
+
+422
+00:18:36,490 --> 00:18:41,019
+actually we have a implementation of
+
+423
+00:18:39,190 --> 00:18:44,410
+that from scratch that you know wrote in
+
+424
+00:18:41,019 --> 00:18:46,299
+the in the notebooks so it's only one
+
+425
+00:18:44,410 --> 00:18:47,650
+line of code as we learned earlier you
+
+426
+00:18:46,299 --> 00:18:50,589
+can do it with a single if statement
+
+427
+00:18:47,650 --> 00:18:54,430
+okay so I don't know why I was so lazy
+
+428
+00:18:50,589 --> 00:18:56,019
+is to include this so what we're going
+
+429
+00:18:54,430 --> 00:18:57,759
+to do is we're gonna again grab this
+
+430
+00:18:56,019 --> 00:18:59,349
+module that we've written ourselves the
+
+431
+00:18:57,759 --> 00:19:02,769
+logistic regression module we're going
+
+432
+00:18:59,349 --> 00:19:04,329
+to have one epoch again we're going to
+
+433
+00:19:02,769 --> 00:19:06,420
+loop through each thing in an iterator
+
+434
+00:19:04,329 --> 00:19:08,379
+again they're going to grab our
+
+435
+00:19:06,420 --> 00:19:10,810
+independent and dependent variable for
+
+436
+00:19:08,380 --> 00:19:13,510
+the mini batch again pass it into our
+
+437
+00:19:10,809 --> 00:19:15,909
+network again calculate the loss so this
+
+438
+00:19:13,509 --> 00:19:17,740
+is all the same as before but now we're
+
+439
+00:19:15,910 --> 00:19:21,150
+going to get rid of this optimizer dot
+
+440
+00:19:17,740 --> 00:19:25,720
+step and we're going to do it by hand so
+
+441
+00:19:21,150 --> 00:19:27,759
+the basic trick is as I mentioned we're
+
+442
+00:19:25,720 --> 00:19:29,410
+not going to do the calculus by hand so
+
+443
+00:19:27,759 --> 00:19:31,990
+we call L drop backward to calculate the
+
+444
+00:19:29,410 --> 00:19:34,930
+gradients automatically and that's going
+
+445
+00:19:31,990 --> 00:19:37,599
+to fairly in our weight matrix so do you
+
+446
+00:19:34,930 --> 00:19:44,860
+remember when we created our let's go
+
+447
+00:19:37,599 --> 00:19:46,809
+back and look at the code for here's
+
+448
+00:19:44,859 --> 00:19:48,928
+that module we built so the weight
+
+449
+00:19:46,809 --> 00:19:52,619
+matrix for the for the
+
+450
+00:19:48,929 --> 00:19:55,019
+linear layer weights recall l1 w and for
+
+451
+00:19:52,619 --> 00:20:00,859
+the BIOS record l1 B all right so though
+
+452
+00:19:55,019 --> 00:20:00,859
+they were the attributes we created so
+
+453
+00:20:01,579 --> 00:20:07,019
+I've just put them into things called W
+
+454
+00:20:04,230 --> 00:20:10,370
+and B just to save some typing basically
+
+455
+00:20:07,019 --> 00:20:13,440
+so W is our weights B is our biases and
+
+456
+00:20:10,369 --> 00:20:16,289
+so the weights remember the weights are
+
+457
+00:20:13,440 --> 00:20:18,450
+a variable and to get the tensor out of
+
+458
+00:20:16,289 --> 00:20:19,980
+the variable we have to use data all
+
+459
+00:20:18,450 --> 00:20:22,169
+right so we want to update the actual
+
+460
+00:20:19,980 --> 00:20:25,650
+tensor that's in this variable so we say
+
+461
+00:20:22,169 --> 00:20:27,150
+weights data minus equals so we want to
+
+462
+00:20:25,650 --> 00:20:28,440
+go in the opposite direction to the
+
+463
+00:20:27,150 --> 00:20:32,820
+gradient the gradient tells us which
+
+464
+00:20:28,440 --> 00:20:37,320
+wears up we want to go down whatever is
+
+465
+00:20:32,819 --> 00:20:40,970
+currently in the gradients times the
+
+466
+00:20:37,319 --> 00:20:44,428
+learning rate so that is the formula for
+
+467
+00:20:40,970 --> 00:20:47,669
+gradient descent all right so as you can
+
+468
+00:20:44,429 --> 00:20:48,929
+see it's it's like as as easier thing as
+
+469
+00:20:47,669 --> 00:20:51,450
+you can possibly imagine it's like
+
+470
+00:20:48,929 --> 00:20:53,519
+literally update the weights to be equal
+
+471
+00:20:51,450 --> 00:20:56,250
+to be equal to whatever they are now
+
+472
+00:20:53,519 --> 00:20:59,240
+minus the greater the gradients times
+
+473
+00:20:56,250 --> 00:21:03,119
+our learning rate and do the same thing
+
+474
+00:20:59,240 --> 00:21:04,769
+for the bias anybody have any questions
+
+475
+00:21:03,119 --> 00:21:06,209
+about that step in terms of like why we
+
+476
+00:21:04,769 --> 00:21:10,259
+do it or how it did you have a question
+
+477
+00:21:06,210 --> 00:21:15,900
+about that that step but when we do the
+
+478
+00:21:10,259 --> 00:21:17,609
+next job deal the next here yes yes so
+
+479
+00:21:15,900 --> 00:21:20,910
+when is the end of the loop how do you
+
+480
+00:21:17,609 --> 00:21:26,519
+grab the next element so this is going
+
+481
+00:21:20,910 --> 00:21:29,519
+through each h-index in range of length
+
+482
+00:21:26,519 --> 00:21:32,308
+so is this going 0 1 2 3 at the end of
+
+483
+00:21:29,519 --> 00:21:35,039
+this loop it's going to print out the
+
+484
+00:21:32,308 --> 00:21:36,928
+mean of the validation set go back to
+
+485
+00:21:35,039 --> 00:21:39,029
+the start of the epoch at which point
+
+486
+00:21:36,929 --> 00:21:42,390
+it's going to recreate a new a new
+
+487
+00:21:39,029 --> 00:21:45,720
+iterator okay so basically behind the
+
+488
+00:21:42,390 --> 00:21:49,049
+scenes in Python when you call it a on
+
+489
+00:21:45,720 --> 00:21:52,730
+on this it basically tells it like reset
+
+490
+00:21:49,048 --> 00:21:52,730
+its state to create a new iterator and
+
+491
+00:21:52,940 --> 00:21:59,120
+if you're interested in how that works
+
+492
+00:21:56,250 --> 00:21:59,119
+the
+
+493
+00:22:01,089 --> 00:22:06,740
+the code is all you know available for
+
+494
+00:22:04,759 --> 00:22:10,640
+you to look at so we could look at like
+
+495
+00:22:06,740 --> 00:22:13,339
+MD trained your is a fast AI dot data
+
+496
+00:22:10,640 --> 00:22:16,520
+setup model data loader so we could like
+
+497
+00:22:13,339 --> 00:22:17,809
+take a look at the code of that so we
+
+498
+00:22:16,519 --> 00:22:22,129
+could take a look at the code of that
+
+499
+00:22:17,809 --> 00:22:23,809
+and see exactly how it's being built
+
+500
+00:22:22,130 --> 00:22:26,720
+right and so you can see here that
+
+501
+00:22:23,809 --> 00:22:29,480
+here's the next function right which
+
+502
+00:22:26,720 --> 00:22:31,100
+basically is keeping track of how many
+
+503
+00:22:29,480 --> 00:22:34,640
+times it's been through in this self dot
+
+504
+00:22:31,099 --> 00:22:36,049
+I and here's the Edith function which is
+
+505
+00:22:34,640 --> 00:22:37,790
+the thing that gets pretty cold when you
+
+506
+00:22:36,049 --> 00:22:39,230
+when you create a new iterator and you
+
+507
+00:22:37,789 --> 00:22:40,879
+can see it's basically passing it off to
+
+508
+00:22:39,230 --> 00:22:42,769
+something else which is a type data
+
+509
+00:22:40,880 --> 00:22:44,030
+loader and then you can check out data
+
+510
+00:22:42,769 --> 00:22:47,869
+loader if you're interested to see how
+
+511
+00:22:44,029 --> 00:22:50,809
+that's implemented as well um so the
+
+512
+00:22:47,869 --> 00:22:53,269
+data loader that we wrote basically uses
+
+513
+00:22:50,809 --> 00:22:54,859
+multi-threading to allow it to have
+
+514
+00:22:53,269 --> 00:22:57,859
+multiple of these going on at the same
+
+515
+00:22:54,859 --> 00:22:59,629
+time it's actually a great it's really
+
+516
+00:22:57,859 --> 00:23:01,339
+simple it's like it's only about a
+
+517
+00:22:59,630 --> 00:23:02,600
+screen full of code so if you're
+
+518
+00:23:01,339 --> 00:23:05,079
+interested in simple Modi threaded
+
+519
+00:23:02,599 --> 00:23:09,669
+programming it's a good thing to look at
+
+520
+00:23:05,079 --> 00:23:13,399
+okay now oh yes
+
+521
+00:23:09,670 --> 00:23:15,759
+why how do you wrap this in four epoch
+
+522
+00:23:13,400 --> 00:23:18,800
+in range one since that'll only run once
+
+523
+00:23:15,759 --> 00:23:22,519
+because in real life we would normally
+
+524
+00:23:18,799 --> 00:23:25,099
+be running multiple so like in this case
+
+525
+00:23:22,519 --> 00:23:28,400
+because it's a linear model it actually
+
+526
+00:23:25,099 --> 00:23:30,500
+basically trains to as good as it's
+
+527
+00:23:28,400 --> 00:23:37,100
+going to get in one he park so if I type
+
+528
+00:23:30,500 --> 00:23:38,900
+three here it actually it actually won't
+
+529
+00:23:37,099 --> 00:23:42,109
+really improve after the first epoch
+
+530
+00:23:38,900 --> 00:23:43,880
+much at all as you can see right but
+
+531
+00:23:42,109 --> 00:23:45,109
+when we go back up to the top we're
+
+532
+00:23:43,880 --> 00:23:47,540
+going to look at some slightly deeper
+
+533
+00:23:45,109 --> 00:23:50,029
+and more interesting versions which will
+
+534
+00:23:47,539 --> 00:23:52,849
+take more a box so you know if I was
+
+535
+00:23:50,029 --> 00:23:55,369
+turning this into a into a function you
+
+536
+00:23:52,849 --> 00:23:58,789
+know I'd be going like you know death
+
+537
+00:23:55,369 --> 00:24:00,049
+train model and one of the things you
+
+538
+00:23:58,789 --> 00:24:10,849
+would pass you and is like number of
+
+539
+00:24:00,049 --> 00:24:14,740
+epochs kind of thing okay great so one
+
+540
+00:24:10,849 --> 00:24:17,389
+thing to remember is that when you're
+
+541
+00:24:14,740 --> 00:24:22,190
+you know creating these neural network
+
+542
+00:24:17,390 --> 00:24:23,540
+layers and remember like this is just as
+
+543
+00:24:22,190 --> 00:24:26,150
+pipe Rogers concerned this is just a
+
+544
+00:24:23,539 --> 00:24:27,799
+it's an end up module it could be a week
+
+545
+00:24:26,150 --> 00:24:29,180
+could be using it as a layer who could
+
+546
+00:24:27,799 --> 00:24:31,279
+be using to a function we could be using
+
+547
+00:24:29,180 --> 00:24:33,740
+it as a neural net pipe torch doesn't
+
+548
+00:24:31,279 --> 00:24:36,109
+think of those as different things right
+
+549
+00:24:33,740 --> 00:24:39,410
+so this could be a layer inside some
+
+550
+00:24:36,109 --> 00:24:41,000
+other network okay so how do gradients
+
+551
+00:24:39,410 --> 00:24:43,759
+work so if you've got a layer which
+
+552
+00:24:41,000 --> 00:24:45,680
+remember is just a bunch of we can think
+
+553
+00:24:43,759 --> 00:24:48,200
+of it basically as its activations right
+
+554
+00:24:45,680 --> 00:24:51,200
+or some activations that get computed
+
+555
+00:24:48,200 --> 00:24:53,180
+through some other nonlinear activation
+
+556
+00:24:51,200 --> 00:24:59,539
+function or through some linear function
+
+557
+00:24:53,180 --> 00:25:01,250
+and from that layer we it's very likely
+
+558
+00:24:59,539 --> 00:25:04,759
+that we're then like let's say putting
+
+559
+00:25:01,250 --> 00:25:09,859
+it through a matrix product right to
+
+560
+00:25:04,759 --> 00:25:13,309
+create some new layer and so each one of
+
+561
+00:25:09,859 --> 00:25:16,369
+these so if we were to grab like one of
+
+562
+00:25:13,309 --> 00:25:21,589
+these activations right is actually
+
+563
+00:25:16,369 --> 00:25:25,369
+going to be used to calculate every one
+
+564
+00:25:21,589 --> 00:25:30,980
+of these outputs right and so if you
+
+565
+00:25:25,369 --> 00:25:34,509
+want to calculate the the derivative you
+
+566
+00:25:30,980 --> 00:25:37,759
+have to know how this weight matrix
+
+567
+00:25:34,509 --> 00:25:39,980
+impacts that output and that output and
+
+568
+00:25:37,759 --> 00:25:41,509
+that output and that output right and
+
+569
+00:25:39,980 --> 00:25:44,000
+then you have to add all of those
+
+570
+00:25:41,509 --> 00:25:46,819
+together to find like the total impact
+
+571
+00:25:44,000 --> 00:25:52,420
+of this you know across all of its
+
+572
+00:25:46,819 --> 00:25:55,759
+outputs and so that's why in PI torch
+
+573
+00:25:52,420 --> 00:25:58,039
+you have to tell it when to set the
+
+574
+00:25:55,759 --> 00:25:59,420
+gradients to zero right because the idea
+
+575
+00:25:58,039 --> 00:26:01,039
+is that you know you could be like
+
+576
+00:25:59,420 --> 00:26:02,360
+having lots of different loss functions
+
+577
+00:26:01,039 --> 00:26:04,309
+or lots of different outputs in your
+
+578
+00:26:02,359 --> 00:26:08,089
+next activate set of activations
+
+579
+00:26:04,309 --> 00:26:10,519
+or whatever all adding up increasing or
+
+580
+00:26:08,089 --> 00:26:12,970
+decreasing your gradients right so you
+
+581
+00:26:10,519 --> 00:26:15,220
+basically have to say okay this is a new
+
+582
+00:26:12,970 --> 00:26:19,610
+calculation
+
+583
+00:26:15,220 --> 00:26:22,360
+reset okay so here is where we do that
+
+584
+00:26:19,609 --> 00:26:25,779
+so before we do LDAP backward we say
+
+585
+00:26:22,359 --> 00:26:28,819
+reset okay so let's take our weights
+
+586
+00:26:25,779 --> 00:26:32,058
+let's take the gradients let's take the
+
+587
+00:26:28,819 --> 00:26:34,129
+ten so that they point to and then zero
+
+588
+00:26:32,058 --> 00:26:34,970
+underscore does anybody remember from
+
+589
+00:26:34,130 --> 00:26:37,790
+last week
+
+590
+00:26:34,970 --> 00:26:45,980
+what underscore does as a suffix in pi
+
+591
+00:26:37,789 --> 00:26:47,839
+torched yeah I have to read the language
+
+592
+00:26:45,980 --> 00:26:48,259
+but basically it changes I put into
+
+593
+00:26:47,839 --> 00:26:52,849
+place
+
+594
+00:26:48,259 --> 00:26:55,009
+that language is in place yeah exactly
+
+595
+00:26:52,849 --> 00:26:57,769
+so it sounds like a minor technicality
+
+596
+00:26:55,009 --> 00:26:59,450
+but it's super useful to remember every
+
+597
+00:26:57,769 --> 00:27:02,740
+function pretty much has an underscore
+
+598
+00:26:59,450 --> 00:27:07,700
+version suffix which does it in place
+
+599
+00:27:02,740 --> 00:27:10,190
+yeah so normally zero returns a tensor
+
+600
+00:27:07,700 --> 00:27:13,069
+of zeros of a particular size so zero
+
+601
+00:27:10,190 --> 00:27:16,610
+underscore means replace the contents of
+
+602
+00:27:13,069 --> 00:27:17,058
+this with a bunch of zeros okay all
+
+603
+00:27:16,609 --> 00:27:22,729
+right
+
+604
+00:27:17,058 --> 00:27:26,149
+so that's that's it right so that's like
+
+605
+00:27:22,730 --> 00:27:27,829
+SJD from scratch and if I get rid of my
+
+606
+00:27:26,150 --> 00:27:32,269
+menu bar we can officially say it fits
+
+607
+00:27:27,829 --> 00:27:33,740
+within a screen yeah so of course we
+
+608
+00:27:32,269 --> 00:27:35,089
+haven't got our definition of logistic
+
+609
+00:27:33,740 --> 00:27:36,798
+regression here that's another half the
+
+610
+00:27:35,089 --> 00:27:41,209
+screen but basically there's there's not
+
+611
+00:27:36,798 --> 00:27:42,798
+much to it yes sir so later on we have
+
+612
+00:27:41,210 --> 00:27:44,960
+to do this more the gradient is it
+
+613
+00:27:42,798 --> 00:27:47,240
+because you might find like a wrong
+
+614
+00:27:44,960 --> 00:27:48,380
+minima local minima that way we have to
+
+615
+00:27:47,240 --> 00:27:50,000
+kick it out and that's we have to do
+
+616
+00:27:48,380 --> 00:27:51,020
+multiple times when the surface is
+
+617
+00:27:50,000 --> 00:27:52,250
+getting more common why do you need
+
+618
+00:27:51,019 --> 00:27:54,950
+multiple epochs is that your question
+
+619
+00:27:52,250 --> 00:27:56,329
+well I mean a simple way to answer that
+
+620
+00:27:54,950 --> 00:28:04,039
+would be let's say our learning rate was
+
+621
+00:27:56,329 --> 00:28:06,199
+tiny right then it's just not gonna get
+
+622
+00:28:04,039 --> 00:28:08,990
+very far right there's nothing that says
+
+623
+00:28:06,200 --> 00:28:10,940
+going through one epoch is enough to get
+
+624
+00:28:08,990 --> 00:28:12,349
+you all the way there
+
+625
+00:28:10,940 --> 00:28:13,610
+so then it'd be like okay well let's
+
+626
+00:28:12,349 --> 00:28:14,899
+increase our learning rate and it's like
+
+627
+00:28:13,609 --> 00:28:17,418
+yeah sure will increase our learning
+
+628
+00:28:14,900 --> 00:28:20,240
+rate but who's to say that the highest
+
+629
+00:28:17,419 --> 00:28:22,880
+learning rate that learned stabili is is
+
+630
+00:28:20,240 --> 00:28:25,490
+enough to learn this as well as it can
+
+631
+00:28:22,880 --> 00:28:28,400
+be learned and for most data sets for
+
+632
+00:28:25,490 --> 00:28:31,429
+most architectures one epoch is very
+
+633
+00:28:28,400 --> 00:28:34,210
+rarely enough to get you to the best
+
+634
+00:28:31,429 --> 00:28:38,180
+result you can get too
+
+635
+00:28:34,210 --> 00:28:40,430
+you know linear models are just they're
+
+636
+00:28:38,180 --> 00:28:41,930
+very nicely behaved you know so you can
+
+637
+00:28:40,430 --> 00:28:45,289
+often use higher learning rates and
+
+638
+00:28:41,930 --> 00:28:47,600
+learn them well quickly also they they
+
+639
+00:28:45,289 --> 00:28:49,279
+don't you can't like generally get as
+
+640
+00:28:47,599 --> 00:28:52,339
+good at accuracy so there's not as far
+
+641
+00:28:49,279 --> 00:28:54,710
+to take them either so yeah doing one
+
+642
+00:28:52,339 --> 00:28:57,470
+epoch is going to be the rarity all
+
+643
+00:28:54,710 --> 00:28:59,180
+right so let's go backwards so going
+
+644
+00:28:57,470 --> 00:29:02,809
+backwards we're basically going to say
+
+645
+00:28:59,180 --> 00:29:05,150
+all right let's not write those two
+
+646
+00:29:02,809 --> 00:29:06,799
+lines again and again again let's not
+
+647
+00:29:05,150 --> 00:29:08,720
+write those three lines again and again
+
+648
+00:29:06,799 --> 00:29:09,349
+and again let's have somebody do that
+
+649
+00:29:08,720 --> 00:29:12,769
+for us
+
+650
+00:29:09,349 --> 00:29:14,119
+right so that's like that's the only
+
+651
+00:29:12,769 --> 00:29:16,430
+difference between that version in this
+
+652
+00:29:14,119 --> 00:29:20,149
+version is rather than saying dot zero
+
+653
+00:29:16,430 --> 00:29:22,060
+ourselves rather than saying - gradient
+
+654
+00:29:20,150 --> 00:29:26,600
+times Amara ourselves
+
+655
+00:29:22,059 --> 00:29:30,799
+these are wrapped up for us okay there
+
+656
+00:29:26,599 --> 00:29:35,119
+is another wrinkle here which is this
+
+657
+00:29:30,799 --> 00:29:38,000
+approach to updating the the weights is
+
+658
+00:29:35,119 --> 00:29:42,099
+actually pretty inefficient it doesn't
+
+659
+00:29:38,000 --> 00:29:47,000
+take advantage of momentum and curvature
+
+660
+00:29:42,099 --> 00:29:49,939
+and so in the do course we learn about
+
+661
+00:29:47,000 --> 00:29:54,710
+how to do momentum from scratch as well
+
+662
+00:29:49,940 --> 00:30:01,210
+okay so if we actually just use plain
+
+663
+00:29:54,710 --> 00:30:04,370
+old SGD then you'll see that this
+
+664
+00:30:01,210 --> 00:30:06,049
+Alone's much slower so now that I've
+
+665
+00:30:04,369 --> 00:30:07,459
+typed just plain old SGD here this is
+
+666
+00:30:06,049 --> 00:30:11,119
+now literally doing exactly the same
+
+667
+00:30:07,460 --> 00:30:16,130
+thing as our slow version so I have to
+
+668
+00:30:11,119 --> 00:30:19,129
+increase the learning rate okay there we
+
+669
+00:30:16,130 --> 00:30:23,890
+go so this this is now the same as the
+
+670
+00:30:19,130 --> 00:30:25,210
+one we wrote by hand so then all right
+
+671
+00:30:23,890 --> 00:30:28,060
+[Music]
+
+672
+00:30:25,210 --> 00:30:33,710
+let's do a little bit more stuff
+
+673
+00:30:28,059 --> 00:30:36,470
+automatically let's not you know given
+
+674
+00:30:33,710 --> 00:30:38,960
+that every time we train something we
+
+675
+00:30:36,470 --> 00:30:43,250
+have to loop through epoch flip through
+
+676
+00:30:38,960 --> 00:30:45,529
+batch do forward get the loss zero the
+
+677
+00:30:43,250 --> 00:30:46,670
+gradient do backward do a step of the
+
+678
+00:30:45,529 --> 00:30:49,220
+optimizer
+
+679
+00:30:46,670 --> 00:30:55,880
+let's put all that in a function okay
+
+680
+00:30:49,220 --> 00:31:01,789
+and that function is called fit alright
+
+681
+00:30:55,880 --> 00:31:10,640
+there it is okay so let's take a look at
+
+682
+00:31:01,789 --> 00:31:15,470
+fit fit go through each epoch go through
+
+683
+00:31:10,640 --> 00:31:18,110
+each batch do one step keep track of the
+
+684
+00:31:15,470 --> 00:31:35,990
+loss and at the end calculate the
+
+685
+00:31:18,109 --> 00:31:37,309
+validation all right and so then step so
+
+686
+00:31:35,990 --> 00:31:39,109
+if you're interested in looking at this
+
+687
+00:31:37,309 --> 00:31:46,730
+this stuff's all inside fast AI dot
+
+688
+00:31:39,109 --> 00:31:49,669
+model and so here is dead right zero the
+
+689
+00:31:46,730 --> 00:31:51,950
+gradients calculate the loss remember
+
+690
+00:31:49,670 --> 00:31:54,650
+pipe torch tends to call it criterion
+
+691
+00:31:51,950 --> 00:31:57,470
+rather than loss all right do it
+
+692
+00:31:54,650 --> 00:31:58,730
+backward and then there's something else
+
+693
+00:31:57,470 --> 00:31:59,839
+we haven't learned here but we do learn
+
+694
+00:31:58,730 --> 00:32:01,579
+the deep learning course which is
+
+695
+00:31:59,839 --> 00:32:04,159
+gradient reading so you can ignore that
+
+696
+00:32:01,579 --> 00:32:05,750
+alright so you can see now like all the
+
+697
+00:32:04,160 --> 00:32:08,330
+stuff that we've learnt when you look
+
+698
+00:32:05,750 --> 00:32:12,440
+inside the actual frameworks that's the
+
+699
+00:32:08,329 --> 00:32:16,369
+code you see okay so that's what fit
+
+700
+00:32:12,440 --> 00:32:19,279
+does and so then the next step would be
+
+701
+00:32:16,369 --> 00:32:23,989
+like okay well this idea of like having
+
+702
+00:32:19,279 --> 00:32:27,019
+some weights and a bias and doing a
+
+703
+00:32:23,990 --> 00:32:29,480
+matrix product in addition let's put
+
+704
+00:32:27,019 --> 00:32:32,089
+that in a function this thing of doing
+
+705
+00:32:29,480 --> 00:32:34,490
+the log softmax let's put that in a
+
+706
+00:32:32,089 --> 00:32:36,799
+function and then the very idea of like
+
+707
+00:32:34,490 --> 00:32:39,470
+first doing this and then doing that
+
+708
+00:32:36,799 --> 00:32:41,509
+this idea of like chaining functions
+
+709
+00:32:39,470 --> 00:32:47,480
+together let's put that into a function
+
+710
+00:32:41,509 --> 00:32:50,599
+and that finally gets us to that
+
+711
+00:32:47,480 --> 00:32:52,849
+okay so sequential simply means through
+
+712
+00:32:50,599 --> 00:32:57,500
+this function take the result send it to
+
+713
+00:32:52,849 --> 00:32:59,240
+this function etc right and linear means
+
+714
+00:32:57,500 --> 00:33:00,298
+create the weight matrix create the
+
+715
+00:32:59,240 --> 00:33:08,048
+biases
+
+716
+00:33:00,298 --> 00:33:10,179
+okay so that's that's yeah right so we
+
+717
+00:33:08,048 --> 00:33:12,819
+can then you know as we started to talk
+
+718
+00:33:10,179 --> 00:33:17,320
+about like turn this into any deep
+
+719
+00:33:12,819 --> 00:33:20,589
+neural network by saying you know rather
+
+720
+00:33:17,319 --> 00:33:23,379
+than sending this straight off into ten
+
+721
+00:33:20,589 --> 00:33:25,750
+activations let's let's put it into say
+
+722
+00:33:23,380 --> 00:33:29,080
+100 activations we could pick whatever
+
+723
+00:33:25,750 --> 00:33:31,569
+one number we like put it through a RAL
+
+724
+00:33:29,079 --> 00:33:33,460
+you to make it nonlinear put it through
+
+725
+00:33:31,569 --> 00:33:36,638
+another linear layer another rally ER
+
+726
+00:33:33,460 --> 00:33:39,069
+and then our final output with our final
+
+727
+00:33:36,638 --> 00:33:50,079
+activation function right and so this is
+
+728
+00:33:39,069 --> 00:33:54,308
+now a deep network so we could fit that
+
+729
+00:33:50,079 --> 00:33:58,058
+and this time now because it's like
+
+730
+00:33:54,308 --> 00:34:00,220
+deeper I'm actually going to run a few
+
+731
+00:33:58,058 --> 00:34:03,940
+more a pox right and you can see the
+
+732
+00:34:00,220 --> 00:34:05,528
+accuracy increasing okay so if you try
+
+733
+00:34:03,940 --> 00:34:11,500
+and increase the learning rate here it's
+
+734
+00:34:05,528 --> 00:34:13,690
+like 0.1 further it actually starts to
+
+735
+00:34:11,500 --> 00:34:16,119
+become unstable now I'll show you a
+
+736
+00:34:13,690 --> 00:34:19,389
+trick this is called learning rate
+
+737
+00:34:16,119 --> 00:34:24,490
+annealing and the trick is this when
+
+738
+00:34:19,389 --> 00:34:29,349
+you're trying to fit to a function right
+
+739
+00:34:24,489 --> 00:34:32,049
+you've been taking a few steps step step
+
+740
+00:34:29,349 --> 00:34:34,419
+step as you get close to the middle like
+
+741
+00:34:32,050 --> 00:34:36,550
+get close to the bottom your steps
+
+742
+00:34:34,418 --> 00:34:38,918
+probably want to become smaller right
+
+743
+00:34:36,550 --> 00:34:42,039
+otherwise what tends to happen is you
+
+744
+00:34:38,918 --> 00:34:44,108
+start finding you're doing this right
+
+745
+00:34:42,039 --> 00:34:49,179
+and so you can actually see it here
+
+746
+00:34:44,108 --> 00:34:50,259
+right it got 93 94 and a bit 94 694
+
+747
+00:34:49,179 --> 00:34:52,990
+eight like it's kind of starting to
+
+748
+00:34:50,260 --> 00:34:55,210
+flatten now right now that could be
+
+749
+00:34:52,989 --> 00:34:57,608
+because it's kind of done as well as it
+
+750
+00:34:55,210 --> 00:34:59,588
+can or it could be that it's going to
+
+751
+00:34:57,608 --> 00:35:02,318
+growing backwards and forwards so what
+
+752
+00:34:59,588 --> 00:35:04,088
+does a good idea as is later on in
+
+753
+00:35:02,318 --> 00:35:07,599
+training is to decrease your learning
+
+754
+00:35:04,088 --> 00:35:09,578
+rate and to take smaller steps okay
+
+755
+00:35:07,599 --> 00:35:12,280
+that's called learning rate annealing so
+
+756
+00:35:09,579 --> 00:35:13,340
+there's a function in fast AI called set
+
+757
+00:35:12,280 --> 00:35:15,590
+learning rates
+
+758
+00:35:13,340 --> 00:35:19,820
+you can pass in your optimizer and your
+
+759
+00:35:15,590 --> 00:35:24,789
+new learning rate and you don't see if
+
+760
+00:35:19,820 --> 00:35:24,789
+that helps right and very often it does
+
+761
+00:35:25,300 --> 00:35:29,960
+about about an order of magnitude in the
+
+762
+00:35:28,670 --> 00:35:31,730
+deep learning course we learn a much
+
+763
+00:35:29,960 --> 00:35:34,250
+much better technique than this to do
+
+764
+00:35:31,730 --> 00:35:35,809
+this all automatically and at a more
+
+765
+00:35:34,250 --> 00:35:38,030
+granular level but if you're doing it by
+
+766
+00:35:35,809 --> 00:35:43,400
+hand you know like an order of magnitude
+
+767
+00:35:38,030 --> 00:35:45,260
+at a time is what people generally do so
+
+768
+00:35:43,400 --> 00:35:48,139
+you'll see people in papers talk about
+
+769
+00:35:45,260 --> 00:35:49,760
+learning rate schedules this is like a
+
+770
+00:35:48,139 --> 00:35:52,429
+learning rate schedule so this schedule
+
+771
+00:35:49,760 --> 00:35:56,620
+just a moment Erica will come to us
+
+772
+00:35:52,429 --> 00:35:58,759
+first has got us 297 okay and I tried
+
+773
+00:35:56,619 --> 00:35:59,809
+kind of going further and we don't seem
+
+774
+00:35:58,760 --> 00:36:02,030
+to be able to get much better than that
+
+775
+00:35:59,809 --> 00:36:05,059
+so yeah so here we've got something
+
+776
+00:36:02,030 --> 00:36:07,910
+where we can get 97% accuracy
+
+777
+00:36:05,059 --> 00:36:10,699
+yes Erica so it seems like you change
+
+778
+00:36:07,909 --> 00:36:13,279
+the learning rate to something very
+
+779
+00:36:10,699 --> 00:36:15,199
+small ten times smaller than we started
+
+780
+00:36:13,280 --> 00:36:18,019
+with so we had point one now its point
+
+781
+00:36:15,199 --> 00:36:20,089
+everyone yep but that makes the whole
+
+782
+00:36:18,019 --> 00:36:21,650
+model train really slow so I was
+
+783
+00:36:20,090 --> 00:36:24,309
+wondering if you can make it so that it
+
+784
+00:36:21,650 --> 00:36:26,780
+changes dynamically as it approaches
+
+785
+00:36:24,309 --> 00:36:28,880
+closer to the minimum yeah pretty much
+
+786
+00:36:26,780 --> 00:36:29,870
+yes so so that's some of the stuff we
+
+787
+00:36:28,880 --> 00:36:34,670
+learned in the deep planning course
+
+788
+00:36:29,869 --> 00:36:36,739
+these more advanced approaches yep so
+
+789
+00:36:34,670 --> 00:36:38,930
+how it is different from using an
+
+790
+00:36:36,739 --> 00:36:40,369
+immobilizer or something that that's the
+
+791
+00:36:38,929 --> 00:36:42,799
+kind of stuff we can do I mean you still
+
+792
+00:36:40,369 --> 00:36:44,059
+need annealing as I say we do this kind
+
+793
+00:36:42,800 --> 00:36:45,380
+of stuff in the deep learning course so
+
+794
+00:36:44,059 --> 00:36:50,509
+for now we're just going to stick to
+
+795
+00:36:45,380 --> 00:36:53,059
+standard SGD I had a question about the
+
+796
+00:36:50,510 --> 00:36:54,320
+data loading yeah I know it's a fast day
+
+797
+00:36:53,059 --> 00:36:55,639
+i Function but could you go into a
+
+798
+00:36:54,320 --> 00:36:57,890
+little bit detail of how it's creating
+
+799
+00:36:55,639 --> 00:36:58,699
+batches how it's done and how it's
+
+800
+00:36:57,889 --> 00:37:05,779
+making those decisions
+
+801
+00:36:58,699 --> 00:37:07,069
+sure I'd be good to ask that on Monday
+
+802
+00:37:05,780 --> 00:37:09,410
+night so we can talk about it in detail
+
+803
+00:37:07,070 --> 00:37:12,410
+in the dig learning class but let's
+
+804
+00:37:09,409 --> 00:37:15,259
+let's do the quick version here so
+
+805
+00:37:12,409 --> 00:37:18,500
+basically there's a really nice design
+
+806
+00:37:15,260 --> 00:37:20,780
+in PI torch where they basically say
+
+807
+00:37:18,500 --> 00:37:24,469
+let's let's create a thing called a data
+
+808
+00:37:20,780 --> 00:37:26,250
+set right and a data set is basically
+
+809
+00:37:24,469 --> 00:37:31,319
+something that looks like a list
+
+810
+00:37:26,250 --> 00:37:34,619
+it has a length right and so that's like
+
+811
+00:37:31,320 --> 00:37:38,880
+how many images are in the data set and
+
+812
+00:37:34,619 --> 00:37:41,190
+it has the ability to index into it like
+
+813
+00:37:38,880 --> 00:37:44,579
+a list right so if you had like D equals
+
+814
+00:37:41,190 --> 00:37:46,619
+data set you can do length D and you can
+
+815
+00:37:44,579 --> 00:37:49,799
+do D or some index right that's
+
+816
+00:37:46,619 --> 00:37:51,809
+basically all the data set is as far as
+
+817
+00:37:49,800 --> 00:37:54,260
+pipe torch is concerned and so you start
+
+818
+00:37:51,809 --> 00:37:57,960
+with the data set so it's like okay
+
+819
+00:37:54,260 --> 00:38:00,390
+d3 gives you the third image you know or
+
+820
+00:37:57,960 --> 00:38:02,639
+whatever and so then the idea is that
+
+821
+00:38:00,389 --> 00:38:04,650
+you can take a data set and you can pass
+
+822
+00:38:02,639 --> 00:38:13,379
+that into a constructor for a data
+
+823
+00:38:04,650 --> 00:38:16,559
+loader and that gives you something
+
+824
+00:38:13,380 --> 00:38:20,519
+which is now iterable right so you can
+
+825
+00:38:16,559 --> 00:38:24,389
+now say it a DL and that's something
+
+826
+00:38:20,519 --> 00:38:27,509
+that you can call next on and what that
+
+827
+00:38:24,389 --> 00:38:29,339
+now is going to do is if when you do
+
+828
+00:38:27,510 --> 00:38:32,070
+this you can choose to have shuffle on
+
+829
+00:38:29,340 --> 00:38:34,289
+or shuffle off shuffle on means give me
+
+830
+00:38:32,070 --> 00:38:38,510
+random mini-batch shuffle off means
+
+831
+00:38:34,289 --> 00:38:40,980
+drove through it sequentially and so
+
+832
+00:38:38,510 --> 00:38:42,960
+what the data loader does now when you
+
+833
+00:38:40,980 --> 00:38:44,250
+say next is it basically assuming you
+
+834
+00:38:42,960 --> 00:38:46,409
+said shuffle equals true
+
+835
+00:38:44,250 --> 00:38:49,079
+it's going to grab you know if you've
+
+836
+00:38:46,409 --> 00:38:52,079
+got a batch size of 64 64 random
+
+837
+00:38:49,079 --> 00:38:56,340
+integers between 0 and length and call
+
+838
+00:38:52,079 --> 00:39:02,099
+this 64 times to get 64 different items
+
+839
+00:38:56,340 --> 00:39:05,579
+and jam them together so fast AI uses
+
+840
+00:39:02,099 --> 00:39:10,349
+the exact same terminology and the exact
+
+841
+00:39:05,579 --> 00:39:12,719
+same API we just do some of the details
+
+842
+00:39:10,349 --> 00:39:14,969
+differently so specifically particularly
+
+843
+00:39:12,719 --> 00:39:18,329
+with computer vision you often want to
+
+844
+00:39:14,969 --> 00:39:20,429
+do a lot of pre pre processing data
+
+845
+00:39:18,329 --> 00:39:22,380
+augmentation like flipping changing the
+
+846
+00:39:20,429 --> 00:39:23,909
+colors a little bit rotating those turn
+
+847
+00:39:22,380 --> 00:39:26,070
+out to be really computationally
+
+848
+00:39:23,909 --> 00:39:27,089
+expensive even just reading the JPEGs
+
+849
+00:39:26,070 --> 00:39:30,210
+turns out to be computationally
+
+850
+00:39:27,090 --> 00:39:31,650
+expensive so plate or chooses an
+
+851
+00:39:30,210 --> 00:39:34,769
+approach where it fires off multiple
+
+852
+00:39:31,650 --> 00:39:36,510
+processors to do that in parallel where
+
+853
+00:39:34,769 --> 00:39:38,250
+else the faster I librarian says does
+
+854
+00:39:36,510 --> 00:39:39,599
+something called multi-threading which
+
+855
+00:39:38,250 --> 00:39:47,369
+is a much
+
+856
+00:39:39,599 --> 00:39:49,859
+faster way of doing it yes you know so I
+
+857
+00:39:47,369 --> 00:39:52,349
+mean pork is there really pork in the
+
+858
+00:39:49,858 --> 00:39:54,328
+sense that all of the elements so it's a
+
+859
+00:39:52,349 --> 00:39:56,609
+shuffle at the beginning of the pork
+
+860
+00:39:54,329 --> 00:39:58,349
+something like that yeah yeah I mean not
+
+861
+00:39:56,608 --> 00:40:02,130
+all libraries work the same way some do
+
+862
+00:39:58,349 --> 00:40:05,579
+sampling with replacement some don't we
+
+863
+00:40:02,130 --> 00:40:08,068
+actually the first a a library hands off
+
+864
+00:40:05,579 --> 00:40:09,989
+the shuffling off to the set to the
+
+865
+00:40:08,068 --> 00:40:11,849
+actual pipe torch version and I believe
+
+866
+00:40:09,989 --> 00:40:14,670
+the pipes version yeah actually shuffles
+
+867
+00:40:11,849 --> 00:40:17,849
+and an epoch covers everything once I
+
+868
+00:40:14,670 --> 00:40:23,430
+believe okay
+
+869
+00:40:17,849 --> 00:40:28,588
+now the thing is when you start to get
+
+870
+00:40:23,429 --> 00:40:32,328
+these bigger networks potentially you're
+
+871
+00:40:28,588 --> 00:40:35,248
+getting quite a few parameters right so
+
+872
+00:40:32,329 --> 00:40:36,989
+I want to ask you to calculate how many
+
+873
+00:40:35,248 --> 00:40:40,409
+parameters there are but let's let's
+
+874
+00:40:36,989 --> 00:40:42,028
+remember here we've got 28 by 28 input
+
+875
+00:40:40,409 --> 00:40:45,239
+into a hundred output and then a hundred
+
+876
+00:40:42,028 --> 00:40:46,920
+into a hundred and then 100 into 10 all
+
+877
+00:40:45,239 --> 00:40:49,920
+right and then for each of those we've
+
+878
+00:40:46,920 --> 00:40:55,818
+got weights and biases so we can
+
+879
+00:40:49,920 --> 00:40:59,369
+actually do this net dot parameters
+
+880
+00:40:55,818 --> 00:41:02,099
+returns a list where each element of the
+
+881
+00:40:59,369 --> 00:41:05,519
+list is a matrix or actually a tensor of
+
+882
+00:41:02,099 --> 00:41:07,170
+the parameters for that not just for
+
+883
+00:41:05,518 --> 00:41:08,669
+that layer but if it's a layer with both
+
+884
+00:41:07,170 --> 00:41:10,889
+weights and biases that would be two
+
+885
+00:41:08,670 --> 00:41:13,499
+parameters right so basically returns us
+
+886
+00:41:10,889 --> 00:41:17,909
+a list of all of the tensors containing
+
+887
+00:41:13,498 --> 00:41:20,068
+the the parameters some elements in pi
+
+888
+00:41:17,909 --> 00:41:25,048
+torch tells you how how big that is
+
+889
+00:41:20,068 --> 00:41:28,018
+right so if I run this here is the
+
+890
+00:41:25,048 --> 00:41:31,829
+number of parameters in each layer so
+
+891
+00:41:28,018 --> 00:41:34,048
+I've got 784 inputs and the first layer
+
+892
+00:41:31,829 --> 00:41:36,390
+has a hundred outputs so therefore the
+
+893
+00:41:34,048 --> 00:41:40,528
+first weight matrix is of size 78,000
+
+894
+00:41:36,389 --> 00:41:42,389
+400 and the first bias vector is of size
+
+895
+00:41:40,528 --> 00:41:44,400
+100 okay and then the next one is a
+
+896
+00:41:42,389 --> 00:41:46,440
+hundred by hundred okay
+
+897
+00:41:44,400 --> 00:41:48,749
+and there's 100 and then the next one is
+
+898
+00:41:46,440 --> 00:41:51,749
+100 by 10 and then there's my bias okay
+
+899
+00:41:48,748 --> 00:41:52,879
+so there's the number of elements in
+
+900
+00:41:51,748 --> 00:41:54,109
+each layer and
+
+901
+00:41:52,880 --> 00:41:56,660
+I add them all up it's nearly a hundred
+
+902
+00:41:54,110 --> 00:41:58,370
+thousand okay
+
+903
+00:41:56,659 --> 00:42:03,139
+and so I'm possibly at risk of
+
+904
+00:41:58,369 --> 00:42:04,569
+overfitting yeah all right so we might
+
+905
+00:42:03,139 --> 00:42:08,809
+want to think about using regularization
+
+906
+00:42:04,570 --> 00:42:10,730
+so a really simple common approach to
+
+907
+00:42:08,809 --> 00:42:16,509
+regularization in all of machine
+
+908
+00:42:10,730 --> 00:42:16,510
+learning is something called l2
+
+909
+00:42:16,809 --> 00:42:23,389
+regularization and it's super important
+
+910
+00:42:21,800 --> 00:42:26,980
+super handy you can use it with just
+
+911
+00:42:23,389 --> 00:42:33,109
+about anything right and the basic idea
+
+912
+00:42:26,980 --> 00:42:35,210
+anyway so LT rotor ization the basic
+
+913
+00:42:33,110 --> 00:42:38,570
+idea is this normally we'd say our loss
+
+914
+00:42:35,210 --> 00:42:40,909
+is equal to let's just do our MSE to
+
+915
+00:42:38,570 --> 00:42:42,019
+keep things kind of simple it's equal to
+
+916
+00:42:40,909 --> 00:42:45,529
+our predictions
+
+917
+00:42:42,019 --> 00:42:48,980
+- our actuals you know squared and then
+
+918
+00:42:45,530 --> 00:42:53,840
+we sum them up take the average take the
+
+919
+00:42:48,980 --> 00:42:56,300
+square root okay so what if we then want
+
+920
+00:42:53,840 --> 00:42:59,690
+to say you know what like if I've got
+
+921
+00:42:56,300 --> 00:43:02,090
+lots and lots of parameters don't use
+
+922
+00:42:59,690 --> 00:43:03,710
+them unless they're really helping
+
+923
+00:43:02,090 --> 00:43:05,450
+enough right like if you've got a
+
+924
+00:43:03,710 --> 00:43:07,940
+million parameters and you only really
+
+925
+00:43:05,449 --> 00:43:10,669
+needed ten parameters to be useful just
+
+926
+00:43:07,940 --> 00:43:13,639
+use ten all right so how could we like
+
+927
+00:43:10,670 --> 00:43:16,010
+tell the loss function to do that and so
+
+928
+00:43:13,639 --> 00:43:19,250
+basically what we want to say is hey if
+
+929
+00:43:16,010 --> 00:43:20,630
+a parameter is zero that's no problem
+
+930
+00:43:19,250 --> 00:43:24,710
+it's like it doesn't exist at all
+
+931
+00:43:20,630 --> 00:43:28,280
+so let's penalize a parameter for not
+
+932
+00:43:24,710 --> 00:43:33,050
+being zero right so what would be a way
+
+933
+00:43:28,280 --> 00:43:37,010
+we could measure that how can we like
+
+934
+00:43:33,050 --> 00:43:42,200
+calculate how under Oh our parameters
+
+935
+00:43:37,010 --> 00:43:49,280
+are I can you pass that to Qin Shi
+
+936
+00:43:42,199 --> 00:43:51,949
+please Ernest you calculates the average
+
+937
+00:43:49,280 --> 00:43:54,710
+of positive parameters
+
+938
+00:43:51,949 --> 00:43:57,429
+can't quite be the average plus yes
+
+939
+00:43:54,710 --> 00:44:00,679
+Taylor yeah yes you figured it out okay
+
+940
+00:43:57,429 --> 00:44:02,149
+so I think if we like assuming all of
+
+941
+00:44:00,679 --> 00:44:03,949
+our data has been normalized
+
+942
+00:44:02,150 --> 00:44:05,570
+standardized however you want to call it
+
+943
+00:44:03,949 --> 00:44:06,529
+we want to check that they're like
+
+944
+00:44:05,570 --> 00:44:08,600
+significantly
+
+945
+00:44:06,530 --> 00:44:10,640
+different from zero right not the data
+
+946
+00:44:08,599 --> 00:44:12,319
+that the parameter is rather would be
+
+947
+00:44:10,639 --> 00:44:13,730
+significantly and the parameters don't
+
+948
+00:44:12,320 --> 00:44:15,710
+have to be normalized or anything that
+
+949
+00:44:13,730 --> 00:44:17,630
+is calculated right yes a significantly
+
+950
+00:44:15,710 --> 00:44:19,909
+different from zero right I suppose I
+
+951
+00:44:17,630 --> 00:44:21,590
+just assuming that the data has been
+
+952
+00:44:19,909 --> 00:44:23,420
+normalized so that we can compare that
+
+953
+00:44:21,590 --> 00:44:26,000
+money oh yeah I thought of yeah right
+
+954
+00:44:23,420 --> 00:44:27,680
+and then those that are not
+
+955
+00:44:26,000 --> 00:44:29,030
+significantly different from zero we can
+
+956
+00:44:27,679 --> 00:44:30,199
+provoke I just draw and I think Chen
+
+957
+00:44:29,030 --> 00:44:31,430
+she's going to tell us how to do that
+
+958
+00:44:30,199 --> 00:44:35,989
+you just figured it out right
+
+959
+00:44:31,429 --> 00:44:40,239
+the could do that that would be called
+
+960
+00:44:35,989 --> 00:44:45,949
+l1 which is great so l1 would be the
+
+961
+00:44:40,239 --> 00:44:52,909
+absolute value of the weights average l2
+
+962
+00:44:45,949 --> 00:44:54,710
+is actually the sum yeah yeah exactly so
+
+963
+00:44:52,909 --> 00:44:55,789
+we just take this we can just we don't
+
+964
+00:44:54,710 --> 00:44:57,980
+even have to square root so we just take
+
+965
+00:44:55,789 --> 00:45:01,519
+the squares of the weights themselves
+
+966
+00:44:57,980 --> 00:45:04,000
+and then like we want to be able to say
+
+967
+00:45:01,519 --> 00:45:04,000
+like okay
+
+968
+00:45:04,119 --> 00:45:09,619
+how much do we want to penalize not
+
+969
+00:45:07,489 --> 00:45:11,209
+being zero right because if we actually
+
+970
+00:45:09,619 --> 00:45:12,859
+don't have that many parameters we don't
+
+971
+00:45:11,210 --> 00:45:14,480
+want to regularize much at all if we've
+
+972
+00:45:12,860 --> 00:45:20,090
+got heaps we do want to regularize a lot
+
+973
+00:45:14,480 --> 00:45:22,130
+right so then we put a parameter yeah
+
+974
+00:45:20,090 --> 00:45:23,809
+right except I have a role in my classes
+
+975
+00:45:22,130 --> 00:45:25,369
+which is never to use Greek letters so
+
+976
+00:45:23,809 --> 00:45:30,500
+normally people use alpha I'm going to
+
+977
+00:45:25,369 --> 00:45:33,079
+use hey okay so so this is some number
+
+978
+00:45:30,500 --> 00:45:41,199
+which you often see something around
+
+979
+00:45:33,079 --> 00:45:45,650
+kind of 1e neg 6 to 1 enoch 4 ish right
+
+980
+00:45:41,199 --> 00:45:49,399
+now we actually don't care about the
+
+981
+00:45:45,650 --> 00:45:50,750
+loss when you think about it we don't
+
+982
+00:45:49,400 --> 00:45:52,820
+actually care about the loss other--
+
+983
+00:45:50,750 --> 00:45:54,019
+than like maybe to print it out or we
+
+984
+00:45:52,820 --> 00:46:01,150
+actually care about is the gradient of
+
+985
+00:45:54,019 --> 00:46:04,360
+the loss okay so the gradient of that
+
+986
+00:46:01,150 --> 00:46:04,360
+right is
+
+987
+00:46:05,159 --> 00:46:11,670
+that right so there are two ways to do
+
+988
+00:46:10,019 --> 00:46:16,980
+this we can actually modify our loss
+
+989
+00:46:11,670 --> 00:46:20,880
+function to add in this square penalty
+
+990
+00:46:16,980 --> 00:46:23,929
+or we could modify that thing where we
+
+991
+00:46:20,880 --> 00:46:27,150
+said weights equals weights minus
+
+992
+00:46:23,929 --> 00:46:31,679
+gradient times learning rate to subtract
+
+993
+00:46:27,150 --> 00:46:36,450
+that as well right actually to add that
+
+994
+00:46:31,679 --> 00:46:37,798
+as well and these are roughly these are
+
+995
+00:46:36,449 --> 00:46:39,419
+kind of basically equivalent but they
+
+996
+00:46:37,798 --> 00:46:42,119
+have different names this is called l2
+
+997
+00:46:39,420 --> 00:46:46,170
+regularization right this is called
+
+998
+00:46:42,119 --> 00:46:49,789
+weight decay so in the neural network
+
+999
+00:46:46,170 --> 00:46:52,829
+literature you know that version kind of
+
+1000
+00:46:49,789 --> 00:46:54,660
+was the how it was first posed in the
+
+1001
+00:46:52,829 --> 00:46:57,780
+neural network literature where else
+
+1002
+00:46:54,659 --> 00:46:59,788
+this other version is kind of how it was
+
+1003
+00:46:57,780 --> 00:47:03,559
+posed in the statistics literature and
+
+1004
+00:46:59,789 --> 00:47:05,640
+yeah you know they're they're equivalent
+
+1005
+00:47:03,559 --> 00:47:07,170
+as we talked about in the deep learning
+
+1006
+00:47:05,639 --> 00:47:09,389
+class it turns out they're not exactly
+
+1007
+00:47:07,170 --> 00:47:11,190
+equivalent because when you have things
+
+1008
+00:47:09,389 --> 00:47:14,179
+like momentum and atom it can behave
+
+1009
+00:47:11,190 --> 00:47:18,389
+differently and two weeks ago a research
+
+1010
+00:47:14,179 --> 00:47:20,788
+figured out a way to actually do proper
+
+1011
+00:47:18,389 --> 00:47:22,739
+weight decay in modern optimizers and
+
+1012
+00:47:20,789 --> 00:47:23,910
+one of our first day students just
+
+1013
+00:47:22,739 --> 00:47:26,239
+implemented that in the first day I
+
+1014
+00:47:23,909 --> 00:47:28,259
+library so first a is now the first
+
+1015
+00:47:26,239 --> 00:47:31,858
+library to actually support this
+
+1016
+00:47:28,260 --> 00:47:38,069
+properly so anyways so for now let's do
+
+1017
+00:47:31,858 --> 00:47:40,288
+the the version which applied torch
+
+1018
+00:47:38,068 --> 00:47:42,568
+calls weight decay but actually it turns
+
+1019
+00:47:40,289 --> 00:47:44,430
+out based on this paper two weeks ago is
+
+1020
+00:47:42,568 --> 00:47:46,769
+actually l2 regularization it's not
+
+1021
+00:47:44,429 --> 00:47:48,358
+quite correct but it's close enough so
+
+1022
+00:47:46,769 --> 00:47:51,150
+here we can they weight decay as one in
+
+1023
+00:47:48,358 --> 00:47:55,500
+x3 so it's going to set our constant our
+
+1024
+00:47:51,150 --> 00:47:57,230
+penalty multiplier a21 in X 3 and it's
+
+1025
+00:47:55,500 --> 00:48:00,690
+going to add that to the loss function
+
+1026
+00:47:57,230 --> 00:48:04,170
+okay and so let's make a copy of these
+
+1027
+00:48:00,690 --> 00:48:06,108
+cells just so we can compare hope this
+
+1028
+00:48:04,170 --> 00:48:07,970
+actually works
+
+1029
+00:48:06,108 --> 00:48:11,989
+okay and we'll set this running okay
+
+1030
+00:48:07,969 --> 00:48:15,919
+because there's now optimizing well
+
+1031
+00:48:11,989 --> 00:48:17,920
+except if you actually so I've made a
+
+1032
+00:48:15,920 --> 00:48:20,389
+mistake here which is I didn't rerun
+
+1033
+00:48:17,920 --> 00:48:22,309
+this cell this is an important thing to
+
+1034
+00:48:20,389 --> 00:48:25,608
+kind of remember since I didn't run this
+
+1035
+00:48:22,309 --> 00:48:28,249
+rerun this cell here when it created the
+
+1036
+00:48:25,608 --> 00:48:30,078
+optimizer and said net dot parameters it
+
+1037
+00:48:28,248 --> 00:48:31,788
+started with the parameters that I had
+
+1038
+00:48:30,079 --> 00:48:34,818
+already trained right so I actually
+
+1039
+00:48:31,789 --> 00:48:36,528
+hadn't recreated my network okay so
+
+1040
+00:48:34,818 --> 00:48:40,278
+actually you go back and rerun this cell
+
+1041
+00:48:36,528 --> 00:48:48,710
+first to recreate the network then go
+
+1042
+00:48:40,278 --> 00:48:51,489
+through and run this okay there we go so
+
+1043
+00:48:48,710 --> 00:48:51,489
+let's see what happens
+
+1044
+00:48:54,278 --> 00:48:57,349
+so you might notice them notice
+
+1045
+00:48:56,298 --> 00:49:02,079
+something kind of kind of
+
+1046
+00:48:57,349 --> 00:49:05,180
+counterintuitive here which is that
+
+1047
+00:49:02,079 --> 00:49:07,400
+that's our training error right now you
+
+1048
+00:49:05,179 --> 00:49:12,018
+would expect our training error with
+
+1049
+00:49:07,400 --> 00:49:13,608
+regularization to be worse that makes
+
+1050
+00:49:12,018 --> 00:49:17,778
+sense right because we're like we're
+
+1051
+00:49:13,608 --> 00:49:22,009
+penalizing parameters that specifically
+
+1052
+00:49:17,778 --> 00:49:25,608
+can make it better and yet actually it
+
+1053
+00:49:22,009 --> 00:49:29,480
+started out better not worse so why
+
+1054
+00:49:25,608 --> 00:49:32,808
+could that be so the reason that can
+
+1055
+00:49:29,480 --> 00:49:36,289
+happen is that if you have a function
+
+1056
+00:49:32,809 --> 00:49:38,390
+that looks like that right
+
+1057
+00:49:36,289 --> 00:49:40,759
+it takes potentially a really long time
+
+1058
+00:49:38,389 --> 00:49:43,118
+to train where else if you have a
+
+1059
+00:49:40,759 --> 00:49:45,528
+function that kind of looks more like
+
+1060
+00:49:43,119 --> 00:49:47,210
+that it's going to train a lot more
+
+1061
+00:49:45,528 --> 00:49:49,219
+quickly and there are certain things
+
+1062
+00:49:47,210 --> 00:49:51,380
+that you can do which sometimes just
+
+1063
+00:49:49,219 --> 00:49:53,389
+like can take a function that's kind of
+
+1064
+00:49:51,380 --> 00:49:55,670
+horrible and make it less horrible and
+
+1065
+00:49:53,389 --> 00:49:58,368
+it's sometimes weight decay you can
+
+1066
+00:49:55,670 --> 00:50:00,289
+actually make your functions a little
+
+1067
+00:49:58,369 --> 00:50:02,298
+more nicely behaved and that's actually
+
+1068
+00:50:00,289 --> 00:50:03,799
+happened here so like I just mentioned
+
+1069
+00:50:02,298 --> 00:50:07,099
+that to say like don't let that confuse
+
+1070
+00:50:03,798 --> 00:50:09,108
+you right like white decay really does
+
+1071
+00:50:07,099 --> 00:50:12,950
+penalize the training set and look so
+
+1072
+00:50:09,108 --> 00:50:14,778
+strictly speaking the final number we
+
+1073
+00:50:12,949 --> 00:50:16,489
+get to for the training set shouldn't
+
+1074
+00:50:14,778 --> 00:50:20,768
+end up be beat being better but it can
+
+1075
+00:50:16,489 --> 00:50:20,769
+train sometimes more quickly all right
+
+1076
+00:50:21,780 --> 00:50:30,150
+yes can you pass it a chance you don't
+
+1077
+00:50:26,789 --> 00:50:32,519
+get it okay why making it faster like
+
+1078
+00:50:30,150 --> 00:50:35,130
+Zee Time Matters like the training time
+
+1079
+00:50:32,519 --> 00:50:45,539
+memories no it's just after one epoch
+
+1080
+00:50:35,130 --> 00:50:47,070
+right so after one epoch now
+
+1081
+00:50:45,539 --> 00:50:48,358
+congratulations for saying I don't get
+
+1082
+00:50:47,070 --> 00:50:54,030
+it that's like the best thing anybody
+
+1083
+00:50:48,358 --> 00:50:58,949
+can say you know so hopeful this here
+
+1084
+00:50:54,030 --> 00:51:01,619
+was our training without wait okay okay
+
+1085
+00:50:58,949 --> 00:51:05,460
+and this here is our training with wait
+
+1086
+00:51:01,619 --> 00:51:09,019
+okay okay so this is not really just a
+
+1087
+00:51:05,460 --> 00:51:13,170
+time this is related to just an epoch
+
+1088
+00:51:09,019 --> 00:51:16,108
+right after one Apoc my claim was that
+
+1089
+00:51:13,170 --> 00:51:20,460
+you would expect the training set all
+
+1090
+00:51:16,108 --> 00:51:23,940
+other things being equal to have a worse
+
+1091
+00:51:20,460 --> 00:51:26,250
+loss with weight decay because we're
+
+1092
+00:51:23,940 --> 00:51:28,470
+penalizing it you know this has no
+
+1093
+00:51:26,250 --> 00:51:31,289
+penalty this has a penalty so the thing
+
+1094
+00:51:28,469 --> 00:51:34,230
+with the penalty should be worse and I'm
+
+1095
+00:51:31,289 --> 00:51:37,980
+saying oh it's not that's weird
+
+1096
+00:51:34,230 --> 00:51:41,969
+right and so the reason it's not is
+
+1097
+00:51:37,980 --> 00:51:43,588
+because in a single epoch it matters a
+
+1098
+00:51:41,969 --> 00:51:45,509
+lot as to whether you're trying to
+
+1099
+00:51:43,588 --> 00:51:46,799
+optimize something that's very bumpy or
+
+1100
+00:51:45,510 --> 00:51:49,880
+whether you're trying to optimize
+
+1101
+00:51:46,800 --> 00:51:51,900
+something that's kind of nice and smooth
+
+1102
+00:51:49,880 --> 00:51:54,269
+if you're trying to optimize something
+
+1103
+00:51:51,900 --> 00:51:57,900
+that's really bumpy like imagine in some
+
+1104
+00:51:54,269 --> 00:51:59,789
+high dimensional space right you end up
+
+1105
+00:51:57,900 --> 00:52:01,950
+kind of rolling around through all these
+
+1106
+00:51:59,789 --> 00:52:03,719
+different tubes and tunnels and stuff
+
+1107
+00:52:01,949 --> 00:52:06,509
+you know where else if it's just smooth
+
+1108
+00:52:03,719 --> 00:52:09,088
+you just go boom item it's like imagine
+
+1109
+00:52:06,510 --> 00:52:11,790
+of marble rolling down a hill where one
+
+1110
+00:52:09,088 --> 00:52:13,500
+of them you've got like it's a called
+
+1111
+00:52:11,789 --> 00:52:14,579
+Lombard Street in San Francisco it's
+
+1112
+00:52:13,500 --> 00:52:16,380
+like backwards forwards backwards
+
+1113
+00:52:14,579 --> 00:52:18,930
+forwards it takes a long time to drive
+
+1114
+00:52:16,380 --> 00:52:20,460
+down the road right where else you know
+
+1115
+00:52:18,929 --> 00:52:21,750
+if you kind of took a motorbike and just
+
+1116
+00:52:20,460 --> 00:52:26,400
+went straight over the top you just make
+
+1117
+00:52:21,750 --> 00:52:28,619
+sure boom right so so weather so kind of
+
+1118
+00:52:26,400 --> 00:52:32,099
+the shape of the loss function surface
+
+1119
+00:52:28,619 --> 00:52:32,970
+you know impacts or kind of defines how
+
+1120
+00:52:32,099 --> 00:52:36,000
+easy it is
+
+1121
+00:52:32,969 --> 00:52:38,549
+optimized and therefore how far can it
+
+1122
+00:52:36,000 --> 00:52:40,739
+get in a single epoch and based on these
+
+1123
+00:52:38,550 --> 00:52:43,140
+results it would appear that weight
+
+1124
+00:52:40,739 --> 00:52:46,889
+decay here has made it this function
+
+1125
+00:52:43,139 --> 00:52:50,879
+easier to optimize so just to make sure
+
+1126
+00:52:46,889 --> 00:52:53,250
+it's the penalizing is making the
+
+1127
+00:52:50,880 --> 00:52:54,358
+optimizer more than likely to reach the
+
+1128
+00:52:53,250 --> 00:52:57,300
+global minimum
+
+1129
+00:52:54,358 --> 00:53:00,000
+no I wouldn't say that my claim actually
+
+1130
+00:52:57,300 --> 00:53:01,530
+is that at the end it's probably going
+
+1131
+00:53:00,000 --> 00:53:03,000
+to be less good on the training set and
+
+1132
+00:53:01,530 --> 00:53:08,430
+indeed this does look to be the case at
+
+1133
+00:53:03,000 --> 00:53:11,429
+the end after five epochs our training
+
+1134
+00:53:08,429 --> 00:53:13,169
+set is now worse with weight decay now
+
+1135
+00:53:11,429 --> 00:53:15,059
+that's what I would expect right I would
+
+1136
+00:53:13,170 --> 00:53:17,990
+expect like if you actually find like I
+
+1137
+00:53:15,059 --> 00:53:20,039
+never used a term global optimum because
+
+1138
+00:53:17,989 --> 00:53:21,389
+it's just not something we have any
+
+1139
+00:53:20,039 --> 00:53:23,009
+guarantees about we don't really care
+
+1140
+00:53:21,389 --> 00:53:26,279
+about or just care like where do we get
+
+1141
+00:53:23,010 --> 00:53:27,810
+to after a certain number of epochs we
+
+1142
+00:53:26,280 --> 00:53:29,820
+hope that we found somewhere that's like
+
+1143
+00:53:27,809 --> 00:53:32,279
+a good solution and so by the time we
+
+1144
+00:53:29,820 --> 00:53:34,789
+get to like a good solution the training
+
+1145
+00:53:32,280 --> 00:53:39,420
+set with weight decay the loss is worse
+
+1146
+00:53:34,789 --> 00:53:42,989
+because it's very right but on the
+
+1147
+00:53:39,420 --> 00:53:45,809
+validation set the loss is better right
+
+1148
+00:53:42,989 --> 00:53:47,759
+because we penalized the training set in
+
+1149
+00:53:45,809 --> 00:53:49,230
+order to kind of try and create
+
+1150
+00:53:47,760 --> 00:53:50,580
+something it generalizes better so we've
+
+1151
+00:53:49,230 --> 00:53:52,199
+got more parameter you know that the
+
+1152
+00:53:50,579 --> 00:53:55,920
+parameters that are kind of pointless in
+
+1153
+00:53:52,199 --> 00:53:59,489
+l0 and it generalizes better right so so
+
+1154
+00:53:55,920 --> 00:54:03,180
+all we're seeing is that it just got to
+
+1155
+00:53:59,489 --> 00:54:10,618
+a good point after one epoch is really
+
+1156
+00:54:03,179 --> 00:54:12,299
+orbiting obviously no no I but if you
+
+1157
+00:54:10,619 --> 00:54:13,619
+buy if you mean just weight decay you
+
+1158
+00:54:12,300 --> 00:54:17,640
+always make the function surface
+
+1159
+00:54:13,619 --> 00:54:22,260
+smoother no it's not always true but
+
+1160
+00:54:17,639 --> 00:54:24,838
+it's like it's worth remembering that if
+
+1161
+00:54:22,260 --> 00:54:26,520
+you're having trouble training of
+
+1162
+00:54:24,838 --> 00:54:32,250
+function adding a little bit of weight
+
+1163
+00:54:26,519 --> 00:54:35,639
+decay may may help what so by analyzing
+
+1164
+00:54:32,250 --> 00:54:38,489
+the parameters what it does as its moons
+
+1165
+00:54:35,639 --> 00:54:40,259
+out the loss function I mean it's not
+
+1166
+00:54:38,489 --> 00:54:42,059
+it's not why we do it you know the
+
+1167
+00:54:40,260 --> 00:54:44,400
+reason why we do it is because we want
+
+1168
+00:54:42,059 --> 00:54:46,829
+to penalize things that aren't zero to
+
+1169
+00:54:44,400 --> 00:54:48,900
+say like don't make this per
+
+1170
+00:54:46,829 --> 00:54:51,329
+a high number unless it's really helping
+
+1171
+00:54:48,900 --> 00:54:51,720
+the Lasser lodge right set it to 0 if
+
+1172
+00:54:51,329 --> 00:54:53,789
+you can
+
+1173
+00:54:51,719 --> 00:54:55,679
+because setting as many parameters to
+
+1174
+00:54:53,789 --> 00:54:57,719
+zero as possible means that it's going
+
+1175
+00:54:55,679 --> 00:55:01,289
+to generalize better right it's like the
+
+1176
+00:54:57,719 --> 00:55:03,799
+same as having a smaller network okay so
+
+1177
+00:55:01,289 --> 00:55:08,269
+that's that's we do that's why we do it
+
+1178
+00:55:03,800 --> 00:55:11,640
+but it can change how it learns as well
+
+1179
+00:55:08,269 --> 00:55:12,809
+so let's okay this one moment okay so I
+
+1180
+00:55:11,639 --> 00:55:14,609
+just wanted to check how we actually
+
+1181
+00:55:12,809 --> 00:55:16,170
+went here so after the second epoch yeah
+
+1182
+00:55:14,610 --> 00:55:19,039
+so you can see here it's really has
+
+1183
+00:55:16,170 --> 00:55:21,990
+helped right after the second epoch
+
+1184
+00:55:19,039 --> 00:55:24,840
+before we got to 97% accuracy now we're
+
+1185
+00:55:21,989 --> 00:55:28,019
+nearly up to about 98% accuracy right
+
+1186
+00:55:24,840 --> 00:55:30,180
+and you can see that the loss was 0.08
+
+1187
+00:55:28,019 --> 00:55:33,059
+versus 0.13 right so adding
+
+1188
+00:55:30,179 --> 00:55:36,599
+regularization has allowed us to find a
+
+1189
+00:55:33,059 --> 00:55:39,170
+you know three percent versus two
+
+1190
+00:55:36,599 --> 00:55:43,110
+percent so like a fifty percent better
+
+1191
+00:55:39,170 --> 00:55:45,150
+solution yes Erica so there are two
+
+1192
+00:55:43,110 --> 00:55:48,180
+pieces to this right what is l2
+
+1193
+00:55:45,150 --> 00:55:49,680
+regularization and the way to key know
+
+1194
+00:55:48,179 --> 00:55:52,799
+they're the same so my claim was they're
+
+1195
+00:55:49,679 --> 00:55:54,659
+the same thing right so white decay is
+
+1196
+00:55:52,800 --> 00:55:57,420
+the version if you just take the
+
+1197
+00:55:54,659 --> 00:56:00,029
+derivative of LT regularization you get
+
+1198
+00:55:57,420 --> 00:56:01,769
+weight decay so you can implement it
+
+1199
+00:56:00,030 --> 00:56:04,890
+either by changing the loss function
+
+1200
+00:56:01,769 --> 00:56:08,219
+with an with a squared loss penalty or
+
+1201
+00:56:04,889 --> 00:56:10,650
+you can implement it by adding the
+
+1202
+00:56:08,219 --> 00:56:14,519
+weights themselves as part of the the
+
+1203
+00:56:10,650 --> 00:56:15,840
+gradient okay yeah it's just gonna
+
+1204
+00:56:14,519 --> 00:56:20,670
+finish the questions yes
+
+1205
+00:56:15,840 --> 00:56:24,180
+okay pass it to division can we use the
+
+1206
+00:56:20,670 --> 00:56:27,980
+regularization convolution absolutely so
+
+1207
+00:56:24,179 --> 00:56:27,980
+a compilation layer just is is White's
+
+1208
+00:56:28,039 --> 00:56:33,809
+aim Jeremy can you explain why you
+
+1209
+00:56:31,079 --> 00:56:38,549
+thought you needed weight decay in this
+
+1210
+00:56:33,809 --> 00:56:39,690
+particular problem not easily I mean
+
+1211
+00:56:38,550 --> 00:56:43,650
+other than to say it's something that I
+
+1212
+00:56:39,690 --> 00:56:50,909
+would always try speaking well yeah I
+
+1213
+00:56:43,650 --> 00:56:55,650
+mean okay so even if I yeah okay that's
+
+1214
+00:56:50,909 --> 00:56:58,920
+a good point unit so if if my training
+
+1215
+00:56:55,650 --> 00:57:00,590
+loss was higher than my validation loss
+
+1216
+00:56:58,920 --> 00:57:02,880
+then I'm under fitting
+
+1217
+00:57:00,590 --> 00:57:05,820
+right so there's definitely no point
+
+1218
+00:57:02,880 --> 00:57:07,500
+recognizing right if like that would
+
+1219
+00:57:05,820 --> 00:57:09,510
+always be a bad thing that would always
+
+1220
+00:57:07,500 --> 00:57:13,019
+mean you need like more parameters in
+
+1221
+00:57:09,510 --> 00:57:14,850
+your model in this case I'm I'm
+
+1222
+00:57:13,019 --> 00:57:17,489
+overfitting that doesn't necessarily
+
+1223
+00:57:14,849 --> 00:57:18,900
+mean regularization will help but it's
+
+1224
+00:57:17,489 --> 00:57:20,129
+certainly worth trying
+
+1225
+00:57:18,900 --> 00:57:23,220
+thank you you know that's a great point
+
+1226
+00:57:20,130 --> 00:57:28,920
+there's one more question yep Tyler
+
+1227
+00:57:23,219 --> 00:57:35,849
+doing a pass over there so how do you
+
+1228
+00:57:28,920 --> 00:57:39,059
+choose the optimal number of epic you do
+
+1229
+00:57:35,849 --> 00:57:41,839
+my take learning cause it's a it's
+
+1230
+00:57:39,059 --> 00:57:47,130
+that's a long story and a lot to lots of
+
+1231
+00:57:41,840 --> 00:57:49,230
+users by here on here ollie it's a bit
+
+1232
+00:57:47,130 --> 00:57:52,500
+of both we just don't as I say we don't
+
+1233
+00:57:49,230 --> 00:57:54,150
+have time to cover best practices in
+
+1234
+00:57:52,500 --> 00:57:56,460
+this class we're going to learn the kind
+
+1235
+00:57:54,150 --> 00:58:00,180
+of fundamentals yeah okay
+
+1236
+00:57:56,460 --> 00:58:15,150
+so let's take a six minute break and
+
+1237
+00:58:00,179 --> 00:58:17,250
+come back at 11:10 alright so something
+
+1238
+00:58:15,150 --> 00:58:18,960
+that we cover in great detail in the
+
+1239
+00:58:17,250 --> 00:58:20,670
+deep learning course but it's like
+
+1240
+00:58:18,960 --> 00:58:23,130
+really important to mention here is that
+
+1241
+00:58:20,670 --> 00:58:25,050
+is it the secret in my opinion to kind
+
+1242
+00:58:23,130 --> 00:58:29,490
+of modern machine learning techniques is
+
+1243
+00:58:25,050 --> 00:58:31,710
+to massively over parameterize the
+
+1244
+00:58:29,489 --> 00:58:33,509
+solution to your problem right like as
+
+1245
+00:58:31,710 --> 00:58:36,000
+we've done here you know we've got like
+
+1246
+00:58:33,510 --> 00:58:38,480
+a hundred thousand weights when we only
+
+1247
+00:58:36,000 --> 00:58:42,179
+had a small number of 28 by 28 images
+
+1248
+00:58:38,480 --> 00:58:48,389
+and then use regularization okay it's
+
+1249
+00:58:42,179 --> 00:58:52,019
+like the direct opposite of how nearly
+
+1250
+00:58:48,389 --> 00:58:55,319
+all statistics and learning was done for
+
+1251
+00:58:52,019 --> 00:58:57,659
+decades before and still most kind of
+
+1252
+00:58:55,320 --> 00:59:00,269
+like senior lecturers at most
+
+1253
+00:58:57,659 --> 00:59:01,980
+universities in most areas of have this
+
+1254
+00:59:00,269 --> 00:59:03,809
+background where they've learned the
+
+1255
+00:59:01,980 --> 00:59:06,780
+correct way to build a model is to like
+
+1256
+00:59:03,809 --> 00:59:09,659
+have as few parameters as possible right
+
+1257
+00:59:06,780 --> 00:59:13,730
+and so hopefully we've learnt two things
+
+1258
+00:59:09,659 --> 00:59:13,730
+so far you know one is we can build
+
+1259
+00:59:13,800 --> 00:59:17,980
+very accurate models even when they have
+
+1260
+00:59:16,510 --> 00:59:19,420
+lots and lots of parameters like a
+
+1261
+00:59:17,980 --> 00:59:23,139
+random forest has a lot of parameters
+
+1262
+00:59:19,420 --> 00:59:24,730
+and you know this here deep network has
+
+1263
+00:59:23,139 --> 00:59:28,900
+a lot of parameters and they can be
+
+1264
+00:59:24,730 --> 00:59:32,460
+accurate right and we can do that by
+
+1265
+00:59:28,900 --> 00:59:35,440
+either using bagging or by using
+
+1266
+00:59:32,460 --> 00:59:39,269
+regularization okay and regularization
+
+1267
+00:59:35,440 --> 00:59:41,769
+in neural nets means either weight decay
+
+1268
+00:59:39,269 --> 00:59:44,920
+also known as kind of filter
+
+1269
+00:59:41,769 --> 00:59:49,989
+regularization or drop out which we
+
+1270
+00:59:44,920 --> 00:59:52,840
+won't worry too much about yeah so like
+
+1271
+00:59:49,989 --> 00:59:56,949
+it's a it's a very different way of
+
+1272
+00:59:52,840 --> 00:59:59,019
+thinking about building useful models
+
+1273
+00:59:56,949 --> 01:00:01,919
+and like I just wanted to kind of warn
+
+1274
+00:59:59,019 --> 01:00:04,599
+you that once you leave this classroom
+
+1275
+01:00:01,920 --> 01:00:06,550
+like even possibly when you go to the
+
+1276
+01:00:04,599 --> 01:00:10,269
+next faculty members talk like there'll
+
+1277
+01:00:06,550 --> 01:00:14,080
+be people at USF as well who entirely
+
+1278
+01:00:10,269 --> 01:00:15,670
+trained in the world of like models with
+
+1279
+01:00:14,079 --> 01:00:17,949
+small numbers of parameters you know
+
+1280
+01:00:15,670 --> 01:00:19,809
+your next boss is very likely to have
+
+1281
+01:00:17,949 --> 01:00:22,210
+been trained in the world of models with
+
+1282
+01:00:19,809 --> 01:00:25,989
+small numbers of parameters the idea
+
+1283
+01:00:22,210 --> 01:00:27,849
+that they are somehow more pure or
+
+1284
+01:00:25,989 --> 01:00:33,039
+easier or better or more interpretable
+
+1285
+01:00:27,849 --> 01:00:36,579
+or whatever I I am convinced that that
+
+1286
+01:00:33,039 --> 01:00:41,829
+is not true probably not ever true
+
+1287
+01:00:36,579 --> 01:00:46,210
+certainly very rarely true and that
+
+1288
+01:00:41,829 --> 01:00:48,009
+actually models with lots of parameters
+
+1289
+01:00:46,210 --> 01:00:50,050
+can be extremely interpretive all as we
+
+1290
+01:00:48,010 --> 01:00:53,500
+learn from our whole lesson of random
+
+1291
+01:00:50,050 --> 01:00:55,180
+forest interpretation you can use most
+
+1292
+01:00:53,500 --> 01:00:56,530
+of the same techniques with neural nets
+
+1293
+01:00:55,179 --> 01:00:58,329
+but with neural nets are even easier
+
+1294
+01:00:56,530 --> 01:01:02,260
+right remember how we did feature
+
+1295
+01:00:58,329 --> 01:01:04,029
+importance by randomizing a column to
+
+1296
+01:01:02,260 --> 01:01:06,640
+see how it changes in that column would
+
+1297
+01:01:04,030 --> 01:01:09,070
+impact the output well that's just like
+
+1298
+01:01:06,639 --> 01:01:11,650
+a kind of dumb way of calculating its
+
+1299
+01:01:09,070 --> 01:01:13,690
+gradient how much does varying this
+
+1300
+01:01:11,650 --> 01:01:15,039
+import change the output with a neural
+
+1301
+01:01:13,690 --> 01:01:17,380
+net we can actually calculate its
+
+1302
+01:01:15,039 --> 01:01:19,090
+gradient right so with PI torch you can
+
+1303
+01:01:17,380 --> 01:01:21,000
+actually say what's the gradient that
+
+1304
+01:01:19,090 --> 01:01:24,220
+the output with respect to this column
+
+1305
+01:01:21,000 --> 01:01:27,489
+okay you can do the same kind of thing
+
+1306
+01:01:24,219 --> 01:01:30,519
+to do partial dependence plot with an
+
+1307
+01:01:27,489 --> 01:01:32,139
+Anette and you know I mentioned for
+
+1308
+01:01:30,519 --> 01:01:35,920
+those of you interested in making a real
+
+1309
+01:01:32,139 --> 01:01:38,679
+impact nobody's written basically any of
+
+1310
+01:01:35,920 --> 01:01:41,650
+these things for neural nets right so
+
+1311
+01:01:38,679 --> 01:01:43,899
+that that that whole area needs like
+
+1312
+01:01:41,650 --> 01:01:44,200
+libraries to be written blog posts to be
+
+1313
+01:01:43,900 --> 01:01:46,510
+written
+
+1314
+01:01:44,199 --> 01:01:48,789
+you know some papers have been written
+
+1315
+01:01:46,510 --> 01:01:50,470
+but only in very narrow domains like
+
+1316
+01:01:48,789 --> 01:01:52,690
+computer vision as far as I know
+
+1317
+01:01:50,469 --> 01:01:55,629
+nobody's written the paper saying here's
+
+1318
+01:01:52,690 --> 01:01:56,320
+how to do structured data neural
+
+1319
+01:01:55,630 --> 01:01:59,769
+networks
+
+1320
+01:01:56,320 --> 01:02:06,010
+you know interpretation methods so it's
+
+1321
+01:01:59,769 --> 01:02:07,780
+a really exciting big area so what we're
+
+1322
+01:02:06,010 --> 01:02:12,400
+going to do though is we're going to
+
+1323
+01:02:07,780 --> 01:02:15,400
+start with applying this with a simple
+
+1324
+01:02:12,400 --> 01:02:17,410
+linear model this is mildly terrifying
+
+1325
+01:02:15,400 --> 01:02:20,230
+for me because we're going to do NLP and
+
+1326
+01:02:17,409 --> 01:02:22,149
+NLP faculty expert is in the room so
+
+1327
+01:02:20,230 --> 01:02:28,420
+David just yell at me if I screw this up
+
+1328
+01:02:22,150 --> 01:02:30,789
+too badly and so NLP refers to you know
+
+1329
+01:02:28,420 --> 01:02:32,950
+any any kind of modeling where we're
+
+1330
+01:02:30,789 --> 01:02:38,949
+working with with natural language tests
+
+1331
+01:02:32,949 --> 01:02:41,460
+right and it interestingly enough we're
+
+1332
+01:02:38,949 --> 01:02:45,279
+going to look at a situation where a
+
+1333
+01:02:41,460 --> 01:02:46,750
+linear model is pretty close to the
+
+1334
+01:02:45,280 --> 01:02:48,490
+state of the art for solving a
+
+1335
+01:02:46,750 --> 01:02:51,579
+particular problem it's actually
+
+1336
+01:02:48,489 --> 01:02:53,469
+something where I actually surpassed
+
+1337
+01:02:51,579 --> 01:02:56,529
+this baited state of the art in this
+
+1338
+01:02:53,469 --> 01:02:59,529
+using a recurrent neural network a few
+
+1339
+01:02:56,530 --> 01:03:00,670
+weeks ago but this is actually going to
+
+1340
+01:02:59,530 --> 01:03:03,880
+show you pretty close to the state of
+
+1341
+01:03:00,670 --> 01:03:06,970
+art with with a linear model we're going
+
+1342
+01:03:03,880 --> 01:03:09,789
+to be working with the IMDB
+
+1343
+01:03:06,969 --> 01:03:12,219
+I am DVD data set so this is a data set
+
+1344
+01:03:09,789 --> 01:03:18,429
+of movie reviews you can download it by
+
+1345
+01:03:12,219 --> 01:03:20,799
+following these steps and once you
+
+1346
+01:03:18,429 --> 01:03:26,799
+download it you'll see that you've got a
+
+1347
+01:03:20,800 --> 01:03:28,330
+train and a test directory and in your
+
+1348
+01:03:26,800 --> 01:03:31,720
+train directory you'll see there's a
+
+1349
+01:03:28,329 --> 01:03:33,610
+negative and a positive directory and in
+
+1350
+01:03:31,719 --> 01:03:36,809
+your positive directory you'll see
+
+1351
+01:03:33,610 --> 01:03:36,809
+there's a bunch of text files
+
+1352
+01:03:37,960 --> 01:03:42,130
+and here's an example of a text file so
+
+1353
+01:03:40,139 --> 01:03:43,960
+somehow we've managed to pick out a
+
+1354
+01:03:42,130 --> 01:03:45,940
+story of a man who has a natural
+
+1355
+01:03:43,960 --> 01:03:47,740
+feelings for a pig as our first choice
+
+1356
+01:03:45,940 --> 01:03:54,309
+that wasn't intentional
+
+1357
+01:03:47,739 --> 01:03:57,729
+but it'll be fun so we're going to look
+
+1358
+01:03:54,309 --> 01:03:59,050
+at these movie reviews and for each one
+
+1359
+01:03:57,730 --> 01:04:00,338
+we're going to look to see whether they
+
+1360
+01:03:59,050 --> 01:04:02,109
+were positive or negative so they've
+
+1361
+01:04:00,338 --> 01:04:05,380
+been put into one of these folders they
+
+1362
+01:04:02,108 --> 01:04:08,469
+were downloaded from from IMDB the movie
+
+1363
+01:04:05,380 --> 01:04:10,990
+database and review site the ones that
+
+1364
+01:04:08,469 --> 01:04:13,299
+were strongly positive went positive
+
+1365
+01:04:10,989 --> 01:04:14,949
+strongly negative went negative and the
+
+1366
+01:04:13,300 --> 01:04:17,380
+rest they didn't label at all so there's
+
+1367
+01:04:14,949 --> 01:04:20,919
+only highly polarized reviews so in this
+
+1368
+01:04:17,380 --> 01:04:23,530
+case you know we have an insane violent
+
+1369
+01:04:20,920 --> 01:04:26,559
+mob which unfortunately it is too absurd
+
+1370
+01:04:23,530 --> 01:04:30,040
+too off-putting those in the area be
+
+1371
+01:04:26,559 --> 01:04:34,839
+turned off so the label for this was a
+
+1372
+01:04:30,039 --> 01:04:39,969
+zero which is negative okay
+
+1373
+01:04:34,838 --> 01:04:41,880
+so this is a negative review so in the
+
+1374
+01:04:39,969 --> 01:04:45,699
+FASTA guy library there's lots of little
+
+1375
+01:04:41,880 --> 01:04:47,769
+functions and classes to help with most
+
+1376
+01:04:45,699 --> 01:04:50,048
+kinds of domains that you do machine
+
+1377
+01:04:47,769 --> 01:04:51,579
+learning on for NLP one of the simple
+
+1378
+01:04:50,048 --> 01:04:53,530
+things we have is texts from folders
+
+1379
+01:04:51,579 --> 01:04:55,329
+there's just going to go ahead and go
+
+1380
+01:04:53,530 --> 01:04:59,099
+through and find all of the folders in
+
+1381
+01:04:55,329 --> 01:05:03,579
+here with these names and create a
+
+1382
+01:04:59,099 --> 01:05:05,980
+labeled data set and you know don't let
+
+1383
+01:05:03,579 --> 01:05:07,390
+these things ever stop you from
+
+1384
+01:05:05,980 --> 01:05:10,480
+understanding what's going on behind the
+
+1385
+01:05:07,389 --> 01:05:12,098
+scenes okay we can grab its source code
+
+1386
+01:05:10,480 --> 01:05:14,710
+and as you can see it's tiny you know
+
+1387
+01:05:12,099 --> 01:05:16,510
+it's like five lines okay so I don't
+
+1388
+01:05:14,710 --> 01:05:18,010
+like to write these things out in full
+
+1389
+01:05:16,510 --> 01:05:20,049
+you know but hide them behind at all
+
+1390
+01:05:18,010 --> 01:05:21,250
+functions so you can reuse them but
+
+1391
+01:05:20,048 --> 01:05:23,980
+basically it's going to go through each
+
+1392
+01:05:21,250 --> 01:05:27,030
+directory and then within that so I go
+
+1393
+01:05:23,980 --> 01:05:30,909
+through yeah go through each directory
+
+1394
+01:05:27,030 --> 01:05:35,410
+and then go through each file in that
+
+1395
+01:05:30,909 --> 01:05:38,048
+directory and then stick that into this
+
+1396
+01:05:35,409 --> 01:05:39,639
+array of texts and figure out what
+
+1397
+01:05:38,048 --> 01:05:44,048
+folder it's in and stick that into the
+
+1398
+01:05:39,639 --> 01:05:46,539
+array of labels okay so that's how we
+
+1399
+01:05:44,048 --> 01:05:49,150
+basically end up with something where we
+
+1400
+01:05:46,539 --> 01:05:51,029
+have an array of the reviews and an
+
+1401
+01:05:49,150 --> 01:05:53,970
+array of the labels
+
+1402
+01:05:51,030 --> 01:06:00,900
+okay so that's our data so our job will
+
+1403
+01:05:53,969 --> 01:06:03,539
+be to take that and to predict that okay
+
+1404
+01:06:00,900 --> 01:06:06,930
+and the way we're going to do it is
+
+1405
+01:06:03,539 --> 01:06:09,750
+we're gonna throw away like all of the
+
+1406
+01:06:06,929 --> 01:06:11,759
+interesting stuff about language which
+
+1407
+01:06:09,750 --> 01:06:14,309
+is the order in which the words are in
+
+1408
+01:06:11,760 --> 01:06:17,100
+right now this is very often not a good
+
+1409
+01:06:14,309 --> 01:06:18,809
+idea but in this particular case it's
+
+1410
+01:06:17,099 --> 01:06:20,519
+going to turn out to work like not too
+
+1411
+01:06:18,809 --> 01:06:22,320
+badly so let me show you what I mean by
+
+1412
+01:06:20,519 --> 01:06:23,789
+like throwing away the order of the
+
+1413
+01:06:22,320 --> 01:06:26,210
+words like normally the order of the
+
+1414
+01:06:23,789 --> 01:06:29,309
+words matters a lot if you've got a not
+
+1415
+01:06:26,210 --> 01:06:31,619
+before something then that not refers to
+
+1416
+01:06:29,309 --> 01:06:33,389
+that thing right so but the thing is
+
+1417
+01:06:31,619 --> 01:06:34,920
+when in this case we're trying to
+
+1418
+01:06:33,389 --> 01:06:37,139
+predict whether something is positive or
+
+1419
+01:06:34,920 --> 01:06:40,650
+negative if you see the word absurd
+
+1420
+01:06:37,139 --> 01:06:45,449
+appear a lot right then maybe that's a
+
+1421
+01:06:40,650 --> 01:06:47,430
+sign that this isn't very good so you
+
+1422
+01:06:45,449 --> 01:06:48,449
+know cryptic maybe there's a sign that
+
+1423
+01:06:47,429 --> 01:06:50,009
+it's not very good
+
+1424
+01:06:48,449 --> 01:06:53,369
+so the idea is that we're going to turn
+
+1425
+01:06:50,010 --> 01:06:56,220
+it into something called a term document
+
+1426
+01:06:53,369 --> 01:06:57,480
+matrix where for each document are you
+
+1427
+01:06:56,219 --> 01:07:00,119
+each review we're just going to create a
+
+1428
+01:06:57,480 --> 01:07:01,949
+list of what words are in it rather than
+
+1429
+01:07:00,119 --> 01:07:07,069
+what order they're in so let me give an
+
+1430
+01:07:01,949 --> 01:07:11,099
+example can you see this okay okay so
+
+1431
+01:07:07,070 --> 01:07:15,090
+here are four movie reviews that I made
+
+1432
+01:07:11,099 --> 01:07:17,400
+up this movie is good the movie is good
+
+1433
+01:07:15,090 --> 01:07:19,500
+they're both positive this movie is bad
+
+1434
+01:07:17,400 --> 01:07:22,139
+the movie is bad they're both negative
+
+1435
+01:07:19,500 --> 01:07:24,630
+right so I'm going to turn this into a
+
+1436
+01:07:22,139 --> 01:07:25,889
+term document matrix so the first thing
+
+1437
+01:07:24,630 --> 01:07:28,440
+I need to do is create some in-court of
+
+1438
+01:07:25,889 --> 01:07:31,049
+vocabulary a vocabulary is a list of all
+
+1439
+01:07:28,440 --> 01:07:33,510
+the unique words that appear okay so
+
+1440
+01:07:31,050 --> 01:07:37,230
+here's my vocabulary this movie is good
+
+1441
+01:07:33,510 --> 01:07:38,610
+the bad that's all the words okay and so
+
+1442
+01:07:37,230 --> 01:07:41,550
+now I'm going to take each one of my
+
+1443
+01:07:38,610 --> 01:07:44,400
+movie reviews and turn it into a vector
+
+1444
+01:07:41,550 --> 01:07:46,500
+of which words appear and how often do
+
+1445
+01:07:44,400 --> 01:07:49,980
+they appear right and in this case none
+
+1446
+01:07:46,500 --> 01:07:53,670
+of my words appear twice so this movie
+
+1447
+01:07:49,980 --> 01:07:56,880
+is good has those four words in it where
+
+1448
+01:07:53,670 --> 01:08:02,280
+else this movie is bad has those four
+
+1449
+01:07:56,880 --> 01:08:04,150
+words in it okay so this is called a
+
+1450
+01:08:02,280 --> 01:08:06,640
+term document matrix
+
+1451
+01:08:04,150 --> 01:08:10,150
+alright and this representation we call
+
+1452
+01:08:06,639 --> 01:08:11,858
+a bag of words representation right so
+
+1453
+01:08:10,150 --> 01:08:13,900
+this here is a bag of words
+
+1454
+01:08:11,858 --> 01:08:16,238
+representation of the view of the review
+
+1455
+01:08:13,900 --> 01:08:19,088
+it doesn't contain the order of the text
+
+1456
+01:08:16,238 --> 01:08:22,349
+anymore it's just a bag of the words
+
+1457
+01:08:19,088 --> 01:08:25,689
+what words are in it it contains bad is
+
+1458
+01:08:22,350 --> 01:08:26,469
+movie this okay so that's the first
+
+1459
+01:08:25,689 --> 01:08:27,789
+thing we're going to do is we're going
+
+1460
+01:08:26,469 --> 01:08:29,710
+to turn it into a bag of words
+
+1461
+01:08:27,789 --> 01:08:33,488
+representation and the reason that this
+
+1462
+01:08:29,710 --> 01:08:37,838
+is convenient for linear models is that
+
+1463
+01:08:33,488 --> 01:08:40,568
+this is a nice rectangular matrix that
+
+1464
+01:08:37,838 --> 01:08:42,488
+we can like do math on okay and
+
+1465
+01:08:40,569 --> 01:08:43,870
+specifically we can do a logistic
+
+1466
+01:08:42,488 --> 01:08:44,919
+regression and that's what we're going
+
+1467
+01:08:43,869 --> 01:08:47,500
+to do is we're going to get to a point
+
+1468
+01:08:44,920 --> 01:08:48,369
+we do a logistic regression before we
+
+1469
+01:08:47,500 --> 01:08:49,869
+get there though we're going to do
+
+1470
+01:08:48,369 --> 01:08:55,838
+something else which is called naive
+
+1471
+01:08:49,869 --> 01:08:57,908
+Bayes okay so SK learn has something
+
+1472
+01:08:55,838 --> 01:09:00,158
+which will create a term document matrix
+
+1473
+01:08:57,908 --> 01:09:05,500
+for us it's called count vectorizer okay
+
+1474
+01:09:00,158 --> 01:09:08,920
+so what does use it now in NLP you have
+
+1475
+01:09:05,500 --> 01:09:12,609
+to turn your text into a list of words
+
+1476
+01:09:08,920 --> 01:09:15,429
+and that's called tokenization okay and
+
+1477
+01:09:12,609 --> 01:09:17,880
+that's actually non-trivial because like
+
+1478
+01:09:15,429 --> 01:09:23,649
+if this was actually this movie is good
+
+1479
+01:09:17,880 --> 01:09:27,838
+dot right or if it was this movie is
+
+1480
+01:09:23,649 --> 01:09:29,229
+good like how do you deal with like that
+
+1481
+01:09:27,838 --> 01:09:31,059
+punctuation
+
+1482
+01:09:29,229 --> 01:09:35,278
+well perhaps more interestingly what if
+
+1483
+01:09:31,060 --> 01:09:39,039
+it was this movie isn't good alright so
+
+1484
+01:09:35,279 --> 01:09:41,380
+how you turn a piece of text into a list
+
+1485
+01:09:39,039 --> 01:09:44,979
+of tokens is called tokenization right
+
+1486
+01:09:41,380 --> 01:09:49,319
+and so a good tokenizer would turn this
+
+1487
+01:09:44,979 --> 01:09:53,769
+movie isn't good into this this base
+
+1488
+01:09:49,319 --> 01:09:56,020
+quote movie space is space and good
+
+1489
+01:09:53,770 --> 01:09:58,840
+space right so you can see in this
+
+1490
+01:09:56,020 --> 01:10:01,150
+version here if I now split this on
+
+1491
+01:09:58,840 --> 01:10:04,179
+spaces every token is either a single
+
+1492
+01:10:01,149 --> 01:10:06,819
+piece of punctuation or like this suffix
+
+1493
+01:10:04,179 --> 01:10:08,140
+and is considered like a word right
+
+1494
+01:10:06,819 --> 01:10:10,899
+that's kind of like how we would
+
+1495
+01:10:08,140 --> 01:10:14,710
+probably want to tokenize that piece of
+
+1496
+01:10:10,899 --> 01:10:17,649
+text because you wouldn't want good . to
+
+1497
+01:10:14,710 --> 01:10:17,810
+be like an object right because there's
+
+1498
+01:10:17,649 --> 01:10:21,259
+no
+
+1499
+01:10:17,810 --> 01:10:24,850
+concept of good . right or double-quote
+
+1500
+01:10:21,260 --> 01:10:27,140
+movie is not like an object right so
+
+1501
+01:10:24,850 --> 01:10:30,890
+tokenization is something we hand off to
+
+1502
+01:10:27,140 --> 01:10:34,820
+a tokenizer first AI has a tokenizer in
+
+1503
+01:10:30,890 --> 01:10:36,860
+it that we can use so this is how we
+
+1504
+01:10:34,819 --> 01:10:44,119
+create our term document matrix with a
+
+1505
+01:10:36,859 --> 01:10:46,369
+tokenizer s Kaitlyn has a pretty
+
+1506
+01:10:44,119 --> 01:10:49,010
+standard API which is nice I'm sure
+
+1507
+01:10:46,369 --> 01:10:52,099
+you've seen it a few times now before
+
+1508
+01:10:49,010 --> 01:10:53,449
+so once we've built some kind of model
+
+1509
+01:10:52,100 --> 01:10:57,050
+think we can kind of think of this as a
+
+1510
+01:10:53,449 --> 01:10:59,000
+model just ish this is just defining
+
+1511
+01:10:57,050 --> 01:11:03,560
+what it's going to do but you can call
+
+1512
+01:10:59,000 --> 01:11:05,029
+fit transform - to do that right so in
+
+1513
+01:11:03,560 --> 01:11:08,090
+this case fit transform is going to
+
+1514
+01:11:05,029 --> 01:11:10,729
+create the vocabulary okay and create
+
+1515
+01:11:08,090 --> 01:11:14,930
+the term document matrix based on the
+
+1516
+01:11:10,729 --> 01:11:17,719
+training set transform is a little bit
+
+1517
+01:11:14,930 --> 01:11:19,130
+different that says use the previously
+
+1518
+01:11:17,720 --> 01:11:22,100
+fitted model which in this case means
+
+1519
+01:11:19,130 --> 01:11:23,630
+use the previously created vocabulary we
+
+1520
+01:11:22,100 --> 01:11:25,789
+wouldn't want the validation set in the
+
+1521
+01:11:23,630 --> 01:11:27,710
+training set to have you know the words
+
+1522
+01:11:25,789 --> 01:11:28,819
+in different orders in the matrices
+
+1523
+01:11:27,710 --> 01:11:30,680
+right because then they'd like to have
+
+1524
+01:11:28,819 --> 01:11:33,859
+different meanings so this is here
+
+1525
+01:11:30,680 --> 01:11:36,140
+saying use the same vocabulary to create
+
+1526
+01:11:33,859 --> 01:11:41,569
+a bag of words for the validation set
+
+1527
+01:11:36,140 --> 01:11:43,460
+could you pass that back in please what
+
+1528
+01:11:41,569 --> 01:11:45,469
+if the violation set has different set
+
+1529
+01:11:43,460 --> 01:11:48,170
+of words other than training yeah that's
+
+1530
+01:11:45,470 --> 01:11:50,960
+a great question so generally most of
+
+1531
+01:11:48,170 --> 01:11:54,279
+these kind of vocab creating approaches
+
+1532
+01:11:50,960 --> 01:11:57,439
+will have a special token for unknown
+
+1533
+01:11:54,279 --> 01:11:59,449
+sometimes you can you'll also say like
+
+1534
+01:11:57,439 --> 01:12:01,879
+hey if a word appears less than three
+
+1535
+01:11:59,449 --> 01:12:03,229
+times call it unknown but otherwise it's
+
+1536
+01:12:01,880 --> 01:12:05,449
+like if you see something you haven't
+
+1537
+01:12:03,229 --> 01:12:07,489
+seen before call it unknown so that
+
+1538
+01:12:05,449 --> 01:12:14,029
+would just become a column in the bag of
+
+1539
+01:12:07,489 --> 01:12:17,479
+words is good question all right so when
+
+1540
+01:12:14,029 --> 01:12:19,519
+we create this term document matrix the
+
+1541
+01:12:17,479 --> 01:12:23,539
+training set we have 25,000 rows because
+
+1542
+01:12:19,520 --> 01:12:25,790
+there are 25,000 movie reviews and there
+
+1543
+01:12:23,539 --> 01:12:27,769
+are 70 5132 columns
+
+1544
+01:12:25,789 --> 01:12:28,640
+what does that represent what does that
+
+1545
+01:12:27,770 --> 01:12:29,840
+mean there are seven hundred and
+
+1546
+01:12:28,640 --> 01:12:31,539
+seventy-five thousand hundred thirty-two
+
+1547
+01:12:29,840 --> 01:12:33,190
+what can you pass that to device
+
+1548
+01:12:31,539 --> 01:12:38,710
+just a moment okay power sector
+
+1549
+01:12:33,189 --> 01:12:39,039
+diversion locality yeah come on what do
+
+1550
+01:12:38,710 --> 01:12:42,460
+you mean
+
+1551
+01:12:39,039 --> 01:12:44,199
+so like the number of words Union or the
+
+1552
+01:12:42,460 --> 01:12:45,789
+number of words that the number of
+
+1553
+01:12:44,199 --> 01:12:52,059
+unique words yeah exactly
+
+1554
+01:12:45,789 --> 01:12:57,039
+good okay now most documents don't have
+
+1555
+01:12:52,060 --> 01:12:59,890
+most of these 75,000 words right so we
+
+1556
+01:12:57,039 --> 01:13:02,590
+don't want to actually store that as a
+
+1557
+01:12:59,890 --> 01:13:05,380
+normal array in memory because it's
+
+1558
+01:13:02,590 --> 01:13:09,069
+going to be very wasteful so instead we
+
+1559
+01:13:05,380 --> 01:13:11,710
+store it as a sparse matrix okay and
+
+1560
+01:13:09,069 --> 01:13:16,349
+what a sparse matrix does is it just
+
+1561
+01:13:11,710 --> 01:13:19,449
+stores it as something that says
+
+1562
+01:13:16,350 --> 01:13:22,420
+whereabouts of the non-zeros right so it
+
+1563
+01:13:19,449 --> 01:13:26,979
+says like okay term number so document
+
+1564
+01:13:22,420 --> 01:13:30,550
+number one word number four appears and
+
+1565
+01:13:26,979 --> 01:13:36,189
+it has four of them you know document
+
+1566
+01:13:30,550 --> 01:13:38,590
+one term number 123 has that that
+
+1567
+01:13:36,189 --> 01:13:40,960
+appears and it's a one right and so
+
+1568
+01:13:38,590 --> 01:13:42,310
+forth that's basically how it's done
+
+1569
+01:13:40,960 --> 01:13:45,720
+there's actually a number of different
+
+1570
+01:13:42,310 --> 01:13:47,410
+ways of storing and if you do Rachel's
+
+1571
+01:13:45,720 --> 01:13:48,909
+computational linear algebra course
+
+1572
+01:13:47,409 --> 01:13:50,260
+you'll learn about the different types
+
+1573
+01:13:48,909 --> 01:13:52,238
+and why you choose them and how to
+
+1574
+01:13:50,260 --> 01:13:54,850
+convert and so forth but they're all
+
+1575
+01:13:52,238 --> 01:13:56,889
+kind of something like this right and
+
+1576
+01:13:54,850 --> 01:13:59,440
+you don't really on the whole have to
+
+1577
+01:13:56,890 --> 01:14:01,960
+worry about the details the important
+
+1578
+01:13:59,439 --> 01:14:02,889
+thing to know is it's it's efficient
+
+1579
+01:14:01,960 --> 01:14:05,590
+okay
+
+1580
+01:14:02,890 --> 01:14:09,610
+and so we could grab the first review
+
+1581
+01:14:05,590 --> 01:14:10,949
+all right and that gives us 75,000 long
+
+1582
+01:14:09,609 --> 01:14:14,979
+sparse
+
+1583
+01:14:10,949 --> 01:14:18,189
+one long one row long matrix okay with
+
+1584
+01:14:14,979 --> 01:14:21,369
+93 stored elements so in other words 93
+
+1585
+01:14:18,189 --> 01:14:24,579
+of those words are actually used in the
+
+1586
+01:14:21,369 --> 01:14:26,769
+first document okay we can have a look
+
+1587
+01:14:24,579 --> 01:14:28,930
+at the vocabulary by saying vectorizer
+
+1588
+01:14:26,770 --> 01:14:31,630
+docket fetcher feature names that gives
+
+1589
+01:14:28,930 --> 01:14:36,390
+us the vocab and so here's an example of
+
+1590
+01:14:31,630 --> 01:14:38,440
+a few of the elements of feature names I
+
+1591
+01:14:36,390 --> 01:14:40,150
+didn't intentionally pick the one that
+
+1592
+01:14:38,439 --> 01:14:44,979
+had Ozzie but you know that's the
+
+1593
+01:14:40,149 --> 01:14:46,479
+important words obviously I haven't you
+
+1594
+01:14:44,979 --> 01:14:48,009
+the tokenizer here I'm just bidding on
+
+1595
+01:14:46,479 --> 01:14:51,069
+space so this isn't quite the same as
+
+1596
+01:14:48,010 --> 01:14:54,579
+what the vectorizer did but to simplify
+
+1597
+01:14:51,069 --> 01:14:57,579
+things let's grab a set of all the
+
+1598
+01:14:54,579 --> 01:15:01,029
+lowercased words by making it a set we
+
+1599
+01:14:57,579 --> 01:15:03,159
+make them unique so this is roughly the
+
+1600
+01:15:01,029 --> 01:15:06,069
+list of words that would appear right
+
+1601
+01:15:03,159 --> 01:15:07,960
+and that length is 91 which is pretty
+
+1602
+01:15:06,069 --> 01:15:09,789
+similar to 93 and just the difference
+
+1603
+01:15:07,960 --> 01:15:15,159
+will be that I didn't use a real
+
+1604
+01:15:09,789 --> 01:15:16,750
+tokenizer yeah right so that's basically
+
+1605
+01:15:15,159 --> 01:15:19,119
+all that's been done there it's probably
+
+1606
+01:15:16,750 --> 01:15:23,020
+created this unique list of words and
+
+1607
+01:15:19,119 --> 01:15:25,750
+mapped them we could check by calling
+
+1608
+01:15:23,020 --> 01:15:27,730
+vectorizer cavalry underscore to find
+
+1609
+01:15:25,750 --> 01:15:30,460
+the ID of a particular word so this is
+
+1610
+01:15:27,729 --> 01:15:33,009
+like the reverse map of this one right
+
+1611
+01:15:30,460 --> 01:15:36,100
+this is like integer two word here is
+
+1612
+01:15:33,010 --> 01:15:38,560
+word two integer and so we saw absurd
+
+1613
+01:15:36,100 --> 01:15:40,810
+appeared twice in the first document so
+
+1614
+01:15:38,560 --> 01:15:42,700
+let's check train term dark zero comma
+
+1615
+01:15:40,810 --> 01:15:44,710
+one two nine seven there it is is two
+
+1616
+01:15:42,699 --> 01:15:47,769
+right or else
+
+1617
+01:15:44,710 --> 01:15:50,130
+unfortunately Ozzie didn't appear in the
+
+1618
+01:15:47,770 --> 01:15:54,700
+unnatural relationship with a pig movie
+
+1619
+01:15:50,130 --> 01:15:58,600
+so zero comma five thousand is zero okay
+
+1620
+01:15:54,699 --> 01:16:04,439
+so that's that's our term document
+
+1621
+01:15:58,600 --> 01:16:08,039
+matrix yes so does it care about the
+
+1622
+01:16:04,439 --> 01:16:10,689
+relative relationship between the words
+
+1623
+01:16:08,039 --> 01:16:11,800
+as in the ordering of the words no we've
+
+1624
+01:16:10,689 --> 01:16:15,549
+thrown away the orderings that's why
+
+1625
+01:16:11,800 --> 01:16:18,520
+it's a bag of words and I'm not claiming
+
+1626
+01:16:15,550 --> 01:16:22,210
+that this is like necessarily a good
+
+1627
+01:16:18,520 --> 01:16:24,340
+idea what I will say is that like the
+
+1628
+01:16:22,210 --> 01:16:26,560
+vast majority of NLP work that's been
+
+1629
+01:16:24,340 --> 01:16:28,630
+done over the last few decades generally
+
+1630
+01:16:26,560 --> 01:16:31,239
+uses this representation because we
+
+1631
+01:16:28,630 --> 01:16:33,130
+didn't really know much better nowadays
+
+1632
+01:16:31,238 --> 01:16:34,809
+increasingly we're using recurrent
+
+1633
+01:16:33,130 --> 01:16:38,650
+neural networks instead which we'll
+
+1634
+01:16:34,810 --> 01:16:42,940
+learn about in our last deep learning
+
+1635
+01:16:38,649 --> 01:16:44,829
+lesson of part one but sometimes this
+
+1636
+01:16:42,939 --> 01:16:45,729
+representation works pretty well and
+
+1637
+01:16:44,829 --> 01:16:51,819
+it's actually going to work pretty well
+
+1638
+01:16:45,729 --> 01:16:54,218
+in this case okay so in fact you know
+
+1639
+01:16:51,819 --> 01:16:56,949
+most like back when I was at first me or
+
+1640
+01:16:54,219 --> 01:16:58,630
+my email company a lot of the spam
+
+1641
+01:16:56,949 --> 01:17:00,189
+filtering we did
+
+1642
+01:16:58,630 --> 01:17:03,069
+used this next technique naivebayes
+
+1643
+01:17:00,189 --> 01:17:04,599
+which is as a bag of words approach just
+
+1644
+01:17:03,069 --> 01:17:07,420
+kind of like you know if you're getting
+
+1645
+01:17:04,600 --> 01:17:10,150
+a lot of email containing the word
+
+1646
+01:17:07,420 --> 01:17:12,489
+viagra and it's always been a spam and
+
+1647
+01:17:10,149 --> 01:17:14,710
+you never get email from your friends
+
+1648
+01:17:12,489 --> 01:17:16,389
+talking about viagra then it's very
+
+1649
+01:17:14,710 --> 01:17:18,609
+likely something that says by Agra
+
+1650
+01:17:16,390 --> 01:17:21,160
+regardless of the detail of the language
+
+1651
+01:17:18,609 --> 01:17:22,750
+is probably from a spammer all right so
+
+1652
+01:17:21,159 --> 01:17:24,789
+that's the basic theory about like
+
+1653
+01:17:22,750 --> 01:17:26,050
+classification using a term document
+
+1654
+01:17:24,789 --> 01:17:30,000
+matrix okay
+
+1655
+01:17:26,050 --> 01:17:31,720
+so let's talk about naive Bayes and
+
+1656
+01:17:30,000 --> 01:17:33,340
+here's the basic idea
+
+1657
+01:17:31,720 --> 01:17:38,170
+we're going to start with our term
+
+1658
+01:17:33,340 --> 01:17:41,970
+document matrix right and these first
+
+1659
+01:17:38,170 --> 01:17:44,949
+two is our corpus of positive reviews
+
+1660
+01:17:41,970 --> 01:17:47,560
+these next two is our corpus of negative
+
+1661
+01:17:44,949 --> 01:17:51,369
+reviews and so here's our whole corpus
+
+1662
+01:17:47,560 --> 01:17:56,740
+of all reviews so what I could do is now
+
+1663
+01:17:51,369 --> 01:17:58,149
+to create a probability I've got to call
+
+1664
+01:17:56,739 --> 01:18:00,010
+the as we tend to call these more
+
+1665
+01:17:58,149 --> 01:18:02,139
+generically features rather than words
+
+1666
+01:18:00,010 --> 01:18:05,230
+right this is a feature movie as a
+
+1667
+01:18:02,140 --> 01:18:06,760
+feature is as a feature right so it's
+
+1668
+01:18:05,229 --> 01:18:09,279
+kind of more now like machine learning
+
+1669
+01:18:06,760 --> 01:18:12,070
+language a column is a feature look all
+
+1670
+01:18:09,279 --> 01:18:15,159
+those we call those earth in naive Bayes
+
+1671
+01:18:12,069 --> 01:18:19,539
+so we can basically say the probability
+
+1672
+01:18:15,159 --> 01:18:22,809
+that you would see the word this given
+
+1673
+01:18:19,539 --> 01:18:25,449
+that the class is 1 given that it's a
+
+1674
+01:18:22,810 --> 01:18:28,510
+positive review is just the average of
+
+1675
+01:18:25,449 --> 01:18:32,500
+how often do you see this in the
+
+1676
+01:18:28,510 --> 01:18:37,630
+positive reviews right now we've got to
+
+1677
+01:18:32,500 --> 01:18:41,319
+be a bit careful though because if you
+
+1678
+01:18:37,630 --> 01:18:43,510
+never ever see a particular word in a
+
+1679
+01:18:41,319 --> 01:18:45,639
+particular class right so if I've never
+
+1680
+01:18:43,510 --> 01:18:48,880
+received an email from a friend that
+
+1681
+01:18:45,640 --> 01:18:51,670
+said viagra right that doesn't actually
+
+1682
+01:18:48,880 --> 01:18:53,650
+mean the probability of a friend send me
+
+1683
+01:18:51,670 --> 01:18:58,239
+sending me an email about viagra is zero
+
+1684
+01:18:53,649 --> 01:18:59,949
+it's not really zero right I I hope I
+
+1685
+01:18:58,239 --> 01:19:02,800
+don't get an email you know from
+
+1686
+01:18:59,949 --> 01:19:04,389
+Terrence tomorrow saying like Jeremy you
+
+1687
+01:19:02,800 --> 01:19:06,640
+probably could use this you know
+
+1688
+01:19:04,390 --> 01:19:08,310
+effortless meant for viagra but you know
+
+1689
+01:19:06,640 --> 01:19:11,940
+it could happen
+
+1690
+01:19:08,310 --> 01:19:15,570
+you know I'm sure it'd be in my best
+
+1691
+01:19:11,939 --> 01:19:18,269
+interest yeah so so what we do is we say
+
+1692
+01:19:15,569 --> 01:19:19,979
+actually what we've seen so far is not
+
+1693
+01:19:18,270 --> 01:19:21,900
+the full sample of everything that could
+
+1694
+01:19:19,979 --> 01:19:24,779
+happen it's like a sample of what's
+
+1695
+01:19:21,899 --> 01:19:27,449
+happened so far so let's assume that the
+
+1696
+01:19:24,779 --> 01:19:29,789
+next email you get actually does mention
+
+1697
+01:19:27,449 --> 01:19:32,670
+viagra and every other possible word
+
+1698
+01:19:29,789 --> 01:19:37,170
+right so basically we're going to add a
+
+1699
+01:19:32,670 --> 01:19:38,819
+row of ones okay so that's like the
+
+1700
+01:19:37,170 --> 01:19:41,730
+email that contains every possible word
+
+1701
+01:19:38,819 --> 01:19:44,130
+so that way nothing's ever infinitely
+
+1702
+01:19:41,729 --> 01:19:49,859
+and unlikely yeah so I take the average
+
+1703
+01:19:44,130 --> 01:19:54,329
+of all of the times that this appears in
+
+1704
+01:19:49,859 --> 01:20:00,829
+my positive corpus plus the ones okay
+
+1705
+01:19:54,329 --> 01:20:04,470
+so that's like the the probability that
+
+1706
+01:20:00,829 --> 01:20:08,550
+feature equals this appears in a
+
+1707
+01:20:04,470 --> 01:20:10,050
+document given that class equals one and
+
+1708
+01:20:08,550 --> 01:20:12,690
+so not surprisingly here's the same
+
+1709
+01:20:10,050 --> 01:20:15,960
+thing for probability that this feature
+
+1710
+01:20:12,689 --> 01:20:17,759
+this appears given class equals zero all
+
+1711
+01:20:15,960 --> 01:20:20,819
+right same calculation except for the
+
+1712
+01:20:17,760 --> 01:20:25,650
+zero rows and obviously these are the
+
+1713
+01:20:20,819 --> 01:20:27,569
+same because this appears twice in the
+
+1714
+01:20:25,649 --> 01:20:31,949
+positives sorry once in the positives
+
+1715
+01:20:27,569 --> 01:20:35,210
+and once in the negatives okay let's
+
+1716
+01:20:31,949 --> 01:20:35,210
+just put this back to what it was
+
+1717
+01:20:39,738 --> 01:20:50,428
+all right so we can do that for every
+
+1718
+01:20:44,698 --> 01:20:55,319
+feature for every class right so our
+
+1719
+01:20:50,429 --> 01:21:02,668
+trick now is to basically use Bayes rule
+
+1720
+01:20:55,319 --> 01:21:08,549
+to kind of fill this in so what we want
+
+1721
+01:21:02,668 --> 01:21:10,918
+is the probability that given that I've
+
+1722
+01:21:08,550 --> 01:21:12,869
+got this particular document so somebody
+
+1723
+01:21:10,918 --> 01:21:15,868
+sent me this particular email or I have
+
+1724
+01:21:12,868 --> 01:21:20,578
+this particular IMDB review what's the
+
+1725
+01:21:15,868 --> 01:21:23,339
+probability that its class is equal to I
+
+1726
+01:21:20,578 --> 01:21:24,988
+don't know positive right so for this
+
+1727
+01:21:23,340 --> 01:21:27,418
+particular movie review what's the
+
+1728
+01:21:24,988 --> 01:21:29,998
+probability that it's plus is positive
+
+1729
+01:21:27,418 --> 01:21:34,349
+right and so we can say well that's
+
+1730
+01:21:29,998 --> 01:21:39,389
+equal to the probability that we got
+
+1731
+01:21:34,349 --> 01:21:43,439
+this particular movie review given that
+
+1732
+01:21:39,389 --> 01:21:46,288
+its class is positive multiplied by the
+
+1733
+01:21:43,439 --> 01:21:49,380
+probability that any movie reviews plus
+
+1734
+01:21:46,288 --> 01:21:52,728
+is positive divided by the probability
+
+1735
+01:21:49,380 --> 01:21:55,650
+of getting this particular movie review
+
+1736
+01:21:52,729 --> 01:21:59,400
+all right that's just basis rule okay
+
+1737
+01:21:55,649 --> 01:22:02,069
+and so we can calculate all of those
+
+1738
+01:21:59,399 --> 01:22:05,158
+things but actually what we really want
+
+1739
+01:22:02,069 --> 01:22:09,688
+to know is is it more likely that this
+
+1740
+01:22:05,158 --> 01:22:13,828
+is plus 0 or plus 1 right so what if we
+
+1741
+01:22:09,689 --> 01:22:16,969
+actually took probability that's plus 1
+
+1742
+01:22:13,828 --> 01:22:20,458
+and divided by probability that's plus 0
+
+1743
+01:22:16,969 --> 01:22:22,679
+what if we did that right and so then we
+
+1744
+01:22:20,458 --> 01:22:24,868
+could say like okay if this number is
+
+1745
+01:22:22,679 --> 01:22:27,208
+bigger than 1 that it's more likely to
+
+1746
+01:22:24,868 --> 01:22:29,668
+be class 1 if it's smaller than 1 it's
+
+1747
+01:22:27,208 --> 01:22:33,779
+more likely to be class 0 right so in
+
+1748
+01:22:29,668 --> 01:22:37,380
+that case we could just divide this
+
+1749
+01:22:33,779 --> 01:22:40,198
+whole thing right by the same version
+
+1750
+01:22:37,380 --> 01:22:42,449
+for class 0 right which is the same as
+
+1751
+01:22:40,198 --> 01:22:43,768
+multiplying it by the reciprocal and so
+
+1752
+01:22:42,448 --> 01:22:46,529
+the nice thing is now that's going to
+
+1753
+01:22:43,769 --> 01:22:49,349
+put a probability D on top here which we
+
+1754
+01:22:46,529 --> 01:22:52,469
+can get rid of right and a probability
+
+1755
+01:22:49,349 --> 01:22:54,960
+of getting the data given
+
+1756
+01:22:52,469 --> 01:22:59,730
+zero down here and the probability of
+
+1757
+01:22:54,960 --> 01:23:02,250
+getting class zero here right and so if
+
+1758
+01:22:59,729 --> 01:23:04,828
+we basically what that means is we want
+
+1759
+01:23:02,250 --> 01:23:07,020
+to calculate the probability that we
+
+1760
+01:23:04,828 --> 01:23:09,539
+would get this particular document given
+
+1761
+01:23:07,020 --> 01:23:12,480
+that the class is 1 times the
+
+1762
+01:23:09,539 --> 01:23:13,649
+probability that the class is 1 divided
+
+1763
+01:23:12,479 --> 01:23:15,658
+by the probability of getting this
+
+1764
+01:23:13,649 --> 01:23:18,658
+particular document given the classes to
+
+1765
+01:23:15,658 --> 01:23:21,689
+0 times the probability that the class
+
+1766
+01:23:18,658 --> 01:23:26,069
+is 0 so the probability that the class
+
+1767
+01:23:21,689 --> 01:23:30,058
+is 1 is just equal to the average of the
+
+1768
+01:23:26,069 --> 01:23:37,439
+labels write probability the class is 0
+
+1769
+01:23:30,059 --> 01:23:39,059
+is just 1 minus that right so so there
+
+1770
+01:23:37,439 --> 01:23:43,009
+are those two numbers right I've got an
+
+1771
+01:23:39,059 --> 01:23:43,010
+equal amount of both so it's both 0.5
+
+1772
+01:23:43,309 --> 01:23:49,110
+what is the probability of getting this
+
+1773
+01:23:45,988 --> 01:23:51,149
+document given that the class is 1
+
+1774
+01:23:49,109 --> 01:24:09,719
+can anybody tell me how I would
+
+1775
+01:23:51,149 --> 01:24:11,219
+calculate that can somebody pass that so
+
+1776
+01:24:09,719 --> 01:24:13,050
+remember so it's going to be for a
+
+1777
+01:24:11,219 --> 01:24:14,250
+particular document so for example would
+
+1778
+01:24:13,050 --> 01:24:18,809
+be saying like what's the probability
+
+1779
+01:24:14,250 --> 01:24:20,399
+that this review is positive all right
+
+1780
+01:24:18,809 --> 01:24:21,360
+so what so you're on the right track but
+
+1781
+01:24:20,399 --> 01:24:23,868
+what we have to gonna have to do is
+
+1782
+01:24:21,359 --> 01:24:28,109
+going to have to say let's just look at
+
+1783
+01:24:23,868 --> 01:24:32,308
+the words it has and then multiply the
+
+1784
+01:24:28,109 --> 01:24:37,019
+probabilities together for class equals
+
+1785
+01:24:32,309 --> 01:24:43,650
+1 right so the probability that a class
+
+1786
+01:24:37,020 --> 01:24:47,699
+1 review has this is 2/3 the probability
+
+1787
+01:24:43,649 --> 01:24:50,069
+it has movie is one is is 1 and good is
+
+1788
+01:24:47,698 --> 01:24:52,759
+1 so the probability it has all of them
+
+1789
+01:24:50,069 --> 01:24:56,729
+is all of those multiplied together
+
+1790
+01:24:52,760 --> 01:25:00,260
+kinda and the kinder phyla why is it not
+
+1791
+01:24:56,729 --> 01:25:00,259
+really can you press it in Taylor
+
+1792
+01:25:02,210 --> 01:25:09,529
+so glad you look horrified and skeptical
+
+1793
+01:25:05,359 --> 01:25:13,738
+where choices not independence thank you
+
+1794
+01:25:09,529 --> 01:25:16,189
+so nobody can call Tyler naive because
+
+1795
+01:25:13,738 --> 01:25:18,599
+the reason this is naive Bayes is
+
+1796
+01:25:16,189 --> 01:25:20,638
+because this is what happens if you take
+
+1797
+01:25:18,600 --> 01:25:23,010
+bayes's theorem Xander naive why and
+
+1798
+01:25:20,639 --> 01:25:26,730
+Tyler is not naive anything better right
+
+1799
+01:25:23,010 --> 01:25:29,699
+so naive Bayes says let's assume that if
+
+1800
+01:25:26,729 --> 01:25:32,279
+you have this movie is bloody stupid I
+
+1801
+01:25:29,698 --> 01:25:34,439
+hate it but the probability of hate is
+
+1802
+01:25:32,279 --> 01:25:36,090
+independent of the probability of bloody
+
+1803
+01:25:34,439 --> 01:25:38,219
+is an independent of the probability of
+
+1804
+01:25:36,090 --> 01:25:40,860
+stupid right which is definitely not
+
+1805
+01:25:38,219 --> 01:25:42,989
+true right and so naive Bayes ain't
+
+1806
+01:25:40,859 --> 01:25:44,880
+actually very good but I'm kind of
+
+1807
+01:25:42,988 --> 01:25:48,238
+teaching it to you because it's going to
+
+1808
+01:25:44,880 --> 01:25:50,630
+turn out to be a convenient piece for
+
+1809
+01:25:48,238 --> 01:25:53,698
+something we're about to learn later
+
+1810
+01:25:50,630 --> 01:25:56,159
+it's okay right I mean it's it's it's I
+
+1811
+01:25:53,698 --> 01:25:57,509
+would never I would never choose it like
+
+1812
+01:25:56,158 --> 01:25:59,069
+I don't think it's better than any other
+
+1813
+01:25:57,510 --> 01:26:02,909
+technique that's equally fast and
+
+1814
+01:25:59,069 --> 01:26:04,799
+equally easy but you know it's the thing
+
+1815
+01:26:02,908 --> 01:26:09,119
+you can do and it's certainly going to
+
+1816
+01:26:04,800 --> 01:26:12,360
+be a useful foundation so so here is now
+
+1817
+01:26:09,119 --> 01:26:16,349
+calculation right of the probability
+
+1818
+01:26:12,359 --> 01:26:18,089
+that this document is that we get this
+
+1819
+01:26:16,350 --> 01:26:20,190
+particular document assuming it's a
+
+1820
+01:26:18,090 --> 01:26:23,279
+positive review here's the probability
+
+1821
+01:26:20,189 --> 01:26:26,069
+given us a negative and here's the ratio
+
+1822
+01:26:23,279 --> 01:26:27,448
+and this ratio is above one so we're
+
+1823
+01:26:26,069 --> 01:26:30,029
+going to say I think that this is
+
+1824
+01:26:27,448 --> 01:26:35,729
+probably a positive review okay so
+
+1825
+01:26:30,029 --> 01:26:37,500
+that's the Excel version and so you can
+
+1826
+01:26:35,729 --> 01:26:39,178
+tell that I let your net touch this
+
+1827
+01:26:37,500 --> 01:26:42,929
+because it's got latex in it we've got
+
+1828
+01:26:39,179 --> 01:26:46,520
+actual math so so here is the here is
+
+1829
+01:26:42,929 --> 01:26:52,670
+the same thing the log count ratio of H
+
+1830
+01:26:46,520 --> 01:26:56,070
+feature FH would if and so here it is
+
+1831
+01:26:52,670 --> 01:26:57,690
+written out as Python okay so our
+
+1832
+01:26:56,069 --> 01:27:00,149
+independent variable is our term
+
+1833
+01:26:57,689 --> 01:27:03,000
+document matrix a dependent variable is
+
+1834
+01:27:00,149 --> 01:27:06,170
+just the labels of the way so using
+
+1835
+01:27:03,000 --> 01:27:10,170
+numpy this is going to grab the rows
+
+1836
+01:27:06,170 --> 01:27:13,789
+where the dependent variable is one okay
+
+1837
+01:27:10,170 --> 01:27:16,369
+and so then we can sum them
+
+1838
+01:27:13,789 --> 01:27:19,729
+over the rows to get the total word
+
+1839
+01:27:16,369 --> 01:27:22,939
+count for that feature across all the
+
+1840
+01:27:19,729 --> 01:27:24,649
+documents right plus one all right
+
+1841
+01:27:22,939 --> 01:27:25,579
+because that's the email Terrance is
+
+1842
+01:27:24,649 --> 01:27:27,619
+totally going to send me something about
+
+1843
+01:27:25,579 --> 01:27:30,739
+Viagra today I can tell that's that's
+
+1844
+01:27:27,619 --> 01:27:34,279
+that yeah okay so do the same thing for
+
+1845
+01:27:30,739 --> 01:27:37,069
+the negative reviews right and then of
+
+1846
+01:27:34,279 --> 01:27:39,679
+course it's nicer to take the log right
+
+1847
+01:27:37,069 --> 01:27:41,420
+because if we take the log then we can
+
+1848
+01:27:39,680 --> 01:27:43,340
+add things together rather than multiply
+
+1849
+01:27:41,420 --> 01:27:44,659
+them together and once you like multiply
+
+1850
+01:27:43,340 --> 01:27:46,159
+enough of these things together it's
+
+1851
+01:27:44,659 --> 01:27:47,210
+going to get kind of so close to zero
+
+1852
+01:27:46,159 --> 01:27:49,699
+that you'll probably run out of
+
+1853
+01:27:47,210 --> 01:27:56,449
+floating-point right so we take the log
+
+1854
+01:27:49,699 --> 01:27:58,239
+of the ratios and then we come as I say
+
+1855
+01:27:56,449 --> 01:28:01,189
+we then multiply that or a log we
+
+1856
+01:27:58,239 --> 01:28:05,979
+subtract that from the so you add that
+
+1857
+01:28:01,189 --> 01:28:08,349
+to the ratio of the class the whole plus
+
+1858
+01:28:05,979 --> 01:28:12,729
+probabilities all right
+
+1859
+01:28:08,350 --> 01:28:16,250
+so in order to say for each document
+
+1860
+01:28:12,729 --> 01:28:18,919
+multiply the phase probabilities by the
+
+1861
+01:28:16,250 --> 01:28:23,989
+accounts we can just use matrix model
+
+1862
+01:28:18,920 --> 01:28:27,199
+plane okay and then to add on the the
+
+1863
+01:28:23,989 --> 01:28:29,389
+log of the class ratios we can just use
+
+1864
+01:28:27,199 --> 01:28:32,000
+plus B and so we end up with something
+
+1865
+01:28:29,390 --> 01:28:34,280
+that looks a lot like our logistic
+
+1866
+01:28:32,000 --> 01:28:37,699
+regression right but we're not learning
+
+1867
+01:28:34,279 --> 01:28:39,500
+anything right not in kind of assess GED
+
+1868
+01:28:37,699 --> 01:28:41,300
+point of view we're just we're
+
+1869
+01:28:39,500 --> 01:28:43,880
+calculating it using this theoretical
+
+1870
+01:28:41,300 --> 01:28:45,320
+model okay and so as I said we can then
+
+1871
+01:28:43,880 --> 01:28:47,750
+compare that as to whether it's bigger
+
+1872
+01:28:45,319 --> 01:28:50,049
+or smaller than zero not one anymore
+
+1873
+01:28:47,750 --> 01:28:52,609
+because we're now in log space right and
+
+1874
+01:28:50,050 --> 01:28:55,159
+then we can compare that to the mean and
+
+1875
+01:28:52,609 --> 01:28:58,849
+we say okay that's 80% accurate 81 was
+
+1876
+01:28:55,159 --> 01:29:01,609
+inaccurate right so naive Bayes you know
+
+1877
+01:28:58,850 --> 01:29:06,680
+is not it's not nothing it gave us
+
+1878
+01:29:01,609 --> 01:29:09,019
+something okay it turns out that this
+
+1879
+01:29:06,680 --> 01:29:11,990
+version where we're actually looking at
+
+1880
+01:29:09,020 --> 01:29:14,960
+how often a word appears like absurd
+
+1881
+01:29:11,989 --> 01:29:16,670
+appeared twice it turns out at least for
+
+1882
+01:29:14,960 --> 01:29:18,770
+this problem and quite often it doesn't
+
+1883
+01:29:16,670 --> 01:29:20,300
+matter whether absurd appeared twice or
+
+1884
+01:29:18,770 --> 01:29:23,600
+once all that matters is that it
+
+1885
+01:29:20,300 --> 01:29:26,980
+appeared so what what people tend to try
+
+1886
+01:29:23,600 --> 01:29:30,760
+doing is to say take the two other
+
+1887
+01:29:26,979 --> 01:29:33,488
+term document matrix and go dot sine dot
+
+1888
+01:29:30,760 --> 01:29:35,650
+sign replaces anything positive as one
+
+1889
+01:29:33,488 --> 01:29:37,179
+and anything negative with negative one
+
+1890
+01:29:35,649 --> 01:29:39,879
+we don't have any negative counts
+
+1891
+01:29:37,180 --> 01:29:41,619
+obviously so this buying arises it so it
+
+1892
+01:29:39,880 --> 01:29:44,859
+says it's I don't care that you saw
+
+1893
+01:29:41,619 --> 01:29:47,979
+absurd twice and it's care that you saw
+
+1894
+01:29:44,859 --> 01:29:52,569
+it right so if we do exactly the same
+
+1895
+01:29:47,979 --> 01:30:02,259
+thing with the binarized version then
+
+1896
+01:29:52,569 --> 01:30:04,179
+you get a better result okay okay now
+
+1897
+01:30:02,260 --> 01:30:09,220
+this is the difference between theory
+
+1898
+01:30:04,180 --> 01:30:11,650
+and practice right in theory naive Bayes
+
+1899
+01:30:09,220 --> 01:30:13,570
+sounds okay but it's it's naive unlike
+
+1900
+01:30:11,649 --> 01:30:15,159
+Tyla it's naive right so what Tyler
+
+1901
+01:30:13,569 --> 01:30:19,359
+would probably do would instead say
+
+1902
+01:30:15,159 --> 01:30:22,630
+rather than assuming that I should use
+
+1903
+01:30:19,359 --> 01:30:25,420
+these coefficients ah why don't we learn
+
+1904
+01:30:22,630 --> 01:30:28,420
+them so it sound reasonable Tyler yeah
+
+1905
+01:30:25,420 --> 01:30:29,920
+okay so let's learn them so we can you
+
+1906
+01:30:28,420 --> 01:30:32,590
+know we can totally learn them so let's
+
+1907
+01:30:29,920 --> 01:30:36,430
+create a logistic regression right and
+
+1908
+01:30:32,590 --> 01:30:37,810
+let's fit some coefficients and that's
+
+1909
+01:30:36,430 --> 01:30:39,130
+going to literally give us something
+
+1910
+01:30:37,810 --> 01:30:41,289
+with exactly the same functional form
+
+1911
+01:30:39,130 --> 01:30:44,529
+that we had before but now rather than
+
+1912
+01:30:41,289 --> 01:30:46,300
+using a theoretical R and a theoretical
+
+1913
+01:30:44,529 --> 01:30:48,300
+B we're going to calculate the two
+
+1914
+01:30:46,300 --> 01:30:56,470
+things based on logistic regression and
+
+1915
+01:30:48,300 --> 01:31:00,250
+that's better okay so so it's kind of
+
+1916
+01:30:56,470 --> 01:31:01,690
+like yeah why why do something based on
+
+1917
+01:31:00,250 --> 01:31:04,840
+some theoretical model because
+
+1918
+01:31:01,689 --> 01:31:06,309
+theoretical models are never gonna be as
+
+1919
+01:31:04,840 --> 01:31:08,130
+accurate pretty much as a data-driven
+
+1920
+01:31:06,310 --> 01:31:11,620
+model right because theoretical models
+
+1921
+01:31:08,130 --> 01:31:13,060
+unless you're dealing with some I don't
+
+1922
+01:31:11,619 --> 01:31:14,319
+know like physics thing or something
+
+1923
+01:31:13,060 --> 01:31:16,600
+where you're like okay this is actually
+
+1924
+01:31:14,319 --> 01:31:19,149
+how the world works there really is no I
+
+1925
+01:31:16,600 --> 01:31:20,770
+don't know we're working in a vacuum and
+
+1926
+01:31:19,149 --> 01:31:23,399
+this is the exact gravity and blah blah
+
+1927
+01:31:20,770 --> 01:31:25,690
+blah right but most of the real world
+
+1928
+01:31:23,399 --> 01:31:27,339
+this is how things are like it's better
+
+1929
+01:31:25,689 --> 01:31:31,389
+to lie on your coefficients and
+
+1930
+01:31:27,340 --> 01:31:35,170
+calculate them yes you know generally
+
+1931
+01:31:31,390 --> 01:31:37,590
+what's this do liquid through I was
+
+1932
+01:31:35,170 --> 01:31:42,359
+hoping you'd ignore not notice but
+
+1933
+01:31:37,590 --> 01:31:44,369
+or basically in this case our term
+
+1934
+01:31:42,359 --> 01:31:45,779
+document matrix is much wider than it is
+
+1935
+01:31:44,368 --> 01:31:48,359
+tall
+
+1936
+01:31:45,779 --> 01:31:50,189
+there is a reformulation of
+
+1937
+01:31:48,359 --> 01:31:51,630
+mathematically basically almost a
+
+1938
+01:31:50,189 --> 01:31:53,519
+mathematically equivalent reformulations
+
+1939
+01:31:51,630 --> 01:31:55,380
+of logistic regression that happens to
+
+1940
+01:31:53,520 --> 01:31:57,210
+be a lot faster when it's wider than it
+
+1941
+01:31:55,380 --> 01:31:59,130
+is tall so the short answer is if you
+
+1942
+01:31:57,210 --> 01:32:01,020
+don't put that here anytime it's wider
+
+1943
+01:31:59,130 --> 01:32:03,420
+than it is tall what really comes true
+
+1944
+01:32:01,020 --> 01:32:05,219
+it'll run this runs in like two seconds
+
+1945
+01:32:03,420 --> 01:32:08,670
+if you don't have it here it'll take a
+
+1946
+01:32:05,219 --> 01:32:11,579
+few minutes so like in math this is kind
+
+1947
+01:32:08,670 --> 01:32:14,279
+of concept of dual versions of problems
+
+1948
+01:32:11,579 --> 01:32:16,590
+which are kind of like equivalent
+
+1949
+01:32:14,279 --> 01:32:22,769
+versions that sometimes work better for
+
+1950
+01:32:16,590 --> 01:32:27,329
+certain situations okay here is so here
+
+1951
+01:32:22,770 --> 01:32:29,429
+is the binarized version okay and it's
+
+1952
+01:32:27,329 --> 01:32:32,908
+it's about the same right so you can see
+
+1953
+01:32:29,429 --> 01:32:35,359
+I've fitted it with the the sine of the
+
+1954
+01:32:32,908 --> 01:32:39,149
+dock of the dr. Murdock matrix and
+
+1955
+01:32:35,359 --> 01:32:42,889
+predicted it with this right now the
+
+1956
+01:32:39,149 --> 01:32:46,769
+thing is that this is going to be a
+
+1957
+01:32:42,889 --> 01:32:49,579
+coefficient for every term where I was
+
+1958
+01:32:46,770 --> 01:32:51,480
+about 75,000 terms in their vocabulary
+
+1959
+01:32:49,579 --> 01:32:53,429
+and that seems like a lot of
+
+1960
+01:32:51,479 --> 01:32:56,428
+coefficients given that we've only got
+
+1961
+01:32:53,429 --> 01:32:59,250
+twenty five thousand reviews so maybe we
+
+1962
+01:32:56,429 --> 01:33:02,010
+should try regularizing this so we can
+
+1963
+01:32:59,250 --> 01:33:05,099
+use regularization built into SK learns
+
+1964
+01:33:02,010 --> 01:33:07,619
+logistic regression class which is C is
+
+1965
+01:33:05,099 --> 01:33:09,510
+the parameter that they use a small
+
+1966
+01:33:07,618 --> 01:33:12,118
+process is slightly weird as smaller
+
+1967
+01:33:09,510 --> 01:33:13,619
+parameter is more regularization right
+
+1968
+01:33:12,118 --> 01:33:15,598
+so that's why I used wanting eight to
+
+1969
+01:33:13,618 --> 01:33:18,029
+basically turn off regularization yeah
+
+1970
+01:33:15,599 --> 01:33:22,199
+so if I turn on regularization set it to
+
+1971
+01:33:18,029 --> 01:33:23,880
+0.1 then now it's 88% okay which makes
+
+1972
+01:33:22,198 --> 01:33:27,178
+sense you know you wouldn't you would
+
+1973
+01:33:23,880 --> 01:33:29,069
+think like 75,000 parameters for 25,000
+
+1974
+01:33:27,179 --> 01:33:32,279
+documents you know it's likely to
+
+1975
+01:33:29,069 --> 01:33:34,889
+overfit indeed it did overfit so this is
+
+1976
+01:33:32,279 --> 01:33:39,179
+adding l2 regularization to avoid
+
+1977
+01:33:34,889 --> 01:33:41,699
+overfitting I mentioned earlier that as
+
+1978
+01:33:39,179 --> 01:33:42,630
+well as l2 which is looking at the
+
+1979
+01:33:41,698 --> 01:33:48,888
+weight squared
+
+1980
+01:33:42,630 --> 01:33:51,179
+there's also l1 which is looking at just
+
+1981
+01:33:48,889 --> 01:33:57,179
+the absolute value of the way
+
+1982
+01:33:51,179 --> 01:33:59,248
+right I I was kind of pretty sloppy in
+
+1983
+01:33:57,179 --> 01:34:02,099
+my wording before I said that l/2 who
+
+1984
+01:33:59,248 --> 01:34:04,319
+tries to make things zero that's kind of
+
+1985
+01:34:02,099 --> 01:34:06,869
+true but if you've got two things that
+
+1986
+01:34:04,319 --> 01:34:09,448
+are highly correlated then l2
+
+1987
+01:34:06,868 --> 01:34:11,578
+regularization will make move them both
+
+1988
+01:34:09,448 --> 01:34:14,188
+down together it won't make one of them
+
+1989
+01:34:11,578 --> 01:34:16,889
+zero and one of them nonzero right so l1
+
+1990
+01:34:14,189 --> 01:34:19,469
+regularization actually has the property
+
+1991
+01:34:16,889 --> 01:34:21,599
+that it'll try to make as many things
+
+1992
+01:34:19,469 --> 01:34:23,158
+zero as possible where else l2
+
+1993
+01:34:21,599 --> 01:34:25,229
+regularization has a property that it
+
+1994
+01:34:23,158 --> 01:34:27,569
+tends to try to make kind of everything
+
+1995
+01:34:25,229 --> 01:34:30,958
+smaller we actually don't care about
+
+1996
+01:34:27,569 --> 01:34:32,880
+that difference in really any modern
+
+1997
+01:34:30,958 --> 01:34:34,260
+machine learning because we very rarely
+
+1998
+01:34:32,880 --> 01:34:36,420
+try to directly interpret the
+
+1999
+01:34:34,260 --> 01:34:39,630
+coefficients we try to understand our
+
+2000
+01:34:36,420 --> 01:34:40,760
+models through interrogation using the
+
+2001
+01:34:39,630 --> 01:34:43,409
+kind of techniques that we've learned
+
+2002
+01:34:40,760 --> 01:34:45,809
+the reason that we would care about l1
+
+2003
+01:34:43,408 --> 01:34:47,158
+versus l2 is simply like which one ends
+
+2004
+01:34:45,809 --> 01:34:51,090
+up with a better error on the validation
+
+2005
+01:34:47,158 --> 01:34:53,908
+set okay and you can try both with SK
+
+2006
+01:34:51,090 --> 01:34:56,578
+learns logistic regression l2 actually
+
+2007
+01:34:53,908 --> 01:34:58,259
+turns out to be a lot faster because you
+
+2008
+01:34:56,578 --> 01:35:00,779
+can't use your equals true unless you
+
+2009
+01:34:58,260 --> 01:35:02,340
+have L 2 so you know and l2 is the
+
+2010
+01:35:00,779 --> 01:35:05,309
+default so I didn't really worry too
+
+2011
+01:35:02,340 --> 01:35:08,309
+much about that difference yet so you
+
+2012
+01:35:05,309 --> 01:35:12,139
+can see here if we use regularization
+
+2013
+01:35:08,309 --> 01:35:20,939
+and binarized we actually do pretty well
+
+2014
+01:35:12,139 --> 01:35:25,439
+okay so yes can you pass that back to W
+
+2015
+01:35:20,939 --> 01:35:27,329
+please before we learned about elastic
+
+2016
+01:35:25,439 --> 01:35:30,619
+net right like combining l1 and l2 yeah
+
+2017
+01:35:27,328 --> 01:35:33,779
+yeah yeah you can do that but I mean
+
+2018
+01:35:30,618 --> 01:35:36,359
+it's like you know with with deeper
+
+2019
+01:35:33,779 --> 01:35:42,029
+models and yeah I've never seen anybody
+
+2020
+01:35:36,359 --> 01:35:46,469
+find that useful okay so the last thing
+
+2021
+01:35:42,029 --> 01:35:49,139
+I'll mention is that you can when you do
+
+2022
+01:35:46,469 --> 01:35:51,149
+your count vectorizer order that was
+
+2023
+01:35:49,139 --> 01:35:54,150
+when you do your account vectorizer you
+
+2024
+01:35:51,149 --> 01:35:56,698
+can also ask for n grams right by
+
+2025
+01:35:54,149 --> 01:36:01,948
+default we get uni grams that is single
+
+2026
+01:35:56,698 --> 01:36:04,710
+words but if we if we say Engram range
+
+2027
+01:36:01,948 --> 01:36:08,099
+equals 1 comma 3 that's also going to
+
+2028
+01:36:04,710 --> 01:36:10,619
+give us by grams and trigrams by which I
+
+2029
+01:36:08,100 --> 01:36:14,219
+mean if I now say okay let's go ahead
+
+2030
+01:36:10,619 --> 01:36:16,769
+and do the count vectorizer cat feature
+
+2031
+01:36:14,219 --> 01:36:21,060
+names now my vocabulary includes a
+
+2032
+01:36:16,770 --> 01:36:22,800
+bigram right bypassed by vengeance and a
+
+2033
+01:36:21,060 --> 01:36:26,700
+trigram by vengeance
+
+2034
+01:36:22,800 --> 01:36:28,500
+. 5 euro miles right so this is now
+
+2035
+01:36:26,699 --> 01:36:31,109
+doing the same thing but after
+
+2036
+01:36:28,500 --> 01:36:32,659
+tokenizing it's not describing each word
+
+2037
+01:36:31,109 --> 01:36:35,130
+and saying that's part of our vocabulary
+
+2038
+01:36:32,659 --> 01:36:36,809
+two words next to each other and each
+
+2039
+01:36:35,130 --> 01:36:40,109
+three words next to each other and this
+
+2040
+01:36:36,810 --> 01:36:42,630
+10 this turns out to be like super
+
+2041
+01:36:40,109 --> 01:36:46,469
+helpful in like taking advantage of bag
+
+2042
+01:36:42,630 --> 01:36:49,109
+of word approaches because we now can
+
+2043
+01:36:46,469 --> 01:36:53,550
+see like the difference between like you
+
+2044
+01:36:49,109 --> 01:36:56,279
+know not good versus not bad this is not
+
+2045
+01:36:53,550 --> 01:36:59,520
+terrible right
+
+2046
+01:36:56,279 --> 01:37:00,899
+or even like double quote good double
+
+2047
+01:36:59,520 --> 01:37:01,620
+quote which is probably going to be
+
+2048
+01:37:00,899 --> 01:37:06,119
+sarcastic
+
+2049
+01:37:01,619 --> 01:37:07,500
+right so using trigram features actually
+
+2050
+01:37:06,119 --> 01:37:08,329
+is going to turn out to make both
+
+2051
+01:37:07,500 --> 01:37:11,760
+naivebayes
+
+2052
+01:37:08,329 --> 01:37:12,300
+and logistic regression quite a lot
+
+2053
+01:37:11,760 --> 01:37:14,280
+better
+
+2054
+01:37:12,300 --> 01:37:17,969
+it really takes us quite a lot further
+
+2055
+01:37:14,279 --> 01:37:23,099
+and makes them quite useful I have a
+
+2056
+01:37:17,969 --> 01:37:25,770
+question about the token icers so you
+
+2057
+01:37:23,100 --> 01:37:29,850
+are saying some marks features so how
+
+2058
+01:37:25,770 --> 01:37:34,800
+are these diagrams and trigrams selected
+
+2059
+01:37:29,850 --> 01:37:38,010
+right so since I'm using a linear model
+
+2060
+01:37:34,800 --> 01:37:39,510
+I didn't want to create too many
+
+2061
+01:37:38,010 --> 01:37:41,219
+features I mean it actually worked fine
+
+2062
+01:37:39,510 --> 01:37:43,920
+even without max features I think I had
+
+2063
+01:37:41,219 --> 01:37:45,449
+something like I can't remember 70
+
+2064
+01:37:43,920 --> 01:37:47,850
+million coefficients it still worked
+
+2065
+01:37:45,449 --> 01:37:50,069
+right but just there's no need to have
+
+2066
+01:37:47,850 --> 01:37:53,160
+70 million coefficients so if you say
+
+2067
+01:37:50,069 --> 01:37:54,000
+max features equals 800,000 the count
+
+2068
+01:37:53,159 --> 01:37:56,960
+vectorizer
+
+2069
+01:37:54,000 --> 01:37:59,430
+will sort the vocabulary by how often
+
+2070
+01:37:56,960 --> 01:38:01,739
+everything appears whether it be uni
+
+2071
+01:37:59,430 --> 01:38:05,520
+ground by graham diagram and it will cut
+
+2072
+01:38:01,738 --> 01:38:08,789
+it off after the first 800,000 most
+
+2073
+01:38:05,520 --> 01:38:12,530
+common engrams Engram is just a generic
+
+2074
+01:38:08,789 --> 01:38:17,130
+word for uni gram by Graham and trigram
+
+2075
+01:38:12,529 --> 01:38:17,819
+so that's why the train term doctype is
+
+2076
+01:38:17,130 --> 01:38:20,699
+now 25
+
+2077
+01:38:17,819 --> 01:38:22,309
+thousand by 800,000 and like if you're
+
+2078
+01:38:20,699 --> 01:38:24,510
+not sure what number this should be I
+
+2079
+01:38:22,310 --> 01:38:27,390
+just picked something that was really
+
+2080
+01:38:24,510 --> 01:38:28,619
+big and you know didn't didn't worry
+
+2081
+01:38:27,390 --> 01:38:33,079
+about it too much and it seemed to be
+
+2082
+01:38:28,619 --> 01:38:33,079
+fine like it's not terribly sensitive
+
+2083
+01:38:33,590 --> 01:38:37,199
+all right
+
+2084
+01:38:35,039 --> 01:38:40,470
+okay well that's we're out of time so
+
+2085
+01:38:37,199 --> 01:38:43,439
+what we're going to see next week and by
+
+2086
+01:38:40,470 --> 01:38:45,840
+the way you know we could have replaced
+
+2087
+01:38:43,439 --> 01:38:48,119
+this logistic regression with our PI
+
+2088
+01:38:45,840 --> 01:38:50,039
+torch version and next week we'll
+
+2089
+01:38:48,119 --> 01:38:53,130
+actually see something in the fast a
+
+2090
+01:38:50,039 --> 01:38:54,779
+library that does exactly that but also
+
+2091
+01:38:53,130 --> 01:38:59,550
+what we'll see next week starting next
+
+2092
+01:38:54,779 --> 01:39:01,979
+week tomorrow is how to combine logistic
+
+2093
+01:38:59,550 --> 01:39:03,230
+regression and naive Bayes together you
+
+2094
+01:39:01,979 --> 01:39:05,879
+get something that's better than either
+
+2095
+01:39:03,229 --> 01:39:09,479
+and then we'll learn how to move from
+
+2096
+01:39:05,880 --> 01:39:12,029
+there to create a deeper neural network
+
+2097
+01:39:09,479 --> 01:39:14,609
+to get a pretty much state-of-the-art
+
+2098
+01:39:12,029 --> 01:39:17,210
+result for structured learning all right
+
+2099
+01:39:14,609 --> 01:39:17,210
+so we'll see you then
+

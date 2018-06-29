@@ -1,0 +1,7416 @@
+1
+00:00:00,000 --> 00:00:06,480
+hi everybody welcome to practical deep
+
+2
+00:00:03,810 --> 00:00:11,790
+learning for coders this is part one of
+
+3
+00:00:06,480 --> 00:00:15,618
+our two-part course I'm presenting this
+
+4
+00:00:11,789 --> 00:00:19,230
+from the data Institute in San Francisco
+
+5
+00:00:15,618 --> 00:00:21,210
+will be doing seven lessons in this part
+
+6
+00:00:19,230 --> 00:00:22,410
+of the course most of them will be about
+
+7
+00:00:21,210 --> 00:00:23,910
+a couple of hours long
+
+8
+00:00:22,410 --> 00:00:27,899
+this first one may be a little bit
+
+9
+00:00:23,910 --> 00:00:30,179
+shorter practical deep learning for
+
+10
+00:00:27,899 --> 00:00:32,519
+coders is all about getting you up and
+
+11
+00:00:30,178 --> 00:00:35,399
+running with deep learning in practice
+
+12
+00:00:32,520 --> 00:00:38,040
+getting world-class results and it's a
+
+13
+00:00:35,399 --> 00:00:39,629
+really coding focused approach as the
+
+14
+00:00:38,039 --> 00:00:41,789
+name suggests but we're not going to
+
+15
+00:00:39,628 --> 00:00:44,218
+dumb it down by the end of the course
+
+16
+00:00:41,789 --> 00:00:46,619
+you all have learned all of the theory
+
+17
+00:00:44,219 --> 00:00:48,750
+in details that are necessary to rebuild
+
+18
+00:00:46,619 --> 00:00:50,329
+all of the world-class results we're
+
+19
+00:00:48,750 --> 00:00:53,519
+learning about from scratch
+
+20
+00:00:50,329 --> 00:00:56,579
+now I should mention that our videos are
+
+21
+00:00:53,520 --> 00:00:58,739
+hosted on YouTube that we strongly
+
+22
+00:00:56,579 --> 00:01:02,640
+recommend watching them via our website
+
+23
+00:00:58,738 --> 00:01:05,188
+at course fast a I although they're
+
+24
+00:01:02,640 --> 00:01:07,049
+exactly the same videos the important
+
+25
+00:01:05,188 --> 00:01:08,938
+thing about watching them through our
+
+26
+00:01:07,049 --> 00:01:10,979
+website is that you'll get all of the
+
+27
+00:01:08,938 --> 00:01:14,188
+information you need about kind of
+
+28
+00:01:10,978 --> 00:01:16,650
+updates to libraries my own locations
+
+29
+00:01:14,188 --> 00:01:19,408
+further information frequently asked
+
+30
+00:01:16,650 --> 00:01:21,719
+questions and so forth so if you're
+
+31
+00:01:19,409 --> 00:01:23,189
+currently on YouTube watching this why
+
+32
+00:01:21,719 --> 00:01:25,289
+don't you switch over to crosstalk fast
+
+33
+00:01:23,188 --> 00:01:27,059
+at AI now and start watching through
+
+34
+00:01:25,290 --> 00:01:29,549
+there and make sure you read all of the
+
+35
+00:01:27,060 --> 00:01:30,868
+material on the page before you start
+
+36
+00:01:29,549 --> 00:01:34,200
+just to make sure that you've got
+
+37
+00:01:30,868 --> 00:01:36,090
+everything you need the other thing to
+
+38
+00:01:34,200 --> 00:01:41,879
+mention is that there is a really great
+
+39
+00:01:36,090 --> 00:01:44,310
+strong community at forums faster I from
+
+40
+00:01:41,879 --> 00:01:47,310
+time to time you will find that you get
+
+41
+00:01:44,310 --> 00:01:49,290
+stuck you may get stuck very early on
+
+42
+00:01:47,310 --> 00:01:50,790
+you may not get stuck for quite a while
+
+43
+00:01:49,290 --> 00:01:53,790
+but at some point you might get stuck
+
+44
+00:01:50,790 --> 00:01:55,770
+with understanding why something works
+
+45
+00:01:53,790 --> 00:01:57,930
+the way it does or there may be some
+
+46
+00:01:55,769 --> 00:02:00,840
+computer problem that you have or so
+
+47
+00:01:57,930 --> 00:02:02,939
+forth on forums don't fast at AI there
+
+48
+00:02:00,840 --> 00:02:05,310
+are thousands of other learners talking
+
+49
+00:02:02,938 --> 00:02:07,798
+about every lesson and lots of other
+
+50
+00:02:05,310 --> 00:02:09,390
+topics besides it's the most active deep
+
+51
+00:02:07,799 --> 00:02:12,930
+learning community on the internet by
+
+52
+00:02:09,389 --> 00:02:14,938
+far so definitely register there
+
+53
+00:02:12,930 --> 00:02:16,739
+and start getting involved you'll get a
+
+54
+00:02:14,938 --> 00:02:22,739
+lot more out of this course if you do
+
+55
+00:02:16,739 --> 00:02:24,750
+that so we're going to start by doing
+
+56
+00:02:22,739 --> 00:02:26,009
+some coding this is an approach we're
+
+57
+00:02:24,750 --> 00:02:29,509
+going to be talking about in the moment
+
+58
+00:02:26,009 --> 00:02:33,090
+called the top-down approach to study
+
+59
+00:02:29,509 --> 00:02:35,639
+but let's learn it by doing it so let's
+
+60
+00:02:33,090 --> 00:02:38,310
+go ahead and try and actually train a
+
+61
+00:02:35,639 --> 00:02:41,188
+neural network now in order to train a
+
+62
+00:02:38,310 --> 00:02:45,209
+neural network you almost certainly want
+
+63
+00:02:41,188 --> 00:02:48,658
+a GPU GPU of is a graphics processing a
+
+64
+00:02:45,209 --> 00:02:52,408
+graphics processing unit it's the things
+
+65
+00:02:48,658 --> 00:02:56,158
+that companies use to help you play
+
+66
+00:02:52,408 --> 00:02:58,469
+games better they let your computer
+
+67
+00:02:56,158 --> 00:03:01,620
+render the game much more quickly than
+
+68
+00:02:58,469 --> 00:03:04,829
+your CPU okay we'll be talking about
+
+69
+00:03:01,620 --> 00:03:06,688
+them more shortly but for now I'm going
+
+70
+00:03:04,829 --> 00:03:11,159
+to show you how you can get access to a
+
+71
+00:03:06,688 --> 00:03:14,430
+GPU specifically you're going to need an
+
+72
+00:03:11,158 --> 00:03:17,189
+NVIDIA GPU because only NVIDIA GPUs
+
+73
+00:03:14,430 --> 00:03:19,709
+support something called cooter cooter
+
+74
+00:03:17,189 --> 00:03:22,919
+is the language and framework that
+
+75
+00:03:19,709 --> 00:03:26,329
+nearly all deep learning libraries and
+
+76
+00:03:22,919 --> 00:03:28,620
+practitioners use to do their work
+
+77
+00:03:26,329 --> 00:03:30,510
+obviously it's not ideal that we're
+
+78
+00:03:28,620 --> 00:03:32,189
+stuck with one particular vendors cards
+
+79
+00:03:30,509 --> 00:03:34,229
+and over time we hope to see more
+
+80
+00:03:32,189 --> 00:03:38,459
+competition in this base but for now we
+
+81
+00:03:34,229 --> 00:03:40,378
+do need an NVIDIA GPU your laptop almost
+
+82
+00:03:38,459 --> 00:03:42,150
+certainly doesn't have one unless you
+
+83
+00:03:40,378 --> 00:03:46,888
+specifically went out of your way to buy
+
+84
+00:03:42,150 --> 00:03:50,189
+like a gaming laptop so almost certainly
+
+85
+00:03:46,889 --> 00:03:53,400
+you will need to rent one and the good
+
+86
+00:03:50,189 --> 00:03:55,859
+news is that renting access paying by
+
+87
+00:03:53,400 --> 00:03:59,219
+the second or a GPU based computer is
+
+88
+00:03:55,859 --> 00:04:03,150
+pretty easy and pretty cheap I'm going
+
+89
+00:03:59,219 --> 00:04:06,079
+to show you a couple of options the
+
+90
+00:04:03,150 --> 00:04:09,379
+first option I'll show you which is
+
+91
+00:04:06,079 --> 00:04:15,269
+probably the easiest is called Kressel
+
+92
+00:04:09,378 --> 00:04:16,620
+if you go to kress allcom and click on
+
+93
+00:04:15,269 --> 00:04:19,739
+sign up or if you've been there before
+
+94
+00:04:16,620 --> 00:04:22,019
+sign-in you will find yourself at this
+
+95
+00:04:19,738 --> 00:04:24,718
+screen which has a big button that says
+
+96
+00:04:22,019 --> 00:04:25,530
+start jupiter and another switch called
+
+97
+00:04:24,718 --> 00:04:27,509
+enable GP
+
+98
+00:04:25,529 --> 00:04:30,299
+you so if we make sure that is set to
+
+99
+00:04:27,509 --> 00:04:37,039
+true the Nabal GPU is on and we click
+
+100
+00:04:30,300 --> 00:04:39,300
+start Jupiter and we click start Jupiter
+
+101
+00:04:37,040 --> 00:04:40,860
+it's going to launch us into something
+
+102
+00:04:39,300 --> 00:04:44,100
+called Jupiter notebook
+
+103
+00:04:40,860 --> 00:04:46,439
+Jupiter notebook in a recent survey of
+
+104
+00:04:44,100 --> 00:04:48,990
+tens of thousands of data scientists was
+
+105
+00:04:46,439 --> 00:04:51,689
+rated as the third most important tool
+
+106
+00:04:48,990 --> 00:04:52,769
+in the data scientist toolbox it's
+
+107
+00:04:51,689 --> 00:04:54,899
+really important that you get to learn
+
+108
+00:04:52,769 --> 00:04:57,479
+it well and all of our courses will be
+
+109
+00:04:54,899 --> 00:04:59,459
+run through Jupiter yes Rachel you have
+
+110
+00:04:57,480 --> 00:05:01,650
+a question or a comment I just wanted to
+
+111
+00:04:59,459 --> 00:05:06,439
+point out that you get I believe 10 3
+
+112
+00:05:01,649 --> 00:05:06,439
+hours so if you wanted to tricresyl out
+
+113
+00:05:06,860 --> 00:05:12,060
+yeah he might have changed that recently
+
+114
+00:05:10,410 --> 00:05:13,350
+to less hours but you can check the FAQ
+
+115
+00:05:12,060 --> 00:05:16,319
+or the pricing but you certainly get
+
+116
+00:05:13,350 --> 00:05:18,090
+some three hours the pricing varies
+
+117
+00:05:16,319 --> 00:05:19,860
+because this is actually runs on top of
+
+118
+00:05:18,089 --> 00:05:24,089
+Amazon Web Services so at the moment
+
+119
+00:05:19,860 --> 00:05:25,949
+it's 60 cents an hour the nice thing is
+
+120
+00:05:24,089 --> 00:05:27,629
+though that you can always turn it turn
+
+121
+00:05:25,949 --> 00:05:29,579
+it on you know start your Jupiter
+
+122
+00:05:27,629 --> 00:05:31,439
+without the CP without the GPU running
+
+123
+00:05:29,579 --> 00:05:33,978
+and pay you a tenth of that price which
+
+124
+00:05:31,439 --> 00:05:33,978
+is pretty cool
+
+125
+00:05:34,228 --> 00:05:38,250
+so Jupiter notebook is something we'll
+
+126
+00:05:36,029 --> 00:05:40,139
+be doing all of this course in and so to
+
+127
+00:05:38,250 --> 00:05:42,149
+get started here we're going to find our
+
+128
+00:05:40,139 --> 00:05:48,509
+particular course so we're go to courses
+
+129
+00:05:42,149 --> 00:05:51,120
+and would go to fast a o2 and there they
+
+130
+00:05:48,509 --> 00:05:52,589
+are things have been moving around a
+
+131
+00:05:51,120 --> 00:05:55,168
+little bit so it may be in a different
+
+132
+00:05:52,589 --> 00:05:56,310
+spot for you when you look at this and
+
+133
+00:05:55,168 --> 00:05:59,089
+we'll make sure all the information
+
+134
+00:05:56,310 --> 00:06:02,430
+current information is on the website
+
+135
+00:05:59,089 --> 00:06:05,279
+now having said that that's you know the
+
+136
+00:06:02,430 --> 00:06:08,959
+crystal approach is you know as you can
+
+137
+00:06:05,279 --> 00:06:13,019
+see it's basically instant and and easy
+
+138
+00:06:08,959 --> 00:06:16,139
+but if you've got you know an extra hour
+
+139
+00:06:13,019 --> 00:06:20,659
+or so to get going and even better
+
+140
+00:06:16,139 --> 00:06:20,659
+option is something called paper space
+
+141
+00:06:22,189 --> 00:06:26,810
+paper space unlike Chris or doesn't run
+
+142
+00:06:25,139 --> 00:06:29,810
+on top of Amazon they have their own
+
+143
+00:06:26,810 --> 00:06:29,810
+machines
+
+144
+00:06:32,389 --> 00:06:38,959
+and if I click on so here's here's paper
+
+145
+00:06:36,449 --> 00:06:41,309
+space and so if I click on new machine I
+
+146
+00:06:38,959 --> 00:06:43,319
+can pick which one of the three data
+
+147
+00:06:41,309 --> 00:06:47,069
+centers to use so pick that one closest
+
+148
+00:06:43,319 --> 00:06:51,769
+to you so I'll say a West Coast and then
+
+149
+00:06:47,069 --> 00:06:54,778
+I'll say Linux and I'll say Ubuntu 16
+
+150
+00:06:51,769 --> 00:06:55,709
+and then it says choose machine and you
+
+151
+00:06:54,778 --> 00:06:58,488
+can see there's various different
+
+152
+00:06:55,709 --> 00:07:01,889
+machines I can choose from and
+
+153
+00:06:58,488 --> 00:07:04,799
+pay-by-the-hour so this is pretty cool
+
+154
+00:07:01,889 --> 00:07:07,168
+for 40 cents an hour so it's cheaper
+
+155
+00:07:04,800 --> 00:07:09,119
+than cresol I get a machine that's
+
+156
+00:07:07,168 --> 00:07:12,269
+actually going to be much faster than
+
+157
+00:07:09,119 --> 00:07:15,509
+Crescent 67 our machine or for 65 cents
+
+158
+00:07:12,269 --> 00:07:17,579
+an hour way way way faster all right so
+
+159
+00:07:15,509 --> 00:07:19,679
+I'm going to actually show you how to
+
+160
+00:07:17,579 --> 00:07:22,769
+get started with the paper space
+
+161
+00:07:19,678 --> 00:07:26,098
+approach because that actually is going
+
+162
+00:07:22,769 --> 00:07:27,389
+to do everything from scratch you may
+
+163
+00:07:26,098 --> 00:07:30,178
+find if you trailers
+
+164
+00:07:27,389 --> 00:07:32,338
+do the 65 cents an hour one that it may
+
+165
+00:07:30,178 --> 00:07:34,888
+require you to contact paper space to
+
+166
+00:07:32,338 --> 00:07:36,809
+say like why do you want it and it's
+
+167
+00:07:34,889 --> 00:07:41,848
+just an anti fraud the thing so if you
+
+168
+00:07:36,809 --> 00:07:43,469
+say faster AI there then they'll quickly
+
+169
+00:07:41,848 --> 00:07:45,209
+get you up and running so I'm going to
+
+170
+00:07:43,468 --> 00:07:50,579
+use the cheapest one here 40 cents an
+
+171
+00:07:45,209 --> 00:07:54,360
+hour you can pick how much draw it you
+
+172
+00:07:50,579 --> 00:07:56,218
+want and note that you pay for a month
+
+173
+00:07:54,360 --> 00:07:58,439
+of storage as soon as you start the
+
+174
+00:07:56,218 --> 00:07:59,908
+machine up alright so don't start and
+
+175
+00:07:58,439 --> 00:08:01,349
+stop lots of machines because each time
+
+176
+00:07:59,908 --> 00:08:05,158
+you pay for that month of storage
+
+177
+00:08:01,348 --> 00:08:07,860
+I think the 250 gig $7 a month option is
+
+178
+00:08:05,158 --> 00:08:08,879
+pretty good but you only need 50 gig so
+
+179
+00:08:07,860 --> 00:08:12,749
+if you're trying to minimize the price
+
+180
+00:08:08,879 --> 00:08:16,019
+you can go there the only other thing
+
+181
+00:08:12,749 --> 00:08:17,550
+you need to do is turn on public IP so
+
+182
+00:08:16,019 --> 00:08:20,278
+that we can actually log into this and
+
+183
+00:08:17,550 --> 00:08:23,718
+we can turn off auto snapshot to save
+
+184
+00:08:20,278 --> 00:08:23,718
+the money or not having backups
+
+185
+00:08:27,449 --> 00:08:32,379
+all right so if you then click on create
+
+186
+00:08:29,860 --> 00:08:37,120
+your paper space about a minute later
+
+187
+00:08:32,379 --> 00:08:42,519
+you will find that your machine will pop
+
+188
+00:08:37,120 --> 00:08:46,360
+up here is my Ubuntu 1604 machine if you
+
+189
+00:08:42,519 --> 00:08:49,269
+check your email you will find that they
+
+190
+00:08:46,360 --> 00:08:50,050
+have emailed you a password so you can
+
+191
+00:08:49,269 --> 00:08:54,189
+copy that
+
+192
+00:08:50,049 --> 00:08:56,500
+and you can go to your machine and enter
+
+193
+00:08:54,190 --> 00:09:00,490
+your password now to paste the password
+
+194
+00:08:56,500 --> 00:09:04,000
+you would press ctrl shift V or on Mac
+
+195
+00:09:00,490 --> 00:09:06,610
+against Apple shift V so it's slightly
+
+196
+00:09:04,000 --> 00:09:11,409
+different to normal pasting or of course
+
+197
+00:09:06,610 --> 00:09:13,180
+you can just type it in and here we are
+
+198
+00:09:11,409 --> 00:09:15,269
+now we can make a little bit more room
+
+199
+00:09:13,179 --> 00:09:18,549
+here by clicking on those little arrows
+
+200
+00:09:15,269 --> 00:09:20,259
+there can zoom in a little bit and so as
+
+201
+00:09:18,549 --> 00:09:24,759
+you can see we've got like a terminal
+
+202
+00:09:20,259 --> 00:09:26,169
+that's sitting inside our browser it's
+
+203
+00:09:24,759 --> 00:09:28,990
+just kind of quite a handy way to do it
+
+204
+00:09:26,169 --> 00:09:31,240
+so now we need to configure this further
+
+205
+00:09:28,990 --> 00:09:37,990
+course and so the way you can figure it
+
+206
+00:09:31,240 --> 00:09:41,259
+for the course is you type curl HTTP
+
+207
+00:09:37,990 --> 00:09:49,169
+colon slash slash files dot fast ai
+
+208
+00:09:41,259 --> 00:09:50,289
+slash setup slash paper space type -
+
+209
+00:09:49,169 --> 00:09:52,839
+okay
+
+210
+00:09:50,289 --> 00:09:55,269
+and so that's then going to run a script
+
+211
+00:09:52,840 --> 00:10:00,480
+which is going to set up all of the
+
+212
+00:09:55,269 --> 00:10:03,120
+crudo drivers special Python Reaper
+
+213
+00:10:00,480 --> 00:10:05,830
+Python distribution we use called
+
+214
+00:10:03,120 --> 00:10:09,100
+anaconda all of the libraries or other
+
+215
+00:10:05,830 --> 00:10:11,500
+courses and the data we use for the
+
+216
+00:10:09,100 --> 00:10:14,290
+first part of the course ok so that
+
+217
+00:10:11,500 --> 00:10:16,870
+takes an hour or so and when it's
+
+218
+00:10:14,289 --> 00:10:19,750
+finished running you'll need to reboot
+
+219
+00:10:16,870 --> 00:10:21,549
+your computer so to reboot not your own
+
+220
+00:10:19,750 --> 00:10:23,169
+computer but your pages paste computer
+
+221
+00:10:21,549 --> 00:10:25,449
+and so to do that you can just click on
+
+222
+00:10:23,169 --> 00:10:28,029
+this little circular restart machine
+
+223
+00:10:25,450 --> 00:10:30,730
+button ok and when it comes back up
+
+224
+00:10:28,029 --> 00:10:34,929
+you'll be ready to go so what you'll
+
+225
+00:10:30,730 --> 00:10:36,700
+find is if you've now got an anaconda
+
+226
+00:10:34,929 --> 00:10:40,029
+three directory that's where your python
+
+227
+00:10:36,700 --> 00:10:41,209
+is you've got a data directory which
+
+228
+00:10:40,029 --> 00:10:43,129
+contains the data for
+
+229
+00:10:41,208 --> 00:10:45,768
+the first part of this course first
+
+230
+00:10:43,129 --> 00:10:49,869
+lesson which is their dogs and cats and
+
+231
+00:10:45,769 --> 00:10:53,419
+you've got a fast AI directory and that
+
+232
+00:10:49,869 --> 00:10:58,879
+contains everything for this course so
+
+233
+00:10:53,419 --> 00:11:00,948
+what you should do is CD fast AI and
+
+234
+00:10:58,879 --> 00:11:02,869
+from time to time you should go get Paul
+
+235
+00:11:00,948 --> 00:11:06,979
+and that will just make sure that all of
+
+236
+00:11:02,869 --> 00:11:09,139
+your fast AI stuff is up-to-date and
+
+237
+00:11:06,980 --> 00:11:10,550
+also from time to time you might want to
+
+238
+00:11:09,139 --> 00:11:11,959
+just check that your Python libraries
+
+239
+00:11:10,549 --> 00:11:17,028
+are up-to-date and so you can type
+
+240
+00:11:11,958 --> 00:11:19,278
+Condor and update to do that alright so
+
+241
+00:11:17,028 --> 00:11:25,178
+make sure that you've CD into fast AI
+
+242
+00:11:19,278 --> 00:11:25,178
+and then you can type Jupiter notebook
+
+243
+00:11:26,409 --> 00:11:30,379
+all right there it is
+
+244
+00:11:28,188 --> 00:11:32,568
+so we now have a Jupiter notebook
+
+245
+00:11:30,379 --> 00:11:34,850
+servant running and we want to connect
+
+246
+00:11:32,568 --> 00:11:38,058
+to that and so you can see here it says
+
+247
+00:11:34,850 --> 00:11:40,730
+copy paste this URL into your browser
+
+248
+00:11:38,058 --> 00:11:46,850
+when you connect so if you double click
+
+249
+00:11:40,730 --> 00:11:49,639
+on it then that will actually that will
+
+250
+00:11:46,850 --> 00:11:52,308
+actually copy it for you then you can go
+
+251
+00:11:49,639 --> 00:11:55,789
+and paste it but you need to change this
+
+252
+00:11:52,308 --> 00:11:57,828
+local host to be the paper space IP
+
+253
+00:11:55,789 --> 00:12:00,498
+address so if you click on the little
+
+254
+00:11:57,828 --> 00:12:03,048
+arrows to go smaller you can see the IP
+
+255
+00:12:00,499 --> 00:12:08,149
+addresses here so I'll just copy that
+
+256
+00:12:03,048 --> 00:12:10,698
+and paste it where it used to say local
+
+257
+00:12:08,149 --> 00:12:13,339
+host okay so it's now HTTP and then my
+
+258
+00:12:10,698 --> 00:12:17,778
+IP and then everything else a copied
+
+259
+00:12:13,339 --> 00:12:22,249
+before and so there it is so this is the
+
+260
+00:12:17,778 --> 00:12:25,578
+faster I get repo and our courses are
+
+261
+00:12:22,249 --> 00:12:28,939
+all in courses and in there the deep
+
+262
+00:12:25,578 --> 00:12:33,588
+learning part one is DL one and in there
+
+263
+00:12:28,938 --> 00:12:36,099
+you will find lesson one by Mb ipython
+
+264
+00:12:33,589 --> 00:12:36,100
+notebook
+
+265
+00:12:38,909 --> 00:12:43,689
+so here we are ready to go depending
+
+266
+00:12:41,919 --> 00:12:45,219
+whether you're using Kressel or paper
+
+267
+00:12:43,690 --> 00:12:47,350
+space or something else if you check
+
+268
+00:12:45,220 --> 00:12:49,629
+course it's not fast today I will keep
+
+269
+00:12:47,350 --> 00:12:51,149
+putting additional videos and links to
+
+270
+00:12:49,629 --> 00:12:54,429
+information about how to set up other
+
+271
+00:12:51,149 --> 00:13:01,149
+you know good Jupiter notebook providers
+
+272
+00:12:54,429 --> 00:13:03,239
+as well so to run a cell in Jupiter
+
+273
+00:13:01,149 --> 00:13:07,240
+notebook you select the cell and you
+
+274
+00:13:03,240 --> 00:13:09,399
+hold down shift and press Enter or if
+
+275
+00:13:07,240 --> 00:13:12,310
+you've got the tool bar showing you can
+
+276
+00:13:09,399 --> 00:13:14,579
+just click on the little Run button so
+
+277
+00:13:12,309 --> 00:13:18,279
+you'll notice that some cells contain
+
+278
+00:13:14,580 --> 00:13:20,139
+code and some contain text and some
+
+279
+00:13:18,279 --> 00:13:24,370
+contain pictures and some contain videos
+
+280
+00:13:20,139 --> 00:13:26,679
+so this environment basically has you
+
+281
+00:13:24,370 --> 00:13:29,289
+know it's a it's a way that we can give
+
+282
+00:13:26,679 --> 00:13:31,719
+you access to and a way to run
+
+283
+00:13:29,289 --> 00:13:34,389
+experiments and to kind of tell you
+
+284
+00:13:31,720 --> 00:13:36,420
+what's going on so pictures
+
+285
+00:13:34,389 --> 00:13:39,909
+this is why it's like a super popular
+
+286
+00:13:36,419 --> 00:13:41,769
+tool in data science a data science is
+
+287
+00:13:39,909 --> 00:13:46,419
+kind of all about running experiments
+
+288
+00:13:41,769 --> 00:13:49,299
+really so let's go ahead and click run
+
+289
+00:13:46,419 --> 00:13:50,949
+and you'll see that cell turn into a
+
+290
+00:13:49,299 --> 00:13:53,259
+star the one turn into a star for a
+
+291
+00:13:50,950 --> 00:13:55,060
+moment and then it finished running okay
+
+292
+00:13:53,259 --> 00:13:56,529
+so let's try the next one this time
+
+293
+00:13:55,059 --> 00:13:59,469
+instead of using the toolbar I'm going
+
+294
+00:13:56,529 --> 00:14:01,029
+to hold down shift and press ENTER and
+
+295
+00:13:59,470 --> 00:14:03,040
+you can see again it turn into a star
+
+296
+00:14:01,029 --> 00:14:05,169
+and then it said to so if I hold down
+
+297
+00:14:03,039 --> 00:14:08,349
+shift and keep pressing enter it just
+
+298
+00:14:05,169 --> 00:14:10,629
+keeps running each so right so I can put
+
+299
+00:14:08,350 --> 00:14:16,899
+anything I like for example one plus one
+
+300
+00:14:10,629 --> 00:14:20,769
+is two so what we're going to do is
+
+301
+00:14:16,899 --> 00:14:22,659
+we're going to yes Rachel this is just a
+
+302
+00:14:20,769 --> 00:14:25,389
+side note but I wanted to point out that
+
+303
+00:14:22,659 --> 00:14:29,019
+we're using Python 3 here yes thank you
+
+304
+00:14:25,389 --> 00:14:32,769
+pythons are still using Python - mmhmm
+
+305
+00:14:29,019 --> 00:14:36,639
+yeah um and it is important to switch to
+
+306
+00:14:32,769 --> 00:14:39,909
+Python 3 you know now well for Class A I
+
+307
+00:14:36,639 --> 00:14:42,970
+you require it but you know increasingly
+
+308
+00:14:39,909 --> 00:14:48,120
+a lot of libraries are removing support
+
+309
+00:14:42,970 --> 00:14:48,120
+for Python - thanks Rachel
+
+310
+00:14:48,499 --> 00:14:52,729
+now it mentions here that you can
+
+311
+00:14:50,719 --> 00:14:56,619
+download the data set for this lesson
+
+312
+00:14:52,729 --> 00:15:00,408
+from this location if you're using
+
+313
+00:14:56,619 --> 00:15:02,089
+crystal or the paper space script that
+
+314
+00:15:00,408 --> 00:15:03,708
+we just used to set up that this will
+
+315
+00:15:02,089 --> 00:15:05,809
+already be and made available for you
+
+316
+00:15:03,708 --> 00:15:11,478
+okay if you're not you'll need to W get
+
+317
+00:15:05,808 --> 00:15:15,649
+it as now Kressel is quite a bit slower
+
+318
+00:15:11,479 --> 00:15:16,969
+than paper space and also it there are
+
+319
+00:15:15,649 --> 00:15:19,639
+some particular things it doesn't
+
+320
+00:15:16,969 --> 00:15:21,439
+support that we really need and so there
+
+321
+00:15:19,639 --> 00:15:23,448
+are a couple of extra steps if you're
+
+322
+00:15:21,438 --> 00:15:25,608
+using cresol you have to run two more
+
+323
+00:15:23,448 --> 00:15:27,048
+cells right so you can see these are
+
+324
+00:15:25,609 --> 00:15:29,569
+commented out there quite hashes at the
+
+325
+00:15:27,048 --> 00:15:31,489
+start so if you remove the hashes from
+
+326
+00:15:29,568 --> 00:15:34,038
+these and run these two additional cells
+
+327
+00:15:31,489 --> 00:15:35,749
+that just runs the stuff that the stuff
+
+328
+00:15:34,038 --> 00:15:38,139
+that you only need for crystal I'm using
+
+329
+00:15:35,749 --> 00:15:45,829
+paper space so I'm not going to run it
+
+330
+00:15:38,139 --> 00:15:48,948
+ok so inside our data so we set up this
+
+331
+00:15:45,828 --> 00:15:51,019
+path to data slash dogs cats that's pre
+
+332
+00:15:48,948 --> 00:15:52,248
+set up for you and so inside there you
+
+333
+00:15:51,019 --> 00:15:57,798
+can see here I can use an exclamation
+
+334
+00:15:52,249 --> 00:16:00,139
+mark to basically say I don't want to
+
+335
+00:15:57,798 --> 00:16:02,538
+run Python but I want to run bash right
+
+336
+00:16:00,139 --> 00:16:04,788
+I want to run shell so this runs a bash
+
+337
+00:16:02,538 --> 00:16:07,428
+command and the bit inside the curly
+
+338
+00:16:04,788 --> 00:16:09,889
+brackets actually refers however to a
+
+339
+00:16:07,428 --> 00:16:11,838
+python variable so inserts that python
+
+340
+00:16:09,889 --> 00:16:13,849
+variable into the batch command so
+
+341
+00:16:11,839 --> 00:16:16,309
+here's the contents of our folder
+
+342
+00:16:13,849 --> 00:16:19,369
+there's a training set and a validation
+
+343
+00:16:16,308 --> 00:16:22,038
+set if you're not familiar with the idea
+
+344
+00:16:19,369 --> 00:16:23,839
+of training sets and validation sets it
+
+345
+00:16:22,038 --> 00:16:26,649
+would be a very good idea to check out
+
+346
+00:16:23,839 --> 00:16:29,179
+our practical machine learning course
+
+347
+00:16:26,649 --> 00:16:32,208
+which tells you a lot about this kind of
+
+348
+00:16:29,178 --> 00:16:34,848
+stuff if like yeah the basics of how to
+
+349
+00:16:32,208 --> 00:16:37,848
+setup and run machine learning projects
+
+350
+00:16:34,849 --> 00:16:40,509
+more generally would you recommend that
+
+351
+00:16:37,849 --> 00:16:43,579
+people take that course before this one
+
+352
+00:16:40,509 --> 00:16:45,558
+actually a lot of students who would you
+
+353
+00:16:43,578 --> 00:16:46,758
+know as they went through these as said
+
+354
+00:16:45,558 --> 00:16:49,278
+they'll they've liked doing them
+
+355
+00:16:46,759 --> 00:16:55,269
+together so you can kind of check it out
+
+356
+00:16:49,278 --> 00:16:55,269
+and see the machine learning course
+
+357
+00:16:55,298 --> 00:16:59,568
+yeah they cover with some similar stuff
+
+358
+00:16:57,948 --> 00:17:01,248
+but all in different directions so
+
+359
+00:16:59,568 --> 00:17:02,088
+people have done both seen you know say
+
+360
+00:17:01,249 --> 00:17:04,909
+they find it they
+
+361
+00:17:02,089 --> 00:17:07,429
+they each support each other I wouldn't
+
+362
+00:17:04,909 --> 00:17:09,049
+say it's a prerequisite but you know if
+
+363
+00:17:07,429 --> 00:17:09,980
+I do if I say something like hey this is
+
+364
+00:17:09,048 --> 00:17:11,389
+the training set and this is a
+
+365
+00:17:09,980 --> 00:17:12,288
+validation set and you're going I don't
+
+366
+00:17:11,390 --> 00:17:14,538
+know what that means
+
+367
+00:17:12,288 --> 00:17:16,970
+at least Google but do a quick read you
+
+368
+00:17:14,538 --> 00:17:20,629
+know because we're assuming that you
+
+369
+00:17:16,970 --> 00:17:22,909
+know the very basics of kind of what
+
+370
+00:17:20,630 --> 00:17:25,278
+machine learning is and does to some
+
+371
+00:17:22,909 --> 00:17:27,319
+extent and I have a whole blog post on
+
+372
+00:17:25,278 --> 00:17:29,538
+this topic as well okay and we'll make
+
+373
+00:17:27,318 --> 00:17:29,990
+sure that you link to that from Pastor
+
+374
+00:17:29,538 --> 00:17:31,609
+day night
+
+375
+00:17:29,990 --> 00:17:35,000
+and as we just wanted to say in general
+
+376
+00:17:31,609 --> 00:17:37,308
+with fasting our philosophy is to kind
+
+377
+00:17:35,000 --> 00:17:39,589
+of learn things on an as-needed basis
+
+378
+00:17:37,308 --> 00:17:41,210
+yeah exactly don't try and learn
+
+379
+00:17:39,589 --> 00:17:42,648
+everything that you think you might need
+
+380
+00:17:41,210 --> 00:17:44,058
+first otherwise you'll never get around
+
+381
+00:17:42,648 --> 00:17:46,339
+elite learning the stuff you actually
+
+382
+00:17:44,058 --> 00:17:48,918
+want to learn exactly that shows up in
+
+383
+00:17:46,339 --> 00:17:53,569
+deep learning I think particularly a lot
+
+384
+00:17:48,919 --> 00:17:55,038
+yes okay so in our validation folder
+
+385
+00:17:53,569 --> 00:17:57,918
+there's a cat's folder and a dog's
+
+386
+00:17:55,038 --> 00:18:00,908
+folder and then inside the validation
+
+387
+00:17:57,919 --> 00:18:03,500
+cats folder is a whole bunch of JPEGs
+
+388
+00:18:00,909 --> 00:18:05,510
+the reason that it's set up like this is
+
+389
+00:18:03,500 --> 00:18:08,058
+that this is kind of the most common
+
+390
+00:18:05,509 --> 00:18:10,700
+standard approach for how image
+
+391
+00:18:08,058 --> 00:18:12,710
+classification datasets shared and
+
+392
+00:18:10,700 --> 00:18:15,350
+provided and the idea is that each
+
+393
+00:18:12,710 --> 00:18:18,169
+folder tells you the label
+
+394
+00:18:15,349 --> 00:18:21,349
+so there's each of these images is
+
+395
+00:18:18,169 --> 00:18:23,570
+labeled cats and each of the images and
+
+396
+00:18:21,349 --> 00:18:25,969
+the dogs folder is labelled dogs okay
+
+397
+00:18:23,569 --> 00:18:31,069
+this is how chaos works as well for
+
+398
+00:18:25,970 --> 00:18:37,460
+example so this is a pretty standard way
+
+399
+00:18:31,069 --> 00:18:40,099
+to share image classification files so
+
+400
+00:18:37,460 --> 00:18:43,399
+we can have a look so if you go plot dot
+
+401
+00:18:40,099 --> 00:18:47,439
+a.m. show we can see an example of the
+
+402
+00:18:43,398 --> 00:18:51,528
+first of the cats if you haven't seen
+
+403
+00:18:47,440 --> 00:18:53,750
+this before this is a Python 3.6 format
+
+404
+00:18:51,528 --> 00:18:54,919
+string so you can google for that if you
+
+405
+00:18:53,750 --> 00:18:56,778
+haven't seen it it's a very convenient
+
+406
+00:18:54,919 --> 00:19:01,190
+way to do string formatting and we use
+
+407
+00:18:56,778 --> 00:19:03,230
+it a lot so there's no cat but we're
+
+408
+00:19:01,190 --> 00:19:05,288
+going to mainly be interested in the
+
+409
+00:19:03,230 --> 00:19:10,220
+underlying data that makes up that cat
+
+410
+00:19:05,288 --> 00:19:12,109
+so specifically it's an image whose
+
+411
+00:19:10,220 --> 00:19:14,390
+shape that is the dimensions of the
+
+412
+00:19:12,109 --> 00:19:16,490
+array is 198 by 1/7
+
+413
+00:19:14,390 --> 00:19:19,610
+9x3 is it's a three dimensional array
+
+414
+00:19:16,490 --> 00:19:21,740
+plus a quarter rank three tensor and
+
+415
+00:19:19,609 --> 00:19:26,349
+here are the first four rows and four
+
+416
+00:19:21,740 --> 00:19:32,329
+columns of that image so as you can see
+
+417
+00:19:26,349 --> 00:19:35,059
+each of those cells has three items in
+
+418
+00:19:32,329 --> 00:19:37,939
+it and this is the red green and blue
+
+419
+00:19:35,059 --> 00:19:40,549
+pixel values between naught and 255 so
+
+420
+00:19:37,940 --> 00:19:42,820
+here's a little subset of what a picture
+
+421
+00:19:40,549 --> 00:19:46,399
+actually looks like inside your computer
+
+422
+00:19:42,819 --> 00:19:48,529
+so that's that that's will be our idea
+
+423
+00:19:46,400 --> 00:19:50,990
+is to take these kinds of numbers and
+
+424
+00:19:48,529 --> 00:19:53,769
+use them to predict whether those kinds
+
+425
+00:19:50,990 --> 00:19:56,000
+of numbers represent a cat or a dog
+
+426
+00:19:53,769 --> 00:19:58,849
+based on looking at lots of pictures of
+
+427
+00:19:56,000 --> 00:20:01,579
+cats and dogs so that's a pretty hard
+
+428
+00:19:58,849 --> 00:20:04,849
+thing to do and at the point in time
+
+429
+00:20:01,579 --> 00:20:06,349
+when this this this data set actually
+
+430
+00:20:04,849 --> 00:20:08,299
+comes from a caracal competition the
+
+431
+00:20:06,349 --> 00:20:10,429
+dogs versus cats caracal competition and
+
+432
+00:20:08,299 --> 00:20:13,849
+when it was released in I think it was
+
+433
+00:20:10,430 --> 00:20:16,160
+2012 the state of the art was 80%
+
+434
+00:20:13,849 --> 00:20:19,490
+accuracy so computers weren't really
+
+435
+00:20:16,160 --> 00:20:23,660
+able to at all accurately recognize dogs
+
+436
+00:20:19,490 --> 00:20:32,420
+versus cats so let's go ahead and train
+
+437
+00:20:23,660 --> 00:20:36,170
+a model so here are the three lines of
+
+438
+00:20:32,420 --> 00:20:38,029
+code necessary to train a model and so
+
+439
+00:20:36,170 --> 00:20:39,650
+let's go ahead and run it so I'll click
+
+440
+00:20:38,029 --> 00:20:45,259
+on this on the cell I'll press shift
+
+441
+00:20:39,650 --> 00:20:47,210
+enter and then we'll wait a couple of
+
+442
+00:20:45,259 --> 00:20:52,279
+seconds for it to pop up and there it
+
+443
+00:20:47,210 --> 00:20:53,960
+goes okay and it's training and so I've
+
+444
+00:20:52,279 --> 00:20:55,490
+asked it to do three epochs so that
+
+445
+00:20:53,960 --> 00:20:57,650
+means it's going to look at every image
+
+446
+00:20:55,490 --> 00:21:00,170
+three times in total or look at the
+
+447
+00:20:57,650 --> 00:21:02,720
+entire set of images three times that's
+
+448
+00:21:00,170 --> 00:21:07,430
+what we mean by an epoch and as we do
+
+449
+00:21:02,720 --> 00:21:09,019
+it's going to print out the accuracy is
+
+450
+00:21:07,430 --> 00:21:11,680
+that's lasted for three numbers it
+
+451
+00:21:09,019 --> 00:21:13,789
+prints out on the validation set okay
+
+452
+00:21:11,680 --> 00:21:16,160
+the first three numbers we'll talk about
+
+453
+00:21:13,789 --> 00:21:17,750
+later in short they're the value of the
+
+454
+00:21:16,160 --> 00:21:19,820
+loss function which is in this case the
+
+455
+00:21:17,750 --> 00:21:21,950
+cross-entropy loss for the training set
+
+456
+00:21:19,819 --> 00:21:24,200
+and the validation set and then right at
+
+457
+00:21:21,950 --> 00:21:28,819
+the start here is the epoch number so
+
+458
+00:21:24,200 --> 00:21:33,259
+you can see it's getting about 90%
+
+459
+00:21:28,819 --> 00:21:35,990
+see and it took 17 seconds so you can
+
+460
+00:21:33,259 --> 00:21:39,920
+see we've come a long way since 2012 and
+
+461
+00:21:35,990 --> 00:21:42,500
+in fact even in the competition this
+
+462
+00:21:39,920 --> 00:21:44,450
+actually would have won the caracal
+
+463
+00:21:42,500 --> 00:21:46,880
+competition of that time the best in the
+
+464
+00:21:44,450 --> 00:21:50,240
+caracal competition was 98.9 and we're
+
+465
+00:21:46,880 --> 00:21:54,470
+getting about 99% so this play surprised
+
+466
+00:21:50,240 --> 00:21:59,349
+you that we're getting a you know Kaggle
+
+467
+00:21:54,470 --> 00:22:02,779
+winning as of 20 and of 2012 early 2013
+
+468
+00:21:59,349 --> 00:22:08,839
+kaggle winning image classifier in 17
+
+469
+00:22:02,779 --> 00:22:10,250
+seconds that and three lines of code and
+
+470
+00:22:08,839 --> 00:22:13,519
+I think that's because like a lot of
+
+471
+00:22:10,250 --> 00:22:17,059
+people assume that deep learning takes a
+
+472
+00:22:13,519 --> 00:22:19,759
+huge amount of time and lots of
+
+473
+00:22:17,059 --> 00:22:22,369
+resources and lots of data and as you'll
+
+474
+00:22:19,759 --> 00:22:25,579
+learn in this course that in general
+
+475
+00:22:22,369 --> 00:22:28,489
+rule isn't true one of the ways we've
+
+476
+00:22:25,579 --> 00:22:32,019
+made it much simpler is that this code
+
+477
+00:22:28,490 --> 00:22:35,809
+is written on top of a library we built
+
+478
+00:22:32,019 --> 00:22:38,089
+imaginatively called fast AI the faster
+
+479
+00:22:35,809 --> 00:22:41,929
+a library is basically a library which
+
+480
+00:22:38,089 --> 00:22:44,059
+takes all of the best practices
+
+481
+00:22:41,930 --> 00:22:46,640
+approaches that we can find and so each
+
+482
+00:22:44,059 --> 00:22:48,980
+time a paper comes out you know we that
+
+483
+00:22:46,640 --> 00:22:50,750
+looks interesting we test it out if it
+
+484
+00:22:48,980 --> 00:22:52,579
+works well for a variety of data sets
+
+485
+00:22:50,750 --> 00:22:54,920
+and we can figure out how to tune it we
+
+486
+00:22:52,579 --> 00:22:56,419
+implement it in fast AI and so faster I
+
+487
+00:22:54,920 --> 00:22:59,360
+kind of curates all this stuff and
+
+488
+00:22:56,420 --> 00:23:01,730
+packages up for you and much of the time
+
+489
+00:22:59,359 --> 00:23:03,109
+but most the time kind of automatically
+
+490
+00:23:01,730 --> 00:23:05,630
+figures out the best way to handle
+
+491
+00:23:03,109 --> 00:23:06,859
+things so the first day our library is
+
+492
+00:23:05,630 --> 00:23:09,680
+why we were able to do this in just
+
+493
+00:23:06,859 --> 00:23:11,000
+three lines of code and the reason that
+
+494
+00:23:09,680 --> 00:23:13,940
+we were able to make the faster I
+
+495
+00:23:11,000 --> 00:23:15,619
+library work so well is because it
+
+496
+00:23:13,940 --> 00:23:20,630
+interns it's on top of something called
+
+497
+00:23:15,619 --> 00:23:23,029
+pi torch which is a really flexible deep
+
+498
+00:23:20,630 --> 00:23:27,130
+learning and machine learning and GPU
+
+499
+00:23:23,029 --> 00:23:29,720
+computation library written by Facebook
+
+500
+00:23:27,130 --> 00:23:30,560
+most people are more familiar with
+
+501
+00:23:29,720 --> 00:23:33,140
+tensorflow
+
+502
+00:23:30,559 --> 00:23:35,690
+than pi torch because google markets
+
+503
+00:23:33,140 --> 00:23:37,730
+that pretty heavily but most of the top
+
+504
+00:23:35,690 --> 00:23:39,320
+researchers I know nowadays at least the
+
+505
+00:23:37,730 --> 00:23:42,500
+ones that are at Google have switched
+
+506
+00:23:39,319 --> 00:23:43,939
+across to PI torch yes Rachel
+
+507
+00:23:42,500 --> 00:23:46,069
+and we'll be covering some pie torts
+
+508
+00:23:43,940 --> 00:23:49,580
+later in the course yeah it's I mean one
+
+509
+00:23:46,069 --> 00:23:52,490
+of the things that hopefully you'll
+
+510
+00:23:49,579 --> 00:23:54,529
+really like about last AI is that it's
+
+511
+00:23:52,490 --> 00:23:56,509
+really flexible that you can use all
+
+512
+00:23:54,529 --> 00:23:59,119
+these kind of curated best practices as
+
+513
+00:23:56,509 --> 00:24:01,669
+much as little as you want and so really
+
+514
+00:23:59,119 --> 00:24:04,308
+easy to hook in at any point and write
+
+515
+00:24:01,669 --> 00:24:06,620
+your own data augmentation write your
+
+516
+00:24:04,308 --> 00:24:08,779
+own loss function write your own network
+
+517
+00:24:06,619 --> 00:24:12,709
+architecture whatever and so we'll do
+
+518
+00:24:08,779 --> 00:24:15,769
+all of those things in this course so
+
+519
+00:24:12,710 --> 00:24:20,000
+what does this model look like well what
+
+520
+00:24:15,769 --> 00:24:22,119
+we can do is we can take a look at so
+
+521
+00:24:20,000 --> 00:24:24,740
+what are the what is the validation set
+
+522
+00:24:22,119 --> 00:24:27,168
+dependent variable the Y look like and
+
+523
+00:24:24,740 --> 00:24:29,659
+it's just a bunch of zeros and ones okay
+
+524
+00:24:27,169 --> 00:24:31,820
+so the zeros if we look at data dot
+
+525
+00:24:29,659 --> 00:24:34,039
+classes the zeros represent cats the
+
+526
+00:24:31,819 --> 00:24:35,359
+ones represent dogs you'll see here
+
+527
+00:24:34,038 --> 00:24:36,798
+there's basically two objects I'm
+
+528
+00:24:35,359 --> 00:24:39,139
+working with one is an object called
+
+529
+00:24:36,798 --> 00:24:41,089
+data which contains the validation and
+
+530
+00:24:39,140 --> 00:24:43,159
+training data and another one is the
+
+531
+00:24:41,089 --> 00:24:45,918
+object called learn which contains the
+
+532
+00:24:43,159 --> 00:24:47,210
+model right so anytime you want to find
+
+533
+00:24:45,919 --> 00:24:50,360
+something out about the data we can look
+
+534
+00:24:47,210 --> 00:24:52,190
+inside data so we're going to get
+
+535
+00:24:50,359 --> 00:24:54,769
+predictions through our validation set
+
+536
+00:24:52,190 --> 00:24:59,058
+and so to do that we can call learned
+
+537
+00:24:54,769 --> 00:25:01,009
+predict and so you can see here the
+
+538
+00:24:59,058 --> 00:25:04,038
+first ten predictions and what it's
+
+539
+00:25:01,009 --> 00:25:07,099
+giving you as a prediction for dog and a
+
+540
+00:25:04,038 --> 00:25:08,960
+prediction for cat now the way PI Torche
+
+541
+00:25:07,099 --> 00:25:11,599
+generally works and therefore fast AI
+
+542
+00:25:08,960 --> 00:25:16,130
+also works is that most models return
+
+543
+00:25:11,599 --> 00:25:18,139
+the log of the predictions rather than
+
+544
+00:25:16,130 --> 00:25:20,780
+the probabilities themselves we'll learn
+
+545
+00:25:18,140 --> 00:25:21,950
+why that is later in the course so for
+
+546
+00:25:20,779 --> 00:25:25,369
+now recognize that to get your
+
+547
+00:25:21,950 --> 00:25:28,330
+probabilities you have to get e to the
+
+548
+00:25:25,369 --> 00:25:31,759
+power of you'll see here we're using
+
+549
+00:25:28,329 --> 00:25:33,619
+numpy NP is none play if you're not
+
+550
+00:25:31,759 --> 00:25:35,599
+familiar with numpy that is one of the
+
+551
+00:25:33,619 --> 00:25:38,298
+things that we assume that you have some
+
+552
+00:25:35,599 --> 00:25:40,548
+familiarity with so be sure to check out
+
+553
+00:25:38,298 --> 00:25:45,558
+the material on cost I passed at AI to
+
+554
+00:25:40,548 --> 00:25:51,619
+learn the basics of number it's the way
+
+555
+00:25:45,558 --> 00:25:54,589
+that - handles all of the fast numerical
+
+556
+00:25:51,619 --> 00:25:55,839
+programming array computation that kind
+
+557
+00:25:54,589 --> 00:25:58,659
+of thing
+
+558
+00:25:55,839 --> 00:26:03,099
+okay so we can get the probabilities
+
+559
+00:25:58,660 --> 00:26:04,630
+using that using MP dot X and there's a
+
+560
+00:26:03,099 --> 00:26:05,949
+few functions here that you can look at
+
+561
+00:26:04,630 --> 00:26:07,390
+yourself if you're interested that's
+
+562
+00:26:05,950 --> 00:26:12,750
+just some flooding functions that we'll
+
+563
+00:26:07,390 --> 00:26:17,650
+use and so we can now plot some random
+
+564
+00:26:12,750 --> 00:26:20,589
+correct images and so here are some
+
+565
+00:26:17,650 --> 00:26:23,050
+images that it's correct about okay and
+
+566
+00:26:20,589 --> 00:26:26,199
+so remember one is a dog so anything
+
+567
+00:26:23,049 --> 00:26:28,419
+greater than 0.5 is dog and zero is a
+
+568
+00:26:26,200 --> 00:26:32,009
+cat so this is what 10 to the negative 5
+
+569
+00:26:28,420 --> 00:26:34,810
+obviously a cat here are some which are
+
+570
+00:26:32,009 --> 00:26:36,279
+incorrect alright so you can see that
+
+571
+00:26:34,809 --> 00:26:38,859
+some of these which it thinks are
+
+572
+00:26:36,279 --> 00:26:40,210
+incorrect obviously are just the you
+
+573
+00:26:38,859 --> 00:26:43,479
+know images that shouldn't be there at
+
+574
+00:26:40,210 --> 00:26:47,259
+all but clearly this one which it called
+
+575
+00:26:43,480 --> 00:26:52,660
+a a dog is not at all a dog so there are
+
+576
+00:26:47,259 --> 00:26:56,890
+some obvious mistakes we can also take a
+
+577
+00:26:52,660 --> 00:26:59,860
+look at which cats is it the most
+
+578
+00:26:56,890 --> 00:27:03,360
+confident are cats which dogs are the
+
+579
+00:26:59,859 --> 00:27:05,649
+most doglike the most confident dogs
+
+580
+00:27:03,359 --> 00:27:07,240
+perhaps more interestingly we can also
+
+581
+00:27:05,650 --> 00:27:09,700
+see which cats is that the most
+
+582
+00:27:07,240 --> 00:27:12,329
+confident are actually dogs so which
+
+583
+00:27:09,700 --> 00:27:15,880
+ones it is it the most wrong about and
+
+584
+00:27:12,329 --> 00:27:18,129
+same thing for the ones the dog said it
+
+585
+00:27:15,880 --> 00:27:20,740
+really thinks of cats and again some of
+
+586
+00:27:18,130 --> 00:27:23,890
+these are just pretty weird I guess
+
+587
+00:27:20,740 --> 00:27:25,750
+there is a dog in there yes Rachel I see
+
+588
+00:27:23,890 --> 00:27:28,450
+suit you want to see more about why you
+
+589
+00:27:25,750 --> 00:27:33,940
+would want to look at your data yeah
+
+590
+00:27:28,450 --> 00:27:35,950
+sure so yeah so finally I just mentioned
+
+591
+00:27:33,940 --> 00:27:37,960
+the last one we've got here is to see
+
+592
+00:27:35,950 --> 00:27:39,840
+which ones have the probability closest
+
+593
+00:27:37,960 --> 00:27:42,069
+to 0.5 so these are the ones that the
+
+594
+00:27:39,839 --> 00:27:43,990
+model knows it doesn't really know what
+
+595
+00:27:42,069 --> 00:27:48,309
+to do with and some of these it's not
+
+596
+00:27:43,990 --> 00:27:51,970
+surprising so yeah I mean this is kind
+
+597
+00:27:48,309 --> 00:27:54,460
+of like always the first thing I do
+
+598
+00:27:51,970 --> 00:27:57,299
+after I build a model is to try to find
+
+599
+00:27:54,460 --> 00:27:59,230
+a way to like visualize what it's built
+
+600
+00:27:57,299 --> 00:28:01,899
+because if I want to make the model
+
+601
+00:27:59,230 --> 00:28:03,849
+better then I need to take advantage of
+
+602
+00:28:01,900 --> 00:28:05,710
+the things that's doing well and fix the
+
+603
+00:28:03,849 --> 00:28:08,599
+things that's doing badly and so in this
+
+604
+00:28:05,710 --> 00:28:10,220
+case and off
+
+605
+00:28:08,599 --> 00:28:11,779
+this is the case I've learned something
+
+606
+00:28:10,220 --> 00:28:13,640
+about the data set itself which is that
+
+607
+00:28:11,779 --> 00:28:17,269
+there are some things that are in here
+
+608
+00:28:13,640 --> 00:28:21,350
+that probably shouldn't be but I've also
+
+609
+00:28:17,269 --> 00:28:25,009
+like it's also clear that this model has
+
+610
+00:28:21,349 --> 00:28:28,099
+room to improve like to me that's pretty
+
+611
+00:28:25,009 --> 00:28:31,160
+obviously a dog but one thing I'm
+
+612
+00:28:28,099 --> 00:28:38,029
+suspicious about here is this image is
+
+613
+00:28:31,160 --> 00:28:41,600
+very kind of fat and short and as we all
+
+614
+00:28:38,029 --> 00:28:44,059
+learn the way these algorithms work is
+
+615
+00:28:41,599 --> 00:28:45,319
+it kind of grabs a square piece at a
+
+616
+00:28:44,059 --> 00:28:47,240
+time
+
+617
+00:28:45,319 --> 00:28:48,139
+so this rather makes me suspicious that
+
+618
+00:28:47,240 --> 00:28:50,269
+we're going to need to use something
+
+619
+00:28:48,140 --> 00:28:52,820
+called data augmentation that we'll
+
+620
+00:28:50,269 --> 00:29:00,319
+learn about learn about later to handle
+
+621
+00:28:52,819 --> 00:29:05,359
+this properly okay so that's it right
+
+622
+00:29:00,319 --> 00:29:07,700
+we've now built we've now built an image
+
+623
+00:29:05,359 --> 00:29:13,209
+classifier and something that you should
+
+624
+00:29:07,700 --> 00:29:17,390
+try now is to grab some data yourself
+
+625
+00:29:13,210 --> 00:29:19,549
+some pictures of two or more different
+
+626
+00:29:17,390 --> 00:29:22,580
+types of thing put them in different
+
+627
+00:29:19,549 --> 00:29:27,500
+folders and run the same three lines of
+
+628
+00:29:22,579 --> 00:29:31,039
+code on them okay and you'll find that
+
+629
+00:29:27,500 --> 00:29:33,549
+it will work for that as well as long as
+
+630
+00:29:31,039 --> 00:29:35,899
+that they are pictures of things like
+
+631
+00:29:33,549 --> 00:29:38,379
+the kinds of things that people normally
+
+632
+00:29:35,900 --> 00:29:40,700
+take photos of right so if their
+
+633
+00:29:38,380 --> 00:29:44,210
+microscope microscope pictures or
+
+634
+00:29:40,700 --> 00:29:46,370
+pathology pictures or CT scans or
+
+635
+00:29:44,210 --> 00:29:47,870
+something this won't work very well as
+
+636
+00:29:46,369 --> 00:29:49,399
+well learn about later there are some
+
+637
+00:29:47,869 --> 00:29:51,409
+other things we didn't need to do to
+
+638
+00:29:49,400 --> 00:29:56,240
+make that work but for things that look
+
+639
+00:29:51,410 --> 00:29:58,580
+like normal photos these you can run
+
+640
+00:29:56,240 --> 00:30:02,180
+exactly the same three lines of code and
+
+641
+00:29:58,579 --> 00:30:05,299
+just point your path variable somewhere
+
+642
+00:30:02,180 --> 00:30:10,070
+else to get your own image classifier so
+
+643
+00:30:05,299 --> 00:30:12,319
+for example one student took those three
+
+644
+00:30:10,069 --> 00:30:14,779
+lines of code downloaded for Google
+
+645
+00:30:12,319 --> 00:30:17,119
+Images ten examples of pictures of
+
+646
+00:30:14,779 --> 00:30:19,309
+people playing cricket ten examples of
+
+647
+00:30:17,119 --> 00:30:22,459
+people playing baseball and build a
+
+648
+00:30:19,309 --> 00:30:25,909
+classifier of those images which was new
+
+649
+00:30:22,460 --> 00:30:28,220
+perfectly correct the same student
+
+650
+00:30:25,910 --> 00:30:32,330
+actually also tried downloading seven
+
+651
+00:30:28,220 --> 00:30:34,610
+pictures of Canadian currency seven
+
+652
+00:30:32,329 --> 00:30:37,250
+pictures of American currency and again
+
+653
+00:30:34,609 --> 00:30:39,229
+in that case the model was a hundred
+
+654
+00:30:37,250 --> 00:30:41,390
+percent accurate so you can just go to
+
+655
+00:30:39,230 --> 00:30:43,039
+Google Images if you like and download a
+
+656
+00:30:41,390 --> 00:30:45,680
+few things of a few different classes
+
+657
+00:30:43,039 --> 00:30:47,809
+and see see what works and tell us on
+
+658
+00:30:45,680 --> 00:30:55,299
+the forum both your successes and your
+
+659
+00:30:47,809 --> 00:30:58,339
+failures so what we just did was to
+
+660
+00:30:55,299 --> 00:30:59,779
+train a neural network but we didn't
+
+661
+00:30:58,339 --> 00:31:02,799
+first of all tell you what a neural
+
+662
+00:30:59,779 --> 00:31:07,849
+network is or what training means or
+
+663
+00:31:02,799 --> 00:31:10,730
+anything why is that well this is the
+
+664
+00:31:07,849 --> 00:31:13,939
+start of our top-down approach to
+
+665
+00:31:10,730 --> 00:31:16,250
+learning and basically the idea is that
+
+666
+00:31:13,940 --> 00:31:18,620
+unlike the way math and technical
+
+667
+00:31:16,250 --> 00:31:21,349
+subjects I usually talk where you learn
+
+668
+00:31:18,619 --> 00:31:23,029
+every little element piece by piece and
+
+669
+00:31:21,349 --> 00:31:25,459
+you don't actually get to put them all
+
+670
+00:31:23,029 --> 00:31:28,250
+together and build your own image
+
+671
+00:31:25,460 --> 00:31:31,309
+classifier until third year of graduate
+
+672
+00:31:28,250 --> 00:31:34,369
+school our approach is to say from the
+
+673
+00:31:31,309 --> 00:31:36,230
+start hey let's show you how to train an
+
+674
+00:31:34,369 --> 00:31:39,529
+image classifier and you can start doing
+
+675
+00:31:36,230 --> 00:31:44,000
+stuff and then gradually we dig deeper
+
+676
+00:31:39,529 --> 00:31:47,690
+and deeper and deeper and so the idea is
+
+677
+00:31:44,000 --> 00:31:50,359
+that throughout the course you're going
+
+678
+00:31:47,690 --> 00:31:53,330
+to see like new problems that we want to
+
+679
+00:31:50,359 --> 00:31:57,049
+solve so for example in the next lesson
+
+680
+00:31:53,329 --> 00:31:59,210
+we'll look at well what if we're not
+
+681
+00:31:57,049 --> 00:32:01,399
+looking at normal kinds of photos but
+
+682
+00:31:59,210 --> 00:32:03,470
+we're looking at satellite images and
+
+683
+00:32:01,400 --> 00:32:05,420
+we'll see why it is that this approach
+
+684
+00:32:03,470 --> 00:32:07,910
+that we're learning today doesn't quite
+
+685
+00:32:05,420 --> 00:32:09,800
+work as well and what things do we have
+
+686
+00:32:07,910 --> 00:32:11,720
+to change and so we'll learn enough
+
+687
+00:32:09,799 --> 00:32:13,519
+about the theory to understand why that
+
+688
+00:32:11,720 --> 00:32:15,680
+happens and then we'll learn about the
+
+689
+00:32:13,519 --> 00:32:17,210
+libraries and how we can change change
+
+690
+00:32:15,680 --> 00:32:21,920
+things with the libraries to make that
+
+691
+00:32:17,210 --> 00:32:23,539
+work better and so during the course we
+
+692
+00:32:21,920 --> 00:32:26,000
+are gradually going to learn to solve
+
+693
+00:32:23,539 --> 00:32:28,009
+more and more problems as we do so we
+
+694
+00:32:26,000 --> 00:32:30,049
+all need to learn more and more parts of
+
+695
+00:32:28,009 --> 00:32:32,990
+the library more and more bits of the
+
+696
+00:32:30,049 --> 00:32:35,579
+theory until by the end we're actually
+
+697
+00:32:32,990 --> 00:32:39,539
+going to learn how to create a
+
+698
+00:32:35,579 --> 00:32:41,970
+world plus neural net architecture from
+
+699
+00:32:39,539 --> 00:32:43,859
+scratch and our own training loop from
+
+700
+00:32:41,970 --> 00:32:46,650
+scratch and so were actually built
+
+701
+00:32:43,859 --> 00:32:50,279
+everything ourselves so that's the
+
+702
+00:32:46,650 --> 00:32:52,259
+general approach yes Rachel and
+
+703
+00:32:50,279 --> 00:32:55,250
+sometimes also call this the whole game
+
+704
+00:32:52,259 --> 00:32:58,379
+which is inspired by harvard professor
+
+705
+00:32:55,250 --> 00:33:00,450
+david perkins yeah and so the idea with
+
+706
+00:32:58,380 --> 00:33:02,640
+the whole game is like this is more like
+
+707
+00:33:00,450 --> 00:33:04,890
+how you would learn baseball or music
+
+708
+00:33:02,640 --> 00:33:06,360
+with baseball you would get taken to a
+
+709
+00:33:04,890 --> 00:33:10,440
+ball game you would learn what baseball
+
+710
+00:33:06,359 --> 00:33:12,000
+is you would start playing it and it
+
+711
+00:33:10,440 --> 00:33:14,460
+would only be years later that you might
+
+712
+00:33:12,000 --> 00:33:17,640
+learn about the physics of how curveball
+
+713
+00:33:14,460 --> 00:33:20,039
+works for example well with music we put
+
+714
+00:33:17,640 --> 00:33:21,810
+a instrument in your hand and you start
+
+715
+00:33:20,039 --> 00:33:23,670
+banging the drum or hitting the
+
+716
+00:33:21,809 --> 00:33:25,379
+xylophone and it's not until years later
+
+717
+00:33:23,670 --> 00:33:27,990
+that you learn about the circle of
+
+718
+00:33:25,380 --> 00:33:32,040
+fifths and understand how to construct a
+
+719
+00:33:27,990 --> 00:33:33,390
+cadence example so yeah so that this is
+
+720
+00:33:32,039 --> 00:33:36,210
+kind of the approach we're using it's
+
+721
+00:33:33,390 --> 00:33:40,080
+very inspired by David Perkins and other
+
+722
+00:33:36,210 --> 00:33:42,329
+writers of Education so what that does
+
+723
+00:33:40,079 --> 00:33:45,480
+mean is to take advantage of this as we
+
+724
+00:33:42,329 --> 00:33:47,279
+peel back the layers we want you to keep
+
+725
+00:33:45,480 --> 00:33:50,160
+like looking under the hood yourself as
+
+726
+00:33:47,279 --> 00:33:53,879
+well like experiment a lot now because
+
+727
+00:33:50,160 --> 00:33:55,410
+this is a very code driven approach so
+
+728
+00:33:53,880 --> 00:33:58,410
+here's basically what happens right we
+
+729
+00:33:55,410 --> 00:34:01,380
+start out looking today at convolutional
+
+730
+00:33:58,410 --> 00:34:03,060
+neural networks for images and then in a
+
+731
+00:34:01,380 --> 00:34:04,800
+couple of lessons we'll start to look at
+
+732
+00:34:03,059 --> 00:34:06,899
+how to use neural nets to look at
+
+733
+00:34:04,799 --> 00:34:09,119
+structured data and then look at
+
+734
+00:34:06,900 --> 00:34:13,349
+language data and then look at
+
+735
+00:34:09,119 --> 00:34:15,359
+recommendation system data and then we
+
+736
+00:34:13,349 --> 00:34:17,339
+kind of then take all of those depths
+
+737
+00:34:15,360 --> 00:34:19,289
+and we go backwards through them in
+
+738
+00:34:17,340 --> 00:34:24,000
+reverse order so now you know by the end
+
+739
+00:34:19,289 --> 00:34:26,190
+of that fourth piece you will know by
+
+740
+00:34:24,000 --> 00:34:28,349
+the end of lesson four how to create a
+
+741
+00:34:26,190 --> 00:34:31,289
+world-class image classifier a
+
+742
+00:34:28,349 --> 00:34:34,440
+world-class structured data analysis
+
+743
+00:34:31,289 --> 00:34:37,590
+program world-class language classifier
+
+744
+00:34:34,440 --> 00:34:38,970
+broad class recommendation system and
+
+745
+00:34:37,590 --> 00:34:41,100
+then we're going to go back over all of
+
+746
+00:34:38,969 --> 00:34:42,928
+them again and learn in depth about like
+
+747
+00:34:41,099 --> 00:34:45,000
+well what exactly did it do and how to
+
+748
+00:34:42,929 --> 00:34:46,590
+do work and how do we change things
+
+749
+00:34:45,000 --> 00:34:48,760
+around and use it in different
+
+750
+00:34:46,590 --> 00:34:51,269
+situations for for
+
+751
+00:34:48,760 --> 00:34:54,550
+recommendation systems structured data
+
+752
+00:34:51,269 --> 00:34:57,969
+images and then finally back to language
+
+753
+00:34:54,550 --> 00:35:00,190
+so that's how it's going to work so what
+
+754
+00:34:57,969 --> 00:35:02,889
+that kind of means is that most students
+
+755
+00:35:00,190 --> 00:35:07,570
+find that they tend to watch the videos
+
+756
+00:35:02,889 --> 00:35:09,400
+two or three times but not like watch
+
+757
+00:35:07,570 --> 00:35:10,900
+lesson one two or three times and listen
+
+758
+00:35:09,400 --> 00:35:12,550
+to two or three times in verse and three
+
+759
+00:35:10,900 --> 00:35:14,619
+three times but like they do the whole
+
+760
+00:35:12,550 --> 00:35:17,500
+thing into end lessons one through seven
+
+761
+00:35:14,619 --> 00:35:20,949
+and then go back and start lesson one
+
+762
+00:35:17,500 --> 00:35:22,630
+again that's an approach which a lot of
+
+763
+00:35:20,949 --> 00:35:24,519
+people find when they want to go back
+
+764
+00:35:22,630 --> 00:35:26,920
+and understand all the details enough
+
+765
+00:35:24,519 --> 00:35:29,199
+that can work pretty well so I would say
+
+766
+00:35:26,920 --> 00:35:34,150
+you know aim to get through to the end
+
+767
+00:35:29,199 --> 00:35:37,179
+of lesson seven you know as as quickly
+
+768
+00:35:34,150 --> 00:35:41,010
+as you can rather than aiming to fully
+
+769
+00:35:37,179 --> 00:35:45,129
+understand every detail from this data
+
+770
+00:35:41,010 --> 00:35:49,600
+so basically the plan is that in today's
+
+771
+00:35:45,130 --> 00:35:51,820
+lesson you'll learn in as few lines of
+
+772
+00:35:49,599 --> 00:35:53,650
+code as possible with as few details as
+
+773
+00:35:51,820 --> 00:35:55,750
+possible how do you actually build an
+
+774
+00:35:53,650 --> 00:35:58,480
+image classifier with deep learning to
+
+775
+00:35:55,750 --> 00:36:00,760
+do this to in this case say hey here are
+
+776
+00:35:58,480 --> 00:36:04,300
+some pictures of dogs as opposed to
+
+777
+00:36:00,760 --> 00:36:07,990
+pictures of cats then we're going to
+
+778
+00:36:04,300 --> 00:36:09,850
+learn how to look at different kinds of
+
+779
+00:36:07,989 --> 00:36:12,459
+images and particularly we're going to
+
+780
+00:36:09,849 --> 00:36:13,949
+look at images of from satellites and
+
+781
+00:36:12,460 --> 00:36:17,139
+we're going to say for a satellite image
+
+782
+00:36:13,949 --> 00:36:18,279
+what kinds of things might you be seeing
+
+783
+00:36:17,139 --> 00:36:20,319
+in that image and there could be
+
+784
+00:36:18,280 --> 00:36:22,920
+multiple things that we're looking at so
+
+785
+00:36:20,320 --> 00:36:25,750
+a multi-label classification problem
+
+786
+00:36:22,920 --> 00:36:28,360
+from there we'll move to something which
+
+787
+00:36:25,750 --> 00:36:30,909
+is perhaps the most widely applicable
+
+788
+00:36:28,360 --> 00:36:33,610
+for the most people which is looking at
+
+789
+00:36:30,909 --> 00:36:37,679
+what we call structured data so data
+
+790
+00:36:33,610 --> 00:36:40,450
+about data that kind of comes from
+
+791
+00:36:37,679 --> 00:36:42,069
+databases or spreadsheets so we're going
+
+792
+00:36:40,449 --> 00:36:44,559
+to specifically look at this data set of
+
+793
+00:36:42,070 --> 00:36:47,650
+predicting sales the number of things
+
+794
+00:36:44,559 --> 00:36:49,779
+that are sold at different stores on
+
+795
+00:36:47,650 --> 00:36:52,360
+different dates based on different
+
+796
+00:36:49,780 --> 00:36:53,860
+holidays and and so on and so forth and
+
+797
+00:36:52,360 --> 00:36:57,880
+so we're going to be doing its sales
+
+798
+00:36:53,860 --> 00:36:59,620
+forecasting exercise after that we're
+
+799
+00:36:57,880 --> 00:37:01,360
+going to look at language and we're
+
+800
+00:36:59,619 --> 00:37:04,359
+going to figure out
+
+801
+00:37:01,360 --> 00:37:06,579
+what this person thinks about the movie
+
+802
+00:37:04,360 --> 00:37:08,530
+is on be given and will be able to
+
+803
+00:37:06,579 --> 00:37:10,569
+figure out how to create just like we
+
+804
+00:37:08,530 --> 00:37:12,640
+create image classifiers for any kind of
+
+805
+00:37:10,570 --> 00:37:15,250
+image will learn to create in NLP
+
+806
+00:37:12,639 --> 00:37:19,599
+classifiers to classify any kind of
+
+807
+00:37:15,250 --> 00:37:20,230
+language in lots of different ways then
+
+808
+00:37:19,599 --> 00:37:22,150
+we'll look at something called
+
+809
+00:37:20,230 --> 00:37:24,820
+collaborative filtering which is used
+
+810
+00:37:22,150 --> 00:37:26,079
+mainly for recommendation systems we're
+
+811
+00:37:24,820 --> 00:37:27,910
+going to be looking at this data set
+
+812
+00:37:26,079 --> 00:37:29,889
+that showed four different people for
+
+813
+00:37:27,909 --> 00:37:31,659
+different movies what rating did they
+
+814
+00:37:29,889 --> 00:37:34,869
+give it and here are some of the movies
+
+815
+00:37:31,659 --> 00:37:36,460
+and so this is maybe an easier way to
+
+816
+00:37:34,869 --> 00:37:38,529
+think about it is there are lots of
+
+817
+00:37:36,460 --> 00:37:40,840
+different users and lots of different
+
+818
+00:37:38,530 --> 00:37:42,550
+movies and then for each one we can look
+
+819
+00:37:40,840 --> 00:37:44,769
+up for each user how much they liked
+
+820
+00:37:42,550 --> 00:37:47,289
+that movie and the goal will be of
+
+821
+00:37:44,769 --> 00:37:49,360
+course to predict for user movie
+
+822
+00:37:47,289 --> 00:37:51,639
+combinations we haven't seen before are
+
+823
+00:37:49,360 --> 00:37:54,670
+they likely to enjoy that movie or not
+
+824
+00:37:51,639 --> 00:37:57,190
+and that's the really common approach
+
+825
+00:37:54,670 --> 00:37:59,019
+used for like deciding what stuff to put
+
+826
+00:37:57,190 --> 00:38:00,940
+on your homepage when somebody's
+
+827
+00:37:59,019 --> 00:38:02,679
+visiting you know what book might they
+
+828
+00:38:00,940 --> 00:38:06,909
+want to read or what film might they
+
+829
+00:38:02,679 --> 00:38:09,159
+want to see or so forth from there we
+
+830
+00:38:06,909 --> 00:38:11,219
+could have then dig back into language a
+
+831
+00:38:09,159 --> 00:38:13,629
+bit more and we're going to look at
+
+832
+00:38:11,219 --> 00:38:15,250
+actually we're gonna look at the
+
+833
+00:38:13,630 --> 00:38:17,250
+writings of Nietzsche the philosopher
+
+834
+00:38:15,250 --> 00:38:19,809
+and learn how to create our own
+
+835
+00:38:17,250 --> 00:38:22,210
+Nietzsche philosophy from scratch
+
+836
+00:38:19,809 --> 00:38:24,820
+character by character so this here
+
+837
+00:38:22,210 --> 00:38:26,679
+perhaps that every life values a blood
+
+838
+00:38:24,820 --> 00:38:28,480
+of intercourse when it senses there is
+
+839
+00:38:26,679 --> 00:38:31,289
+unscrupulous who's very right sense to
+
+840
+00:38:28,480 --> 00:38:34,329
+impulse love is not actually Nietzsche
+
+841
+00:38:31,289 --> 00:38:37,119
+that's actually like some character by
+
+842
+00:38:34,329 --> 00:38:41,559
+character generated text that we built
+
+843
+00:38:37,119 --> 00:38:43,239
+with this recurrent neural network and
+
+844
+00:38:41,559 --> 00:38:45,730
+then finally we're going to loop all the
+
+845
+00:38:43,239 --> 00:38:47,529
+way back to computer vision again we're
+
+846
+00:38:45,730 --> 00:38:49,809
+going to learn how not just to recognize
+
+847
+00:38:47,530 --> 00:38:51,910
+cats from dogs how to actually find like
+
+848
+00:38:49,809 --> 00:38:54,190
+where the cat is with this kind of hate
+
+849
+00:38:51,909 --> 00:38:56,829
+map and we're also going to learn how to
+
+850
+00:38:54,190 --> 00:38:59,050
+write our own architectures from scratch
+
+851
+00:38:56,829 --> 00:39:02,259
+so this is an example of a resonate
+
+852
+00:38:59,050 --> 00:39:04,600
+which is the kind of network that we are
+
+853
+00:39:02,260 --> 00:39:06,730
+using in today's lesson for computer
+
+854
+00:39:04,599 --> 00:39:08,829
+vision and so we'll actually end up
+
+855
+00:39:06,730 --> 00:39:10,900
+building the network and the training
+
+856
+00:39:08,829 --> 00:39:12,730
+loop from scratch and so they're
+
+857
+00:39:10,900 --> 00:39:14,410
+basically the the steps that we're going
+
+858
+00:39:12,730 --> 00:39:15,849
+to be taking from here
+
+859
+00:39:14,409 --> 00:39:18,159
+and at each step we're going to be
+
+860
+00:39:15,849 --> 00:39:20,680
+getting into increasing amounts of
+
+861
+00:39:18,159 --> 00:39:25,779
+detail about how to actually do these
+
+862
+00:39:20,679 --> 00:39:27,868
+things yourself so we've actually heard
+
+863
+00:39:25,780 --> 00:39:31,780
+that from our students of past courses
+
+864
+00:39:27,869 --> 00:39:34,088
+about what they've found and one of the
+
+865
+00:39:31,780 --> 00:39:37,119
+things that we've heard a lot of
+
+866
+00:39:34,088 --> 00:39:41,828
+students say is that there's been too
+
+867
+00:39:37,119 --> 00:39:44,470
+much time on theory and research and not
+
+868
+00:39:41,829 --> 00:39:47,079
+enough time running the code and even
+
+869
+00:39:44,469 --> 00:39:48,848
+after we tell people about this morning
+
+870
+00:39:47,079 --> 00:39:50,680
+where they still come to the end of the
+
+871
+00:39:48,849 --> 00:39:54,099
+course not and say I wish I had taken
+
+872
+00:39:50,679 --> 00:39:56,798
+more seriously that advice which is to
+
+873
+00:39:54,099 --> 00:39:59,440
+keep running code so these are actual
+
+874
+00:39:56,798 --> 00:40:00,759
+quotes from our forum in retrospect I
+
+875
+00:39:59,440 --> 00:40:03,400
+should have spent the majority of my
+
+876
+00:40:00,760 --> 00:40:07,390
+time on the actual code and the
+
+877
+00:40:03,400 --> 00:40:13,358
+notebooks see what goes in see what
+
+878
+00:40:07,389 --> 00:40:17,048
+comes out now this idea that you can
+
+879
+00:40:13,358 --> 00:40:19,210
+create world-class models in a code
+
+880
+00:40:17,048 --> 00:40:21,460
+first approach learning what you need as
+
+881
+00:40:19,210 --> 00:40:23,230
+you go is very different to a lot of the
+
+882
+00:40:21,460 --> 00:40:28,059
+advice you're read out there such as
+
+883
+00:40:23,230 --> 00:40:30,400
+this person on the forum hacker news who
+
+884
+00:40:28,059 --> 00:40:34,869
+claimed that the best way to become an
+
+885
+00:40:30,400 --> 00:40:38,139
+m/l engineer is to learn all of math and
+
+886
+00:40:34,869 --> 00:40:40,240
+C and C++ learn parallel programming
+
+887
+00:40:38,139 --> 00:40:43,328
+learn ml algorithms implement them
+
+888
+00:40:40,239 --> 00:40:46,118
+yourself using plain C and finally start
+
+889
+00:40:43,329 --> 00:40:47,980
+doing ml so we would say if you want to
+
+890
+00:40:46,119 --> 00:40:51,400
+become an effective practitioner do
+
+891
+00:40:47,980 --> 00:40:53,500
+exactly the opposite of of this yes
+
+892
+00:40:51,400 --> 00:40:56,858
+Rachel yeah I'm just highlighting that
+
+893
+00:40:53,500 --> 00:40:58,568
+this is we think this is bad advice and
+
+894
+00:40:56,858 --> 00:41:00,548
+this can be very discouraging for a lot
+
+895
+00:40:58,568 --> 00:41:03,009
+of people to come across this yeah yeah
+
+896
+00:41:00,548 --> 00:41:04,449
+it's it's it's it's you know we now have
+
+897
+00:41:03,010 --> 00:41:06,960
+thousands and more tens of thousands of
+
+898
+00:41:04,449 --> 00:41:11,169
+people that have done this course and
+
+899
+00:41:06,960 --> 00:41:14,639
+have lots and lots of examples of people
+
+900
+00:41:11,170 --> 00:41:18,519
+who are now running research labs or
+
+901
+00:41:14,639 --> 00:41:20,588
+Google brain residence or you know have
+
+902
+00:41:18,519 --> 00:41:22,269
+created patents based on deep learning
+
+903
+00:41:20,588 --> 00:41:24,460
+and so forth who have done it by doing
+
+904
+00:41:22,269 --> 00:41:27,858
+this course so the top-down approach
+
+905
+00:41:24,460 --> 00:41:30,528
+works super well
+
+906
+00:41:27,858 --> 00:41:32,748
+now one thing to mention is like we've
+
+907
+00:41:30,528 --> 00:41:34,998
+we've now already learned how you can
+
+908
+00:41:32,748 --> 00:41:38,449
+actually train a world-class image
+
+909
+00:41:34,998 --> 00:41:40,759
+classifier in 17 seconds I should
+
+910
+00:41:38,449 --> 00:41:43,159
+mention by the way the first time you
+
+911
+00:41:40,759 --> 00:41:45,170
+run that code there are two things it
+
+912
+00:41:43,159 --> 00:41:48,679
+has to do that take more than 17 seconds
+
+913
+00:41:45,170 --> 00:41:50,930
+one is that it downloads a pre trained
+
+914
+00:41:48,679 --> 00:41:52,248
+model from the internet so you'll see
+
+915
+00:41:50,929 --> 00:41:55,009
+the first time you run it it'll say
+
+916
+00:41:52,248 --> 00:41:58,699
+downloading model so that takes a minute
+
+917
+00:41:55,009 --> 00:42:01,369
+or two also the first time you run it it
+
+918
+00:41:58,699 --> 00:42:02,868
+pre computes and caches some of the
+
+919
+00:42:01,369 --> 00:42:05,239
+intermediate information that it needs
+
+920
+00:42:02,869 --> 00:42:08,210
+and that takes about a minute and a half
+
+921
+00:42:05,239 --> 00:42:11,420
+as well so if the first time you run it
+
+922
+00:42:08,210 --> 00:42:13,579
+it takes three or four minutes to
+
+923
+00:42:11,420 --> 00:42:15,318
+download and pre compute stuff that's
+
+924
+00:42:13,579 --> 00:42:20,809
+normal if you run it again you should
+
+925
+00:42:15,318 --> 00:42:21,588
+find it takes 20 seconds or so so image
+
+926
+00:42:20,809 --> 00:42:24,950
+classifiers
+
+927
+00:42:21,588 --> 00:42:27,889
+you know you may not feel like you need
+
+928
+00:42:24,949 --> 00:42:29,808
+to recognize cats versus dogs very often
+
+929
+00:42:27,889 --> 00:42:31,460
+on a computer you can probably do it
+
+930
+00:42:29,809 --> 00:42:33,339
+yourself pretty well but what's
+
+931
+00:42:31,460 --> 00:42:35,809
+interestingly interesting is that these
+
+932
+00:42:33,338 --> 00:42:37,849
+image classification algorithms are
+
+933
+00:42:35,809 --> 00:42:43,430
+really useful for lots and lots of
+
+934
+00:42:37,849 --> 00:42:46,309
+things for example alphago which became
+
+935
+00:42:43,429 --> 00:42:50,239
+which beat the go world champion the way
+
+936
+00:42:46,309 --> 00:42:53,210
+it worked was to use something at its
+
+937
+00:42:50,239 --> 00:42:55,909
+heart that looked almost exactly like
+
+938
+00:42:53,210 --> 00:42:58,849
+our dogs vs. cats image classification
+
+939
+00:42:55,909 --> 00:43:02,690
+algorithm it looked at thousands and
+
+940
+00:42:58,849 --> 00:43:04,278
+thousands of go boards and at for each
+
+941
+00:43:02,690 --> 00:43:06,619
+one there was a label saying whether
+
+942
+00:43:04,278 --> 00:43:10,599
+that go board ended up being the winning
+
+943
+00:43:06,619 --> 00:43:13,700
+or the losing player and so it learnt
+
+944
+00:43:10,599 --> 00:43:15,140
+basically an image classification that
+
+945
+00:43:13,699 --> 00:43:16,338
+was able to look at a go board and
+
+946
+00:43:15,139 --> 00:43:19,159
+figure out whether it was a good group
+
+947
+00:43:16,338 --> 00:43:22,788
+or a bad code board and that's really
+
+948
+00:43:19,159 --> 00:43:25,489
+the key most important step in playing
+
+949
+00:43:22,789 --> 00:43:29,569
+Gowell is to know which which move is
+
+950
+00:43:25,489 --> 00:43:33,889
+better another example is one of our
+
+951
+00:43:29,568 --> 00:43:36,650
+earlier students who actually got a
+
+952
+00:43:33,889 --> 00:43:40,879
+couple of patterns for this work looked
+
+953
+00:43:36,650 --> 00:43:42,858
+at anti-fraud he had lots of
+
+954
+00:43:40,880 --> 00:43:45,880
+all of his customers mouths movements
+
+955
+00:43:42,858 --> 00:43:48,469
+because they they provided kind of these
+
+956
+00:43:45,880 --> 00:43:52,838
+user tracking software to help avoid
+
+957
+00:43:48,469 --> 00:43:56,209
+fraud and so he took the the mouse paths
+
+958
+00:43:52,838 --> 00:43:59,018
+basically of the users on his customers
+
+959
+00:43:56,210 --> 00:44:01,400
+websites turn them into pictures of
+
+960
+00:43:59,018 --> 00:44:04,818
+where their mouse moved and how quickly
+
+961
+00:44:01,400 --> 00:44:07,548
+it moved and then built a image
+
+962
+00:44:04,818 --> 00:44:10,460
+classifier that took those images as
+
+963
+00:44:07,548 --> 00:44:13,489
+input and as output it was was that a
+
+964
+00:44:10,460 --> 00:44:15,470
+fraudulent transaction or not and turned
+
+965
+00:44:13,489 --> 00:44:19,629
+out to go you know really great results
+
+966
+00:44:15,469 --> 00:44:22,669
+for his company so image classifiers are
+
+967
+00:44:19,630 --> 00:44:23,740
+like much more flexible than you might
+
+968
+00:44:22,670 --> 00:44:28,460
+imagine
+
+969
+00:44:23,739 --> 00:44:29,618
+so so this is how you know some of the
+
+970
+00:44:28,460 --> 00:44:33,338
+ways you can use deep learning
+
+971
+00:44:29,619 --> 00:44:37,608
+specifically for image recognition and
+
+972
+00:44:33,338 --> 00:44:41,000
+it's worth understanding that deep
+
+973
+00:44:37,608 --> 00:44:42,558
+learning is not you know just a word
+
+974
+00:44:41,000 --> 00:44:44,298
+that means the same thing as machine
+
+975
+00:44:42,559 --> 00:44:45,528
+learning right like what is it that
+
+976
+00:44:44,298 --> 00:44:48,409
+we're actually doing here when we're
+
+977
+00:44:45,528 --> 00:44:50,389
+doing deep learning instead deep
+
+978
+00:44:48,409 --> 00:44:53,509
+learning is a kind of machine learning
+
+979
+00:44:50,389 --> 00:44:55,368
+so machine learning was invented by this
+
+980
+00:44:53,509 --> 00:44:55,909
+guy Arthur Samuels who was pretty
+
+981
+00:44:55,369 --> 00:44:58,490
+amazing
+
+982
+00:44:55,909 --> 00:45:01,879
+in the late 50s he got this IBM
+
+983
+00:44:58,489 --> 00:45:04,879
+mainframe to play checkers better than
+
+984
+00:45:01,880 --> 00:45:07,358
+he can and the way he did it was he
+
+985
+00:45:04,880 --> 00:45:10,940
+invented machine learning he got the
+
+986
+00:45:07,358 --> 00:45:13,130
+mainframe to play against itself lots of
+
+987
+00:45:10,940 --> 00:45:14,838
+times and figure out which kinds of
+
+988
+00:45:13,130 --> 00:45:18,048
+things led to victories and which kinds
+
+989
+00:45:14,838 --> 00:45:20,750
+of things didn't and use that to kind of
+
+990
+00:45:18,048 --> 00:45:23,059
+almost write its own program and Arthur
+
+991
+00:45:20,750 --> 00:45:25,309
+Arthur Samuels actually said in 1962
+
+992
+00:45:23,059 --> 00:45:27,829
+that he thought that one day the vast
+
+993
+00:45:25,309 --> 00:45:30,230
+majority of computer software would be
+
+994
+00:45:27,829 --> 00:45:32,720
+written using this machine learning
+
+995
+00:45:30,230 --> 00:45:34,900
+approach rather than written by hand by
+
+996
+00:45:32,719 --> 00:45:38,568
+writing the loops and so forth by hand
+
+997
+00:45:34,900 --> 00:45:40,700
+so I guess that hasn't happened yet but
+
+998
+00:45:38,568 --> 00:45:43,518
+it seems to be in the process of
+
+999
+00:45:40,699 --> 00:45:45,588
+happening I think one of the reasons it
+
+1000
+00:45:43,518 --> 00:45:47,479
+didn't happen for a long time is because
+
+1001
+00:45:45,588 --> 00:45:51,349
+traditional machine learning actually
+
+1002
+00:45:47,480 --> 00:45:54,110
+was very difficult and very
+
+1003
+00:45:51,349 --> 00:45:55,549
+knowledge and time intensive so for
+
+1004
+00:45:54,110 --> 00:45:59,059
+example here's something called the
+
+1005
+00:45:55,550 --> 00:46:01,400
+computational pathologist or C path from
+
+1006
+00:45:59,059 --> 00:46:04,250
+backwater and II back and II back back
+
+1007
+00:46:01,400 --> 00:46:07,490
+when he was at Stanford he's now moved
+
+1008
+00:46:04,250 --> 00:46:11,449
+on to somewhere on the East Coast no
+
+1009
+00:46:07,489 --> 00:46:13,729
+Harvard I think and what he did was he
+
+1010
+00:46:11,449 --> 00:46:18,769
+took these pathology slides of breast
+
+1011
+00:46:13,730 --> 00:46:21,440
+cancer biopsies right and he worked with
+
+1012
+00:46:18,769 --> 00:46:24,769
+lots of pathologists to come up with
+
+1013
+00:46:21,440 --> 00:46:27,829
+ideas about what kinds of patterns or
+
+1014
+00:46:24,769 --> 00:46:31,550
+features might be associated with so
+
+1015
+00:46:27,829 --> 00:46:34,190
+long-term survival versus versus dying
+
+1016
+00:46:31,550 --> 00:46:36,320
+quickly basically and so he came up with
+
+1017
+00:46:34,190 --> 00:46:37,760
+these ideas like well they came up with
+
+1018
+00:46:36,320 --> 00:46:39,580
+these ideas like relationship between
+
+1019
+00:46:37,760 --> 00:46:41,540
+epithelial nuclear neighbors
+
+1020
+00:46:39,579 --> 00:46:44,059
+relationship between epithelial and
+
+1021
+00:46:41,539 --> 00:46:45,500
+stromal objects and so forth and so they
+
+1022
+00:46:44,059 --> 00:46:47,029
+came up with all of these ideas of
+
+1023
+00:46:45,500 --> 00:46:49,429
+features these are just a few of the
+
+1024
+00:46:47,030 --> 00:46:53,200
+hundreds that they thought of and then
+
+1025
+00:46:49,429 --> 00:46:56,269
+lots of smart computer programmers wrote
+
+1026
+00:46:53,199 --> 00:46:58,789
+specialist algorithms to to calculate
+
+1027
+00:46:56,269 --> 00:47:01,909
+all these different features and then
+
+1028
+00:46:58,789 --> 00:47:04,940
+those those features were passed into a
+
+1029
+00:47:01,909 --> 00:47:07,789
+logistic regression to predict survival
+
+1030
+00:47:04,940 --> 00:47:10,099
+and it ended up working very well and it
+
+1031
+00:47:07,789 --> 00:47:13,699
+ended up that the survival predictions
+
+1032
+00:47:10,099 --> 00:47:16,610
+were more accurate than pathologists own
+
+1033
+00:47:13,699 --> 00:47:18,349
+survival predictions work and so machine
+
+1034
+00:47:16,610 --> 00:47:21,079
+learning can work really well but the
+
+1035
+00:47:18,349 --> 00:47:23,839
+point here is that this was a an
+
+1036
+00:47:21,079 --> 00:47:27,079
+approach that took lots of domain
+
+1037
+00:47:23,840 --> 00:47:30,350
+experts and computer experts many years
+
+1038
+00:47:27,079 --> 00:47:37,509
+of work to actually to build this thing
+
+1039
+00:47:30,349 --> 00:47:41,389
+right so we really want something
+
+1040
+00:47:37,510 --> 00:47:43,550
+something better and so specifically I'm
+
+1041
+00:47:41,389 --> 00:47:47,299
+going to show you something which rather
+
+1042
+00:47:43,550 --> 00:47:51,530
+than being a very specific function with
+
+1043
+00:47:47,300 --> 00:47:53,960
+all this very domain-specific feature
+
+1044
+00:47:51,530 --> 00:47:56,150
+engineering we're going to try and
+
+1045
+00:47:53,960 --> 00:47:58,329
+create an infinitely flexible function a
+
+1046
+00:47:56,150 --> 00:48:01,280
+function that could solve any problem
+
+1047
+00:47:58,329 --> 00:48:03,019
+right it would solve any problem if only
+
+1048
+00:48:01,280 --> 00:48:05,120
+you set the parameters of that function
+
+1049
+00:48:03,019 --> 00:48:07,250
+correctly and so then we need
+
+1050
+00:48:05,119 --> 00:48:10,190
+or purpose way of setting the parameters
+
+1051
+00:48:07,250 --> 00:48:12,769
+of that function and we would need that
+
+1052
+00:48:10,190 --> 00:48:14,000
+to be fast and scalable right now if we
+
+1053
+00:48:12,769 --> 00:48:16,699
+had something that had these three
+
+1054
+00:48:14,000 --> 00:48:18,769
+things then you wouldn't need to do this
+
+1055
+00:48:16,699 --> 00:48:21,529
+incredibly time and domain knowledge
+
+1056
+00:48:18,769 --> 00:48:24,730
+intensive approach anymore instead we
+
+1057
+00:48:21,530 --> 00:48:28,430
+can learn all of those things with this
+
+1058
+00:48:24,730 --> 00:48:31,699
+with this algorithm so as you might have
+
+1059
+00:48:28,429 --> 00:48:33,799
+guessed the algorithm in question which
+
+1060
+00:48:31,699 --> 00:48:36,559
+has these three properties is called
+
+1061
+00:48:33,800 --> 00:48:38,780
+deep learning or it's not an algorithm
+
+1062
+00:48:36,559 --> 00:48:41,690
+then maybe we will call it a class of
+
+1063
+00:48:38,780 --> 00:48:44,630
+algorithms let's look at each of these
+
+1064
+00:48:41,690 --> 00:48:47,750
+three things in turn so the underlying
+
+1065
+00:48:44,630 --> 00:48:50,960
+function that deep learning uses is
+
+1066
+00:48:47,750 --> 00:48:53,269
+something called the neural network now
+
+1067
+00:48:50,960 --> 00:48:54,920
+the neural network we're going to learn
+
+1068
+00:48:53,269 --> 00:48:57,349
+all about it and implemented ourselves
+
+1069
+00:48:54,920 --> 00:48:59,269
+from scratch later on in the course but
+
+1070
+00:48:57,349 --> 00:49:02,210
+for now all you need to know about it is
+
+1071
+00:48:59,269 --> 00:49:05,329
+that it consists of a number of simple
+
+1072
+00:49:02,210 --> 00:49:10,309
+linear layers interspersed with a number
+
+1073
+00:49:05,329 --> 00:49:12,400
+of simple nonlinear layers and when you
+
+1074
+00:49:10,309 --> 00:49:15,949
+in dispersed these layers in this way
+
+1075
+00:49:12,400 --> 00:49:18,410
+you get something called the universal
+
+1076
+00:49:15,949 --> 00:49:20,509
+approximation theorem and the universal
+
+1077
+00:49:18,409 --> 00:49:24,199
+approximation theorem says that this
+
+1078
+00:49:20,510 --> 00:49:28,340
+kind of function can solve any given
+
+1079
+00:49:24,199 --> 00:49:32,899
+problem to arbitrarily close accuracy as
+
+1080
+00:49:28,340 --> 00:49:35,600
+long as you add enough parameters so
+
+1081
+00:49:32,900 --> 00:49:39,740
+it's actually provably shown to be an
+
+1082
+00:49:35,599 --> 00:49:41,000
+infinitely flexible function okay so now
+
+1083
+00:49:39,739 --> 00:49:43,399
+we need some way to fit the parameters
+
+1084
+00:49:41,000 --> 00:49:46,570
+so that this infinitely flexible neural
+
+1085
+00:49:43,400 --> 00:49:49,369
+network solves some specific problem and
+
+1086
+00:49:46,570 --> 00:49:51,890
+so the way we do that is using a
+
+1087
+00:49:49,369 --> 00:49:53,389
+technique that probably most of you will
+
+1088
+00:49:51,889 --> 00:49:55,909
+have come across before at some stage
+
+1089
+00:49:53,389 --> 00:49:58,400
+called gradient descent and with
+
+1090
+00:49:55,909 --> 00:49:59,929
+gradient descent we basically say okay
+
+1091
+00:49:58,400 --> 00:50:03,619
+well for the different parameters we
+
+1092
+00:49:59,929 --> 00:50:06,589
+have how how good are they at solving my
+
+1093
+00:50:03,619 --> 00:50:09,289
+problem and let's figure out a slightly
+
+1094
+00:50:06,590 --> 00:50:11,210
+better set of parameters and a slightly
+
+1095
+00:50:09,289 --> 00:50:14,179
+better set of parameters and j6v follow
+
+1096
+00:50:11,210 --> 00:50:15,920
+down the the surface of the loss
+
+1097
+00:50:14,179 --> 00:50:18,529
+function downwards it's kind of like a
+
+1098
+00:50:15,920 --> 00:50:21,440
+marble going down
+
+1099
+00:50:18,530 --> 00:50:23,780
+find the minimum and as you can see here
+
+1100
+00:50:21,440 --> 00:50:27,980
+depending on where you start you end up
+
+1101
+00:50:23,780 --> 00:50:31,190
+in different places these things a court
+
+1102
+00:50:27,980 --> 00:50:32,389
+local minima now interestingly it turns
+
+1103
+00:50:31,190 --> 00:50:36,829
+out that for neural networks
+
+1104
+00:50:32,389 --> 00:50:41,480
+particularly in particular there aren't
+
+1105
+00:50:36,829 --> 00:50:44,059
+actually multiple different local minima
+
+1106
+00:50:41,480 --> 00:50:46,760
+there's basically just there's basically
+
+1107
+00:50:44,059 --> 00:50:48,110
+just one right or think of it another
+
+1108
+00:50:46,760 --> 00:50:53,320
+way there are different parts of the
+
+1109
+00:50:48,110 --> 00:50:56,269
+space which are all equally good so
+
+1110
+00:50:53,320 --> 00:50:59,330
+gradient descent therefore turns out to
+
+1111
+00:50:56,269 --> 00:51:02,030
+be actually an excellent way to solve
+
+1112
+00:50:59,329 --> 00:51:06,559
+this problem of fitting parameters to
+
+1113
+00:51:02,030 --> 00:51:08,480
+neural networks the problem is though
+
+1114
+00:51:06,559 --> 00:51:09,440
+that we need to do it in a reasonable
+
+1115
+00:51:08,480 --> 00:51:12,920
+amount of time
+
+1116
+00:51:09,440 --> 00:51:16,490
+and it's really only thanks to GPUs that
+
+1117
+00:51:12,920 --> 00:51:19,039
+that's become possible so GPUs this
+
+1118
+00:51:16,489 --> 00:51:22,789
+shows over the last few years
+
+1119
+00:51:19,039 --> 00:51:26,599
+how many gigaflops per second can you
+
+1120
+00:51:22,789 --> 00:51:29,840
+get out of a GPU that's the red and
+
+1121
+00:51:26,599 --> 00:51:32,389
+green versus a CPU that's the blue right
+
+1122
+00:51:29,840 --> 00:51:36,039
+and this is on a log scale so you can
+
+1123
+00:51:32,389 --> 00:51:42,039
+see that generally speaking the GPUs are
+
+1124
+00:51:36,039 --> 00:51:44,119
+about 10 times faster than the CPUs and
+
+1125
+00:51:42,039 --> 00:51:48,259
+what's really interesting is that
+
+1126
+00:51:44,119 --> 00:51:51,889
+nowadays not only is the Titan X about
+
+1127
+00:51:48,260 --> 00:51:56,390
+10 times faster than the e5 to $6.99 CPU
+
+1128
+00:51:51,889 --> 00:51:59,809
+but the Titan X well actually better one
+
+1129
+00:51:56,389 --> 00:52:01,690
+to look at would be the GTX 1080i GPU
+
+1130
+00:51:59,809 --> 00:52:04,670
+costs about 700 bucks
+
+1131
+00:52:01,690 --> 00:52:10,639
+whereas the CPU which is 10 times slower
+
+1132
+00:52:04,670 --> 00:52:14,300
+costs over $4,000 so GPUs turn out to be
+
+1133
+00:52:10,639 --> 00:52:17,599
+able to solve these neural network
+
+1134
+00:52:14,300 --> 00:52:20,570
+parameter fitting problems incredibly
+
+1135
+00:52:17,599 --> 00:52:24,019
+quickly and also incredibly cheaply so
+
+1136
+00:52:20,570 --> 00:52:28,490
+they've been absolutely key in bringing
+
+1137
+00:52:24,019 --> 00:52:31,280
+these three pieces together then there's
+
+1138
+00:52:28,489 --> 00:52:32,439
+one more piece which is I mentioned that
+
+1139
+00:52:31,280 --> 00:52:34,690
+these neural network
+
+1140
+00:52:32,440 --> 00:52:40,358
+so you can intersperse multiple sets of
+
+1141
+00:52:34,690 --> 00:52:42,220
+linear and then nonlinear layers in the
+
+1142
+00:52:40,358 --> 00:52:44,619
+particular example that's drawn here
+
+1143
+00:52:42,219 --> 00:52:46,598
+there's actually only one what we call
+
+1144
+00:52:44,619 --> 00:52:48,519
+hidden layer one layer in the middle and
+
+1145
+00:52:46,599 --> 00:52:51,519
+something that we learned in the last
+
+1146
+00:52:48,519 --> 00:52:53,920
+few years is that these kinds of neural
+
+1147
+00:52:51,519 --> 00:52:55,989
+networks although they do support the
+
+1148
+00:52:53,920 --> 00:52:58,900
+universal approximation theorem they can
+
+1149
+00:52:55,989 --> 00:53:02,169
+solve any given problem arbitrarily
+
+1150
+00:52:58,900 --> 00:53:04,990
+closely they require an exponentially
+
+1151
+00:53:02,170 --> 00:53:07,659
+increasing number of parameters to do so
+
+1152
+00:53:04,989 --> 00:53:09,759
+so they don't actually solve the fast
+
+1153
+00:53:07,659 --> 00:53:14,230
+and scalable for even reasonable size
+
+1154
+00:53:09,760 --> 00:53:16,770
+problems but we've since discovered that
+
+1155
+00:53:14,230 --> 00:53:20,199
+if you create add multiple hidden layers
+
+1156
+00:53:16,769 --> 00:53:23,699
+then you get super linear scaling so you
+
+1157
+00:53:20,199 --> 00:53:27,309
+can add a few more hidden layers to get
+
+1158
+00:53:23,699 --> 00:53:28,989
+multiplicatively more accuracy 2ma
+
+1159
+00:53:27,309 --> 00:53:32,289
+duplicative lis more complex problems
+
+1160
+00:53:28,989 --> 00:53:34,358
+and that is where it becomes called deep
+
+1161
+00:53:32,289 --> 00:53:41,619
+learning so deep learning means a neural
+
+1162
+00:53:34,358 --> 00:53:43,269
+network with multiple hidden layers so
+
+1163
+00:53:41,619 --> 00:53:46,680
+when you put all this together there's
+
+1164
+00:53:43,269 --> 00:53:49,719
+actually really amazing what happens
+
+1165
+00:53:46,679 --> 00:53:54,159
+Google started investing in deep
+
+1166
+00:53:49,719 --> 00:53:56,049
+learning in 2012 they actually hired
+
+1167
+00:53:54,159 --> 00:53:59,199
+Geoffrey Hinton who's kind of the father
+
+1168
+00:53:56,050 --> 00:54:02,769
+of deep learning and his top student
+
+1169
+00:53:59,199 --> 00:54:05,439
+Alex Bogusky and they started trying to
+
+1170
+00:54:02,769 --> 00:54:10,539
+build a team that team became known as
+
+1171
+00:54:05,440 --> 00:54:13,809
+Google brain and because things with
+
+1172
+00:54:10,539 --> 00:54:16,269
+these three properties are so incredibly
+
+1173
+00:54:13,809 --> 00:54:18,909
+powerful and so incredibly flexible you
+
+1174
+00:54:16,269 --> 00:54:23,980
+can actually see over time how many
+
+1175
+00:54:18,909 --> 00:54:25,989
+projects at Google use deep learning my
+
+1176
+00:54:23,980 --> 00:54:28,000
+graph here only goes up through a bit
+
+1177
+00:54:25,989 --> 00:54:29,649
+over a year ago but it's I know it's
+
+1178
+00:54:28,000 --> 00:54:32,769
+been continuing to grow exponentially
+
+1179
+00:54:29,650 --> 00:54:35,139
+since then as well and so what you see
+
+1180
+00:54:32,769 --> 00:54:37,300
+now is around Google that deep learning
+
+1181
+00:54:35,139 --> 00:54:40,059
+is used in like every part of the
+
+1182
+00:54:37,300 --> 00:54:44,590
+business and so it's really interesting
+
+1183
+00:54:40,059 --> 00:54:47,440
+to see how the
+
+1184
+00:54:44,590 --> 00:54:50,710
+this kind of simple idea that we can
+
+1185
+00:54:47,440 --> 00:54:53,490
+solve machine learning problems using a
+
+1186
+00:54:50,710 --> 00:54:56,590
+an algorithm that has these properties
+
+1187
+00:54:53,489 --> 00:54:59,229
+when a big company invests heavily in
+
+1188
+00:54:56,590 --> 00:55:02,700
+actually making that happen you see this
+
+1189
+00:54:59,230 --> 00:55:06,849
+incredible growth in how much it's used
+
+1190
+00:55:02,699 --> 00:55:09,730
+so for example if you use the inbox by
+
+1191
+00:55:06,849 --> 00:55:14,319
+Google software then when you receive an
+
+1192
+00:55:09,730 --> 00:55:17,619
+email from somebody it will often tell
+
+1193
+00:55:14,320 --> 00:55:19,900
+you here are some replies that I could
+
+1194
+00:55:17,619 --> 00:55:22,029
+send for you and so it's actually using
+
+1195
+00:55:19,900 --> 00:55:25,660
+deep learning here to read the original
+
+1196
+00:55:22,030 --> 00:55:28,480
+email and to generate some suggested
+
+1197
+00:55:25,659 --> 00:55:31,109
+replies and so like this is a really
+
+1198
+00:55:28,480 --> 00:55:35,110
+great example of the kind of stuff that
+
+1199
+00:55:31,110 --> 00:55:37,570
+previously just wasn't possible another
+
+1200
+00:55:35,110 --> 00:55:40,000
+great example would be Microsoft is also
+
+1201
+00:55:37,570 --> 00:55:42,670
+a little bit more recently invested
+
+1202
+00:55:40,000 --> 00:55:46,420
+heavily in deep learning and so now you
+
+1203
+00:55:42,670 --> 00:55:49,900
+can use Skype you can speaking to it in
+
+1204
+00:55:46,420 --> 00:55:52,690
+English and ask it at the other end to
+
+1205
+00:55:49,900 --> 00:55:54,700
+translate it in real time to Chinese or
+
+1206
+00:55:52,690 --> 00:55:57,610
+Spanish and then when they talk back to
+
+1207
+00:55:54,699 --> 00:56:00,639
+you in Chinese or Spanish Scott will in
+
+1208
+00:55:57,610 --> 00:56:03,010
+real-time translated the speech in in
+
+1209
+00:56:00,639 --> 00:56:05,469
+their language into English speech in
+
+1210
+00:56:03,010 --> 00:56:07,870
+real-time and again this is an example
+
+1211
+00:56:05,469 --> 00:56:13,029
+of stuff which we can only do
+
+1212
+00:56:07,869 --> 00:56:14,409
+thanks to deep learning and something is
+
+1213
+00:56:13,030 --> 00:56:17,590
+really interesting to think about how
+
+1214
+00:56:14,409 --> 00:56:20,440
+deep learning can be combined with human
+
+1215
+00:56:17,590 --> 00:56:22,990
+expertise so here's an example of low
+
+1216
+00:56:20,440 --> 00:56:25,780
+drawing something just sketching it out
+
+1217
+00:56:22,989 --> 00:56:27,129
+and then using a program called neural
+
+1218
+00:56:25,780 --> 00:56:30,040
+doodle this is from a couple of years
+
+1219
+00:56:27,130 --> 00:56:33,539
+ago - then say please take that sketch
+
+1220
+00:56:30,039 --> 00:56:35,949
+and render it in the style of an artist
+
+1221
+00:56:33,539 --> 00:56:38,860
+and so here's the picture that have been
+
+1222
+00:56:35,949 --> 00:56:41,500
+created rendering it as you know
+
+1223
+00:56:38,860 --> 00:56:44,620
+impressionist painting and I think this
+
+1224
+00:56:41,500 --> 00:56:47,829
+is a really great example of how you can
+
+1225
+00:56:44,619 --> 00:56:52,559
+use deep learning to help combine human
+
+1226
+00:56:47,829 --> 00:56:52,559
+expertise and what computers are good at
+
+1227
+00:56:53,840 --> 00:57:01,670
+so I a few years ago decided to try this
+
+1228
+00:56:58,559 --> 00:57:04,139
+myself like what would happen if I took
+
+1229
+00:57:01,670 --> 00:57:06,420
+think learning and tried to use it to
+
+1230
+00:57:04,139 --> 00:57:09,269
+solve a really important problem and so
+
+1231
+00:57:06,420 --> 00:57:14,220
+the problem I picked was diagnosing lung
+
+1232
+00:57:09,269 --> 00:57:18,360
+cancer it turns out if you can find lung
+
+1233
+00:57:14,219 --> 00:57:21,569
+nodules earlier there's a 10 times
+
+1234
+00:57:18,360 --> 00:57:24,360
+higher probability of survival so it's a
+
+1235
+00:57:21,570 --> 00:57:25,860
+really important problem to solve so I
+
+1236
+00:57:24,360 --> 00:57:27,829
+got together with three other people
+
+1237
+00:57:25,860 --> 00:57:32,730
+none of us had any medical background
+
+1238
+00:57:27,829 --> 00:57:34,519
+and we grabbed a data set of CT scans we
+
+1239
+00:57:32,730 --> 00:57:37,349
+used to compilation or neural network
+
+1240
+00:57:34,519 --> 00:57:38,989
+much like the dogs vs. cats one we
+
+1241
+00:57:37,349 --> 00:57:43,969
+trained at the start of today's lesson
+
+1242
+00:57:38,989 --> 00:57:47,699
+to try and predict which CT scans had
+
+1243
+00:57:43,969 --> 00:57:49,859
+malignant tumors in them and we ended up
+
+1244
+00:57:47,699 --> 00:57:52,049
+after a couple of months with something
+
+1245
+00:57:49,860 --> 00:57:53,789
+with a much lower false negative rate
+
+1246
+00:57:52,050 --> 00:57:56,580
+and a much lower false positive rate
+
+1247
+00:57:53,789 --> 00:57:59,730
+than a panel with four radiologists and
+
+1248
+00:57:56,579 --> 00:58:01,590
+we went on to build this in a start-up
+
+1249
+00:57:59,730 --> 00:58:02,969
+in just into a company called analytic
+
+1250
+00:58:01,590 --> 00:58:06,660
+which has really become pretty
+
+1251
+00:58:02,969 --> 00:58:08,159
+successful and since that time the idea
+
+1252
+00:58:06,659 --> 00:58:11,609
+of using deep learning for medical
+
+1253
+00:58:08,159 --> 00:58:14,879
+imaging has become hugely popular and is
+
+1254
+00:58:11,610 --> 00:58:16,559
+being used all around the world so what
+
+1255
+00:58:14,880 --> 00:58:22,260
+I've generally noticed is that you know
+
+1256
+00:58:16,559 --> 00:58:23,579
+the vast majority of of kind of things
+
+1257
+00:58:22,260 --> 00:58:26,280
+that people do in the world currently
+
+1258
+00:58:23,579 --> 00:58:28,049
+aren't using deep learning and then each
+
+1259
+00:58:26,280 --> 00:58:30,180
+time somebody says oh let's try using
+
+1260
+00:58:28,050 --> 00:58:32,640
+deep learning to improve performance at
+
+1261
+00:58:30,179 --> 00:58:34,799
+this thing they nearly always get
+
+1262
+00:58:32,639 --> 00:58:36,809
+fantastic results and then suddenly
+
+1263
+00:58:34,800 --> 00:58:38,820
+everybody in that industry starts using
+
+1264
+00:58:36,809 --> 00:58:41,159
+it as well so there's just lots and lots
+
+1265
+00:58:38,820 --> 00:58:44,039
+of opportunities here at this particular
+
+1266
+00:58:41,159 --> 00:58:46,799
+time to use deep learning to help with
+
+1267
+00:58:44,039 --> 00:58:48,989
+all kinds of different stuff so I've
+
+1268
+00:58:46,800 --> 00:58:52,620
+jotted down a few ideas here these are
+
+1269
+00:58:48,989 --> 00:58:54,839
+all things which I know you can use deep
+
+1270
+00:58:52,619 --> 00:58:58,799
+learning for right now to get good
+
+1271
+00:58:54,840 --> 00:59:00,990
+results from and you know are things
+
+1272
+00:58:58,800 --> 00:59:02,550
+which people spend a lot of money on or
+
+1273
+00:59:00,989 --> 00:59:04,919
+have a lot of you know important
+
+1274
+00:59:02,550 --> 00:59:06,180
+business opportunities there's lots more
+
+1275
+00:59:04,920 --> 00:59:08,099
+as well
+
+1276
+00:59:06,179 --> 00:59:09,659
+that these are some examples of things
+
+1277
+00:59:08,099 --> 00:59:13,769
+that maybe your company you could think
+
+1278
+00:59:09,659 --> 00:59:15,659
+about applying deep learning for so
+
+1279
+00:59:13,768 --> 00:59:19,078
+let's talk about what's actually going
+
+1280
+00:59:15,659 --> 00:59:21,778
+on what actually happened when we
+
+1281
+00:59:19,079 --> 00:59:24,749
+trained that deep learning model earlier
+
+1282
+00:59:21,778 --> 00:59:26,130
+and so as I briefly mentioned the thing
+
+1283
+00:59:24,748 --> 00:59:29,608
+we created is something called a
+
+1284
+00:59:26,130 --> 00:59:32,670
+convolutional neural network or CNN and
+
+1285
+00:59:29,608 --> 00:59:36,869
+the key piece of a convolutional neural
+
+1286
+00:59:32,670 --> 00:59:40,230
+network is the convolution so here's a
+
+1287
+00:59:36,869 --> 00:59:43,230
+great example from our website
+
+1288
+00:59:40,230 --> 00:59:46,679
+I've got the URL up here explained
+
+1289
+00:59:43,230 --> 00:59:49,679
+visually it's called and the explained
+
+1290
+00:59:46,679 --> 00:59:52,588
+visually website has an example of a
+
+1291
+00:59:49,679 --> 00:59:54,778
+convolution kind of in fact this over
+
+1292
+00:59:52,588 --> 00:59:57,989
+here in the bottom left is a very zoomed
+
+1293
+00:59:54,778 --> 01:00:01,170
+in picture of somebody's face and over
+
+1294
+00:59:57,989 --> 01:00:05,278
+here on the right is an example of using
+
+1295
+01:00:01,170 --> 01:00:07,619
+a convolution on that image you can see
+
+1296
+01:00:05,278 --> 01:00:14,639
+here this particular thing is obviously
+
+1297
+01:00:07,619 --> 01:00:16,970
+finding edges the edges of his head
+
+1298
+01:00:14,639 --> 01:00:20,518
+about top and bottom edges in particular
+
+1299
+01:00:16,969 --> 01:00:22,230
+now how is it doing that well if we look
+
+1300
+01:00:20,518 --> 01:00:24,118
+at each of these are all three by three
+
+1301
+01:00:22,230 --> 01:00:26,068
+areas this is moving over it's taking
+
+1302
+01:00:24,119 --> 01:00:29,640
+each three by three area of pixels and
+
+1303
+01:00:26,068 --> 01:00:32,639
+here are the pixel values right for each
+
+1304
+01:00:29,639 --> 01:00:35,009
+thing in that 3x3 area and it's
+
+1305
+01:00:32,639 --> 01:00:39,920
+multiplying each one of those 3 by 3
+
+1306
+01:00:35,009 --> 01:00:43,349
+pixels by each one of these 3 by 3
+
+1307
+01:00:39,920 --> 01:00:47,009
+kernel values in a convolution this
+
+1308
+01:00:43,349 --> 01:00:48,989
+specific set of 9 values is called a
+
+1309
+01:00:47,009 --> 01:00:52,048
+kernel it doesn't have to be 9 it could
+
+1310
+01:00:48,989 --> 01:00:54,809
+be 4 by 4 or 5 by 5 or 3 by 2 or
+
+1311
+01:00:52,048 --> 01:00:56,429
+whatever right in this case it's a 3 by
+
+1312
+01:00:54,809 --> 01:01:00,480
+3 kernel and in fact a deep learning
+
+1313
+01:00:56,429 --> 01:01:03,808
+nearly all of our kernels are 3 by 3 so
+
+1314
+01:01:00,480 --> 01:01:11,190
+in this case the kernel is 1 - 1 / - 1 -
+
+1315
+01:01:03,809 --> 01:01:13,890
+2 - 1 so we take each of the black
+
+1316
+01:01:11,190 --> 01:01:16,019
+through white pixel values and we
+
+1317
+01:01:13,889 --> 01:01:18,509
+multiply as you can see each of them by
+
+1318
+01:01:16,018 --> 01:01:22,079
+the corresponding value in the kernel
+
+1319
+01:01:18,510 --> 01:01:25,320
+and then we add them all together and so
+
+1320
+01:01:22,079 --> 01:01:28,199
+if you do that for every 3x3 area you
+
+1321
+01:01:25,320 --> 01:01:31,920
+end up with the values you see over here
+
+1322
+01:01:28,199 --> 01:01:35,460
+on the right hand side okay so very low
+
+1323
+01:01:31,920 --> 01:01:38,700
+values become black very high values
+
+1324
+01:01:35,460 --> 01:01:41,400
+become white and so you can see when
+
+1325
+01:01:38,699 --> 01:01:44,489
+we're at an edge where it's black at the
+
+1326
+01:01:41,400 --> 01:01:46,440
+bottom and white at the top we're
+
+1327
+01:01:44,489 --> 01:01:50,309
+obviously going to get higher numbers
+
+1328
+01:01:46,440 --> 01:01:53,400
+over here and vice versa okay so that's
+
+1329
+01:01:50,309 --> 01:01:56,340
+a convolution so as you can see it is a
+
+1330
+01:01:53,400 --> 01:01:58,289
+linear operation and so based on that
+
+1331
+01:01:56,340 --> 01:02:01,079
+definition of a neural net I described
+
+1332
+01:01:58,289 --> 01:02:04,230
+before this can be a layer in our neural
+
+1333
+01:02:01,079 --> 01:02:06,389
+network it is a simple linear operation
+
+1334
+01:02:04,230 --> 01:02:08,309
+and we're going to look much more at
+
+1335
+01:02:06,389 --> 01:02:10,710
+convolutions later including building a
+
+1336
+01:02:08,309 --> 01:02:11,570
+little spreadsheet that implements them
+
+1337
+01:02:10,710 --> 01:02:13,800
+ourselves
+
+1338
+01:02:11,570 --> 01:02:17,670
+so the next thing we're going to do is
+
+1339
+01:02:13,800 --> 01:02:20,180
+we're going to add a nonlinear layer so
+
+1340
+01:02:17,670 --> 01:02:24,950
+a non-linearity as it's called is
+
+1341
+01:02:20,179 --> 01:02:27,269
+something which takes an input value and
+
+1342
+01:02:24,949 --> 01:02:29,039
+turns it into some different value in a
+
+1343
+01:02:27,269 --> 01:02:31,699
+nonlinear way and you can see this
+
+1344
+01:02:29,039 --> 01:02:34,469
+orange picture here is an example of a
+
+1345
+01:02:31,699 --> 01:02:37,379
+nonlinear function specifically this is
+
+1346
+01:02:34,469 --> 01:02:39,629
+something called a sigmoid and so a
+
+1347
+01:02:37,380 --> 01:02:41,940
+sigmoid is something that has this kind
+
+1348
+01:02:39,630 --> 01:02:44,070
+of S shape and this is what we used to
+
+1349
+01:02:41,940 --> 01:02:47,309
+use as our nonlinearities in neural
+
+1350
+01:02:44,070 --> 01:02:48,720
+networks a lot actually nowadays we're
+
+1351
+01:02:47,309 --> 01:02:51,559
+nearly entirely use something else
+
+1352
+01:02:48,719 --> 01:02:56,069
+called a rally or rectified linear unit
+
+1353
+01:02:51,559 --> 01:02:58,349
+a rail u is simply take any negative
+
+1354
+01:02:56,070 --> 01:03:01,140
+numbers and replace them with 0 and
+
+1355
+01:02:58,349 --> 01:03:05,059
+leave any positive numbers as they are
+
+1356
+01:03:01,139 --> 01:03:11,489
+so in other words in code that would be
+
+1357
+01:03:05,059 --> 01:03:17,480
+y equals max X comma 0 so max X comma 0
+
+1358
+01:03:11,489 --> 01:03:17,479
+simply says replace the negatives with 0
+
+1359
+01:03:18,588 --> 01:03:24,318
+now regardless of whether you use a
+
+1360
+01:03:21,358 --> 01:03:27,358
+sigmoid or a RAL you or something else
+
+1361
+01:03:24,318 --> 01:03:29,969
+the key point about taking this
+
+1362
+01:03:27,358 --> 01:03:33,000
+combination of a linear layer followed
+
+1363
+01:03:29,969 --> 01:03:35,730
+by a element-wise nonlinear function is
+
+1364
+01:03:33,000 --> 01:03:37,829
+that it allows us to create arbitrarily
+
+1365
+01:03:35,730 --> 01:03:41,789
+complex shapes as you see in the bottom
+
+1366
+01:03:37,829 --> 01:03:43,619
+right and the reason why is that and
+
+1367
+01:03:41,789 --> 01:03:45,750
+this is all from Michael Nelson's
+
+1368
+01:03:43,619 --> 01:03:49,380
+neural networks and deep learning com
+
+1369
+01:03:45,750 --> 01:03:52,650
+really fantastic interactive book as you
+
+1370
+01:03:49,380 --> 01:03:55,980
+change the values of your linear
+
+1371
+01:03:52,650 --> 01:03:58,619
+functions it basically allows you to
+
+1372
+01:03:55,980 --> 01:04:01,380
+kind of like build these arbitrarily
+
+1373
+01:03:58,619 --> 01:04:03,838
+tall or thin blocks and then combine
+
+1374
+01:04:01,380 --> 01:04:06,298
+those blocks together and this is
+
+1375
+01:04:03,838 --> 01:04:08,578
+actually the essence of the universal
+
+1376
+01:04:06,298 --> 01:04:11,338
+approximation theorem this idea that
+
+1377
+01:04:08,579 --> 01:04:13,318
+when you have a linear layer feeding
+
+1378
+01:04:11,338 --> 01:04:15,679
+into a non-linearity you can actually
+
+1379
+01:04:13,318 --> 01:04:18,779
+create these arbitrarily complex shapes
+
+1380
+01:04:15,679 --> 01:04:22,169
+so this is the key idea behind why
+
+1381
+01:04:18,780 --> 01:04:26,790
+neural networks can solve any computable
+
+1382
+01:04:22,170 --> 01:04:31,559
+problem so then we need a way as we
+
+1383
+01:04:26,789 --> 01:04:33,509
+described to actually set these
+
+1384
+01:04:31,559 --> 01:04:34,769
+parameters so it's all very well knowing
+
+1385
+01:04:33,510 --> 01:04:38,430
+that we can move three a meters around
+
+1386
+01:04:34,769 --> 01:04:40,829
+manually to try to create different
+
+1387
+01:04:38,429 --> 01:04:43,230
+shapes but we have some specific shape
+
+1388
+01:04:40,829 --> 01:04:45,750
+we want how do we get to that shape and
+
+1389
+01:04:43,230 --> 01:04:47,760
+so as we've discussed earlier the basic
+
+1390
+01:04:45,750 --> 01:04:50,548
+idea is to use something called gradient
+
+1391
+01:04:47,760 --> 01:04:52,650
+descent this is an extract from a
+
+1392
+01:04:50,548 --> 01:04:56,789
+notebook actually one of the first AI
+
+1393
+01:04:52,650 --> 01:05:00,150
+lessons and it shows actually an example
+
+1394
+01:04:56,789 --> 01:05:03,568
+of using gradient descent to solve a
+
+1395
+01:05:00,150 --> 01:05:06,000
+simple linear regression problem but I
+
+1396
+01:05:03,568 --> 01:05:11,308
+can show you the basic idea let's say
+
+1397
+01:05:06,000 --> 01:05:15,510
+you were just you had a simple quadratic
+
+1398
+01:05:11,309 --> 01:05:19,650
+all right and so you are trying to find
+
+1399
+01:05:15,510 --> 01:05:22,079
+the minimum of this quadratic and so in
+
+1400
+01:05:19,650 --> 01:05:24,599
+order to find the minimum you start out
+
+1401
+01:05:22,079 --> 01:05:26,880
+by randomly picking some point all right
+
+1402
+01:05:24,599 --> 01:05:28,769
+so we say okay let's pick let's pick
+
+1403
+01:05:26,880 --> 01:05:30,789
+here and so you go up there and you
+
+1404
+01:05:28,769 --> 01:05:33,880
+calculate the value of your quadratic
+
+1405
+01:05:30,789 --> 01:05:35,920
+at that point so what you now want to do
+
+1406
+01:05:33,880 --> 01:05:39,010
+is try to find a slightly better point
+
+1407
+01:05:35,920 --> 01:05:42,130
+so what you could do is you can move a
+
+1408
+01:05:39,010 --> 01:05:44,560
+little bit to the left and a little bit
+
+1409
+01:05:42,130 --> 01:05:47,140
+to the right to find out which direction
+
+1410
+01:05:44,559 --> 01:05:48,610
+is down and what you'll find out is that
+
+1411
+01:05:47,139 --> 01:05:51,190
+moving a little bit to the left
+
+1412
+01:05:48,610 --> 01:05:53,349
+decreases the value of the function so
+
+1413
+01:05:51,190 --> 01:05:56,889
+that looks good right and so in other
+
+1414
+01:05:53,349 --> 01:06:02,589
+words we're calculating the derivative
+
+1415
+01:05:56,889 --> 01:06:05,079
+there's a function at that point right
+
+1416
+01:06:02,590 --> 01:06:07,390
+so that tells you which way is down it's
+
+1417
+01:06:05,079 --> 01:06:09,849
+the gradient and so now that we know
+
+1418
+01:06:07,389 --> 01:06:13,329
+that going to the left is down we can
+
+1419
+01:06:09,849 --> 01:06:17,289
+take a small step in that direction
+
+1420
+01:06:13,329 --> 01:06:18,880
+to create a new point and then we can
+
+1421
+01:06:17,289 --> 01:06:20,769
+repeat the process and say okay which
+
+1422
+01:06:18,880 --> 01:06:23,289
+way is down now and we can now take
+
+1423
+01:06:20,769 --> 01:06:25,630
+another step and another step and
+
+1424
+01:06:23,289 --> 01:06:28,509
+another step another step another step
+
+1425
+01:06:25,630 --> 01:06:31,570
+okay and each time we're getting closer
+
+1426
+01:06:28,510 --> 01:06:34,480
+and closer so the basic approach here is
+
+1427
+01:06:31,570 --> 01:06:37,180
+to say okay we start we're at some point
+
+1428
+01:06:34,480 --> 01:06:40,869
+we've got some value X which is our
+
+1429
+01:06:37,179 --> 01:06:44,109
+current guess right that's at time step
+
+1430
+01:06:40,869 --> 01:06:47,170
+n so then our new guest at time step n
+
+1431
+01:06:44,110 --> 01:06:53,280
+plus 1 is just equal to our previous
+
+1432
+01:06:47,170 --> 01:06:53,280
+guess plus the derivative
+
+1433
+01:06:56,409 --> 01:07:04,539
+right times some small number because we
+
+1434
+01:07:01,869 --> 01:07:06,339
+want to take a small step we need to
+
+1435
+01:07:04,539 --> 01:07:09,400
+pick a small number because if we picked
+
+1436
+01:07:06,340 --> 01:07:11,140
+a big number right then we say okay we
+
+1437
+01:07:09,400 --> 01:07:13,329
+know we want to go to the left let's
+
+1438
+01:07:11,139 --> 01:07:16,179
+jump a big long way to the left we could
+
+1439
+01:07:13,329 --> 01:07:18,279
+go all the way over here and we actually
+
+1440
+01:07:16,179 --> 01:07:21,399
+end up worse all right and then we do it
+
+1441
+01:07:18,280 --> 01:07:27,910
+again now we're even worse again right
+
+1442
+01:07:21,400 --> 01:07:29,710
+so if you have too high a step size you
+
+1443
+01:07:27,909 --> 01:07:32,619
+can actually end up with divergence
+
+1444
+01:07:29,710 --> 01:07:33,970
+rather than convergence so this number
+
+1445
+01:07:32,619 --> 01:07:35,529
+here we're going to be talking about it
+
+1446
+01:07:33,969 --> 01:07:37,059
+a lot during this course and we're going
+
+1447
+01:07:35,530 --> 01:07:39,010
+to be writing all this stuff out in code
+
+1448
+01:07:37,059 --> 01:07:48,750
+from scratch ourselves but this number
+
+1449
+01:07:39,010 --> 01:07:52,060
+here is called the learning rate okay so
+
+1450
+01:07:48,750 --> 01:07:54,250
+you can see here this is an example of
+
+1451
+01:07:52,059 --> 01:07:56,799
+basically starting out with some random
+
+1452
+01:07:54,250 --> 01:07:58,480
+line and then using gradient descent to
+
+1453
+01:07:56,800 --> 01:07:59,460
+gradually make the line better and
+
+1454
+01:07:58,480 --> 01:08:03,099
+better and better
+
+1455
+01:07:59,460 --> 01:08:05,829
+so what happens when you combine these
+
+1456
+01:08:03,099 --> 01:08:07,960
+ideas right the convolution the
+
+1457
+01:08:05,829 --> 01:08:10,360
+non-linearity and gradient descent
+
+1458
+01:08:07,960 --> 01:08:11,889
+because they're all tiny small simple
+
+1459
+01:08:10,360 --> 01:08:16,000
+little things it doesn't sound that
+
+1460
+01:08:11,889 --> 01:08:19,300
+exciting but if you have enough of these
+
+1461
+01:08:16,000 --> 01:08:22,479
+kernels right with enough layers
+
+1462
+01:08:19,300 --> 01:08:28,500
+something really interesting happens and
+
+1463
+01:08:22,479 --> 01:08:28,500
+we can actually draw them so here's the
+
+1464
+01:08:29,399 --> 01:08:34,960
+so this is a really interesting paper by
+
+1465
+01:08:32,439 --> 01:08:38,169
+Matt Siler and Rob Fergus and what they
+
+1466
+01:08:34,960 --> 01:08:40,720
+did a few years ago was they figured out
+
+1467
+01:08:38,170 --> 01:08:42,460
+how to basically draw a picture of what
+
+1468
+01:08:40,720 --> 01:08:46,780
+each layer in a deep learning net
+
+1469
+01:08:42,460 --> 01:08:49,779
+Network learned and so they showed that
+
+1470
+01:08:46,779 --> 01:08:52,210
+layer one of the network here are nine
+
+1471
+01:08:49,779 --> 01:08:55,359
+examples of convolutional filters from
+
+1472
+01:08:52,210 --> 01:08:56,859
+layer one of a trained network and they
+
+1473
+01:08:55,359 --> 01:08:59,769
+found that some of the filters kind of
+
+1474
+01:08:56,859 --> 01:09:01,929
+learnt these diagonal lines or simple
+
+1475
+01:08:59,770 --> 01:09:04,660
+dat or grid patterns some of them learnt
+
+1476
+01:09:01,930 --> 01:09:07,300
+these simple gradients right and so for
+
+1477
+01:09:04,659 --> 01:09:09,559
+each of these filters they show nine
+
+1478
+01:09:07,300 --> 01:09:12,949
+examples of little pieces
+
+1479
+01:09:09,560 --> 01:09:15,950
+of actual photos which activate that
+
+1480
+01:09:12,949 --> 01:09:18,619
+filter quite highly right so you can see
+
+1481
+01:09:15,949 --> 01:09:20,809
+layer one these learnt or ever these
+
+1482
+01:09:18,619 --> 01:09:23,180
+these are learnt using gradient descent
+
+1483
+01:09:20,810 --> 01:09:26,390
+these filters were not programmed they
+
+1484
+01:09:23,180 --> 01:09:31,960
+will learnt using gradient descent so in
+
+1485
+01:09:26,390 --> 01:09:39,560
+other words we were learning these nine
+
+1486
+01:09:31,960 --> 01:09:43,760
+numbers so layer two then was going to
+
+1487
+01:09:39,560 --> 01:09:46,850
+take these as inputs and combine them
+
+1488
+01:09:43,760 --> 01:09:49,489
+together and so layer two had you know
+
+1489
+01:09:46,850 --> 01:09:51,650
+this is like my in kind of attempts to
+
+1490
+01:09:49,489 --> 01:09:54,139
+draw one of the examples of the filters
+
+1491
+01:09:51,649 --> 01:09:56,569
+in layer two they're pretty hard to draw
+
+1492
+01:09:54,140 --> 01:09:59,300
+but what you can do is say if the each
+
+1493
+01:09:56,569 --> 01:10:01,460
+filter what are examples of little bits
+
+1494
+01:09:59,300 --> 01:10:04,159
+of images that activated them and you
+
+1495
+01:10:01,460 --> 01:10:06,409
+can see by layer two we've got basically
+
+1496
+01:10:04,159 --> 01:10:09,199
+something that's being activated nearly
+
+1497
+01:10:06,409 --> 01:10:10,809
+entirely by little bits of sunset some
+
+1498
+01:10:09,199 --> 01:10:14,029
+things that's being activated by
+
+1499
+01:10:10,810 --> 01:10:17,539
+circular objects something that's being
+
+1500
+01:10:14,029 --> 01:10:19,489
+activated by repeating horizontal lines
+
+1501
+01:10:17,539 --> 01:10:22,250
+something that's being activated by
+
+1502
+01:10:19,489 --> 01:10:24,439
+corners so you can see how we're
+
+1503
+01:10:22,250 --> 01:10:27,619
+basically combining layer one features
+
+1504
+01:10:24,439 --> 01:10:29,439
+together so if we combine those features
+
+1505
+01:10:27,619 --> 01:10:31,609
+together and again these are all
+
+1506
+01:10:29,439 --> 01:10:34,669
+convolutional filters won't through
+
+1507
+01:10:31,609 --> 01:10:37,399
+gradient descent by the third layer it's
+
+1508
+01:10:34,670 --> 01:10:40,579
+actually learn to recognize the presence
+
+1509
+01:10:37,399 --> 01:10:43,579
+of text another filter has learnt to
+
+1510
+01:10:40,579 --> 01:10:45,170
+recognize the presence of petals another
+
+1511
+01:10:43,579 --> 01:10:48,409
+filter has learnt to recognize the
+
+1512
+01:10:45,170 --> 01:10:50,180
+presence of human faces right so just
+
+1513
+01:10:48,409 --> 01:10:53,899
+three layers is enough to get some
+
+1514
+01:10:50,180 --> 01:10:56,119
+pretty rich behavior so but by the time
+
+1515
+01:10:53,899 --> 01:10:58,429
+we get to layer five we've got something
+
+1516
+01:10:56,119 --> 01:11:01,220
+that can recognize the eyeballs of
+
+1517
+01:10:58,430 --> 01:11:05,570
+insects and birds and something that can
+
+1518
+01:11:01,220 --> 01:11:07,730
+recognize unicycle wheels alright so so
+
+1519
+01:11:05,569 --> 01:11:12,649
+this is kind of where we start with
+
+1520
+01:11:07,729 --> 01:11:15,529
+something incredibly simple right but if
+
+1521
+01:11:12,649 --> 01:11:17,210
+we use it as a big enough scale thanks
+
+1522
+01:11:15,529 --> 01:11:20,420
+to the universal approximation theorem
+
+1523
+01:11:17,210 --> 01:11:23,090
+and the use of multiple hidden layers in
+
+1524
+01:11:20,420 --> 01:11:28,039
+deep learning we actually get the
+
+1525
+01:11:23,090 --> 01:11:32,260
+very very rich capabilities so that is
+
+1526
+01:11:28,039 --> 01:11:40,750
+what we used when we actually trained
+
+1527
+01:11:32,260 --> 01:11:44,360
+our little dog vs cat recognizer okay so
+
+1528
+01:11:40,750 --> 01:11:45,199
+let's talk more about this dog vs cat
+
+1529
+01:11:44,359 --> 01:11:48,049
+recognizer
+
+1530
+01:11:45,199 --> 01:11:49,399
+so we've learnt the idea of like we can
+
+1531
+01:11:48,050 --> 01:11:50,900
+look at the pictures that come out of
+
+1532
+01:11:49,399 --> 01:11:53,689
+the other end to see what the model is
+
+1533
+01:11:50,899 --> 01:11:56,960
+classifying well like as I find badly or
+
+1534
+01:11:53,689 --> 01:11:59,569
+which ones it's unsure about but let's
+
+1535
+01:11:56,960 --> 01:12:01,699
+talk about like this key thing I
+
+1536
+01:11:59,569 --> 01:12:03,679
+mentioned which is the learning rate so
+
+1537
+01:12:01,699 --> 01:12:05,630
+I mentioned we have to set this thing I
+
+1538
+01:12:03,680 --> 01:12:07,520
+just caught it L before the learning
+
+1539
+01:12:05,630 --> 01:12:09,529
+rate and you might have noticed there's
+
+1540
+01:12:07,520 --> 01:12:13,190
+a couple of numbers these kind of magic
+
+1541
+01:12:09,529 --> 01:12:15,619
+numbers here the first one is the
+
+1542
+01:12:13,189 --> 01:12:17,179
+learning rate right so this number is
+
+1543
+01:12:15,619 --> 01:12:19,539
+how much do you want to multiply the
+
+1544
+01:12:17,180 --> 01:12:24,230
+gradient by when you're taking each step
+
+1545
+01:12:19,539 --> 01:12:25,789
+in your gradient descent we already
+
+1546
+01:12:24,229 --> 01:12:29,719
+talked about why you wouldn't want it to
+
+1547
+01:12:25,789 --> 01:12:31,039
+be too high right but probably also it's
+
+1548
+01:12:29,720 --> 01:12:35,329
+obvious to see why you wouldn't want it
+
+1549
+01:12:31,039 --> 01:12:37,670
+to be too low if you had it too low you
+
+1550
+01:12:35,329 --> 01:12:39,109
+would take like a little step and you'd
+
+1551
+01:12:37,670 --> 01:12:41,000
+be a little bit closer and little bits
+
+1552
+01:12:39,109 --> 01:12:43,729
+too little step little step and it would
+
+1553
+01:12:41,000 --> 01:12:46,520
+take lots and lots and lots of steps and
+
+1554
+01:12:43,729 --> 01:12:49,189
+it would take too long so setting this
+
+1555
+01:12:46,520 --> 01:12:52,460
+number well is actually really important
+
+1556
+01:12:49,189 --> 01:12:55,460
+and for the longest time this was
+
+1557
+01:12:52,460 --> 01:12:59,000
+driving deep learning researchers crazy
+
+1558
+01:12:55,460 --> 01:13:02,449
+because they didn't really know a good
+
+1559
+01:12:59,000 --> 01:13:07,060
+way to set this reliably so the good
+
+1560
+01:13:02,449 --> 01:13:10,340
+news is last year a researcher came up
+
+1561
+01:13:07,060 --> 01:13:13,430
+with an approach to quite reliably set
+
+1562
+01:13:10,340 --> 01:13:16,550
+the learning rate unfortunately almost
+
+1563
+01:13:13,430 --> 01:13:18,079
+nobody noticed so almost no deep
+
+1564
+01:13:16,550 --> 01:13:21,140
+learning researchers I know about
+
+1565
+01:13:18,079 --> 01:13:22,909
+actually are aware of this approach but
+
+1566
+01:13:21,140 --> 01:13:25,010
+it's incredibly successful and it's
+
+1567
+01:13:22,909 --> 01:13:27,739
+incredibly simple and I'll show you the
+
+1568
+01:13:25,010 --> 01:13:29,989
+idea right it's built into the fast AI
+
+1569
+01:13:27,739 --> 01:13:32,479
+library as something called @lr find or
+
+1570
+01:13:29,989 --> 01:13:34,819
+the learning rate finder and it comes
+
+1571
+01:13:32,479 --> 01:13:36,149
+from this paper I was actually 2015
+
+1572
+01:13:34,819 --> 01:13:37,829
+paper sorry
+
+1573
+01:13:36,149 --> 01:13:39,899
+cyclic or learning rates for training
+
+1574
+01:13:37,829 --> 01:13:40,198
+neural networks by a terrific researcher
+
+1575
+01:13:39,899 --> 01:13:43,529
+called
+
+1576
+01:13:40,198 --> 01:13:45,829
+Leslie Smith and I'll show you Leslie's
+
+1577
+01:13:43,529 --> 01:13:45,829
+idea
+
+1578
+01:13:47,630 --> 01:13:53,340
+so Leslie's ideas started out with the
+
+1579
+01:13:50,760 --> 01:13:55,440
+same basic idea that we've seen before
+
+1580
+01:13:53,340 --> 01:13:58,980
+which is if we're going to optimize
+
+1581
+01:13:55,439 --> 01:14:02,158
+something pick some random point take
+
+1582
+01:13:58,979 --> 01:14:05,309
+its gradient all right and then
+
+1583
+01:14:02,158 --> 01:14:10,259
+specifically he said take a tiny tiny
+
+1584
+01:14:05,310 --> 01:14:12,929
+step like tiny step so a learning rate
+
+1585
+01:14:10,260 --> 01:14:15,480
+of like 10 e next seven all right and
+
+1586
+01:14:12,929 --> 01:14:18,119
+then do it again again but each time
+
+1587
+01:14:15,479 --> 01:14:21,509
+increase the learning rate like double
+
+1588
+01:14:18,119 --> 01:14:26,309
+it so then we try like to wean X 7 14 X
+
+1589
+01:14:21,510 --> 01:14:30,480
+7 18 X 7 10 in X 6 right and so
+
+1590
+01:14:26,310 --> 01:14:35,190
+gradually your steps are getting bigger
+
+1591
+01:14:30,479 --> 01:14:36,948
+and bigger right and so you can see
+
+1592
+01:14:35,189 --> 01:14:39,629
+what's going to happen it's gonna like
+
+1593
+01:14:36,948 --> 01:14:41,460
+start doing almost nothing right and
+
+1594
+01:14:39,630 --> 01:14:43,440
+it's going to then suddenly the loss
+
+1595
+01:14:41,460 --> 01:14:45,989
+function is going to improve very
+
+1596
+01:14:43,439 --> 01:14:50,009
+quickly right but then it's going to
+
+1597
+01:14:45,988 --> 01:14:53,789
+step even further again and then even
+
+1598
+01:14:50,010 --> 01:14:55,949
+further again all right
+
+1599
+01:14:53,789 --> 01:15:01,500
+let's draw the rest of that line to be
+
+1600
+01:14:55,948 --> 01:15:02,969
+clear all right and so suddenly it's
+
+1601
+01:15:01,500 --> 01:15:09,060
+then going to shoot off and get much
+
+1602
+01:15:02,969 --> 01:15:17,460
+worse right so the idea then is to go
+
+1603
+01:15:09,060 --> 01:15:26,600
+back and say okay at what point did we
+
+1604
+01:15:17,460 --> 01:15:29,609
+see like the best improvement so here
+
+1605
+01:15:26,600 --> 01:15:32,000
+we've got our best improvement right and
+
+1606
+01:15:29,609 --> 01:15:35,219
+so I would say ok let's use that
+
+1607
+01:15:32,000 --> 01:15:41,039
+learning rate right so in other words if
+
+1608
+01:15:35,219 --> 01:15:42,590
+we were to plot the learning rate over
+
+1609
+01:15:41,039 --> 01:15:48,238
+time
+
+1610
+01:15:42,590 --> 01:15:50,159
+it was increasing like so alright and so
+
+1611
+01:15:48,238 --> 01:15:54,419
+what we then want to do is we want to
+
+1612
+01:15:50,158 --> 01:15:56,908
+plot the learning rate against the loss
+
+1613
+01:15:54,420 --> 01:15:59,460
+right so when I say the loss I basically
+
+1614
+01:15:56,908 --> 01:16:02,009
+mean like how accurate is the model how
+
+1615
+01:15:59,460 --> 01:16:05,118
+close in this case the loss would be how
+
+1616
+01:16:02,010 --> 01:16:09,659
+far away is the predictive prediction
+
+1617
+01:16:05,118 --> 01:16:11,399
+from the from the goal okay and so if we
+
+1618
+01:16:09,658 --> 01:16:14,279
+plotted the learning rate against the
+
+1619
+01:16:11,399 --> 01:16:17,368
+loss we'd say like okay initially it
+
+1620
+01:16:14,279 --> 01:16:18,988
+didn't do very much right for small
+
+1621
+01:16:17,368 --> 01:16:22,019
+learning rates and then it suddenly
+
+1622
+01:16:18,988 --> 01:16:25,379
+improved a lot and then it suddenly got
+
+1623
+01:16:22,020 --> 01:16:28,110
+a lot worse so that's the basic idea and
+
+1624
+01:16:25,380 --> 01:16:31,529
+so we'd be looking for the point where
+
+1625
+01:16:28,109 --> 01:16:33,029
+this graph is dropping quickly right
+
+1626
+01:16:31,529 --> 01:16:34,618
+we're not looking for its minimum point
+
+1627
+01:16:33,029 --> 01:16:36,300
+we're not saying like where was it the
+
+1628
+01:16:34,618 --> 01:16:38,460
+lowest because that could actually be
+
+1629
+01:16:36,300 --> 01:16:40,650
+the point where it's just jumped too far
+
+1630
+01:16:38,460 --> 01:16:48,899
+we want at what point was it dropping
+
+1631
+01:16:40,649 --> 01:16:50,519
+the fastest so if you go so if you
+
+1632
+01:16:48,899 --> 01:16:51,719
+create your learn object in the same way
+
+1633
+01:16:50,520 --> 01:16:54,900
+that we did before we'll be learning
+
+1634
+01:16:51,719 --> 01:16:57,779
+more about this these details shortly if
+
+1635
+01:16:54,899 --> 01:17:00,479
+you then call LR find method on that
+
+1636
+01:16:57,779 --> 01:17:03,599
+you'll see that it'll start training a
+
+1637
+01:17:00,479 --> 01:17:06,089
+model like it did before but it'll
+
+1638
+01:17:03,600 --> 01:17:10,139
+generally stop before it gets to 100%
+
+1639
+01:17:06,090 --> 01:17:14,219
+okay because if it notices that the loss
+
+1640
+01:17:10,139 --> 01:17:15,929
+is getting a lot worse then it'll stop
+
+1641
+01:17:14,219 --> 01:17:18,719
+automatically that's what you can see
+
+1642
+01:17:15,929 --> 01:17:21,600
+here it stopped at 84% and so then you
+
+1643
+01:17:18,719 --> 01:17:23,310
+can call one said that gets you the
+
+1644
+01:17:21,600 --> 01:17:25,079
+learning rate scheduler that's the
+
+1645
+01:17:23,310 --> 01:17:27,210
+object which actually does this learning
+
+1646
+01:17:25,079 --> 01:17:29,130
+rate finding and that object has a plot
+
+1647
+01:17:27,210 --> 01:17:32,100
+learning rate function and so you can
+
+1648
+01:17:29,130 --> 01:17:34,020
+see here over by iteration you can see
+
+1649
+01:17:32,100 --> 01:17:36,179
+the learning rate alright so you can see
+
+1650
+01:17:34,020 --> 01:17:40,469
+each step the learning rate is getting
+
+1651
+01:17:36,179 --> 01:17:42,359
+bigger and bigger you can do it this way
+
+1652
+01:17:40,469 --> 01:17:44,460
+we can see it's increasing exponentially
+
+1653
+01:17:42,359 --> 01:17:47,059
+another way that Leslie Smith the
+
+1654
+01:17:44,460 --> 01:17:49,289
+researcher suggests is to do it linearly
+
+1655
+01:17:47,060 --> 01:17:50,969
+so I'm actually currently researching
+
+1656
+01:17:49,289 --> 01:17:53,399
+with both of these approaches to see
+
+1657
+01:17:50,969 --> 01:17:55,260
+which works best recently I've been
+
+1658
+01:17:53,399 --> 01:17:56,219
+mainly using exponential but I'm
+
+1659
+01:17:55,260 --> 01:17:59,070
+starting to look more
+
+1660
+01:17:56,219 --> 01:18:02,069
+using Linea at the moment and so if we
+
+1661
+01:17:59,069 --> 01:18:04,099
+then call shed but plot that does the
+
+1662
+01:18:02,069 --> 01:18:08,429
+plot that I just described down here
+
+1663
+01:18:04,099 --> 01:18:10,920
+learning rate versus loss all right and
+
+1664
+01:18:08,429 --> 01:18:14,099
+so we're looking for the highest
+
+1665
+01:18:10,920 --> 01:18:17,940
+learning rate we can find where the loss
+
+1666
+01:18:14,099 --> 01:18:22,019
+is still improving clearly well right
+
+1667
+01:18:17,939 --> 01:18:23,908
+and so in this case I would say 10 to
+
+1668
+01:18:22,019 --> 01:18:27,150
+the negative 2x that 10 to the negative
+
+1669
+01:18:23,908 --> 01:18:27,779
+1 it's not improving right 10 to the
+
+1670
+01:18:27,149 --> 01:18:29,399
+negative 3
+
+1671
+01:18:27,779 --> 01:18:32,099
+it is also improving but I'm trying to
+
+1672
+01:18:29,399 --> 01:18:33,598
+find the highest learning rate I can or
+
+1673
+01:18:32,099 --> 01:18:36,210
+it's still clearly improving so I'd say
+
+1674
+01:18:33,599 --> 01:18:38,819
+10 to the negative 2 okay so you might
+
+1675
+01:18:36,210 --> 01:18:44,130
+have noticed that when we ran our model
+
+1676
+01:18:38,819 --> 01:18:45,840
+before we had 10 to the negative to 0.01
+
+1677
+01:18:44,130 --> 01:18:51,449
+so that's why we picked that learning
+
+1678
+01:18:45,840 --> 01:18:57,059
+rate so there's really only one other
+
+1679
+01:18:51,448 --> 01:19:00,238
+number that we have to pick and that was
+
+1680
+01:18:57,059 --> 01:19:04,739
+this number three and so that number
+
+1681
+01:19:00,238 --> 01:19:08,218
+three controlled how many epochs did we
+
+1682
+01:19:04,738 --> 01:19:12,658
+run so an epoch means going through our
+
+1683
+01:19:08,219 --> 01:19:15,868
+entire data set of images and using each
+
+1684
+01:19:12,658 --> 01:19:18,448
+each time we do a bunch of they're
+
+1685
+01:19:15,868 --> 01:19:21,029
+called mini batches we grab like 64
+
+1686
+01:19:18,448 --> 01:19:22,498
+images at a time and use them to try to
+
+1687
+01:19:21,029 --> 01:19:24,899
+improve the model a little bit using
+
+1688
+01:19:22,498 --> 01:19:28,859
+gradient descent right and using all of
+
+1689
+01:19:24,899 --> 01:19:31,109
+the images once is called one epoch and
+
+1690
+01:19:28,859 --> 01:19:35,069
+so at the end of each epoch we print out
+
+1691
+01:19:31,109 --> 01:19:40,380
+the accuracy and validation and training
+
+1692
+01:19:35,069 --> 01:19:43,228
+loss at the end of the epoch so the
+
+1693
+01:19:40,380 --> 01:19:45,659
+question of how many epochs should be
+
+1694
+01:19:43,229 --> 01:19:47,489
+run is kind of the one other question
+
+1695
+01:19:45,658 --> 01:19:50,549
+that you need to answer to run these
+
+1696
+01:19:47,488 --> 01:19:54,828
+three lines of code and the answer
+
+1697
+01:19:50,550 --> 01:19:58,409
+really to me is like as many as you like
+
+1698
+01:19:54,828 --> 01:20:00,960
+what you might find happen is if you run
+
+1699
+01:19:58,408 --> 01:20:03,299
+it for too long the accuracy you'll
+
+1700
+01:20:00,960 --> 01:20:04,859
+start getting worse all right and we'll
+
+1701
+01:20:03,300 --> 01:20:06,979
+learn about that why later it's
+
+1702
+01:20:04,859 --> 01:20:09,448
+something called overfitting right so
+
+1703
+01:20:06,979 --> 01:20:10,349
+you can run it for a while run lots of
+
+1704
+01:20:09,448 --> 01:20:12,779
+epochs
+
+1705
+01:20:10,349 --> 01:20:14,819
+once you see it getting worse you know
+
+1706
+01:20:12,779 --> 01:20:16,198
+how many epochs you can run and the
+
+1707
+01:20:14,819 --> 01:20:18,029
+other thing that might happen is if
+
+1708
+01:20:16,198 --> 01:20:19,979
+you've got like a really big model or a
+
+1709
+01:20:18,029 --> 01:20:21,988
+lot lots and lots of data maybe it takes
+
+1710
+01:20:19,979 --> 01:20:25,019
+so long you don't have time and so you
+
+1711
+01:20:21,988 --> 01:20:26,968
+just run enough epochs that fit into the
+
+1712
+01:20:25,020 --> 01:20:28,560
+time you have available so the number of
+
+1713
+01:20:26,969 --> 01:20:31,560
+epochs you run you know that's a pretty
+
+1714
+01:20:28,560 --> 01:20:33,000
+easy thing to set so there are the only
+
+1715
+01:20:31,560 --> 01:20:37,139
+two numbers you're gonna have to see it
+
+1716
+01:20:33,000 --> 01:20:40,408
+and so the goal this week will be to
+
+1717
+01:20:37,139 --> 01:20:42,989
+make sure that you can run not only
+
+1718
+01:20:40,408 --> 01:20:46,979
+these three lines of code on the data
+
+1719
+01:20:42,988 --> 01:20:49,229
+that I provided but to run it on a set
+
+1720
+01:20:46,979 --> 01:20:52,049
+of images that you either have on your
+
+1721
+01:20:49,229 --> 01:20:54,988
+computer or that you get from work well
+
+1722
+01:20:52,050 --> 01:20:57,989
+that you download from Google and like
+
+1723
+01:20:54,988 --> 01:21:00,138
+try to get a sense of like which kinds
+
+1724
+01:20:57,988 --> 01:21:04,979
+of images this is seem to work well for
+
+1725
+01:21:00,139 --> 01:21:06,779
+which ones doesn't it work well for what
+
+1726
+01:21:04,979 --> 01:21:08,250
+kind of learning rates do you need for
+
+1727
+01:21:06,779 --> 01:21:10,710
+different kinds of images how many
+
+1728
+01:21:08,250 --> 01:21:12,599
+epochs do you need how does the number
+
+1729
+01:21:10,710 --> 01:21:14,670
+of the learning rate change the accuracy
+
+1730
+01:21:12,599 --> 01:21:18,179
+you get and so forth like really
+
+1731
+01:21:14,670 --> 01:21:20,609
+experiment and then you know try to get
+
+1732
+01:21:18,179 --> 01:21:22,618
+a sense of like what's inside this data
+
+1733
+01:21:20,609 --> 01:21:25,920
+object you know what are the y-values
+
+1734
+01:21:22,618 --> 01:21:27,779
+look like what are these places mean if
+
+1735
+01:21:25,920 --> 01:21:30,270
+you're not familiar with numpy you know
+
+1736
+01:21:27,779 --> 01:21:31,920
+really practice a lot with numpy so that
+
+1737
+01:21:30,270 --> 01:21:33,929
+by the time you come back for the next
+
+1738
+01:21:31,920 --> 01:21:35,219
+lesson
+
+1739
+01:21:33,929 --> 01:21:37,349
+you know we're going to be digging into
+
+1740
+01:21:35,219 --> 01:21:40,739
+a lot more detail and so you'll really
+
+1741
+01:21:37,349 --> 01:21:42,360
+feel ready to do that now one thing
+
+1742
+01:21:40,738 --> 01:21:44,698
+that's really important to be able to do
+
+1743
+01:21:42,359 --> 01:21:50,729
+that is that you need to really know how
+
+1744
+01:21:44,698 --> 01:21:52,559
+to work with numpy the faster a library
+
+1745
+01:21:50,729 --> 01:21:54,839
+and so forth and so I want to show you
+
+1746
+01:21:52,560 --> 01:21:58,349
+some tricks in Jupiter notebook to make
+
+1747
+01:21:54,840 --> 01:22:00,300
+that much easier so one trick to be
+
+1748
+01:21:58,349 --> 01:22:03,389
+aware of is if you can't quite remember
+
+1749
+01:22:00,300 --> 01:22:06,360
+how to spell something right so if
+
+1750
+01:22:03,389 --> 01:22:08,460
+you're not quite sure what the method
+
+1751
+01:22:06,359 --> 01:22:12,000
+you want is you can always hit tab and
+
+1752
+01:22:08,460 --> 01:22:13,770
+you'll get a list of methods that start
+
+1753
+01:22:12,000 --> 01:22:15,118
+with that letter right and so that's a
+
+1754
+01:22:13,770 --> 01:22:16,949
+quick way to find things
+
+1755
+01:22:15,118 --> 01:22:21,149
+if you then can't remember what the
+
+1756
+01:22:16,948 --> 01:22:24,359
+arguments are to a method hit shift tab
+
+1757
+01:22:21,149 --> 01:22:27,599
+all right so hitting shift tab tells you
+
+1758
+01:22:24,359 --> 01:22:29,670
+the arguments to the method so shift tab
+
+1759
+01:22:27,600 --> 01:22:36,630
+is like one of the most helpful things I
+
+1760
+01:22:29,670 --> 01:22:39,300
+know so let's take in P X P shift tab
+
+1761
+01:22:36,630 --> 01:22:41,550
+and so now you might be wondering like
+
+1762
+01:22:39,300 --> 01:22:44,310
+okay well what does this function do and
+
+1763
+01:22:41,550 --> 01:22:47,340
+how does it work if you press shift tab
+
+1764
+01:22:44,310 --> 01:22:49,590
+twice then it actually brings up the
+
+1765
+01:22:47,340 --> 01:22:51,989
+documentation shows you what the
+
+1766
+01:22:49,590 --> 01:22:57,000
+parameters are and shows you what it
+
+1767
+01:22:51,989 --> 01:23:00,000
+returns and gives you examples okay if
+
+1768
+01:22:57,000 --> 01:23:01,619
+you press it three times then it
+
+1769
+01:23:00,000 --> 01:23:03,810
+actually pops up a whole little separate
+
+1770
+01:23:01,619 --> 01:23:07,890
+window with that information
+
+1771
+01:23:03,810 --> 01:23:09,870
+okay so shift tab is super helpful one
+
+1772
+01:23:07,890 --> 01:23:12,210
+way to grab that window straight away is
+
+1773
+01:23:09,869 --> 01:23:15,630
+if you just put question mark at the
+
+1774
+01:23:12,210 --> 01:23:19,890
+start then it just brings up that little
+
+1775
+01:23:15,630 --> 01:23:22,140
+documentation window now the other thing
+
+1776
+01:23:19,890 --> 01:23:23,610
+to be aware of is increasingly during
+
+1777
+01:23:22,140 --> 01:23:25,950
+this course we're going to be looking at
+
+1778
+01:23:23,609 --> 01:23:28,649
+the actual source code of fast AI itself
+
+1779
+01:23:25,949 --> 01:23:31,079
+and learning how it's built and why it's
+
+1780
+01:23:28,649 --> 01:23:33,979
+built that way it's really helpful to
+
+1781
+01:23:31,079 --> 01:23:36,119
+look at source code in order to you know
+
+1782
+01:23:33,979 --> 01:23:38,279
+understand what you can do and how you
+
+1783
+01:23:36,119 --> 01:23:40,109
+can do it so if you for example wanted
+
+1784
+01:23:38,279 --> 01:23:42,239
+to look at the source code for learned I
+
+1785
+01:23:40,109 --> 01:23:46,889
+predict you can just put two question
+
+1786
+01:23:42,239 --> 01:23:49,409
+marks okay and you can see it's popped
+
+1787
+01:23:46,890 --> 01:23:50,490
+up the source code right and so it's
+
+1788
+01:23:49,409 --> 01:23:52,800
+just a single line of code
+
+1789
+01:23:50,489 --> 01:23:55,710
+you're very often find that fast AI
+
+1790
+01:23:52,800 --> 01:23:59,070
+methods like they they're designed to
+
+1791
+01:23:55,710 --> 01:24:01,020
+never be more than about half a screen
+
+1792
+01:23:59,069 --> 01:24:02,880
+full of code and they're often under six
+
+1793
+01:24:01,020 --> 01:24:05,220
+lines so you can see this case it's
+
+1794
+01:24:02,880 --> 01:24:06,930
+calling predicted with tags so we could
+
+1795
+01:24:05,220 --> 01:24:12,060
+then get the source code for that in the
+
+1796
+01:24:06,930 --> 01:24:14,070
+same way okay and then that's calling a
+
+1797
+01:24:12,060 --> 01:24:15,420
+function called predicted with tags so
+
+1798
+01:24:14,069 --> 01:24:17,849
+we could get that documentation for that
+
+1799
+01:24:15,420 --> 01:24:19,649
+in the same way and then so here yeah
+
+1800
+01:24:17,850 --> 01:24:21,660
+and then finally that's what it does it
+
+1801
+01:24:19,649 --> 01:24:23,309
+either rates through a data loader gets
+
+1802
+01:24:21,659 --> 01:24:27,659
+the predictions and then passes them
+
+1803
+01:24:23,310 --> 01:24:30,090
+back and so forth okay so question mark
+
+1804
+01:24:27,659 --> 01:24:32,430
+question mark is how to get source code
+
+1805
+01:24:30,090 --> 01:24:34,170
+but the single question mark is how to
+
+1806
+01:24:32,430 --> 01:24:36,750
+get documentation
+
+1807
+01:24:34,170 --> 01:24:39,630
+and shift-tab is how to bring up
+
+1808
+01:24:36,750 --> 01:24:42,810
+parameters or press it more times to get
+
+1809
+01:24:39,630 --> 01:24:44,579
+the docs so that's really helpful
+
+1810
+01:24:42,810 --> 01:24:47,340
+another really helpful thing to know
+
+1811
+01:24:44,579 --> 01:24:49,199
+about is how to use Jupiter notebook
+
+1812
+01:24:47,340 --> 01:24:53,190
+well and the button that you want to
+
+1813
+01:24:49,199 --> 01:24:56,279
+know is H if you press H it will bring
+
+1814
+01:24:53,189 --> 01:24:58,619
+up the keyboard shortcuts palette and so
+
+1815
+01:24:56,279 --> 01:25:01,079
+now you can see exactly what Jupiter
+
+1816
+01:24:58,619 --> 01:25:02,789
+notebook can do and how to do it I
+
+1817
+01:25:01,079 --> 01:25:05,760
+personally find all of these functions
+
+1818
+01:25:02,789 --> 01:25:07,739
+useful so I generally tell students to
+
+1819
+01:25:05,760 --> 01:25:10,680
+try and learn four or five different
+
+1820
+01:25:07,739 --> 01:25:12,239
+keyboard shortcuts a day try them out
+
+1821
+01:25:10,680 --> 01:25:14,520
+see what they do see how they work and
+
+1822
+01:25:12,239 --> 01:25:17,519
+then you can try practicing in that
+
+1823
+01:25:14,520 --> 01:25:19,950
+session and one very important thing to
+
+1824
+01:25:17,520 --> 01:25:21,930
+remember when you're finished with your
+
+1825
+01:25:19,949 --> 01:25:23,599
+work for the day go back to a paper
+
+1826
+01:25:21,930 --> 01:25:26,760
+space and click on that little button
+
+1827
+01:25:23,600 --> 01:25:27,630
+which stops and starts the machine so
+
+1828
+01:25:26,760 --> 01:25:29,760
+after it's stopped
+
+1829
+01:25:27,630 --> 01:25:31,949
+you'll see it says connection closed and
+
+1830
+01:25:29,760 --> 01:25:33,930
+you'll see it's off if you leave it
+
+1831
+01:25:31,949 --> 01:25:36,300
+running you'll be charged for it
+
+1832
+01:25:33,930 --> 01:25:39,900
+same thing with Kressel be sure to go to
+
+1833
+01:25:36,300 --> 01:25:42,329
+your cresol instance and stop it you
+
+1834
+01:25:39,899 --> 01:25:44,309
+can't just turn your computer off or
+
+1835
+01:25:42,329 --> 01:25:46,380
+close the browser you actually have to
+
+1836
+01:25:44,310 --> 01:25:48,480
+stop an increase or or in paper space
+
+1837
+01:25:46,380 --> 01:25:51,420
+and don't forget to do that or you'll
+
+1838
+01:25:48,479 --> 01:25:55,349
+end up being charged until you finally
+
+1839
+01:25:51,420 --> 01:25:57,480
+do remember okay so I think that's all
+
+1840
+01:25:55,350 --> 01:25:59,760
+the information that you need to get
+
+1841
+01:25:57,479 --> 01:26:03,149
+started please remember about the
+
+1842
+01:25:59,760 --> 01:26:05,760
+forum's okay if you get stuck at any
+
+1843
+01:26:03,149 --> 01:26:08,219
+point check them out but before you do
+
+1844
+01:26:05,760 --> 01:26:10,829
+make sure you read the information on
+
+1845
+01:26:08,220 --> 01:26:14,220
+course dot fast at AI for each lesson
+
+1846
+01:26:10,829 --> 01:26:16,319
+right because that is going to tell you
+
+1847
+01:26:14,220 --> 01:26:20,390
+about like things that have changed okay
+
+1848
+01:26:16,319 --> 01:26:22,710
+so if there's been some change - witch
+
+1849
+01:26:20,390 --> 01:26:25,440
+Cupid a notebook provider we suggest
+
+1850
+01:26:22,710 --> 01:26:27,569
+using or how to set up paper space or
+
+1851
+01:26:25,439 --> 01:26:30,419
+anything like that and that'll all be on
+
+1852
+01:26:27,569 --> 01:26:32,309
+course doc bastard AI okay thanks very
+
+1853
+01:26:30,420 --> 01:26:35,899
+much for watching and look forward to
+
+1854
+01:26:32,310 --> 01:26:35,900
+seeing you in the next lesson
+

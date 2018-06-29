@@ -1,0 +1,66 @@
+<p><strong>Lesson 08</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=45s">00:00:45</a> Moving from Decision Trees Ensemble to Neural Nets with Mnist<br>
+lesson4-mnist_sgd.ipynb notebook</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=8m20s">00:08:20</a> About Python ‘pickle()’ pros &amp; cons for Pandas, vs ‘feather()’,<br>
+Flatten a tensor</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=13m45s">00:13:45</a> Reminder on the jargon: a vector in math is a 1d array in CS,<br>
+a rank 1 tensor in deep learning.<br>
+A matrix is a 2d array or a rank 2 tensor, rows are axis 0 and columns are axis 1</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=17m45s">00:17:45</a> Normalizing the data: subtracting off the mean and dividing by stddev<br>
+Important: use the mean and stddev of Training data for the Validation data as well.<br>
+Use the ‘np.reshape()’ function</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=34m25s">00:34:25</a> Slicing into a tensor, ‘plots()’ from Fastai lib.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t38m20s">00:38:20</a> Overview of a Neural Network<br>
+Michael Nielsen universal approximation theorem: a visual proof that neural nets can compute any function<br>
+Why you should blog (by Rachel Thomas)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=47m15s">00:47:15</a> Intro to PyTorch &amp; Nvidia GPUs for Deep Learning<br>
+Website to buy a laptop with a good GPU: <a href="http://xoticpc.com/">xoticpc.com</a><br>
+Using cloud services like <a href="http://crestle.com/">Crestle.com</a> or AWS (and how to gain access EC2 w/ “Request limit increase”)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=57m45s">00:57:45</a> Create a Neural Net for Logistic Regression in PyTorch<br>
+‘net = nn.Sequential(nn.Linear(28*28, 10), nn.LogSoftmax()).cuda()’<br>
+‘md = ImageClassifierData.from_arrays(path, (x,y), (x_valid, y_valid))’<br>
+Loss function such as ‘nn.NLLLoss()’ or Negative Log Likelihood Loss or Cross-Entropy (binary or categorical)<br>
+Looking at Loss with Excel</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=1h9m5s">01:09:05</a> Let’s fit the model then make predictions on Validation set.<br>
+‘fit(net, md, epochs=1, crit=loss, opt=opt, metrics=metrics)’<br>
+Note: PyTorch doesn’t use the word “loss” but the word “criterion”, thus ‘crit=loss’<br>
+‘preds = predict(net, md.val_dl)’<br>
+‘preds.shape’ -&gt; (10000, 10)<br>
+‘preds.argmax(axis=1)[:5]’, argmax will return the index of the value which is the number itself.<br>
+‘np.mean(preds == y_valid)’ to check how accurate the model is on Validation set.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=1h16m5s">01:16:05</a> A second pass on “Michael Nielsen universal approximation theorem”<br>
+A Neural Network can approximate any other function to close accuracy, as long as it’s large enough.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=1h18m15s">01:18:15</a> Defining Logistic Regression ourselves, from scratch, not using PyTorch ‘nn.Sequential()’<br>
+Demo explanation with drawings by Jeremy.<br>
+Look at Excel ‘entropy_example.xlsx’ for Softmax and Sigmoid</p>
+</li>
+<li>
+<p><a href="https://youtu.be/DzE0eSdy5Hk?t=1h31m5s">01:31:05</a> Assignements for the week, student question on ‘Forward(self, x)’<br>
+<br>
+</p>
+</li>
+</ul>
+
+

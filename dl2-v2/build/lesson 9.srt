@@ -1,0 +1,9504 @@
+1
+00:00:00,030 --> 00:00:05,879
+okay so today we're going to continue
+
+2
+00:00:02,669 --> 00:00:08,519
+working on object detection which means
+
+3
+00:00:05,878 --> 00:00:10,768
+that for every object in a photo with
+
+4
+00:00:08,519 --> 00:00:12,900
+one of 20 classes we're going to try and
+
+5
+00:00:10,769 --> 00:00:16,198
+figure out what the object is and what
+
+6
+00:00:12,900 --> 00:00:19,230
+its bounding box is hi that model to a
+
+7
+00:00:16,199 --> 00:00:22,830
+new data set of unlabeled data and add
+
+8
+00:00:19,230 --> 00:00:24,868
+those medals to the general approach
+
+9
+00:00:22,829 --> 00:00:27,538
+we're going to use this to start simple
+
+10
+00:00:24,868 --> 00:00:30,750
+and gradually make it more complicated
+
+11
+00:00:27,539 --> 00:00:33,179
+so we started last week with a simple
+
+12
+00:00:30,750 --> 00:00:35,609
+classifier the three month of classifier
+
+13
+00:00:33,179 --> 00:00:37,859
+we then made it slightly more complex to
+
+14
+00:00:35,609 --> 00:00:40,109
+turn it into a bounding box without a
+
+15
+00:00:37,859 --> 00:00:41,670
+classifier today we're going to put
+
+16
+00:00:40,109 --> 00:00:43,920
+those two pieces together to make a
+
+17
+00:00:41,670 --> 00:00:45,600
+classifier plus a bounding box all of
+
+18
+00:00:43,920 --> 00:00:48,000
+these are just for a single object the
+
+19
+00:00:45,600 --> 00:00:50,399
+largest object and then from there we'll
+
+20
+00:00:48,000 --> 00:00:57,689
+roll it up to something which is closer
+
+21
+00:00:50,399 --> 00:00:59,730
+to final goal you should go back and
+
+22
+00:00:57,689 --> 00:01:02,039
+make sure that you're understanding all
+
+23
+00:00:59,729 --> 00:01:04,259
+of these concepts from last week before
+
+24
+00:01:02,039 --> 00:01:07,379
+you move on if you don't go back and
+
+25
+00:01:04,260 --> 00:01:09,600
+really go through the locals carefully I
+
+26
+00:01:07,379 --> 00:01:11,489
+won't read them all to you because you
+
+27
+00:01:09,599 --> 00:01:13,829
+can see in the video needs to be enough
+
+28
+00:01:11,489 --> 00:01:16,109
+that practice is the most important
+
+29
+00:01:13,829 --> 00:01:23,310
+knowing how to jump around source code
+
+30
+00:01:16,109 --> 00:01:24,629
+in whatever but the lambda functions
+
+31
+00:01:23,310 --> 00:01:28,590
+lambda function is also particularly
+
+32
+00:01:24,629 --> 00:01:31,078
+important they come up everywhere and
+
+33
+00:01:28,590 --> 00:01:36,150
+this idea of a custom head is also gonna
+
+34
+00:01:31,078 --> 00:01:38,908
+come up in pretty much every lesson I've
+
+35
+00:01:36,150 --> 00:01:40,618
+also added here a a reminder of what you
+
+36
+00:01:38,909 --> 00:01:42,780
+should know from part one of the course
+
+37
+00:01:40,618 --> 00:01:47,009
+because quite often I see questions on
+
+38
+00:01:42,780 --> 00:01:49,228
+the forum asking basically why isn't my
+
+39
+00:01:47,009 --> 00:01:52,349
+model working like why doesn't it start
+
+40
+00:01:49,228 --> 00:01:55,438
+training or having trained why doesn't
+
+41
+00:01:52,349 --> 00:01:58,500
+it seem to be any use and nearly always
+
+42
+00:01:55,438 --> 00:02:01,468
+the answer to the question is did you
+
+43
+00:01:58,500 --> 00:02:05,280
+print out the inputs to it from a data
+
+44
+00:02:01,468 --> 00:02:09,359
+loader did you print out the outputs
+
+45
+00:02:05,280 --> 00:02:11,009
+from a after evaluating and normally the
+
+46
+00:02:09,360 --> 00:02:13,140
+answer is no and I try printing it and
+
+47
+00:02:11,008 --> 00:02:14,399
+it turns out all the inputs 0
+
+48
+00:02:13,139 --> 00:02:16,259
+or all of the appellants negative
+
+49
+00:02:14,400 --> 00:02:18,180
+reports when it was really obvious so
+
+50
+00:02:16,259 --> 00:02:19,889
+that's just part of something wanted to
+
+51
+00:02:18,180 --> 00:02:25,560
+remind you about this you need to know
+
+52
+00:02:19,889 --> 00:02:26,849
+how to do these two things if you can't
+
+53
+00:02:25,560 --> 00:02:31,379
+do that that's gonna be very hard to
+
+54
+00:02:26,849 --> 00:02:33,479
+debug models and B if you can do that if
+
+55
+00:02:31,379 --> 00:02:35,159
+you're not doing it then it's going to
+
+56
+00:02:33,479 --> 00:02:37,259
+be very happy to debug models you could
+
+57
+00:02:35,159 --> 00:02:39,989
+have debug models by staring at a source
+
+58
+00:02:37,259 --> 00:02:43,079
+code hoping your error pops out your
+
+59
+00:02:39,989 --> 00:02:45,739
+debug models by checking all the
+
+60
+00:02:43,080 --> 00:02:48,239
+intermediate steps looking in the data
+
+61
+00:02:45,739 --> 00:03:00,170
+printing it out plotting its histogram
+
+62
+00:02:48,239 --> 00:03:04,200
+making sure it says okay so we were
+
+63
+00:03:00,169 --> 00:03:07,469
+working through Pascal notebook and we
+
+64
+00:03:04,199 --> 00:03:10,229
+just quickly zipped through the bounding
+
+65
+00:03:07,469 --> 00:03:12,750
+box of the largest object without a
+
+66
+00:03:10,229 --> 00:03:14,340
+classifier and there was one bit that I
+
+67
+00:03:12,750 --> 00:03:19,709
+skipped over and said I've come back to
+
+68
+00:03:14,340 --> 00:03:24,599
+so let's do that now which is to talk
+
+69
+00:03:19,709 --> 00:03:28,640
+about augmentations data augmentations
+
+70
+00:03:24,599 --> 00:03:32,750
+of the the Y of the dependent variable
+
+71
+00:03:28,639 --> 00:03:36,449
+before I do I just mention something
+
+72
+00:03:32,750 --> 00:03:39,110
+pretty awkward in all this which is I've
+
+73
+00:03:36,449 --> 00:03:42,119
+got here image classifier data
+
+74
+00:03:39,110 --> 00:03:45,260
+continuous equals true this makes no
+
+75
+00:03:42,120 --> 00:03:47,670
+sense whatsoever a classifier is
+
+76
+00:03:45,259 --> 00:03:50,759
+anything where the dependent variable is
+
+77
+00:03:47,669 --> 00:03:52,979
+categorical or binomial as opposed to
+
+78
+00:03:50,759 --> 00:03:56,399
+regression which is anything with the
+
+79
+00:03:52,979 --> 00:03:58,289
+pen and variable is continuous and yet
+
+80
+00:03:56,400 --> 00:04:00,840
+this parameter here continuously was
+
+81
+00:03:58,289 --> 00:04:03,750
+true says that the dependent variable is
+
+82
+00:04:00,840 --> 00:04:06,000
+continuous so this claims to be creating
+
+83
+00:04:03,750 --> 00:04:08,519
+data for a classifier where the
+
+84
+00:04:06,000 --> 00:04:12,239
+dependent is continuous this is the kind
+
+85
+00:04:08,519 --> 00:04:15,150
+of awkward rough edge that you see when
+
+86
+00:04:12,239 --> 00:04:17,600
+we're kind of at this like you know at
+
+87
+00:04:15,150 --> 00:04:20,489
+the edge of the pasta our code is not
+
+88
+00:04:17,600 --> 00:04:22,019
+quite solidified yes so probably by the
+
+89
+00:04:20,488 --> 00:04:24,060
+time you watch this in the MOOC this
+
+90
+00:04:22,019 --> 00:04:25,530
+will be sorted out this is before even
+
+91
+00:04:24,060 --> 00:04:27,870
+you regress it
+
+92
+00:04:25,529 --> 00:04:30,389
+or something like that but you know I
+
+93
+00:04:27,870 --> 00:04:32,340
+just wanted to kind of point out this
+
+94
+00:04:30,389 --> 00:04:34,019
+this issue and also because sometimes
+
+95
+00:04:32,339 --> 00:04:35,849
+people were getting confused between
+
+96
+00:04:34,019 --> 00:04:42,329
+regression business classification and
+
+97
+00:04:35,850 --> 00:04:44,910
+this is okay so let's create some data
+
+98
+00:04:42,329 --> 00:04:47,909
+augmentations right there normally when
+
+99
+00:04:44,910 --> 00:04:50,700
+we create data augmentations we tend to
+
+100
+00:04:47,910 --> 00:04:53,580
+type in like transform sidon or
+
+101
+00:04:50,699 --> 00:04:56,159
+transform spa gym but if you look inside
+
+102
+00:04:53,579 --> 00:04:58,409
+that fast they are transforms module
+
+103
+00:04:56,160 --> 00:05:00,480
+you'll see that they are simply defined
+
+104
+00:04:58,410 --> 00:05:03,540
+as a list so this one called transforms
+
+105
+00:05:00,480 --> 00:05:06,689
+basic which is 10 degree rotations plus
+
+106
+00:05:03,540 --> 00:05:09,240
+0.05 brightness and contrast and then
+
+107
+00:05:06,689 --> 00:05:12,980
+sidon adds to that and random horizontal
+
+108
+00:05:09,240 --> 00:05:16,050
+flips or else top down as to that random
+
+109
+00:05:12,980 --> 00:05:18,600
+dihedral group of symmetry flips which
+
+110
+00:05:16,050 --> 00:05:24,629
+basically means if we possible 90 degree
+
+111
+00:05:18,600 --> 00:05:27,570
+rotation optionally so like these are
+
+112
+00:05:24,629 --> 00:05:31,259
+just a little shortcuts that I added
+
+113
+00:05:27,569 --> 00:05:34,740
+because time but you can always create
+
+114
+00:05:31,259 --> 00:05:36,539
+your own list of augmentations right and
+
+115
+00:05:34,740 --> 00:05:38,910
+if you're not sure what augmentations
+
+116
+00:05:36,540 --> 00:05:41,160
+are there you can often see check the
+
+117
+00:05:38,910 --> 00:05:44,910
+past AI source or if you just start
+
+118
+00:05:41,160 --> 00:05:50,430
+typing random they all start with so you
+
+119
+00:05:44,910 --> 00:05:52,290
+can see so let's take a look at what
+
+120
+00:05:50,430 --> 00:05:57,478
+happens if we create some data
+
+121
+00:05:52,290 --> 00:06:03,780
+augmentations create a model data object
+
+122
+00:05:57,478 --> 00:06:07,560
+and let's just go through and rerun the
+
+123
+00:06:03,779 --> 00:06:09,119
+iterator a bunch of times and we all do
+
+124
+00:06:07,560 --> 00:06:11,879
+two things we'll print out the bounding
+
+125
+00:06:09,120 --> 00:06:15,689
+boxes and so you can see the value box
+
+126
+00:06:11,879 --> 00:06:20,370
+is the same time and we will also draw
+
+127
+00:06:15,689 --> 00:06:22,439
+the pictures so you'll see this lady is
+
+128
+00:06:20,370 --> 00:06:24,149
+as we would expect flipping around and
+
+129
+00:06:22,439 --> 00:06:27,959
+spinning around getting darker and
+
+130
+00:06:24,149 --> 00:06:31,409
+lighter but the bounding box a is not
+
+131
+00:06:27,959 --> 00:06:33,959
+moving and B is in the wrong spot so
+
+132
+00:06:31,410 --> 00:06:36,660
+this is the problem with data
+
+133
+00:06:33,959 --> 00:06:39,029
+augmentation when your dependent
+
+134
+00:06:36,660 --> 00:06:41,640
+variable you
+
+135
+00:06:39,029 --> 00:06:43,859
+is pixel values or is in some way
+
+136
+00:06:41,639 --> 00:06:45,469
+connected to your independent variable
+
+137
+00:06:43,860 --> 00:06:48,360
+its who need to be augmented together
+
+138
+00:06:45,470 --> 00:06:50,220
+and in fact you can see that from the
+
+139
+00:06:48,360 --> 00:06:52,710
+printout these numbers are bigger than
+
+140
+00:06:50,220 --> 00:06:54,630
+two to four but these images are of size
+
+141
+00:06:52,709 --> 00:06:58,079
+two to four that what we requested in
+
+142
+00:06:54,629 --> 00:07:00,149
+this in this transpose and so it's not
+
+143
+00:06:58,079 --> 00:07:03,750
+even being like scaled or cropped or
+
+144
+00:07:00,149 --> 00:07:05,669
+anything right so you can see that how
+
+145
+00:07:03,750 --> 00:07:07,160
+the pendant variable needs to go through
+
+146
+00:07:05,670 --> 00:07:08,970
+all of the same geometric
+
+147
+00:07:07,160 --> 00:07:14,040
+transformations without independent
+
+148
+00:07:08,970 --> 00:07:16,919
+variable so to do that every
+
+149
+00:07:14,040 --> 00:07:22,350
+transformation has an optional transform
+
+150
+00:07:16,918 --> 00:07:26,279
+Y parameter it takes a transform type-in
+
+151
+00:07:22,350 --> 00:07:28,500
+um the transform type-in um has a few
+
+152
+00:07:26,279 --> 00:07:32,459
+options all of which we'll cover in this
+
+153
+00:07:28,500 --> 00:07:36,600
+course the co ward up ssin says that the
+
+154
+00:07:32,459 --> 00:07:38,969
+Y values represent coordinates in this
+
+155
+00:07:36,600 --> 00:07:41,280
+case bounding box coordinates okay and
+
+156
+00:07:38,970 --> 00:07:42,810
+so therefore if you flip you need to
+
+157
+00:07:41,279 --> 00:07:44,668
+change the coordinate derivative
+
+158
+00:07:42,810 --> 00:07:46,199
+represent that flip or if you rotate you
+
+159
+00:07:44,668 --> 00:07:49,049
+to change the coordinate represent a
+
+160
+00:07:46,199 --> 00:07:52,589
+rotation so I can add transform type a
+
+161
+00:07:49,050 --> 00:07:55,110
+chord to all of my augmentations I also
+
+162
+00:07:52,589 --> 00:07:56,939
+have to add the exact same thing to my
+
+163
+00:07:55,110 --> 00:07:59,280
+transforms from model function because
+
+164
+00:07:56,939 --> 00:08:02,418
+that's the thing that does the cropping
+
+165
+00:07:59,279 --> 00:08:05,399
+and/or zooming and or padding and or
+
+166
+00:08:02,418 --> 00:08:08,039
+resizing and all of those things need to
+
+167
+00:08:05,399 --> 00:08:10,289
+happen to the dependent variable so if
+
+168
+00:08:08,040 --> 00:08:12,720
+we add all of those together and rerun
+
+169
+00:08:10,290 --> 00:08:15,990
+this you'll see the bounding box changes
+
+170
+00:08:12,720 --> 00:08:20,280
+each time and you'll see us in the right
+
+171
+00:08:15,990 --> 00:08:22,949
+spot now you'll see sometimes it looks a
+
+172
+00:08:20,279 --> 00:08:25,079
+little odd like here why is that
+
+173
+00:08:22,949 --> 00:08:27,240
+bounding box there and the problem is
+
+174
+00:08:25,079 --> 00:08:29,939
+this is just a constraint that the
+
+175
+00:08:27,240 --> 00:08:32,729
+information we have right the bounding
+
+176
+00:08:29,939 --> 00:08:34,110
+box does not tell us that actually her
+
+177
+00:08:32,729 --> 00:08:36,450
+head isn't way over here in the top left
+
+178
+00:08:34,110 --> 00:08:38,250
+corner alright but actually if you do a
+
+179
+00:08:36,450 --> 00:08:39,990
+thirty degree rotation in her head was
+
+180
+00:08:38,250 --> 00:08:41,820
+over here the top left corner then the
+
+181
+00:08:39,990 --> 00:08:44,700
+new bounding box would need would go
+
+182
+00:08:41,820 --> 00:08:48,120
+really high right so this is actually
+
+183
+00:08:44,700 --> 00:08:50,070
+the correct bounding box based on the
+
+184
+00:08:48,120 --> 00:08:52,960
+information and has available which is
+
+185
+00:08:50,070 --> 00:08:54,760
+to say this is this is how higher
+
+186
+00:08:52,960 --> 00:08:58,150
+Mobe so basically you've got to be
+
+187
+00:08:54,759 --> 00:08:59,860
+careful of not doing to higher rotations
+
+188
+00:08:58,149 --> 00:09:01,360
+with bounding boxes because there's not
+
+189
+00:08:59,860 --> 00:09:04,360
+enough information for them to stay
+
+190
+00:09:01,360 --> 00:09:06,009
+totally accurate just fundamental
+
+191
+00:09:04,360 --> 00:09:10,409
+limitation of the information we're
+
+192
+00:09:06,009 --> 00:09:12,789
+given if we were doing like polygons or
+
+193
+00:09:10,409 --> 00:09:16,539
+segmentations or whatever we wouldn't
+
+194
+00:09:12,789 --> 00:09:22,959
+have this problem okay so I'm gonna do a
+
+195
+00:09:16,539 --> 00:09:26,699
+maximum of three degree rotations I'm
+
+196
+00:09:22,960 --> 00:09:29,490
+also going to only rotate half the time
+
+197
+00:09:26,700 --> 00:09:31,420
+my random flip my brightness/contrast
+
+198
+00:09:29,490 --> 00:09:34,710
+changing and so there's my set of
+
+199
+00:09:31,419 --> 00:09:37,419
+transformations that I can use
+
+200
+00:09:34,710 --> 00:09:41,530
+so we briefly looked at this custom head
+
+201
+00:09:37,419 --> 00:09:43,870
+idea but basically if you look at dot
+
+202
+00:09:41,529 --> 00:09:46,000
+summary dot summary does something
+
+203
+00:09:43,870 --> 00:09:48,129
+pretty cool which is it basically runs a
+
+204
+00:09:46,000 --> 00:09:50,259
+small batch of data through a model and
+
+205
+00:09:48,129 --> 00:09:54,549
+prints out how big it is
+
+206
+00:09:50,259 --> 00:09:57,220
+at every every layer and we can see that
+
+207
+00:09:54,549 --> 00:10:00,429
+at the end of the convolutional section
+
+208
+00:09:57,220 --> 00:10:00,910
+before we get the flatten it's 512 by 7
+
+209
+00:10:00,429 --> 00:10:06,459
+by 7
+
+210
+00:10:00,909 --> 00:10:08,649
+okay and so 512 by 7 5 7 10 serve
+
+211
+00:10:06,460 --> 00:10:11,800
+breakfast reach answer at that size if
+
+212
+00:10:08,649 --> 00:10:14,250
+we flatten it out into a single rank one
+
+213
+00:10:11,799 --> 00:10:17,379
+tensor into a vector it's going to be
+
+214
+00:10:14,250 --> 00:10:19,720
+225 thousand a ninety eight long right
+
+215
+00:10:17,379 --> 00:10:25,809
+so then that's why we had this linear
+
+216
+00:10:19,720 --> 00:10:27,279
+layout to 500 for the bosses right so
+
+217
+00:10:25,809 --> 00:10:35,469
+stick that on top of a pre-trained
+
+218
+00:10:27,279 --> 00:10:38,860
+ResNet and trade it for a while okay so
+
+219
+00:10:35,470 --> 00:10:43,629
+that's where we got to last time so
+
+220
+00:10:38,860 --> 00:10:45,190
+let's now put those two pieces together
+
+221
+00:10:43,629 --> 00:10:48,330
+so that we can get something that
+
+222
+00:10:45,190 --> 00:10:55,090
+classifies and does bounding boxes and
+
+223
+00:10:48,330 --> 00:10:57,879
+there are there are three things that we
+
+224
+00:10:55,090 --> 00:11:01,620
+need to do basically to train a neural
+
+225
+00:10:57,879 --> 00:11:04,620
+network ever right we need to provide
+
+226
+00:11:01,620 --> 00:11:04,620
+data
+
+227
+00:11:05,700 --> 00:11:13,080
+we need to pick some kind of
+
+228
+00:11:07,509 --> 00:11:16,809
+architecture and we did a loss function
+
+229
+00:11:13,080 --> 00:11:19,389
+okay so the loss function says you know
+
+230
+00:11:16,809 --> 00:11:22,419
+something anything that gives a lower
+
+231
+00:11:19,389 --> 00:11:25,389
+number here is a better network using
+
+232
+00:11:22,419 --> 00:11:26,620
+this data in this architecture so we're
+
+233
+00:11:25,389 --> 00:11:29,620
+going to need to create those three
+
+234
+00:11:26,620 --> 00:11:35,200
+things for our classification plus
+
+235
+00:11:29,620 --> 00:11:40,209
+bounding box regression so that means we
+
+236
+00:11:35,200 --> 00:11:42,879
+need a model data object which has as
+
+237
+00:11:40,208 --> 00:11:45,250
+the independence the images and as the
+
+238
+00:11:42,879 --> 00:11:46,750
+dependence I want to have a tupple the
+
+239
+00:11:45,250 --> 00:11:48,940
+first time one of the tuples should be
+
+240
+00:11:46,750 --> 00:11:50,860
+the bounding box coordinates and the
+
+241
+00:11:48,940 --> 00:11:54,300
+second element as a couple should be
+
+242
+00:11:50,860 --> 00:11:56,110
+there class okay
+
+243
+00:11:54,299 --> 00:11:59,528
+there's lots of different ways you could
+
+244
+00:11:56,110 --> 00:12:02,350
+do this the particularly lazy and
+
+245
+00:11:59,528 --> 00:12:05,580
+convenient way I came up with was to
+
+246
+00:12:02,350 --> 00:12:08,320
+create two mobile data objects
+
+247
+00:12:05,580 --> 00:12:10,209
+representing the two different dependent
+
+248
+00:12:08,320 --> 00:12:12,190
+variables I want so one with the
+
+249
+00:12:10,208 --> 00:12:14,889
+bounding box coordinates one of the
+
+250
+00:12:12,190 --> 00:12:18,940
+classes just using the CSVs we go over
+
+251
+00:12:14,889 --> 00:12:21,069
+four and now I'm going to merge them
+
+252
+00:12:18,940 --> 00:12:24,730
+together so I create a new data set
+
+253
+00:12:21,070 --> 00:12:28,540
+class and a data set class is anything
+
+254
+00:12:24,730 --> 00:12:30,399
+which has a length and an index service
+
+255
+00:12:28,539 --> 00:12:34,139
+or something that lets you use it as
+
+256
+00:12:30,399 --> 00:12:36,490
+like lists and so in this case I can
+
+257
+00:12:34,139 --> 00:12:44,189
+have a constructor which takes an
+
+258
+00:12:36,490 --> 00:12:49,299
+existing data set and the second
+
+259
+00:12:44,190 --> 00:12:51,520
+dependent that I want the length then is
+
+260
+00:12:49,299 --> 00:12:54,909
+just obviously the length of the data
+
+261
+00:12:51,519 --> 00:12:58,059
+set the first data set and then getitem
+
+262
+00:12:54,909 --> 00:13:01,870
+is grab the X and the y from the data
+
+263
+00:12:58,059 --> 00:13:09,458
+set that I passed in and return that X
+
+264
+00:13:01,870 --> 00:13:11,860
+and that Y and the ayth of the second so
+
+265
+00:13:09,458 --> 00:13:13,729
+there's a data set that basically adds
+
+266
+00:13:11,860 --> 00:13:15,230
+in a second
+
+267
+00:13:13,730 --> 00:13:17,869
+as I said there's lots of ways you could
+
+268
+00:13:15,230 --> 00:13:20,678
+do this it's kind of convenient because
+
+269
+00:13:17,869 --> 00:13:22,819
+now what I could do is I can create
+
+270
+00:13:20,678 --> 00:13:25,488
+training data set in the validation data
+
+271
+00:13:22,818 --> 00:13:28,909
+set based on that so here's an example
+
+272
+00:13:25,489 --> 00:13:32,389
+you can see it's got a couple of the
+
+273
+00:13:28,909 --> 00:13:34,219
+bounding box coordinates in the class we
+
+274
+00:13:32,389 --> 00:13:35,629
+can then take the existing training and
+
+275
+00:13:34,220 --> 00:13:38,028
+validation data loaders now so you
+
+276
+00:13:35,629 --> 00:13:41,509
+replace their data sets with these and
+
+277
+00:13:38,028 --> 00:13:43,269
+unknown okay so we can now test it by
+
+278
+00:13:41,509 --> 00:13:49,609
+grabbing a mini batch of data and
+
+279
+00:13:43,269 --> 00:13:56,688
+checking it says okay so there's one way
+
+280
+00:13:49,609 --> 00:13:59,269
+to customize data set so what we're
+
+281
+00:13:56,688 --> 00:14:01,278
+going to do this time now is we've got
+
+282
+00:13:59,269 --> 00:14:04,578
+the data so now we need an architecture
+
+283
+00:14:01,278 --> 00:14:06,409
+so the architecture is going to be the
+
+284
+00:14:04,578 --> 00:14:09,078
+same as the architectures that were used
+
+285
+00:14:06,409 --> 00:14:10,578
+for the classifier and for the bounding
+
+286
+00:14:09,078 --> 00:14:13,638
+box aggression but we're just going to
+
+287
+00:14:10,578 --> 00:14:18,588
+combine them so in other words if there
+
+288
+00:14:13,639 --> 00:14:20,389
+are C classes then the number of
+
+289
+00:14:18,589 --> 00:14:25,160
+activations we need in the final layer
+
+290
+00:14:20,389 --> 00:14:29,480
+is 4 plus C for panama's coordinates and
+
+291
+00:14:25,159 --> 00:14:32,538
+the C probabilities one per class so
+
+292
+00:14:29,480 --> 00:14:36,188
+this is the final layer a linear layer
+
+293
+00:14:32,538 --> 00:14:39,528
+that has four plus men of categories
+
+294
+00:14:36,188 --> 00:14:43,399
+divisions the first player is before is
+
+295
+00:14:39,528 --> 00:14:47,989
+a flattened we could just join those up
+
+296
+00:14:43,399 --> 00:14:52,548
+together but in general I want my my
+
+297
+00:14:47,989 --> 00:14:56,149
+custom head to like hopefully be capable
+
+298
+00:14:52,548 --> 00:14:59,538
+of solving the problem that I give it on
+
+299
+00:14:56,149 --> 00:15:02,989
+its own if the pre-trained backbone is
+
+300
+00:14:59,538 --> 00:15:05,359
+connected to is you know is appropriate
+
+301
+00:15:02,989 --> 00:15:07,699
+and so in this case I'm thinking okay
+
+302
+00:15:05,359 --> 00:15:09,319
+I'm trying to do quite a bit here two
+
+303
+00:15:07,698 --> 00:15:11,418
+different things there classifier and
+
+304
+00:15:09,318 --> 00:15:12,618
+balanced regression so just a single
+
+305
+00:15:11,418 --> 00:15:16,249
+linear layer doesn't sound like enough
+
+306
+00:15:12,619 --> 00:15:18,499
+so I put in a second millionaire okay
+
+307
+00:15:16,249 --> 00:15:19,999
+and so you can see we basically go over
+
+308
+00:15:18,499 --> 00:15:24,079
+Al you drop out
+
+309
+00:15:19,999 --> 00:15:25,220
+Lydia rarely veteran or dropout yeah if
+
+310
+00:15:24,078 --> 00:15:26,750
+you're wondering why there's no better
+
+311
+00:15:25,220 --> 00:15:29,149
+on that here at
+
+312
+00:15:26,750 --> 00:15:33,528
+the resonant backbone it already has a
+
+313
+00:15:29,149 --> 00:15:37,458
+match norm as it's finally out okay so
+
+314
+00:15:33,528 --> 00:15:39,259
+this is basically nearly the same custom
+
+315
+00:15:37,458 --> 00:15:44,568
+headers before it's just it's got two
+
+316
+00:15:39,259 --> 00:15:49,339
+linear layers one and nonlinearities
+
+317
+00:15:44,568 --> 00:15:51,828
+okay so that's piece to but data we've
+
+318
+00:15:49,339 --> 00:15:54,560
+got architecture now we need a loss
+
+319
+00:15:51,828 --> 00:15:57,500
+function so the loss function needs to
+
+320
+00:15:54,559 --> 00:16:01,669
+look at these four plus C activations
+
+321
+00:15:57,500 --> 00:16:05,990
+and aside are they good
+
+322
+00:16:01,669 --> 00:16:09,799
+right are these numbers accurately
+
+323
+00:16:05,990 --> 00:16:14,448
+reflecting the position and class of the
+
+324
+00:16:09,799 --> 00:16:18,708
+largest object in this image we we know
+
+325
+00:16:14,448 --> 00:16:23,659
+how to do that for the last for the
+
+326
+00:16:18,708 --> 00:16:25,128
+first four we use l1 loss just like we
+
+327
+00:16:23,659 --> 00:16:27,889
+did in the bounding box regression
+
+328
+00:16:25,129 --> 00:16:30,110
+before remember l1 loss is like mean
+
+329
+00:16:27,889 --> 00:16:34,278
+squared error rather than sum of squares
+
+330
+00:16:30,110 --> 00:16:36,379
+is some of our values and then for the
+
+331
+00:16:34,278 --> 00:16:39,860
+rest of the activations we can use
+
+332
+00:16:36,379 --> 00:16:40,759
+cross-entropy loss so let's go ahead and
+
+333
+00:16:39,860 --> 00:16:43,699
+do that so we're going to create
+
+334
+00:16:40,759 --> 00:16:45,949
+something called detection loss and loss
+
+335
+00:16:43,698 --> 00:16:48,708
+functions always take an input and a
+
+336
+00:16:45,948 --> 00:16:51,859
+target that's what PI torch always calls
+
+337
+00:16:48,708 --> 00:16:55,568
+them so this is the activations this is
+
+338
+00:16:51,860 --> 00:16:59,058
+the ground truth so remember that our
+
+339
+00:16:55,568 --> 00:17:03,558
+our date custom data set returns a tuple
+
+340
+00:16:59,058 --> 00:17:05,990
+containing the bounding box coordinates
+
+341
+00:17:03,558 --> 00:17:07,849
+in the classes so we can D structure
+
+342
+00:17:05,990 --> 00:17:10,730
+that use D structuring assignment to
+
+343
+00:17:07,849 --> 00:17:15,828
+grab the bounding boxes and the classes
+
+344
+00:17:10,730 --> 00:17:18,318
+of the target and then the bounding
+
+345
+00:17:15,828 --> 00:17:21,948
+boxes and the classes of the input are
+
+346
+00:17:18,318 --> 00:17:25,759
+simply the first four elements of the
+
+347
+00:17:21,949 --> 00:17:27,439
+input and the four onwards elements of
+
+348
+00:17:25,759 --> 00:17:33,079
+the universe and remember we've also got
+
+349
+00:17:27,439 --> 00:17:35,720
+a batch dimension so that's it we've now
+
+350
+00:17:33,079 --> 00:17:39,288
+got the bounding box target bounding box
+
+351
+00:17:35,720 --> 00:17:39,900
+import class target plus input further
+
+352
+00:17:39,288 --> 00:17:41,819
+bounding
+
+353
+00:17:39,900 --> 00:17:44,220
+boxes we know that they're going to be
+
+354
+00:17:41,819 --> 00:17:46,409
+between 0 &amp; 2 to 4 the coordinates
+
+355
+00:17:44,220 --> 00:17:50,279
+because that's how they got images okay
+
+356
+00:17:46,410 --> 00:17:53,580
+so let's grab a sigmoid to force it
+
+357
+00:17:50,279 --> 00:17:57,990
+between 0 &amp; 1 multiply it by 2 to 4 and
+
+358
+00:17:53,579 --> 00:18:00,119
+that's just helping our neural net you
+
+359
+00:17:57,990 --> 00:18:02,670
+know get close to what we you know be in
+
+360
+00:18:00,119 --> 00:18:04,649
+the range we know it has to be as a
+
+361
+00:18:02,670 --> 00:18:11,340
+general rule is it better to put bash
+
+362
+00:18:04,650 --> 00:18:15,030
+norm before or after RL you I would
+
+363
+00:18:11,339 --> 00:18:18,439
+suggest that you should put it after a
+
+364
+00:18:15,029 --> 00:18:22,170
+value because batch norm is meant to
+
+365
+00:18:18,440 --> 00:18:25,620
+move towards a computer one random
+
+366
+00:18:22,170 --> 00:18:30,840
+variable and if you put value after it
+
+367
+00:18:25,619 --> 00:18:33,149
+then you're truncating it 0 so there's
+
+368
+00:18:30,839 --> 00:18:39,349
+no way to create negative numbers about
+
+369
+00:18:33,150 --> 00:18:39,350
+a huge port value Lembeck norm
+
+370
+00:18:40,799 --> 00:18:47,519
+having said that and I think that that
+
+371
+00:18:44,460 --> 00:18:49,140
+way of doing it gives slightly better
+
+372
+00:18:47,519 --> 00:18:52,410
+results
+
+373
+00:18:49,140 --> 00:18:55,110
+having said that it's not too big a deal
+
+374
+00:18:52,410 --> 00:18:58,279
+either way and you'll see during this
+
+375
+00:18:55,109 --> 00:19:01,500
+part of the course most of the time I go
+
+376
+00:18:58,279 --> 00:19:03,690
+well you and then vet norm but sometimes
+
+377
+00:19:01,500 --> 00:19:07,680
+they go vetch moment in value if I'm
+
+378
+00:19:03,690 --> 00:19:09,269
+consistent so I think originally the
+
+379
+00:19:07,680 --> 00:19:15,360
+batch normal is put it off to the
+
+380
+00:19:09,269 --> 00:19:19,139
+activation so okay so so this is kind of
+
+381
+00:19:15,359 --> 00:19:20,549
+to help our data or force our data into
+
+382
+00:19:19,140 --> 00:19:22,050
+the right range which you know if you
+
+383
+00:19:20,549 --> 00:19:23,879
+can do stuff like that it makes it
+
+384
+00:19:22,049 --> 00:19:24,299
+easier to Train yes Rachel one more
+
+385
+00:19:23,880 --> 00:19:26,250
+question
+
+386
+00:19:24,299 --> 00:19:29,669
+what's the intuition behind using
+
+387
+00:19:26,250 --> 00:19:31,920
+dropout with P equals 0.5 after a batch
+
+388
+00:19:29,670 --> 00:19:36,269
+norm does a batch alarm already do a
+
+389
+00:19:31,920 --> 00:19:38,850
+good job of regularizing fessional
+
+390
+00:19:36,269 --> 00:19:40,650
+doesn't okay Java vaporizing and if you
+
+391
+00:19:38,849 --> 00:19:42,059
+think that to part one we have had that
+
+392
+00:19:40,650 --> 00:19:45,750
+list of things we do to avoid
+
+393
+00:19:42,059 --> 00:19:49,220
+overfitting and adding batch long as one
+
+394
+00:19:45,750 --> 00:19:51,809
+of them is david augmentation but it's
+
+395
+00:19:49,220 --> 00:19:52,670
+perfectly possible that you'll still be
+
+396
+00:19:51,809 --> 00:19:55,639
+okay
+
+397
+00:19:52,670 --> 00:19:58,250
+so one nice thing about dropout is that
+
+398
+00:19:55,640 --> 00:20:00,110
+it has a parameter to say how much to
+
+399
+00:19:58,250 --> 00:20:03,079
+drop out and so that like parameters are
+
+400
+00:20:00,109 --> 00:20:04,719
+great like well specifically parameters
+
+401
+00:20:03,079 --> 00:20:07,939
+that decide how much to regularize
+
+402
+00:20:04,720 --> 00:20:10,069
+because it lets you build a I speak over
+
+403
+00:20:07,940 --> 00:20:14,900
+priced model and then decide on
+
+404
+00:20:10,069 --> 00:20:17,899
+interiorize it so yeah I tend to always
+
+405
+00:20:14,900 --> 00:20:21,470
+drop out and then if it turns out I'm
+
+406
+00:20:17,900 --> 00:20:24,320
+you know I'll start with P equals zero
+
+407
+00:20:21,470 --> 00:20:28,910
+and then as you know I can just change
+
+408
+00:20:24,319 --> 00:20:31,069
+my grammar without worrying about you
+
+409
+00:20:28,910 --> 00:20:32,750
+know if I saved a model I'm gonna be
+
+410
+00:20:31,069 --> 00:20:35,089
+able to load it back but if I have
+
+411
+00:20:32,750 --> 00:20:37,190
+dropout ladies and one and not in
+
+412
+00:20:35,089 --> 00:20:40,429
+another or load me more this way it
+
+413
+00:20:37,190 --> 00:20:43,070
+stays consistent okay so now that I've
+
+414
+00:20:40,430 --> 00:20:46,220
+got my inputs and targets I can just go
+
+415
+00:20:43,069 --> 00:20:47,259
+hey calculate the l1 loss and add to it
+
+416
+00:20:46,220 --> 00:20:50,569
+the cross-entropy
+
+417
+00:20:47,259 --> 00:20:53,089
+okay so that's our that's our loss
+
+418
+00:20:50,569 --> 00:20:55,599
+function it's a surprisingly easy brass
+
+419
+00:20:53,089 --> 00:20:59,059
+now of course the cross entropy and the
+
+420
+00:20:55,599 --> 00:21:01,819
+l1 lost maybe of wildly different scales
+
+421
+00:20:59,059 --> 00:21:04,369
+in which case in the loss function the
+
+422
+00:21:01,819 --> 00:21:08,809
+larger one is going to dominate and so I
+
+423
+00:21:04,369 --> 00:21:10,849
+just ran this in a debugger checked what
+
+424
+00:21:08,809 --> 00:21:12,740
+you don't you just use print check how
+
+425
+00:21:10,849 --> 00:21:15,259
+big each of the two things were and
+
+426
+00:21:12,740 --> 00:21:19,779
+found if they multiply by 20 that makes
+
+427
+00:21:15,259 --> 00:21:19,779
+them about the same about the same scale
+
+428
+00:21:20,769 --> 00:21:28,190
+as your training it's nice to print out
+
+429
+00:21:24,410 --> 00:21:31,490
+information as you go so I also grabbed
+
+430
+00:21:28,190 --> 00:21:33,710
+the l1 part of this and put it in our in
+
+431
+00:21:31,490 --> 00:21:36,920
+a function and I also created a function
+
+432
+00:21:33,710 --> 00:21:40,460
+for accuracy so that I could make the
+
+433
+00:21:36,920 --> 00:21:41,420
+metrics and so they're down alright so
+
+434
+00:21:40,460 --> 00:21:44,140
+we can how about something which is
+
+435
+00:21:41,420 --> 00:21:49,310
+printing out our object detection loss
+
+436
+00:21:44,140 --> 00:21:52,880
+detection accuracy and detection l1 and
+
+437
+00:21:49,309 --> 00:21:56,299
+so chain it for a while and it's looking
+
+438
+00:21:52,880 --> 00:21:59,090
+good a detection accuracy is in the low
+
+439
+00:21:56,299 --> 00:22:01,519
+80s which is the same as what it was
+
+440
+00:21:59,089 --> 00:22:04,879
+before that doesn't surprise me because
+
+441
+00:22:01,519 --> 00:22:06,539
+like ResNet was designed to do
+
+442
+00:22:04,880 --> 00:22:08,870
+classification so
+
+443
+00:22:06,539 --> 00:22:12,779
+I wouldn't expect us to be able to
+
+444
+00:22:08,869 --> 00:22:14,159
+improve things in such a simple way but
+
+445
+00:22:12,779 --> 00:22:15,509
+it certainly wasn't designed to do
+
+446
+00:22:14,160 --> 00:22:17,880
+bounding box regression it was
+
+447
+00:22:15,509 --> 00:22:20,309
+explicitly actually designed in such a
+
+448
+00:22:17,880 --> 00:22:22,800
+way is to be as to kind of not care
+
+449
+00:22:20,309 --> 00:22:25,349
+about geometry rather it takes that last
+
+450
+00:22:22,799 --> 00:22:27,359
+seven most seven creative activations
+
+451
+00:22:25,349 --> 00:22:28,949
+and averages them all together and
+
+452
+00:22:27,359 --> 00:22:32,759
+throws away all of the information that
+
+453
+00:22:28,950 --> 00:22:36,059
+is going wrong so so you can see that
+
+454
+00:22:32,759 --> 00:22:40,200
+the when we only train the last layer
+
+455
+00:22:36,059 --> 00:22:42,809
+the detection l1 is pretty bad running
+
+456
+00:22:40,200 --> 00:22:45,450
+poor and it really improves a lot but
+
+457
+00:22:42,809 --> 00:22:46,500
+where else the accuracy doesn't improve
+
+458
+00:22:45,450 --> 00:22:50,250
+it stays exactly the same
+
+459
+00:22:46,500 --> 00:22:54,170
+interestingly the l1 when we do accuracy
+
+460
+00:22:50,250 --> 00:22:57,210
+and bowing boss at the same time 8.5
+
+461
+00:22:54,170 --> 00:23:00,180
+seems like it's a little bit better than
+
+462
+00:22:57,210 --> 00:23:03,390
+when we just do bounding box regression
+
+463
+00:23:00,180 --> 00:23:04,620
+and if that's counterintuitive to you
+
+464
+00:23:03,390 --> 00:23:06,270
+then this would be one of the main
+
+465
+00:23:04,619 --> 00:23:08,369
+things to think about after this lessons
+
+466
+00:23:06,269 --> 00:23:19,339
+it's a really important idea and the
+
+467
+00:23:08,369 --> 00:23:23,969
+idea is this figuring out figuring out
+
+468
+00:23:19,339 --> 00:23:26,579
+what the main object in an image is is
+
+469
+00:23:23,970 --> 00:23:28,950
+kind of the the eye part and then
+
+470
+00:23:26,579 --> 00:23:31,439
+figuring out like exactly where the
+
+471
+00:23:28,950 --> 00:23:34,890
+bounding box is and what class it is is
+
+472
+00:23:31,440 --> 00:23:38,160
+kind of the easy part in a way and so
+
+473
+00:23:34,890 --> 00:23:40,320
+when you've got a single network that's
+
+474
+00:23:38,160 --> 00:23:43,110
+about saying what is the object and
+
+475
+00:23:40,319 --> 00:23:44,990
+where is the object it's going to share
+
+476
+00:23:43,109 --> 00:23:48,299
+all of the computation about like
+
+477
+00:23:44,990 --> 00:23:50,430
+finding the object and so all that
+
+478
+00:23:48,299 --> 00:23:53,549
+shared information all that shared
+
+479
+00:23:50,430 --> 00:23:57,120
+computation is very efficient and so
+
+480
+00:23:53,549 --> 00:24:00,480
+when we vet propagate the errors in you
+
+481
+00:23:57,119 --> 00:24:02,519
+know the class and in the place that's
+
+482
+00:24:00,480 --> 00:24:04,259
+all information that's going to help the
+
+483
+00:24:02,519 --> 00:24:06,539
+computation around like finding the
+
+484
+00:24:04,259 --> 00:24:11,369
+biggest object so anytime you've got
+
+485
+00:24:06,539 --> 00:24:13,859
+multiple tasks which kind of share some
+
+486
+00:24:11,369 --> 00:24:15,989
+some concept of what those tasks would
+
+487
+00:24:13,859 --> 00:24:17,909
+need to do to complete their work it's
+
+488
+00:24:15,990 --> 00:24:20,230
+very likely they should share at least
+
+489
+00:24:17,910 --> 00:24:25,090
+some layers of
+
+490
+00:24:20,230 --> 00:24:31,000
+were together and we'll look later today
+
+491
+00:24:25,089 --> 00:24:34,019
+a place where most of the layers are
+
+492
+00:24:31,000 --> 00:24:37,240
+shared but are just the last one isn't
+
+493
+00:24:34,019 --> 00:24:39,879
+okay so you can see this is some doing a
+
+494
+00:24:37,240 --> 00:24:44,558
+good job as before of anytime there is
+
+495
+00:24:39,880 --> 00:24:46,720
+just a single major object sometimes
+
+496
+00:24:44,558 --> 00:24:48,519
+it's getting a little confused it thinks
+
+497
+00:24:46,720 --> 00:24:49,720
+the main object here is the dog and it's
+
+498
+00:24:48,519 --> 00:24:51,460
+kind of served with the dog although
+
+499
+00:24:49,720 --> 00:24:53,079
+it's kind of recognize that actually the
+
+500
+00:24:51,460 --> 00:24:54,940
+main object is us so far and so the
+
+501
+00:24:53,079 --> 00:24:56,470
+classifier is doing the right thing with
+
+502
+00:24:54,940 --> 00:25:00,640
+the bounding boxes labeling the wrong
+
+503
+00:24:56,470 --> 00:25:02,950
+thing which is yours when there are two
+
+504
+00:25:00,640 --> 00:25:04,960
+birds you can only pick one so it's just
+
+505
+00:25:02,950 --> 00:25:07,900
+kind of hitching in the middle get over
+
+506
+00:25:04,960 --> 00:25:10,029
+these lots of cows and so forth doing
+
+507
+00:25:07,900 --> 00:25:15,340
+good job with this car all right so
+
+508
+00:25:10,029 --> 00:25:18,279
+that's so that's that
+
+509
+00:25:15,339 --> 00:25:20,349
+all right there's not much new there
+
+510
+00:25:18,279 --> 00:25:21,940
+although in that last bit we did learn
+
+511
+00:25:20,349 --> 00:25:24,058
+about you know some simple custom data
+
+512
+00:25:21,940 --> 00:25:26,440
+sets and simple custom Lots functions
+
+513
+00:25:24,058 --> 00:25:32,200
+hopefully you can see now how easy that
+
+514
+00:25:26,440 --> 00:25:35,590
+is to do so next stage for me would be
+
+515
+00:25:32,200 --> 00:25:37,330
+to do multi-label classification so this
+
+516
+00:25:35,589 --> 00:25:39,339
+is this idea that I just want to keep
+
+517
+00:25:37,329 --> 00:25:41,970
+building models that are slightly more
+
+518
+00:25:39,339 --> 00:25:44,678
+complex than the last model but
+
+519
+00:25:41,970 --> 00:25:46,360
+hopefully don't require too much extra
+
+520
+00:25:44,679 --> 00:25:49,030
+concepts so I can kind of keep seeing
+
+521
+00:25:46,359 --> 00:25:51,548
+things working and if something stops
+
+522
+00:25:49,029 --> 00:25:53,798
+working I know that wherever I find
+
+523
+00:25:51,548 --> 00:25:56,650
+building everything at the same time so
+
+524
+00:25:53,798 --> 00:25:58,660
+model label classification is so easy is
+
+525
+00:25:56,650 --> 00:26:01,030
+there's not much to mention so we've
+
+526
+00:25:58,660 --> 00:26:02,759
+moved to a Pascal multi now that's what
+
+527
+00:26:01,029 --> 00:26:05,410
+we're going to do the multi object stuff
+
+528
+00:26:02,759 --> 00:26:07,240
+so for the multi object stuff I've just
+
+529
+00:26:05,410 --> 00:26:10,269
+copied and pasted the functions from the
+
+530
+00:26:07,240 --> 00:26:13,240
+previous notebook that we used so
+
+531
+00:26:10,269 --> 00:26:20,609
+they're all at the top so we can create
+
+532
+00:26:13,240 --> 00:26:22,870
+now a multi class a multi class CSV file
+
+533
+00:26:20,609 --> 00:26:25,599
+using the same basic approach that we
+
+534
+00:26:22,869 --> 00:26:28,119
+did last time and I'll mention by the
+
+535
+00:26:25,599 --> 00:26:30,959
+way one of our students actually who's
+
+536
+00:26:28,119 --> 00:26:33,079
+visiting from India funny
+
+537
+00:26:30,960 --> 00:26:35,829
+pointed out to me
+
+538
+00:26:33,079 --> 00:26:39,740
+that all this stuff we're doing with
+
+539
+00:26:35,829 --> 00:26:41,000
+default dicks and stuff like that he
+
+540
+00:26:39,740 --> 00:26:43,069
+actually showed her a way of doing that
+
+541
+00:26:41,000 --> 00:26:47,480
+which was much simpler using pandas and
+
+542
+00:26:43,069 --> 00:26:49,759
+he shared that on the forum so I totally
+
+543
+00:26:47,480 --> 00:26:51,740
+bow to his much better approach simpler
+
+544
+00:26:49,759 --> 00:26:53,329
+and more concise approach yeah it's
+
+545
+00:26:51,740 --> 00:26:56,180
+definitely true like the more you get to
+
+546
+00:26:53,329 --> 00:26:59,179
+know handers the more often you realize
+
+547
+00:26:56,180 --> 00:27:04,299
+is a good way to solve lots of different
+
+548
+00:26:59,180 --> 00:27:04,299
+problems so definitely check that out
+
+549
+00:27:10,269 --> 00:27:15,139
+when you're building out the smaller
+
+550
+00:27:12,440 --> 00:27:17,840
+models and you're iterating do you reuse
+
+551
+00:27:15,140 --> 00:27:20,210
+those models as pre-trained waits for
+
+552
+00:27:17,839 --> 00:27:23,240
+this link larger one or do you just toss
+
+553
+00:27:20,210 --> 00:27:25,579
+it all away and then retrain from
+
+554
+00:27:23,240 --> 00:27:27,859
+scratch with when I'm kind of like
+
+555
+00:27:25,579 --> 00:27:29,740
+figuring stuff out as I go like this I
+
+556
+00:27:27,859 --> 00:27:32,359
+would generally towards tossing away
+
+557
+00:27:29,740 --> 00:27:35,210
+because they're kind of reusing
+
+558
+00:27:32,359 --> 00:27:36,949
+pre-trained weights introduces
+
+559
+00:27:35,210 --> 00:27:40,400
+complexities that are not really to
+
+560
+00:27:36,950 --> 00:27:41,870
+think about however if I'm trying to get
+
+561
+00:27:40,400 --> 00:27:45,259
+to a point where I can run something on
+
+562
+00:27:41,869 --> 00:27:47,079
+really big images doing these much
+
+563
+00:27:45,259 --> 00:27:50,410
+smaller ones and often I don't reuse
+
+564
+00:27:47,079 --> 00:27:50,409
+those ways
+
+565
+00:27:58,630 --> 00:28:04,510
+okay so in this case what we're doing is
+
+566
+00:28:02,140 --> 00:28:06,400
+we are just joining up all of the
+
+567
+00:28:04,509 --> 00:28:08,319
+classes with a space which gives us a
+
+568
+00:28:06,400 --> 00:28:09,880
+CSV in the normal format and once we've
+
+569
+00:28:08,319 --> 00:28:12,189
+got the CSV in a normal format it's the
+
+570
+00:28:09,880 --> 00:28:16,870
+usual three lines of code and we train
+
+571
+00:28:12,190 --> 00:28:18,070
+it and we've checked the results so
+
+572
+00:28:16,869 --> 00:28:19,779
+there's literally nothing to show you
+
+573
+00:28:18,069 --> 00:28:21,788
+yeah and as you can see it's done a
+
+574
+00:28:19,779 --> 00:28:24,819
+great job the only mistake I think it
+
+575
+00:28:21,788 --> 00:28:28,230
+made was it called this dog for us it
+
+576
+00:28:24,819 --> 00:28:28,230
+should have been dog and so far
+
+577
+00:28:28,450 --> 00:28:36,580
+okay so Maury class classification is is
+
+578
+00:28:32,950 --> 00:28:39,970
+pretty straightforward one minor tweak
+
+579
+00:28:36,579 --> 00:28:42,548
+here is to note that I used a set here
+
+580
+00:28:39,970 --> 00:28:44,890
+because I don't want to list all of the
+
+581
+00:28:42,548 --> 00:28:48,158
+objects I only want each object type
+
+582
+00:28:44,890 --> 00:28:51,309
+type here once and so the set plus is a
+
+583
+00:28:48,159 --> 00:28:53,830
+way of deem cute locating so that's why
+
+584
+00:28:51,308 --> 00:28:57,960
+I don't have person person person person
+
+585
+00:28:53,829 --> 00:29:00,668
+person just appears so yeah these sum
+
+586
+00:28:57,960 --> 00:29:02,558
+these object classification pre-trained
+
+587
+00:29:00,669 --> 00:29:05,020
+networks we have a really pretty good at
+
+588
+00:29:02,558 --> 00:29:06,428
+recognizing multiple objects as long as
+
+589
+00:29:05,019 --> 00:29:09,779
+you only have to mention each one once
+
+590
+00:29:06,429 --> 00:29:18,759
+so that works pretty well
+
+591
+00:29:09,779 --> 00:29:24,279
+all right so we've got this idea that
+
+592
+00:29:18,759 --> 00:29:25,720
+we've got an input image that goes
+
+593
+00:29:24,279 --> 00:29:27,970
+through a con
+
+594
+00:29:25,720 --> 00:29:32,880
+ComNet you know which was kind of
+
+595
+00:29:27,970 --> 00:29:32,880
+treated the black box and it spits out
+
+596
+00:29:37,038 --> 00:29:51,408
+a tensor vector of size 4 plus C right C
+
+597
+00:29:45,349 --> 00:29:55,668
+is the number of classes and so that's
+
+598
+00:29:51,409 --> 00:29:59,990
+what we've got and that gives us a an
+
+599
+00:29:55,669 --> 00:30:01,370
+object detector for a single object the
+
+600
+00:29:59,990 --> 00:30:05,089
+largest object Americus
+
+601
+00:30:01,369 --> 00:30:08,989
+so let's now create one which doesn't
+
+602
+00:30:05,089 --> 00:30:14,538
+find a single object but that finds 16
+
+603
+00:30:08,990 --> 00:30:17,509
+objects okay so an obvious way to do
+
+604
+00:30:14,538 --> 00:30:21,379
+that would be to take this last this is
+
+605
+00:30:17,509 --> 00:30:27,528
+just a n n dot minion right which has
+
+606
+00:30:21,380 --> 00:30:30,289
+got however many inputs and 4 plus C
+
+607
+00:30:27,528 --> 00:30:34,278
+outputs we could take that linear layer
+
+608
+00:30:30,288 --> 00:30:41,829
+and rather than having 4 plus C outputs
+
+609
+00:30:34,278 --> 00:30:44,450
+we could have 16 times 4 plus C outputs
+
+610
+00:30:41,829 --> 00:30:47,240
+so it's now spitting out enough things
+
+611
+00:30:44,450 --> 00:30:49,850
+to give us 16 sets of class
+
+612
+00:30:47,240 --> 00:30:52,579
+probabilities and 16 sets of bounding
+
+613
+00:30:49,849 --> 00:30:55,099
+box coordinates and then we would just
+
+614
+00:30:52,579 --> 00:31:00,099
+need a loss function that will check
+
+615
+00:30:55,099 --> 00:31:03,918
+whether those 16 sets of bounding boxes
+
+616
+00:31:00,099 --> 00:31:05,808
+correctly represented the up to 16
+
+617
+00:31:03,919 --> 00:31:07,610
+objects that were represented in the
+
+618
+00:31:05,808 --> 00:31:09,379
+image now there's a lot of hand waving
+
+619
+00:31:07,609 --> 00:31:10,849
+about the loss function we're going to
+
+620
+00:31:09,380 --> 00:31:14,960
+it later as to what that is but let's
+
+621
+00:31:10,849 --> 00:31:16,819
+pretend we have one okay assuming we had
+
+622
+00:31:14,960 --> 00:31:18,919
+a reasonable loss function that's
+
+623
+00:31:16,819 --> 00:31:22,269
+totally going to work right that that is
+
+624
+00:31:18,919 --> 00:31:25,700
+an architecture which has the necessary
+
+625
+00:31:22,269 --> 00:31:27,918
+output activations but with the correct
+
+626
+00:31:25,700 --> 00:31:33,230
+loss function we should be at a trainer
+
+627
+00:31:27,919 --> 00:31:35,600
+to do what we wanted to do okay but
+
+628
+00:31:33,230 --> 00:31:38,210
+that's just one way to do it there's a
+
+629
+00:31:35,599 --> 00:31:44,898
+second way we could do it rather than
+
+630
+00:31:38,210 --> 00:31:49,390
+having a n n dot linear what if instead
+
+631
+00:31:44,898 --> 00:31:52,459
+we took from our
+
+632
+00:31:49,390 --> 00:31:56,809
+ResNet convolutional background backbone
+
+633
+00:31:52,460 --> 00:32:07,610
+not in linear but instead we added a an
+
+634
+00:31:56,808 --> 00:32:12,049
+end come to D with stride to right so
+
+635
+00:32:07,609 --> 00:32:18,349
+the final layer of resin app is gets you
+
+636
+00:32:12,049 --> 00:32:23,230
+a seven by seven by 512 as all right so
+
+637
+00:32:18,349 --> 00:32:26,629
+this would give us a four by four by
+
+638
+00:32:23,230 --> 00:32:28,099
+whatever number of filters result maybe
+
+639
+00:32:26,630 --> 00:32:42,760
+for the number of filters that say we
+
+640
+00:32:28,099 --> 00:32:42,759
+picked 256 okay so it would be four four
+
+641
+00:32:45,220 --> 00:32:53,480
+four by four by 256 has well actually
+
+642
+00:32:51,019 --> 00:32:56,150
+look let's change that let's not make it
+
+643
+00:32:53,480 --> 00:32:57,920
+four by four by 256 better still let's
+
+644
+00:32:56,150 --> 00:33:07,670
+do it all in one step let's make it four
+
+645
+00:32:57,920 --> 00:33:09,558
+by four by four plus C because now we've
+
+646
+00:33:07,670 --> 00:33:12,230
+got a tensor where the number of
+
+647
+00:33:09,558 --> 00:33:15,529
+elements is exactly equal to the number
+
+648
+00:33:12,230 --> 00:33:18,710
+of elements we wanted so in other words
+
+649
+00:33:15,529 --> 00:33:21,829
+we could we could now this would well to
+
+650
+00:33:18,710 --> 00:33:27,019
+if we created a loss function that took
+
+651
+00:33:21,829 --> 00:33:30,049
+a four by four by four plus c tensor and
+
+652
+00:33:27,019 --> 00:33:31,849
+mapped it to sixteen objects in the
+
+653
+00:33:30,049 --> 00:33:34,789
+image and checked whether each one was
+
+654
+00:33:31,849 --> 00:33:38,000
+correctly represented by those four plus
+
+655
+00:33:34,789 --> 00:33:41,509
+c activations that would work like these
+
+656
+00:33:38,000 --> 00:33:42,619
+are two exactly equivalent sets of
+
+657
+00:33:41,509 --> 00:33:46,269
+activations because they've got the same
+
+658
+00:33:42,619 --> 00:33:51,529
+number of elements they're just reshaped
+
+659
+00:33:46,269 --> 00:33:55,069
+yeah so it turns out that both of these
+
+660
+00:33:51,529 --> 00:33:57,170
+approaches are actually used the
+
+661
+00:33:55,069 --> 00:34:00,000
+approach where you basically just spit
+
+662
+00:33:57,170 --> 00:34:02,910
+out one big long vector from
+
+663
+00:34:00,000 --> 00:34:09,000
+fully connected linear layer is used by
+
+664
+00:34:02,910 --> 00:34:13,440
+a class of models known as yellow where
+
+665
+00:34:09,000 --> 00:34:17,989
+else the approach of the convolutional
+
+666
+00:34:13,440 --> 00:34:24,740
+activations is used by models which
+
+667
+00:34:17,989 --> 00:34:24,739
+started with something called SSD single
+
+668
+00:34:25,010 --> 00:34:32,190
+what I will say is that since these
+
+669
+00:34:30,059 --> 00:34:35,029
+things came out of very similar times in
+
+670
+00:34:32,190 --> 00:34:35,030
+late 2015
+
+671
+00:34:36,360 --> 00:34:42,470
+things are very much moved towards here
+
+672
+00:34:39,659 --> 00:34:46,019
+so the point where this morning
+
+673
+00:34:42,469 --> 00:34:51,059
+Yolo version 3 came out and is now doing
+
+674
+00:34:46,019 --> 00:34:53,398
+it the SSD ok so that's what we're going
+
+675
+00:34:51,059 --> 00:34:56,460
+to do right we're gonna do this and
+
+676
+00:34:53,398 --> 00:35:05,369
+we're gonna learn about why this makes
+
+677
+00:34:56,460 --> 00:35:09,809
+more sense as well and so the basic idea
+
+678
+00:35:05,369 --> 00:35:14,960
+is this let's imagine that on top of
+
+679
+00:35:09,809 --> 00:35:24,199
+underneath this we had another another
+
+680
+00:35:14,960 --> 00:35:24,199
+come to D stripe 2
+
+681
+00:35:25,530 --> 00:35:34,950
+and we'd have something which was to buy
+
+682
+00:35:30,070 --> 00:35:37,960
+to buy again less sales for plus C
+
+683
+00:35:34,949 --> 00:35:41,828
+alright that's nice and simple and so
+
+684
+00:35:37,960 --> 00:35:44,338
+basically it's creating a grid that
+
+685
+00:35:41,829 --> 00:35:48,460
+looks something like this one two three
+
+686
+00:35:44,338 --> 00:35:52,599
+four okay so that would be like how the
+
+687
+00:35:48,460 --> 00:35:55,210
+activations are you know the geometry of
+
+688
+00:35:52,599 --> 00:35:57,519
+the activations of that second extra
+
+689
+00:35:55,210 --> 00:36:00,849
+convolutional straight - laughs remember
+
+690
+00:35:57,519 --> 00:36:02,739
+it's fair to convolution does the same
+
+691
+00:36:00,849 --> 00:36:05,410
+thing to the geometry of the activations
+
+692
+00:36:02,739 --> 00:36:10,598
+as a stripe one convolution below
+
+693
+00:36:05,409 --> 00:36:12,969
+biomass pulling okay so let's talk about
+
+694
+00:36:10,599 --> 00:36:15,789
+what we might do here because the basic
+
+695
+00:36:12,969 --> 00:36:19,539
+idea is like we want to kind of say
+
+696
+00:36:15,789 --> 00:36:23,500
+alright this top left grid cell is
+
+697
+00:36:19,539 --> 00:36:25,779
+responsible for identifying any object
+
+698
+00:36:23,500 --> 00:36:26,920
+that's in the top of left this one in
+
+699
+00:36:25,780 --> 00:36:28,359
+the top right is responsible for
+
+700
+00:36:26,920 --> 00:36:31,240
+identifying something in the top right
+
+701
+00:36:28,358 --> 00:36:33,608
+this one bottom left this one at the
+
+702
+00:36:31,239 --> 00:36:35,379
+bottom right okay so in this case you
+
+703
+00:36:33,608 --> 00:36:37,210
+can actually see it started it said okay
+
+704
+00:36:35,380 --> 00:36:39,550
+this one is going to try and find the
+
+705
+00:36:37,210 --> 00:36:41,230
+chair this one that's actually made a
+
+706
+00:36:39,550 --> 00:36:43,359
+mistake introducing a table but there
+
+707
+00:36:41,230 --> 00:36:46,630
+are actually one two three chairs here
+
+708
+00:36:43,358 --> 00:36:50,289
+as well right so basically each of these
+
+709
+00:36:46,630 --> 00:36:52,838
+grid cells it's going to be told in the
+
+710
+00:36:50,289 --> 00:36:55,358
+loss function your job is to find the
+
+711
+00:36:52,838 --> 00:37:03,489
+object you know the big object is in
+
+712
+00:36:55,358 --> 00:37:06,369
+that part of the image so what so for a
+
+713
+00:37:03,489 --> 00:37:11,618
+multi-label classification i saw you had
+
+714
+00:37:06,369 --> 00:37:13,990
+a threshold on there which i guess we're
+
+715
+00:37:11,619 --> 00:37:23,380
+getting your relative let's let's work
+
+716
+00:37:13,989 --> 00:37:25,269
+through it okay right so why do we care
+
+717
+00:37:23,380 --> 00:37:26,920
+about the idea that we would like this
+
+718
+00:37:25,269 --> 00:37:29,530
+convolutional grid cell to be
+
+719
+00:37:26,920 --> 00:37:31,990
+responsible for finding things that were
+
+720
+00:37:29,530 --> 00:37:33,519
+in this part of the image and the reason
+
+721
+00:37:31,989 --> 00:37:36,049
+is because of something called the
+
+722
+00:37:33,519 --> 00:37:39,380
+receptive field of that car
+
+723
+00:37:36,050 --> 00:37:43,490
+and the basic idea is that through
+
+724
+00:37:39,380 --> 00:37:47,000
+actual convolutional layers every every
+
+725
+00:37:43,489 --> 00:37:49,929
+piece of those tensors has a receptive
+
+726
+00:37:47,000 --> 00:37:53,150
+field which means which part of the
+
+727
+00:37:49,929 --> 00:37:57,199
+input image was responsible for
+
+728
+00:37:53,150 --> 00:37:58,849
+calculating that cell right and like all
+
+729
+00:37:57,199 --> 00:38:02,869
+things in life the easiest way to see
+
+730
+00:37:58,849 --> 00:38:06,529
+this is with Microsoft Excel so do you
+
+731
+00:38:02,869 --> 00:38:10,069
+remember our convolutional neural net
+
+732
+00:38:06,530 --> 00:38:17,330
+and this was emili´s and we had the
+
+733
+00:38:10,070 --> 00:38:20,840
+number 7 and it went through a a two
+
+734
+00:38:17,329 --> 00:38:25,389
+channel filter channel 1 channel 2 which
+
+735
+00:38:20,840 --> 00:38:28,430
+therefore created a 2 channel output
+
+736
+00:38:25,389 --> 00:38:31,460
+okay and then the next layer was another
+
+737
+00:38:28,429 --> 00:38:35,989
+convolution so this tensor is now a 3d
+
+738
+00:38:31,460 --> 00:38:39,559
+tensor okay which then creates saved
+
+739
+00:38:35,989 --> 00:38:43,569
+again to channel output and then after
+
+740
+00:38:39,559 --> 00:38:48,110
+that we had our max pooling layer okay
+
+741
+00:38:43,570 --> 00:38:50,390
+so let's look at this part of this
+
+742
+00:38:48,110 --> 00:38:51,980
+output and the fact this is common
+
+743
+00:38:50,389 --> 00:38:53,960
+followed by max pool let's just pretend
+
+744
+00:38:51,980 --> 00:39:00,490
+as a stripe to come that's basically the
+
+745
+00:38:53,960 --> 00:39:03,949
+same so let's see where this number 27
+
+746
+00:39:00,489 --> 00:39:06,589
+came from so if you've got Excel you can
+
+747
+00:39:03,949 --> 00:39:11,149
+go formulas trace precedents right and
+
+748
+00:39:06,590 --> 00:39:16,690
+so you can see this came from these 4
+
+749
+00:39:11,150 --> 00:39:21,430
+okay now where did those 4 come from
+
+750
+00:39:16,690 --> 00:39:26,650
+those 4 came from obviously the
+
+751
+00:39:21,429 --> 00:39:31,219
+convolutional filter Colonel kernels and
+
+752
+00:39:26,650 --> 00:39:35,000
+from these 4 parts of time one right
+
+753
+00:39:31,219 --> 00:39:37,939
+because we've got four things here each
+
+754
+00:39:35,000 --> 00:39:44,599
+one of which has a 3 by 3 filter and so
+
+755
+00:39:37,940 --> 00:39:48,010
+we have 3 3 3 3 the other boy oh where
+
+756
+00:39:44,599 --> 00:39:48,009
+did this four come from
+
+757
+00:39:48,400 --> 00:40:00,889
+those four came from obviously our
+
+758
+00:39:55,119 --> 00:40:06,200
+filter and this entire part of the input
+
+759
+00:40:00,889 --> 00:40:07,609
+image okay and what's more you can see
+
+760
+00:40:06,199 --> 00:40:10,689
+and it also comes through this whole
+
+761
+00:40:07,610 --> 00:40:14,300
+duration as well and you can see that
+
+762
+00:40:10,690 --> 00:40:17,090
+these bits in the middle have lots of
+
+763
+00:40:14,300 --> 00:40:18,920
+weights coming out batgirls these bits
+
+764
+00:40:17,090 --> 00:40:21,680
+on the outside only have one weight
+
+765
+00:40:18,920 --> 00:40:27,950
+coming out so we call this here the
+
+766
+00:40:21,679 --> 00:40:30,349
+receptive field of this activation right
+
+767
+00:40:27,949 --> 00:40:34,429
+but note that the receptive field is not
+
+768
+00:40:30,349 --> 00:40:38,059
+just saying it's this here box but also
+
+769
+00:40:34,429 --> 00:40:43,159
+that the center of the box has more
+
+770
+00:40:38,059 --> 00:40:45,019
+dependencies so this is a critically
+
+771
+00:40:43,159 --> 00:40:46,879
+important concept when it comes to kind
+
+772
+00:40:45,019 --> 00:40:50,329
+of understanding architectures and
+
+773
+00:40:46,880 --> 00:40:52,490
+understanding why confidence work yeah
+
+774
+00:40:50,329 --> 00:40:54,409
+of the receptive field and there are
+
+775
+00:40:52,489 --> 00:40:56,569
+some great articles if you just Google
+
+776
+00:40:54,409 --> 00:40:58,730
+for convolution receptive field you can
+
+777
+00:40:56,570 --> 00:41:00,980
+find lots of through the articles I'm
+
+778
+00:40:58,730 --> 00:41:04,608
+sure some of you will write much better
+
+779
+00:41:00,980 --> 00:41:06,679
+ones during the week as well so that's
+
+780
+00:41:04,608 --> 00:41:09,440
+the basic idea there right is that the
+
+781
+00:41:06,679 --> 00:41:12,500
+receptive field of this convolutional
+
+782
+00:41:09,440 --> 00:41:14,929
+activation is generally centered around
+
+783
+00:41:12,500 --> 00:41:16,400
+this part of the input image so it
+
+784
+00:41:14,929 --> 00:41:20,929
+should be responsible for finding
+
+785
+00:41:16,400 --> 00:41:24,320
+objects that here so that's the
+
+786
+00:41:20,929 --> 00:41:25,879
+architecture the architecture is that
+
+787
+00:41:24,320 --> 00:41:29,930
+we're going to have a resonant backbone
+
+788
+00:41:25,880 --> 00:41:31,070
+followed by one or more 2d convolutions
+
+789
+00:41:29,929 --> 00:41:33,289
+and for now we're just going to do one
+
+790
+00:41:31,070 --> 00:41:38,570
+right which is going to give us a four
+
+791
+00:41:33,289 --> 00:41:40,690
+by four grid so let's take a look at
+
+792
+00:41:38,570 --> 00:41:40,690
+that
+
+793
+00:41:45,909 --> 00:41:53,949
+so here it is we start with our Lu and
+
+794
+00:41:49,269 --> 00:41:58,659
+drop out we then do at the start at the
+
+795
+00:41:53,949 --> 00:42:00,069
+output well I just go through and see
+
+796
+00:41:58,659 --> 00:42:06,449
+what we've got here this one is not
+
+797
+00:42:00,070 --> 00:42:08,710
+being used we start with a straight one
+
+798
+00:42:06,449 --> 00:42:09,939
+convolution and the reason we start with
+
+799
+00:42:08,710 --> 00:42:11,980
+a straight one convolution is because
+
+800
+00:42:09,940 --> 00:42:15,190
+that doesn't change the geometry at all
+
+801
+00:42:11,980 --> 00:42:18,550
+it just lets us add an extra layer of
+
+802
+00:42:15,190 --> 00:42:20,740
+calculations right let's create you know
+
+803
+00:42:18,550 --> 00:42:23,769
+not just a linear layer but now we have
+
+804
+00:42:20,739 --> 00:42:25,629
+like a little mini neural network in our
+
+805
+00:42:23,769 --> 00:42:28,030
+custom here all right so we start with
+
+806
+00:42:25,630 --> 00:42:29,769
+this dr1 convolution and standard
+
+807
+00:42:28,030 --> 00:42:33,359
+college is just something i defined up
+
+808
+00:42:29,769 --> 00:42:40,019
+here which does convolution value
+
+809
+00:42:33,358 --> 00:42:43,329
+vaginal like most research code you see
+
+810
+00:42:40,019 --> 00:42:46,690
+won't define a class like this instead
+
+811
+00:42:43,329 --> 00:42:50,710
+they'll write the entire thing again and
+
+812
+00:42:46,690 --> 00:42:52,300
+again and again convolution don't be
+
+813
+00:42:50,710 --> 00:42:55,809
+like that right like that kind of
+
+814
+00:42:52,300 --> 00:42:59,109
+typical code leads to errors and leads
+
+815
+00:42:55,809 --> 00:43:02,289
+to poor understanding and I mentioned
+
+816
+00:42:59,108 --> 00:43:05,469
+that also because this week I released
+
+817
+00:43:02,289 --> 00:43:08,710
+the first draft of the FASTA a style
+
+818
+00:43:05,469 --> 00:43:11,379
+guide and the faster I style guide is
+
+819
+00:43:08,710 --> 00:43:14,289
+very heavily Orion towards the idea of
+
+820
+00:43:11,380 --> 00:43:16,660
+expository programming which is the idea
+
+821
+00:43:14,289 --> 00:43:20,529
+that programming code should be
+
+822
+00:43:16,659 --> 00:43:24,789
+something that you can use to explain an
+
+823
+00:43:20,530 --> 00:43:27,730
+idea ideally as readily as mathematical
+
+824
+00:43:24,789 --> 00:43:31,838
+notation to somebody that understands
+
+825
+00:43:27,730 --> 00:43:34,240
+your your coding method and so the idea
+
+826
+00:43:31,838 --> 00:43:37,809
+actually goes back a very long way but
+
+827
+00:43:34,239 --> 00:43:40,209
+it was best described in the Turing
+
+828
+00:43:37,809 --> 00:43:41,679
+award like Genesis like the Nobel in
+
+829
+00:43:40,210 --> 00:43:45,099
+computer science the cheering award
+
+830
+00:43:41,679 --> 00:43:48,730
+lecture of 1979 by probably my greatest
+
+831
+00:43:45,099 --> 00:43:51,070
+computer science hero can I was he had
+
+832
+00:43:48,730 --> 00:43:54,849
+been working on a since well well before
+
+833
+00:43:51,070 --> 00:43:56,740
+in 1964 but 1964 was the first
+
+834
+00:43:54,849 --> 00:44:00,269
+example of this approach to programming
+
+835
+00:43:56,739 --> 00:44:03,039
+he released something called APL and
+
+836
+00:44:00,269 --> 00:44:06,730
+then 25 years later he won the Turing
+
+837
+00:44:03,039 --> 00:44:08,889
+award he then passed on the baton to his
+
+838
+00:44:06,730 --> 00:44:12,039
+son Eric Iverson and there's been
+
+839
+00:44:08,889 --> 00:44:14,109
+basically 50 or 60 years now of
+
+840
+00:44:12,039 --> 00:44:15,699
+continuous development of this idea of
+
+841
+00:44:14,110 --> 00:44:18,750
+like what does programming look like
+
+842
+00:44:15,699 --> 00:44:21,519
+when it's designed to to be a notation
+
+843
+00:44:18,750 --> 00:44:25,360
+notation as a tool for thought for
+
+844
+00:44:21,519 --> 00:44:28,420
+expository programming and so I've made
+
+845
+00:44:25,360 --> 00:44:30,730
+a very shoddy attempt at taking some of
+
+846
+00:44:28,420 --> 00:44:34,119
+these ideas and thinking about how can
+
+847
+00:44:30,730 --> 00:44:36,250
+they be applied to - programming with
+
+848
+00:44:34,119 --> 00:44:41,889
+all the limitations by comparison that
+
+849
+00:44:36,250 --> 00:44:43,690
+python has anyway so but you know here's
+
+850
+00:44:41,889 --> 00:44:45,309
+a very simple example is that if you
+
+851
+00:44:43,690 --> 00:44:47,380
+write all of these things again and
+
+852
+00:44:45,309 --> 00:44:50,340
+again and again then it really hides the
+
+853
+00:44:47,380 --> 00:44:52,990
+fact that you've got you know two
+
+854
+00:44:50,340 --> 00:44:58,150
+convolutional layers one of this dried
+
+855
+00:44:52,989 --> 00:45:00,219
+one one of this dried - so my default
+
+856
+00:44:58,150 --> 00:45:02,410
+for standard canvas tried to as a
+
+857
+00:45:00,219 --> 00:45:06,429
+straight one this is a straight two and
+
+858
+00:45:02,409 --> 00:45:10,349
+then at the end so this the output of
+
+859
+00:45:06,429 --> 00:45:15,219
+this is going to be four by four okay
+
+860
+00:45:10,349 --> 00:45:17,559
+I've got a outcomes and an outcome vis
+
+861
+00:45:15,219 --> 00:45:21,219
+interesting you can see it's got two
+
+862
+00:45:17,559 --> 00:45:22,869
+separate convolutional layers each of
+
+863
+00:45:21,219 --> 00:45:26,500
+which is straight one so it's not
+
+864
+00:45:22,869 --> 00:45:30,190
+changing the geometry of the input okay
+
+865
+00:45:26,500 --> 00:45:33,639
+one of them is of length of the number
+
+866
+00:45:30,190 --> 00:45:35,590
+of classes just ignore K for now K is
+
+867
+00:45:33,639 --> 00:45:37,029
+equal to K is equal to 1 at this point
+
+868
+00:45:35,590 --> 00:45:38,530
+in the code so it's not doing anything
+
+869
+00:45:37,030 --> 00:45:40,750
+so what is equal to the length of the
+
+870
+00:45:38,530 --> 00:45:43,600
+number of classes one is equal to four
+
+871
+00:45:40,750 --> 00:45:46,840
+and so this is this idea of rather than
+
+872
+00:45:43,599 --> 00:45:50,110
+having a single comp layer that outputs
+
+873
+00:45:46,840 --> 00:45:53,559
+4 plus C let's have two complex one of
+
+874
+00:45:50,110 --> 00:45:56,470
+which outputs for one of which outputs C
+
+875
+00:45:53,559 --> 00:46:00,579
+and then I will just return them as a
+
+876
+00:45:56,469 --> 00:46:02,409
+list of two items that's nearly the same
+
+877
+00:46:00,579 --> 00:46:03,819
+thing it's nearly the same thing as
+
+878
+00:46:02,409 --> 00:46:06,960
+having a single column player that
+
+879
+00:46:03,820 --> 00:46:09,510
+outputs 4 + C but let's
+
+880
+00:46:06,960 --> 00:46:11,849
+it lets these layers specialize just a
+
+881
+00:46:09,510 --> 00:46:14,970
+little bit alright so like we talked
+
+882
+00:46:11,849 --> 00:46:17,760
+about this idea that when you've got
+
+883
+00:46:14,969 --> 00:46:19,799
+kind of multiple tasks they can share
+
+884
+00:46:17,760 --> 00:46:22,650
+layers but they don't have to share all
+
+885
+00:46:19,800 --> 00:46:25,550
+the layers so in this case our two tasks
+
+886
+00:46:22,650 --> 00:46:29,519
+which is fine create a classifier and
+
+887
+00:46:25,550 --> 00:46:31,849
+create down paths regression share every
+
+888
+00:46:29,519 --> 00:46:34,309
+single layer is set the very last one
+
+889
+00:46:31,849 --> 00:46:39,869
+okay and so this is going to spit out
+
+890
+00:46:34,309 --> 00:46:42,890
+two separate tensors and activations one
+
+891
+00:46:39,869 --> 00:46:48,030
+of the classes and one of the
+
+892
+00:46:42,889 --> 00:46:49,379
+coordinates why am i adding one that's
+
+893
+00:46:48,030 --> 00:46:51,859
+because I'm going to have one more class
+
+894
+00:46:49,380 --> 00:46:55,858
+for background right so if there aren't
+
+895
+00:46:51,858 --> 00:46:57,598
+actually sixteen objects to detect or if
+
+896
+00:46:55,858 --> 00:46:59,369
+there is an object in this corner
+
+897
+00:46:57,599 --> 00:47:02,480
+represented by this population or grid
+
+898
+00:46:59,369 --> 00:47:09,269
+cell then I want you to predict
+
+899
+00:47:02,480 --> 00:47:11,429
+background so that's the entirety that's
+
+900
+00:47:09,269 --> 00:47:15,329
+the entirety of our architecture it's
+
+901
+00:47:11,429 --> 00:47:17,969
+incredibly simple right but the point is
+
+902
+00:47:15,329 --> 00:47:20,818
+now that we you know we have this
+
+903
+00:47:17,969 --> 00:47:24,269
+convolutional air at the end one thing I
+
+904
+00:47:20,818 --> 00:47:30,179
+do do is that I at the very end I
+
+905
+00:47:24,269 --> 00:47:32,068
+flatten out the convolution basically
+
+906
+00:47:30,179 --> 00:47:35,699
+because I wrote the loss function to
+
+907
+00:47:32,068 --> 00:47:40,048
+expect flattened out tensor but I could
+
+908
+00:47:35,699 --> 00:47:41,848
+totally try doing that during the week
+
+909
+00:47:40,048 --> 00:47:46,369
+and see which one was easier to
+
+910
+00:47:41,849 --> 00:47:50,760
+understand okay so we've got our data
+
+911
+00:47:46,369 --> 00:47:54,568
+we've got our architecture so now all we
+
+912
+00:47:50,760 --> 00:47:58,460
+need is a loss function okay so the loss
+
+913
+00:47:54,568 --> 00:48:02,250
+function needs to look at each of these
+
+914
+00:47:58,460 --> 00:48:04,048
+16 sets of activations each of which
+
+915
+00:48:02,250 --> 00:48:08,309
+you're going to have four bounding box
+
+916
+00:48:04,048 --> 00:48:13,019
+coordinates and C plus one class
+
+917
+00:48:08,309 --> 00:48:15,740
+probabilities and aside are those
+
+918
+00:48:13,019 --> 00:48:15,739
+activations
+
+919
+00:48:16,980 --> 00:48:25,619
+close or far away from the object which
+
+920
+00:48:21,989 --> 00:48:29,279
+is kind of closest to this this this
+
+921
+00:48:25,619 --> 00:48:32,069
+grid cell in the image and if nothing's
+
+922
+00:48:29,280 --> 00:48:38,790
+there then you know are you predicting
+
+923
+00:48:32,070 --> 00:48:44,039
+background correctly so that turns out
+
+924
+00:48:38,789 --> 00:48:46,110
+to be very hard to do because let's go
+
+925
+00:48:44,039 --> 00:48:52,590
+back to the 2x2 example to keep it
+
+926
+00:48:46,110 --> 00:48:55,170
+simple the loss function actually needs
+
+927
+00:48:52,590 --> 00:48:58,860
+to take each of the objects in the image
+
+928
+00:48:55,170 --> 00:49:00,809
+and match them to one of these
+
+929
+00:48:58,860 --> 00:49:03,329
+convolutional grid cells to say like
+
+930
+00:49:00,809 --> 00:49:05,250
+this grid cell is responsible for this
+
+931
+00:49:03,329 --> 00:49:06,750
+particular object this grid cell is
+
+932
+00:49:05,250 --> 00:49:08,579
+responsible for this particular object
+
+933
+00:49:06,750 --> 00:49:10,619
+so then it can go ahead and say like
+
+934
+00:49:08,579 --> 00:49:12,119
+okay how close are the four coordinates
+
+935
+00:49:10,619 --> 00:49:14,190
+and how close are the master
+
+936
+00:49:12,119 --> 00:49:18,750
+probabilities right so this is called
+
+937
+00:49:14,190 --> 00:49:22,909
+the matching problem and in order to
+
+938
+00:49:18,750 --> 00:49:24,840
+explain it I'm going to show it to you
+
+939
+00:49:22,909 --> 00:49:26,549
+but what I'm going to do first is I'm
+
+940
+00:49:24,840 --> 00:49:28,019
+going to take a break okay and we're
+
+941
+00:49:26,550 --> 00:49:29,670
+going to come back and understand the
+
+942
+00:49:28,019 --> 00:49:31,889
+maxing map the matching problem so
+
+943
+00:49:29,670 --> 00:49:34,409
+during the break have a think about how
+
+944
+00:49:31,889 --> 00:49:35,909
+would you design a loss function here
+
+945
+00:49:34,409 --> 00:49:40,170
+how would you design a function which
+
+946
+00:49:35,909 --> 00:49:44,129
+has a lower value if these 16 times 4
+
+947
+00:49:40,170 --> 00:49:47,970
+plus K activations you know somehow
+
+948
+00:49:44,130 --> 00:49:49,410
+better reflect the up to 16 objects
+
+949
+00:49:47,969 --> 00:49:54,619
+which are actually in the ground truth
+
+950
+00:49:49,409 --> 00:49:54,619
+image and we'll come back at 7:40
+
+951
+00:49:55,960 --> 00:50:08,420
+so here's our goal our dependent
+
+952
+00:50:03,199 --> 00:50:10,578
+variable basically looks like that
+
+953
+00:50:08,420 --> 00:50:16,539
+and those are just an extract from our
+
+954
+00:50:10,579 --> 00:50:22,039
+CSV file trapped in dependence and our
+
+955
+00:50:16,539 --> 00:50:25,539
+final convolutional layer is going to be
+
+956
+00:50:22,039 --> 00:50:32,690
+a bunch of numbers which initially is a
+
+957
+00:50:25,539 --> 00:50:34,970
+four by four I in this case I think C is
+
+958
+00:50:32,690 --> 00:50:40,548
+equal to twenty plus we've got one for
+
+959
+00:50:34,969 --> 00:50:45,230
+background right so four plus 21 equals
+
+960
+00:50:40,548 --> 00:50:51,380
+26 all right four by four okay and then
+
+961
+00:50:45,230 --> 00:50:53,690
+we we flatten that out into vector we
+
+962
+00:50:51,380 --> 00:50:57,230
+flatten that out into a vector and so
+
+963
+00:50:53,690 --> 00:51:00,920
+basically our goal then is to say to
+
+964
+00:50:57,230 --> 00:51:03,949
+some particular set of activations that
+
+965
+00:51:00,920 --> 00:51:06,818
+ended up coming out of this model for
+
+966
+00:51:03,949 --> 00:51:10,189
+some let's let's pick some particular
+
+967
+00:51:06,818 --> 00:51:15,909
+dependent variable we need some function
+
+968
+00:51:10,190 --> 00:51:19,849
+that takes in that and that right and
+
+969
+00:51:15,909 --> 00:51:22,278
+where if it feeds back a higher number
+
+970
+00:51:19,849 --> 00:51:23,990
+if these activations aren't a good
+
+971
+00:51:22,278 --> 00:51:26,510
+reflection of the ground truth bounding
+
+972
+00:51:23,989 --> 00:51:27,798
+boxes or a lower number if it is a good
+
+973
+00:51:26,510 --> 00:51:30,559
+reflection of the ground through the
+
+974
+00:51:27,798 --> 00:51:36,048
+bounding boxes that's how cool we need
+
+975
+00:51:30,559 --> 00:51:40,910
+to create that much and so the general
+
+976
+00:51:36,048 --> 00:51:42,858
+approach to creating that function will
+
+977
+00:51:40,909 --> 00:51:46,969
+be to first of all to simplify it down
+
+978
+00:51:42,858 --> 00:51:53,858
+with the two-by-two version will be the
+
+979
+00:51:46,969 --> 00:51:53,858
+first of all well actually I'll show you
+
+980
+00:51:58,130 --> 00:52:04,380
+here's a model I trained earlier okay
+
+981
+00:52:02,070 --> 00:52:06,059
+and let's run through I've taken the
+
+982
+00:52:04,380 --> 00:52:08,910
+loss function and I've split it line by
+
+983
+00:52:06,059 --> 00:52:14,670
+line so that you can see every line that
+
+984
+00:52:08,909 --> 00:52:17,069
+goes into menu okay so so let's grab our
+
+985
+00:52:14,670 --> 00:52:19,980
+validation set data loader grab a batch
+
+986
+00:52:17,070 --> 00:52:21,360
+from it turn them into variables so we
+
+987
+00:52:19,980 --> 00:52:25,079
+can stick them into a model put the
+
+988
+00:52:21,360 --> 00:52:29,640
+model in evaluation mode stick that data
+
+989
+00:52:25,079 --> 00:52:32,789
+into we don't stick that data into our
+
+990
+00:52:29,639 --> 00:52:36,409
+model to grab a batch of activations and
+
+991
+00:52:32,789 --> 00:52:40,699
+remember that the final output
+
+992
+00:52:36,409 --> 00:52:43,710
+convolution returned two items that the
+
+993
+00:52:40,699 --> 00:52:46,049
+classes and the bounding boxes so we can
+
+994
+00:52:43,710 --> 00:52:49,789
+do destructuring assignment to grab the
+
+995
+00:52:46,050 --> 00:52:53,360
+two pieces the batch of classes and
+
+996
+00:52:49,789 --> 00:52:55,440
+outputs and the batch of bounding box
+
+997
+00:52:53,360 --> 00:52:58,620
+okay
+
+998
+00:52:55,440 --> 00:53:05,429
+and so as expected the batch of class
+
+999
+00:52:58,619 --> 00:53:09,569
+outputs is batch size 64 by 16 grid
+
+1000
+00:53:05,429 --> 00:53:11,940
+cells by 21 classes and then 64 by
+
+1001
+00:53:09,570 --> 00:53:14,370
+sixteen by four through the bounding box
+
+1002
+00:53:11,940 --> 00:53:17,789
+coordinates okay hopefully that all
+
+1003
+00:53:14,369 --> 00:53:20,130
+makes sense and after class go back into
+
+1004
+00:53:17,789 --> 00:53:21,900
+spec sure it's not obvious why these are
+
+1005
+00:53:20,130 --> 00:53:22,980
+the shapes make sure you get to the
+
+1006
+00:53:21,900 --> 00:53:29,210
+point where you understand where they
+
+1007
+00:53:22,980 --> 00:53:32,159
+are let's now go back and look at the
+
+1008
+00:53:29,210 --> 00:53:39,740
+ground truth so the ground truth is is
+
+1009
+00:53:32,159 --> 00:53:43,379
+in this Y variable so let's grab the
+
+1010
+00:53:39,739 --> 00:53:46,679
+bounding box part and the plas part and
+
+1011
+00:53:43,380 --> 00:53:49,010
+put them into these two Python variables
+
+1012
+00:53:46,679 --> 00:53:52,230
+and print them out and so there's our
+
+1013
+00:53:49,010 --> 00:53:54,780
+ground truth bounding boxes and there's
+
+1014
+00:53:52,230 --> 00:53:56,610
+our ground truth classes so this this
+
+1015
+00:53:54,780 --> 00:53:59,850
+image apparently has three objects you
+
+1016
+00:53:56,610 --> 00:54:03,269
+know so let's draw a picture of the
+
+1017
+00:53:59,849 --> 00:54:05,279
+three objects and there they are okay we
+
+1018
+00:54:03,269 --> 00:54:09,239
+already have a show ground truth
+
+1019
+00:54:05,280 --> 00:54:11,670
+function the torch ground truth function
+
+1020
+00:54:09,239 --> 00:54:14,669
+simply converts the tensors into numpy
+
+1021
+00:54:11,670 --> 00:54:18,210
+and passes them on so that we can print
+
+1022
+00:54:14,670 --> 00:54:22,200
+them out so here we've got the bounding
+
+1023
+00:54:18,210 --> 00:54:24,960
+box coordinates you'll notice that
+
+1024
+00:54:22,199 --> 00:54:27,689
+they've all been scaled to zero to what
+
+1025
+00:54:24,960 --> 00:54:30,059
+between 0 and 1 okay so basically we're
+
+1026
+00:54:27,690 --> 00:54:32,340
+treating the image as being like 1 by 1
+
+1027
+00:54:30,059 --> 00:54:34,650
+so these are all relative to the size of
+
+1028
+00:54:32,340 --> 00:54:37,410
+the image there's our three classes and
+
+1029
+00:54:34,650 --> 00:54:40,349
+so here they are chair is 0 dining table
+
+1030
+00:54:37,409 --> 00:54:44,989
+is 1 and 2 is so far this is not a model
+
+1031
+00:54:40,349 --> 00:54:51,269
+this is the ground truth great
+
+1032
+00:54:44,989 --> 00:54:55,079
+here is our 4 by 4 grid cells from our
+
+1033
+00:54:51,269 --> 00:54:58,739
+final convolutional letter so each of
+
+1034
+00:54:55,079 --> 00:55:01,170
+these square boxes different papers call
+
+1035
+00:54:58,739 --> 00:55:05,039
+them different things the three terms
+
+1036
+00:55:01,170 --> 00:55:09,840
+you're here are anchor boxes prior boxes
+
+1037
+00:55:05,039 --> 00:55:11,190
+or default boxes okay and through this
+
+1038
+00:55:09,840 --> 00:55:12,630
+explanation you'll get a sense of what
+
+1039
+00:55:11,190 --> 00:55:16,440
+they are but for now think of them as
+
+1040
+00:55:12,630 --> 00:55:19,170
+just these 16 squares I'm going to stick
+
+1041
+00:55:16,440 --> 00:55:22,679
+with the term anchor boxes ok these 16
+
+1042
+00:55:19,170 --> 00:55:24,750
+squares on our end devices so what we're
+
+1043
+00:55:22,679 --> 00:55:26,759
+going to do for this loss function is
+
+1044
+00:55:24,750 --> 00:55:28,590
+we're going to go through a matching
+
+1045
+00:55:26,760 --> 00:55:31,170
+problem where we're going to take every
+
+1046
+00:55:28,590 --> 00:55:35,460
+one of these 16 boxes and we're going to
+
+1047
+00:55:31,170 --> 00:55:37,349
+see which one of these three round truth
+
+1048
+00:55:35,460 --> 00:55:43,679
+objects has the highest amount of
+
+1049
+00:55:37,349 --> 00:55:47,819
+overlap with this square okay so to do
+
+1050
+00:55:43,679 --> 00:55:48,809
+that we're going to need to know we
+
+1051
+00:55:47,820 --> 00:55:50,940
+really have to have some way of
+
+1052
+00:55:48,809 --> 00:55:53,789
+measuring amount of overload and there's
+
+1053
+00:55:50,940 --> 00:55:57,179
+a standard function for this which is
+
+1054
+00:55:53,789 --> 00:55:59,670
+called the jacquard in this and the
+
+1055
+00:55:57,179 --> 00:56:04,129
+jacquard index is very simple I'll do it
+
+1056
+00:55:59,670 --> 00:56:07,740
+through example let's take this sofa
+
+1057
+00:56:04,130 --> 00:56:10,349
+okay so if we take this sofa and let's
+
+1058
+00:56:07,739 --> 00:56:13,589
+take the jacquard index of this sofa
+
+1059
+00:56:10,349 --> 00:56:15,150
+with this grid cell here all right what
+
+1060
+00:56:13,590 --> 00:56:18,740
+we do is we find the area of their
+
+1061
+00:56:15,150 --> 00:56:18,740
+intersection so
+
+1062
+00:56:22,568 --> 00:56:30,710
+here is the area of their intersection
+
+1063
+00:56:26,469 --> 00:56:37,429
+okay and then we find the area of their
+
+1064
+00:56:30,710 --> 00:56:39,440
+union so here is the area of their unit
+
+1065
+00:56:37,429 --> 00:56:44,419
+smart phone here's the area of their
+
+1066
+00:56:39,440 --> 00:56:49,068
+union okay and then we say take the
+
+1067
+00:56:44,420 --> 00:56:53,480
+intersection divided by the union okay
+
+1068
+00:56:49,068 --> 00:56:58,579
+and so that's jacquard index also known
+
+1069
+00:56:53,480 --> 00:57:01,338
+as iou intersection over all right so of
+
+1070
+00:56:58,579 --> 00:57:04,250
+two things overlap by more compared to
+
+1071
+00:57:01,338 --> 00:57:12,739
+their total sizes together they have a
+
+1072
+00:57:04,250 --> 00:57:14,530
+higher jacquard alright so we're going
+
+1073
+00:57:12,739 --> 00:57:16,818
+to go through and find the jacquard
+
+1074
+00:57:14,530 --> 00:57:19,309
+overlap for each one of these three
+
+1075
+00:57:16,818 --> 00:57:21,588
+objects versus each of these 16 anchor
+
+1076
+00:57:19,309 --> 00:57:25,069
+boxes and so that's going to give us a 3
+
+1077
+00:57:21,588 --> 00:57:27,230
+by 16 matrix but for every ground truth
+
+1078
+00:57:25,068 --> 00:57:32,139
+object and above every anchor box how
+
+1079
+00:57:27,230 --> 00:57:35,740
+much overlap is there so here are the
+
+1080
+00:57:32,139 --> 00:57:38,838
+coordinates of all of our anchor boxes
+
+1081
+00:57:35,739 --> 00:57:46,639
+in this case they're printed as Center
+
+1082
+00:57:38,838 --> 00:57:49,489
+and height width and so here is the
+
+1083
+00:57:46,639 --> 00:57:52,250
+amount of overlap between and as you can
+
+1084
+00:57:49,489 --> 00:57:55,548
+see it's 3 by 16 right so for each of
+
+1085
+00:57:52,250 --> 00:57:58,099
+the three ground truth objects each of
+
+1086
+00:57:55,548 --> 00:58:01,039
+these 16 anchor boxes how much do they
+
+1087
+00:57:58,099 --> 00:58:07,880
+overlap right so you can see here 0 1 2
+
+1088
+00:58:01,039 --> 00:58:11,119
+3 4 5 6 7 8 the 8 anchor box overlaps a
+
+1089
+00:58:07,880 --> 00:58:15,650
+little bit with the second ground truth
+
+1090
+00:58:11,119 --> 00:58:18,099
+object okay so what we could do now is
+
+1091
+00:58:15,650 --> 00:58:21,170
+we could take the max of dimension 1
+
+1092
+00:58:18,099 --> 00:58:23,119
+right so the max of each row and that
+
+1093
+00:58:21,170 --> 00:58:25,700
+will tell us for each ground truth
+
+1094
+00:58:23,119 --> 00:58:30,079
+object what's the maximum amount that
+
+1095
+00:58:25,699 --> 00:58:32,719
+overlaps with some grit zone and it also
+
+1096
+00:58:30,079 --> 00:58:33,260
+tells us remember PI torch when you say
+
+1097
+00:58:32,719 --> 00:58:35,358
+Mets
+
+1098
+00:58:33,260 --> 00:58:38,810
+two things it says what is the max and
+
+1099
+00:58:35,358 --> 00:58:42,710
+what is the index both amass so for each
+
+1100
+00:58:38,809 --> 00:58:48,139
+of these things the 14th grid cell is
+
+1101
+00:58:42,710 --> 00:58:50,420
+the largest is the largest overlap for
+
+1102
+00:58:48,139 --> 00:58:58,069
+the first round truth thirteen for the
+
+1103
+00:58:50,420 --> 00:59:01,309
+second and 11 okay so that tells us you
+
+1104
+00:58:58,070 --> 00:59:03,530
+know a pretty good way of assigning each
+
+1105
+00:59:01,309 --> 00:59:05,480
+of these ground truth objects to a grid
+
+1106
+00:59:03,530 --> 00:59:08,690
+cell what what the matches is which one
+
+1107
+00:59:05,480 --> 00:59:10,699
+is the highest overlap but we're going
+
+1108
+00:59:08,690 --> 00:59:14,269
+to do a second thing we're also going to
+
+1109
+00:59:10,699 --> 00:59:16,730
+look at max over dimensions zero and Max
+
+1110
+00:59:14,269 --> 00:59:20,389
+over dimension zero is going to tell us
+
+1111
+00:59:16,730 --> 00:59:23,719
+what's the maximum amount of overlap for
+
+1112
+00:59:20,389 --> 00:59:27,049
+each grid cell so across all of the
+
+1113
+00:59:23,719 --> 00:59:29,329
+ground truth objects right and so
+
+1114
+00:59:27,050 --> 00:59:32,539
+particularly interesting here tells us
+
+1115
+00:59:29,329 --> 00:59:35,509
+for every grid cell of sixteen what's
+
+1116
+00:59:32,539 --> 00:59:39,650
+the index of the ground truth object
+
+1117
+00:59:35,510 --> 00:59:41,570
+which overlaps with it the most zero is
+
+1118
+00:59:39,650 --> 00:59:44,680
+a bit overloaded here zero could either
+
+1119
+00:59:41,570 --> 00:59:48,500
+mean the amount of overlap was zero or
+
+1120
+00:59:44,679 --> 00:59:51,799
+it could mean its largest overlap is
+
+1121
+00:59:48,500 --> 00:59:58,280
+with object index zero it's going to
+
+1122
+00:59:51,800 --> 01:00:00,619
+turn out not to matter so there's a
+
+1123
+00:59:58,280 --> 01:00:02,630
+function called map to ground truth
+
+1124
+01:00:00,619 --> 01:00:07,119
+which I'm not going to worry about for
+
+1125
+01:00:02,630 --> 01:00:10,519
+now it's it's super simple code but it's
+
+1126
+01:00:07,119 --> 01:00:11,829
+slightly awkward to to think about but
+
+1127
+01:00:10,519 --> 01:00:15,019
+basically what it does is it combines
+
+1128
+01:00:11,829 --> 01:00:18,099
+these two sets of overlaps in a way
+
+1129
+01:00:15,019 --> 01:00:23,509
+described in the SSD paper to assign
+
+1130
+01:00:18,099 --> 01:00:25,849
+every anchor box to a ground truth
+
+1131
+01:00:23,510 --> 01:00:28,940
+object and basically the way of the
+
+1132
+01:00:25,849 --> 01:00:31,579
+signs that is each of these ones each of
+
+1133
+01:00:28,940 --> 01:00:33,500
+these three gets assigned in this way
+
+1134
+01:00:31,579 --> 01:00:36,769
+right so this one this object is
+
+1135
+01:00:33,500 --> 01:00:39,500
+assigned to bound to anchor box 14 this
+
+1136
+01:00:36,769 --> 01:00:41,840
+one to 13 and this one through 11 and
+
+1137
+01:00:39,500 --> 01:00:44,750
+then of the rest of the anchor boxes
+
+1138
+01:00:41,840 --> 01:00:47,298
+they get assigned to anything which they
+
+1139
+01:00:44,750 --> 01:00:51,018
+have an overlap of at least point 5
+
+1140
+01:00:47,298 --> 01:00:53,389
+with if anything that doesn't which
+
+1141
+01:00:51,018 --> 01:00:56,058
+isn't in either of those criteria ie
+
+1142
+01:00:53,389 --> 01:00:58,429
+either isn't a maximum or doesn't have a
+
+1143
+01:00:56,059 --> 01:01:01,548
+greater than 0.5 overlap is considered
+
+1144
+01:00:58,429 --> 01:01:03,588
+to be a cell which contains background
+
+1145
+01:01:01,548 --> 01:01:06,048
+okay so that's all the map to ground
+
+1146
+01:01:03,588 --> 01:01:09,288
+truth motion does and so after we go
+
+1147
+01:01:06,048 --> 01:01:12,228
+through it you can see now a list of all
+
+1148
+01:01:09,289 --> 01:01:14,449
+of the assignments and you can also see
+
+1149
+01:01:12,228 --> 01:01:16,098
+anywhere that there's a zero here it
+
+1150
+01:01:14,449 --> 01:01:17,418
+means it was assigned a background in
+
+1151
+01:01:16,099 --> 01:01:19,909
+fact anywhere it's less than point five
+
+1152
+01:01:17,418 --> 01:01:22,848
+here give us a sign in the background so
+
+1153
+01:01:19,909 --> 01:01:25,009
+you can see those three which kind of
+
+1154
+01:01:22,849 --> 01:01:26,659
+forced assignments that puts a high
+
+1155
+01:01:25,009 --> 01:01:31,338
+number in just to make sure all of their
+
+1156
+01:01:26,659 --> 01:01:34,429
+assigned all right so we can now go
+
+1157
+01:01:31,338 --> 01:01:36,739
+ahead and convert those two classes and
+
+1158
+01:01:34,429 --> 01:01:38,630
+then we can make sure we just grab those
+
+1159
+01:01:36,739 --> 01:01:41,509
+which are at least point five in size
+
+1160
+01:01:38,630 --> 01:01:46,309
+and so finally that allows us to spit
+
+1161
+01:01:41,509 --> 01:01:50,358
+out the three pluses that are being
+
+1162
+01:01:46,309 --> 01:01:54,528
+predicted we can then put that back into
+
+1163
+01:01:50,358 --> 01:01:57,259
+the bounding boxes and so here are what
+
+1164
+01:01:54,528 --> 01:01:59,719
+each of those bounding boxes is sorry
+
+1165
+01:01:57,259 --> 01:02:03,409
+what each of those anchor boxes is meant
+
+1166
+01:01:59,719 --> 01:02:06,858
+to be predicting okay so you can see
+
+1167
+01:02:03,409 --> 01:02:11,088
+sofa dining room table chair which makes
+
+1168
+01:02:06,858 --> 01:02:12,798
+perfect sense if we go back to here this
+
+1169
+01:02:11,088 --> 01:02:15,048
+is meant to be predicting so far this is
+
+1170
+01:02:12,798 --> 01:02:16,938
+over this is meant to be predicting
+
+1171
+01:02:15,048 --> 01:02:19,038
+dining room table this has been to be
+
+1172
+01:02:16,938 --> 01:02:22,158
+predicting chair and everything else has
+
+1173
+01:02:19,039 --> 01:02:25,719
+been to be predicting background so
+
+1174
+01:02:22,159 --> 01:02:25,719
+that's the matching stage
+
+1175
+01:02:29,829 --> 01:02:38,009
+so once we've done the matching stage
+
+1176
+01:02:32,248 --> 01:02:42,338
+we're basically done we can take the
+
+1177
+01:02:38,009 --> 01:02:44,048
+activations just grab those which which
+
+1178
+01:02:42,338 --> 01:02:47,469
+matched that's what this positive
+
+1179
+01:02:44,048 --> 01:02:51,038
+indexes are subtract from those the
+
+1180
+01:02:47,469 --> 01:02:53,889
+ground truth bounding boxes just for
+
+1181
+01:02:51,039 --> 01:02:55,140
+those which matched positive ones take
+
+1182
+01:02:53,889 --> 01:02:58,058
+the absolute value of the difference
+
+1183
+01:02:55,139 --> 01:03:04,719
+take the mean of that and that's not one
+
+1184
+01:02:58,059 --> 01:03:06,729
+loss and then for the classifications we
+
+1185
+01:03:04,719 --> 01:03:11,048
+can just do a cross entropy and then
+
+1186
+01:03:06,728 --> 01:03:18,728
+before we can add them together okay so
+
+1187
+01:03:11,048 --> 01:03:19,838
+that's the basic idea there's a few and
+
+1188
+01:03:18,728 --> 01:03:22,409
+so this is this is what's going to
+
+1189
+01:03:19,838 --> 01:03:28,420
+happen right we're going to end up with
+
+1190
+01:03:22,409 --> 01:03:31,118
+16 recommended you know predicted
+
+1191
+01:03:28,420 --> 01:03:32,739
+bounding boxes coming out most of them
+
+1192
+01:03:31,119 --> 01:03:34,778
+will be background see all these ones
+
+1193
+01:03:32,739 --> 01:03:37,599
+that say BG but from time to time
+
+1194
+01:03:34,778 --> 01:03:41,139
+they'll say this is a cow this is potted
+
+1195
+01:03:37,599 --> 01:03:43,869
+plant this is par okay if you're
+
+1196
+01:03:41,139 --> 01:03:45,748
+wondering like what does it predict in
+
+1197
+01:03:43,869 --> 01:03:48,459
+terms of the bounding box of background
+
+1198
+01:03:45,748 --> 01:03:52,448
+the answer is a totally ignores it right
+
+1199
+01:03:48,458 --> 01:03:54,188
+that's why we had this only positive
+
+1200
+01:03:52,449 --> 01:03:57,639
+indexes thing here right so if it's
+
+1201
+01:03:54,188 --> 01:03:59,318
+background there's no you know sense of
+
+1202
+01:03:57,639 --> 01:04:01,328
+like where's the correct bounding box in
+
+1203
+01:03:59,318 --> 01:04:03,219
+background that's totally meaningless so
+
+1204
+01:04:01,329 --> 01:04:04,719
+the only ones where the bounding box
+
+1205
+01:04:03,219 --> 01:04:09,909
+makes sense out of all these are the
+
+1206
+01:04:04,719 --> 01:04:17,079
+ones that there are some important
+
+1207
+01:04:09,909 --> 01:04:19,989
+literal tweets what is that the how do
+
+1208
+01:04:17,079 --> 01:04:23,818
+we interpret the activations and so the
+
+1209
+01:04:19,989 --> 01:04:28,420
+way we interpret the activations is
+
+1210
+01:04:23,818 --> 01:04:31,119
+defined here in activation two bounding
+
+1211
+01:04:28,420 --> 01:04:34,239
+box and so basically we grab the
+
+1212
+01:04:31,119 --> 01:04:37,059
+activations we stick them throughthe an
+
+1213
+01:04:34,239 --> 01:04:40,778
+and so remember fan is the same as
+
+1214
+01:04:37,059 --> 01:04:42,850
+sigmoid shape except it's scaled to be
+
+1215
+01:04:40,778 --> 01:04:45,610
+between negative 1 and 1
+
+1216
+01:04:42,849 --> 01:04:46,869
+but read zero okay so it's basically a
+
+1217
+01:04:45,610 --> 01:04:49,120
+sigmoid function that goes between
+
+1218
+01:04:46,869 --> 01:04:51,639
+negative one and one and so that forces
+
+1219
+01:04:49,119 --> 01:04:55,000
+it to be within that range and we then
+
+1220
+01:04:51,639 --> 01:04:58,529
+say okay let's grab the the actual
+
+1221
+01:04:55,000 --> 01:05:01,239
+position of the anchor boxes and we will
+
+1222
+01:04:58,530 --> 01:05:04,360
+move them around according to the value
+
+1223
+01:05:01,239 --> 01:05:07,779
+of the activations divided by two so in
+
+1224
+01:05:04,360 --> 01:05:11,019
+other words each each each activate each
+
+1225
+01:05:07,780 --> 01:05:13,420
+edge as predicted bounding box can be
+
+1226
+01:05:11,019 --> 01:05:15,880
+moved by up to fifty percent of a grid
+
+1227
+01:05:13,420 --> 01:05:18,670
+size from where its default position is
+
+1228
+01:05:15,880 --> 01:05:21,579
+and ditto for its height and width it
+
+1229
+01:05:18,670 --> 01:05:28,570
+can be up to twice as being all half as
+
+1230
+01:05:21,579 --> 01:05:29,889
+big as its default size so so that's one
+
+1231
+01:05:28,570 --> 01:05:32,050
+thing is we have to convert the
+
+1232
+01:05:29,889 --> 01:05:34,569
+activations into some kind of way of
+
+1233
+01:05:32,050 --> 01:05:37,930
+scaling those default length of box
+
+1234
+01:05:34,570 --> 01:05:42,400
+positions another thing is we don't
+
+1235
+01:05:37,929 --> 01:05:47,230
+actually use cross entropy we actually
+
+1236
+01:05:42,400 --> 01:05:49,329
+use binary cross entropy loss okay so
+
+1237
+01:05:47,230 --> 01:05:52,059
+remember binary cross entropy loss is
+
+1238
+01:05:49,329 --> 01:05:56,650
+what we normally use for multi-label
+
+1239
+01:05:52,059 --> 01:05:59,049
+classification like in the planet amazon
+
+1240
+01:05:56,650 --> 01:06:00,670
+satellite competition each satellite
+
+1241
+01:05:59,050 --> 01:06:03,100
+image you could have multiple things in
+
+1242
+01:06:00,670 --> 01:06:05,380
+it okay so if it's got multiple things
+
+1243
+01:06:03,099 --> 01:06:07,420
+in it you can't use soft max because
+
+1244
+01:06:05,380 --> 01:06:13,240
+soft max kind of really encourages just
+
+1245
+01:06:07,420 --> 01:06:16,659
+one thing to have in our case each
+
+1246
+01:06:13,239 --> 01:06:20,139
+anchor box can only have one object
+
+1247
+01:06:16,659 --> 01:06:22,359
+associated with it so it's it's not for
+
+1248
+01:06:20,139 --> 01:06:25,750
+that reason that we're avoiding song max
+
+1249
+01:06:22,360 --> 01:06:28,269
+it's something else which is it's
+
+1250
+01:06:25,750 --> 01:06:31,780
+possible for an anchor box to have
+
+1251
+01:06:28,269 --> 01:06:33,579
+nothing associated with it so there'd be
+
+1252
+01:06:31,780 --> 01:06:36,010
+two ways to handle that is this either
+
+1253
+01:06:33,579 --> 01:06:38,829
+at background one would be to say you
+
+1254
+01:06:36,010 --> 01:06:42,370
+know what backgrounds just a class right
+
+1255
+01:06:38,829 --> 01:06:44,440
+so let's use soft max right and just
+
+1256
+01:06:42,369 --> 01:06:48,699
+treat background as one of the classes
+
+1257
+01:06:44,440 --> 01:06:50,679
+that the soft max could could predict a
+
+1258
+01:06:48,699 --> 01:06:52,559
+lot of people have done it this way I
+
+1259
+01:06:50,679 --> 01:06:54,940
+don't like that though right because
+
+1260
+01:06:52,559 --> 01:06:56,139
+that's a really hard thing to ask of
+
+1261
+01:06:54,940 --> 01:06:59,019
+your network do
+
+1262
+01:06:56,139 --> 01:07:03,009
+it's basically to say can you tell
+
+1263
+01:06:59,019 --> 01:07:05,559
+whether this grid cell doesn't have any
+
+1264
+01:07:03,010 --> 01:07:08,160
+of the 20 objects that I'm interested
+
+1265
+01:07:05,559 --> 01:07:12,400
+with a jacquard overlap of more than 0.5
+
+1266
+01:07:08,159 --> 01:07:15,639
+now that's a really hard thing to put
+
+1267
+01:07:12,400 --> 01:07:18,340
+into a single computation on the other
+
+1268
+01:07:15,639 --> 01:07:22,239
+hand what if we just had for each class
+
+1269
+01:07:18,340 --> 01:07:25,690
+you know is it a motorbike is it a bus
+
+1270
+01:07:22,239 --> 01:07:27,669
+is it a person it's the bird is it a
+
+1271
+01:07:25,690 --> 01:07:29,200
+dining room table right and then it can
+
+1272
+01:07:27,670 --> 01:07:31,090
+check each of those would be no no no no
+
+1273
+01:07:29,199 --> 01:07:33,939
+and it snowed all of them and it's like
+
+1274
+01:07:31,090 --> 01:07:36,519
+oh it's background all right so that's
+
+1275
+01:07:33,940 --> 01:07:39,700
+that's the way I'm doing it is it's not
+
+1276
+01:07:36,519 --> 01:07:44,650
+that we could have multiple true labels
+
+1277
+01:07:39,699 --> 01:07:48,669
+but we can have 0 and so that's what's
+
+1278
+01:07:44,650 --> 01:07:51,070
+going on here we take our target and we
+
+1279
+01:07:48,670 --> 01:07:54,309
+do a one hot embedding with number of
+
+1280
+01:07:51,070 --> 01:07:57,519
+classes plus 1 so this stage we do have
+
+1281
+01:07:54,309 --> 01:08:00,789
+the idea of background but then we
+
+1282
+01:07:57,519 --> 01:08:04,509
+remove the last problem so the Batman
+
+1283
+01:08:00,789 --> 01:08:09,809
+columns now gone right and so now this
+
+1284
+01:08:04,510 --> 01:08:13,210
+vectors either of all zeros basically
+
+1285
+01:08:09,809 --> 01:08:17,500
+meaning there's nothing here or it has
+
+1286
+01:08:13,210 --> 01:08:20,489
+at most one one and so then we can use
+
+1287
+01:08:17,500 --> 01:08:26,680
+binary cross-entropy
+
+1288
+01:08:20,489 --> 01:08:31,779
+predictions with that that is a minor
+
+1289
+01:08:26,680 --> 01:08:34,270
+tweak right but like it's the kind of
+
+1290
+01:08:31,779 --> 01:08:36,340
+minor tweak that I I want you to think
+
+1291
+01:08:34,270 --> 01:08:39,490
+about and understand because it's a
+
+1292
+01:08:36,340 --> 01:08:41,680
+really like it makes a it makes a really
+
+1293
+01:08:39,489 --> 01:08:44,050
+big difference in practice to your
+
+1294
+01:08:41,680 --> 01:08:45,610
+training and it's the kind of thing that
+
+1295
+01:08:44,050 --> 01:08:47,529
+you'll see a lot of papers talk about
+
+1296
+01:08:45,609 --> 01:08:49,630
+like often when there's some increment
+
+1297
+01:08:47,529 --> 01:08:51,189
+over some previous paper it'll be
+
+1298
+01:08:49,630 --> 01:08:54,900
+something like this that we somebody to
+
+1299
+01:08:51,189 --> 01:08:57,549
+realize this like Oh trying to predict a
+
+1300
+01:08:54,899 --> 01:08:59,589
+background category using a soft mass is
+
+1301
+01:08:57,550 --> 01:09:01,539
+really hard to do what if we use the
+
+1302
+01:08:59,590 --> 01:09:04,180
+binary cross-entropy instead you know
+
+1303
+01:09:01,539 --> 01:09:07,420
+and so it's kind of like if you
+
+1304
+01:09:04,180 --> 01:09:08,670
+understand what this is doing and more
+
+1305
+01:09:07,420 --> 01:09:11,670
+importantly why
+
+1306
+01:09:08,670 --> 01:09:14,069
+yeah that's a really good test of your
+
+1307
+01:09:11,670 --> 01:09:16,679
+understanding of the material and if you
+
+1308
+01:09:14,069 --> 01:09:18,960
+don't that's fine Brad just shows you
+
+1309
+01:09:16,679 --> 01:09:21,719
+this is something that you need to let
+
+1310
+01:09:18,960 --> 01:09:22,948
+me go back and re-watch this part of the
+
+1311
+01:09:21,719 --> 01:09:25,170
+video and talk to some of your
+
+1312
+01:09:22,948 --> 01:09:28,919
+classmates and if necessary ask for the
+
+1313
+01:09:25,170 --> 01:09:33,779
+forum and sure you understand what are
+
+1314
+01:09:28,920 --> 01:09:37,259
+we doing okay so that's what this that's
+
+1315
+01:09:33,779 --> 01:09:39,870
+what this binary cross entropy loss loss
+
+1316
+01:09:37,259 --> 01:09:41,548
+function is doing so basically in this
+
+1317
+01:09:39,869 --> 01:09:43,798
+part of the code we've got this custom
+
+1318
+01:09:41,548 --> 01:09:47,009
+loss function we've got the thing that
+
+1319
+01:09:43,798 --> 01:09:48,750
+calculates the declared index we've got
+
+1320
+01:09:47,009 --> 01:09:50,939
+the thing that converts activations to
+
+1321
+01:09:48,750 --> 01:09:54,750
+bounding balls we've got the thing that
+
+1322
+01:09:50,939 --> 01:09:58,789
+does map to ground truth okay and that's
+
+1323
+01:09:54,750 --> 01:10:02,069
+it all that's left is the SSD loss
+
+1324
+01:09:58,789 --> 01:10:07,019
+function so the SSD loss function this
+
+1325
+01:10:02,069 --> 01:10:09,529
+is actually what we set yeah as they are
+
+1326
+01:10:07,020 --> 01:10:12,929
+crit as our criterion is SSD
+
+1327
+01:10:09,529 --> 01:10:17,369
+so what SSD lost class is it it loops
+
+1328
+01:10:12,929 --> 01:10:20,940
+through each image in the minivan and it
+
+1329
+01:10:17,369 --> 01:10:24,090
+calls SSD one loss so Assisting loss for
+
+1330
+01:10:20,939 --> 01:10:25,379
+one image so this function is really
+
+1331
+01:10:24,090 --> 01:10:27,679
+where it's all happening this is
+
+1332
+01:10:25,380 --> 01:10:31,980
+calculating the SSD loss for one image
+
+1333
+01:10:27,679 --> 01:10:39,060
+so we D structure our bounding box in
+
+1334
+01:10:31,979 --> 01:10:40,468
+class and basically there's a what is
+
+1335
+01:10:39,060 --> 01:10:45,539
+this doing here actually this is worth
+
+1336
+01:10:40,469 --> 01:10:46,980
+mentioning a lot of code you find out
+
+1337
+01:10:45,539 --> 01:10:49,439
+there on the Internet
+
+1338
+01:10:46,979 --> 01:10:52,729
+doesn't work with mini-batches you know
+
+1339
+01:10:49,439 --> 01:10:52,729
+it only does like one thing at a time
+
+1340
+01:10:53,219 --> 01:10:58,260
+so in this case we you know all this
+
+1341
+01:10:56,488 --> 01:11:00,409
+stuff is working it's not exactly a mini
+
+1342
+01:10:58,260 --> 01:11:03,239
+batch at a time it's on a whole bunch of
+
+1343
+01:11:00,409 --> 01:11:05,550
+ground truth objects at a time and the
+
+1344
+01:11:03,238 --> 01:11:08,779
+data loader is being fed a mini batch at
+
+1345
+01:11:05,550 --> 01:11:12,600
+a time to do or the convolutional layers
+
+1346
+01:11:08,779 --> 01:11:15,479
+because we could have different numbers
+
+1347
+01:11:12,600 --> 01:11:18,179
+of ground truth objects in each image
+
+1348
+01:11:15,479 --> 01:11:21,649
+but a tensor has to be the strict
+
+1349
+01:11:18,179 --> 01:11:24,350
+rectangular shape fast AI automatically
+
+1350
+01:11:21,649 --> 01:11:27,859
+with zeros anything that's not the same
+
+1351
+01:11:24,350 --> 01:11:29,739
+life thing I fairly recently added but
+
+1352
+01:11:27,859 --> 01:11:32,359
+it's super handy almost no other
+
+1353
+01:11:29,738 --> 01:11:34,879
+libraries do that but that does mean
+
+1354
+01:11:32,359 --> 01:11:37,279
+that you then have to make sure that you
+
+1355
+01:11:34,880 --> 01:11:39,920
+get rid of those zeros right so you can
+
+1356
+01:11:37,279 --> 01:11:43,599
+see here I'm checking to find all of the
+
+1357
+01:11:39,920 --> 01:11:46,550
+all of the non zeros and I'm only
+
+1358
+01:11:43,600 --> 01:11:48,260
+keeping those this is just getting rid
+
+1359
+01:11:46,550 --> 01:11:53,510
+of any of the bounding boxes that are
+
+1360
+01:11:48,260 --> 01:11:55,670
+actually I'm just padding yeah okay so
+
+1361
+01:11:53,510 --> 01:11:57,230
+get rid of the padding turn the
+
+1362
+01:11:55,670 --> 01:11:58,880
+activations bounding boxes do the
+
+1363
+01:11:57,229 --> 01:12:00,259
+jacquard doing about this is all the
+
+1364
+01:11:58,880 --> 01:12:03,770
+stuff we just went through it's on line
+
+1365
+01:12:00,260 --> 01:12:04,909
+by line underneath right check that
+
+1366
+01:12:03,770 --> 01:12:08,179
+there's an overlap greater than
+
+1367
+01:12:04,908 --> 01:12:11,889
+something around 0.4 0.5 different
+
+1368
+01:12:08,179 --> 01:12:11,890
+papers use different values for this
+
+1369
+01:12:12,310 --> 01:12:21,590
+find the things that match but the class
+
+1370
+01:12:17,810 --> 01:12:24,560
+put the background class for those and
+
+1371
+01:12:21,590 --> 01:12:26,750
+then finally get the l1 loss for the
+
+1372
+01:12:24,560 --> 01:12:27,890
+localization part get the binary
+
+1373
+01:12:26,750 --> 01:12:30,560
+cross-entropy boss for the
+
+1374
+01:12:27,890 --> 01:12:33,650
+classification part turn those two
+
+1375
+01:12:30,560 --> 01:12:40,969
+pieces and then finally add them
+
+1376
+01:12:33,649 --> 01:12:43,250
+together so that's a lot going on and it
+
+1377
+01:12:40,969 --> 01:12:47,779
+might take a few watches of the video to
+
+1378
+01:12:43,250 --> 01:12:50,479
+in the code to fully understand it but
+
+1379
+01:12:47,779 --> 01:12:52,488
+the basic idea now is that we now have
+
+1380
+01:12:50,479 --> 01:12:55,158
+the things we need we have the data we
+
+1381
+01:12:52,488 --> 01:12:56,779
+have the architecture and we have the
+
+1382
+01:12:55,158 --> 01:13:02,479
+loss function so now we've got those
+
+1383
+01:12:56,779 --> 01:13:08,929
+three things we can train my finder and
+
+1384
+01:13:02,479 --> 01:13:16,009
+train for a bit and we get down to 25
+
+1385
+01:13:08,929 --> 01:13:17,960
+and the end we can see how we went
+
+1386
+01:13:16,010 --> 01:13:19,429
+so obviously this isn't quite what we
+
+1387
+01:13:17,960 --> 01:13:21,590
+want when we do practice we'd kind of
+
+1388
+01:13:19,429 --> 01:13:23,270
+remove the background ones or some
+
+1389
+01:13:21,590 --> 01:13:24,710
+threshold but it's like it's on the
+
+1390
+01:13:23,270 --> 01:13:27,890
+right track there's a dog in the middle
+
+1391
+01:13:24,710 --> 01:13:29,420
+let's go to 0.34 there's a bird here in
+
+1392
+01:13:27,890 --> 01:13:33,560
+the middle of 0.94
+
+1393
+01:13:29,420 --> 01:13:35,029
+you know something's working okay yeah
+
+1394
+01:13:33,560 --> 01:13:35,220
+I've got a few concerns I don't think
+
+1395
+01:13:35,029 --> 01:13:36,779
+it's
+
+1396
+01:13:35,220 --> 01:13:39,619
+I don't see anything saying motorcycle
+
+1397
+01:13:36,779 --> 01:13:41,519
+here it says bicycle which is in great
+
+1398
+01:13:39,619 --> 01:13:43,800
+there's nothing for the potted plant
+
+1399
+01:13:41,520 --> 01:13:46,110
+that's big enough but that's not
+
+1400
+01:13:43,800 --> 01:13:51,529
+surprising because all of our anchor
+
+1401
+01:13:46,109 --> 01:13:54,989
+boxes were small they were 4x4 grid so
+
+1402
+01:13:51,529 --> 01:13:57,539
+to go from here to something that's
+
+1403
+01:13:54,989 --> 01:14:00,809
+going to be more accurate what we're
+
+1404
+01:13:57,539 --> 01:14:04,529
+gonna do is to create way more and the
+
+1405
+01:14:00,810 --> 01:14:10,410
+buses okay so there's a couple of ways
+
+1406
+01:14:04,529 --> 01:14:12,210
+we can create quick question and I'm
+
+1407
+01:14:10,409 --> 01:14:14,399
+just getting lost in the fact that the
+
+1408
+01:14:12,210 --> 01:14:19,260
+anchor boxes in the bounding boxes are
+
+1409
+01:14:14,399 --> 01:14:21,439
+how are they not the same I must be
+
+1410
+01:14:19,260 --> 01:14:26,699
+missing something
+
+1411
+01:14:21,439 --> 01:14:30,000
+anchor boxes are the square the fixed
+
+1412
+01:14:26,699 --> 01:14:33,989
+square grid cells these are the anchor
+
+1413
+01:14:30,000 --> 01:14:37,340
+boxes they're in an exact specific
+
+1414
+01:14:33,989 --> 01:14:39,239
+unmoving location the bounding boxes are
+
+1415
+01:14:37,340 --> 01:14:43,850
+these are three things the bounding
+
+1416
+01:14:39,239 --> 01:14:43,849
+boxes these 16 things at anchor boxes
+
+1417
+01:14:45,140 --> 01:14:53,850
+okay so we're going to create lots more
+
+1418
+01:14:49,850 --> 01:14:55,950
+anchor bosses so there's three ways to
+
+1419
+01:14:53,850 --> 01:15:00,720
+do that and I've kind of drawn some of
+
+1420
+01:14:55,949 --> 01:15:03,269
+them printed some of them here one is to
+
+1421
+01:15:00,720 --> 01:15:11,190
+create anchor boxes of different sizes
+
+1422
+01:15:03,270 --> 01:15:15,060
+and orientations so here you can see you
+
+1423
+01:15:11,189 --> 01:15:18,509
+know there's a upright rectangle there's
+
+1424
+01:15:15,060 --> 01:15:23,910
+a line down rectangle and there's a
+
+1425
+01:15:18,510 --> 01:15:26,460
+square it's a question for the
+
+1426
+01:15:23,909 --> 01:15:28,559
+multi-label classification why aren't we
+
+1427
+01:15:26,460 --> 01:15:31,649
+multiplying the categorical loss by a
+
+1428
+01:15:28,560 --> 01:15:34,680
+constant like we did before that's a
+
+1429
+01:15:31,649 --> 01:15:37,609
+great question because later on it'll
+
+1430
+01:15:34,680 --> 01:15:37,610
+turn out we don't need to
+
+1431
+01:15:41,159 --> 01:15:45,779
+so yeah so you can see here like this
+
+1432
+01:15:43,859 --> 01:15:46,889
+square and so I don't know if you can
+
+1433
+01:15:45,779 --> 01:15:50,699
+see this blue shield up you basically
+
+1434
+01:15:46,890 --> 01:15:52,230
+got one two three squares of different
+
+1435
+01:15:50,699 --> 01:15:54,929
+sizes and for each of those three
+
+1436
+01:15:52,229 --> 01:15:58,829
+squares you've also got a line down
+
+1437
+01:15:54,930 --> 01:16:01,980
+rectangle and up rectangle that's we've
+
+1438
+01:15:58,829 --> 01:16:02,670
+got three aspect ratios at three zoom
+
+1439
+01:16:01,979 --> 01:16:04,709
+levels
+
+1440
+01:16:02,670 --> 01:16:08,819
+that's why don't you do we can do this
+
+1441
+01:16:04,710 --> 01:16:10,230
+and this is for the one by one grid so
+
+1442
+01:16:08,819 --> 01:16:12,509
+in other words if we added two more
+
+1443
+01:16:10,229 --> 01:16:14,519
+strata convolutional layers you
+
+1444
+01:16:12,510 --> 01:16:16,699
+eventually get to a one by one grid and
+
+1445
+01:16:14,520 --> 01:16:23,160
+so this is for the one by one include
+
+1446
+01:16:16,699 --> 01:16:25,979
+another thing we could do is to use more
+
+1447
+01:16:23,159 --> 01:16:28,619
+compositional layers as sources of
+
+1448
+01:16:25,979 --> 01:16:31,289
+anchor boxes so as well as our and I've
+
+1449
+01:16:28,619 --> 01:16:33,569
+I've randomly gated these a little bit
+
+1450
+01:16:31,289 --> 01:16:39,260
+so it's easy to see right so as well as
+
+1451
+01:16:33,569 --> 01:16:43,679
+our 16 by 16 grid cells these cells
+
+1452
+01:16:39,260 --> 01:16:46,829
+we've also got two by two grid cells and
+
+1453
+01:16:43,680 --> 01:16:49,020
+we've also got the one by one itself
+
+1454
+01:16:46,829 --> 01:16:51,029
+alright so in other words if we add
+
+1455
+01:16:49,020 --> 01:16:54,420
+three straight hours prior to
+
+1456
+01:16:51,029 --> 01:16:57,929
+convolutions to the to the end we'll
+
+1457
+01:16:54,420 --> 01:17:00,690
+have 4 by 4 2 by 2 and 1 by 1 sets of
+
+1458
+01:16:57,930 --> 01:17:03,270
+grid cells all of which have anchor
+
+1459
+01:17:00,689 --> 01:17:04,619
+boxes and then for every one of those we
+
+1460
+01:17:03,270 --> 01:17:09,660
+can have all of these different shapes
+
+1461
+01:17:04,619 --> 01:17:11,789
+and sizes okay so obviously those two
+
+1462
+01:17:09,659 --> 01:17:13,920
+combined with each other to create lots
+
+1463
+01:17:11,789 --> 01:17:19,579
+of anchor boxes and if I try to print
+
+1464
+01:17:13,920 --> 01:17:19,579
+that on the screen is just one big toss
+
+1465
+01:17:19,789 --> 01:17:23,670
+so that's what this code is right it
+
+1466
+01:17:22,079 --> 01:17:26,279
+says all right what are all the grid
+
+1467
+01:17:23,670 --> 01:17:28,409
+cell sizes I have for the anchor boxes
+
+1468
+01:17:26,279 --> 01:17:30,179
+what are all the zoom levels I have for
+
+1469
+01:17:28,409 --> 01:17:32,340
+the anchor boxes and what are all the
+
+1470
+01:17:30,180 --> 01:17:34,950
+aspect ratios I have for the anchor
+
+1471
+01:17:32,340 --> 01:17:39,869
+boxes and the rest of this code then
+
+1472
+01:17:34,949 --> 01:17:43,979
+just goes away and creates the top left
+
+1473
+01:17:39,869 --> 01:17:46,769
+and bottom right corners inside anchor
+
+1474
+01:17:43,979 --> 01:17:50,609
+corner and the middle and height width
+
+1475
+01:17:46,770 --> 01:17:52,530
+in mecca's so that's all this does and
+
+1476
+01:17:50,609 --> 01:17:53,109
+you can go through it and print out the
+
+1477
+01:17:52,529 --> 01:18:02,800
+anchor
+
+1478
+01:17:53,109 --> 01:18:07,799
+in a corner so the key the key is to
+
+1479
+01:18:02,800 --> 01:18:07,800
+remember this basic idea that we have a
+
+1480
+01:18:11,368 --> 01:18:23,139
+vector of ground truth stuff right where
+
+1481
+01:18:17,590 --> 01:18:25,690
+that stuff is like sets of four bounding
+
+1482
+01:18:23,139 --> 01:18:28,300
+boxes this is what we were given it was
+
+1483
+01:18:25,689 --> 01:18:30,309
+in the JSON files that it's the ground
+
+1484
+01:18:28,300 --> 01:18:33,070
+truth it's the dependent variable sets
+
+1485
+01:18:30,310 --> 01:18:38,380
+of four bounding boxes and for each one
+
+1486
+01:18:33,069 --> 01:18:42,130
+also a class right so this is a person
+
+1487
+01:18:38,380 --> 01:18:45,400
+in this location this is a dog in this
+
+1488
+01:18:42,130 --> 01:18:52,779
+location that's the ground truth that
+
+1489
+01:18:45,399 --> 01:18:56,259
+we've given yes yeah exactly left X Y
+
+1490
+01:18:52,779 --> 01:18:58,809
+bottom right X Y so that's what we
+
+1491
+01:18:56,260 --> 01:19:00,730
+printed here right we print it out this
+
+1492
+01:18:58,810 --> 01:19:03,789
+is what we call the ground truth there's
+
+1493
+01:19:00,729 --> 01:19:05,408
+no model this is what we're told is what
+
+1494
+01:19:03,789 --> 01:19:08,289
+we this is what the answer is meant to
+
+1495
+01:19:05,408 --> 01:19:10,539
+be and so remember any time we train an
+
+1496
+01:19:08,289 --> 01:19:15,488
+ear on that we have a dependent variable
+
+1497
+01:19:10,539 --> 01:19:18,130
+and then we have a neuro nap from
+
+1498
+01:19:15,488 --> 01:19:21,669
+blackbox neural net that takes some
+
+1499
+01:19:18,130 --> 01:19:25,090
+input and spits out some output
+
+1500
+01:19:21,670 --> 01:19:30,250
+activations and we take those
+
+1501
+01:19:25,090 --> 01:19:35,289
+activations and we compare them to the
+
+1502
+01:19:30,250 --> 01:19:38,350
+ground truth we calculate a loss we find
+
+1503
+01:19:35,289 --> 01:19:39,698
+the derivative of that and adjust the
+
+1504
+01:19:38,350 --> 01:19:44,489
+weights according to the derivative
+
+1505
+01:19:39,698 --> 01:19:44,488
+times a learning rate okay
+
+1506
+01:19:46,060 --> 01:19:52,330
+so the loss is calculated using a must
+
+1507
+01:19:48,310 --> 01:19:54,100
+function something I wanted to say is I
+
+1508
+01:19:52,329 --> 01:19:56,319
+think them one of the challenges with
+
+1509
+01:19:54,100 --> 01:19:57,730
+this problem is part of what's going on
+
+1510
+01:19:56,319 --> 01:20:00,009
+here is we're having to come up with an
+
+1511
+01:19:57,729 --> 01:20:03,429
+architecture that's letting us predict
+
+1512
+01:20:00,010 --> 01:20:05,409
+this ground truth like it's not because
+
+1513
+01:20:03,430 --> 01:20:08,829
+you can have you know any number of
+
+1514
+01:20:05,409 --> 01:20:10,300
+objects in your picture it's not an you
+
+1515
+01:20:08,829 --> 01:20:12,430
+know immediately obvious like oh what's
+
+1516
+01:20:10,300 --> 01:20:14,440
+the correct architecture that's gonna
+
+1517
+01:20:12,430 --> 01:20:17,590
+let us predict that sort of ground truth
+
+1518
+01:20:14,439 --> 01:20:19,989
+that's so I'm gonna kind of make this
+
+1519
+01:20:17,590 --> 01:20:23,319
+plain as we saw when we looked at the
+
+1520
+01:20:19,989 --> 01:20:25,659
+kind of Yolo versus SSD that like there
+
+1521
+01:20:23,319 --> 01:20:28,539
+are only two possible architectures the
+
+1522
+01:20:25,659 --> 01:20:31,210
+last layer is fully connected or the
+
+1523
+01:20:28,539 --> 01:20:34,449
+last layer is convolutional and both of
+
+1524
+01:20:31,210 --> 01:20:37,300
+them work perfectly well I'm sorry I
+
+1525
+01:20:34,449 --> 01:20:39,309
+meant in terms of by creating this idea
+
+1526
+01:20:37,300 --> 01:20:41,369
+of anchor boxes and anchor boxes with
+
+1527
+01:20:39,310 --> 01:20:44,500
+different locations locations and sizes
+
+1528
+01:20:41,369 --> 01:20:46,539
+that's giving you a format that kind of
+
+1529
+01:20:44,500 --> 01:20:48,310
+lets you get to the activations you're
+
+1530
+01:20:46,539 --> 01:20:51,850
+right like high level is that you see
+
+1531
+01:20:48,310 --> 01:20:54,400
+okay so that's that's really entirely in
+
+1532
+01:20:51,850 --> 01:20:57,730
+the loss function not in the
+
+1533
+01:20:54,399 --> 01:20:59,769
+architecture like and if we use the Yolo
+
+1534
+01:20:57,729 --> 01:21:02,859
+architecture where we had a fully
+
+1535
+01:20:59,770 --> 01:21:05,620
+connected layer like literally there
+
+1536
+01:21:02,859 --> 01:21:09,719
+would be no concept of geometry at all
+
+1537
+01:21:05,619 --> 01:21:12,460
+right so I would suggest like kind of
+
+1538
+01:21:09,720 --> 01:21:14,829
+forgetting the architecture and just
+
+1539
+01:21:12,460 --> 01:21:19,060
+like treated as just a given it's a
+
+1540
+01:21:14,829 --> 01:21:22,119
+theme that is spitting out 16 times 4
+
+1541
+01:21:19,060 --> 01:21:24,880
+plus C activations right and then I
+
+1542
+01:21:22,119 --> 01:21:28,989
+would say our job is to figure out how
+
+1543
+01:21:24,880 --> 01:21:32,739
+to take those 16 times 4 plus C
+
+1544
+01:21:28,989 --> 01:21:40,479
+activations and compare them to our
+
+1545
+01:21:32,739 --> 01:21:42,819
+ground truth which is like 4 plus it's 4
+
+1546
+01:21:40,479 --> 01:21:44,559
+plus 1 but if it was one hot encoded it
+
+1547
+01:21:42,819 --> 01:21:47,939
+would be C and I think that's easier to
+
+1548
+01:21:44,560 --> 01:21:50,920
+think about so call it 4 plus C times
+
+1549
+01:21:47,939 --> 01:21:53,409
+however many ground truth objects there
+
+1550
+01:21:50,920 --> 01:21:56,279
+are for that particular image all right
+
+1551
+01:21:53,409 --> 01:22:03,689
+so let's pour that
+
+1552
+01:21:56,279 --> 01:22:05,819
+right so we need a loss function that
+
+1553
+01:22:03,689 --> 01:22:07,319
+can take these two things and spit out a
+
+1554
+01:22:05,819 --> 01:22:11,909
+number that says how good are these
+
+1555
+01:22:07,319 --> 01:22:19,049
+activations that that's that's what
+
+1556
+01:22:11,909 --> 01:22:21,359
+we're trying to do so to do it we need
+
+1557
+01:22:19,050 --> 01:22:29,039
+to take each one of these M ground truth
+
+1558
+01:22:21,359 --> 01:22:33,359
+objects and decide which set of 4 plus C
+
+1559
+01:22:29,039 --> 01:22:36,060
+activations is responsible for that
+
+1560
+01:22:33,359 --> 01:22:38,579
+object which one should we could be
+
+1561
+01:22:36,060 --> 01:22:41,220
+comparing and saying like yes the right
+
+1562
+01:22:38,579 --> 01:22:46,949
+class will not and yeah it's false or
+
+1563
+01:22:41,220 --> 01:22:50,610
+not and so the way we do that is
+
+1564
+01:22:46,949 --> 01:22:55,250
+basically to say okay let's decide the
+
+1565
+01:22:50,609 --> 01:22:57,769
+first for the first 4 plus C activations
+
+1566
+01:22:55,250 --> 01:23:00,689
+are going to be responsible for
+
+1567
+01:22:57,770 --> 01:23:03,810
+predicting the bounding box of the thing
+
+1568
+01:23:00,689 --> 01:23:06,299
+that's closest to the top left and the
+
+1569
+01:23:03,810 --> 01:23:09,570
+last 4 plus C you'll be predicting those
+
+1570
+01:23:06,300 --> 01:23:12,060
+the furthest to the bottom right and
+
+1571
+01:23:09,569 --> 01:23:15,119
+kind of everything in between so this is
+
+1572
+01:23:12,060 --> 01:23:17,010
+this matching and then of course we're
+
+1573
+01:23:15,119 --> 01:23:19,500
+not using the yellow approach where we
+
+1574
+01:23:17,010 --> 01:23:24,380
+have a single vector we're using the SSD
+
+1575
+01:23:19,500 --> 01:23:26,939
+approach where we spit out a
+
+1576
+01:23:24,380 --> 01:23:29,699
+convolutional output which means that
+
+1577
+01:23:26,939 --> 01:23:31,949
+it's it's not arbitrary as to which we
+
+1578
+01:23:29,699 --> 01:23:35,340
+mash up but actually we want to match up
+
+1579
+01:23:31,949 --> 01:23:39,599
+the set of activations whose receptive
+
+1580
+01:23:35,340 --> 01:23:43,430
+field most closely reflects you know as
+
+1581
+01:23:39,600 --> 01:23:47,550
+the maximum density from where this real
+
+1582
+01:23:43,430 --> 01:23:50,610
+object is but that's a that's a minor
+
+1583
+01:23:47,550 --> 01:23:52,380
+tweak you know I guess like that it
+
+1584
+01:23:50,609 --> 01:23:53,969
+that's the easy way to have taught this
+
+1585
+01:23:52,380 --> 01:23:56,220
+but if we just start with the Yolo
+
+1586
+01:23:53,970 --> 01:23:58,920
+approach where it's just like an
+
+1587
+01:23:56,220 --> 01:24:00,780
+arbitrary vector and we can decide which
+
+1588
+01:23:58,920 --> 01:24:03,119
+activations correspond to which agree on
+
+1589
+01:24:00,779 --> 01:24:04,979
+trees object as long as it's consistent
+
+1590
+01:24:03,119 --> 01:24:08,340
+it's going to be a consistent rule
+
+1591
+01:24:04,979 --> 01:24:09,839
+because like if in the first image the
+
+1592
+01:24:08,340 --> 01:24:12,789
+top left
+
+1593
+01:24:09,840 --> 01:24:14,710
+object corresponds with the first four
+
+1594
+01:24:12,789 --> 01:24:17,079
+plus C activations and then the second
+
+1595
+01:24:14,710 --> 01:24:18,819
+image we threw things around and
+
+1596
+01:24:17,079 --> 01:24:22,779
+suddenly it's now going with the last
+
+1597
+01:24:18,819 --> 01:24:25,210
+four plus the activations the neural net
+
+1598
+01:24:22,779 --> 01:24:26,829
+doesn't know what to learn about that
+
+1599
+01:24:25,210 --> 01:24:28,420
+the neural net needs to like a loss
+
+1600
+01:24:26,829 --> 01:24:31,989
+function needs to be like some
+
+1601
+01:24:28,420 --> 01:24:34,899
+consistent task right which in this case
+
+1602
+01:24:31,989 --> 01:24:38,139
+the consistent task is try to make these
+
+1603
+01:24:34,899 --> 01:24:41,920
+activations reflect the bounding box in
+
+1604
+01:24:38,140 --> 01:24:48,369
+this general area that's basically what
+
+1605
+01:24:41,920 --> 01:24:51,250
+this loss function is trying to do is it
+
+1606
+01:24:48,369 --> 01:24:53,769
+purely coincident that you know the 4x4
+
+1607
+01:24:51,250 --> 01:24:56,680
+in the kong-kong 2d is the same thing as
+
+1608
+01:24:53,770 --> 01:25:02,380
+no you're 16 not at all coincidence it's
+
+1609
+01:24:56,680 --> 01:25:05,079
+it's because though that 4x4 comp is
+
+1610
+01:25:02,380 --> 01:25:08,380
+going to give us activations whose
+
+1611
+01:25:05,079 --> 01:25:12,159
+receptive field corresponds to those
+
+1612
+01:25:08,380 --> 01:25:18,789
+locations in the infinite so it's it's
+
+1613
+01:25:12,159 --> 01:25:21,909
+carefully designed now remember I told
+
+1614
+01:25:18,789 --> 01:25:24,310
+you before part two that like the stuff
+
+1615
+01:25:21,909 --> 01:25:27,460
+we learn in part two is going to assume
+
+1616
+01:25:24,310 --> 01:25:29,220
+that you are extremely comfortable with
+
+1617
+01:25:27,460 --> 01:25:32,020
+everything you learnt in part one and
+
+1618
+01:25:29,220 --> 01:25:34,659
+for a lot of you you might be realizing
+
+1619
+01:25:32,020 --> 01:25:36,490
+now maybe I wasn't quite as familiar
+
+1620
+01:25:34,659 --> 01:25:38,889
+with the starting part one as I first
+
+1621
+01:25:36,489 --> 01:25:40,539
+thought and that's fun right but just
+
+1622
+01:25:38,890 --> 01:25:44,800
+realize you might just have to go back
+
+1623
+01:25:40,539 --> 01:25:47,199
+and really think deeply it's there more
+
+1624
+01:25:44,800 --> 01:25:49,270
+with understanding with life what are
+
+1625
+01:25:47,199 --> 01:25:51,369
+the inputs and outputs to each layer and
+
+1626
+01:25:49,270 --> 01:25:53,110
+a convolutional Network how big are they
+
+1627
+01:25:51,369 --> 01:25:55,210
+one of their rank is that V how are they
+
+1628
+01:25:53,109 --> 01:25:57,219
+calculated so that you really fully
+
+1629
+01:25:55,210 --> 01:25:59,859
+understand the idea receptive field
+
+1630
+01:25:57,220 --> 01:26:02,920
+what's a loss function really how does
+
+1631
+01:25:59,859 --> 01:26:06,519
+back propagation work exactly like these
+
+1632
+01:26:02,920 --> 01:26:10,329
+things all need to be like deeply felt
+
+1633
+01:26:06,520 --> 01:26:12,610
+intuitions but you only get through to
+
+1634
+01:26:10,329 --> 01:26:15,670
+practice and once they're all deeply
+
+1635
+01:26:12,609 --> 01:26:20,019
+felt intuitions then you can we watch
+
+1636
+01:26:15,670 --> 01:26:20,980
+this video and you'll be like oh I see
+
+1637
+01:26:20,020 --> 01:26:25,510
+okay
+
+1638
+01:26:20,979 --> 01:26:29,289
+see that you know these activations just
+
+1639
+01:26:25,510 --> 01:26:31,390
+need some way of understanding what task
+
+1640
+01:26:29,289 --> 01:26:32,948
+they're being given that is being done
+
+1641
+01:26:31,390 --> 01:26:37,600
+by the loss function and the loss
+
+1642
+01:26:32,948 --> 01:26:40,000
+function is encoding a task and so the
+
+1643
+01:26:37,600 --> 01:26:44,829
+task of the SSD loss function is
+
+1644
+01:26:40,000 --> 01:26:47,439
+basically two parts part one is figure
+
+1645
+01:26:44,829 --> 01:26:51,750
+out which ground truth object is closest
+
+1646
+01:26:47,439 --> 01:26:54,789
+to which grid cell which anchor boss
+
+1647
+01:26:51,750 --> 01:26:56,590
+when we where we started doing this the
+
+1648
+01:26:54,789 --> 01:26:59,909
+grid cells of the convolution and the
+
+1649
+01:26:56,590 --> 01:27:02,920
+anchor boxes were the same right but now
+
+1650
+01:26:59,909 --> 01:27:07,659
+we're starting to introduce the idea
+
+1651
+01:27:02,920 --> 01:27:12,779
+that we can have multiple anchor boxes
+
+1652
+01:27:07,659 --> 01:27:16,899
+per grid cell okay a little bit more
+
+1653
+01:27:12,779 --> 01:27:19,269
+complicated so every ground truth object
+
+1654
+01:27:16,899 --> 01:27:21,429
+we have to figure out which anchor boxes
+
+1655
+01:27:19,270 --> 01:27:23,230
+are closest to every anchor box we have
+
+1656
+01:27:21,429 --> 01:27:27,399
+to decide which ground truth object
+
+1657
+01:27:23,229 --> 01:27:30,569
+isn't responsible for if any and once
+
+1658
+01:27:27,399 --> 01:27:35,579
+we've done that matching it's trivial
+
+1659
+01:27:30,569 --> 01:27:35,579
+now we just basically go through and
+
+1660
+01:27:36,689 --> 01:27:50,859
+going back to the single object
+
+1661
+01:27:43,929 --> 01:27:53,739
+detection it now is just this it's once
+
+1662
+01:27:50,859 --> 01:27:56,619
+we've got every ground truth object mesh
+
+1663
+01:27:53,738 --> 01:27:59,198
+to anchor box to a set of activations we
+
+1664
+01:27:56,619 --> 01:28:01,029
+can basically didn't say okay what's the
+
+1665
+01:27:59,198 --> 01:28:01,569
+cross entropy loss of the categorical
+
+1666
+01:28:01,029 --> 01:28:07,329
+part
+
+1667
+01:28:01,569 --> 01:28:12,189
+what's the r-1 loss so really it's the
+
+1668
+01:28:07,329 --> 01:28:15,729
+matching part which is kind of I don't
+
+1669
+01:28:12,189 --> 01:28:20,229
+know kind of slightly surprising bit and
+
+1670
+01:28:15,729 --> 01:28:22,359
+then this idea of picking those in a way
+
+1671
+01:28:20,229 --> 01:28:24,488
+that the convolutional Network gives it
+
+1672
+01:28:22,359 --> 01:28:27,630
+the best opportunity to calculate that
+
+1673
+01:28:24,488 --> 01:28:30,928
+part of the space is then the final
+
+1674
+01:28:27,630 --> 01:28:30,929
+cherry on top
+
+1675
+01:28:31,859 --> 01:28:40,198
+and this um I'll tell you something else
+
+1676
+01:28:36,328 --> 01:28:42,448
+this class is by is by far I think going
+
+1677
+01:28:40,198 --> 01:28:45,448
+to be the most conceptually challenging
+
+1678
+01:28:42,448 --> 01:28:48,688
+and part of the reason for that is that
+
+1679
+01:28:45,448 --> 01:28:50,609
+after this we're going to go and do some
+
+1680
+01:28:48,689 --> 01:28:55,380
+different stuff and we're going to come
+
+1681
+01:28:50,609 --> 01:28:58,679
+back to it in lesson 14 and do it again
+
+1682
+01:28:55,380 --> 01:29:00,029
+with some tweaks alright we're gonna add
+
+1683
+01:28:58,679 --> 01:29:01,679
+in some of the new stuff we learned
+
+1684
+01:29:00,029 --> 01:29:05,448
+afterwards so you're gonna get like a
+
+1685
+01:29:01,679 --> 01:29:08,069
+whole second round for this material
+
+1686
+01:29:05,448 --> 01:29:11,638
+once we add some some extra stuff at the
+
+1687
+01:29:08,069 --> 01:29:13,920
+end so we kind of dinner revise it as we
+
+1688
+01:29:11,639 --> 01:29:17,010
+normally do remember in part 1 we kind
+
+1689
+01:29:13,920 --> 01:29:19,708
+of went through computer vision and RP
+
+1690
+01:29:17,010 --> 01:29:21,929
+structured data back to NLP back to
+
+1691
+01:29:19,708 --> 01:29:24,658
+computer vision you know so we revised
+
+1692
+01:29:21,929 --> 01:29:28,679
+everything from this at the end it'll be
+
+1693
+01:29:24,658 --> 01:29:34,368
+kind of similar yeah so yeah so don't
+
+1694
+01:29:28,679 --> 01:29:36,260
+worry if it's a bit challenging in fist
+
+1695
+01:29:34,368 --> 01:29:44,248
+you'll get there
+
+1696
+01:29:36,260 --> 01:29:46,469
+okay so so for every grid cell there can
+
+1697
+01:29:44,248 --> 01:29:49,559
+be different sizes we can have different
+
+1698
+01:29:46,469 --> 01:29:51,779
+orientations and zooms representing
+
+1699
+01:29:49,559 --> 01:29:55,920
+different different anchor boxes which
+
+1700
+01:29:51,779 --> 01:29:57,538
+are just like conceptual ideas that
+
+1701
+01:29:55,920 --> 01:30:01,908
+basically every one of these is
+
+1702
+01:29:57,538 --> 01:30:06,868
+associated with one set of four plus e
+
+1703
+01:30:01,908 --> 01:30:08,658
+activations in a model right so however
+
+1704
+01:30:06,868 --> 01:30:14,478
+many of these ground truth boxes we have
+
+1705
+01:30:08,658 --> 01:30:17,458
+we need to have that x 4 plus C
+
+1706
+01:30:14,479 --> 01:30:21,239
+activations in the model now that does
+
+1707
+01:30:17,458 --> 01:30:24,300
+not mean that each convolutional layer
+
+1708
+01:30:21,238 --> 01:30:27,178
+needs that many filters right because
+
+1709
+01:30:24,300 --> 01:30:31,288
+remember the 4x4 convolutional layer
+
+1710
+01:30:27,179 --> 01:30:36,229
+already has 16 sets of filters the 2x2
+
+1711
+01:30:31,288 --> 01:30:38,969
+accomplished layer already has four sets
+
+1712
+01:30:36,229 --> 01:30:40,610
+activations and then finally the one by
+
+1713
+01:30:38,969 --> 01:30:46,730
+one has one set
+
+1714
+01:30:40,609 --> 01:30:48,469
+so we basically get 1 plus 4 plus 16 for
+
+1715
+01:30:46,729 --> 01:30:50,689
+free just because that's how convolution
+
+1716
+01:30:48,469 --> 01:30:54,469
+works it that relates things at
+
+1717
+01:30:50,689 --> 01:31:01,599
+different locations so we actually only
+
+1718
+01:30:54,469 --> 01:31:05,060
+need to know K where K is the number of
+
+1719
+01:31:01,600 --> 01:31:07,400
+zooms by the number of aspect ratios
+
+1720
+01:31:05,060 --> 01:31:10,789
+where else the grids we're gonna get for
+
+1721
+01:31:07,399 --> 01:31:13,488
+free through our architecture so let's
+
+1722
+01:31:10,789 --> 01:31:15,829
+check out that architecture so the model
+
+1723
+01:31:13,488 --> 01:31:19,359
+is nearly identical to what we had
+
+1724
+01:31:15,829 --> 01:31:21,800
+before all right that we're gonna go
+
+1725
+01:31:19,359 --> 01:31:26,000
+we're going to have a number of strive
+
+1726
+01:31:21,800 --> 01:31:34,159
+to convolutions which is going to take
+
+1727
+01:31:26,000 --> 01:31:37,340
+us through to 4 by 4 2 by 2 1 by 1 you
+
+1728
+01:31:34,158 --> 01:31:43,219
+straight to convolution perhaps our grid
+
+1729
+01:31:37,340 --> 01:31:47,360
+sizes okay and then after we do our
+
+1730
+01:31:43,219 --> 01:31:49,760
+first convolution to get to 4 by 4 we're
+
+1731
+01:31:47,359 --> 01:31:53,380
+going to grab a set of outputs from that
+
+1732
+01:31:49,760 --> 01:31:57,230
+because we want to save away the 4 by 4
+
+1733
+01:31:53,380 --> 01:32:01,609
+which anchors and then once we get to 2
+
+1734
+01:31:57,229 --> 01:32:04,488
+by 2 we grab another set now two by two
+
+1735
+01:32:01,609 --> 01:32:06,799
+anchors and then finally we get to 1 by
+
+1736
+01:32:04,488 --> 01:32:08,658
+1 and we saw we get another set of the
+
+1737
+01:32:06,800 --> 01:32:16,460
+Ovilus right so you can see we've got
+
+1738
+01:32:08,658 --> 01:32:20,269
+like a whole bunch of these outcome this
+
+1739
+01:32:16,460 --> 01:32:21,948
+first one we actually not easy so at the
+
+1740
+01:32:20,270 --> 01:32:25,460
+end of that we can then concatenate
+
+1741
+01:32:21,948 --> 01:32:27,408
+torque at concatenate them all together
+
+1742
+01:32:25,460 --> 01:32:29,960
+so we've got the four by four
+
+1743
+01:32:27,408 --> 01:32:35,210
+activations the two by two activations
+
+1744
+01:32:29,960 --> 01:32:38,960
+the one by one and visions so that's
+
+1745
+01:32:35,210 --> 01:32:42,139
+going to give us the correct number of
+
+1746
+01:32:38,960 --> 01:32:47,989
+activations to give us one activation
+
+1747
+01:32:42,139 --> 01:32:50,250
+for every for every bounding a periphery
+
+1748
+01:32:47,988 --> 01:32:53,019
+anchor boss
+
+1749
+01:32:50,250 --> 01:32:57,119
+so then we just set our criterion as
+
+1750
+01:32:53,020 --> 01:33:06,730
+before to SSD loss and we go ahead and
+
+1751
+01:32:57,119 --> 01:33:08,380
+train right and the way we go so in this
+
+1752
+01:33:06,729 --> 01:33:10,928
+case I'm just printing out those things
+
+1753
+01:33:08,380 --> 01:33:14,770
+with at least probability of point one
+
+1754
+01:33:10,929 --> 01:33:17,590
+and you can see we've got some things
+
+1755
+01:33:14,770 --> 01:33:19,840
+booked okay some things don't our big
+
+1756
+01:33:17,590 --> 01:33:21,579
+objects like bird we've got a box here
+
+1757
+01:33:19,840 --> 01:33:23,949
+with a point nine three probability it's
+
+1758
+01:33:21,579 --> 01:33:27,760
+looking to be in about the rest but our
+
+1759
+01:33:23,948 --> 01:33:33,669
+person is looking pretty hopeful but our
+
+1760
+01:33:27,760 --> 01:33:37,929
+motorbike has nothing at all a lot of
+
+1761
+01:33:33,670 --> 01:33:44,670
+plants looking pretty horrible that bus
+
+1762
+01:33:37,929 --> 01:33:47,829
+is all the wrong size what's going on so
+
+1763
+01:33:44,670 --> 01:33:52,300
+but what's going on here will tell us a
+
+1764
+01:33:47,829 --> 01:33:59,350
+lot about the kind of history of object
+
+1765
+01:33:52,300 --> 01:34:03,219
+detection and so these five papers are
+
+1766
+01:33:59,350 --> 01:34:06,010
+key steps in the history recent modern
+
+1767
+01:34:03,219 --> 01:34:08,980
+history of our vegetation and so they go
+
+1768
+01:34:06,010 --> 01:34:10,869
+back to a balance of maybe 2013 this
+
+1769
+01:34:08,979 --> 01:34:12,968
+paper called scalable object detection
+
+1770
+01:34:10,869 --> 01:34:14,800
+using deep neural networks this is what
+
+1771
+01:34:12,969 --> 01:34:17,679
+basically set everything up and when
+
+1772
+01:34:14,800 --> 01:34:20,140
+people refer to the multi box method
+
+1773
+01:34:17,679 --> 01:34:22,000
+they're talking about this paper and
+
+1774
+01:34:20,140 --> 01:34:23,320
+this was the basic one that came up with
+
+1775
+01:34:22,000 --> 01:34:26,260
+this idea that we can have a loss
+
+1776
+01:34:23,319 --> 01:34:28,590
+function that has this matching process
+
+1777
+01:34:26,260 --> 01:34:32,260
+and then you can kind of use that to do
+
+1778
+01:34:28,590 --> 01:34:35,020
+object addition so everything since that
+
+1779
+01:34:32,260 --> 01:34:39,489
+time has been trying to figure out
+
+1780
+01:34:35,020 --> 01:34:43,210
+basically how to make this better so in
+
+1781
+01:34:39,488 --> 01:34:44,829
+parallel as a guy quarter Oscar shik who
+
+1782
+01:34:43,210 --> 01:34:48,189
+was going down a totally different
+
+1783
+01:34:44,829 --> 01:34:51,159
+direction which was he had these
+
+1784
+01:34:48,189 --> 01:34:53,289
+two-stage processes where the first
+
+1785
+01:34:51,159 --> 01:34:55,448
+stage used like classical computer
+
+1786
+01:34:53,289 --> 01:34:58,448
+vision approaches to like fine kind of
+
+1787
+01:34:55,448 --> 01:35:01,299
+edges and changes of gradients and stuff
+
+1788
+01:34:58,448 --> 01:35:03,639
+to kind of guess which parts of the
+
+1789
+01:35:01,300 --> 01:35:06,969
+image may represent us
+
+1790
+01:35:03,640 --> 01:35:10,119
+objects and then fit each of those into
+
+1791
+01:35:06,969 --> 01:35:12,908
+a convolutional neural network which was
+
+1792
+01:35:10,119 --> 01:35:14,229
+basically designed to figure out is that
+
+1793
+01:35:12,908 --> 01:35:16,750
+actually the kind of object I'm
+
+1794
+01:35:14,229 --> 01:35:20,079
+interested in and so this was the kind
+
+1795
+01:35:16,750 --> 01:35:24,010
+of our CNN and fast
+
+1796
+01:35:20,079 --> 01:35:30,279
+I see a hybrid of traditional computer
+
+1797
+01:35:24,010 --> 01:35:31,960
+vision and so what Russ and his team
+
+1798
+01:35:30,279 --> 01:35:35,219
+then did was they basically took this
+
+1799
+01:35:31,960 --> 01:35:38,289
+multi box IDE the air and replaced the
+
+1800
+01:35:35,219 --> 01:35:39,989
+traditional non deep learning computer
+
+1801
+01:35:38,289 --> 01:35:42,789
+vision part of their two-stage process
+
+1802
+01:35:39,988 --> 01:35:45,428
+with a confident so they now have two
+
+1803
+01:35:42,789 --> 01:35:48,158
+conquers one comp net that basically
+
+1804
+01:35:45,429 --> 01:35:50,619
+sped out something like this which we
+
+1805
+01:35:48,158 --> 01:35:52,839
+call these region proposals you know all
+
+1806
+01:35:50,619 --> 01:35:55,569
+of the things that might be objects and
+
+1807
+01:35:52,840 --> 01:35:57,520
+then the second part was the same as his
+
+1808
+01:35:55,569 --> 01:35:59,590
+earlier work because basically something
+
+1809
+01:35:57,520 --> 01:36:01,989
+the top each of those fitted into a
+
+1810
+01:35:59,590 --> 01:36:04,090
+separate part net which was designed to
+
+1811
+01:36:01,988 --> 01:36:09,849
+classify whether or not that particular
+
+1812
+01:36:04,090 --> 01:36:13,500
+thing really isn't interesting at a
+
+1813
+01:36:09,850 --> 01:36:17,920
+similar time these two papers came out
+
+1814
+01:36:13,500 --> 01:36:20,590
+Yolo and SSD now both of these did
+
+1815
+01:36:17,920 --> 01:36:22,929
+something pretty cool which is they got
+
+1816
+01:36:20,590 --> 01:36:28,179
+the same kind of performance is faster a
+
+1817
+01:36:22,929 --> 01:36:31,239
+CNN but with once - okay and so they
+
+1818
+01:36:28,179 --> 01:36:33,399
+basically took the multi boss idea and
+
+1819
+01:36:31,238 --> 01:36:36,968
+they tried to figure out how to deal
+
+1820
+01:36:33,399 --> 01:36:39,670
+with this mess it's done and the basic
+
+1821
+01:36:36,969 --> 01:36:40,480
+ideas were to use for example called
+
+1822
+01:36:39,670 --> 01:36:42,819
+hard-
+
+1823
+01:36:40,479 --> 01:36:47,468
+mining where they would like go through
+
+1824
+01:36:42,819 --> 01:36:52,119
+and find all of the matches that didn't
+
+1825
+01:36:47,469 --> 01:36:54,819
+look that good and further away has some
+
+1826
+01:36:52,119 --> 01:36:57,130
+very tricky and complex data
+
+1827
+01:36:54,819 --> 01:36:57,759
+augmentation methods all kinds of
+
+1828
+01:36:57,130 --> 01:37:01,300
+hackery
+
+1829
+01:36:57,760 --> 01:37:06,010
+basically but they got it to work pretty
+
+1830
+01:37:01,300 --> 01:37:08,289
+pretty well but then through really cool
+
+1831
+01:37:06,010 --> 01:37:10,150
+happened late last year which is this
+
+1832
+01:37:08,289 --> 01:37:13,779
+thing called focal versus paper
+
+1833
+01:37:10,149 --> 01:37:15,759
+philosophy dense object attention the
+
+1834
+01:37:13,779 --> 01:37:18,449
+network object is called written written
+
+1835
+01:37:15,760 --> 01:37:22,030
+where they actually realized why this
+
+1836
+01:37:18,449 --> 01:37:24,550
+messy crap wasn't working and I'll
+
+1837
+01:37:22,029 --> 01:37:26,619
+describe why dismissive fat loss by
+
+1838
+01:37:24,550 --> 01:37:29,650
+trying to describe why it is that we
+
+1839
+01:37:26,619 --> 01:37:38,289
+can't find the motive a so here's the
+
+1840
+01:37:29,649 --> 01:37:43,269
+thing when we look at this we have three
+
+1841
+01:37:38,289 --> 01:37:47,489
+different granularities of convolutional
+
+1842
+01:37:43,270 --> 01:37:53,050
+route four by four two by two one by one
+
+1843
+01:37:47,489 --> 01:37:55,389
+the one by one it's quite likely to have
+
+1844
+01:37:53,050 --> 01:37:58,000
+a reasonable overlap with some object
+
+1845
+01:37:55,390 --> 01:38:01,780
+because most photos have sometimes main
+
+1846
+01:37:58,000 --> 01:38:05,970
+so - okay on the other hand in the four
+
+1847
+01:38:01,779 --> 01:38:08,079
+by four those sixteen grid cells
+
+1848
+01:38:05,970 --> 01:38:09,760
+unlikely most of them are not going to
+
+1849
+01:38:08,079 --> 01:38:19,390
+have a much of an overlap with anything
+
+1850
+01:38:09,760 --> 01:38:25,170
+like in this motor pipe cases guys so if
+
+1851
+01:38:19,390 --> 01:38:30,130
+somebody was to say to you like you know
+
+1852
+01:38:25,170 --> 01:38:33,399
+20-buck bet what do you reckon this
+
+1853
+01:38:30,130 --> 01:38:37,239
+little quick is you know and you're not
+
+1854
+01:38:33,399 --> 01:38:38,699
+sure you're gonna say background because
+
+1855
+01:38:37,239 --> 01:38:45,059
+most of the time in this background
+
+1856
+01:38:38,699 --> 01:38:45,059
+right and so here's the thing
+
+1857
+01:38:45,960 --> 01:38:52,840
+okay I understand why we have a four by
+
+1858
+01:38:50,560 --> 01:38:54,789
+four grid of receptive fields with one
+
+1859
+01:38:52,840 --> 01:38:57,340
+anchor box each to coarsely localize
+
+1860
+01:38:54,789 --> 01:38:58,420
+objects in the image but I think I'm
+
+1861
+01:38:57,340 --> 01:39:00,909
+missing is why we need multiple
+
+1862
+01:38:58,420 --> 01:39:03,250
+receptive fields at different sizes
+
+1863
+01:39:00,909 --> 01:39:04,869
+the first version already included 16
+
+1864
+01:39:03,250 --> 01:39:07,750
+receptive fields each with a single
+
+1865
+01:39:04,869 --> 01:39:09,519
+anchor box associated with the addition
+
+1866
+01:39:07,750 --> 01:39:13,210
+there are now many more anger boxes to
+
+1867
+01:39:09,520 --> 01:39:15,220
+consider is this because you constrain
+
+1868
+01:39:13,210 --> 01:39:17,770
+how much a receptive field could move or
+
+1869
+01:39:15,220 --> 01:39:20,230
+scale from its original size or is there
+
+1870
+01:39:17,770 --> 01:39:21,790
+another reason it's kind of backwards
+
+1871
+01:39:20,229 --> 01:39:22,929
+the reason I did the constraining was
+
+1872
+01:39:21,789 --> 01:39:26,710
+because I knew I was going to be adding
+
+1873
+01:39:22,930 --> 01:39:28,510
+more boxes later but really the reason
+
+1874
+01:39:26,710 --> 01:39:31,359
+is that
+
+1875
+01:39:28,510 --> 01:39:36,579
+the jacquard overlap between one of
+
+1876
+01:39:31,359 --> 01:39:38,829
+those 4x4 grid cells and you know a
+
+1877
+01:39:36,579 --> 01:39:41,289
+picture a single object that takes out
+
+1878
+01:39:38,829 --> 01:39:45,010
+most of the image is never going to be
+
+1879
+01:39:41,289 --> 01:39:46,390
+0.5 because like the intersections much
+
+1880
+01:39:45,010 --> 01:39:48,970
+smaller than the Union because the
+
+1881
+01:39:46,390 --> 01:39:51,480
+object is too big so for this general
+
+1882
+01:39:48,970 --> 01:39:53,800
+idea to work where we're saying like
+
+1883
+01:39:51,479 --> 01:39:55,839
+you're responsible for something that
+
+1884
+01:39:53,800 --> 01:40:02,590
+you've got a better than 50% overlap
+
+1885
+01:39:55,840 --> 01:40:05,350
+with we need anchor boxes which which
+
+1886
+01:40:02,590 --> 01:40:06,940
+will on a regular basis have a 50% or
+
+1887
+01:40:05,350 --> 01:40:09,760
+higher overlap which means we need to
+
+1888
+01:40:06,939 --> 01:40:15,939
+have a variety of sizes and shapes and
+
+1889
+01:40:09,760 --> 01:40:18,880
+scales yeah so this is this this this
+
+1890
+01:40:15,939 --> 01:40:22,179
+all happens this all happens in the last
+
+1891
+01:40:18,880 --> 01:40:24,039
+match basically the vast majority of the
+
+1892
+01:40:22,180 --> 01:40:26,280
+interesting stuff in all of the object
+
+1893
+01:40:24,039 --> 01:40:28,779
+detection stuff is the loss function
+
+1894
+01:40:26,279 --> 01:40:40,000
+because there is only three things last
+
+1895
+01:40:28,779 --> 01:40:44,769
+function architecture so the this is the
+
+1896
+01:40:40,000 --> 01:40:47,949
+focal most paper for kalasa dense object
+
+1897
+01:40:44,770 --> 01:40:50,050
+detection from August 2017 his Ross
+
+1898
+01:40:47,949 --> 01:40:52,359
+Perik still doing this stuff coming her
+
+1899
+01:40:50,050 --> 01:40:54,520
+you might recognize as being the the
+
+1900
+01:40:52,359 --> 01:40:58,989
+rezneck guy a bit of an all-star cast
+
+1901
+01:40:54,520 --> 01:41:03,640
+here and this the key thing is this very
+
+1902
+01:40:58,989 --> 01:41:10,599
+first picture the blue line is a picture
+
+1903
+01:41:03,640 --> 01:41:13,660
+of binary cross-entropy loss the x-axis
+
+1904
+01:41:10,600 --> 01:41:17,110
+is what is the probability or what is
+
+1905
+01:41:13,659 --> 01:41:21,130
+the activation what is the probability
+
+1906
+01:41:17,109 --> 01:41:24,309
+of the ground truth class so it's
+
+1907
+01:41:21,130 --> 01:41:25,090
+actually a motorbike I said with point
+
+1908
+01:41:24,310 --> 01:41:28,060
+six chance
+
+1909
+01:41:25,090 --> 01:41:30,489
+it's a motorbike or it's actually not a
+
+1910
+01:41:28,060 --> 01:41:34,360
+motorbike and I said with plot point six
+
+1911
+01:41:30,489 --> 01:41:37,090
+chance so this blue line represents the
+
+1912
+01:41:34,359 --> 01:41:41,079
+level of the value of cross-entropy loss
+
+1913
+01:41:37,090 --> 01:41:42,050
+so you can draw this in Excel or Python
+
+1914
+01:41:41,079 --> 01:41:46,639
+or whatever
+
+1915
+01:41:42,050 --> 01:41:51,380
+a simple plot of cross-entropy loss so
+
+1916
+01:41:46,639 --> 01:41:52,760
+the point is if the answer is because
+
+1917
+01:41:51,380 --> 01:41:54,440
+remember we do in binary custom to be
+
+1918
+01:41:52,760 --> 01:41:57,110
+lost if the answer is not a motorbike
+
+1919
+01:41:54,439 --> 01:42:00,558
+and I said yeah I think it's not a
+
+1920
+01:41:57,109 --> 01:42:04,069
+motorbike I'm point six sure it's not a
+
+1921
+01:42:00,559 --> 01:42:08,239
+motorbike this blue line is still it
+
+1922
+01:42:04,069 --> 01:42:10,578
+like a loss at about 0.5 it's it's it's
+
+1923
+01:42:08,238 --> 01:42:13,789
+it's there's a lot of it's still pretty
+
+1924
+01:42:10,578 --> 01:42:15,710
+bad right so I actually have to keep
+
+1925
+01:42:13,789 --> 01:42:18,289
+getting more and more confident that
+
+1926
+01:42:15,710 --> 01:42:21,170
+it's not a motorbike so if I want to get
+
+1927
+01:42:18,289 --> 01:42:23,719
+my loss down then for all of these
+
+1928
+01:42:21,170 --> 01:42:26,029
+things which are actually background I
+
+1929
+01:42:23,719 --> 01:42:28,399
+have to be saying like I am sure that
+
+1930
+01:42:26,029 --> 01:42:31,250
+background you know or I'm sure it's not
+
+1931
+01:42:28,399 --> 01:42:34,368
+a motorbike or a bus or a person or a
+
+1932
+01:42:31,250 --> 01:42:36,800
+diagram there because if I don't say I'm
+
+1933
+01:42:34,368 --> 01:42:44,420
+sure it's not any of these things then I
+
+1934
+01:42:36,800 --> 01:42:46,760
+still get plus so that's why this
+
+1935
+01:42:44,420 --> 01:42:49,368
+doesn't work all right this doesn't work
+
+1936
+01:42:46,760 --> 01:42:53,199
+because even when it gets to here and it
+
+1937
+01:42:49,368 --> 01:42:55,969
+wants to say I think it's a motorbike
+
+1938
+01:42:53,198 --> 01:42:59,448
+there's no payoff for it to say so
+
+1939
+01:42:55,969 --> 01:43:01,520
+because if it's wrong right and it kick
+
+1940
+01:42:59,448 --> 01:43:05,210
+it it gets killed and the vast majority
+
+1941
+01:43:01,520 --> 01:43:07,099
+of the time it's not anything the vast
+
+1942
+01:43:05,210 --> 01:43:08,779
+majority of time its background and even
+
+1943
+01:43:07,099 --> 01:43:10,190
+if it's not background it's not enough
+
+1944
+01:43:08,779 --> 01:43:11,750
+just to say it's not background you're
+
+1945
+01:43:10,189 --> 01:43:15,198
+gonna say which of the 20 things it is
+
+1946
+01:43:11,750 --> 01:43:17,149
+right so for the really big things it's
+
+1947
+01:43:15,198 --> 01:43:20,779
+fine because that's the one by one grid
+
+1948
+01:43:17,149 --> 01:43:22,339
+you know so it's it generally is a thing
+
+1949
+01:43:20,779 --> 01:43:24,349
+and you just have to figure out which
+
+1950
+01:43:22,340 --> 01:43:28,010
+thing it is where else for these small
+
+1951
+01:43:24,349 --> 01:43:29,659
+ones and generally it's not anything so
+
+1952
+01:43:28,010 --> 01:43:33,199
+generally small ones we just prefer to
+
+1953
+01:43:29,658 --> 01:43:38,719
+be like I've got nothing to say no
+
+1954
+01:43:33,198 --> 01:43:43,549
+comment okay so that's why this is empty
+
+1955
+01:43:38,719 --> 01:43:46,969
+and that's why even when we do have a
+
+1956
+01:43:43,550 --> 01:43:50,119
+bus right it's using a really big grid
+
+1957
+01:43:46,969 --> 01:43:52,639
+cell to say it's a bus because these are
+
+1958
+01:43:50,118 --> 01:43:54,949
+the only ones where it's like confident
+
+1959
+01:43:52,639 --> 01:43:57,590
+enough to make a call that something
+
+1960
+01:43:54,949 --> 01:44:00,739
+right because the small grid cells it
+
+1961
+01:43:57,590 --> 01:44:02,840
+very rarely is something so the trick is
+
+1962
+01:44:00,739 --> 01:44:05,029
+to try and find a different loss
+
+1963
+01:44:02,840 --> 01:44:06,440
+function instead of binary cross which
+
+1964
+01:44:05,029 --> 01:44:08,719
+we lost it doesn't look like the blue
+
+1965
+01:44:06,439 --> 01:44:11,539
+line but it looks more like the green or
+
+1966
+01:44:08,720 --> 01:44:14,119
+purple line and they actually end up
+
+1967
+01:44:11,539 --> 01:44:16,390
+suggesting the purple line and so it
+
+1968
+01:44:14,119 --> 01:44:22,189
+turns out this is cross-entropy loss
+
+1969
+01:44:16,390 --> 01:44:25,180
+negative log PT focal loss is simply 1
+
+1970
+01:44:22,189 --> 01:44:29,629
+minus PT to the gamma where gamma is
+
+1971
+01:44:25,180 --> 01:44:33,760
+some parameter right and they recommend
+
+1972
+01:44:29,630 --> 01:44:38,150
+using 2 times the cross entropy loss
+
+1973
+01:44:33,760 --> 01:44:41,000
+that's it's literally just a scaling and
+
+1974
+01:44:38,149 --> 01:44:41,989
+so that takes you to if you use camera
+
+1975
+01:44:41,000 --> 01:44:45,859
+that's true that takes you to this
+
+1976
+01:44:41,989 --> 01:44:47,659
+purple line so now if we say yeah I'm
+
+1977
+01:44:45,859 --> 01:44:50,509
+point 6 sure that it's not a motorbike
+
+1978
+01:44:47,659 --> 01:44:52,760
+than the loss function is way good for
+
+1979
+01:44:50,510 --> 01:44:56,239
+you no worries
+
+1980
+01:44:52,760 --> 01:44:59,060
+ok so that's what we want to do we want
+
+1981
+01:44:56,239 --> 01:45:01,189
+to replace cross entropy loss with
+
+1982
+01:44:59,060 --> 01:45:03,890
+vocalist and I mentioned a couple of
+
+1983
+01:45:01,189 --> 01:45:07,039
+things about this fantastic paper the
+
+1984
+01:45:03,890 --> 01:45:09,650
+first is like the actually contour the
+
+1985
+01:45:07,039 --> 01:45:12,560
+actual contribution of this paper is to
+
+1986
+01:45:09,649 --> 01:45:14,569
+add Y minus P to the gamma to the start
+
+1987
+01:45:12,560 --> 01:45:17,240
+of this equation which sounds like
+
+1988
+01:45:14,569 --> 01:45:18,739
+nothing right but actually people have
+
+1989
+01:45:17,239 --> 01:45:21,050
+been trying to figure out this down
+
+1990
+01:45:18,739 --> 01:45:22,579
+problem for years that and I'm not even
+
+1991
+01:45:21,050 --> 01:45:25,940
+sure that realize it's a problem there's
+
+1992
+01:45:22,579 --> 01:45:28,939
+just this assumption that you know
+
+1993
+01:45:25,939 --> 01:45:30,639
+object detection is really hard and you
+
+1994
+01:45:28,939 --> 01:45:34,849
+have to do all of these complex data
+
+1995
+01:45:30,640 --> 01:45:36,369
+augmentations and have- mining and blah
+
+1996
+01:45:34,850 --> 01:45:38,890
+blah blah to get the damn thing to work
+
+1997
+01:45:36,369 --> 01:45:41,449
+so a it's like this recognition of like
+
+1998
+01:45:38,890 --> 01:45:44,410
+but why are we doing all those things
+
+1999
+01:45:41,449 --> 01:45:48,380
+and then this realization is I'm like oh
+
+2000
+01:45:44,409 --> 01:45:52,010
+if I do that it goes away it's fixed
+
+2001
+01:45:48,380 --> 01:45:54,529
+alright so when you come across a paper
+
+2002
+01:45:52,010 --> 01:45:56,810
+like this which is like game-changing
+
+2003
+01:45:54,529 --> 01:46:00,109
+you shouldn't assume you're gonna have
+
+2004
+01:45:56,810 --> 01:46:02,810
+to write 100 thousand lines of code very
+
+2005
+01:46:00,109 --> 01:46:04,969
+often is one line of code or the change
+
+2006
+01:46:02,810 --> 01:46:07,159
+of a single constant or adding log to a
+
+2007
+01:46:04,970 --> 01:46:11,780
+single class
+
+2008
+01:46:07,158 --> 01:46:14,269
+so let's go down to the bit where it all
+
+2009
+01:46:11,779 --> 01:46:16,069
+happens where they describe personal
+
+2010
+01:46:14,270 --> 01:46:17,659
+loss and I just wanted to point out a
+
+2011
+01:46:16,069 --> 01:46:20,299
+couple of terrific things about this
+
+2012
+01:46:17,658 --> 01:46:23,238
+paper the first is here is their
+
+2013
+01:46:20,300 --> 01:46:24,949
+definition of cross-entropy and if
+
+2014
+01:46:23,238 --> 01:46:27,619
+you're not able to write cross-entropy
+
+2015
+01:46:24,948 --> 01:46:29,719
+on a piece of paper right now then you
+
+2016
+01:46:27,619 --> 01:46:31,510
+need to go back and study it because
+
+2017
+01:46:29,719 --> 01:46:34,880
+we're going to be assuming that you know
+
+2018
+01:46:31,510 --> 01:46:36,230
+what it is what it means why it's that
+
+2019
+01:46:34,880 --> 01:46:38,480
+what the shape of it looks like
+
+2020
+01:46:36,229 --> 01:46:39,198
+cross-entropy appears everywhere binary
+
+2021
+01:46:38,479 --> 01:46:41,299
+cross-entropy
+
+2022
+01:46:39,198 --> 01:46:48,079
+and kind of variable cross entropy and
+
+2023
+01:46:41,300 --> 01:46:50,679
+the softmax that most people most of the
+
+2024
+01:46:48,079 --> 01:46:56,779
+time we'll see cross entropy written as
+
+2025
+01:46:50,679 --> 01:47:02,179
+like an indicator on y Times log K plus
+
+2026
+01:46:56,779 --> 01:47:05,658
+an indicator on Y minus y times y minus
+
+2027
+01:47:02,179 --> 01:47:07,579
+PE this is like kind of awkward notation
+
+2028
+01:47:05,658 --> 01:47:11,779
+often people we use that Dirac Delta
+
+2029
+01:47:07,579 --> 01:47:13,100
+functions like that or else this this
+
+2030
+01:47:11,779 --> 01:47:14,869
+paper just says you know what it's just
+
+2031
+01:47:13,100 --> 01:47:17,449
+a conditional the cross yet repeat
+
+2032
+01:47:14,869 --> 01:47:21,710
+simply is a lot negative luck P of Y is
+
+2033
+01:47:17,448 --> 01:47:26,479
+1 negative 1 1 minus P of us so this is
+
+2034
+01:47:21,710 --> 01:47:27,980
+y is 1 if it's a motorbike 0 or not in
+
+2035
+01:47:26,479 --> 01:47:34,158
+this paper they say what if it's about
+
+2036
+01:47:27,979 --> 01:47:36,109
+by 4 negative 1 and then they do
+
+2037
+01:47:34,158 --> 01:47:40,158
+something which mathematicians never do
+
+2038
+01:47:36,109 --> 01:47:43,369
+they refactor all right check us out hey
+
+2039
+01:47:40,158 --> 01:47:46,219
+what if we replace what if we define a
+
+2040
+01:47:43,369 --> 01:47:49,819
+new term called PT which is equal to the
+
+2041
+01:47:46,219 --> 01:47:51,948
+probability if Y is 1 or 1 minus P
+
+2042
+01:47:49,819 --> 01:47:57,469
+otherwise if we did that we could now
+
+2043
+01:47:51,948 --> 01:48:00,529
+redefined seee as that we're just super
+
+2044
+01:47:57,469 --> 01:48:03,079
+cool like it's such an obvious thing to
+
+2045
+01:48:00,529 --> 01:48:05,349
+do but as soon as you do it all of the
+
+2046
+01:48:03,079 --> 01:48:08,750
+other equations get simpler as well
+
+2047
+01:48:05,350 --> 01:48:10,760
+because later on straight at the
+
+2048
+01:48:08,750 --> 01:48:13,760
+variants paragraph they say hey one way
+
+2049
+01:48:10,760 --> 01:48:16,010
+to deal with class in balance ie lots of
+
+2050
+01:48:13,760 --> 01:48:18,139
+stuff is background would just be to
+
+2051
+01:48:16,010 --> 01:48:21,329
+have a different weighting factor the
+
+2052
+01:48:18,139 --> 01:48:24,960
+background this is not so like
+
+2053
+01:48:21,328 --> 01:48:29,219
+for class one you know we'll have some
+
+2054
+01:48:24,960 --> 01:48:32,250
+number alpha + 4 + 0 will have 1 minus
+
+2055
+01:48:29,219 --> 01:48:34,260
+alpha but then they're like hey let's
+
+2056
+01:48:32,250 --> 01:48:37,800
+define alpha to you the same way and so
+
+2057
+01:48:34,260 --> 01:48:40,409
+now our cross entropy well you know with
+
+2058
+01:48:37,800 --> 01:48:42,989
+a weighting factor like this and so then
+
+2059
+01:48:40,408 --> 01:48:46,138
+they can wrap their focal loss with the
+
+2060
+01:48:42,988 --> 01:48:47,928
+same concept and then eventually they
+
+2061
+01:48:46,139 --> 01:48:52,109
+say hey let's take focal loss and
+
+2062
+01:48:47,929 --> 01:48:54,408
+combine it with class waiting like so
+
+2063
+01:48:52,109 --> 01:48:57,269
+yeah so often when you see in a paper
+
+2064
+01:48:54,408 --> 01:48:58,920
+huge big equations it's just because
+
+2065
+01:48:57,270 --> 01:49:00,239
+mathematicians don't know how to be back
+
+2066
+01:48:58,920 --> 01:49:02,279
+though and you'll see like the same
+
+2067
+01:49:00,238 --> 01:49:05,279
+pieces are kind of repeated all over the
+
+2068
+01:49:02,279 --> 01:49:06,809
+place right very very very often and by
+
+2069
+01:49:05,279 --> 01:49:11,279
+the time you've turned it into non pile
+
+2070
+01:49:06,809 --> 01:49:18,119
+code suddenly is super simple so this is
+
+2071
+01:49:11,279 --> 01:49:20,399
+a million times better than so great
+
+2072
+01:49:18,118 --> 01:49:22,589
+paper to read to understand how papers
+
+2073
+01:49:20,399 --> 01:49:27,658
+should be a terrible paper to read to
+
+2074
+01:49:22,590 --> 01:49:29,219
+understand what most his long rap okay
+
+2075
+01:49:27,658 --> 01:49:34,170
+so let's try this we're going to use
+
+2076
+01:49:29,219 --> 01:49:37,319
+this yeah now remember negative log P is
+
+2077
+01:49:34,170 --> 01:49:41,099
+the cross entropy loss so therefore this
+
+2078
+01:49:37,319 --> 01:49:44,448
+is just equal to some number times the
+
+2079
+01:49:41,099 --> 01:49:50,699
+cross entropy loss and when I defined
+
+2080
+01:49:44,448 --> 01:49:58,460
+the binomial cross entropy loss if you
+
+2081
+01:49:50,698 --> 01:50:04,379
+remember or if you noticed I had a
+
+2082
+01:49:58,460 --> 01:50:06,359
+weight which by default was none right
+
+2083
+01:50:04,380 --> 01:50:09,150
+and when you call binary cross entropy
+
+2084
+01:50:06,359 --> 01:50:11,069
+Swaggart's pipe torch thing you can
+
+2085
+01:50:09,149 --> 01:50:12,328
+optionally pass in the web this is
+
+2086
+01:50:11,069 --> 01:50:14,308
+nothing that's more applied by
+
+2087
+01:50:12,328 --> 01:50:16,590
+everything and if it's none then there's
+
+2088
+01:50:14,309 --> 01:50:20,190
+no work so since we're just going to
+
+2089
+01:50:16,590 --> 01:50:23,949
+multiply across entropy by something we
+
+2090
+01:50:20,189 --> 01:50:30,519
+can just define get away
+
+2091
+01:50:23,948 --> 01:50:34,509
+so here's the entirety this is the thing
+
+2092
+01:50:30,520 --> 01:50:37,890
+that like suddenly made object detection
+
+2093
+01:50:34,510 --> 01:50:40,530
+business okay so this was late last year
+
+2094
+01:50:37,890 --> 01:50:46,710
+suddenly it got rid of all of the
+
+2095
+01:50:40,529 --> 01:50:53,829
+complex messy pattern right and so
+
+2096
+01:50:46,710 --> 01:50:55,719
+sigmoid is that PT is W and here you can
+
+2097
+01:50:53,829 --> 01:50:59,380
+see 1 minus P 2 e to the power of gamma
+
+2098
+01:50:55,719 --> 01:51:03,210
+right so we're gonna hammer of to our
+
+2099
+01:50:59,380 --> 01:51:07,210
+first point 2 5 if you're wondering why
+
+2100
+01:51:03,210 --> 01:51:08,980
+this paper because they tried lots of
+
+2101
+01:51:07,210 --> 01:51:14,760
+different values of gamma and alpha and
+
+2102
+01:51:08,979 --> 01:51:20,379
+they found that 2 and 0.25 work well
+
+2103
+01:51:14,760 --> 01:51:23,469
+okay so there's our new loss function it
+
+2104
+01:51:20,380 --> 01:51:28,270
+derives from our BC loss adding a weight
+
+2105
+01:51:23,469 --> 01:51:29,948
+to it focal loss other than that there's
+
+2106
+01:51:28,270 --> 01:51:34,260
+nothing else to do we could just train
+
+2107
+01:51:29,948 --> 01:51:36,899
+our model again okay and so this time
+
+2108
+01:51:34,260 --> 01:51:42,000
+things are looking quite a bit better
+
+2109
+01:51:36,899 --> 01:51:45,639
+you know we now have motor bike bicycle
+
+2110
+01:51:42,000 --> 01:51:47,850
+person motorbike like it's it's actually
+
+2111
+01:51:45,640 --> 01:51:50,140
+having a go at finding something yeah
+
+2112
+01:51:47,850 --> 01:51:51,520
+it's still doing a good job with big
+
+2113
+01:51:50,140 --> 01:51:54,280
+ones in fact it's looking quite a lot
+
+2114
+01:51:51,520 --> 01:51:57,150
+better it's finding quite a few people
+
+2115
+01:51:54,279 --> 01:52:01,000
+it's finding a couple of different birds
+
+2116
+01:51:57,149 --> 01:52:04,779
+it's looking pretty good right so our
+
+2117
+01:52:01,000 --> 01:52:08,350
+last step is for now is to basically
+
+2118
+01:52:04,779 --> 01:52:10,090
+figure out how to pull out just the
+
+2119
+01:52:08,350 --> 01:52:11,860
+interesting stuff like let's take this
+
+2120
+01:52:10,090 --> 01:52:15,969
+barking this sofa right how do we pick
+
+2121
+01:52:11,859 --> 01:52:18,789
+out a dog and a sofa and the answer is
+
+2122
+01:52:15,969 --> 01:52:21,130
+incredibly simple all we're going to do
+
+2123
+01:52:18,789 --> 01:52:24,929
+is we're going to be going to go through
+
+2124
+01:52:21,130 --> 01:52:28,779
+every pair of these bounding boxes and
+
+2125
+01:52:24,929 --> 01:52:33,489
+if they overlap by more than some amount
+
+2126
+01:52:28,779 --> 01:52:35,979
+say 0.5 using jacquard and they both
+
+2127
+01:52:33,488 --> 01:52:37,058
+predict in the same class we're going to
+
+2128
+01:52:35,979 --> 01:52:39,250
+assume that the same thing
+
+2129
+01:52:37,059 --> 01:52:41,559
+and we're just got to pick the one with
+
+2130
+01:52:39,250 --> 01:52:44,828
+the higher p-value and we just keep
+
+2131
+01:52:41,559 --> 01:52:46,300
+doing that repeatedly that's really
+
+2132
+01:52:44,828 --> 01:52:48,729
+boring code I actually didn't write it
+
+2133
+01:52:46,300 --> 01:52:53,860
+myself I copied it on somebody else's
+
+2134
+01:52:48,729 --> 01:52:55,448
+code non maximum suppression yes no
+
+2135
+01:52:53,859 --> 01:52:57,429
+reason particularly to go through it but
+
+2136
+01:52:55,448 --> 01:53:00,250
+that's one of us okay
+
+2137
+01:52:57,429 --> 01:53:04,569
+so we can now show the results of the
+
+2138
+01:53:00,250 --> 01:53:09,158
+non maximum suppression and yeah here's
+
+2139
+01:53:04,569 --> 01:53:15,099
+the sofa here's the dog yeah yes the
+
+2140
+01:53:09,158 --> 01:53:21,578
+bird is the person this person cigarette
+
+2141
+01:53:15,099 --> 01:53:24,340
+looks like it's firework this one it's
+
+2142
+01:53:21,578 --> 01:53:26,408
+like it's okay but not great like it's
+
+2143
+01:53:24,340 --> 01:53:28,029
+found a person and his bicycle of a
+
+2144
+01:53:26,408 --> 01:53:33,429
+person and his bicycle with his bicycle
+
+2145
+01:53:28,029 --> 01:53:35,800
+in the wrong place place you know you
+
+2146
+01:53:33,429 --> 01:53:37,899
+can also see that like some of these
+
+2147
+01:53:35,800 --> 01:53:39,460
+smaller things that lower p-values the
+
+2148
+01:53:37,899 --> 01:53:43,899
+top button where the back of just point
+
+2149
+01:53:39,460 --> 01:53:45,219
+one sticks this is same time of bus so
+
+2150
+01:53:43,899 --> 01:53:47,679
+there's something still two things here
+
+2151
+01:53:45,219 --> 01:53:51,189
+right and the trick will be to use
+
+2152
+01:53:47,679 --> 01:53:53,260
+something called featured here and
+
+2153
+01:53:51,189 --> 01:54:06,069
+that's what we're going to do in less
+
+2154
+01:53:53,260 --> 01:54:11,530
+than 14 what I wanted to do in the last
+
+2155
+01:54:06,069 --> 01:54:16,590
+few minutes of class was to talk a
+
+2156
+01:54:11,529 --> 01:54:20,019
+little bit more about the papers and
+
+2157
+01:54:16,590 --> 01:54:24,760
+specifically to go back to the SSD paper
+
+2158
+01:54:20,020 --> 01:54:26,469
+okay so this is single-shot multipass
+
+2159
+01:54:24,760 --> 01:54:30,969
+detector and when this came out I was
+
+2160
+01:54:26,469 --> 01:54:34,270
+very excited because it was kind of you
+
+2161
+01:54:30,969 --> 01:54:39,868
+know it and Yolo were like you know the
+
+2162
+01:54:34,270 --> 01:54:42,789
+first kind of single pass good quality
+
+2163
+01:54:39,868 --> 01:54:45,609
+object detection methods that come along
+
+2164
+01:54:42,788 --> 01:54:47,800
+and so I kind of ignored object
+
+2165
+01:54:45,609 --> 01:54:49,538
+detection until this time or this to
+
+2166
+01:54:47,800 --> 01:54:53,079
+pass stuff with
+
+2167
+01:54:49,538 --> 01:54:54,460
+and then fast our CNN and faster us you
+
+2168
+01:54:53,078 --> 01:54:58,448
+know because there's been as kind of
+
+2169
+01:54:54,460 --> 01:55:01,750
+continuous repetition of history and the
+
+2170
+01:54:58,448 --> 01:55:05,138
+deep learning world which is things that
+
+2171
+01:55:01,750 --> 01:55:07,899
+involve multiple passes of multiple
+
+2172
+01:55:05,139 --> 01:55:09,219
+different pieces over time you know
+
+2173
+01:55:07,899 --> 01:55:15,158
+particularly where they involve some
+
+2174
+01:55:09,219 --> 01:55:18,429
+long deep learning pieces like over time
+
+2175
+01:55:15,158 --> 01:55:21,549
+they basically always get turned into a
+
+2176
+01:55:18,429 --> 01:55:24,158
+single end-to-end deep learning model so
+
+2177
+01:55:21,550 --> 01:55:26,199
+I tend to kind of like ignore them until
+
+2178
+01:55:24,158 --> 01:55:28,058
+that happens because that's the point
+
+2179
+01:55:26,198 --> 01:55:30,219
+where it's like okay now people have
+
+2180
+01:55:28,059 --> 01:55:31,690
+figured out how to show this as a deep
+
+2181
+01:55:30,219 --> 01:55:33,908
+learning problem as soon as people do
+
+2182
+01:55:31,689 --> 01:55:36,118
+that they generally end up something
+
+2183
+01:55:33,908 --> 01:55:39,069
+it's much faster and much more accurate
+
+2184
+01:55:36,118 --> 01:55:45,069
+and so SSD and Yolo were really
+
+2185
+01:55:39,069 --> 01:55:48,130
+important so here's the SSD paper let's
+
+2186
+01:55:45,069 --> 01:55:50,679
+go down to the key piece which is where
+
+2187
+01:55:48,130 --> 01:56:00,779
+they describe the model and let's try
+
+2188
+01:55:50,679 --> 01:56:09,760
+and understand it so the model is
+
+2189
+01:56:00,779 --> 01:56:15,279
+basically one two three four paragraphs
+
+2190
+01:56:09,760 --> 01:56:16,929
+right so tape is a really concise mat
+
+2191
+01:56:15,279 --> 01:56:20,618
+which means that you kind of need to
+
+2192
+01:56:16,929 --> 01:56:22,149
+read them pretty carefully partly though
+
+2193
+01:56:20,618 --> 01:56:24,368
+you need to know which bits to read
+
+2194
+01:56:22,149 --> 01:56:26,558
+carefully so the bits where they say
+
+2195
+01:56:24,368 --> 01:56:29,679
+here we're going to prove the error
+
+2196
+01:56:26,559 --> 01:56:31,239
+bounds on this model you could ignore
+
+2197
+01:56:29,679 --> 01:56:33,190
+that right because you don't care about
+
+2198
+01:56:31,238 --> 01:56:37,718
+proving the intervals but the bit which
+
+2199
+01:56:33,189 --> 01:56:41,529
+says here is what the model is careful
+
+2200
+01:56:37,719 --> 01:56:43,029
+so here's the bit called model and so
+
+2201
+01:56:41,529 --> 01:56:46,328
+hopefully you'll find we can now read
+
+2202
+01:56:43,029 --> 01:56:49,179
+this together and understand it so SSD
+
+2203
+01:56:46,328 --> 01:56:51,578
+is a feed-forward content and it creates
+
+2204
+01:56:49,179 --> 01:56:54,130
+a fixed size collection of bounding
+
+2205
+01:56:51,578 --> 01:56:56,759
+boxes and scores for the presence of
+
+2206
+01:56:54,130 --> 01:57:02,170
+object class instances in those boxes so
+
+2207
+01:56:56,760 --> 01:57:03,190
+fixed size that ie the the convolutional
+
+2208
+01:57:02,170 --> 01:57:05,020
+great time
+
+2209
+01:57:03,189 --> 01:57:09,488
+okay you know different aspect ratios
+
+2210
+01:57:05,020 --> 01:57:15,070
+and stuff and each one of those has 4
+
+2211
+01:57:09,488 --> 01:57:17,459
+plus C activations followed by a non
+
+2212
+01:57:15,069 --> 01:57:20,649
+maximum suppression step to take that
+
+2213
+01:57:17,460 --> 01:57:23,230
+massive gump and turn it into you know
+
+2214
+01:57:20,649 --> 01:57:26,769
+just a couple of novel adding different
+
+2215
+01:57:23,229 --> 01:57:29,019
+objects the early layer is based on the
+
+2216
+01:57:26,770 --> 01:57:31,660
+standard architecture so we just use
+
+2217
+01:57:29,020 --> 01:57:34,090
+rest man this is pretty standard as you
+
+2218
+01:57:31,659 --> 01:57:36,399
+know you can kind of see this consistent
+
+2219
+01:57:34,090 --> 01:57:37,810
+theme particularly in kind of how the
+
+2220
+01:57:36,399 --> 01:57:39,969
+pasta you know library tries to do
+
+2221
+01:57:37,810 --> 01:57:41,739
+things which is like grab a pre trade
+
+2222
+01:57:39,969 --> 01:57:44,079
+network that already does something pull
+
+2223
+01:57:41,738 --> 01:57:46,269
+off the envious decant a new enemy all
+
+2224
+01:57:44,079 --> 01:57:49,988
+right so early network players we use
+
+2225
+01:57:46,270 --> 01:57:52,390
+the standard classifier truncate the
+
+2226
+01:57:49,988 --> 01:57:54,869
+classification layers as we've always do
+
+2227
+01:57:52,390 --> 01:57:57,940
+that automatically when we use Carmona
+
+2228
+01:57:54,869 --> 01:58:02,829
+and we call this the base Network some
+
+2229
+01:57:57,939 --> 01:58:05,829
+campers call that the backbone and we
+
+2230
+01:58:02,829 --> 01:58:07,359
+then add an auxilary structure okay so
+
+2231
+01:58:05,829 --> 01:58:10,719
+the auxiliary structure which we call
+
+2232
+01:58:07,359 --> 01:58:14,289
+the custom head has multi scale feature
+
+2233
+01:58:10,719 --> 01:58:16,689
+nests so we add compositional layers to
+
+2234
+01:58:14,289 --> 01:58:19,029
+the end of this base Network and they
+
+2235
+01:58:16,689 --> 01:58:23,500
+decrease in size progressively so a
+
+2236
+01:58:19,029 --> 01:58:25,149
+bunch of side to convice so that allows
+
+2237
+01:58:23,500 --> 01:58:28,270
+predictions of detections and multiple
+
+2238
+01:58:25,149 --> 01:58:34,210
+scales the grid cells are different size
+
+2239
+01:58:28,270 --> 01:58:38,020
+it is the model is different for each
+
+2240
+01:58:34,210 --> 01:58:40,390
+feature layer compared to Yolo that
+
+2241
+01:58:38,020 --> 01:58:42,280
+operate on a single feature so you're
+
+2242
+01:58:40,390 --> 01:58:46,560
+low as we discussed dispenser is one
+
+2243
+01:58:42,279 --> 01:58:50,829
+vector for us we have different harmless
+
+2244
+01:58:46,560 --> 01:58:52,840
+H added feature layer gives you a fixed
+
+2245
+01:58:50,829 --> 01:58:57,039
+set of predictions using a bunch of
+
+2246
+01:58:52,840 --> 01:59:01,390
+filters for a filter layer where the
+
+2247
+01:58:57,039 --> 01:59:03,159
+grid size is n by n 4x4 with pay
+
+2248
+01:59:01,390 --> 01:59:06,340
+channels where in fact let's take the
+
+2249
+01:59:03,159 --> 01:59:09,219
+pick as well seven by seven with 512
+
+2250
+01:59:06,340 --> 01:59:14,110
+panels the basic element is going to be
+
+2251
+01:59:09,219 --> 01:59:17,198
+a three by three by P cone which in our
+
+2252
+01:59:14,109 --> 01:59:21,698
+case is a three by three
+
+2253
+01:59:17,198 --> 01:59:25,268
+by four for the shape offset bit or
+
+2254
+01:59:21,698 --> 01:59:26,948
+three by three by C for the score for
+
+2255
+01:59:25,269 --> 01:59:29,099
+category vision that's so those are
+
+2256
+01:59:26,948 --> 01:59:32,259
+those three those are those two pieces
+
+2257
+01:59:29,099 --> 01:59:34,328
+at each of those grid cell locations
+
+2258
+01:59:32,260 --> 01:59:39,670
+it's going to produce an output value
+
+2259
+01:59:34,328 --> 01:59:43,208
+and the bounding box offsets measured
+
+2260
+01:59:39,670 --> 01:59:45,729
+relative to that default cost position
+
+2261
+01:59:43,208 --> 01:59:49,328
+which we've been calling an anchor box
+
+2262
+01:59:45,729 --> 01:59:51,458
+position relative to the feature mount
+
+2263
+01:59:49,328 --> 01:59:56,849
+location what we've been calling the
+
+2264
+01:59:51,458 --> 02:00:00,719
+grid cell okay as opposed to Yolo right
+
+2265
+01:59:56,849 --> 02:00:04,179
+which has a fully connected layer and
+
+2266
+02:00:00,719 --> 02:00:07,389
+then they go on to describe the default
+
+2267
+02:00:04,179 --> 02:00:10,719
+boxes what they are for each feature now
+
+2268
+02:00:07,389 --> 02:00:13,630
+cell organs in grid cell they Tyrell the
+
+2269
+02:00:10,719 --> 02:00:15,550
+picture map in a convolutional manner so
+
+2270
+02:00:13,630 --> 02:00:19,538
+the position of each box relative to its
+
+2271
+02:00:15,550 --> 02:00:22,599
+grid cell is best so hopefully you can
+
+2272
+02:00:19,538 --> 02:00:27,849
+see you know we end up with C plus 4
+
+2273
+02:00:22,599 --> 02:00:33,248
+times K filters if there are K boxes at
+
+2274
+02:00:27,849 --> 02:00:39,788
+each location okay so these are similar
+
+2275
+02:00:33,248 --> 02:00:41,439
+to the anchor bosses so like if you jump
+
+2276
+02:00:39,788 --> 02:00:44,800
+straight in and read a paper like this
+
+2277
+02:00:41,439 --> 02:00:46,629
+without knowing like only solving and
+
+2278
+02:00:44,800 --> 02:00:49,208
+Maya solving yet when what's the kind of
+
+2279
+02:00:46,630 --> 02:00:51,248
+man acted shirt circle those four
+
+2280
+02:00:49,208 --> 02:00:53,498
+paragraphs would probably make almost no
+
+2281
+02:00:51,248 --> 02:00:55,208
+sense but now that we've gone through it
+
+2282
+02:00:53,498 --> 02:00:57,969
+you read those four paragraphs and
+
+2283
+02:00:55,208 --> 02:01:00,099
+hopefully you're thinking oh that's just
+
+2284
+02:00:57,969 --> 02:01:06,630
+what Jeremy said only they said it
+
+2285
+02:01:00,099 --> 02:01:06,630
+better than Jerry and less words okay so
+
+2286
+02:01:07,198 --> 02:01:11,439
+so I have the same problem when I
+
+2287
+02:01:09,578 --> 02:01:13,899
+started reading the SST paper and I read
+
+2288
+02:01:11,439 --> 02:01:16,208
+those four paragraphs and I didn't have
+
+2289
+02:01:13,899 --> 02:01:18,038
+before this time much of a background in
+
+2290
+02:01:16,208 --> 02:01:20,529
+object notation because I decided to
+
+2291
+02:01:18,038 --> 02:01:23,050
+wait until she passed me more and so I
+
+2292
+02:01:20,529 --> 02:01:27,550
+read this and I was like what the hell
+
+2293
+02:01:23,050 --> 02:01:29,210
+right and so the trick is to then start
+
+2294
+02:01:27,550 --> 02:01:33,050
+reading back over the citation
+
+2295
+02:01:29,210 --> 02:01:34,670
+right so for example and you should go
+
+2296
+02:01:33,050 --> 02:01:37,610
+back and read this paper now look here's
+
+2297
+02:01:34,670 --> 02:01:39,469
+the matching strategy but and that all
+
+2298
+02:01:37,609 --> 02:01:40,909
+matching strategy that I somehow spent
+
+2299
+02:01:39,469 --> 02:01:44,230
+like it now we're talking about that's
+
+2300
+02:01:40,909 --> 02:01:47,539
+just a paragraph but it really is right
+
+2301
+02:01:44,229 --> 02:01:50,449
+for each ground truth we select from
+
+2302
+02:01:47,539 --> 02:01:53,119
+default boxes based on location aspect
+
+2303
+02:01:50,449 --> 02:01:54,949
+ratio and scale we match each ground
+
+2304
+02:01:53,119 --> 02:01:58,219
+truth to the default box with the best
+
+2305
+02:01:54,949 --> 02:01:59,899
+jacquard overlap and then we met two
+
+2306
+02:01:58,219 --> 02:02:03,469
+default boxes - anything with jacquard
+
+2307
+02:01:59,899 --> 02:02:07,099
+over that I own printer that's it that's
+
+2308
+02:02:03,469 --> 02:02:09,529
+the one sentence version and then we've
+
+2309
+02:02:07,100 --> 02:02:17,390
+got the loss function which is basically
+
+2310
+02:02:09,529 --> 02:02:21,529
+to say take the average of the last
+
+2311
+02:02:17,390 --> 02:02:25,789
+based on classes plus the lost based on
+
+2312
+02:02:21,529 --> 02:02:28,099
+localization with some weighting factor
+
+2313
+02:02:25,789 --> 02:02:29,569
+now with focal loss I found I didn't
+
+2314
+02:02:28,100 --> 02:02:36,920
+really need the weighting factor anymore
+
+2315
+02:02:29,569 --> 02:02:38,569
+they both but in this case as I started
+
+2316
+02:02:36,920 --> 02:02:41,779
+reading this I didn't really understand
+
+2317
+02:02:38,569 --> 02:02:43,849
+exactly what LMG and all this stuff was
+
+2318
+02:02:41,779 --> 02:02:46,279
+but it says well this is derived from
+
+2319
+02:02:43,850 --> 02:02:49,880
+the more t-bar subjective so then I went
+
+2320
+02:02:46,279 --> 02:02:53,359
+back to the paper that defined Modi bas
+
+2321
+02:02:49,880 --> 02:02:55,159
+and I found in their proposed approach
+
+2322
+02:02:53,359 --> 02:02:58,488
+they've also got a section called
+
+2323
+02:02:55,159 --> 02:03:05,059
+training objective also known as loss
+
+2324
+02:02:58,488 --> 02:03:09,559
+function and here I can see it's the
+
+2325
+02:03:05,060 --> 02:03:12,850
+same notation l GE and so this is where
+
+2326
+02:03:09,560 --> 02:03:15,380
+I can go back and see the detail and
+
+2327
+02:03:12,850 --> 02:03:17,300
+after you read a bunch of papers you'll
+
+2328
+02:03:15,380 --> 02:03:19,340
+start to see things very quickly for
+
+2329
+02:03:17,300 --> 02:03:22,250
+example when you see these double bars -
+
+2330
+02:03:19,340 --> 02:03:24,110
+- you'll realize every time there's mean
+
+2331
+02:03:22,250 --> 02:03:26,180
+squared error that's how you're right
+
+2332
+02:03:24,109 --> 02:03:28,639
+mean square error right this is actually
+
+2333
+02:03:26,180 --> 02:03:31,489
+called the two norm the two long is just
+
+2334
+02:03:28,640 --> 02:03:34,010
+the sum of squared differences right and
+
+2335
+02:03:31,488 --> 02:03:35,389
+then there's two up here means normally
+
+2336
+02:03:34,010 --> 02:03:39,650
+they take the square root so we just
+
+2337
+02:03:35,390 --> 02:03:41,600
+don't do this so this is just M SC all
+
+2338
+02:03:39,649 --> 02:03:43,009
+right anytime you see like oh yes a lot
+
+2339
+02:03:41,600 --> 02:03:45,170
+of C and his
+
+2340
+02:03:43,010 --> 02:03:46,039
+see you know that's basically a binary
+
+2341
+02:03:45,170 --> 02:03:50,300
+cross-entropy
+
+2342
+02:03:46,038 --> 02:03:52,880
+right so it's like you you're not
+
+2343
+02:03:50,300 --> 02:03:54,920
+actually gonna have to read every day at
+
+2344
+02:03:52,880 --> 02:03:56,150
+every equation right you are kind of a
+
+2345
+02:03:54,920 --> 02:03:59,630
+bit at first
+
+2346
+02:03:56,149 --> 02:04:03,109
+right but after a while your brain just
+
+2347
+02:03:59,630 --> 02:04:04,909
+like immediately knows basically what's
+
+2348
+02:04:03,109 --> 02:04:07,670
+going on and then I say oh I've got a
+
+2349
+02:04:04,908 --> 02:04:09,738
+Luxio panel of 1 minus C and as expected
+
+2350
+02:04:07,670 --> 02:04:11,840
+I should have my X and here's my 1 minus
+
+2351
+02:04:09,738 --> 02:04:14,529
+X okay there's all the pieces there that
+
+2352
+02:04:11,840 --> 02:04:14,529
+I would expect to see
+
+2353
+02:04:16,689 --> 02:04:20,899
+so then having done that that then kind
+
+2354
+02:04:19,340 --> 02:04:24,380
+of allowed me okay and then they get
+
+2355
+02:04:20,899 --> 02:04:26,569
+combined with the two pieces and oh
+
+2356
+02:04:24,380 --> 02:04:29,859
+there's the multiplier that I expected
+
+2357
+02:04:26,569 --> 02:04:34,549
+and so now I can kind of come back here
+
+2358
+02:04:29,859 --> 02:04:35,839
+understand what's going on okay so we're
+
+2359
+02:04:34,550 --> 02:04:40,820
+going to be looking at a lot more papers
+
+2360
+02:04:35,840 --> 02:04:43,760
+right but maybe this week go through the
+
+2361
+02:04:40,819 --> 02:04:47,268
+code and go through the paper all right
+
+2362
+02:04:43,760 --> 02:04:50,900
+and be like what's what's going on and
+
+2363
+02:04:47,269 --> 02:04:54,039
+remember what I did to make it easier
+
+2364
+02:04:50,899 --> 02:04:57,439
+for you was I took that loss function I
+
+2365
+02:04:54,038 --> 02:05:00,889
+copied it into a cell and it has lit it
+
+2366
+02:04:57,439 --> 02:05:03,710
+up so that each bit was in a separate
+
+2367
+02:05:00,889 --> 02:05:09,139
+cell and then after every cell I other
+
+2368
+02:05:03,710 --> 02:05:11,510
+printed or plotted that value that so if
+
+2369
+02:05:09,139 --> 02:05:13,190
+I hadn't have done that for you you
+
+2370
+02:05:11,510 --> 02:05:14,659
+should do it yourself right like if
+
+2371
+02:05:13,189 --> 02:05:17,509
+there's no way you can understand these
+
+2372
+02:05:14,658 --> 02:05:21,920
+functions without trying putting things
+
+2373
+02:05:17,510 --> 02:05:27,260
+in single time yeah okay so hopefully
+
+2374
+02:05:21,920 --> 02:05:29,149
+this is kind of a good good start okay
+
+2375
+02:05:27,260 --> 02:05:32,199
+well thanks everybody have a great week
+
+2376
+02:05:29,149 --> 02:05:32,198
+see you next Monday
+

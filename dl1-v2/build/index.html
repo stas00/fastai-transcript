@@ -1,0 +1,518 @@
+<p><strong>Lesson 1</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1s">00:00:01</a> Welcome to Part 1, Version 2 of “Practical Deep Learning for Coders”,<br>
+Check the Fastai community for help on setting up your system on “<a href="http://forums.fast.ai/">forums.fast.ai</a>”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=2m11s">00:02:11</a> The “Top-Down” approach to study, vs the “Bottom-Up”,<br>
+Why you want a nVidia GPU (Graphic Processing Unit = a video card) for Deep Learning</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=4m11s">00:04:11</a> Use <a href="http://crestle.com/">crestle.com</a> if you don’t have a PC with a GPU.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=6m11s">00:06:11</a> Use <a href="http://paperspace.com/">paperspace.com</a> instead of <a href="http://crestle.com/">crestle.com</a>, for faster and cheaper GPU computing. Technical hints to make it work with a Jupyter Notebook.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=12m30s">00:12:30</a> Start with Jupyter Notebook lesson1.ipynb ‘Dogs vs Cats’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=20m20s">00:20:20</a> Our first model: quick start.<br>
+Running our first Deep Learning model with the ‘resnet34’ architecture, epoch, accuracy on validation set.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=24m11s">00:24:11</a> “Analyzing results: looking at pictures” in lesson1.ipynb</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=30m45s">00:30:45</a> Revisiting Jeremy &amp; Rachel’s approach of “Top-Down vs Bottom-Up” teaching philosophy, in details.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=33m45s">00:33:45</a> Explaining the “Course Structure” of Fastai, with a slide showing its 8 steps.<br>
+Looking at Computer Vision, then Structured Data (or Time Series) with the Kaggle Rossmann Grocery Sales competition, then NLP (Natural Language Processing), then Collaborative Filtering for Recommendation Systems, then Computer Vision again with ResNet.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=44m11s">00:44:11</a> What is Deep Learning ? A kind of Machine Learning.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=49m11s">00:49:11</a> The Universal Approximation Theorem, and examples used by Google corporation.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=58m11s">00:58:11</a> More examples using Deep Learning, as shown in the PowerPoint from Jeremy course in ML1 (Machine Learning 1)<br>
+What is actually going on in a Deep Learning model, with convolutional network.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1h2m11s">01:02:11</a> Adding a Non-Linear Layer to our model, sigmoid or ReLu (rectified linear unit), SGD (Stochastic Gradient Descent)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1h8m20s">01:08:20</a> A paper on “Visualizing and Understanding Convolutional Networks”, implementation on ‘lesson1.ipynb’, ‘cyclical learning rates’ with Fastai library as “lr_find” or learning rate finder.<br>
+Why it starts training a model but stops before 100%: use Learner Schedule Finder.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1h21m30s">01:21:30</a> Why you need to use Numpy and Pandas libraries with Jupyter Notebook: hit ‘TAB’ for more info, or “Shift-TAB” once or twice or thrice (three times) to bring up the documentation for the code.<br>
+Enter ‘?’ before the function, or ‘??’ to look at the code in details.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1h24m40s">01:24:40</a> Using the ‘H’ shortcut in Jupyter Notebook, to see the Keyboard Shortcuts.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/IPBSB1HLNLo?t=1h25m40s">01:25:40</a> Don’t forget to turn off your session in Crestle or Paperspace, or you end up being charged.<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 2</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1m1s">00:01:01</a> Lesson 1 review, image classifier,<br>
+PATH structure for training, learning rate,<br>
+what are the four columns of numbers in “A Jupyter Widget”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=4m45s">00:04:45</a> What is a Learning Rate (LR), LR Finder, mini-batch, ‘learn.sched.plot_lr()’ &amp; ‘learn.sched.plot()’, ADAM optimizer intro</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=15m">00:15:00</a> How to improve your model with more data,<br>
+avoid overfitting, use different data augmentation ‘aug_tfms=’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=18m30s">00:18:30</a> More questions on using Learning Rate Finder</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=24m10s">00:24:10</a> Back to Data Augmentation (DA),<br>
+‘tfms=’ and ‘precompute=True’, visual examples of Layer detection and activation in pre-trained<br>
+networks like ImageNet. Difference between your own computer or AWS, and Crestle.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=29m10s">00:29:10</a> Why use ‘learn.precompute=False’ for Data Augmentation, impact on Accuracy / Train Loss / Validation Loss</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=30m15s">00:30:15</a> Why use ‘cycle_len=1’, learning rate annealing,<br>
+cosine annealing, Stochastic Gradient Descent (SGD) with Restart approach, Ensemble; “Jeremy’s superpower”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=40m35s">00:40:35</a> Save your model weights with ‘learn.save()’ &amp; ‘learn.load()’, the folders ‘tmp’ &amp; ‘models’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=42m45s">00:42:45</a> Question on training a model “from scratch”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=43m45s">00:43:45</a> Fine-tuning and differential learning rate,<br>
+‘learn.unfreeze()’, ‘lr=np.array()’, ‘learn.fit(lr, 3, cycle_len=1, cycle_mult=2)’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=55m30s">00:55:30</a> Advanced questions: “why do smoother services correlate to more generalized networks ?” and more.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h5m30s">01:05:30</a> “Is the <a href="http://fast.ai/">Fast.ai</a> library used in this course, on top of PyTorch, open-source ?” and why <a href="http://fast.ai/">Fast.ai</a> switched from Keras+TensorFlow to PyTorch, creating a high-level library on top.</p>
+</li>
+</ul>
+<p>PAUSE</p>
+<ul>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h11m45s">01:11:45</a> Classification matrix ‘plot_confusion_matrix()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h13m45s">01:13:45</a> Easy 8-steps to train a world-class image classifier</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h16m30s">01:16:30</a> New demo with Dog_Breeds_Identification competition on Kaggle, download/import data from Kaggle with ‘kaggle-cli’, using CSV files with Pandas. ‘pd.read_csv()’, ‘df.pivot_table()’, ‘val_idxs = get_cv_idxs()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h29m15s">01:29:15</a> Dog_Breeds initial model, image_size = 64,<br>
+CUDA Out Of Memory (OOM) error</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h32m45s">01:32:45</a> Undocumented Pro-Tip from Jeremy: train on a small size, then use ‘learn.set_data()’ with a larger data set (like 299 over 224 pixels)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h36m15s">01:36:15</a> Using Test Time Augmentation (‘learn.TTA()’) again</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h48m10s">01:48:10</a> How to improve a model/notebook on Dog_Breeds: increase the image size and use a better architecture.<br>
+ResneXt (with an X) compared to Resnet. Warning for GPU users: the X version can 2-4 times memory, thus need to reduce Batch_Size to avoid OOM error</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h53m">01:53:00</a> Quick test on Amazon Satellite imagery competition on Kaggle, with multi-labels</p>
+</li>
+<li>
+<p><a href="https://youtu.be/JNxcznsrRb8?t=1h56m30s">01:56:30</a> Back to your hardware deep learning setup: Crestle vs Paperspace, and AWS who gave approx $200,000 of computing credits to <a href="http://fast.ai/">Fast.ai</a> Part1 V2.<br>
+More tips on setting up your AWS system as a <a href="http://fast.ai/">Fast.ai</a> student, Amazon Machine Image (AMI), ‘p2.xlarge’,<br>
+‘aws key pair’, ‘ssh-keygen’, ‘id_rsa.pub’, ‘import key pair’, ‘git pull’, ‘conda env update’, and how to shut down your $0.90 a minute with ‘Instance State =&gt; Stop’<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 3</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=5s">00:00:05</a> Cool guides &amp; posts made by <a href="http://fast.ai/">Fast.ai</a> classmates<br>
+tmux, summary of lesson 2, learning rate finder, guide to Pytorch, learning rate vs batch size,<br>
+decoding ResNet architecture, beginner’s forum</p>
+</li>
+
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=5m45s">00:05:45</a> Where we go from here</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=8m20s">00:08:20</a> How to complete last week assignement “Dog breeds detection”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=8m55s">00:08:55</a> How to download data from Kaggle (Kaggle CLI) or anywhere else</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=12m5s">00:12:05</a> Cool tip to download only the files you need: using CulrWget</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=13m35s">00:13:35</a> Dogs vs Cats example</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=17m15s">00:17:15</a> What means “Precompute = True” and “learn.bn_freeze”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=20m10s">00:20:10</a> Intro &amp; comparison to Keras with TensorFlow</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=30m10s">00:30:10</a> Porting PyTorch <a href="http://fast.ai/">fast.ai</a> library to Keras+TensorFlow project</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=32m30s">00:32:30</a> Create a submission to Kaggle</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=39m30s">00:39:30</a> Making an individual prediction on a single file</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=42m15s">00:42:15</a> The theory behind Convolutional Networks, and Otavio Good demo (Word Lens)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=49m45s">00:49:45</a> ConvNet demo with Excel,<br>
+filter, Hidden layer, Maxpool, Dense weights, Fully-Connected layer</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h8m30s">01:08:30</a> ConvNet demo with Excel (continued)<br>
+output, probabilities adding to 1, activation function, Softmax</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h15m30s">01:15:30</a> The mathematics you really need to understand for Deep Learning<br>
+Exponentiation &amp; Logarithm</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h20m30s">01:20:30</a> Multi-label classification with Amazon Satellite competition</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h33m35s">01:33:35</a> Example of improving a “washed-out” image</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h37m30s">01:37:30</a> Seting different learning rates for different layers</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h38m45s">01:38:45</a> ‘data.resize()’ for speed-up, and ‘metrics=[f2]’ or ‘fbeta_score’ metric</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h45m10s">01:45:10</a> ‘sigmoid’ activation for multi-label</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h47m30s">01:47:30</a> Question on “Training only the last layers, not the initial freeze/frozen ones from ImageNet models”<br>
+‘learn.unfreeze()’ advanced discussion</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h56m30s">01:56:30</a> Visualize your model with ‘learn.summary()’, shows ‘OrderedDict()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=1h59m45s">01:59:45</a> Working with Structured Data “Corporacion Favorita Grocery Sales Forecasting”<br>
+Based on the Rossman Stores competitition</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=2h5m30s">02:05:30</a> Book: Python for Data Analysis, by Wes McKinney</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=2h11m50s">02:11:50</a> We save the dataframe with ‘Joined.to_feather()’ from Pandas, use ‘df = pd.read_feather()’ to load.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/9C06ZPF8Uuc?t=2h5m30s">02:13:30</a> Split Rossman columns in two types: categorical vs continuous<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 4</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=4s">00:00:04</a> More cool guides &amp; posts made by <a href="http://fast.ai/">Fast.ai</a> classmates<br>
+"Improving the way we work with learning rate", “Cyclical Learning Rate technique”,<br>
+“Exploring Stochastic Gradient Descent with Restarts (SGDR)”, “Transfer Learning using differential learning rates”, “Getting Computers to see better than Humans”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=3m4s">00:03:04</a> Where we go from here: Lesson 3 -&gt; 4 -&gt; 5<br>
+Structured Data Deep Learning, Natural Language Processing (NLP), Recommendation Systems</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=5m4s">00:05:04</a> Dropout discussion with “Dog_Breeds”,<br>
+looking at a sequential model’s layers with ‘learn’, Linear activation, ReLu, LogSoftmax</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=18m4s">00:18:04</a> Question: “What kind of ‘p’ to use for Dropout as default”, overfitting, underfitting, ‘xtra_fc=’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=23m45s">00:23:45</a> Question: “Why monitor the Loss / LogLoss vs Accuracy”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=25m4s">00:25:04</a> Looking at Structured and Time Series data with Rossmann Kaggle competition, categorical &amp; continuous variables, ‘.astype(‘category’)’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=35m50s">00:35:50</a> fastai library ‘proc_df()’, ‘yl = np.log(y)’, missing values, ‘train_ratio’, ‘val_idx’. “How (and why) to create a good validation set” post by Rachel</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=39m45s">00:39:45</a> RMSPE: Root Mean Square Percentage Error,<br>
+create ModelData object, ‘md = ColumnarModelData.from_data_frame()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=45m30s">00:45:30</a> ‘md.get_learner(emb_szs,…)’, embeddings</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=50m40s">00:50:40</a> Dealing with categorical variables<br>
+like ‘day-of-week’ (Rossmann cont.), embedding matrices, ‘cat_sz’, ‘emb_szs’, Pinterest, Instacart</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h7m10s">01:07:10</a> Improving Date fields with ‘add_datepart’, and final results &amp; questions on Rossmann, step-by-step summary of Jeremy’s approach</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h20m10s">01:20:10</a> More discussion on using <a href="http://fast.ai/">Fast.ai</a> library for Structured Data.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h23m30s">01:23:30</a> Intro to Natural Language Processing (NLP)<br>
+notebook ‘lang_model-arxiv.ipynb’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h31m15s">01:31:15</a> Creating a Language Model with IMDB dataset<br>
+notebook ‘lesson4-imdb.ipynb’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h31m34s">01:31:34</a> Question: “So why don’t you think that doing just directly what you want to do doesn’t work better?” (referring to the pre-training of a language model before predicting whether a review is positive or negative)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h33m09s">01:33:09</a> Question: “Is this similar to the <a href="https://github.com/karpathy/char-rnn">char-rnn</a> by karpathy?”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h39m30s">01:39:30</a> Tokenize: splitting a sentence into an array of tokens</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=1h43m45s">01:43:45</a> Build a vocabulary ‘TEXT.vocab’ with ‘dill/pickle’; ‘next(iter(md.trn_dl))’</p>
+</li>
+<li>
+<p>The rest of the video covers the ins and outs of the notebook ‘lesson4-imdb’, don’t forget to use ‘J’ and ‘L’ for 10 sec backward/forward on YouTube videos.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/gbceqO8PpBg?t=2h11m30s">02:11:30</a> Intro to Lesson 5: Collaborative Filtering with Movielens<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 5</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1s">00:00:01</a> Review of students articles and works<br>
+<a href="https://towardsdatascience.com/structured-deep-learning-b8ca4138b848">“Structured Deep Learning” for structured data using Entity Embeddings,</a><br>
+<a href="https://towardsdatascience.com/fun-with-small-image-data-sets-part-2-54d683ca8c96">“Fun with small image data-sets (part 2)” with unfreezing layers and downloading images from Google,</a><br>
+<a href="https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73">“How do we train neural networks” technical writing with detailed walk-through,</a><br>
+“Plant Seedlings Kaggle competition”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=7m45s">00:07:45</a> Starting the 2nd half of the course: what’s next ?<br>
+MovieLens dataset: build an effective collaborative filtering model from scratch</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=12m45s">00:12:15</a> Why a matrix factorization and not a neural net ?<br>
+Using Excel solver for Gradient Descent ‘GRG Nonlinear’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=23m15s">00:23:15</a> What are the negative values for ‘movieid’ &amp; ‘userid’, and more student questions</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=26m">00:26:00</a> Collaborative filtering notebook, ‘n_factors=’, ‘CollabFilterDataset.from_csv’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=34m5s">00:34:05</a> Dot Product example in PyTorch, module ‘DotProduct()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=41m45s">00:41:45</a> Class ‘EmbeddingDot()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=47m5s">00:47:05</a> Kaiming He Initialization (via DeepGrid),<br>
+sticking an underscore ‘_’ in PyTorch, ‘ColumnarModelData.from_data_frame()’, ‘optim.SGD()’</p>
+</li>
+<li>
+<p>Pause</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=58m30s">00:58:30</a> ‘fit()’ in ‘<a href="http://model.py/">model.py</a>’ walk-through</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h30s">01:00:30</a> Improving the MovieLens model in Excel again,<br>
+adding a constant for movies and users called “a bias”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h2m30s">01:02:30</a> Function ‘get_emb(ni, nf)’ and Class ‘EmbeddingDotBias(nn.Module)’, ‘.squeeze()’ for broadcasting in PyTorch</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h6m45s">01:06:45</a> Squeashing the ratings between 1 and 5, with Sigmoid function</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h12m30s">01:12:30</a> What happened in the Netflix prize, looking at ‘column_data.py’ module and ‘get_learner()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h17m15s">01:17:15</a> Creating a Neural Net version “of all this”, using the ‘movielens_emb’ tab in our Excel file, the “Mini net” section in ‘lesson5-movielens.ipynb’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h33m15s">01:33:15</a> What is happening inside the “Training Loop”, what the optimizer ‘optim.SGD()’ and ‘momentum=’ do, spreadsheet ‘graddesc.xlsm’ basic tab</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h41m15s">01:41:15</a> “You don’t need to learn how to calculate derivates &amp; integrals, but you need to learn how to think about the spatially”, the ‘chain rule’, ‘jacobian’ &amp; ‘hessian’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h53m45s">01:53:45</a> Spreadsheet ‘Momentum’ tab</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=1h59m5s">01:59:05</a> Spreasheet ‘Adam’ tab</p>
+</li>
+<li>
+<p><a href="https://youtu.be/J99NV9Cr75I?t=2h12m1s">02:12:01</a> Beyond Dropout: ‘Weight-decay’ or L2 regularization<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 6</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=10s">00:00:10</a> Review of articles and works<br>
+"Optimization for Deep Learning Highlights in 2017" by Sebastian Ruder,<br>
+“Implementation of AdamW/SGDW paper in Fastai”,<br>
+“Improving the way we work with learning rate”,<br>
+“The Cyclical Learning Rate technique”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=2m10s">00:02:10</a> Review of last week “Deep Dive into Collaborative Filtering” with MovieLens, analyzing our model, ‘movie bias’, ‘@property’, ‘self.models.model’, ‘learn.models’, ‘CollabFilterModel’, ‘get_layer_groups(self)’, ‘lesson5-movielens.ipynb’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=12m10s">00:12:10</a> Jeremy: “I try to use Numpy for everything, except when I need to run it on GPU, or derivatives”,<br>
+Question: “Bring the model from GPU to CPU into production ?”, move the model to CPU with ‘m.cpu()’, ‘load_model(m, p)’, back to GPU with ‘m.cuda()’, ‘zip()’ function in Python</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=16m10s">00:16:10</a> Sort the movies, John Travolta Scientology worst movie of all time “Battlefield Earth”, ‘key=itemgetter()jj’, ‘key=lambda’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=18m30s">00:18:30</a> Embedding interpration, using ‘PCA’ from ‘sklearn.decomposition’ for Linear Algebra</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=24m15s">00:24:15</a> Looking at the “Rossmann Retail / Store” Kaggle competition with the ‘Entity Embeddings of Categorical Variables’ paper.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=41m2s">00:41:02</a> “Rossmann” Data Cleaning / Feature Engineering, using a Test set properly, Create Features (check the Machine Learning “ML1” course for details), ‘apply_cats’ instead of ‘train_cats’, ‘pred_test = m.predict(True)’, result on Kaggle Public Leaderboard vs Private Leaderboard with a poor Validation Set. Example: Statoil/Iceberg challenge/competition.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=47m10s">00:47:10</a> A mistake made by Rossmann 3rd winner, more on the Rossmann model.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=53m20s">00:53:20</a> “How to write something that is different than Fastai library”</p>
+</li>
+<li>
+<p>PAUSE</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=59m55s">00:59:55</a> More into SGD with ‘lesson6-sgd.ipynb’ notebook, a Linear Regression problem with continuous outputs. ‘a*x+b’ &amp;  mean squared error (MSE) loss function with ‘y_hat’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h2m55s">01:02:55</a> Gradient Descent implemented in PyTorch, ‘loss.backward()’, ‘.grad.data.zero_()’ in ‘optim.sgd’ class</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h7m5s">01:07:05</a> Gradient Descent with Numpy</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h9m15s">01:09:15</a> RNNs with ‘lesson6-rnn.ipynb’ notebook with Nietzsche, Swiftkey post on smartphone keyboard powered by Neural Networks</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h12m5s">01:12:05</a> a Basic NN with single hidden layer (rectangle, arrow, circle, triangle), by Jeremy,<br>
+Image CNN with single dense hidden layer.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h23m25s">01:23:25</a> Three char model, question on ‘in1, in2, in3’ dimensions</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h36m5s">01:36:05</a> Test model with ‘get_next(inp)’,<br>
+Let’s create our first RNN, why use the same weight matrices ?</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h48m45s">01:48:45</a> RNN with PyTorch, question: “What the hidden state represents ?”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=1h57m55s">01:57:55</a> Multi-output model</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=2h5m55s">02:05:55</a> Question on ‘sequence length vs batch size’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/sHcLkfRrgoQ?t=2h9m15s">02:09:15</a> The Identity Matrix (init!), a paper from Geoffrey Hinton “A Simple Way to Initialize Recurrent Networks of Rectified Linear Units”<br>
+</p>
+</li>
+</ul>
+<p><strong>Lesson 7</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=3m4s">00:03:04</a>  Review of last week lesson on RNNs,<br>
+Part 1, what to expect in Part 2 (start date: 19/03/2018)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=8m48s">00:08:48</a> Building the RNN model with ‘self.init_hidden(bs)’ and ‘self.h’, the “back prop through time (BPTT)” approach</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=17m50s">00:17:50</a> Creating mini-batches, “split in 64 equal size chunks” not “split in chunks of size 64”, questions on data augmentation and choosing a BPTT size, PyTorch QRNN</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=23m41s">00:23:41</a> Using the data formats for your API, changing your data format vs creating a new dataset class, ‘data.Field()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=24m45s">00:24:45</a> How to create Nietzsche training/validation data</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=35m43s">00:35:43</a> Dealing with PyTorch not accepting a “Rank 3 Tensor”, only Rank 2 or 4, ‘F.log_softmax()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=44m5s">00:44:05</a> Question on ‘F.tanh()’, tanh activation function,<br>
+replacing the ‘RNNCell’ by ‘GRUCell’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=47m15s">00:47:15</a> Intro to GRU cell (RNNCell has gradient explosion problem - i.e. you need to use low learning rate and small BPTT)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=53m40s">00:53:40</a> Long Short Term Memory (LSTM), ‘LayerOptimizer()’, Cosine Annealing ‘CosAnneal()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h1m47s">01:01:47</a> Pause</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h1m57s">01:01:57</a> Back to Computer Vision with CIFAR 10 and ‘lesson7-cifar10.ipynb’ notebook, Why study research on CIFAR 10 vs ImageNet vs MNIST ?</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h8m54s">01:08:54</a> Looking at a Fully Connected Model, based on a notebook from student ‘Kerem Turgutlu’, then a CNN model (with Excel demo)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h21m54s">01:21:54</a> Refactored the model with new class ‘ConvLayer()’ and ‘padding’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h25m40s">01:25:40</a> Using Batch Normalization (BatchNorm) to make the model more resilient, ‘BnLayer()’ and ‘ConvBnNet()’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h36m2s">01:36:02</a> Previous bug in ‘Mini net’ in ‘lesson5-movielens.ipynb’, and many questions on BatchNorm, Lesson 7 Cifar10, AI/DL researchers vs practioners, ‘Yann Lecun’ &amp; ‘Ali Rahimi talk at NIPS 2017’ rigor/rigueur/theory/experiment.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h50m51s">01:50:51</a> ‘Deep BatchNorm’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h52m43s">01:52:43</a> Replace the model with ResNet, class ‘ResnetLayer()’, using ‘boosting’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=1h58m38s">01:58:38</a> ‘Bottleneck’ layer with ‘BnLayer()’, ‘ResNet 2’ with ‘Resnet2()’, Skipping Connections.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=2h2m1s">02:02:01</a> ‘lesson7-CAM.ipynb’ notebook, an intro to Part #2 using ‘Dogs v Cats’.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=2h8m55s">02:08:55</a> Class Activation Maps (CAM) of ‘Dogs v Cats’.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/H3g26EVADgY?t=2h14m27s">02:14:27</a> Questions to Jeremy: “Your journey into Deep Learning” and “How to keep up with important research for practioners”,<br>
+“If you intend to come to Part 2, you are expected to master all the techniques in Part 1”, Jeremy’s advice to master Part 1 and help new students in the incoming MOOC version to be released in January 2018.</p></li></ul>

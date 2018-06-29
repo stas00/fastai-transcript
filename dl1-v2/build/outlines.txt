@@ -1,0 +1,42 @@
+1—Recognizing cats and dogs
+
+We learn today how to classify dogs from cats. Rather than understanding the mathematical details of how this works, we start by learning the nuts and bolts of how to get the computer to complete the task, using ‘fine-tuning’, perhaps the most important skill for any deep learning practitioner. In a later lesson we’ll learn about how fine-tuning actually works “behind the scenes”.
+
+An important point discussed is how the data for this lesson needs to be structured. This is the most important step for you to complete—if your data is not structured correctly you will not be able to train any models.
+
+
+2—Convolutional neural networks
+
+You will learn more about image classification, covering several core deep learning concepts that are necessary to get good performance: what a learning rate is and how to choose a good one, how to vary your learning rate over time, how to improve your model with data augmentation (including test-time augmentation). We also share practical tips (such as training on smaller images), an 8-step process to train a world-class image classifier, and more information on your hardware setup (including crestle, paperspace, and AWS as options).
+
+3—Improving your image classifier
+
+We explain convolutional networks from several different angles: the theory, a video visualization, and an Excel demo. You’ll see how to use deep learning for structured/tabular data, such as time-series sales data.
+
+We also teach a couple of key bits of math that you really need for deep learning: exponentiation and the logarithm. You will learn how to download data to your deep learning server, how to submit to a Kaggle competition, and key differences between PyTorch and Keras/TensorFlow.
+
+4—Structured, time series, & language models
+
+We complete our work from the previous lesson on tabular/structured, time-series data, and learn about how to avoid overfitting by using dropout regularization. We then introduce natural language processing with recurrent neural networks, and start work on a language model.
+
+5—Collaborative filtering; Inside the training loop
+
+You will learn about collaborative filtering through the example of making movie recommendations, and talk about key developments that occurred during the Netflix prize.
+
+We will dig into some lower level details of deep learning: what happens inside the training loop, how optimizers like momentum and Adam work, and regularization using weight decay. You will learn how to think spatially about math concepts like the ‘chain rule’, ‘jacobian’, and ‘hessian’.
+
+6—Interpreting embeddings; RNNs from scratch
+
+Today is a very busy lesson! We first learn how to interpret the collaborative filtering embeddings we created last week, and use that knowledge to answer the question: “what is the worst movie of all time?”
+
+Then we cover what is perhaps the most practically important topic in the whole course: how to use deep learning to model “structured data” such as database tables and spreadsheets, as well as time series. It turns out that not only is deep learning often the most accurate modeling approach for this tasks, it can be the easiest approach to develop too.
+
+We close out the lesson with an introduction to recurrent neural networks (RNNs), and use an RNN to write a new philosophical treatise…
+
+7—Resnets from scratch
+
+We finish off our recurrent neural network from scratch implementation from last week, and introduce the GRU and LSTM cells to allow training of long sequences with RNNs.
+
+Then we complete this part of the course with a return to computer vision, where we implement the powerful resnet architecture and batch normalization layer from scratch. Congratulations on completing the course! Be sure to let us know on the forums about what projects you have built, and what you’re planning next…
+
+

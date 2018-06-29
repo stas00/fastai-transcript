@@ -1,0 +1,2 @@
+#!/bin/sh
+/home/stas/src/wkhtmltox/bin/wkhtmltopdf --load-error-handling ignore --disable-javascript  --encoding utf-8 --no-background --zoom 1.45  --outline --outline-depth 3  --footer-center "[page]" --header-center "[title]"  --title "fast.ai - Deep Learning Part 2 (v2)" cover cover.html toc --disable-dotted-lines --toc-text-size-shrink 0.7 "lesson 8.html" "lesson 9.html" "lesson 10.html" "lesson 11.html" "lesson 12.html" "lesson 13.html" "lesson 14.html" "fast.ai - Deep Learning Part 2 (v2) Transcript (2018).pdf"

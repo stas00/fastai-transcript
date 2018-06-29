@@ -1,0 +1,8548 @@
+1
+00:00:00,030 --> 00:00:08,990
+so we've looked at a lot of different
+
+2
+00:00:05,089 --> 00:00:14,280
+random and random forest interpretation
+
+3
+00:00:08,990 --> 00:00:17,920
+techniques and a question that's come up
+
+4
+00:00:14,279 --> 00:00:21,460
+a little bit on the forums is like
+
+5
+00:00:17,920 --> 00:00:23,679
+what are these for really like like how
+
+6
+00:00:21,460 --> 00:00:26,160
+do these help me get a better score on
+
+7
+00:00:23,679 --> 00:00:29,919
+cattle and my answers kind of been like
+
+8
+00:00:26,160 --> 00:00:33,189
+they don't necessarily and so I want to
+
+9
+00:00:29,919 --> 00:00:37,588
+talk more about like why do we do
+
+10
+00:00:33,189 --> 00:00:43,299
+machine learning like what's the point
+
+11
+00:00:37,588 --> 00:00:45,189
+and to answer this question I'm gonna
+
+12
+00:00:43,299 --> 00:00:48,698
+put this PowerPoint in the github repo
+
+13
+00:00:45,189 --> 00:00:51,070
+so you can have a look I want to show
+
+14
+00:00:48,698 --> 00:00:54,599
+you something
+
+15
+00:00:51,070 --> 00:00:57,820
+really important which is examples of
+
+16
+00:00:54,600 --> 00:01:02,079
+how people have used machine learning
+
+17
+00:00:57,820 --> 00:01:03,670
+mainly in business because that's where
+
+18
+00:01:02,079 --> 00:01:06,269
+most of you are probably going to end up
+
+19
+00:01:03,670 --> 00:01:08,500
+after this is working for some company
+
+20
+00:01:06,269 --> 00:01:10,149
+I'm going to show you a plication zuv
+
+21
+00:01:08,500 --> 00:01:11,319
+machine learning which are either based
+
+22
+00:01:10,149 --> 00:01:13,570
+on things that I've been personally
+
+23
+00:01:11,319 --> 00:01:15,879
+involved in myself or know of people who
+
+24
+00:01:13,569 --> 00:01:18,118
+are doing them directly so these are
+
+25
+00:01:15,879 --> 00:01:20,199
+none of these are going to be like
+
+26
+00:01:18,118 --> 00:01:23,228
+hypotheticals these are all actual
+
+27
+00:01:20,200 --> 00:01:27,340
+things that people are doing and I'm got
+
+28
+00:01:23,228 --> 00:01:28,299
+direct or secondhand knowledge of I'm
+
+29
+00:01:27,340 --> 00:01:30,719
+going to split them into two groups
+
+30
+00:01:28,299 --> 00:01:34,359
+horizontal and vertical so in business
+
+31
+00:01:30,719 --> 00:01:37,109
+horizontal means something that you do
+
+32
+00:01:34,359 --> 00:01:39,700
+like across different kinds of business
+
+33
+00:01:37,109 --> 00:01:42,250
+whereas vertical means that something
+
+34
+00:01:39,700 --> 00:01:44,079
+that you do within you know within a
+
+35
+00:01:42,250 --> 00:01:46,329
+business or within a supply chain or
+
+36
+00:01:44,079 --> 00:01:51,209
+within a process so in other words an
+
+37
+00:01:46,329 --> 00:01:54,250
+example of horizontal applications is
+
+38
+00:01:51,209 --> 00:01:57,429
+everything involving marketing so like
+
+39
+00:01:54,250 --> 00:02:00,189
+every company pretty much has to try to
+
+40
+00:01:57,429 --> 00:02:02,319
+sell more products to its customers and
+
+41
+00:02:00,189 --> 00:02:05,829
+so therefore does marketing and so each
+
+42
+00:02:02,319 --> 00:02:07,420
+of these boxes are examples of some of
+
+43
+00:02:05,829 --> 00:02:11,560
+the things that people are using machine
+
+44
+00:02:07,420 --> 00:02:17,189
+learning for in marketing so let's take
+
+45
+00:02:11,560 --> 00:02:23,590
+an example all right let's take Chen
+
+46
+00:02:17,189 --> 00:02:26,109
+okay so Chen refers to a model which
+
+47
+00:02:23,590 --> 00:02:28,120
+attempts to predict who's going to leave
+
+48
+00:02:26,110 --> 00:02:31,080
+that's why I've done some churn modeling
+
+49
+00:02:28,120 --> 00:02:33,189
+fairly recently in in telecommunications
+
+50
+00:02:31,080 --> 00:02:35,230
+and so we're trying to figure out this
+
+51
+00:02:33,189 --> 00:02:40,780
+big cellphone company which customers
+
+52
+00:02:35,229 --> 00:02:43,810
+are going to leave that is not of itself
+
+53
+00:02:40,780 --> 00:02:46,739
+that interesting like building a highly
+
+54
+00:02:43,810 --> 00:02:49,030
+predictive predictive model that says
+
+55
+00:02:46,739 --> 00:02:51,610
+Jeremy how it is almost certainly going
+
+56
+00:02:49,030 --> 00:02:53,949
+to leave next month
+
+57
+00:02:51,610 --> 00:02:55,330
+is probably not that helpful because
+
+58
+00:02:53,949 --> 00:02:56,530
+like if I'm almost certainly going to
+
+59
+00:02:55,330 --> 00:02:58,570
+leave next month there's probably
+
+60
+00:02:56,530 --> 00:03:00,729
+nothing you can do about it but it's
+
+61
+00:02:58,569 --> 00:03:03,549
+it's too late what could have cost you
+
+62
+00:03:00,729 --> 00:03:06,039
+too much to keep me right so in order to
+
+63
+00:03:03,550 --> 00:03:09,550
+understand like or why would we do churn
+
+64
+00:03:06,039 --> 00:03:11,650
+modeling I've got a little framework
+
+65
+00:03:09,550 --> 00:03:14,500
+that you might find helpful so if you
+
+66
+00:03:11,650 --> 00:03:18,450
+google for Jeremy Howard data products I
+
+67
+00:03:14,500 --> 00:03:18,449
+think I've mentioned this thing before
+
+68
+00:03:18,479 --> 00:03:23,889
+there's a paper you can find designing
+
+69
+00:03:21,099 --> 00:03:26,609
+great data products that I wrote with a
+
+70
+00:03:23,889 --> 00:03:31,809
+couple of colleagues a few years ago and
+
+71
+00:03:26,610 --> 00:03:34,150
+in it I describe my experience of
+
+72
+00:03:31,810 --> 00:03:37,300
+actually turning machine learning models
+
+73
+00:03:34,150 --> 00:03:40,719
+into like stuff that makes money right
+
+74
+00:03:37,300 --> 00:03:46,060
+and the basic trick is this thing I call
+
+75
+00:03:40,719 --> 00:03:50,319
+the drive train approach which is which
+
+76
+00:03:46,060 --> 00:03:53,009
+is these four steps the starting point
+
+77
+00:03:50,319 --> 00:03:54,909
+to actually turn a machine learning
+
+78
+00:03:53,009 --> 00:03:57,519
+project into something that's actually
+
+79
+00:03:54,909 --> 00:03:59,769
+useful is to know what am I trying to
+
+80
+00:03:57,519 --> 00:04:02,620
+achieve and that doesn't mean like I'm
+
+81
+00:03:59,769 --> 00:04:05,340
+trying to achieve a high area under the
+
+82
+00:04:02,620 --> 00:04:09,580
+ROC curve around trying to achieve a
+
+83
+00:04:05,340 --> 00:04:12,700
+large difference between classes no it
+
+84
+00:04:09,580 --> 00:04:16,209
+would be I'm trying to sell more books
+
+85
+00:04:12,699 --> 00:04:18,969
+or I'm trying to reduce the number of
+
+86
+00:04:16,209 --> 00:04:22,620
+customers that leave next month or I'm
+
+87
+00:04:18,970 --> 00:04:24,850
+trying to detect lung cancer earlier
+
+88
+00:04:22,620 --> 00:04:26,649
+right these are things that these are
+
+89
+00:04:24,850 --> 00:04:29,350
+objectives so the objective is something
+
+90
+00:04:26,649 --> 00:04:30,819
+that absolutely directly is the thing
+
+91
+00:04:29,350 --> 00:04:33,460
+that the the company or the organization
+
+92
+00:04:30,819 --> 00:04:36,089
+actually wants no company or
+
+93
+00:04:33,459 --> 00:04:40,750
+organization lives in order to create a
+
+94
+00:04:36,089 --> 00:04:43,839
+you know a more accurate predictive
+
+95
+00:04:40,750 --> 00:04:46,000
+model but there's some reason right so
+
+96
+00:04:43,839 --> 00:04:47,379
+that's your objective now that's
+
+97
+00:04:46,000 --> 00:04:48,699
+obviously the most important thing if
+
+98
+00:04:47,379 --> 00:04:50,110
+you don't know the purpose of what
+
+99
+00:04:48,699 --> 00:04:52,120
+you're modeling for then you can't
+
+100
+00:04:50,110 --> 00:04:54,280
+possibly do a good job of it and
+
+101
+00:04:52,120 --> 00:04:56,530
+hopefully people are starting to you
+
+102
+00:04:54,279 --> 00:04:58,629
+know pick that up in out there in the
+
+103
+00:04:56,529 --> 00:05:00,788
+world of data science but interestingly
+
+104
+00:04:58,629 --> 00:05:02,589
+what very few people are talking about
+
+105
+00:05:00,788 --> 00:05:05,000
+but it's just as important as the next
+
+106
+00:05:02,589 --> 00:05:07,369
+thing which is levers
+
+107
+00:05:05,000 --> 00:05:10,399
+lever is a thing that the organization
+
+108
+00:05:07,370 --> 00:05:12,889
+can do to actually drive the objective
+
+109
+00:05:10,399 --> 00:05:16,279
+so let's take the example of churn
+
+110
+00:05:12,889 --> 00:05:20,029
+modeling right what is a lever that an
+
+111
+00:05:16,279 --> 00:05:24,609
+organization could use to reduce the
+
+112
+00:05:20,029 --> 00:05:24,609
+number of customers that are leaving
+
+113
+00:05:26,269 --> 00:05:30,740
+they could look take a closer look at
+
+114
+00:05:28,759 --> 00:05:33,469
+the model and do some of this random
+
+115
+00:05:30,740 --> 00:05:34,939
+forest interpretation and see some of
+
+116
+00:05:33,470 --> 00:05:38,080
+the causes that are causing people to
+
+117
+00:05:34,939 --> 00:05:41,389
+leave and potentially change those
+
+118
+00:05:38,079 --> 00:05:43,459
+issues in the company okay so that's it
+
+119
+00:05:41,389 --> 00:05:44,810
+that's a data scientist answer but I
+
+120
+00:05:43,459 --> 00:05:46,310
+want you to go to the next level what
+
+121
+00:05:44,810 --> 00:05:47,750
+are the things that levers are the
+
+122
+00:05:46,310 --> 00:05:49,670
+things they can do you want to put it
+
+123
+00:05:47,750 --> 00:05:52,730
+past behind you what are the things that
+
+124
+00:05:49,670 --> 00:05:55,670
+they can do just reach like calling or
+
+125
+00:05:52,730 --> 00:06:00,050
+else they could call someone and say
+
+126
+00:05:55,670 --> 00:06:08,629
+like are you happy anything we could do
+
+127
+00:06:00,050 --> 00:06:12,740
+okay yeah so they could like give them a
+
+128
+00:06:08,629 --> 00:06:16,159
+free pen or something if they you know
+
+129
+00:06:12,740 --> 00:06:19,670
+buy 20 bucks worth of product next month
+
+130
+00:06:16,160 --> 00:06:21,950
+yep you are going to do that as well
+
+131
+00:06:19,670 --> 00:06:23,509
+okay so you guys you guys are the giving
+
+132
+00:06:21,949 --> 00:06:34,120
+out carrots rather than the handing out
+
+133
+00:06:23,509 --> 00:06:36,800
+sticks you know over in a couple of yeah
+
+134
+00:06:34,120 --> 00:06:39,500
+special all right so these are levers
+
+135
+00:06:36,800 --> 00:06:41,720
+right and so whenever you're working as
+
+136
+00:06:39,500 --> 00:06:43,879
+a data scientist you know keep coming
+
+137
+00:06:41,720 --> 00:06:46,550
+back and thinking what are we trying to
+
+138
+00:06:43,879 --> 00:06:48,800
+achieve we being the organization and
+
+139
+00:06:46,550 --> 00:06:51,620
+how we try to achieve it being like what
+
+140
+00:06:48,800 --> 00:06:55,699
+are the actual things we can do to make
+
+141
+00:06:51,620 --> 00:06:59,720
+that objective happen so building a
+
+142
+00:06:55,699 --> 00:07:03,199
+model is never ever a lever okay but it
+
+143
+00:06:59,720 --> 00:07:06,200
+could help you with the lever so then
+
+144
+00:07:03,199 --> 00:07:09,019
+the next step is what data does the
+
+145
+00:07:06,199 --> 00:07:11,930
+organization have that could possibly
+
+146
+00:07:09,019 --> 00:07:14,990
+help them to set that lever to achieve
+
+147
+00:07:11,930 --> 00:07:17,509
+that objective right and so this is not
+
+148
+00:07:14,990 --> 00:07:20,030
+what data did they give you when you
+
+149
+00:07:17,509 --> 00:07:22,099
+started the project right but like think
+
+150
+00:07:20,029 --> 00:07:23,179
+about it from a first principles point
+
+151
+00:07:22,100 --> 00:07:25,370
+of view okay I'm working for a
+
+152
+00:07:23,180 --> 00:07:27,769
+telecommunications company they gave me
+
+153
+00:07:25,370 --> 00:07:30,259
+some certain set of data but I'm sure
+
+154
+00:07:27,769 --> 00:07:32,509
+they must know where their customers
+
+155
+00:07:30,259 --> 00:07:34,699
+live how many phone calls they made last
+
+156
+00:07:32,509 --> 00:07:36,800
+month how many times they call customer
+
+157
+00:07:34,699 --> 00:07:39,500
+service whatever like
+
+158
+00:07:36,800 --> 00:07:43,250
+so have a think about like okay if we're
+
+159
+00:07:39,500 --> 00:07:44,959
+trying to decide like who should we
+
+160
+00:07:43,250 --> 00:07:49,220
+reduce the you know give a special offer
+
+161
+00:07:44,959 --> 00:07:51,769
+to proactively then we want to figure
+
+162
+00:07:49,220 --> 00:07:53,870
+out like what information do we have
+
+163
+00:07:51,769 --> 00:07:56,620
+that might help us to identify who's
+
+164
+00:07:53,870 --> 00:08:00,228
+going to react well or badly to that
+
+165
+00:07:56,620 --> 00:08:03,408
+perhaps more interestingly would be what
+
+166
+00:08:00,228 --> 00:08:05,209
+if we were doing like a fraud algorithm
+
+167
+00:08:03,408 --> 00:08:07,158
+right and so we're trying to figure out
+
+168
+00:08:05,209 --> 00:08:09,198
+like who's going to like not pay for the
+
+169
+00:08:07,158 --> 00:08:11,180
+phone that they take out of the store
+
+170
+00:08:09,199 --> 00:08:13,158
+you know that they once on 12-month
+
+171
+00:08:11,180 --> 00:08:15,079
+payment plan we never see them again
+
+172
+00:08:13,158 --> 00:08:17,029
+now in that case the data we have
+
+173
+00:08:15,079 --> 00:08:18,740
+available it doesn't matter what's in
+
+174
+00:08:17,029 --> 00:08:20,779
+the database what matters is what's the
+
+175
+00:08:18,740 --> 00:08:23,329
+data that we can get when the custom is
+
+176
+00:08:20,779 --> 00:08:26,658
+in the shop right so there's often
+
+177
+00:08:23,329 --> 00:08:30,769
+constraints around the data that we can
+
+178
+00:08:26,658 --> 00:08:33,379
+actually use so we need to know what am
+
+179
+00:08:30,769 --> 00:08:35,629
+I trying to achieve what can I actually
+
+180
+00:08:33,379 --> 00:08:37,908
+what can this organization actually do
+
+181
+00:08:35,629 --> 00:08:40,129
+specifically to change that outcome and
+
+182
+00:08:37,908 --> 00:08:42,950
+at the point that that decision is being
+
+183
+00:08:40,129 --> 00:08:46,759
+made what data do they have or could
+
+184
+00:08:42,950 --> 00:08:49,040
+they collect right and so then the way I
+
+185
+00:08:46,759 --> 00:08:50,720
+put that all together is with a model
+
+186
+00:08:49,039 --> 00:08:53,000
+and this is not a model in the sense of
+
+187
+00:08:50,720 --> 00:08:56,209
+a predictive model but it's a model in
+
+188
+00:08:53,000 --> 00:08:57,528
+the sense of a simulation model so one
+
+189
+00:08:56,208 --> 00:08:59,239
+of the main examples I gave in this
+
+190
+00:08:57,528 --> 00:09:01,730
+paper is when I spent many years
+
+191
+00:08:59,240 --> 00:09:06,379
+building which is if an insurance
+
+192
+00:09:01,730 --> 00:09:07,970
+company changes their prices how does
+
+193
+00:09:06,379 --> 00:09:11,000
+that impact their profitability
+
+194
+00:09:07,970 --> 00:09:12,769
+right and so generally your simulation
+
+195
+00:09:11,000 --> 00:09:15,828
+model contains a number of predictive
+
+196
+00:09:12,769 --> 00:09:17,838
+models so I had for example a predictive
+
+197
+00:09:15,828 --> 00:09:19,879
+model called an elasticity model that
+
+198
+00:09:17,839 --> 00:09:21,770
+said for a specific customer if we
+
+199
+00:09:19,879 --> 00:09:23,659
+charge them a specific price for a
+
+200
+00:09:21,769 --> 00:09:27,139
+specific product what's the probability
+
+201
+00:09:23,659 --> 00:09:28,969
+that they would say yes both when it's
+
+202
+00:09:27,139 --> 00:09:30,799
+new business and then a year later
+
+203
+00:09:28,970 --> 00:09:33,230
+what's the probability that they're good
+
+204
+00:09:30,799 --> 00:09:35,088
+new and then there's another predictive
+
+205
+00:09:33,230 --> 00:09:37,100
+model which is what's the probability
+
+206
+00:09:35,089 --> 00:09:40,339
+that they're going to make a claim and
+
+207
+00:09:37,100 --> 00:09:42,320
+how much is that plan going to be right
+
+208
+00:09:40,339 --> 00:09:44,029
+and so like you can combine these models
+
+209
+00:09:42,320 --> 00:09:45,920
+together then to say all right if we
+
+210
+00:09:44,028 --> 00:09:47,958
+changed our pricing by reducing it by
+
+211
+00:09:45,919 --> 00:09:49,629
+10% for everybody through body between
+
+212
+00:09:47,958 --> 00:09:51,008
+18 and 25
+
+213
+00:09:49,629 --> 00:09:52,539
+and we can run it through these models
+
+214
+00:09:51,009 --> 00:09:54,789
+that combined together into a simulation
+
+215
+00:09:52,539 --> 00:09:56,828
+than the overall impact on our market
+
+216
+00:09:54,789 --> 00:09:59,620
+share in ten years time is X and our
+
+217
+00:09:56,828 --> 00:10:05,679
+cost is y and our profit is Z and so
+
+218
+00:09:59,620 --> 00:10:09,039
+forth right so in practice most of the
+
+219
+00:10:05,679 --> 00:10:10,599
+time you really are going to care more
+
+220
+00:10:09,039 --> 00:10:13,120
+about kind of the results of that
+
+221
+00:10:10,600 --> 00:10:16,089
+simulation than you do about the
+
+222
+00:10:13,120 --> 00:10:18,789
+predictive model directly but most
+
+223
+00:10:16,089 --> 00:10:22,449
+people are not doing this effectively at
+
+224
+00:10:18,789 --> 00:10:25,990
+the moment so for example when I go to
+
+225
+00:10:22,448 --> 00:10:28,328
+Amazon right I read all of Douglas Adams
+
+226
+00:10:25,990 --> 00:10:30,278
+as books right and so having read all
+
+227
+00:10:28,328 --> 00:10:33,099
+with Douglas Evans's books the next time
+
+228
+00:10:30,278 --> 00:10:35,559
+I went to Amazon they said would you
+
+229
+00:10:33,100 --> 00:10:38,230
+like to buy the collected works of
+
+230
+00:10:35,559 --> 00:10:41,198
+Douglas Adams this is after I had bought
+
+231
+00:10:38,230 --> 00:10:43,659
+every one of his books so like from a
+
+232
+00:10:41,198 --> 00:10:46,719
+machine learning point of view some some
+
+233
+00:10:43,659 --> 00:10:50,259
+data scientist had said oh people that
+
+234
+00:10:46,720 --> 00:10:52,690
+buy one of Douglas Adams as books often
+
+235
+00:10:50,259 --> 00:10:55,269
+go on to buy the collected works right
+
+236
+00:10:52,690 --> 00:10:58,149
+but recommending to me that I buy the
+
+237
+00:10:55,269 --> 00:11:00,339
+collected works of Douglas Adams isn't
+
+238
+00:10:58,149 --> 00:11:03,009
+smart that and it's actually not smart
+
+239
+00:11:00,339 --> 00:11:05,139
+at a number of levels like not only is
+
+240
+00:11:03,009 --> 00:11:06,669
+unlikely to buy a box set of something
+
+241
+00:11:05,139 --> 00:11:08,829
+of which I have everyone individually
+
+242
+00:11:06,669 --> 00:11:11,769
+but furthermore it's not going to change
+
+243
+00:11:08,828 --> 00:11:13,539
+my buying behavior like I already know
+
+244
+00:11:11,769 --> 00:11:16,448
+about Douglas Adams I already know I
+
+245
+00:11:13,539 --> 00:11:18,578
+like him so taking up your valuable web
+
+246
+00:11:16,448 --> 00:11:20,229
+space to tell me hey maybe you should
+
+247
+00:11:18,578 --> 00:11:22,028
+buy more of the author who you're
+
+248
+00:11:20,230 --> 00:11:24,879
+already familiar with in the port lots
+
+249
+00:11:22,028 --> 00:11:27,818
+of times isn't actually going to change
+
+250
+00:11:24,879 --> 00:11:30,578
+my behavior right so what if instead of
+
+251
+00:11:27,818 --> 00:11:33,099
+creating a predictive model Amazon had
+
+252
+00:11:30,578 --> 00:11:35,559
+built an optimization model that said
+
+253
+00:11:33,100 --> 00:11:38,800
+like that could simulate and said if we
+
+254
+00:11:35,559 --> 00:11:41,289
+show Jeremy this ad how likely is he
+
+255
+00:11:38,799 --> 00:11:43,719
+then to go on to buy this book and if I
+
+256
+00:11:41,289 --> 00:11:46,870
+don't show him this ad how likely is
+
+257
+00:11:43,720 --> 00:11:48,399
+here to go on to buy this book and so
+
+258
+00:11:46,870 --> 00:11:50,169
+that's the counterfactual right the
+
+259
+00:11:48,399 --> 00:11:52,419
+counterfactual is what would have
+
+260
+00:11:50,169 --> 00:11:54,849
+happened otherwise and then you can take
+
+261
+00:11:52,419 --> 00:11:57,490
+the difference and say okay what should
+
+262
+00:11:54,850 --> 00:11:59,860
+we recommend him that is going to
+
+263
+00:11:57,490 --> 00:12:01,759
+maximally change his behavior so
+
+264
+00:11:59,860 --> 00:12:04,659
+maximally result in more
+
+265
+00:12:01,759 --> 00:12:07,399
+books and so you'd probably say like oh
+
+266
+00:12:04,659 --> 00:12:08,990
+he's never bought me terry pratchet box
+
+267
+00:12:07,399 --> 00:12:10,970
+he probably doesn't know about terry
+
+268
+00:12:08,990 --> 00:12:13,070
+pratchet but like lots of people that
+
+269
+00:12:10,970 --> 00:12:14,810
+like to douglas adams's did turn out to
+
+270
+00:12:13,070 --> 00:12:17,390
+like terry pratchett so let's like
+
+271
+00:12:14,809 --> 00:12:18,829
+introduce him to a new author right so
+
+272
+00:12:17,389 --> 00:12:20,659
+it's the difference between a predictive
+
+273
+00:12:18,830 --> 00:12:23,509
+model on the one hand versus an
+
+274
+00:12:20,659 --> 00:12:26,089
+optimization model on the other hand so
+
+275
+00:12:23,509 --> 00:12:28,700
+the two tend to go hand in hand right
+
+276
+00:12:26,090 --> 00:12:33,290
+the optimization model basically is
+
+277
+00:12:28,700 --> 00:12:35,180
+saying well first of all we have a
+
+278
+00:12:33,289 --> 00:12:39,799
+simulation model right the simulation
+
+279
+00:12:35,179 --> 00:12:41,719
+model is saying in a world where we put
+
+280
+00:12:39,799 --> 00:12:44,599
+terry pratchett's book on the front page
+
+281
+00:12:41,720 --> 00:12:46,879
+of amazon for Jeremy Howard this is what
+
+282
+00:12:44,600 --> 00:12:48,590
+would have happened he would have bought
+
+283
+00:12:46,879 --> 00:12:53,629
+it with a money four percent probability
+
+284
+00:12:48,590 --> 00:12:56,720
+right and so that then tells us with
+
+285
+00:12:53,629 --> 00:13:00,139
+this lever of like what do I put on
+
+286
+00:12:56,720 --> 00:13:01,970
+there on my homepage for Jeremy today we
+
+287
+00:13:00,139 --> 00:13:03,710
+say okay well the different settings of
+
+288
+00:13:01,970 --> 00:13:05,990
+that lever that put Terry Patchett on
+
+289
+00:13:03,710 --> 00:13:08,300
+the homepage has the highest simulated
+
+290
+00:13:05,990 --> 00:13:12,230
+outcome right and then that's the thing
+
+291
+00:13:08,299 --> 00:13:15,769
+which maximizes our profit from Jeremy's
+
+292
+00:13:12,230 --> 00:13:18,080
+visit to amazon.com today okay so
+
+293
+00:13:15,769 --> 00:13:21,139
+generally speaking your predictive
+
+294
+00:13:18,080 --> 00:13:22,730
+models kind of feed in to this
+
+295
+00:13:21,139 --> 00:13:24,169
+simulation model but you kind of got to
+
+296
+00:13:22,730 --> 00:13:26,539
+think about like how do they all work
+
+297
+00:13:24,169 --> 00:13:31,009
+together so for example let's go back to
+
+298
+00:13:26,539 --> 00:13:34,789
+churn right so I'd turn out that Jeremy
+
+299
+00:13:31,009 --> 00:13:37,340
+Howard is very likely to leave his cell
+
+300
+00:13:34,789 --> 00:13:38,089
+phone company next month what are we
+
+301
+00:13:37,340 --> 00:13:41,629
+gonna do about it
+
+302
+00:13:38,090 --> 00:13:43,519
+oh let's call him right and I can tell
+
+303
+00:13:41,629 --> 00:13:46,009
+you if my cell phone company calls me
+
+304
+00:13:43,519 --> 00:13:49,610
+right now and says just calling to say
+
+305
+00:13:46,009 --> 00:13:52,669
+we love you I'd be like I'm cancelling
+
+306
+00:13:49,610 --> 00:13:54,680
+right now like like that would be a
+
+307
+00:13:52,669 --> 00:13:57,379
+terrible idea so again you would want a
+
+308
+00:13:54,679 --> 00:13:59,149
+simulation model that says like what's
+
+309
+00:13:57,379 --> 00:14:00,710
+the probability that Jeremy is going to
+
+310
+00:13:59,149 --> 00:14:02,840
+change his behavior as a result of
+
+311
+00:14:00,710 --> 00:14:05,540
+calling him right now right so elite one
+
+312
+00:14:02,840 --> 00:14:08,300
+of the levers I have is call him on the
+
+313
+00:14:05,539 --> 00:14:11,209
+other hand if I like got a piece of mail
+
+314
+00:14:08,299 --> 00:14:12,979
+tomorrow that said like for each month
+
+315
+00:14:11,210 --> 00:14:14,840
+you stay with us we're going to give you
+
+316
+00:14:12,980 --> 00:14:16,100
+a hundred thousand dollars
+
+317
+00:14:14,840 --> 00:14:20,450
+okay then that's going to definitely
+
+318
+00:14:16,100 --> 00:14:22,580
+change my behavior right so but then
+
+319
+00:14:20,450 --> 00:14:24,770
+feeding that into the simulation model
+
+320
+00:14:22,580 --> 00:14:27,470
+it turns out that overall that would be
+
+321
+00:14:24,769 --> 00:14:28,970
+an unprofitable choice to make so do you
+
+322
+00:14:27,470 --> 00:14:37,330
+see how this fits in together all right
+
+323
+00:14:28,970 --> 00:14:40,940
+so so when we look at something like
+
+324
+00:14:37,330 --> 00:14:43,490
+churn we want to be thinking like what
+
+325
+00:14:40,940 --> 00:14:45,020
+are the levers we can pull right and so
+
+326
+00:14:43,490 --> 00:14:47,269
+what are the kind of models that we
+
+327
+00:14:45,019 --> 00:14:50,029
+could build with what kinds of data to
+
+328
+00:14:47,269 --> 00:14:52,220
+help us pull those levers better to
+
+329
+00:14:50,029 --> 00:14:54,649
+achieve our objectives and so when you
+
+330
+00:14:52,220 --> 00:14:56,810
+think about it that way you realize that
+
+331
+00:14:54,649 --> 00:14:59,959
+the vast majority of these applications
+
+332
+00:14:56,809 --> 00:15:02,269
+are not largely about a predictive model
+
+333
+00:14:59,960 --> 00:15:05,330
+at all they're about interpretation
+
+334
+00:15:02,269 --> 00:15:08,720
+they're about understanding what happens
+
+335
+00:15:05,330 --> 00:15:10,370
+if right so if we kind of take the
+
+336
+00:15:08,720 --> 00:15:13,129
+cross-product or not the cross-product
+
+337
+00:15:10,370 --> 00:15:15,230
+or either inter intersection between on
+
+338
+00:15:13,129 --> 00:15:16,820
+the one hand here are all the levers
+
+339
+00:15:15,230 --> 00:15:19,310
+that we could pull like here or all the
+
+340
+00:15:16,820 --> 00:15:21,470
+things we can do and then here are all
+
+341
+00:15:19,309 --> 00:15:23,689
+of the features from our random forest
+
+342
+00:15:21,470 --> 00:15:26,180
+feature importance that turn out to be
+
+343
+00:15:23,690 --> 00:15:28,550
+strong drivers of the outcome and so
+
+344
+00:15:26,179 --> 00:15:30,259
+then the intersection of those is here
+
+345
+00:15:28,549 --> 00:15:33,859
+are the levers we could pull that
+
+346
+00:15:30,259 --> 00:15:36,350
+actually matter right because if you
+
+347
+00:15:33,860 --> 00:15:39,860
+can't change the thing that is not very
+
+348
+00:15:36,350 --> 00:15:41,480
+interesting and if it's not actually a
+
+349
+00:15:39,860 --> 00:15:43,669
+significant driver it's not very
+
+350
+00:15:41,480 --> 00:15:45,920
+interesting right so we can actually use
+
+351
+00:15:43,669 --> 00:15:49,969
+our random forest feature importance to
+
+352
+00:15:45,919 --> 00:15:52,490
+tell us what can we actually do to make
+
+353
+00:15:49,970 --> 00:15:54,470
+a difference and then we can use the
+
+354
+00:15:52,490 --> 00:15:56,090
+partial dependence to actually build
+
+355
+00:15:54,470 --> 00:15:58,149
+this kind of simulation model to say
+
+356
+00:15:56,090 --> 00:16:05,509
+like okay well if we did change that
+
+357
+00:15:58,149 --> 00:16:06,980
+what would happen okay so you know there
+
+358
+00:16:05,509 --> 00:16:08,659
+are examples lots and lots of these
+
+359
+00:16:06,980 --> 00:16:11,149
+vertical examples and so what I want you
+
+360
+00:16:08,659 --> 00:16:12,829
+to kind of think about as you think
+
+361
+00:16:11,149 --> 00:16:15,590
+about the machine learning problems
+
+362
+00:16:12,830 --> 00:16:18,860
+you're working on is like why does
+
+363
+00:16:15,590 --> 00:16:21,320
+somebody care about this right and like
+
+364
+00:16:18,860 --> 00:16:23,090
+what would a good answer to them look
+
+365
+00:16:21,320 --> 00:16:24,800
+like and how could you you know how
+
+366
+00:16:23,090 --> 00:16:27,620
+could you actually positively impact
+
+367
+00:16:24,799 --> 00:16:28,448
+this business so if you're creating like
+
+368
+00:16:27,620 --> 00:16:31,298
+a Keagle
+
+369
+00:16:28,448 --> 00:16:33,248
+you know try to think about from the
+
+370
+00:16:31,298 --> 00:16:35,289
+point of view of the competition
+
+371
+00:16:33,249 --> 00:16:37,269
+organizer like what would they want to
+
+372
+00:16:35,289 --> 00:16:41,230
+know and how can you give them that
+
+373
+00:16:37,269 --> 00:16:44,889
+information so something like fraud
+
+374
+00:16:41,230 --> 00:16:47,438
+detection on the other hand you probably
+
+375
+00:16:44,889 --> 00:16:50,079
+just basically want to know whose
+
+376
+00:16:47,438 --> 00:16:51,730
+fraudulent right so you probably do just
+
+377
+00:16:50,078 --> 00:16:53,378
+care about the predictive model but then
+
+378
+00:16:51,730 --> 00:16:55,749
+you do have to think carefully about the
+
+379
+00:16:53,379 --> 00:16:58,019
+data availability here so it's like okay
+
+380
+00:16:55,749 --> 00:17:00,730
+that we need to know who is fraudulent
+
+381
+00:16:58,019 --> 00:17:03,459
+at the point that we're about to deliver
+
+382
+00:17:00,730 --> 00:17:04,630
+them a product right so it's no point
+
+383
+00:17:03,458 --> 00:17:07,119
+like looking at data that's available
+
+384
+00:17:04,630 --> 00:17:10,028
+like a month later for instance so
+
+385
+00:17:07,119 --> 00:17:11,739
+you've kind of got this this key issue
+
+386
+00:17:10,028 --> 00:17:13,179
+of thinking about you know the actual
+
+387
+00:17:11,740 --> 00:17:18,189
+operational constraints that you're
+
+388
+00:17:13,179 --> 00:17:20,709
+working under you know lots of
+
+389
+00:17:18,189 --> 00:17:23,500
+interesting applications in human
+
+390
+00:17:20,709 --> 00:17:25,089
+resources but like employee churn it's
+
+391
+00:17:23,500 --> 00:17:28,119
+another kind of churn model we're
+
+392
+00:17:25,088 --> 00:17:30,000
+finding out that Jeremy Howard sick of
+
+393
+00:17:28,119 --> 00:17:31,928
+lecturing he's going to leave tomorrow
+
+394
+00:17:30,000 --> 00:17:33,788
+what are you going to do about it
+
+395
+00:17:31,929 --> 00:17:36,130
+well knowing that wouldn't actually be
+
+396
+00:17:33,788 --> 00:17:38,349
+helpful it'd be too late right you would
+
+397
+00:17:36,130 --> 00:17:41,169
+actually want a model that said what
+
+398
+00:17:38,349 --> 00:17:43,480
+kinds of people you know are leaving USF
+
+399
+00:17:41,169 --> 00:17:45,009
+and it turns out that like Oh
+
+400
+00:17:43,480 --> 00:17:47,500
+everybody that goes to the downstairs
+
+401
+00:17:45,009 --> 00:17:50,648
+cafe leaves USF you know I guess their
+
+402
+00:17:47,500 --> 00:17:53,019
+food is awful or you know whatever right
+
+403
+00:17:50,648 --> 00:17:54,759
+or everybody that we're paying less than
+
+404
+00:17:53,019 --> 00:17:56,230
+half a million dollars a year is leaving
+
+405
+00:17:54,759 --> 00:18:00,759
+USF you know because they can't afford
+
+406
+00:17:56,230 --> 00:18:03,009
+basic housing in San Francisco so like
+
+407
+00:18:00,759 --> 00:18:05,349
+you could use your employee churn model
+
+408
+00:18:03,009 --> 00:18:11,129
+not so much to say like which employees
+
+409
+00:18:05,349 --> 00:18:14,048
+hate us but why do employees leave right
+
+410
+00:18:11,130 --> 00:18:18,210
+and so again it's really the
+
+411
+00:18:14,048 --> 00:18:18,210
+interpretation there that that matters
+
+412
+00:18:19,980 --> 00:18:24,038
+now lead prioritization is a really
+
+413
+00:18:22,509 --> 00:18:27,609
+interesting one right like this is one
+
+414
+00:18:24,038 --> 00:18:30,869
+where a lot of companies yes Dana can
+
+415
+00:18:27,609 --> 00:18:33,029
+you pass that over there
+
+416
+00:18:30,869 --> 00:18:35,129
+you know so I was just wondering select
+
+417
+00:18:33,029 --> 00:18:37,769
+the Shawn thing or you suggest it so one
+
+418
+00:18:35,130 --> 00:18:40,020
+being is like being an employee like a 1
+
+419
+00:18:37,769 --> 00:18:41,430
+million a year or something but then it
+
+420
+00:18:40,019 --> 00:18:43,109
+sounds like there are two predictors
+
+421
+00:18:41,430 --> 00:18:45,180
+that you need to predict put I mean one
+
+422
+00:18:43,109 --> 00:18:47,849
+each Shawn and one you need to optimize
+
+423
+00:18:45,180 --> 00:18:49,980
+for it like you're profiting so how does
+
+424
+00:18:47,849 --> 00:18:52,529
+it work yeah exactly so this is what
+
+425
+00:18:49,980 --> 00:18:55,200
+this like simulation model is all about
+
+426
+00:18:52,529 --> 00:18:57,539
+so it's a great question so like you
+
+427
+00:18:55,200 --> 00:18:59,970
+kind of figure out this objective we're
+
+428
+00:18:57,539 --> 00:19:02,609
+trying to maximize which is like company
+
+429
+00:18:59,970 --> 00:19:04,710
+profitability you can kind of create
+
+430
+00:19:02,609 --> 00:19:05,849
+like a pretty simple like Excel model or
+
+431
+00:19:04,710 --> 00:19:07,440
+something that says like here's the
+
+432
+00:19:05,849 --> 00:19:09,719
+revenues and here's the costs and the
+
+433
+00:19:07,440 --> 00:19:11,400
+cost is equal to them you know number of
+
+434
+00:19:09,720 --> 00:19:13,140
+people we employ multiplied by their
+
+435
+00:19:11,400 --> 00:19:17,790
+salaries blah blah blah blah blah right
+
+436
+00:19:13,140 --> 00:19:19,230
+and so inside that kind of Excel model
+
+437
+00:19:17,789 --> 00:19:20,519
+there are certain cells there are
+
+438
+00:19:19,230 --> 00:19:23,819
+certain inputs where you're like oh that
+
+439
+00:19:20,519 --> 00:19:26,190
+thing's kind of stochastic you know or
+
+440
+00:19:23,819 --> 00:19:28,230
+that thing is kind of uncertain but we
+
+441
+00:19:26,190 --> 00:19:30,120
+could predict it with a model and so
+
+442
+00:19:28,230 --> 00:19:31,829
+that's kind of what I what I do then is
+
+443
+00:19:30,119 --> 00:19:35,939
+I then say okay we need a predictive
+
+444
+00:19:31,829 --> 00:19:38,849
+model for how likely somebody is to stay
+
+445
+00:19:35,940 --> 00:19:41,400
+if we change their salary how much how
+
+446
+00:19:38,849 --> 00:19:45,629
+likely they are to leave you know with
+
+447
+00:19:41,400 --> 00:19:47,820
+the current salary how likely they are
+
+448
+00:19:45,630 --> 00:19:50,250
+to leave next year if they if I increase
+
+449
+00:19:47,819 --> 00:19:52,889
+their salary now why blah so you could
+
+450
+00:19:50,250 --> 00:19:54,450
+have ruled a bunch of these models and
+
+451
+00:19:52,890 --> 00:19:57,840
+then you can bind them together with
+
+452
+00:19:54,450 --> 00:20:01,500
+simple business logic and then you can
+
+453
+00:19:57,839 --> 00:20:03,599
+optimize that you can then say okay if I
+
+454
+00:20:01,500 --> 00:20:05,099
+you know pay Jeremy Howard half a
+
+455
+00:20:03,599 --> 00:20:07,230
+million dollars that's probably a really
+
+456
+00:20:05,099 --> 00:20:09,119
+good idea you know and if I pay him less
+
+457
+00:20:07,230 --> 00:20:11,910
+than you know it's probably not or
+
+458
+00:20:09,119 --> 00:20:15,449
+whatever like you can figure out the the
+
+459
+00:20:11,910 --> 00:20:17,340
+overall impact and so it's it's really
+
+460
+00:20:15,450 --> 00:20:20,940
+shocking to me how few people do this
+
+461
+00:20:17,339 --> 00:20:23,970
+but most people in industry measure
+
+462
+00:20:20,940 --> 00:20:28,980
+their models using like a UC or our MSC
+
+463
+00:20:23,970 --> 00:20:31,279
+or whatever which is never actually what
+
+464
+00:20:28,980 --> 00:20:31,279
+you want
+
+465
+00:20:32,460 --> 00:20:36,930
+yes can you pass it over here
+
+466
+00:20:37,269 --> 00:20:42,918
+I wanted to stress the point that you
+
+467
+00:20:40,220 --> 00:20:46,159
+made before um in my experience a lot of
+
+468
+00:20:42,919 --> 00:20:48,380
+the problem was to define the problem
+
+469
+00:20:46,159 --> 00:20:49,760
+right so you you are in a company you're
+
+470
+00:20:48,380 --> 00:20:52,039
+talking to somebody that doesn't have
+
+471
+00:20:49,759 --> 00:20:53,658
+like this mentality that you have they
+
+472
+00:20:52,038 --> 00:20:56,359
+don't know that you have to have x and y
+
+473
+00:20:53,659 --> 00:20:58,010
+and so on so you have to try to get that
+
+474
+00:20:56,359 --> 00:21:00,469
+out of them you know what exactly do you
+
+475
+00:20:58,009 --> 00:21:02,179
+want and try to go through a few
+
+476
+00:21:00,470 --> 00:21:04,069
+iterations of understanding what they
+
+477
+00:21:02,179 --> 00:21:05,600
+want and then you know the data you know
+
+478
+00:21:04,069 --> 00:21:07,759
+what it is you know actually what you
+
+479
+00:21:05,599 --> 00:21:09,259
+can measure which is often know what
+
+480
+00:21:07,759 --> 00:21:11,808
+they want so you have to kind of get a
+
+481
+00:21:09,259 --> 00:21:13,700
+proxy for what they want and then so a
+
+482
+00:21:11,808 --> 00:21:16,308
+lot of what you do is not that much of
+
+483
+00:21:13,700 --> 00:21:18,590
+like well some people do actually just
+
+484
+00:21:16,308 --> 00:21:20,569
+work on really good models for you know
+
+485
+00:21:18,589 --> 00:21:23,209
+but a lot of people also just work on
+
+486
+00:21:20,569 --> 00:21:25,579
+this kind of how do you put this I say
+
+487
+00:21:23,210 --> 00:21:27,919
+you know classification regression or
+
+488
+00:21:25,579 --> 00:21:30,470
+some other type of modeling that's
+
+489
+00:21:27,919 --> 00:21:32,210
+actually kind of the most interesting I
+
+490
+00:21:30,470 --> 00:21:38,000
+think and also kind of what's kind of
+
+491
+00:21:32,210 --> 00:21:44,350
+what you have to do well understand the
+
+492
+00:21:38,000 --> 00:21:47,089
+technical model building deeply but also
+
+493
+00:21:44,349 --> 00:21:50,209
+understand the kind of strategic context
+
+494
+00:21:47,089 --> 00:21:53,230
+deeply and so this is one way to think
+
+495
+00:21:50,210 --> 00:21:57,048
+about it and as I say like you know I
+
+496
+00:21:53,230 --> 00:21:59,390
+actually think you know there aren't
+
+497
+00:21:57,048 --> 00:22:01,339
+many articles I wrote in 2012 I'm still
+
+498
+00:21:59,390 --> 00:22:07,460
+recommending but this one I think is
+
+499
+00:22:01,339 --> 00:22:09,558
+still equally valid today so yeah so
+
+500
+00:22:07,460 --> 00:22:11,269
+like another great example is lead
+
+501
+00:22:09,558 --> 00:22:13,668
+prioritization right so like a lot of
+
+502
+00:22:11,269 --> 00:22:16,849
+companies like every one of these boxes
+
+503
+00:22:13,669 --> 00:22:20,210
+I'm showing you can generally find a
+
+504
+00:22:16,849 --> 00:22:23,209
+company or many companies whose sole job
+
+505
+00:22:20,210 --> 00:22:24,890
+in life is to build models of that thing
+
+506
+00:22:23,210 --> 00:22:29,048
+right so there are lots of companies
+
+507
+00:22:24,890 --> 00:22:33,799
+that sell laid prioritization systems
+
+508
+00:22:29,048 --> 00:22:36,259
+but again like the question is how would
+
+509
+00:22:33,798 --> 00:22:39,859
+we use that information right so if it's
+
+510
+00:22:36,259 --> 00:22:43,089
+like oh our best lead is Jeremy you know
+
+511
+00:22:39,859 --> 00:22:45,309
+he's a highest probability of buying
+
+512
+00:22:43,089 --> 00:22:47,619
+does that mean I should send a
+
+513
+00:22:45,309 --> 00:22:50,859
+salesperson out to Jeremy or I shouldn't
+
+514
+00:22:47,619 --> 00:22:54,009
+like if he's highly probable to buy why
+
+515
+00:22:50,859 --> 00:22:55,839
+I waste my time with him you know so
+
+516
+00:22:54,009 --> 00:22:58,420
+like again it's like he really wants
+
+517
+00:22:55,839 --> 00:23:00,819
+some kind of simulation that says like
+
+518
+00:22:58,420 --> 00:23:04,690
+what's the chain the likely change in
+
+519
+00:23:00,819 --> 00:23:07,889
+Jeremy's behavior if I send my best
+
+520
+00:23:04,690 --> 00:23:13,080
+salesperson your net out to go and like
+
+521
+00:23:07,890 --> 00:23:13,080
+encourage him to sign okay so
+
+522
+00:23:13,500 --> 00:23:17,730
+yeah I think this this is like there are
+
+523
+00:23:15,659 --> 00:23:20,280
+many many opportunities for data
+
+524
+00:23:17,730 --> 00:23:22,640
+scientists in the world today to move
+
+525
+00:23:20,279 --> 00:23:25,710
+beyond predictive modeling to actually
+
+526
+00:23:22,640 --> 00:23:27,059
+bringing it all together you know and
+
+527
+00:23:25,710 --> 00:23:32,640
+with the kind of stuff that Dena was
+
+528
+00:23:27,058 --> 00:23:34,649
+talking about in the question so as well
+
+529
+00:23:32,640 --> 00:23:36,559
+as these horizontal applications that
+
+530
+00:23:34,650 --> 00:23:38,880
+basically apply to like every company
+
+531
+00:23:36,558 --> 00:23:40,829
+there's a whole bunch of applications
+
+532
+00:23:38,880 --> 00:23:42,809
+that are specific to like every part of
+
+533
+00:23:40,829 --> 00:23:44,908
+the world right so if for those of you
+
+534
+00:23:42,808 --> 00:23:47,220
+that end up in health care some of you
+
+535
+00:23:44,909 --> 00:23:53,039
+will become experts in one or more of
+
+536
+00:23:47,220 --> 00:23:54,990
+these areas like readmission risk okay
+
+537
+00:23:53,038 --> 00:23:57,419
+so what's the probability that this
+
+538
+00:23:54,990 --> 00:24:00,808
+patient is going to come back to the
+
+539
+00:23:57,419 --> 00:24:05,309
+hospital and readmission is depending on
+
+540
+00:24:00,808 --> 00:24:07,798
+the details of the jurisdiction and so
+
+541
+00:24:05,308 --> 00:24:10,918
+forth it can be a disaster for hospitals
+
+542
+00:24:07,798 --> 00:24:13,500
+when somebody is readmitted right so if
+
+543
+00:24:10,919 --> 00:24:16,320
+you find out that this patient has a
+
+544
+00:24:13,500 --> 00:24:17,210
+high probability of readmission what do
+
+545
+00:24:16,319 --> 00:24:19,619
+you do about it
+
+546
+00:24:17,210 --> 00:24:21,179
+well again the predictive model is
+
+547
+00:24:19,619 --> 00:24:23,699
+helpful of itself right it rather
+
+548
+00:24:21,179 --> 00:24:25,259
+suggests like we just shouldn't send
+
+549
+00:24:23,700 --> 00:24:27,538
+them home yet because they're going to
+
+550
+00:24:25,259 --> 00:24:29,640
+come back but wouldn't it be nice if we
+
+551
+00:24:27,538 --> 00:24:32,490
+had the tree interpreter and it said to
+
+552
+00:24:29,640 --> 00:24:36,780
+us the reason that they're at high risk
+
+553
+00:24:32,490 --> 00:24:40,019
+is because we don't have a recent EKG
+
+554
+00:24:36,779 --> 00:24:42,480
+for them and without a recent EKG we
+
+555
+00:24:40,019 --> 00:24:45,808
+can't have a high confidence about their
+
+556
+00:24:42,480 --> 00:24:47,159
+you know cardiac health in which case it
+
+557
+00:24:45,808 --> 00:24:48,990
+wouldn't be like well let's keep them in
+
+558
+00:24:47,159 --> 00:24:52,049
+the hospital for two weeks it'll be like
+
+559
+00:24:48,990 --> 00:24:54,169
+let's give them an EKG okay so this is
+
+560
+00:24:52,048 --> 00:24:58,548
+this is interaction between
+
+561
+00:24:54,169 --> 00:24:58,549
+interpretation and predictive accuracy
+
+562
+00:25:03,619 --> 00:25:08,399
+the predictive models are a really great
+
+563
+00:25:06,058 --> 00:25:10,649
+starting point but in order to actually
+
+564
+00:25:08,400 --> 00:25:12,690
+like answer these questions we really
+
+565
+00:25:10,650 --> 00:25:15,390
+need to focus on the interpretability of
+
+566
+00:25:12,690 --> 00:25:17,640
+these models yeah I think so and and
+
+567
+00:25:15,390 --> 00:25:21,030
+more specifically I'm saying like we
+
+568
+00:25:17,640 --> 00:25:23,190
+just learnt a whole raft of random
+
+569
+00:25:21,029 --> 00:25:24,839
+forest interpretation techniques and so
+
+570
+00:25:23,190 --> 00:25:25,690
+I kind of just to kind of try to justify
+
+571
+00:25:24,839 --> 00:25:31,359
+like well
+
+572
+00:25:25,690 --> 00:25:34,210
+why right and so the reason why is
+
+573
+00:25:31,359 --> 00:25:36,639
+because actually maybe I'd say most of
+
+574
+00:25:34,210 --> 00:25:41,799
+the time the interpretation is the thing
+
+575
+00:25:36,640 --> 00:25:45,520
+we care about and like you can create a
+
+576
+00:25:41,799 --> 00:25:48,940
+chart you know or a table without
+
+577
+00:25:45,519 --> 00:25:50,349
+machine learning and indeed that's how
+
+578
+00:25:48,940 --> 00:25:52,600
+most of the world works right most
+
+579
+00:25:50,349 --> 00:25:54,490
+managers like build all kinds of tables
+
+580
+00:25:52,599 --> 00:25:56,119
+and charts without any machine learning
+
+581
+00:25:54,490 --> 00:25:58,579
+behind them
+
+582
+00:25:56,119 --> 00:26:00,799
+but they often make terrible decisions
+
+583
+00:25:58,579 --> 00:26:02,299
+because they don't know the future
+
+584
+00:26:00,799 --> 00:26:03,649
+importance of the objective they're
+
+585
+00:26:02,299 --> 00:26:05,269
+interested in and so the table they
+
+586
+00:26:03,650 --> 00:26:08,019
+create is of things that actually are
+
+587
+00:26:05,269 --> 00:26:10,940
+the least important things anyway or
+
+588
+00:26:08,019 --> 00:26:12,769
+they just do a univariate chart rather
+
+589
+00:26:10,940 --> 00:26:14,360
+than a partial dependence plot so they
+
+590
+00:26:12,769 --> 00:26:15,740
+don't actually realize that the
+
+591
+00:26:14,359 --> 00:26:17,839
+relationship they thought they're
+
+592
+00:26:15,740 --> 00:26:22,069
+looking at is drew entirely to something
+
+593
+00:26:17,839 --> 00:26:24,919
+else right so you know I'm kind of
+
+594
+00:26:22,069 --> 00:26:28,250
+arguing for data scientists getting like
+
+595
+00:26:24,920 --> 00:26:30,950
+much more deeply involved in in strategy
+
+596
+00:26:28,250 --> 00:26:34,460
+and in trying to use machine learning to
+
+597
+00:26:30,950 --> 00:26:39,140
+really help you know help a business
+
+598
+00:26:34,460 --> 00:26:41,840
+with all of its objectives right now
+
+599
+00:26:39,140 --> 00:26:43,850
+there's like there companies like dun
+
+600
+00:26:41,839 --> 00:26:46,220
+hum B is a huge company that does
+
+601
+00:26:43,849 --> 00:26:48,709
+nothing but retail applications with
+
+602
+00:26:46,220 --> 00:26:50,539
+machine learning and so like I believe
+
+603
+00:26:48,710 --> 00:26:54,370
+there's like a dun Humby product you can
+
+604
+00:26:50,539 --> 00:26:54,369
+buy which will help you
+
+605
+00:26:55,180 --> 00:26:59,350
+which will help you figure out like if I
+
+606
+00:26:57,099 --> 00:27:02,139
+put my new store in this location versus
+
+607
+00:26:59,349 --> 00:27:04,839
+lat location how much you know how many
+
+608
+00:27:02,140 --> 00:27:07,990
+people are going to shop there or if I
+
+609
+00:27:04,839 --> 00:27:09,879
+put like you know my diapers in this
+
+610
+00:27:07,990 --> 00:27:11,980
+part of the shop versus that part of the
+
+611
+00:27:09,880 --> 00:27:14,650
+shop how's that going to impact you know
+
+612
+00:27:11,980 --> 00:27:16,269
+purchasing behavior or whatever right so
+
+613
+00:27:14,650 --> 00:27:19,900
+it's I think it's also good to realize
+
+614
+00:27:16,269 --> 00:27:22,869
+that like the subset of machine learning
+
+615
+00:27:19,900 --> 00:27:27,090
+applications you tend to hear about you
+
+616
+00:27:22,869 --> 00:27:30,339
+know in in the tech press or whatever is
+
+617
+00:27:27,089 --> 00:27:32,799
+this massively biased tiny subset of
+
+618
+00:27:30,339 --> 00:27:36,009
+stuff which kind of Google and Facebook
+
+619
+00:27:32,799 --> 00:27:37,450
+do where else the vast majority of stuff
+
+620
+00:27:36,009 --> 00:27:40,990
+that actually makes the world go around
+
+621
+00:27:37,450 --> 00:27:42,850
+is you know these kinds of applications
+
+622
+00:27:40,990 --> 00:27:47,019
+that actually help people make things
+
+623
+00:27:42,849 --> 00:27:54,699
+buy things sell things build things so
+
+624
+00:27:47,019 --> 00:27:57,519
+forth so about create repetition the way
+
+625
+00:27:54,700 --> 00:28:02,860
+we looked at the tree was we manually
+
+626
+00:27:57,519 --> 00:28:04,720
+check which feature could cause good was
+
+627
+00:28:02,859 --> 00:28:06,699
+more important for for particular
+
+628
+00:28:04,720 --> 00:28:09,309
+observation but for businesses they
+
+629
+00:28:06,700 --> 00:28:11,710
+would have a huge amount of data and
+
+630
+00:28:09,309 --> 00:28:13,539
+they they want this interpretation for a
+
+631
+00:28:11,710 --> 00:28:16,170
+lot of observations so how do they
+
+632
+00:28:13,539 --> 00:28:16,170
+automate it
+
+633
+00:28:17,559 --> 00:28:21,490
+I don't think the automation is at all
+
+634
+00:28:19,000 --> 00:28:22,960
+difficult like you just you can run any
+
+635
+00:28:21,490 --> 00:28:26,650
+of these algorithms like looping through
+
+636
+00:28:22,960 --> 00:28:28,660
+the rows or doing them in parallel it's
+
+637
+00:28:26,650 --> 00:28:32,080
+all this code oh I miss understand your
+
+638
+00:28:28,660 --> 00:28:36,190
+question is it like they set a threshold
+
+639
+00:28:32,079 --> 00:28:37,689
+that if some feature is about like four
+
+640
+00:28:36,190 --> 00:28:42,070
+different different people will have
+
+641
+00:28:37,690 --> 00:28:44,140
+different behavior oh so so yeah okay I
+
+642
+00:28:42,069 --> 00:28:45,220
+guess it's good question that the
+
+643
+00:28:44,140 --> 00:28:47,770
+important thing this is a really
+
+644
+00:28:45,220 --> 00:28:49,440
+important issue actually is the vast
+
+645
+00:28:47,769 --> 00:28:52,599
+majority of machine learning models
+
+646
+00:28:49,440 --> 00:28:55,029
+don't automate anything they're designed
+
+647
+00:28:52,599 --> 00:29:02,309
+to provide information to humans right
+
+648
+00:28:55,029 --> 00:29:04,660
+so for example if you're appointed sales
+
+649
+00:29:02,309 --> 00:29:08,349
+customer service phone operator for an
+
+650
+00:29:04,660 --> 00:29:11,140
+insurance company and your customer asks
+
+651
+00:29:08,349 --> 00:29:13,419
+you why is my renewal $500 more
+
+652
+00:29:11,140 --> 00:29:15,190
+expensive than last time then hopefully
+
+653
+00:29:13,420 --> 00:29:17,830
+you know the insurance company has
+
+654
+00:29:15,190 --> 00:29:19,600
+provides in your terminal those little
+
+655
+00:29:17,829 --> 00:29:21,699
+screen that shows the result of the tree
+
+656
+00:29:19,599 --> 00:29:23,289
+interpreter or whatever then chills so
+
+657
+00:29:21,700 --> 00:29:26,230
+that you can jump there and tell the
+
+658
+00:29:23,289 --> 00:29:28,569
+customer like okay well here's last year
+
+659
+00:29:26,230 --> 00:29:31,680
+you're in this different zip code which
+
+660
+00:29:28,569 --> 00:29:35,470
+you know is less has lower amounts of
+
+661
+00:29:31,680 --> 00:29:36,820
+car theft and this year also you've
+
+662
+00:29:35,470 --> 00:29:40,089
+actually changed your vehicle to more
+
+663
+00:29:36,819 --> 00:29:43,059
+expensive one or whatever right so it's
+
+664
+00:29:40,089 --> 00:29:45,669
+not so much about thresholds and
+
+665
+00:29:43,059 --> 00:29:49,269
+automation but about you know making
+
+666
+00:29:45,670 --> 00:29:50,950
+these model outputs available to the
+
+667
+00:29:49,269 --> 00:29:53,139
+decision-makers in an organization
+
+668
+00:29:50,950 --> 00:29:55,930
+whether they be at the top strategic
+
+669
+00:29:53,140 --> 00:29:58,270
+level of like you know are we going to
+
+670
+00:29:55,930 --> 00:30:00,730
+shut down this whole product or not all
+
+671
+00:29:58,269 --> 00:30:02,769
+the way to the operational level look
+
+672
+00:30:00,730 --> 00:30:05,370
+like it that that individual discussion
+
+673
+00:30:02,769 --> 00:30:05,369
+with a customer
+
+674
+00:30:06,430 --> 00:30:12,250
+so like another example is like aircraft
+
+675
+00:30:10,210 --> 00:30:14,049
+scheduling and gate management like
+
+676
+00:30:12,250 --> 00:30:17,769
+there's lots of companies that do that
+
+677
+00:30:14,049 --> 00:30:19,779
+right and basically what happens is that
+
+678
+00:30:17,769 --> 00:30:25,869
+the the people you know there are there
+
+679
+00:30:19,779 --> 00:30:28,990
+are people in at an airport whose job it
+
+680
+00:30:25,869 --> 00:30:30,589
+is to basically tell each aircraft what
+
+681
+00:30:28,990 --> 00:30:32,690
+gate to go to
+
+682
+00:30:30,589 --> 00:30:34,399
+to figure out when to close the doors
+
+683
+00:30:32,690 --> 00:30:37,190
+stuff like that and so the idea is you
+
+684
+00:30:34,400 --> 00:30:38,659
+know you're giving them software which
+
+685
+00:30:37,190 --> 00:30:39,380
+has the information they need to make
+
+686
+00:30:38,659 --> 00:30:41,559
+good decisions
+
+687
+00:30:39,380 --> 00:30:43,909
+so the machine learning models end up
+
+688
+00:30:41,558 --> 00:30:46,788
+embedded in that software to kind of say
+
+689
+00:30:43,909 --> 00:30:49,760
+like okay that plane that's currently
+
+690
+00:30:46,788 --> 00:30:51,140
+coming in from Miami there's a 48
+
+691
+00:30:49,759 --> 00:30:53,658
+percent chance that it's going to be
+
+692
+00:30:51,140 --> 00:30:55,788
+over five minutes late and if it does
+
+693
+00:30:53,659 --> 00:30:57,549
+then this is going to be the knock-on
+
+694
+00:30:55,788 --> 00:31:00,259
+impact through the rest of the terminal
+
+695
+00:30:57,548 --> 00:31:02,230
+for instance okay well that's kind of
+
+696
+00:31:00,259 --> 00:31:05,058
+how these things turned a bit together
+
+697
+00:31:02,230 --> 00:31:07,460
+so there's so many of these right
+
+698
+00:31:05,058 --> 00:31:10,158
+there's lots and lots and so it's not
+
+699
+00:31:07,460 --> 00:31:11,569
+like I don't expect you to like remember
+
+700
+00:31:10,159 --> 00:31:13,309
+all these applications but what I do
+
+701
+00:31:11,569 --> 00:31:16,278
+want you to do is to like spend some
+
+702
+00:31:13,308 --> 00:31:17,898
+time like thinking about them like sit
+
+703
+00:31:16,278 --> 00:31:21,099
+down with one of your friends and like
+
+704
+00:31:17,898 --> 00:31:25,759
+talk about a few examples of like okay
+
+705
+00:31:21,099 --> 00:31:28,129
+how would we go about like doing failure
+
+706
+00:31:25,759 --> 00:31:29,960
+analysis and manufacturing like you know
+
+707
+00:31:28,130 --> 00:31:31,640
+who-who would be doing that why would be
+
+708
+00:31:29,960 --> 00:31:33,079
+they doing it what kind of models might
+
+709
+00:31:31,640 --> 00:31:36,528
+they use what kind of data might they
+
+710
+00:31:33,079 --> 00:31:38,178
+use like start to like practice this and
+
+711
+00:31:36,528 --> 00:31:40,640
+get a sense so because then this you're
+
+712
+00:31:38,179 --> 00:31:42,528
+like interviewing and then when you're
+
+713
+00:31:40,640 --> 00:31:46,210
+at the workplace and you you know you're
+
+714
+00:31:42,528 --> 00:31:48,589
+talking to managers you wouldn't be like
+
+715
+00:31:46,210 --> 00:31:50,179
+straightaway able to kind of recognize
+
+716
+00:31:48,589 --> 00:31:52,009
+that the person you're talking to what
+
+717
+00:31:50,179 --> 00:31:54,528
+do they try to achieve what are the
+
+718
+00:31:52,009 --> 00:31:56,210
+levers that they have to pull right what
+
+719
+00:31:54,528 --> 00:31:58,009
+if the data they have available to pull
+
+720
+00:31:56,210 --> 00:32:00,169
+those levers to achieve that thing and
+
+721
+00:31:58,009 --> 00:32:02,000
+therefore how could we build models to
+
+722
+00:32:00,169 --> 00:32:04,490
+help them do that and what kind of
+
+723
+00:32:02,000 --> 00:32:06,140
+predictions would they have to be making
+
+724
+00:32:04,490 --> 00:32:08,720
+right and so then you can have this
+
+725
+00:32:06,140 --> 00:32:10,669
+really thoughtful empathetic
+
+726
+00:32:08,720 --> 00:32:13,929
+conversation with those people and the
+
+727
+00:32:10,669 --> 00:32:16,278
+same like hey you know in order to
+
+728
+00:32:13,929 --> 00:32:17,929
+reduce the number of customers that are
+
+729
+00:32:16,278 --> 00:32:19,548
+leaving you know I guess you're trying
+
+730
+00:32:17,929 --> 00:32:21,679
+to figure out like you know who should
+
+731
+00:32:19,548 --> 00:32:25,359
+you be providing better pricing to or
+
+732
+00:32:21,679 --> 00:32:25,360
+whatever and so forth
+
+733
+00:32:29,778 --> 00:32:35,308
+so what I'm noticing like from your
+
+734
+00:32:32,880 --> 00:32:37,740
+beautiful little chart above is that
+
+735
+00:32:35,308 --> 00:32:40,740
+like a lot of this to me at least still
+
+736
+00:32:37,740 --> 00:32:43,890
+seems like the primary purpose is like
+
+737
+00:32:40,740 --> 00:32:46,259
+at the at least base level like is
+
+738
+00:32:43,890 --> 00:32:49,679
+predictive power and so I guess my thing
+
+739
+00:32:46,259 --> 00:32:51,179
+is is like for explanatory problems like
+
+740
+00:32:49,679 --> 00:32:52,798
+a lot of the ones that are people are
+
+741
+00:32:51,179 --> 00:32:54,090
+faced with like in social sciences is
+
+742
+00:32:52,798 --> 00:32:56,429
+that something machine learning can be
+
+743
+00:32:54,089 --> 00:32:59,808
+used for or is used for or is that not
+
+744
+00:32:56,429 --> 00:33:03,200
+really the realm that it yeah it's um
+
+745
+00:32:59,808 --> 00:33:05,639
+that's a great question and I've had a
+
+746
+00:33:03,200 --> 00:33:07,819
+lot of conversations about this with
+
+747
+00:33:05,640 --> 00:33:11,038
+people in social sciences and currently
+
+748
+00:33:07,819 --> 00:33:13,558
+machine learning is not well applied in
+
+749
+00:33:11,038 --> 00:33:17,129
+like economics or psychology or whatever
+
+750
+00:33:13,558 --> 00:33:19,139
+on the whole but I'm Jun convinced it
+
+751
+00:33:17,130 --> 00:33:20,370
+can be for the exact reasons we're
+
+752
+00:33:19,140 --> 00:33:22,919
+talking about so if you're trying to
+
+753
+00:33:20,369 --> 00:33:24,569
+figure out like you're going try to do
+
+754
+00:33:22,919 --> 00:33:25,770
+some kind of behavioral economics and
+
+755
+00:33:24,569 --> 00:33:27,148
+you're trying to understand like why
+
+756
+00:33:25,769 --> 00:33:30,028
+some people behave differently to other
+
+757
+00:33:27,148 --> 00:33:32,308
+people you know a random forest with a
+
+758
+00:33:30,028 --> 00:33:35,460
+feature importance what would be a great
+
+759
+00:33:32,308 --> 00:33:38,359
+way to start or like more interestingly
+
+760
+00:33:35,460 --> 00:33:41,490
+if you're trying to do some kind of
+
+761
+00:33:38,359 --> 00:33:44,819
+sociology experiment or analysis based
+
+762
+00:33:41,490 --> 00:33:46,319
+on a large social network data set where
+
+763
+00:33:44,819 --> 00:33:47,639
+you have an observational study you
+
+764
+00:33:46,319 --> 00:33:51,750
+really want to try and pull out all of
+
+765
+00:33:47,640 --> 00:33:53,940
+the sources of kind of exogenous
+
+766
+00:33:51,750 --> 00:33:56,490
+variables you know all the stuff that's
+
+767
+00:33:53,940 --> 00:33:58,110
+going on outside and so if you use a
+
+768
+00:33:56,490 --> 00:34:00,599
+partial dependence plot with a random
+
+769
+00:33:58,109 --> 00:34:05,278
+forest that happens automatically so I
+
+770
+00:34:00,599 --> 00:34:08,069
+actually gave a talk at MIT a couple of
+
+771
+00:34:05,278 --> 00:34:10,588
+years ago for the first conference on
+
+772
+00:34:08,070 --> 00:34:13,019
+digital experimentation which was really
+
+773
+00:34:10,588 --> 00:34:14,668
+talking about like how do we experiment
+
+774
+00:34:13,019 --> 00:34:17,009
+in you know things like social networks
+
+775
+00:34:14,668 --> 00:34:24,118
+in kind of these digital environments
+
+776
+00:34:17,010 --> 00:34:26,190
+and yeah economists economists all do
+
+777
+00:34:24,119 --> 00:34:30,889
+things with like you know classic
+
+778
+00:34:26,190 --> 00:34:30,889
+statistical tests but um the group of
+
+779
+00:34:31,539 --> 00:34:39,379
+yeah yeah um so but anyway in this case
+
+780
+00:34:36,818 --> 00:34:41,358
+the The Economist's I talked to were
+
+781
+00:34:39,378 --> 00:34:43,808
+absolutely fascinated by this and they
+
+782
+00:34:41,358 --> 00:34:46,668
+actually asked me to give a a
+
+783
+00:34:43,809 --> 00:34:50,419
+introduction to machine learning session
+
+784
+00:34:46,668 --> 00:34:52,068
+at MIT to these various faculty and
+
+785
+00:34:50,418 --> 00:34:54,858
+graduate folks in the Economics
+
+786
+00:34:52,068 --> 00:34:57,048
+Department and so and some of those
+
+787
+00:34:54,858 --> 00:34:58,670
+folks have gone on to be you know write
+
+788
+00:34:57,048 --> 00:35:00,288
+some pretty famous books and stuff and
+
+789
+00:34:58,670 --> 00:35:02,269
+so hopefully it's been useful so like
+
+790
+00:35:00,289 --> 00:35:05,359
+it's definitely early days but it's a
+
+791
+00:35:02,269 --> 00:35:08,659
+it's it's a big big opportunity but as
+
+792
+00:35:05,358 --> 00:35:18,710
+unit says it's you know there's plenty
+
+793
+00:35:08,659 --> 00:35:24,429
+of skepticism still out there huh well
+
+794
+00:35:18,710 --> 00:35:28,130
+the skepticism comes from unfamiliarity
+
+795
+00:35:24,429 --> 00:35:29,838
+basically with like this totally
+
+796
+00:35:28,130 --> 00:35:33,619
+different approach so like if you've if
+
+797
+00:35:29,838 --> 00:35:36,798
+you spent 20 years studying econometrics
+
+798
+00:35:33,619 --> 00:35:38,660
+and somebody comes along and says you
+
+799
+00:35:36,798 --> 00:35:41,298
+know here's a totally different approach
+
+800
+00:35:38,659 --> 00:35:43,429
+to all the econometrics all these stuff
+
+801
+00:35:41,298 --> 00:35:45,019
+that econometricians do you know
+
+802
+00:35:43,429 --> 00:35:49,759
+naturally your first reaction will be
+
+803
+00:35:45,019 --> 00:35:55,639
+like prove it you know so let's do
+
+804
+00:35:49,760 --> 00:35:58,490
+enough but I think it's you know over
+
+805
+00:35:55,639 --> 00:35:59,629
+time the next generation of people who
+
+806
+00:35:58,489 --> 00:36:01,669
+are growing up with machine learning
+
+807
+00:35:59,630 --> 00:36:04,250
+some of them will move into the social
+
+808
+00:36:01,670 --> 00:36:06,079
+sciences they'll make huge impacts that
+
+809
+00:36:04,250 --> 00:36:08,210
+nobody's ever managed to make before and
+
+810
+00:36:06,079 --> 00:36:09,528
+people will start going wow you know
+
+811
+00:36:08,210 --> 00:36:12,108
+just like happened in computer vision
+
+812
+00:36:09,528 --> 00:36:14,778
+right when you know computer vision
+
+813
+00:36:12,108 --> 00:36:16,068
+spent a long time of people saying like
+
+814
+00:36:14,778 --> 00:36:18,318
+hey maybe you should use deep learning
+
+815
+00:36:16,068 --> 00:36:20,778
+for computer vision and everybody in
+
+816
+00:36:18,318 --> 00:36:25,278
+computer vision is like proven you know
+
+817
+00:36:20,778 --> 00:36:26,869
+we have decades of work on amazing
+
+818
+00:36:25,278 --> 00:36:30,798
+feature detectors for computer vision
+
+819
+00:36:26,869 --> 00:36:32,809
+and then finally in 2012 you know Hinton
+
+820
+00:36:30,798 --> 00:36:35,239
+and cadets key came along and said okay
+
+821
+00:36:32,809 --> 00:36:39,109
+and models like twice as good as yours
+
+822
+00:36:35,239 --> 00:36:42,229
+and you know we've only just started on
+
+823
+00:36:39,108 --> 00:36:44,210
+this and everybody was like okay that's
+
+824
+00:36:42,230 --> 00:36:46,099
+pretty convincing
+
+825
+00:36:44,210 --> 00:36:47,869
+nowadays every computer vision
+
+826
+00:36:46,099 --> 00:36:50,180
+researcher basically uses the big
+
+827
+00:36:47,869 --> 00:36:55,010
+wedding so I think that time will come
+
+828
+00:36:50,179 --> 00:36:58,879
+in there in this area too
+
+829
+00:36:55,010 --> 00:37:01,620
+okay I think what we might do then is
+
+830
+00:36:58,880 --> 00:37:04,800
+take a break and we're going to come
+
+831
+00:37:01,619 --> 00:37:07,829
+back and talk about these random forest
+
+832
+00:37:04,800 --> 00:37:11,060
+interpretation techniques and do a do a
+
+833
+00:37:07,829 --> 00:37:20,929
+bit of a review so let's come back at
+
+834
+00:37:11,059 --> 00:37:23,099
+two o'clock so let's have a go at
+
+835
+00:37:20,929 --> 00:37:24,629
+talking about these different random
+
+836
+00:37:23,099 --> 00:37:26,190
+forest interpretation methods having
+
+837
+00:37:24,630 --> 00:37:28,590
+talked about like why they're important
+
+838
+00:37:26,190 --> 00:37:32,400
+so let's now remind ourselves like what
+
+839
+00:37:28,590 --> 00:37:38,670
+they are so I gotta let you folks have a
+
+840
+00:37:32,400 --> 00:37:41,730
+go so let's let's start with confidence
+
+841
+00:37:38,670 --> 00:37:44,670
+based on tree variance so can one of you
+
+842
+00:37:41,730 --> 00:37:46,440
+tell me one or more of the following
+
+843
+00:37:44,670 --> 00:37:50,789
+things about confidence based on tree
+
+844
+00:37:46,440 --> 00:37:53,490
+variance to do what does it tell us why
+
+845
+00:37:50,789 --> 00:37:57,449
+would we be interested in that and how
+
+846
+00:37:53,489 --> 00:38:01,649
+is it calculated this is going back a
+
+847
+00:37:57,449 --> 00:38:03,029
+ways first when we looked at even if
+
+848
+00:38:01,650 --> 00:38:05,309
+you're not sure you only know a little
+
+849
+00:38:03,030 --> 00:38:07,790
+piece of it give us your piece and we'll
+
+850
+00:38:05,309 --> 00:38:07,789
+build on it together
+
+851
+00:38:09,840 --> 00:38:16,740
+I think I got a piece of it it's it's
+
+852
+00:38:13,409 --> 00:38:20,309
+getting the variance of our predictions
+
+853
+00:38:16,739 --> 00:38:22,619
+from random forests that's true that's
+
+854
+00:38:20,309 --> 00:38:26,269
+the how can you be more specific what is
+
+855
+00:38:22,619 --> 00:38:28,380
+it the variance of I think it's
+
+856
+00:38:26,269 --> 00:38:31,889
+remembering correctly I think it's just
+
+857
+00:38:28,380 --> 00:38:34,349
+the overall prediction the variance of
+
+858
+00:38:31,889 --> 00:38:35,579
+the predictions of the trees yes so
+
+859
+00:38:34,349 --> 00:38:38,250
+normally the prediction is just the
+
+860
+00:38:35,579 --> 00:38:39,809
+average this is the variance of the
+
+861
+00:38:38,250 --> 00:38:42,210
+trees and so it kind of just gives you
+
+862
+00:38:39,809 --> 00:38:44,159
+an idea of how much your prediction is
+
+863
+00:38:42,210 --> 00:38:46,079
+going to vary so if maybe even want to
+
+864
+00:38:44,159 --> 00:38:48,299
+minimize variance maybe that's your goal
+
+865
+00:38:46,079 --> 00:38:50,489
+for whatever reason that could be that's
+
+866
+00:38:48,300 --> 00:38:52,080
+not so much the reason so I like your
+
+867
+00:38:50,489 --> 00:38:54,179
+calculation description let's see if
+
+868
+00:38:52,079 --> 00:38:56,420
+somebody else can tell us how you might
+
+869
+00:38:54,179 --> 00:38:56,419
+use that
+
+870
+00:39:00,800 --> 00:39:12,530
+it's okay if you're not sure now have a
+
+871
+00:39:03,630 --> 00:39:16,280
+start so I remember that we talked about
+
+872
+00:39:12,530 --> 00:39:20,730
+the independence of the trees and so
+
+873
+00:39:16,280 --> 00:39:25,680
+maybe something about if the branch of
+
+874
+00:39:20,730 --> 00:39:28,858
+the trees is higher or lower than no not
+
+875
+00:39:25,679 --> 00:39:30,659
+so much that um that's that's that's an
+
+876
+00:39:28,858 --> 00:39:33,000
+interesting question but it's it's not
+
+877
+00:39:30,659 --> 00:39:35,759
+what we're going to see here I'm gonna
+
+878
+00:39:33,000 --> 00:39:37,530
+pass it back behind you so to remind you
+
+879
+00:39:35,760 --> 00:39:40,319
+just to fill in a detail here what we
+
+880
+00:39:37,530 --> 00:39:44,760
+generally do here is we take us just one
+
+881
+00:39:40,318 --> 00:39:47,550
+row like one observation often and like
+
+882
+00:39:44,760 --> 00:39:49,170
+find out how confident we are about that
+
+883
+00:39:47,550 --> 00:39:51,359
+like how much variance there are in the
+
+884
+00:39:49,170 --> 00:39:57,809
+trees for that or we can do it as we did
+
+885
+00:39:51,358 --> 00:40:01,019
+here for different groups for each row
+
+886
+00:39:57,809 --> 00:40:03,930
+we calculate the standard deviation that
+
+887
+00:40:01,019 --> 00:40:07,280
+we get from the random forest model and
+
+888
+00:40:03,929 --> 00:40:10,558
+then maybe group according to different
+
+889
+00:40:07,280 --> 00:40:12,180
+variables or predictors and see for
+
+890
+00:40:10,559 --> 00:40:15,510
+which particular predictor the standard
+
+891
+00:40:12,179 --> 00:40:17,669
+deviation is high then go deep donnas
+
+892
+00:40:15,510 --> 00:40:20,880
+why it is happening maybe it is because
+
+893
+00:40:17,670 --> 00:40:23,400
+a particular category of that variable
+
+894
+00:40:20,880 --> 00:40:25,349
+has very less number of observation yeah
+
+895
+00:40:23,400 --> 00:40:26,910
+that's great so that that would be one
+
+896
+00:40:25,349 --> 00:40:29,190
+approach is kind of what we've done here
+
+897
+00:40:26,909 --> 00:40:33,379
+is to say like is there any groups that
+
+898
+00:40:29,190 --> 00:40:36,119
+have that where we're very unconfident
+
+899
+00:40:33,380 --> 00:40:39,690
+something that I think is even more
+
+900
+00:40:36,119 --> 00:40:42,298
+important would be when you're using
+
+901
+00:40:39,690 --> 00:40:45,210
+this like operationally right let's say
+
+902
+00:40:42,298 --> 00:40:47,280
+you're doing a credit decisioning
+
+903
+00:40:45,210 --> 00:40:50,068
+algorithm so we're trying to say like
+
+904
+00:40:47,280 --> 00:40:53,180
+okay is jeremy a good risk or a bad risk
+
+905
+00:40:50,068 --> 00:40:58,019
+should we loan him a million dollars and
+
+906
+00:40:53,179 --> 00:41:02,480
+the random forest says I think he's a
+
+907
+00:40:58,019 --> 00:41:04,460
+good risk but I'm not at all confident
+
+908
+00:41:02,480 --> 00:41:05,420
+in which case we might say okay maybe I
+
+909
+00:41:04,460 --> 00:41:07,909
+shouldn't give him a million dollars
+
+910
+00:41:05,420 --> 00:41:10,550
+where else if we if if the Rena first
+
+911
+00:41:07,909 --> 00:41:13,129
+said I think he's a good risk I am very
+
+912
+00:41:10,550 --> 00:41:15,740
+sure of that then we're much more
+
+913
+00:41:13,130 --> 00:41:18,590
+comfortable giving him a million dollars
+
+914
+00:41:15,739 --> 00:41:21,889
+right and I'm a very good risk so feel
+
+915
+00:41:18,590 --> 00:41:23,800
+free to give me a million dollars right
+
+916
+00:41:21,889 --> 00:41:25,579
+I checked the random forest before a
+
+917
+00:41:23,800 --> 00:41:30,190
+different notebook
+
+918
+00:41:25,579 --> 00:41:34,909
+not in the repo so like this is like
+
+919
+00:41:30,190 --> 00:41:38,139
+it's quite hard for me to give you folks
+
+920
+00:41:34,909 --> 00:41:42,529
+direct experience with this kind of like
+
+921
+00:41:38,139 --> 00:41:44,989
+single observation interpretation stuff
+
+922
+00:41:42,530 --> 00:41:47,269
+because it's really like the kind of
+
+923
+00:41:44,989 --> 00:41:48,949
+stuff that that you actually need to be
+
+924
+00:41:47,269 --> 00:41:50,480
+putting out to the front line do you
+
+925
+00:41:48,949 --> 00:41:52,699
+know what I mean like it's not something
+
+926
+00:41:50,480 --> 00:41:54,949
+which you can really use so much in a
+
+927
+00:41:52,699 --> 00:41:58,039
+kind of casual context but it's more
+
+928
+00:41:54,949 --> 00:42:01,639
+like okay if you're actually putting out
+
+929
+00:41:58,039 --> 00:42:03,500
+some algorithm which is making like big
+
+930
+00:42:01,639 --> 00:42:06,368
+decisions that could cost a lot of money
+
+931
+00:42:03,500 --> 00:42:09,409
+you probably don't so much care about
+
+932
+00:42:06,369 --> 00:42:11,059
+the average prediction of the random
+
+933
+00:42:09,409 --> 00:42:14,029
+forest but maybe you actually care about
+
+934
+00:42:11,059 --> 00:42:16,670
+like the average minus a couple of
+
+935
+00:42:14,030 --> 00:42:22,330
+standard deviations you know like what's
+
+936
+00:42:16,670 --> 00:42:25,130
+the kind of worst-case prediction and so
+
+937
+00:42:22,329 --> 00:42:29,090
+magic I mentioned it's like maybe
+
+938
+00:42:25,130 --> 00:42:33,490
+there's a whole group that we're kind of
+
+939
+00:42:29,090 --> 00:42:36,289
+unconfident about so yeah so that's
+
+940
+00:42:33,489 --> 00:42:38,089
+confidence based on tree variance all
+
+941
+00:42:36,289 --> 00:42:40,489
+right who wants to have a go with
+
+942
+00:42:38,090 --> 00:42:42,260
+answering feature importance what is a
+
+943
+00:42:40,489 --> 00:42:44,449
+why is it interesting how do we
+
+944
+00:42:42,260 --> 00:42:46,630
+calculate it or any subset thereof you
+
+945
+00:42:44,449 --> 00:42:46,629
+know
+
+946
+00:42:48,289 --> 00:42:53,449
+I think it's like that's basically to
+
+947
+00:42:51,619 --> 00:42:55,820
+find out which which of those which
+
+948
+00:42:53,449 --> 00:42:58,039
+features are important for your model so
+
+949
+00:42:55,820 --> 00:43:00,769
+you take each feature and you like
+
+950
+00:42:58,039 --> 00:43:03,170
+randomly sample all the values in the
+
+951
+00:43:00,769 --> 00:43:05,358
+feature and you see how the predictions
+
+952
+00:43:03,170 --> 00:43:07,250
+are if it's very different it means that
+
+953
+00:43:05,358 --> 00:43:09,559
+that feature was actually important as
+
+954
+00:43:07,250 --> 00:43:10,940
+if it's fine to take any random values
+
+955
+00:43:09,559 --> 00:43:13,608
+for that feature it means that maybe
+
+956
+00:43:10,940 --> 00:43:18,858
+probably it's not very okay that was
+
+957
+00:43:13,608 --> 00:43:20,599
+terrific there's this that was all
+
+958
+00:43:18,858 --> 00:43:22,549
+exactly right there was some details
+
+959
+00:43:20,599 --> 00:43:24,858
+that maybe were skimmed over a little
+
+960
+00:43:22,550 --> 00:43:27,109
+bit I wonder if anybody else wants to
+
+961
+00:43:24,858 --> 00:43:28,400
+jump into like a more detailed
+
+962
+00:43:27,108 --> 00:43:30,769
+description of how it's calculated
+
+963
+00:43:28,400 --> 00:43:33,230
+because I know this morning some people
+
+964
+00:43:30,769 --> 00:43:34,759
+were not quite short
+
+965
+00:43:33,230 --> 00:43:36,920
+is there anybody who's like not quite
+
+966
+00:43:34,760 --> 00:43:38,330
+sure maybe he wants to like have a go or
+
+967
+00:43:36,920 --> 00:43:41,470
+yeah well it was put it next to there
+
+968
+00:43:38,329 --> 00:43:43,579
+let's see how exactly do we calculate
+
+969
+00:43:41,469 --> 00:43:54,079
+feature importance for a particular
+
+970
+00:43:43,579 --> 00:43:57,710
+feature check the validation school if
+
+971
+00:43:54,079 --> 00:43:59,599
+it gets pretty bad for after opening one
+
+972
+00:43:57,710 --> 00:44:02,420
+of the columns that means that column
+
+973
+00:43:59,599 --> 00:44:05,059
+was important so and as higher
+
+974
+00:44:02,420 --> 00:44:07,760
+importance I'm not exactly sure how we
+
+975
+00:44:05,059 --> 00:44:10,119
+quantify the feature importance okay
+
+976
+00:44:07,760 --> 00:44:13,550
+great
+
+977
+00:44:10,119 --> 00:44:15,440
+Dana do you know how we quantify the
+
+978
+00:44:13,550 --> 00:44:21,650
+feature importance that was a great
+
+979
+00:44:15,440 --> 00:44:24,170
+description or score or some sort
+
+980
+00:44:21,650 --> 00:44:26,269
+exactly yeah so let's say we've got our
+
+981
+00:44:24,170 --> 00:44:27,559
+dependent variable which is price right
+
+982
+00:44:26,269 --> 00:44:30,230
+and there's a bunch of independent
+
+983
+00:44:27,559 --> 00:44:34,519
+variables including year made right and
+
+984
+00:44:30,230 --> 00:44:38,900
+so we basically we use the whole lot to
+
+985
+00:44:34,519 --> 00:44:44,119
+build a random forest right and then
+
+986
+00:44:38,900 --> 00:44:46,670
+that gives us our predictions right and
+
+987
+00:44:44,119 --> 00:44:50,539
+so then we can let's call this Y right
+
+988
+00:44:46,670 --> 00:44:52,490
+and so then we can compare that to get I
+
+989
+00:44:50,539 --> 00:44:54,710
+don't know whatever R squared R MSC
+
+990
+00:44:52,489 --> 00:44:58,608
+whatever you're interested in right from
+
+991
+00:44:54,710 --> 00:45:00,440
+the model now the key thing here is I
+
+992
+00:44:58,608 --> 00:45:01,489
+don't want to have to retrain my whole
+
+993
+00:45:00,440 --> 00:45:03,980
+random forest
+
+994
+00:45:01,489 --> 00:45:06,500
+that's kind of slow and boring right so
+
+995
+00:45:03,980 --> 00:45:09,559
+using the existing random forests how
+
+996
+00:45:06,500 --> 00:45:12,050
+can I figure out how important year made
+
+997
+00:45:09,559 --> 00:45:14,799
+was right and so the suggestion was
+
+998
+00:45:12,050 --> 00:45:17,570
+let's randomly shuffle the whole column
+
+999
+00:45:14,800 --> 00:45:19,490
+right so now that column is totally
+
+1000
+00:45:17,570 --> 00:45:21,619
+useless it's got the same mean same
+
+1001
+00:45:19,489 --> 00:45:23,750
+distribution everything about it is the
+
+1002
+00:45:21,619 --> 00:45:26,119
+same but there's no connection at all
+
+1003
+00:45:23,750 --> 00:45:28,070
+between particular people actual year
+
+1004
+00:45:26,119 --> 00:45:30,950
+made and what's now in that column I've
+
+1005
+00:45:28,070 --> 00:45:38,869
+randomly shuffled it okay and so now I
+
+1006
+00:45:30,949 --> 00:45:40,219
+put that new version through with the
+
+1007
+00:45:38,869 --> 00:45:45,260
+same random forest so there's no
+
+1008
+00:45:40,219 --> 00:45:49,129
+retraining done okay to get some new y
+
+1009
+00:45:45,260 --> 00:45:52,760
+hat I call it Y hat way M right and then
+
+1010
+00:45:49,130 --> 00:45:58,130
+I can compare that to my actuals to get
+
+1011
+00:45:52,760 --> 00:46:04,849
+like an RSC ym right and so now I can
+
+1012
+00:45:58,130 --> 00:46:06,950
+start to create a little table so now I
+
+1013
+00:46:04,849 --> 00:46:09,920
+can create a little table where I
+
+1014
+00:46:06,949 --> 00:46:13,759
+basically got like the original here our
+
+1015
+00:46:09,920 --> 00:46:16,639
+MSC and then I've got with year made
+
+1016
+00:46:13,760 --> 00:46:19,130
+scrambled so this one had an ARMA see of
+
+1017
+00:46:16,639 --> 00:46:25,219
+like three this one had an ARMA see of
+
+1018
+00:46:19,130 --> 00:46:28,730
+like two enclosure scrambling that had a
+
+1019
+00:46:25,219 --> 00:46:30,199
+our MSC of like 2.5 right and so then I
+
+1020
+00:46:28,730 --> 00:46:34,570
+just take these differences so I'd say
+
+1021
+00:46:30,199 --> 00:46:39,559
+year made the importance is one 3-2
+
+1022
+00:46:34,570 --> 00:46:42,380
+enclosure is 0.53 minus 2 and 1/2 and so
+
+1023
+00:46:39,559 --> 00:46:46,599
+forth right so how much worse did my
+
+1024
+00:46:42,380 --> 00:46:49,039
+model get after I shuffled that variable
+
+1025
+00:46:46,599 --> 00:46:52,190
+anybody have any questions about that
+
+1026
+00:46:49,039 --> 00:46:56,759
+can you pass that to Danielle please
+
+1027
+00:46:52,190 --> 00:47:00,539
+um I assume you just chose those numbers
+
+1028
+00:46:56,760 --> 00:47:02,940
+randomly but I question I guess is does
+
+1029
+00:47:00,539 --> 00:47:04,800
+it stop do all them be ready I'm not a
+
+1030
+00:47:02,940 --> 00:47:07,139
+perfect model to start out with like are
+
+1031
+00:47:04,800 --> 00:47:09,690
+they welded all the important says seven
+
+1032
+00:47:07,139 --> 00:47:11,400
+to one or is that not no they're just I
+
+1033
+00:47:09,690 --> 00:47:13,710
+don't honestly I've never actually
+
+1034
+00:47:11,400 --> 00:47:16,889
+looked at what the units are so I'm not
+
+1035
+00:47:13,710 --> 00:47:17,849
+I'm actually not quite sure sorry we can
+
+1036
+00:47:16,889 --> 00:47:19,739
+check it out during the week if
+
+1037
+00:47:17,849 --> 00:47:23,400
+somebody's interested how the Vulcans
+
+1038
+00:47:19,739 --> 00:47:25,979
+have a look at the this SK learn code
+
+1039
+00:47:23,400 --> 00:47:27,269
+and see exactly what those units of
+
+1040
+00:47:25,980 --> 00:47:30,090
+measure are cuz I've never bothered to
+
+1041
+00:47:27,269 --> 00:47:31,739
+check although I don't check like the
+
+1042
+00:47:30,090 --> 00:47:36,780
+units of measure specifically what I do
+
+1043
+00:47:31,739 --> 00:47:38,369
+check is the relative importance and so
+
+1044
+00:47:36,780 --> 00:47:39,830
+like here's an example so rather than
+
+1045
+00:47:38,369 --> 00:47:45,630
+just saying like what are the top ten
+
+1046
+00:47:39,829 --> 00:47:48,449
+yesterday one of the practicum students
+
+1047
+00:47:45,630 --> 00:47:49,800
+asked me about a feature importance
+
+1048
+00:47:48,449 --> 00:47:51,929
+where they said like oh I think these
+
+1049
+00:47:49,800 --> 00:47:54,300
+three are important and I pointed out
+
+1050
+00:47:51,929 --> 00:47:56,690
+that the top one was a thousand times
+
+1051
+00:47:54,300 --> 00:47:59,340
+more important than the second one right
+
+1052
+00:47:56,690 --> 00:48:01,110
+so like look at the relative numbers
+
+1053
+00:47:59,340 --> 00:48:03,329
+here and so in that case it's like no
+
+1054
+00:48:01,110 --> 00:48:04,380
+don't look at the top three look at the
+
+1055
+00:48:03,329 --> 00:48:07,380
+one that's a thousand times more
+
+1056
+00:48:04,380 --> 00:48:09,780
+important and ignore all the rest and so
+
+1057
+00:48:07,380 --> 00:48:12,269
+this is where sometimes the kind of your
+
+1058
+00:48:09,780 --> 00:48:14,760
+natural tendency to want to be like
+
+1059
+00:48:12,269 --> 00:48:16,619
+precise and careful you need to override
+
+1060
+00:48:14,760 --> 00:48:17,970
+that and be very practical it's like
+
+1061
+00:48:16,619 --> 00:48:19,859
+okay this thing's a thousand times more
+
+1062
+00:48:17,969 --> 00:48:22,049
+important don't spend any time on
+
+1063
+00:48:19,860 --> 00:48:23,970
+anything else right so then you can go
+
+1064
+00:48:22,050 --> 00:48:25,560
+and talk to the manager of your project
+
+1065
+00:48:23,969 --> 00:48:27,359
+and say like okay this thing's a
+
+1066
+00:48:25,559 --> 00:48:31,259
+thousand times more important and then
+
+1067
+00:48:27,360 --> 00:48:32,519
+they might say oh that was a mistake it
+
+1068
+00:48:31,260 --> 00:48:33,780
+shouldn't have been in there we don't
+
+1069
+00:48:32,519 --> 00:48:37,559
+actually have that information at the
+
+1070
+00:48:33,780 --> 00:48:39,000
+decision time or you know but for
+
+1071
+00:48:37,559 --> 00:48:40,259
+whatever reason we can't actually use
+
+1072
+00:48:39,000 --> 00:48:43,320
+that variable and so then you could
+
+1073
+00:48:40,260 --> 00:48:45,870
+remove it and and have a look or they
+
+1074
+00:48:43,320 --> 00:48:47,610
+might say gosh I had no idea that like
+
+1075
+00:48:45,869 --> 00:48:49,969
+that was more by far more important than
+
+1076
+00:48:47,610 --> 00:48:53,039
+everything else put together so let's
+
+1077
+00:48:49,969 --> 00:48:55,619
+forget this random virus thing and just
+
+1078
+00:48:53,039 --> 00:48:57,360
+focus on like understanding how we can
+
+1079
+00:48:55,619 --> 00:48:59,489
+better collect that one variable and
+
+1080
+00:48:57,360 --> 00:49:03,539
+better use that one variable so that's
+
+1081
+00:48:59,489 --> 00:49:04,619
+like something which comes up quite a
+
+1082
+00:49:03,539 --> 00:49:06,269
+lot and actually another
+
+1083
+00:49:04,619 --> 00:49:10,289
+place that came up just yesterday again
+
+1084
+00:49:06,269 --> 00:49:13,309
+another practicum student asked me hey
+
+1085
+00:49:10,289 --> 00:49:19,050
+I'm doing this medical diagnostics
+
+1086
+00:49:13,309 --> 00:49:21,239
+project and my r-squared is 0.95 for a
+
+1087
+00:49:19,050 --> 00:49:23,820
+disease which I was told is very hard to
+
+1088
+00:49:21,239 --> 00:49:25,709
+diagnose you know is this random
+
+1089
+00:49:23,820 --> 00:49:28,860
+forrester genius or is something going
+
+1090
+00:49:25,710 --> 00:49:30,480
+wrong and I said like remember the
+
+1091
+00:49:28,860 --> 00:49:31,710
+second thing you do after you build a
+
+1092
+00:49:30,480 --> 00:49:34,920
+random forest is to do feature
+
+1093
+00:49:31,710 --> 00:49:37,559
+importance so do feature importance and
+
+1094
+00:49:34,920 --> 00:49:39,119
+what you'll probably find is that the
+
+1095
+00:49:37,559 --> 00:49:39,539
+top column is something that shouldn't
+
+1096
+00:49:39,119 --> 00:49:41,549
+be there
+
+1097
+00:49:39,539 --> 00:49:43,320
+and so that's what happened he came back
+
+1098
+00:49:41,550 --> 00:49:44,970
+to me half an hour later he said yeah I
+
+1099
+00:49:43,320 --> 00:49:47,250
+did the feature importance you were
+
+1100
+00:49:44,969 --> 00:49:50,039
+right the top column was basically a
+
+1101
+00:49:47,250 --> 00:49:52,079
+something that was another encoding of
+
+1102
+00:49:50,039 --> 00:49:56,000
+the dependent variable I've removed it
+
+1103
+00:49:52,079 --> 00:50:04,380
+and now my a squared is negative 0.1 so
+
+1104
+00:49:56,000 --> 00:50:06,570
+that's an improvement okay the other
+
+1105
+00:50:04,380 --> 00:50:08,789
+thing I like to look at is this chat
+
+1106
+00:50:06,570 --> 00:50:11,100
+right is to basically say like you know
+
+1107
+00:50:08,789 --> 00:50:12,329
+where the kind of things flatten off in
+
+1108
+00:50:11,099 --> 00:50:16,049
+terms of like which ones should I be
+
+1109
+00:50:12,329 --> 00:50:18,239
+really focusing on so that's the most
+
+1110
+00:50:16,050 --> 00:50:20,670
+important one right and so when I did
+
+1111
+00:50:18,239 --> 00:50:23,189
+credit scoring in telecommunications I
+
+1112
+00:50:20,670 --> 00:50:25,559
+found there were nine variables that
+
+1113
+00:50:23,190 --> 00:50:26,909
+basically predicted very accurately who
+
+1114
+00:50:25,559 --> 00:50:30,719
+was it going to end up paying for their
+
+1115
+00:50:26,909 --> 00:50:32,219
+phone and who wasn't and like apart from
+
+1116
+00:50:30,719 --> 00:50:35,009
+ending up with a model that saved them
+
+1117
+00:50:32,219 --> 00:50:36,959
+three billion dollars a year in in fraud
+
+1118
+00:50:35,010 --> 00:50:39,780
+and credit costs it also let them
+
+1119
+00:50:36,960 --> 00:50:41,760
+basically rejigger their their process
+
+1120
+00:50:39,780 --> 00:50:48,810
+so they focused on collecting those nine
+
+1121
+00:50:41,760 --> 00:50:52,089
+variables much better all right who
+
+1122
+00:50:48,809 --> 00:50:54,768
+wants to do partial dependence
+
+1123
+00:50:52,088 --> 00:50:57,078
+this is an interesting one very
+
+1124
+00:50:54,768 --> 00:51:04,000
+important but you know somebody's kind
+
+1125
+00:50:57,079 --> 00:51:04,000
+of tricky to think about yeah please do
+
+1126
+00:51:04,900 --> 00:51:11,269
+not always necessarily like a
+
+1127
+00:51:08,000 --> 00:51:12,858
+relationship between the strictly the
+
+1128
+00:51:11,268 --> 00:51:14,568
+dependent variable in this independent
+
+1129
+00:51:12,858 --> 00:51:17,630
+variable that necessarily like is
+
+1130
+00:51:14,568 --> 00:51:20,420
+showing importance but rather than an
+
+1131
+00:51:17,630 --> 00:51:23,568
+interaction between two variables that
+
+1132
+00:51:20,420 --> 00:51:26,139
+are working together right yeah oh
+
+1133
+00:51:23,568 --> 00:51:26,139
+that's weird
+
+1134
+00:51:27,039 --> 00:51:33,650
+yeah and so for this example what we
+
+1135
+00:51:31,670 --> 00:51:36,380
+found was that it's not necessarily your
+
+1136
+00:51:33,650 --> 00:51:38,210
+maid or when the sale was elapsed but
+
+1137
+00:51:36,380 --> 00:51:40,818
+it's actually the age of the model and
+
+1138
+00:51:38,210 --> 00:51:43,429
+so it's that is easier to just like to
+
+1139
+00:51:40,818 --> 00:51:45,558
+tell a liked company well obviously
+
+1140
+00:51:43,429 --> 00:51:47,449
+you're younger models are gonna sell for
+
+1141
+00:51:45,559 --> 00:51:51,319
+more and it's less about when the year
+
+1142
+00:51:47,449 --> 00:51:53,929
+was made yeah so let's come back to how
+
+1143
+00:51:51,318 --> 00:51:55,548
+we calculate this in a moment but the
+
+1144
+00:51:53,929 --> 00:51:58,068
+first thing to realize is that the vast
+
+1145
+00:51:55,548 --> 00:52:00,409
+majority of the time you know post your
+
+1146
+00:51:58,068 --> 00:52:03,230
+course here when somebody shows you a
+
+1147
+00:52:00,409 --> 00:52:04,969
+chart it'll be like a univariate chat
+
+1148
+00:52:03,230 --> 00:52:06,619
+that'll just like grab the data from the
+
+1149
+00:52:04,969 --> 00:52:09,108
+database and they'll plot X against Y
+
+1150
+00:52:06,619 --> 00:52:10,940
+and then managers have a tendency to
+
+1151
+00:52:09,108 --> 00:52:12,920
+want to like make a decision all right
+
+1152
+00:52:10,940 --> 00:52:15,880
+so be like oh there's this like drop off
+
+1153
+00:52:12,920 --> 00:52:19,250
+here so we should like stop dealing in
+
+1154
+00:52:15,880 --> 00:52:23,539
+equipment made between 1990 and 1995 or
+
+1155
+00:52:19,250 --> 00:52:25,880
+whatever right and this is like a big
+
+1156
+00:52:23,539 --> 00:52:29,420
+problem because like real world data has
+
+1157
+00:52:25,880 --> 00:52:31,329
+lots of these interactions going on so
+
+1158
+00:52:29,420 --> 00:52:34,039
+like you know maybe there was a
+
+1159
+00:52:31,329 --> 00:52:35,778
+recession going on around the time that
+
+1160
+00:52:34,039 --> 00:52:37,490
+those things are being sold or maybe
+
+1161
+00:52:35,778 --> 00:52:39,190
+around that time people were buying more
+
+1162
+00:52:37,489 --> 00:52:41,989
+of a different type of equipment or
+
+1163
+00:52:39,190 --> 00:52:43,818
+whatever right so generally what we
+
+1164
+00:52:41,989 --> 00:52:46,098
+actually want to know is all other
+
+1165
+00:52:43,818 --> 00:52:49,009
+things being equal what's the
+
+1166
+00:52:46,099 --> 00:52:51,109
+relationship between ear made and sale
+
+1167
+00:52:49,009 --> 00:52:54,170
+price right because like if you think
+
+1168
+00:52:51,108 --> 00:52:56,598
+about the drivetrain approach idea of
+
+1169
+00:52:54,170 --> 00:52:59,420
+like the levers you really want a model
+
+1170
+00:52:56,599 --> 00:53:04,200
+that says if I change this lever how
+
+1171
+00:52:59,420 --> 00:53:07,450
+will it change my objective okay and
+
+1172
+00:53:04,199 --> 00:53:09,189
+it's by pulling them apart using partial
+
+1173
+00:53:07,449 --> 00:53:11,588
+dependence that you can say okay
+
+1174
+00:53:09,190 --> 00:53:14,619
+actually this is the relationship
+
+1175
+00:53:11,588 --> 00:53:17,889
+between year made and sale price all
+
+1176
+00:53:14,619 --> 00:53:23,289
+other things being equal right so how do
+
+1177
+00:53:17,889 --> 00:53:26,288
+we calculate that for the variable you
+
+1178
+00:53:23,289 --> 00:53:28,270
+made for example you're gonna train you
+
+1179
+00:53:26,289 --> 00:53:30,460
+keep every other car variable constant
+
+1180
+00:53:28,269 --> 00:53:32,199
+and then you're gonna pass every single
+
+1181
+00:53:30,460 --> 00:53:34,720
+value of the year mate and then train
+
+1182
+00:53:32,199 --> 00:53:38,439
+the model after that so for every model
+
+1183
+00:53:34,719 --> 00:53:40,899
+you might have their light blue or the
+
+1184
+00:53:38,440 --> 00:53:46,298
+values of it and the median is gonna be
+
+1185
+00:53:40,900 --> 00:53:48,809
+the yellow line okay so let's try and
+
+1186
+00:53:46,298 --> 00:53:48,809
+draw that
+
+1187
+00:53:48,889 --> 00:53:54,949
+so bye leave everything else constant
+
+1188
+00:53:52,579 --> 00:53:57,140
+what she means is leave them at whatever
+
+1189
+00:53:54,949 --> 00:53:59,118
+they are in the data set so just like
+
+1190
+00:53:57,139 --> 00:54:00,679
+when we did feature importance right
+
+1191
+00:53:59,119 --> 00:54:02,920
+we're going to leave the rest of the
+
+1192
+00:54:00,679 --> 00:54:05,239
+data set as it is and we're going to do
+
+1193
+00:54:02,920 --> 00:54:06,619
+partial dependence plot for year made
+
+1194
+00:54:05,239 --> 00:54:09,619
+all right so we've got all of these
+
+1195
+00:54:06,619 --> 00:54:13,068
+other rows of data that we'll just leave
+
+1196
+00:54:09,619 --> 00:54:17,358
+as they are and so instead of randomly
+
+1197
+00:54:13,068 --> 00:54:20,268
+shuffling em8 instead what we're going
+
+1198
+00:54:17,358 --> 00:54:28,659
+to do is replace every single value with
+
+1199
+00:54:20,268 --> 00:54:31,848
+exactly the same thing 1960 okay and
+
+1200
+00:54:28,659 --> 00:54:33,318
+just like before we now pass that
+
+1201
+00:54:31,849 --> 00:54:35,210
+through our existing random forests
+
+1202
+00:54:33,318 --> 00:54:38,358
+which we have not retrained or changed
+
+1203
+00:54:35,210 --> 00:54:45,079
+in any way to get back out a set of
+
+1204
+00:54:38,358 --> 00:54:47,480
+predictions why 1960 okay and so then we
+
+1205
+00:54:45,079 --> 00:54:53,528
+can plot that on a chart
+
+1206
+00:54:47,480 --> 00:54:56,528
+yeah I'd against partial dependence 1960
+
+1207
+00:54:53,528 --> 00:54:56,528
+here
+
+1208
+00:54:56,800 --> 00:55:03,250
+okay now we can do it for 1960 one two
+
+1209
+00:54:59,469 --> 00:55:08,049
+three four five and so forth right and
+
+1210
+00:55:03,250 --> 00:55:11,260
+so we can do that for four on average
+
+1211
+00:55:08,050 --> 00:55:14,620
+for all of them or we could do it just
+
+1212
+00:55:11,260 --> 00:55:16,390
+for one of them right and so when we do
+
+1213
+00:55:14,619 --> 00:55:19,059
+it for just one of them and we change
+
+1214
+00:55:16,389 --> 00:55:21,759
+its year may to pass that single thing
+
+1215
+00:55:19,059 --> 00:55:22,739
+through our model that gives us one of
+
+1216
+00:55:21,760 --> 00:55:25,030
+these blue lines
+
+1217
+00:55:22,739 --> 00:55:28,179
+that's a each one of these blue lines is
+
+1218
+00:55:25,030 --> 00:55:32,920
+a single row as we change its year made
+
+1219
+00:55:28,179 --> 00:55:35,799
+from 1960 up to 2008
+
+1220
+00:55:32,920 --> 00:55:38,980
+and so then we can just take the median
+
+1221
+00:55:35,800 --> 00:55:41,350
+of all of those blue lines to say you
+
+1222
+00:55:38,980 --> 00:55:45,280
+know on average what's the relationship
+
+1223
+00:55:41,349 --> 00:55:51,789
+between year made and price all other
+
+1224
+00:55:45,280 --> 00:55:53,350
+things being equal so why is it that why
+
+1225
+00:55:51,789 --> 00:55:56,110
+is it that this works why is it that
+
+1226
+00:55:53,349 --> 00:55:58,029
+this process tells us the relationship
+
+1227
+00:55:56,110 --> 00:56:01,120
+between year made and price all other
+
+1228
+00:55:58,030 --> 00:56:02,590
+things being equal well maybe it's good
+
+1229
+00:56:01,119 --> 00:56:04,900
+to think about like a really simplified
+
+1230
+00:56:02,590 --> 00:56:07,990
+approach a really simplified approach
+
+1231
+00:56:04,900 --> 00:56:10,300
+would say what's the average auction
+
+1232
+00:56:07,989 --> 00:56:13,029
+you know what's the average sale date
+
+1233
+00:56:10,300 --> 00:56:16,000
+what's the most common type of machine
+
+1234
+00:56:13,030 --> 00:56:17,980
+we sell which location do we mainly
+
+1235
+00:56:16,000 --> 00:56:19,750
+mostly sell things and like we could
+
+1236
+00:56:17,980 --> 00:56:21,519
+come up with a single row that
+
+1237
+00:56:19,750 --> 00:56:24,369
+represents the the average option and
+
+1238
+00:56:21,519 --> 00:56:26,980
+then we could say okay let's run that
+
+1239
+00:56:24,369 --> 00:56:29,409
+row through the random forest but
+
+1240
+00:56:26,980 --> 00:56:31,179
+replace its year made with 1960 and then
+
+1241
+00:56:29,409 --> 00:56:33,639
+do it again with 1961 and then do it
+
+1242
+00:56:31,179 --> 00:56:36,219
+again with 1962 and we could like plot
+
+1243
+00:56:33,639 --> 00:56:43,179
+you know those on our little chart right
+
+1244
+00:56:36,219 --> 00:56:44,799
+and that would give us a version of the
+
+1245
+00:56:43,179 --> 00:56:48,039
+relationship between year made and sale
+
+1246
+00:56:44,800 --> 00:56:55,420
+price all other things being equal right
+
+1247
+00:56:48,039 --> 00:57:01,719
+but what if like tractors looked like
+
+1248
+00:56:55,420 --> 00:57:05,530
+that and backhoe loaders looked like
+
+1249
+00:57:01,719 --> 00:57:08,439
+that right then taking the average one
+
+1250
+00:57:05,530 --> 00:57:11,200
+would hide the fact that there are these
+
+1251
+00:57:08,440 --> 00:57:14,920
+totally different relationships right so
+
+1252
+00:57:11,199 --> 00:57:18,309
+instead we basically say okay our data
+
+1253
+00:57:14,920 --> 00:57:19,900
+tells us what kinds of things we tend to
+
+1254
+00:57:18,309 --> 00:57:21,429
+sell and who we tend to sell them - and
+
+1255
+00:57:19,900 --> 00:57:24,250
+when we tend to sell them so let's use
+
+1256
+00:57:21,429 --> 00:57:27,190
+that right so then we actually find out
+
+1257
+00:57:24,250 --> 00:57:31,900
+like for every blue line like here are
+
+1258
+00:57:27,190 --> 00:57:34,389
+actual examples of these relationships
+
+1259
+00:57:31,900 --> 00:57:36,400
+right and so then what we can do is as
+
+1260
+00:57:34,389 --> 00:57:39,569
+well as flooding the median is we can do
+
+1261
+00:57:36,400 --> 00:57:44,500
+a cluster analysis to find out like a
+
+1262
+00:57:39,570 --> 00:57:46,059
+few different shapes right and so we may
+
+1263
+00:57:44,500 --> 00:57:47,590
+find
+
+1264
+00:57:46,059 --> 00:57:49,449
+in this case they all look like pretty
+
+1265
+00:57:47,590 --> 00:57:53,850
+much the different versions of the same
+
+1266
+00:57:49,449 --> 00:57:57,119
+thing with different slopes so my main
+
+1267
+00:57:53,849 --> 00:58:00,489
+takeaway from this would be that the
+
+1268
+00:57:57,119 --> 00:58:03,579
+relationship between sale price and year
+
+1269
+00:58:00,489 --> 00:58:06,629
+is basically a straight line right and
+
+1270
+00:58:03,579 --> 00:58:09,400
+remember this was log of sale price
+
+1271
+00:58:06,630 --> 00:58:11,860
+right so this is actually showing us an
+
+1272
+00:58:09,400 --> 00:58:14,470
+exponential and so this is where I would
+
+1273
+00:58:11,860 --> 00:58:18,280
+then like bring in the domain expertise
+
+1274
+00:58:14,469 --> 00:58:22,689
+which is like okay things depreciate
+
+1275
+00:58:18,280 --> 00:58:26,470
+over time by a constant ratio so
+
+1276
+00:58:22,690 --> 00:58:30,099
+therefore I would expect older stuff
+
+1277
+00:58:26,469 --> 00:58:32,739
+year made to have this exponential shape
+
+1278
+00:58:30,099 --> 00:58:34,750
+so this is where like I said of
+
+1279
+00:58:32,739 --> 00:58:38,139
+mentioned like the very start of my
+
+1280
+00:58:34,750 --> 00:58:40,599
+machine learning project I generally try
+
+1281
+00:58:38,139 --> 00:58:42,849
+to avoid as using as much domain
+
+1282
+00:58:40,599 --> 00:58:44,799
+expertise as I can and let the data do
+
+1283
+00:58:42,849 --> 00:58:47,049
+the talking all right so like one of the
+
+1284
+00:58:44,800 --> 00:58:49,390
+questions I got this morning was like if
+
+1285
+00:58:47,050 --> 00:58:51,460
+there's like a sale I'd be a model ID I
+
+1286
+00:58:49,389 --> 00:58:54,789
+should throw those away right because
+
+1287
+00:58:51,460 --> 00:58:57,190
+they're just IDs no don't assume
+
+1288
+00:58:54,789 --> 00:58:59,380
+anything about your data right leave
+
+1289
+00:58:57,190 --> 00:59:01,420
+them in and if they turn out to be super
+
+1290
+00:58:59,380 --> 00:59:04,539
+important predictors you want to find
+
+1291
+00:59:01,420 --> 00:59:06,460
+out you know why is that okay but then
+
+1292
+00:59:04,539 --> 00:59:08,079
+now I'm at the other end of my project
+
+1293
+00:59:06,460 --> 00:59:10,869
+right I've done my feature importance
+
+1294
+00:59:08,079 --> 00:59:13,000
+I've pulled out the stuff which is like
+
+1295
+00:59:10,869 --> 00:59:15,009
+you know from that dendogram you know
+
+1296
+00:59:13,000 --> 00:59:16,570
+the kind of redundant features I'm
+
+1297
+00:59:15,010 --> 00:59:19,300
+looking at the partial dependence and
+
+1298
+00:59:16,570 --> 00:59:22,269
+now I'm thinking like okay is this
+
+1299
+00:59:19,300 --> 00:59:25,960
+shaped what I expected okay so even
+
+1300
+00:59:22,269 --> 00:59:28,150
+better before you plot this first of all
+
+1301
+00:59:25,960 --> 00:59:30,190
+think what shape would I expect this to
+
+1302
+00:59:28,150 --> 00:59:31,809
+be because it's always easy to justify
+
+1303
+00:59:30,190 --> 00:59:33,460
+to yourself after the fact oh I knew it
+
+1304
+00:59:31,809 --> 00:59:35,349
+would look like this right so what
+
+1305
+00:59:33,460 --> 00:59:36,760
+straight you expect and then is it that
+
+1306
+00:59:35,349 --> 00:59:40,750
+shape so in this case I'd be like yeah
+
+1307
+00:59:36,760 --> 00:59:43,990
+this is this is what I would expect okay
+
+1308
+00:59:40,750 --> 00:59:46,780
+where else this is definitely not what
+
+1309
+00:59:43,989 --> 00:59:48,519
+I'd expect so the partial dependence
+
+1310
+00:59:46,780 --> 00:59:50,670
+plot has really pulled out the
+
+1311
+00:59:48,519 --> 00:59:53,579
+underlying truth
+
+1312
+00:59:50,670 --> 00:59:57,329
+okay does anybody have any questions
+
+1313
+00:59:53,579 --> 01:00:02,519
+about like why we use partial dependence
+
+1314
+00:59:57,329 --> 01:00:06,900
+or how we calculate it it's got the are
+
+1315
+01:00:02,519 --> 01:00:11,190
+you better don't say you have a few
+
+1316
+01:00:06,900 --> 01:00:14,730
+thousand say twenty features everything
+
+1317
+01:00:11,190 --> 01:00:16,679
+are important are you gonna measure the
+
+1318
+01:00:14,730 --> 01:00:24,119
+partial dependence for every single one
+
+1319
+01:00:16,679 --> 01:00:26,429
+of them if there are twenty features
+
+1320
+01:00:24,119 --> 01:00:28,500
+that are important then I will do the
+
+1321
+01:00:26,429 --> 01:00:32,339
+partial dependence for all of them we're
+
+1322
+01:00:28,500 --> 01:00:36,510
+important means like it's a lever I can
+
+1323
+01:00:32,340 --> 01:00:39,180
+actually pull it's like the magnitude of
+
+1324
+01:00:36,510 --> 01:00:41,100
+its size is like not much smaller than
+
+1325
+01:00:39,179 --> 01:00:42,329
+the other nineteen like you know based
+
+1326
+01:00:41,099 --> 01:00:44,009
+on all of these things it's like yeah
+
+1327
+01:00:42,329 --> 01:00:46,500
+it's a feature I ought to care about
+
+1328
+01:00:44,010 --> 01:00:50,520
+then I will want to know how it's
+
+1329
+01:00:46,500 --> 01:00:54,239
+related it's pretty unusual to have that
+
+1330
+01:00:50,519 --> 01:00:56,400
+many features that are important both
+
+1331
+01:00:54,239 --> 01:01:01,109
+operationally and from a modeling point
+
+1332
+01:00:56,400 --> 01:01:05,460
+of view in my experience so how do you
+
+1333
+01:01:01,110 --> 01:01:09,960
+define internationally so important
+
+1334
+01:01:05,460 --> 01:01:12,860
+means it's it's a lever so it's
+
+1335
+01:01:09,960 --> 01:01:12,860
+something I can change
+
+1336
+01:01:12,949 --> 01:01:24,489
+and it's like you know kind of at the
+
+1337
+01:01:20,030 --> 01:01:24,490
+spiky end of this tail
+
+1338
+01:01:26,440 --> 01:01:32,079
+or you know it maybe it's not a lever
+
+1339
+01:01:29,858 --> 01:01:35,289
+directly like maybe it's like zip code
+
+1340
+01:01:32,079 --> 01:01:39,760
+and I can't actually tell my customers
+
+1341
+01:01:35,289 --> 01:01:41,529
+where to live but I could like focus my
+
+1342
+01:01:39,760 --> 01:01:44,579
+new marketing attention on a different
+
+1343
+01:01:41,530 --> 01:01:44,579
+zip code you know
+
+1344
+01:01:45,059 --> 01:01:50,009
+would it make sense to do pairwise
+
+1345
+01:01:46,920 --> 01:01:52,858
+shuffling for every combination of two
+
+1346
+01:01:50,010 --> 01:01:54,660
+features and hold everything else
+
+1347
+01:01:52,858 --> 01:02:00,598
+constant like in future importance to
+
+1348
+01:01:54,659 --> 01:02:02,969
+see interactions and compare scores so
+
+1349
+01:02:00,599 --> 01:02:05,849
+you wouldn't do that so much for partial
+
+1350
+01:02:02,969 --> 01:02:09,659
+dependence I think your question is
+
+1351
+01:02:05,849 --> 01:02:12,480
+really getting to the question of could
+
+1352
+01:02:09,659 --> 01:02:16,920
+we do that for feature importance all
+
+1353
+01:02:12,480 --> 01:02:18,838
+right so I think interaction feature
+
+1354
+01:02:16,920 --> 01:02:22,559
+importance is a very important and
+
+1355
+01:02:18,838 --> 01:02:24,960
+interesting question but doing doing it
+
+1356
+01:02:22,559 --> 01:02:28,619
+by randomly shuffling every pair of
+
+1357
+01:02:24,960 --> 01:02:31,710
+columns you know if you've got a hundred
+
+1358
+01:02:28,619 --> 01:02:34,619
+columns sounds computationally intensive
+
+1359
+01:02:31,710 --> 01:02:36,300
+possibly infeasible so what I'm going to
+
+1360
+01:02:34,619 --> 01:02:39,358
+do is after we talk about tree
+
+1361
+01:02:36,300 --> 01:02:41,190
+interpreter I'll talk about interesting
+
+1362
+01:02:39,358 --> 01:02:46,230
+but largely unexplored approach that
+
+1363
+01:02:41,190 --> 01:02:49,980
+will probably work okay who wants to do
+
+1364
+01:02:46,230 --> 01:02:52,460
+tree interpreter all right over here
+
+1365
+01:02:49,980 --> 01:02:52,460
+Prince
+
+1366
+01:02:52,820 --> 01:03:01,580
+can you pass that over here to principal
+
+1367
+01:02:54,949 --> 01:03:03,199
+I was thinking this to be more like
+
+1368
+01:03:01,579 --> 01:03:05,299
+feature importance but teacher
+
+1369
+01:03:03,199 --> 01:03:07,279
+importance is for complete random forest
+
+1370
+01:03:05,300 --> 01:03:09,320
+model and this tree interpreter is for
+
+1371
+01:03:07,280 --> 01:03:13,070
+feature importance for particular
+
+1372
+01:03:09,320 --> 01:03:15,860
+observation so if that let's say it's
+
+1373
+01:03:13,070 --> 01:03:18,769
+about hospital readmission so if a
+
+1374
+01:03:15,860 --> 01:03:19,880
+patient a one is it is going to be
+
+1375
+01:03:18,769 --> 01:03:22,489
+readmitted to a hospital
+
+1376
+01:03:19,880 --> 01:03:26,150
+which featured for that particular
+
+1377
+01:03:22,489 --> 01:03:27,949
+patient is going to impact and how can
+
+1378
+01:03:26,150 --> 01:03:30,950
+we change that and it is calculated
+
+1379
+01:03:27,949 --> 01:03:34,069
+starting from the prediction of mean
+
+1380
+01:03:30,949 --> 01:03:37,000
+then seeing how each feature is changing
+
+1381
+01:03:34,070 --> 01:03:40,220
+the behavior of that particular patient
+
+1382
+01:03:37,000 --> 01:03:43,039
+I'm smiling because that was one of the
+
+1383
+01:03:40,219 --> 01:03:45,859
+best examples of technical communication
+
+1384
+01:03:43,039 --> 01:03:47,630
+I've heard in a long time so it's really
+
+1385
+01:03:45,860 --> 01:03:50,420
+good to think about like what why was
+
+1386
+01:03:47,630 --> 01:03:54,110
+that effective right so what Prince did
+
+1387
+01:03:50,420 --> 01:03:57,409
+there was he used as specific an example
+
+1388
+01:03:54,110 --> 01:03:59,329
+as possible right so if humans are much
+
+1389
+01:03:57,409 --> 01:04:01,639
+less good at understanding abstractions
+
+1390
+01:03:59,329 --> 01:04:04,369
+right so if you kind of say oh it takes
+
+1391
+01:04:01,639 --> 01:04:06,259
+some kind of feature and then there's an
+
+1392
+01:04:04,369 --> 01:04:07,579
+observation in that feature river you
+
+1393
+01:04:06,260 --> 01:04:10,280
+know where's like know it's it's the
+
+1394
+01:04:07,579 --> 01:04:13,789
+hospital readmission okay and so we take
+
+1395
+01:04:10,280 --> 01:04:16,010
+a specific example the other thing he
+
+1396
+01:04:13,789 --> 01:04:17,929
+did was very effective was to kind of
+
+1397
+01:04:16,010 --> 01:04:18,620
+take an analogy to something we already
+
+1398
+01:04:17,929 --> 01:04:20,719
+understand
+
+1399
+01:04:18,619 --> 01:04:24,139
+so we already understand the idea of
+
+1400
+01:04:20,719 --> 01:04:26,659
+feature importance across all of the
+
+1401
+01:04:24,139 --> 01:04:31,400
+rows in a data set so now we're going to
+
+1402
+01:04:26,659 --> 01:04:32,509
+do it for a single row okay so like you
+
+1403
+01:04:31,400 --> 01:04:34,430
+know one of the things I was really
+
+1404
+01:04:32,510 --> 01:04:36,350
+hoping we would learn from from this
+
+1405
+01:04:34,429 --> 01:04:37,940
+experience is how to become effective
+
+1406
+01:04:36,349 --> 01:04:40,279
+technical communicators
+
+1407
+01:04:37,940 --> 01:04:43,880
+so you know that was a really great role
+
+1408
+01:04:40,280 --> 01:04:46,100
+model from Prince of like using all the
+
+1409
+01:04:43,880 --> 01:04:48,050
+tricks we have at our disposal for
+
+1410
+01:04:46,099 --> 01:04:49,329
+effective technical communication so
+
+1411
+01:04:48,050 --> 01:04:51,860
+hopefully you found that useful
+
+1412
+01:04:49,329 --> 01:04:53,860
+explanation I don't have a hell of a lot
+
+1413
+01:04:51,860 --> 01:04:57,920
+to add to that other than to show you
+
+1414
+01:04:53,860 --> 01:05:01,760
+you know what that looks like so with
+
+1415
+01:04:57,920 --> 01:05:05,180
+the tree interpreter we peaked out a row
+
+1416
+01:05:01,760 --> 01:05:06,200
+okay and so remember when we talked
+
+1417
+01:05:05,179 --> 01:05:09,859
+about the
+
+1418
+01:05:06,199 --> 01:05:11,539
+the confidence intervals at the very
+
+1419
+01:05:09,860 --> 01:05:13,430
+start the confidence based on tree
+
+1420
+01:05:11,539 --> 01:05:15,739
+variance we mainly said like you
+
+1421
+01:05:13,429 --> 01:05:17,779
+probably mainly use that for a Rome so
+
+1422
+01:05:15,739 --> 01:05:22,189
+this would also be for our crow so it's
+
+1423
+01:05:17,780 --> 01:05:25,790
+like okay why is this patient likely to
+
+1424
+01:05:22,190 --> 01:05:27,590
+be readmitted okay so here is all of the
+
+1425
+01:05:25,789 --> 01:05:30,679
+information we have about that patient
+
+1426
+01:05:27,590 --> 01:05:35,780
+or in this case this option now why is
+
+1427
+01:05:30,679 --> 01:05:37,609
+this auction so expensive so then we
+
+1428
+01:05:35,780 --> 01:05:39,740
+call tree interpreter dot predict and we
+
+1429
+01:05:37,610 --> 01:05:43,670
+get back the prediction of the price
+
+1430
+01:05:39,739 --> 01:05:46,039
+right the bias which is the root of the
+
+1431
+01:05:43,670 --> 01:05:47,809
+tree so this is just the average price
+
+1432
+01:05:46,039 --> 01:05:50,829
+for everybody so this is always going to
+
+1433
+01:05:47,809 --> 01:05:56,079
+be the same and then the contributions
+
+1434
+01:05:50,829 --> 01:05:59,509
+which is how important is each of these
+
+1435
+01:05:56,079 --> 01:06:02,889
+each of these things right and so the
+
+1436
+01:05:59,510 --> 01:06:02,890
+way we calculated that
+
+1437
+01:06:08,349 --> 01:06:14,420
+so the way we calculated that was to say
+
+1438
+01:06:10,969 --> 01:06:18,589
+okay at the very start the average price
+
+1439
+01:06:14,420 --> 01:06:22,430
+was ten right and then we split on
+
+1440
+01:06:18,590 --> 01:06:24,410
+enclosure right and for those with
+
+1441
+01:06:22,429 --> 01:06:27,879
+dissin closure
+
+1442
+01:06:24,409 --> 01:06:27,879
+the average was nine point five
+
+1443
+01:06:28,699 --> 01:06:34,159
+and then we split on year made
+
+1444
+01:06:31,460 --> 01:06:35,869
+I don't know less than 1990 and for
+
+1445
+01:06:34,159 --> 01:06:40,338
+those with that year made the average
+
+1446
+01:06:35,869 --> 01:06:43,280
+price was nine point seven right and
+
+1447
+01:06:40,338 --> 01:06:45,980
+then we split on the number of hours on
+
+1448
+01:06:43,280 --> 01:06:50,990
+the meter and for you know with this
+
+1449
+01:06:45,980 --> 01:06:54,159
+branch we got nine point four all right
+
+1450
+01:06:50,989 --> 01:06:57,769
+and so we then have a particular option
+
+1451
+01:06:54,159 --> 01:07:00,199
+which we we pass it through the tree and
+
+1452
+01:06:57,769 --> 01:07:03,920
+it just so happens that it takes this
+
+1453
+01:07:00,199 --> 01:07:07,038
+path all right so one row can only have
+
+1454
+01:07:03,920 --> 01:07:13,568
+one path through the tree right and so
+
+1455
+01:07:07,039 --> 01:07:13,569
+we ended up at this point okay so then
+
+1456
+01:07:14,679 --> 01:07:19,429
+we can create a little table right and
+
+1457
+01:07:17,809 --> 01:07:22,940
+so as we go through we start at the top
+
+1458
+01:07:19,429 --> 01:07:27,348
+and we start with 10 right that's that
+
+1459
+01:07:22,940 --> 01:07:32,950
+bias and we said enclosure resulted in a
+
+1460
+01:07:27,349 --> 01:07:35,140
+change from 10 to 9 and 1/2 minus 0.5
+
+1461
+01:07:32,949 --> 01:07:39,189
+yeah man changed it from nine point five
+
+1462
+01:07:35,139 --> 01:07:40,929
+to nine point seven so plus 0.2 right
+
+1463
+01:07:39,190 --> 01:07:44,639
+and then meter changed it from nine
+
+1464
+01:07:40,929 --> 01:07:44,639
+point seven down to nine point four
+
+1465
+01:07:45,539 --> 01:07:55,119
+which is minus 0.3 and then if we add
+
+1466
+01:07:51,909 --> 01:07:58,089
+all that together can minus a half is
+
+1467
+01:07:55,119 --> 01:08:00,519
+nine and a half plus 0.2 is nine point
+
+1468
+01:07:58,090 --> 01:08:06,360
+seven minus point three is nine point
+
+1469
+01:08:00,519 --> 01:08:06,360
+four low and behold that's that number
+
+1470
+01:08:07,050 --> 01:08:15,210
+which takes us to our Excel spreadsheet
+
+1471
+01:08:17,609 --> 01:08:25,088
+where's Chris who did our waterfall
+
+1472
+01:08:20,198 --> 01:08:27,579
+there you are all right so last week we
+
+1473
+01:08:25,088 --> 01:08:30,189
+had to use Excel for this because there
+
+1474
+01:08:27,579 --> 01:08:32,409
+isn't a good Python library for doing
+
+1475
+01:08:30,189 --> 01:08:34,298
+waterfall charts and so we saw we got
+
+1476
+01:08:32,409 --> 01:08:36,429
+our starting point this is the bias and
+
+1477
+01:08:34,298 --> 01:08:40,329
+then we had each of our contributions
+
+1478
+01:08:36,429 --> 01:08:41,560
+and we ended up with our total the road
+
+1479
+01:08:40,329 --> 01:08:43,689
+is now a better place
+
+1480
+01:08:41,560 --> 01:08:45,580
+because Chris has created a Python
+
+1481
+01:08:43,689 --> 01:08:48,639
+waterfall chart module for us and put it
+
+1482
+01:08:45,579 --> 01:08:51,369
+on pip so never again where we have to
+
+1483
+01:08:48,640 --> 01:08:54,699
+use Excel for this and I wanted to point
+
+1484
+01:08:51,369 --> 01:08:55,869
+out that like waterfall charts have been
+
+1485
+01:08:54,698 --> 01:08:58,149
+very important in business
+
+1486
+01:08:55,869 --> 01:09:01,358
+communications at least as long as I've
+
+1487
+01:08:58,149 --> 01:09:03,149
+been in business so that's about 25
+
+1488
+01:09:01,359 --> 01:09:06,520
+years
+
+1489
+01:09:03,149 --> 01:09:08,619
+Python is you know what couple of
+
+1490
+01:09:06,520 --> 01:09:11,560
+decades old a little bit less yeah maybe
+
+1491
+01:09:08,619 --> 01:09:14,858
+a couple of decades old but you know
+
+1492
+01:09:11,560 --> 01:09:16,600
+despite that no one in the Python world
+
+1493
+01:09:14,859 --> 01:09:18,609
+ever got to the point where they
+
+1494
+01:09:16,600 --> 01:09:21,130
+actually thought you know I'm gonna make
+
+1495
+01:09:18,609 --> 01:09:25,239
+a waterfall chart so they didn't exist
+
+1496
+01:09:21,130 --> 01:09:27,640
+until two days ago which is to say like
+
+1497
+01:09:25,238 --> 01:09:30,159
+the world is full of staff which ought
+
+1498
+01:09:27,640 --> 01:09:32,109
+to exist in doesn't and doesn't
+
+1499
+01:09:30,159 --> 01:09:33,759
+necessarily take a hell a lot of time to
+
+1500
+01:09:32,109 --> 01:09:37,710
+build Chris how long did it take you to
+
+1501
+01:09:33,759 --> 01:09:37,710
+build the first Python waterfall chart
+
+1502
+01:09:38,310 --> 01:09:46,620
+well there was a you know a gist of it
+
+1503
+01:09:40,750 --> 01:09:46,619
+yeah yeah yeah
+
+1504
+01:09:47,538 --> 01:09:53,809
+about eight hours okay so you know a
+
+1505
+01:09:50,029 --> 01:09:57,079
+hefty TYIN amount but not unreasonable
+
+1506
+01:09:53,809 --> 01:09:58,880
+and now forevermore people when they
+
+1507
+01:09:57,078 --> 01:10:01,130
+want the place and waterfall chart will
+
+1508
+01:09:58,880 --> 01:10:03,288
+end up at Chris's github repo and
+
+1509
+01:10:01,130 --> 01:10:05,179
+hopefully find lots of other USF
+
+1510
+01:10:03,288 --> 01:10:10,340
+contributors who have made it even
+
+1511
+01:10:05,179 --> 01:10:13,250
+better so for in order for you to help
+
+1512
+01:10:10,340 --> 01:10:15,920
+improve Chris's plaything waterfall you
+
+1513
+01:10:13,250 --> 01:10:17,179
+need to know how to do that right and so
+
+1514
+01:10:15,920 --> 01:10:22,219
+you're going to need to submit a pull
+
+1515
+01:10:17,179 --> 01:10:23,599
+request life becomes very easy for
+
+1516
+01:10:22,219 --> 01:10:25,819
+submitting pull requests if you use
+
+1517
+01:10:23,599 --> 01:10:29,319
+something called hub so if you go to
+
+1518
+01:10:25,819 --> 01:10:29,319
+github slash hub
+
+1519
+01:10:29,430 --> 01:10:35,190
+that will send you over here and what
+
+1520
+01:10:33,420 --> 01:10:37,680
+they suggest you do is that you alias
+
+1521
+01:10:35,189 --> 01:10:40,609
+get to hub because it turns out that hub
+
+1522
+01:10:37,680 --> 01:10:45,140
+actually is earth strict superset if get
+
+1523
+01:10:40,609 --> 01:10:50,729
+but what it lets you do is you can go
+
+1524
+01:10:45,140 --> 01:10:53,430
+get fork get push get pull request and
+
+1525
+01:10:50,729 --> 01:10:55,949
+you've now sent Chris a pull request
+
+1526
+01:10:53,430 --> 01:10:58,110
+now without hub this is actually a pain
+
+1527
+01:10:55,949 --> 01:11:00,109
+and requires like own to the website and
+
+1528
+01:10:58,109 --> 01:11:03,359
+filling informants and stuff right so
+
+1529
+01:11:00,109 --> 01:11:05,569
+this gives you no reason not to do pull
+
+1530
+01:11:03,359 --> 01:11:08,279
+requests and I mention this because like
+
+1531
+01:11:05,569 --> 01:11:10,170
+when you're interviewing for a job or
+
+1532
+01:11:08,279 --> 01:11:11,729
+whatever I can promise you that the
+
+1533
+01:11:10,170 --> 01:11:14,190
+person you're talking to will check your
+
+1534
+01:11:11,729 --> 01:11:16,679
+github and if they see you have a
+
+1535
+01:11:14,189 --> 01:11:18,149
+history of submitting thoughtful pull
+
+1536
+01:11:16,680 --> 01:11:19,950
+requests that are accepted to
+
+1537
+01:11:18,149 --> 01:11:21,989
+interesting libraries that looks great
+
+1538
+01:11:19,949 --> 01:11:23,880
+right it looks great because it shows
+
+1539
+01:11:21,989 --> 01:11:25,800
+you're somebody who actually contributes
+
+1540
+01:11:23,880 --> 01:11:27,869
+it also shows that if they're being
+
+1541
+01:11:25,800 --> 01:11:29,850
+accepted that you know how to create
+
+1542
+01:11:27,869 --> 01:11:32,329
+code that fits with people's coding
+
+1543
+01:11:29,850 --> 01:11:34,980
+standards has appropriate documentation
+
+1544
+01:11:32,329 --> 01:11:36,960
+passes their tests and coverage and so
+
+1545
+01:11:34,979 --> 01:11:39,379
+forth right so when people look at you
+
+1546
+01:11:36,960 --> 01:11:41,699
+and they say oh here's somebody with a
+
+1547
+01:11:39,380 --> 01:11:43,800
+history of successfully contributing
+
+1548
+01:11:41,699 --> 01:11:46,439
+accepted pull requests to open-source
+
+1549
+01:11:43,800 --> 01:11:49,050
+libraries that's a great part of your
+
+1550
+01:11:46,439 --> 01:11:52,829
+portfolio okay and you can specifically
+
+1551
+01:11:49,050 --> 01:11:55,680
+refer to it right so either I'm the
+
+1552
+01:11:52,829 --> 01:11:58,890
+person who built Python waterfall here
+
+1553
+01:11:55,680 --> 01:12:01,980
+is my repo or you know I'm the person
+
+1554
+01:11:58,890 --> 01:12:04,260
+who contributed currency number
+
+1555
+01:12:01,979 --> 01:12:07,679
+formatting to Python waterfall here's my
+
+1556
+01:12:04,260 --> 01:12:09,810
+pull request you know that anytime you
+
+1557
+01:12:07,680 --> 01:12:12,510
+see something that doesn't work right in
+
+1558
+01:12:09,810 --> 01:12:14,460
+any open source software you use is not
+
+1559
+01:12:12,510 --> 01:12:17,579
+a problem it's a great opportunity
+
+1560
+01:12:14,460 --> 01:12:20,399
+because you can fix it and send in the
+
+1561
+01:12:17,579 --> 01:12:22,710
+pull requests so yeah give it a go it
+
+1562
+01:12:20,399 --> 01:12:24,420
+actually feels great the first time you
+
+1563
+01:12:22,710 --> 01:12:27,180
+have a pull request accepted and of
+
+1564
+01:12:24,420 --> 01:12:30,720
+course one big opportunity is the faster
+
+1565
+01:12:27,180 --> 01:12:32,130
+a library and thank you who it was the
+
+1566
+01:12:30,720 --> 01:12:35,079
+person here the person who added all the
+
+1567
+01:12:32,130 --> 01:12:38,349
+docs to fast a I structured
+
+1568
+01:12:35,078 --> 01:12:40,179
+in the other class okay so thanks to one
+
+1569
+01:12:38,349 --> 01:12:42,670
+of our students we now have docstrings
+
+1570
+01:12:40,179 --> 01:12:46,118
+for most of the FASTA i dot structured
+
+1571
+01:12:42,670 --> 01:12:53,139
+library again came by a pull request so
+
+1572
+01:12:46,118 --> 01:12:58,149
+thank you okay does anybody have any
+
+1573
+01:12:53,139 --> 01:12:59,710
+questions about how to calculate any of
+
+1574
+01:12:58,149 --> 01:13:03,039
+these random forest interpretation
+
+1575
+01:12:59,710 --> 01:13:04,210
+methods or why we might want to use any
+
+1576
+01:13:03,039 --> 01:13:07,599
+of these random first interpretation
+
+1577
+01:13:04,210 --> 01:13:08,889
+methods towards the end of the week
+
+1578
+01:13:07,599 --> 01:13:15,039
+you're going to need to be able to build
+
+1579
+01:13:08,889 --> 01:13:19,960
+all of these yourself from scratch over
+
+1580
+01:13:15,039 --> 01:13:21,939
+there can you pass that test that's
+
+1581
+01:13:19,960 --> 01:13:24,609
+right just looking at the tree
+
+1582
+01:13:21,939 --> 01:13:31,238
+interpreter I noticed that some of the
+
+1583
+01:13:24,609 --> 01:13:33,609
+the values are in a ends how I got I get
+
+1584
+01:13:31,238 --> 01:13:37,779
+my you keep them in the tree but how can
+
+1585
+01:13:33,609 --> 01:13:41,848
+an NA and have a future importance okay
+
+1586
+01:13:37,779 --> 01:13:47,289
+let me pass it back to you why not
+
+1587
+01:13:41,849 --> 01:13:50,559
+so in other words how is ni n handled in
+
+1588
+01:13:47,289 --> 01:13:53,969
+pandas and therefore in the tree such as
+
+1589
+01:13:50,559 --> 01:13:56,610
+some default value
+
+1590
+01:13:53,969 --> 01:13:58,349
+everybody remember how pandas these are
+
+1591
+01:13:56,609 --> 01:14:00,598
+notices are all in categorical variables
+
+1592
+01:13:58,349 --> 01:14:02,369
+how does pandas handle an NA ends in
+
+1593
+01:14:00,599 --> 01:14:03,769
+categorical variables and how does fast
+
+1594
+01:14:02,368 --> 01:14:06,149
+AI deal with them
+
+1595
+01:14:03,769 --> 01:14:12,329
+can somebody pass it to the person who's
+
+1596
+01:14:06,149 --> 01:14:14,339
+talking negative one through yeah
+
+1597
+01:14:12,328 --> 01:14:16,349
+pandas sets into negative one category
+
+1598
+01:14:14,340 --> 01:14:19,349
+code and do you have to remember what we
+
+1599
+01:14:16,349 --> 01:14:21,809
+then do doesn't matter really we add one
+
+1600
+01:14:19,349 --> 01:14:23,729
+to all of the category codes so it ends
+
+1601
+01:14:21,809 --> 01:14:26,038
+up being zero so in other words we have
+
+1602
+01:14:23,729 --> 01:14:27,510
+a category with remember by the time it
+
+1603
+01:14:26,038 --> 01:14:29,698
+hits the random forest is just a number
+
+1604
+01:14:27,510 --> 01:14:32,340
+and it's just it's just the number zero
+
+1605
+01:14:29,698 --> 01:14:34,918
+right and we map it back to the
+
+1606
+01:14:32,340 --> 01:14:37,979
+descriptions back here so the question
+
+1607
+01:14:34,918 --> 01:14:41,010
+really is why shouldn't the random first
+
+1608
+01:14:37,979 --> 01:14:43,889
+be able to split on zero it's just it's
+
+1609
+01:14:41,010 --> 01:14:46,050
+just another number so it could be na n
+
+1610
+01:14:43,889 --> 01:14:50,909
+high medium or low zero one two three
+
+1611
+01:14:46,050 --> 01:14:52,529
+four and so you know missing values are
+
+1612
+01:14:50,908 --> 01:14:55,259
+one of these things that are generally
+
+1613
+01:14:52,529 --> 01:14:56,969
+taught really badly like often people
+
+1614
+01:14:55,260 --> 01:14:58,949
+get taught like here are some ways to
+
+1615
+01:14:56,969 --> 01:15:00,868
+remove columns with missing values or
+
+1616
+01:14:58,948 --> 01:15:05,188
+remove rows with missing values or to
+
+1617
+01:15:00,868 --> 01:15:08,158
+replace missing values that's like never
+
+1618
+01:15:05,189 --> 01:15:11,369
+what we want because missingness is very
+
+1619
+01:15:08,158 --> 01:15:13,649
+very very often interesting and so we
+
+1620
+01:15:11,368 --> 01:15:16,679
+actually learnt that from our future
+
+1621
+01:15:13,649 --> 01:15:19,049
+importance that cupola system n a n is
+
+1622
+01:15:16,679 --> 01:15:22,949
+like one of the most important features
+
+1623
+01:15:19,050 --> 01:15:25,918
+and so for some reason well I could I
+
+1624
+01:15:22,948 --> 01:15:27,779
+could guess right coupla system n am
+
+1625
+01:15:25,918 --> 01:15:29,668
+presumably means this is a kind of
+
+1626
+01:15:27,779 --> 01:15:31,948
+industrial equipment that doesn't have a
+
+1627
+01:15:29,668 --> 01:15:34,109
+coupler system now I don't know what
+
+1628
+01:15:31,948 --> 01:15:37,078
+kind that is but apparently it's more
+
+1629
+01:15:34,109 --> 01:15:41,998
+it's a more expensive kind that makes
+
+1630
+01:15:37,078 --> 01:15:46,728
+sense yeah ok ok so I did this
+
+1631
+01:15:41,998 --> 01:15:50,998
+competition for university grant
+
+1632
+01:15:46,729 --> 01:15:53,550
+research success where by far the most
+
+1633
+01:15:50,998 --> 01:15:56,609
+important predictors were whether or not
+
+1634
+01:15:53,550 --> 01:15:59,340
+some of the fields were a null and it
+
+1635
+01:15:56,609 --> 01:16:01,348
+turned out that this was data leakage
+
+1636
+01:15:59,340 --> 01:16:03,989
+that these fields only got filled in
+
+1637
+01:16:01,349 --> 01:16:05,208
+most of the time after a research grant
+
+1638
+01:16:03,988 --> 01:16:07,518
+was accepted
+
+1639
+01:16:05,208 --> 01:16:10,038
+right so you know it allowed me to win
+
+1640
+01:16:07,519 --> 01:16:12,939
+that cowgirl competition but didn't
+
+1641
+01:16:10,038 --> 01:16:16,359
+actually help the university very much
+
+1642
+01:16:12,939 --> 01:16:16,360
+okay great
+
+1643
+01:16:16,760 --> 01:16:26,780
+so let's talk about um extrapolation and
+
+1644
+01:16:22,550 --> 01:16:28,010
+I am going to do something risky and
+
+1645
+01:16:26,779 --> 01:16:33,349
+dangerous which is we're going to do
+
+1646
+01:16:28,010 --> 01:16:37,099
+some live coding and the reason we're
+
+1647
+01:16:33,349 --> 01:16:38,929
+going to do some live coding is I want
+
+1648
+01:16:37,099 --> 01:16:40,909
+to explore extrapolation together with
+
+1649
+01:16:38,929 --> 01:16:45,050
+you and I kind of also want to get kind
+
+1650
+01:16:40,908 --> 01:16:47,839
+of help give you a feel of you know like
+
+1651
+01:16:45,050 --> 01:16:50,179
+how you might go about like writing
+
+1652
+01:16:47,840 --> 01:16:52,610
+writing code quickly in this notebook
+
+1653
+01:16:50,179 --> 01:16:53,748
+environment right and this is the kind
+
+1654
+01:16:52,609 --> 01:16:55,670
+of stuff that you're going to need to be
+
+1655
+01:16:53,748 --> 01:16:57,618
+able to do you know in the real world
+
+1656
+01:16:55,670 --> 01:16:58,998
+and in the exam is kind of quickly
+
+1657
+01:16:57,618 --> 01:17:03,348
+create the kind of code that we're going
+
+1658
+01:16:58,998 --> 01:17:04,639
+to talk about so I really like creating
+
+1659
+01:17:03,349 --> 01:17:06,979
+synthetic datasets
+
+1660
+01:17:04,639 --> 01:17:08,389
+anytime I'm trying to like investigate
+
+1661
+01:17:06,979 --> 01:17:10,639
+the behavior of something because if I
+
+1662
+01:17:08,389 --> 01:17:12,038
+have a synthetic data set I know how it
+
+1663
+01:17:10,639 --> 01:17:16,489
+should behave
+
+1664
+01:17:12,038 --> 01:17:19,179
+which reminds me before we do this I
+
+1665
+01:17:16,488 --> 01:17:21,919
+promised that we would talk about
+
+1666
+01:17:19,179 --> 01:17:28,219
+interaction importance and I just about
+
+1667
+01:17:21,920 --> 01:17:31,149
+forgot trie interpreter tells us the
+
+1668
+01:17:28,219 --> 01:17:36,050
+contributions for our particular row
+
+1669
+01:17:31,149 --> 01:17:38,228
+based on the difference in the tree we
+
+1670
+01:17:36,050 --> 01:17:43,038
+could calculate that for every road in
+
+1671
+01:17:38,229 --> 01:17:45,769
+our data set and add them up right and
+
+1672
+01:17:43,038 --> 01:17:48,018
+that would tell us that would tell us
+
+1673
+01:17:45,769 --> 01:17:49,699
+feature importance and would tell us
+
+1674
+01:17:48,019 --> 01:17:51,619
+feature importance in a different way
+
+1675
+01:17:49,698 --> 01:17:53,509
+right one way of doing feature
+
+1676
+01:17:51,618 --> 01:17:54,578
+importance is by shuffling the columns
+
+1677
+01:17:53,510 --> 01:17:57,979
+one at a time
+
+1678
+01:17:54,578 --> 01:18:00,938
+another way is by doing tree interpreter
+
+1679
+01:17:57,979 --> 01:18:03,409
+for every row and adding them up
+
+1680
+01:18:00,939 --> 01:18:05,119
+neither is right more right than the
+
+1681
+01:18:03,408 --> 01:18:07,609
+others they're actually both quite
+
+1682
+01:18:05,118 --> 01:18:15,948
+widely used so this is kind of type 1
+
+1683
+01:18:07,609 --> 01:18:21,698
+and type 2 feature importance so we
+
+1684
+01:18:15,948 --> 01:18:21,698
+could try to expand this a little bit
+
+1685
+01:18:21,729 --> 01:18:27,099
+- do not just single variable feature
+
+1686
+01:18:24,310 --> 01:18:29,059
+importance but interaction feature
+
+1687
+01:18:27,100 --> 01:18:32,989
+importance
+
+1688
+01:18:29,059 --> 01:18:36,380
+now here's the thing what I'm going to
+
+1689
+01:18:32,988 --> 01:18:38,419
+describe is very easy to describe it was
+
+1690
+01:18:36,380 --> 01:18:40,730
+described by Bremen right back when
+
+1691
+01:18:38,420 --> 01:18:44,210
+random forests were first invented and
+
+1692
+01:18:40,729 --> 01:18:46,069
+it is part of the commercial software
+
+1693
+01:18:44,210 --> 01:18:50,270
+product from Salford systems who have
+
+1694
+01:18:46,069 --> 01:18:52,639
+the trademark on random forests but it
+
+1695
+01:18:50,270 --> 01:18:55,610
+is not part of any open-source library
+
+1696
+01:18:52,639 --> 01:18:57,859
+I'm aware of and I've never seen an
+
+1697
+01:18:55,609 --> 01:18:59,719
+academic paper that actually studies it
+
+1698
+01:18:57,859 --> 01:19:04,488
+closely so what I'm going to describe
+
+1699
+01:18:59,719 --> 01:19:06,050
+here is a huge opportunity but it's also
+
+1700
+01:19:04,488 --> 01:19:08,209
+like there's lots and lots of details
+
+1701
+01:19:06,050 --> 01:19:13,779
+that kind of need to be fleshed out but
+
+1702
+01:19:08,210 --> 01:19:13,779
+here's the basic idea this particular
+
+1703
+01:19:15,368 --> 01:19:26,689
+this particular difference here right is
+
+1704
+01:19:23,319 --> 01:19:28,460
+not just because of year made but
+
+1705
+01:19:26,689 --> 01:19:31,589
+because of a combination of year made
+
+1706
+01:19:28,460 --> 01:19:34,369
+and enclosure
+
+1707
+01:19:31,590 --> 01:19:37,050
+right the fact that this is 9.7 is
+
+1708
+01:19:34,369 --> 01:19:39,720
+because enclosure was in this branch and
+
+1709
+01:19:37,050 --> 01:19:43,369
+year made was in this branch so in other
+
+1710
+01:19:39,720 --> 01:19:50,210
+words we could say the contribution of
+
+1711
+01:19:43,369 --> 01:20:00,769
+enclosure interacted with year made is
+
+1712
+01:19:50,210 --> 01:20:04,470
+minus 0.3 yeah and so what about that
+
+1713
+01:20:00,770 --> 01:20:07,640
+difference well that's an interaction of
+
+1714
+01:20:04,470 --> 01:20:11,940
+year made and hours on the meter
+
+1715
+01:20:07,640 --> 01:20:14,190
+so you made interacted with am using
+
+1716
+01:20:11,939 --> 01:20:15,899
+star here not to mean times but to mean
+
+1717
+01:20:14,189 --> 01:20:18,299
+interacted with it's a it's a kind of a
+
+1718
+01:20:15,899 --> 01:20:20,549
+common way of doing things like ours
+
+1719
+01:20:18,300 --> 01:20:24,050
+formulas do it this way as well here
+
+1720
+01:20:20,550 --> 01:20:27,239
+made by interacted with meter has a
+
+1721
+01:20:24,050 --> 01:20:32,539
+import has a importance sorry a
+
+1722
+01:20:27,239 --> 01:20:32,539
+contribution of minus 0.1
+
+1723
+01:20:33,779 --> 01:20:41,099
+perhaps we could also say from here to
+
+1724
+01:20:37,050 --> 01:20:44,850
+here that this also shows an interaction
+
+1725
+01:20:41,100 --> 01:20:47,039
+between meter and enclosure like with
+
+1726
+01:20:44,850 --> 01:20:54,180
+one thing in between them so maybe we
+
+1727
+01:20:47,039 --> 01:20:55,050
+could say meter by enclosure equals and
+
+1728
+01:20:54,180 --> 01:20:59,310
+then what should it be
+
+1729
+01:20:55,050 --> 01:21:03,510
+you know should it be 0.6 I sorry minus
+
+1730
+01:20:59,310 --> 01:21:06,090
+0.6 I mean some ways that kinda seems
+
+1731
+01:21:03,510 --> 01:21:10,140
+unfair because we're also including like
+
+1732
+01:21:06,090 --> 01:21:13,520
+the impact of a vm aid right so maybe it
+
+1733
+01:21:10,140 --> 01:21:16,980
+should be maybe it should be minus 0.6
+
+1734
+01:21:13,520 --> 01:21:19,170
+you know maybe we should add back this
+
+1735
+01:21:16,979 --> 01:21:21,869
+point to right and these are like
+
+1736
+01:21:19,170 --> 01:21:26,510
+details that I actually don't know the
+
+1737
+01:21:21,869 --> 01:21:26,510
+answer to right like how should we best
+
+1738
+01:21:26,559 --> 01:21:33,399
+kind of assign a contribution to each
+
+1739
+01:21:30,158 --> 01:21:36,759
+pair of variables in this path right but
+
+1740
+01:21:33,399 --> 01:21:39,579
+but clearly conceptually we can write
+
+1741
+01:21:36,760 --> 01:21:43,359
+the pairs of variables in that path all
+
+1742
+01:21:39,578 --> 01:21:46,658
+represent interactions all right yes
+
+1743
+01:21:43,359 --> 01:21:48,819
+Chris can you could you pass that to
+
+1744
+01:21:46,658 --> 01:21:54,488
+Christmas why don't you first have to be
+
+1745
+01:21:48,819 --> 01:21:56,349
+next to each other in the tree I I mean
+
+1746
+01:21:54,488 --> 01:21:56,708
+I'm not gonna say it's the wrong
+
+1747
+01:21:56,349 --> 01:21:59,708
+approach
+
+1748
+01:21:56,708 --> 01:22:03,188
+I I don't think it's the right approach
+
+1749
+01:21:59,708 --> 01:22:03,938
+though because it feels like this path
+
+1750
+01:22:03,189 --> 01:22:08,889
+here
+
+1751
+01:22:03,939 --> 01:22:11,739
+Mayda and enclosure are interacting so
+
+1752
+01:22:08,889 --> 01:22:13,029
+it seems like not recognizing that
+
+1753
+01:22:11,738 --> 01:22:19,448
+contribution is throwing away
+
+1754
+01:22:13,029 --> 01:22:21,878
+information but I'm not sure you know I
+
+1755
+01:22:19,448 --> 01:22:24,838
+had one of my staff at cattle actually
+
+1756
+01:22:21,878 --> 01:22:27,429
+do some R&amp;D on this a few years ago and
+
+1757
+01:22:24,838 --> 01:22:28,809
+actually found you know and I wasn't
+
+1758
+01:22:27,429 --> 01:22:29,979
+close enough to know how they dealt with
+
+1759
+01:22:28,809 --> 01:22:32,019
+these details but they got it working
+
+1760
+01:22:29,979 --> 01:22:33,729
+pretty well but unfortunately it never
+
+1761
+01:22:32,019 --> 01:22:36,668
+saw the light of day is a software
+
+1762
+01:22:33,729 --> 01:22:38,349
+product but like this is something which
+
+1763
+01:22:36,668 --> 01:22:42,849
+you know maybe a group of you could get
+
+1764
+01:22:38,349 --> 01:22:44,559
+together and build you know I mean do
+
+1765
+01:22:42,849 --> 01:22:46,889
+some googling to check but I really
+
+1766
+01:22:44,559 --> 01:22:50,239
+don't think that there are any
+
+1767
+01:22:46,889 --> 01:22:52,340
+interaction feature importance
+
+1768
+01:22:50,238 --> 01:22:55,119
+parts of any open source library can you
+
+1769
+01:22:52,340 --> 01:22:55,119
+cross the flip
+
+1770
+01:22:56,319 --> 01:23:01,299
+wouldn't this exclude interactions
+
+1771
+01:22:59,890 --> 01:23:01,810
+though between variables that don't
+
+1772
+01:23:01,300 --> 01:23:04,449
+matter
+
+1773
+01:23:01,810 --> 01:23:07,330
+until they interact so say your road
+
+1774
+01:23:04,449 --> 01:23:09,819
+never chooses to split down that path
+
+1775
+01:23:07,329 --> 01:23:11,680
+but that variable interacting with
+
+1776
+01:23:09,819 --> 01:23:15,279
+another one becomes your most important
+
+1777
+01:23:11,680 --> 01:23:16,510
+split I don't think that happens right
+
+1778
+01:23:15,279 --> 01:23:18,429
+because if this if there's an
+
+1779
+01:23:16,510 --> 01:23:20,199
+interaction that's important only
+
+1780
+01:23:18,430 --> 01:23:22,539
+because it's an interaction and not in a
+
+1781
+01:23:20,199 --> 01:23:25,210
+univariate basis it will appear
+
+1782
+01:23:22,539 --> 01:23:27,909
+sometimes they cut assuming that you set
+
+1783
+01:23:25,210 --> 01:23:31,619
+max features to less than one and so
+
+1784
+01:23:27,909 --> 01:23:34,000
+therefore it will appear in in some file
+
+1785
+01:23:31,619 --> 01:23:36,420
+what is meant by indirection or is it
+
+1786
+01:23:34,000 --> 01:23:42,539
+multiplication ratio addition
+
+1787
+01:23:36,420 --> 01:23:46,230
+interaction means appears branches
+
+1788
+01:23:42,539 --> 01:23:49,090
+appears on the same path through a tree
+
+1789
+01:23:46,229 --> 01:23:50,109
+like an interaction in this case the
+
+1790
+01:23:49,090 --> 01:23:51,670
+tree there's an interaction between
+
+1791
+01:23:50,109 --> 01:23:54,309
+enclosure and ear made because we
+
+1792
+01:23:51,670 --> 01:23:56,710
+branched on enclosure and then we branch
+
+1793
+01:23:54,310 --> 01:23:58,630
+on your mode so to get to here we have
+
+1794
+01:23:56,710 --> 01:24:02,250
+to have some specific value of enclosure
+
+1795
+01:23:58,630 --> 01:24:02,250
+and some specific value of you made
+
+1796
+01:24:03,689 --> 01:24:07,719
+sorry I just membranes kind of working
+
+1797
+01:24:06,010 --> 01:24:10,989
+on this right now what if what if you
+
+1798
+01:24:07,720 --> 01:24:12,690
+went down the middle Leafs between the
+
+1799
+01:24:10,989 --> 01:24:15,099
+two things you're trying to observe and
+
+1800
+01:24:12,689 --> 01:24:16,359
+you could just sort of norm and you
+
+1801
+01:24:15,100 --> 01:24:18,340
+would also take into account what the
+
+1802
+01:24:16,359 --> 01:24:20,409
+final measure is so I mean if we extend
+
+1803
+01:24:18,340 --> 01:24:22,060
+the tree downwards you'd have many
+
+1804
+01:24:20,409 --> 01:24:24,399
+measures both of like the two things
+
+1805
+01:24:22,060 --> 01:24:27,700
+you're trying to look at and also the in
+
+1806
+01:24:24,399 --> 01:24:29,379
+between steps there seems to be a way to
+
+1807
+01:24:27,699 --> 01:24:31,539
+like average information out in between
+
+1808
+01:24:29,380 --> 01:24:32,529
+them there could be so I think what we
+
+1809
+01:24:31,539 --> 01:24:34,149
+should do is talk about this on the
+
+1810
+01:24:32,529 --> 01:24:39,250
+forum I think this is fascinating and I
+
+1811
+01:24:34,149 --> 01:24:42,159
+hope we build something great but I need
+
+1812
+01:24:39,250 --> 01:24:45,239
+to do my live coding so let's yeah
+
+1813
+01:24:42,159 --> 01:24:45,239
+that's a great discussion
+
+1814
+01:24:47,250 --> 01:24:51,960
+thinking about it and news of
+
+1815
+01:24:49,229 --> 01:24:54,899
+experiments and so to experiment with
+
+1816
+01:24:51,960 --> 01:24:57,449
+that you almost certainly want to create
+
+1817
+01:24:54,899 --> 01:25:01,229
+a synthetic data set first right
+
+1818
+01:24:57,449 --> 01:25:03,899
+it's like y equals X 1 plus X 2 plus X 1
+
+1819
+01:25:01,229 --> 01:25:05,159
+times X 2 or something you know like
+
+1820
+01:25:03,899 --> 01:25:07,019
+something where you know there's this
+
+1821
+01:25:05,159 --> 01:25:08,670
+interaction effect and there isn't that
+
+1822
+01:25:07,020 --> 01:25:10,740
+interaction effect and then you want to
+
+1823
+01:25:08,670 --> 01:25:13,380
+make sure that the feature importance
+
+1824
+01:25:10,739 --> 01:25:15,809
+you get at the end is what you expected
+
+1825
+01:25:13,380 --> 01:25:19,050
+right and so probably the first step
+
+1826
+01:25:15,810 --> 01:25:23,160
+would be to do single variable feature
+
+1827
+01:25:19,050 --> 01:25:27,449
+importance using the tree interpreter
+
+1828
+01:25:23,159 --> 01:25:30,619
+style approach and one nice thing about
+
+1829
+01:25:27,449 --> 01:25:30,619
+this is like it's
+
+1830
+01:25:31,219 --> 01:25:34,309
+it doesn't really matter how much data
+
+1831
+01:25:32,689 --> 01:25:35,719
+you have like all you have to do to
+
+1832
+01:25:34,309 --> 01:25:38,449
+calculate feature importance is just
+
+1833
+01:25:35,719 --> 01:25:39,739
+like slide through the tree right so you
+
+1834
+01:25:38,448 --> 01:25:41,779
+should be able to write in a way that's
+
+1835
+01:25:39,738 --> 01:25:44,768
+actually pretty fast and so even writing
+
+1836
+01:25:41,779 --> 01:25:49,340
+it in pure Python might be fast enough
+
+1837
+01:25:44,769 --> 01:25:52,400
+depending on your tree size okay so
+
+1838
+01:25:49,340 --> 01:25:53,719
+we're going to talk about extrapolation
+
+1839
+01:25:52,399 --> 01:25:55,189
+and so the first thing I want to do is
+
+1840
+01:25:53,719 --> 01:25:58,099
+create a synthetic data set that has a
+
+1841
+01:25:55,189 --> 01:26:01,189
+simple linear relationship we're going
+
+1842
+01:25:58,099 --> 01:26:04,248
+to pretend it's like a time series right
+
+1843
+01:26:01,189 --> 01:26:06,469
+so we need to basically create some X
+
+1844
+01:26:04,248 --> 01:26:09,529
+values so the easiest way to kind of
+
+1845
+01:26:06,469 --> 01:26:12,590
+create some synthetic data of this type
+
+1846
+01:26:09,529 --> 01:26:15,469
+is to use linspace which just creates
+
+1847
+01:26:12,590 --> 01:26:19,248
+some evenly spaced some evenly spaced
+
+1848
+01:26:15,469 --> 01:26:22,010
+data right between start and stop with
+
+1849
+01:26:19,248 --> 01:26:28,538
+by default 50 observations so if we just
+
+1850
+01:26:22,010 --> 01:26:28,539
+do that right there it is okay
+
+1851
+01:26:30,738 --> 01:26:36,049
+and so then we're going to create a
+
+1852
+01:26:34,069 --> 01:26:37,578
+dependent variable and so let's assume
+
+1853
+01:26:36,050 --> 01:26:41,029
+there's just a linear relationship
+
+1854
+01:26:37,578 --> 01:26:47,719
+between x and y and let's add a little
+
+1855
+01:26:41,029 --> 01:26:50,929
+bit of randomness to it right so uniform
+
+1856
+01:26:47,719 --> 01:26:55,639
+random between low and high so we could
+
+1857
+01:26:50,929 --> 01:27:03,590
+like add somewhere between like minus
+
+1858
+01:26:55,639 --> 01:27:07,429
+0.2 and 0.2 say okay and so the next
+
+1859
+01:27:03,590 --> 01:27:10,309
+thing we need is is a shape right which
+
+1860
+01:27:07,429 --> 01:27:12,739
+is basically how what dimensions do you
+
+1861
+01:27:10,309 --> 01:27:14,630
+want this this randomness these random
+
+1862
+01:27:12,738 --> 01:27:17,538
+numbers to be and obviously we want them
+
+1863
+01:27:14,630 --> 01:27:20,939
+to be the same shape as X's shape so we
+
+1864
+01:27:17,538 --> 01:27:24,719
+can just say X dot shape
+
+1865
+01:27:20,939 --> 01:27:27,090
+okay so in other words that's
+
+1866
+01:27:24,719 --> 01:27:29,489
+xscape remember when you see something
+
+1867
+01:27:27,090 --> 01:27:33,569
+in parentheses with a comma that's at
+
+1868
+01:27:29,488 --> 01:27:37,618
+Apple with just one thing in it okay so
+
+1869
+01:27:33,569 --> 01:27:40,139
+this is of shape 15 and so we've added
+
+1870
+01:27:37,618 --> 01:27:50,268
+50 random numbers and so now we could
+
+1871
+01:27:40,139 --> 01:27:50,269
+plot those okay so shift-tab x comma y
+
+1872
+01:27:53,300 --> 01:28:01,139
+all right so there's no data okay so
+
+1873
+01:27:57,418 --> 01:28:03,599
+like when you were both working as a
+
+1874
+01:28:01,139 --> 01:28:05,219
+data scientist or for doing your exams
+
+1875
+01:28:03,599 --> 01:28:07,050
+in this course you need to be able to
+
+1876
+01:28:05,219 --> 01:28:09,050
+like quickly whip up a data set like
+
+1877
+01:28:07,050 --> 01:28:13,320
+that throw it up in our plot without
+
+1878
+01:28:09,050 --> 01:28:14,849
+thinking too much okay and like as you
+
+1879
+01:28:13,319 --> 01:28:17,038
+can see you don't have to really
+
+1880
+01:28:14,849 --> 01:28:19,288
+remember much if anything you just have
+
+1881
+01:28:17,038 --> 01:28:22,380
+to know how to like hit shift I have to
+
+1882
+01:28:19,288 --> 01:28:24,238
+check the names of parameters and you
+
+1883
+01:28:22,380 --> 01:28:26,099
+know everything in the exam will be open
+
+1884
+01:28:24,238 --> 01:28:28,828
+up and broke up and internet so you can
+
+1885
+01:28:26,099 --> 01:28:30,360
+always like google her something to try
+
+1886
+01:28:28,828 --> 01:28:34,679
+and find linspace if you forgot what
+
+1887
+01:28:30,359 --> 01:28:37,889
+it's called all right so let's assume
+
+1888
+01:28:34,679 --> 01:28:41,819
+that's out data all right and so we're
+
+1889
+01:28:37,889 --> 01:28:43,859
+now going to build a random first model
+
+1890
+01:28:41,819 --> 01:28:45,658
+and what I want to do is build a random
+
+1891
+01:28:43,859 --> 01:28:49,168
+first model that kind of acts as if this
+
+1892
+01:28:45,658 --> 01:28:53,668
+is a time series so I'm going to take
+
+1893
+01:28:49,168 --> 01:28:56,698
+this as a training set right I'm going
+
+1894
+01:28:53,668 --> 01:28:59,130
+to take of this as our validation or
+
+1895
+01:28:56,698 --> 01:29:04,279
+test set just like we did in you know
+
+1896
+01:28:59,130 --> 01:29:04,279
+groceries or bulldozers or whatever okay
+
+1897
+01:29:04,698 --> 01:29:09,388
+so we can use exactly the same kind of
+
+1898
+01:29:07,349 --> 01:29:14,610
+code that we used in split bells right
+
+1899
+01:29:09,389 --> 01:29:24,439
+so we can basically say X train comma X
+
+1900
+01:29:14,609 --> 01:29:24,438
+tau equals x up to 40 comma X
+
+1901
+01:29:26,500 --> 01:29:34,369
+from 40 okay so that just fits it into
+
+1902
+01:29:31,550 --> 01:29:36,470
+the first audio since the last 10 right
+
+1903
+01:29:34,369 --> 01:29:47,750
+and so we can do the same thing for Y
+
+1904
+01:29:36,470 --> 01:29:49,010
+and there we go okay so the next thing
+
+1905
+01:29:47,750 --> 01:29:57,619
+to do is we want to create a random
+
+1906
+01:29:49,010 --> 01:30:00,980
+forest okay and fit it and that's going
+
+1907
+01:29:57,619 --> 01:30:02,329
+to require X's and Y's all right now
+
+1908
+01:30:00,979 --> 01:30:05,179
+that's actually going to give an error
+
+1909
+01:30:02,329 --> 01:30:10,010
+and the reason why is that it expects X
+
+1910
+01:30:05,180 --> 01:30:12,890
+to be a matrix not a vector because it
+
+1911
+01:30:10,010 --> 01:30:15,829
+expects X to have a number of columns of
+
+1912
+01:30:12,890 --> 01:30:20,750
+data right so it's important to know
+
+1913
+01:30:15,829 --> 01:30:22,819
+that a matrix with one column is not the
+
+1914
+01:30:20,750 --> 01:30:28,479
+same thing as a vector all right so if I
+
+1915
+01:30:22,819 --> 01:30:32,389
+try to run this right expect a 2d array
+
+1916
+01:30:28,479 --> 01:30:35,479
+got 1d array instead so we need to
+
+1917
+01:30:32,390 --> 01:30:39,530
+convert our 2d array into a 1d array so
+
+1918
+01:30:35,479 --> 01:30:46,879
+remember I said X dot shape is 50 comma
+
+1919
+01:30:39,529 --> 01:30:52,219
+right so X has one axis so here's
+
+1920
+01:30:46,880 --> 01:30:55,970
+important to measure X is rank is 1 the
+
+1921
+01:30:52,220 --> 01:30:58,659
+rank of a variable is equal to the
+
+1922
+01:30:55,970 --> 01:31:02,440
+length of its shape
+
+1923
+01:30:58,659 --> 01:31:06,649
+how many axes does it have so a vector
+
+1924
+01:31:02,439 --> 01:31:11,659
+we can think of as an array of Rank 1
+
+1925
+01:31:06,649 --> 01:31:14,210
+matrix as an array of Rank 2 I very
+
+1926
+01:31:11,659 --> 01:31:19,539
+rarely used words like vector and matrix
+
+1927
+01:31:14,210 --> 01:31:21,649
+because like they're kind of meaningless
+
+1928
+01:31:19,539 --> 01:31:23,829
+specific examples of something more
+
+1929
+01:31:21,649 --> 01:31:26,239
+general which is they're all n
+
+1930
+01:31:23,829 --> 01:31:29,869
+dimensional tensors right or n
+
+1931
+01:31:26,239 --> 01:31:32,840
+dimensional arrays ok so an n
+
+1932
+01:31:29,869 --> 01:31:35,099
+dimensional array we can say it's a
+
+1933
+01:31:32,840 --> 01:31:38,730
+tensor of Rank
+
+1934
+01:31:35,100 --> 01:31:40,620
+they basically mean kind of the same
+
+1935
+01:31:38,729 --> 01:31:42,359
+thing physicists get crazy when you say
+
+1936
+01:31:40,619 --> 01:31:44,670
+that because to a physicist a tensor has
+
+1937
+01:31:42,359 --> 01:31:46,649
+quite a specific meaning but in machine
+
+1938
+01:31:44,670 --> 01:31:53,750
+learning we generally use it in the same
+
+1939
+01:31:46,649 --> 01:31:55,349
+way okay so how do we turn an array a
+
+1940
+01:31:53,750 --> 01:31:58,289
+one-dimensional array into a
+
+1941
+01:31:55,350 --> 01:32:00,450
+two-dimensional array there's a couple
+
+1942
+01:31:58,289 --> 01:32:04,350
+of ways we can do it but basically we
+
+1943
+01:32:00,449 --> 01:32:09,329
+slice it right so colon means give me
+
+1944
+01:32:04,350 --> 01:32:12,150
+everything in that axis right colon
+
+1945
+01:32:09,329 --> 01:32:14,760
+comma none means give me everything in
+
+1946
+01:32:12,149 --> 01:32:17,729
+the first axis which is the only axis we
+
+1947
+01:32:14,760 --> 01:32:22,710
+have and then none is a special indexer
+
+1948
+01:32:17,729 --> 01:32:27,389
+which means add a unit axis here so let
+
+1949
+01:32:22,710 --> 01:32:29,239
+me show you that is a sort of shape 50
+
+1950
+01:32:27,390 --> 01:32:34,310
+comma one
+
+1951
+01:32:29,238 --> 01:32:36,259
+so it's a prank - it has two axes one of
+
+1952
+01:32:34,310 --> 01:32:39,110
+them is a very boring access right
+
+1953
+01:32:36,260 --> 01:32:45,050
+it's a length one access so let's move
+
+1954
+01:32:39,109 --> 01:32:50,000
+this over here there's 1 comma 50 ok and
+
+1955
+01:32:45,050 --> 01:32:53,480
+then to remind you the original is just
+
+1956
+01:32:50,000 --> 01:32:58,010
+50 right so you can see I can put none
+
+1957
+01:32:53,479 --> 01:33:04,279
+as a special indexer to introduce a new
+
+1958
+01:32:58,010 --> 01:33:08,539
+unit axis there ok so this thing has one
+
+1959
+01:33:04,279 --> 01:33:11,059
+row in 50 columns this thing has 50 rows
+
+1960
+01:33:08,539 --> 01:33:14,649
+of one column so that's what we want
+
+1961
+01:33:11,060 --> 01:33:20,180
+right we want 50 rows and one column
+
+1962
+01:33:14,649 --> 01:33:21,949
+this kind of playing around with ranks
+
+1963
+01:33:20,180 --> 01:33:24,350
+and dimensions is going to become
+
+1964
+01:33:21,949 --> 01:33:27,319
+increasingly important in this course
+
+1965
+01:33:24,350 --> 01:33:30,739
+and in the deep learning course right so
+
+1966
+01:33:27,319 --> 01:33:32,719
+I spend a lot of time slicing with non
+
+1967
+01:33:30,738 --> 01:33:34,099
+slicing with other things try to create
+
+1968
+01:33:32,719 --> 01:33:35,899
+three dimensional four dimensional
+
+1969
+01:33:34,100 --> 01:33:37,489
+chances and so forth I'll show you a
+
+1970
+01:33:35,899 --> 01:33:40,789
+trick I'll show you two tricks the first
+
+1971
+01:33:37,488 --> 01:33:43,629
+is you never ever need to write karma :
+
+1972
+01:33:40,789 --> 01:33:47,988
+it's always assumed so if I delete that
+
+1973
+01:33:43,630 --> 01:33:50,390
+this is exactly the same thing okay and
+
+1974
+01:33:47,988 --> 01:33:52,369
+you'll see that in code all the time so
+
+1975
+01:33:50,390 --> 01:33:55,789
+you need to recognize it the second
+
+1976
+01:33:52,369 --> 01:33:58,488
+trick is this is adding an axis in the
+
+1977
+01:33:55,789 --> 01:34:01,100
+second dimension right or I guess the
+
+1978
+01:33:58,488 --> 01:34:02,589
+index one dimension what if I always
+
+1979
+01:34:01,100 --> 01:34:05,660
+want to put it in the last dimension
+
+1980
+01:34:02,590 --> 01:34:07,640
+right and like often our tensors change
+
+1981
+01:34:05,659 --> 01:34:10,729
+dimensions without us looking because
+
+1982
+01:34:07,640 --> 01:34:13,160
+like you went from a one channel image
+
+1983
+01:34:10,729 --> 01:34:14,809
+to a three channel image or you went
+
+1984
+01:34:13,159 --> 01:34:16,569
+from a single image to a mini batch of
+
+1985
+01:34:14,810 --> 01:34:18,739
+images like suddenly you get new
+
+1986
+01:34:16,569 --> 01:34:22,340
+dimensions appearing so to make things
+
+1987
+01:34:18,738 --> 01:34:25,549
+general I would say this dot dot dot dot
+
+1988
+01:34:22,340 --> 01:34:28,520
+dot dot means as many dimensions as you
+
+1989
+01:34:25,550 --> 01:34:30,860
+need to fill this up okay and so in this
+
+1990
+01:34:28,520 --> 01:34:32,690
+case it's exactly the same thing but I
+
+1991
+01:34:30,859 --> 01:34:34,219
+would always try to write it that way
+
+1992
+01:34:32,689 --> 01:34:36,529
+because it means it's going to continue
+
+1993
+01:34:34,219 --> 01:34:39,020
+to work as I get you know higher
+
+1994
+01:34:36,529 --> 01:34:42,139
+dimensional tenses alright so in this
+
+1995
+01:34:39,020 --> 01:34:45,080
+case I want 50 rows in one column so
+
+1996
+01:34:42,140 --> 01:34:50,250
+I'll call that say X
+
+1997
+01:34:45,079 --> 01:34:53,429
+okay so let's now use that here and so
+
+1998
+01:34:50,250 --> 01:34:55,969
+this is now a 2d array and so I can
+
+1999
+01:34:53,429 --> 01:34:55,969
+create my
+
+2000
+01:34:59,448 --> 01:35:07,589
+random forest okay so then I could plot
+
+2001
+01:35:03,059 --> 01:35:10,260
+that and this is where you're going to
+
+2002
+01:35:07,590 --> 01:35:11,819
+have to turn your brains on because the
+
+2003
+01:35:10,260 --> 01:35:14,280
+folks this morning got this very quickly
+
+2004
+01:35:11,819 --> 01:35:20,029
+which was super impressive I'm going to
+
+2005
+01:35:14,279 --> 01:35:24,658
+plot white rain against MDOT predict
+
+2006
+01:35:20,029 --> 01:35:34,920
+next rain okay before I hit go what is
+
+2007
+01:35:24,658 --> 01:35:37,319
+this going to look like yeah it should
+
+2008
+01:35:34,920 --> 01:35:39,538
+basically be the same right a
+
+2009
+01:35:37,319 --> 01:35:41,429
+predictions hopefully are the same as
+
+2010
+01:35:39,538 --> 01:35:43,979
+the actuals so this should fall on a
+
+2011
+01:35:41,429 --> 01:35:45,840
+line but there's some randomness so it
+
+2012
+01:35:43,979 --> 01:35:53,748
+won't quite I should have used scatter
+
+2013
+01:35:45,840 --> 01:35:59,190
+plot okay all right so that's cool right
+
+2014
+01:35:53,748 --> 01:36:09,538
+that was the easy one let's now do the
+
+2015
+01:35:59,189 --> 01:36:11,899
+hard one the fun one what's that going
+
+2016
+01:36:09,538 --> 01:36:11,899
+to look like
+
+2017
+01:36:12,949 --> 01:36:15,010
+you
+
+2018
+01:36:18,890 --> 01:36:25,710
+okay so I'm gonna say no but nice try
+
+2019
+01:36:23,699 --> 01:36:27,720
+you know it's like hey we're
+
+2020
+01:36:25,710 --> 01:36:29,670
+extrapolating to the to the validation
+
+2021
+01:36:27,720 --> 01:36:33,650
+that's what I'd like it to look like but
+
+2022
+01:36:29,670 --> 01:36:33,649
+that's not what it is going to look like
+
+2023
+01:36:36,960 --> 01:36:44,469
+think about what trees do and think
+
+2024
+01:36:40,300 --> 01:36:46,960
+about think about the fact that we have
+
+2025
+01:36:44,469 --> 01:36:52,119
+a validation set here and a training set
+
+2026
+01:36:46,960 --> 01:36:55,658
+here so think about a forest is just a
+
+2027
+01:36:52,119 --> 01:36:57,729
+bunch of trees well the first tree is
+
+2028
+01:36:55,658 --> 01:37:04,448
+going to okay Melissa is going to have a
+
+2029
+01:36:57,729 --> 01:37:08,198
+go can you pass that to Melissa well
+
+2030
+01:37:04,448 --> 01:37:10,000
+let's start grouping yeah that's what I
+
+2031
+01:37:08,198 --> 01:37:11,439
+mean that's what it does okay but you
+
+2032
+01:37:10,000 --> 01:37:16,719
+know let's think about how it groups the
+
+2033
+01:37:11,439 --> 01:37:17,889
+dots so yeah I'm guessing since all the
+
+2034
+01:37:16,719 --> 01:37:19,179
+new data is actually outside of the
+
+2035
+01:37:17,890 --> 01:37:21,010
+original scope it's all going to be
+
+2036
+01:37:19,179 --> 01:37:23,890
+basically the same it's like one huge
+
+2037
+01:37:21,010 --> 01:37:25,869
+group yeah right so like we make it like
+
+2038
+01:37:23,890 --> 01:37:27,850
+forget the forest let's create one tree
+
+2039
+01:37:25,869 --> 01:37:30,429
+right so we're probably going to split
+
+2040
+01:37:27,850 --> 01:37:31,600
+somewhere around here first and then
+
+2041
+01:37:30,429 --> 01:37:33,250
+we're kind of probably split somewhere
+
+2042
+01:37:31,600 --> 01:37:34,449
+around here and then we're going to
+
+2043
+01:37:33,250 --> 01:37:36,550
+split somewhere around here and
+
+2044
+01:37:34,448 --> 01:37:41,379
+somewhere around here right and so our
+
+2045
+01:37:36,550 --> 01:37:44,770
+final split is here right so our
+
+2046
+01:37:41,380 --> 01:37:47,170
+prediction when we say okay let's take
+
+2047
+01:37:44,770 --> 01:37:52,150
+this one and so it's going to put that
+
+2048
+01:37:47,170 --> 01:37:55,510
+through the forest right and end up
+
+2049
+01:37:52,149 --> 01:37:57,309
+predicting this average it can't predict
+
+2050
+01:37:55,510 --> 01:37:59,020
+you anything higher than that because
+
+2051
+01:37:57,310 --> 01:38:00,909
+there is nothing higher than that to
+
+2052
+01:37:59,020 --> 01:38:02,890
+average right so this is really
+
+2053
+01:38:00,908 --> 01:38:04,238
+important to realize if a random forest
+
+2054
+01:38:02,890 --> 01:38:06,670
+is not magic right
+
+2055
+01:38:04,238 --> 01:38:09,879
+it's just returning the average of
+
+2056
+01:38:06,670 --> 01:38:12,609
+nearby observations where nearby is kind
+
+2057
+01:38:09,880 --> 01:38:18,460
+of in this like tree space so let's run
+
+2058
+01:38:12,609 --> 01:38:24,189
+it let's see if Tim's right but holy
+
+2059
+01:38:18,460 --> 01:38:26,649
+ that's awful right and like if you
+
+2060
+01:38:24,189 --> 01:38:28,689
+don't know how when firsts works and
+
+2061
+01:38:26,649 --> 01:38:30,309
+this is going to totally screw right if
+
+2062
+01:38:28,689 --> 01:38:33,250
+you think that it's actually going to be
+
+2063
+01:38:30,310 --> 01:38:35,110
+able to extrapolate to any kind of data
+
+2064
+01:38:33,250 --> 01:38:38,109
+it hasn't seen before like particularly
+
+2065
+01:38:35,109 --> 01:38:40,059
+like future time periods it's just not
+
+2066
+01:38:38,109 --> 01:38:41,948
+like it just can't
+
+2067
+01:38:40,060 --> 01:38:44,539
+it's just averaging stuff it's already
+
+2068
+01:38:41,948 --> 01:38:47,779
+seen that's all it can do
+
+2069
+01:38:44,539 --> 01:38:51,890
+okay so we're going to be talking about
+
+2070
+01:38:47,779 --> 01:38:54,590
+like how to avoid this problem we talked
+
+2071
+01:38:51,890 --> 01:38:56,869
+a little bit in the last lesson about
+
+2072
+01:38:54,590 --> 01:39:02,289
+trying to avoid it by just like in
+
+2073
+01:38:56,869 --> 01:39:05,510
+avoiding unnecessary time dependent
+
+2074
+01:39:02,289 --> 01:39:07,909
+variables where we can write but in the
+
+2075
+01:39:05,510 --> 01:39:10,610
+end if you really have a time series
+
+2076
+01:39:07,909 --> 01:39:12,139
+that looks like this
+
+2077
+01:39:10,609 --> 01:39:15,139
+we actually have to deal with a problem
+
+2078
+01:39:12,139 --> 01:39:18,109
+all right so one way we could deal with
+
+2079
+01:39:15,139 --> 01:39:19,849
+the problem would be used like a neural
+
+2080
+01:39:18,109 --> 01:39:21,948
+net right use something that actually
+
+2081
+01:39:19,849 --> 01:39:26,328
+has a function or shape that can
+
+2082
+01:39:21,948 --> 01:39:28,609
+actually like fit something that can she
+
+2083
+01:39:26,328 --> 01:39:31,009
+fit something like this right and so
+
+2084
+01:39:28,609 --> 01:39:33,078
+then it will extrapolate nicely another
+
+2085
+01:39:31,010 --> 01:39:34,639
+approach would be to use all the time
+
+2086
+01:39:33,078 --> 01:39:37,819
+series techniques you guys are learning
+
+2087
+01:39:34,639 --> 01:39:40,849
+about in the morning class to fit some
+
+2088
+01:39:37,819 --> 01:39:43,759
+kind of time series right and then D
+
+2089
+01:39:40,849 --> 01:39:46,760
+trend it right and so then you'll end up
+
+2090
+01:39:43,760 --> 01:39:49,550
+with D trended dots and then use the
+
+2091
+01:39:46,760 --> 01:39:51,440
+random chorus to predict those right and
+
+2092
+01:39:49,550 --> 01:39:54,800
+that's particularly cool right because
+
+2093
+01:39:51,439 --> 01:39:57,649
+if you're like imagine that your random
+
+2094
+01:39:54,800 --> 01:40:01,279
+forest was actually trying to predict
+
+2095
+01:39:57,649 --> 01:40:03,828
+data that like I don't know maybe it was
+
+2096
+01:40:01,279 --> 01:40:07,819
+two different states and so the blue
+
+2097
+01:40:03,828 --> 01:40:10,009
+ones you know that down here and the red
+
+2098
+01:40:07,819 --> 01:40:12,649
+ones are up here right now if you try to
+
+2099
+01:40:10,010 --> 01:40:15,409
+use a random forest it's going to do a
+
+2100
+01:40:12,649 --> 01:40:16,879
+pretty crappy job because like time is
+
+2101
+01:40:15,408 --> 01:40:19,069
+going to see much more important so it's
+
+2102
+01:40:16,880 --> 01:40:21,109
+basically still gonna like split like
+
+2103
+01:40:19,069 --> 01:40:23,630
+this and it's going to split like this
+
+2104
+01:40:21,109 --> 01:40:25,519
+and then finally once it kind of gets
+
+2105
+01:40:23,630 --> 01:40:26,960
+down to this piece it'll be like oh okay
+
+2106
+01:40:25,520 --> 01:40:29,900
+now I can see the difference between the
+
+2107
+01:40:26,960 --> 01:40:32,230
+states right so in other words like when
+
+2108
+01:40:29,899 --> 01:40:34,868
+you've got this big timepiece going on
+
+2109
+01:40:32,229 --> 01:40:37,250
+you're not gonna see the other
+
+2110
+01:40:34,868 --> 01:40:40,488
+relationships in the random forest until
+
+2111
+01:40:37,250 --> 01:40:43,399
+you've dealt and kill every tree deals
+
+2112
+01:40:40,488 --> 01:40:46,698
+with time so one way to fix this would
+
+2113
+01:40:43,399 --> 01:40:48,888
+be with a gradient boosting machine GBM
+
+2114
+01:40:46,698 --> 01:40:51,919
+right now what a GBM does is it creates
+
+2115
+01:40:48,889 --> 01:40:53,690
+a little tree right and runs everything
+
+2116
+01:40:51,920 --> 01:40:56,480
+through that first little tree which
+
+2117
+01:40:53,689 --> 01:40:59,779
+could be like the time tree and then it
+
+2118
+01:40:56,479 --> 01:41:02,209
+calculates the residuals and then the
+
+2119
+01:40:59,779 --> 01:41:04,429
+next little tree just predicts the
+
+2120
+01:41:02,210 --> 01:41:06,710
+residuals so it'd be kind of like D
+
+2121
+01:41:04,429 --> 01:41:08,989
+trending it right so GPM has handle this
+
+2122
+01:41:06,710 --> 01:41:11,029
+GBM still can't extrapolate to the
+
+2123
+01:41:08,988 --> 01:41:14,209
+future but at least they can deal with
+
+2124
+01:41:11,029 --> 01:41:16,309
+time-dependent data more conveniently
+
+2125
+01:41:14,210 --> 01:41:17,630
+right so we're going to be talking about
+
+2126
+01:41:16,309 --> 01:41:19,130
+this quite a lot more over the next
+
+2127
+01:41:17,630 --> 01:41:22,190
+couple of weeks right and in the end
+
+2128
+01:41:19,130 --> 01:41:24,279
+that a solution is going to be just used
+
+2129
+01:41:22,189 --> 01:41:26,379
+neural nets right but
+
+2130
+01:41:24,279 --> 01:41:29,529
+for now you know using it some kind of
+
+2131
+01:41:26,380 --> 01:41:32,050
+time series analysis D trend it and then
+
+2132
+01:41:29,529 --> 01:41:33,729
+use a random forest on that isn't a bad
+
+2133
+01:41:32,050 --> 01:41:35,079
+technique at all and if you're playing
+
+2134
+01:41:33,729 --> 01:41:37,388
+around something like the Ecuador
+
+2135
+01:41:35,078 --> 01:41:39,908
+groceries competition that would be a
+
+2136
+01:41:37,389 --> 01:41:44,429
+really good thing to to fiddle around
+
+2137
+01:41:39,908 --> 01:41:44,429
+with alright see you next time
+

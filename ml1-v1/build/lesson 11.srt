@@ -1,0 +1,7332 @@
+1
+00:00:00,079 --> 00:00:05,399
+so let's just yeah let's start by
+
+2
+00:00:02,819 --> 00:00:10,468
+reviewing kind of what we've learnt
+
+3
+00:00:05,400 --> 00:00:13,019
+about optimizing multi-layer functions
+
+4
+00:00:10,468 --> 00:00:17,160
+with SGD and so the idea is that we've
+
+5
+00:00:13,019 --> 00:00:20,939
+got some data and then we do something
+
+6
+00:00:17,160 --> 00:00:24,420
+to that data for example we multiply it
+
+7
+00:00:20,939 --> 00:00:28,439
+by a weight matrix and then we do
+
+8
+00:00:24,420 --> 00:00:32,759
+something to that for example we put it
+
+9
+00:00:28,439 --> 00:00:35,988
+through a softmax or a sigmoid and then
+
+10
+00:00:32,759 --> 00:00:38,579
+we do something to that such as do a
+
+11
+00:00:35,988 --> 00:00:44,578
+cross entropy loss or a root mean
+
+12
+00:00:38,579 --> 00:00:52,829
+squared error loss okay and that's gonna
+
+13
+00:00:44,579 --> 00:00:54,659
+like give us some scalar so this is
+
+14
+00:00:52,829 --> 00:00:58,079
+gonna have no hidden layers this has got
+
+15
+00:00:54,659 --> 00:01:00,299
+a linear layer a nonlinear activation
+
+16
+00:00:58,079 --> 00:01:02,820
+being a soft Max and a loss function
+
+17
+00:01:00,299 --> 00:01:05,429
+being a root mean squared error or a
+
+18
+00:01:02,820 --> 00:01:14,030
+cross entropy all right and then we've
+
+19
+00:01:05,430 --> 00:01:22,640
+got our input data port linear nonlinear
+
+20
+00:01:14,030 --> 00:01:28,579
+bus so for example if this was sigmoid
+
+21
+00:01:22,640 --> 00:01:33,438
+or softmax and this was cross entropy
+
+22
+00:01:28,578 --> 00:01:33,438
+then that would be logistic regression
+
+23
+00:01:34,159 --> 00:01:45,450
+so it's still ya cross entropy yeah
+
+24
+00:01:40,560 --> 00:01:46,710
+let's do that next short for now think
+
+25
+00:01:45,450 --> 00:01:49,469
+of it like think of RIT means great
+
+26
+00:01:46,709 --> 00:01:52,559
+error same thing some loss function okay
+
+27
+00:01:49,469 --> 00:01:59,390
+now we'll look at cross entropy again in
+
+28
+00:01:52,560 --> 00:02:03,899
+the moment so how do we calculate the
+
+29
+00:01:59,390 --> 00:02:06,420
+derivative of that with with respect to
+
+30
+00:02:03,899 --> 00:02:11,878
+our weights right so really it would
+
+31
+00:02:06,420 --> 00:02:13,770
+probably be better if we said X comma W
+
+32
+00:02:11,878 --> 00:02:16,049
+yeah because it's really a function of
+
+33
+00:02:13,770 --> 00:02:22,080
+the weights as well and so we want the
+
+34
+00:02:16,050 --> 00:02:27,750
+derivative of this with respect to our
+
+35
+00:02:22,080 --> 00:02:36,270
+weights sorry I put it in the wrong spot
+
+36
+00:02:27,750 --> 00:02:42,449
+Oh G f of X comma W that's why that
+
+37
+00:02:36,270 --> 00:02:45,750
+didn't make sense all right so to do
+
+38
+00:02:42,449 --> 00:02:47,399
+that we just basically we do the chain
+
+39
+00:02:45,750 --> 00:02:59,969
+rule so we just say that this is equal
+
+40
+00:02:47,400 --> 00:03:09,270
+to H of U and u equals G well G du
+
+41
+00:02:59,969 --> 00:03:11,219
+equals G of V and V equals f of X so we
+
+42
+00:03:09,270 --> 00:03:14,430
+can just rewrite it like that right and
+
+43
+00:03:11,219 --> 00:03:17,009
+then we can do the chain rule so we can
+
+44
+00:03:14,430 --> 00:03:25,170
+say that's equal to H - the derivative
+
+45
+00:03:17,009 --> 00:03:30,629
+is H - u by G dash V by F dash X hacker
+
+46
+00:03:25,169 --> 00:03:32,969
+with all that so far okay so in order to
+
+47
+00:03:30,629 --> 00:03:35,579
+take the derivative with respect to the
+
+48
+00:03:32,969 --> 00:03:38,069
+weights therefore we just have to
+
+49
+00:03:35,580 --> 00:03:43,320
+calculate that derivative with respect
+
+50
+00:03:38,069 --> 00:03:54,780
+to W using that exact formula so if we
+
+51
+00:03:43,319 --> 00:04:00,349
+had in there yeah yeah so so d of all
+
+52
+00:03:54,780 --> 00:04:00,349
+that DW would be yep
+
+53
+00:04:00,590 --> 00:04:14,659
+so then if if we you know went further
+
+54
+00:04:04,590 --> 00:04:17,449
+here and had like another linear layer
+
+55
+00:04:14,659 --> 00:04:24,649
+right that's going to be more room now
+
+56
+00:04:17,449 --> 00:04:24,649
+that linear layer I cover
+
+57
+00:04:25,449 --> 00:04:34,689
+w2 okay so we have another Lydia lair
+
+58
+00:04:31,139 --> 00:04:37,149
+there's no difference to now calculate
+
+59
+00:04:34,689 --> 00:04:39,160
+the derivative with respect to all of
+
+60
+00:04:37,149 --> 00:04:44,649
+the parameters we can still use the
+
+61
+00:04:39,160 --> 00:04:46,870
+exact same chain rule right so so don't
+
+62
+00:04:44,649 --> 00:04:48,639
+think of the multi-layer network as
+
+63
+00:04:46,870 --> 00:04:50,560
+being like things that occur at
+
+64
+00:04:48,639 --> 00:04:53,620
+different times it's just a composition
+
+65
+00:04:50,560 --> 00:04:56,589
+of functions and so we just use the
+
+66
+00:04:53,620 --> 00:04:58,629
+chain rule to calculate all the
+
+67
+00:04:56,589 --> 00:05:00,519
+derivatives at once you know there's
+
+68
+00:04:58,629 --> 00:05:01,990
+that there just a set of parameters that
+
+69
+00:05:00,519 --> 00:05:03,759
+happen to appear in different parts of
+
+70
+00:05:01,990 --> 00:05:07,210
+the function but look at that the
+
+71
+00:05:03,759 --> 00:05:12,009
+calculus is no no different so to
+
+72
+00:05:07,209 --> 00:05:14,079
+calculate this with respect to w1 and w2
+
+73
+00:05:12,009 --> 00:05:17,050
+you know it's it's just you just
+
+74
+00:05:14,079 --> 00:05:19,629
+increase you know W you can just now
+
+75
+00:05:17,050 --> 00:05:25,120
+just call it W and say w1 is all of
+
+76
+00:05:19,629 --> 00:05:25,810
+those weights so the result ah that's a
+
+77
+00:05:25,120 --> 00:05:33,759
+great question
+
+78
+00:05:25,810 --> 00:05:39,959
+so what you're going to have then is a
+
+79
+00:05:33,759 --> 00:05:43,870
+list of parameters right so here's w1
+
+80
+00:05:39,959 --> 00:05:46,989
+and like it's it's it's probably some
+
+81
+00:05:43,870 --> 00:05:50,530
+kind of higher rank tensor you know like
+
+82
+00:05:46,990 --> 00:05:52,480
+if it's a convolutional layer it'll you
+
+83
+00:05:50,529 --> 00:05:55,359
+don't be like a wreck three tensor or
+
+84
+00:05:52,480 --> 00:05:57,509
+whatever but we can flatten it out that
+
+85
+00:05:55,360 --> 00:06:01,030
+would just make it a list of parameters
+
+86
+00:05:57,509 --> 00:06:05,289
+there's w1 here's w2 okay it's just
+
+87
+00:06:01,029 --> 00:06:07,929
+another list of parameters right and
+
+88
+00:06:05,290 --> 00:06:12,370
+here's our loss which is a single you
+
+89
+00:06:07,930 --> 00:06:17,170
+know a single number so therefore our
+
+90
+00:06:12,370 --> 00:06:19,629
+derivative is just a vector of that same
+
+91
+00:06:17,170 --> 00:06:21,970
+length right it's how much does changing
+
+92
+00:06:19,629 --> 00:06:23,709
+that value of W affect the loss
+
+93
+00:06:21,970 --> 00:06:26,650
+how much does changing that value of W
+
+94
+00:06:23,709 --> 00:06:29,560
+affect the loss right so you can
+
+95
+00:06:26,649 --> 00:06:37,239
+basically think of it as a function like
+
+96
+00:06:29,560 --> 00:06:39,399
+you know y equals ax 1 plus BX 2 plus C
+
+97
+00:06:37,240 --> 00:06:41,650
+right and say like oh what's the
+
+98
+00:06:39,399 --> 00:06:44,168
+derivative of that with respect to a B
+
+99
+00:06:41,649 --> 00:06:45,899
+and C and you would have three numbers
+
+100
+00:06:44,168 --> 00:06:49,269
+the derivative with respect to a and B
+
+101
+00:06:45,899 --> 00:06:50,560
+and C and that's all this is right if
+
+102
+00:06:49,269 --> 00:06:51,969
+the derivative with respect to that
+
+103
+00:06:50,560 --> 00:06:55,899
+weight that weight and that weight and
+
+104
+00:06:51,970 --> 00:07:01,690
+that weight that went that way to get
+
+105
+00:06:55,899 --> 00:07:03,969
+there inside the chain rule we had to
+
+106
+00:07:01,689 --> 00:07:07,930
+calculate and a lot of detail here but
+
+107
+00:07:03,970 --> 00:07:10,180
+we had to calculate like jacobians so
+
+108
+00:07:07,930 --> 00:07:13,660
+like the derivative when you take a
+
+109
+00:07:10,180 --> 00:07:15,600
+matrix product is you've now got
+
+110
+00:07:13,660 --> 00:07:20,710
+something where you've got like a a
+
+111
+00:07:15,600 --> 00:07:22,539
+weight matrix and you've got an input
+
+112
+00:07:20,709 --> 00:07:29,739
+vector these are the activations and the
+
+113
+00:07:22,538 --> 00:07:33,699
+previous layer right and you've got some
+
+114
+00:07:29,740 --> 00:07:36,038
+new output activations right and so now
+
+115
+00:07:33,699 --> 00:07:38,788
+you've got to say like okay for this
+
+116
+00:07:36,038 --> 00:07:45,459
+particular sorry for this particular
+
+117
+00:07:38,788 --> 00:07:49,810
+weight hablas changing this particular
+
+118
+00:07:45,459 --> 00:07:51,549
+weight change this particular output and
+
+119
+00:07:49,810 --> 00:07:54,189
+how does changing this particular weight
+
+120
+00:07:51,550 --> 00:07:56,250
+change this particular output and so
+
+121
+00:07:54,189 --> 00:07:59,589
+forth so you kind of end up with these
+
+122
+00:07:56,250 --> 00:08:01,829
+higher dimensional tensors showing like
+
+123
+00:07:59,589 --> 00:08:05,408
+for every weight how does it affect
+
+124
+00:08:01,829 --> 00:08:07,329
+every output all right but then by the
+
+125
+00:08:05,408 --> 00:08:08,439
+time you get to the last function the
+
+126
+00:08:07,329 --> 00:08:10,509
+last function is going to have like a
+
+127
+00:08:08,439 --> 00:08:14,069
+mean or a sum or or something so they're
+
+128
+00:08:10,509 --> 00:08:18,038
+all going to get added up in the end and
+
+129
+00:08:14,069 --> 00:08:20,339
+so this kind of thing like I don't know
+
+130
+00:08:18,038 --> 00:08:23,228
+it drives me a bit crazy to try and
+
+131
+00:08:20,339 --> 00:08:25,478
+calculate it out by hand or even think
+
+132
+00:08:23,228 --> 00:08:27,848
+of it step by step because you tend to
+
+133
+00:08:25,478 --> 00:08:30,370
+have like you just have to remember for
+
+134
+00:08:27,848 --> 00:08:32,168
+every input and Aleya for every output
+
+135
+00:08:30,370 --> 00:08:34,929
+in the next layer you know you're going
+
+136
+00:08:32,168 --> 00:08:36,819
+to have to account for every weight for
+
+137
+00:08:34,929 --> 00:08:41,679
+every output you're going to have to
+
+138
+00:08:36,820 --> 00:08:45,459
+have a separate grant yet one good way
+
+139
+00:08:41,679 --> 00:08:49,179
+to look at this is to learn to use PI
+
+140
+00:08:45,458 --> 00:08:51,639
+torches like dot grad attribute and got
+
+141
+00:08:49,179 --> 00:08:53,049
+backward method manually and like look
+
+142
+00:08:51,639 --> 00:08:54,819
+up the to tour the pi torched
+
+143
+00:08:53,049 --> 00:08:56,829
+tutorials and so you can actually start
+
+144
+00:08:54,820 --> 00:08:58,629
+setting up some calculations with a
+
+145
+00:08:56,830 --> 00:09:01,180
+vector import in the vector output and
+
+146
+00:08:58,629 --> 00:09:04,539
+then type dot backward and then say type
+
+147
+00:09:01,179 --> 00:09:06,099
+grad and like look at it right and then
+
+148
+00:09:04,539 --> 00:09:08,349
+do some really small ones with just two
+
+149
+00:09:06,100 --> 00:09:10,389
+or three items in the input and output
+
+150
+00:09:08,350 --> 00:09:12,550
+vectors and let make the make the
+
+151
+00:09:10,389 --> 00:09:16,149
+operation like plus two or something and
+
+152
+00:09:12,549 --> 00:09:18,699
+like see what the shapes are make sure
+
+153
+00:09:16,149 --> 00:09:25,179
+it makes sense yeah because it's kind of
+
+154
+00:09:18,700 --> 00:09:28,269
+like this vector matrix calculus is not
+
+155
+00:09:25,179 --> 00:09:30,429
+like introduces zero new concepts to
+
+156
+00:09:28,269 --> 00:09:33,129
+anything you learnt in high school like
+
+157
+00:09:30,429 --> 00:09:38,049
+strictly speaking but getting a feel for
+
+158
+00:09:33,129 --> 00:09:40,360
+how these shapes move around I find took
+
+159
+00:09:38,049 --> 00:09:42,759
+a lot of practice you know the good news
+
+160
+00:09:40,360 --> 00:09:58,659
+is you almost never have to worry about
+
+161
+00:09:42,759 --> 00:10:01,980
+it okay so we were talking about then
+
+162
+00:09:58,659 --> 00:10:05,819
+using this kind of logistic regression
+
+163
+00:10:01,980 --> 00:10:09,120
+for NLP and before we got to that point
+
+164
+00:10:05,820 --> 00:10:14,470
+we were talking about using naive Bayes
+
+165
+00:10:09,120 --> 00:10:18,399
+for NLP and the basic idea was that we
+
+166
+00:10:14,470 --> 00:10:21,459
+could take a document write a review
+
+167
+00:10:18,399 --> 00:10:23,860
+like this movie is good and turn it into
+
+168
+00:10:21,458 --> 00:10:26,609
+a bag of words representation consisting
+
+169
+00:10:23,860 --> 00:10:29,050
+of the number of times each word appears
+
+170
+00:10:26,610 --> 00:10:32,250
+right and we call this the vocabulary
+
+171
+00:10:29,049 --> 00:10:36,309
+this is the unique list of words okay
+
+172
+00:10:32,250 --> 00:10:37,990
+and we used the SK learn count
+
+173
+00:10:36,309 --> 00:10:41,439
+vectorizer to automatically generate
+
+174
+00:10:37,990 --> 00:10:44,110
+both the vocabulary which in SK low and
+
+175
+00:10:41,440 --> 00:10:45,970
+they call they call the features and to
+
+176
+00:10:44,110 --> 00:10:48,190
+court create the bag of words
+
+177
+00:10:45,970 --> 00:10:50,290
+representation z' and the whole group of
+
+178
+00:10:48,190 --> 00:10:54,820
+them then is called a term document
+
+179
+00:10:50,289 --> 00:10:59,819
+matrix okay and we kind of realized that
+
+180
+00:10:54,820 --> 00:11:04,000
+we could calculate the probability that
+
+181
+00:10:59,820 --> 00:11:07,129
+a positive review contains the word this
+
+182
+00:11:04,000 --> 00:11:08,720
+by just averaging the number of
+
+183
+00:11:07,129 --> 00:11:13,460
+time disappears and the positive reviews
+
+184
+00:11:08,720 --> 00:11:15,620
+and we could do the same for the and we
+
+185
+00:11:13,460 --> 00:11:16,940
+could do the same for the negatives all
+
+186
+00:11:15,620 --> 00:11:19,190
+right and then we could take the ratio
+
+187
+00:11:16,940 --> 00:11:22,670
+of them to get something which if it's
+
+188
+00:11:19,190 --> 00:11:23,660
+greater than one was a word that
+
+189
+00:11:22,669 --> 00:11:26,419
+appeared more often in the positive
+
+190
+00:11:23,659 --> 00:11:28,189
+reviews or less than one was a word that
+
+191
+00:11:26,419 --> 00:11:34,699
+appeared more often than the negative
+
+192
+00:11:28,190 --> 00:11:37,190
+reviews okay and then we realized you
+
+193
+00:11:34,700 --> 00:11:39,680
+know using using Bayes rule that we and
+
+194
+00:11:37,190 --> 00:11:41,390
+taking the logs that we could basically
+
+195
+00:11:39,679 --> 00:11:45,139
+end up with something where we could add
+
+196
+00:11:41,389 --> 00:11:47,629
+up the logs of these plus the log of the
+
+197
+00:11:45,139 --> 00:11:50,960
+ratio of the probabilities that things
+
+198
+00:11:47,629 --> 00:11:53,330
+are in class one versus class zero and
+
+199
+00:11:50,960 --> 00:11:55,610
+end up with something we can compare to
+
+200
+00:11:53,330 --> 00:11:59,180
+zero if it's be greater than zero then
+
+201
+00:11:55,610 --> 00:12:00,500
+we can predict a document is positive or
+
+202
+00:11:59,179 --> 00:12:02,569
+if it's less than zero we can predict
+
+203
+00:12:00,500 --> 00:12:06,409
+the document is negative and that was
+
+204
+00:12:02,570 --> 00:12:09,260
+our Bayes rule all right so we kind of
+
+205
+00:12:06,409 --> 00:12:12,169
+did that from math first principles and
+
+206
+00:12:09,259 --> 00:12:14,649
+I think we agreed that the the naive in
+
+207
+00:12:12,169 --> 00:12:17,179
+naive Bayes was a good description
+
+208
+00:12:14,649 --> 00:12:19,579
+because it assumes independence when
+
+209
+00:12:17,179 --> 00:12:21,589
+it's definitely not true but it's an
+
+210
+00:12:19,580 --> 00:12:23,480
+interesting starting point and I think
+
+211
+00:12:21,590 --> 00:12:24,560
+it was interesting to observe when we
+
+212
+00:12:23,480 --> 00:12:28,129
+actually got to the point where like
+
+213
+00:12:24,559 --> 00:12:33,139
+okay now we've you know calculated the
+
+214
+00:12:28,129 --> 00:12:35,299
+the ratio of the probabilities and took
+
+215
+00:12:33,139 --> 00:12:36,710
+the log and now rather than multiply
+
+216
+00:12:35,299 --> 00:12:38,990
+them together of course we have to add
+
+217
+00:12:36,710 --> 00:12:43,780
+them up and when when we actually wrote
+
+218
+00:12:38,990 --> 00:12:50,350
+that down we realized like oh that is
+
+219
+00:12:43,779 --> 00:12:55,189
+you know just a standard weight matrix
+
+220
+00:12:50,350 --> 00:12:57,830
+product plus a bias right and so then we
+
+221
+00:12:55,190 --> 00:13:00,740
+kind of realized like oh okay so like if
+
+222
+00:12:57,830 --> 00:13:03,490
+this is not very good accuracy eighty
+
+223
+00:13:00,740 --> 00:13:03,490
+percent accuracy
+
+224
+00:13:03,909 --> 00:13:10,339
+why not improve it by saying hey we know
+
+225
+00:13:07,039 --> 00:13:12,620
+other ways to calculate a cut you know a
+
+226
+00:13:10,340 --> 00:13:16,910
+bunch of coefficients and a bunch of
+
+227
+00:13:12,620 --> 00:13:18,679
+biases which is to learn them in a
+
+228
+00:13:16,909 --> 00:13:20,730
+logistic regression alright so in other
+
+229
+00:13:18,679 --> 00:13:22,078
+words this this is the
+
+230
+00:13:20,730 --> 00:13:26,039
+meanwhile we use for a logistic
+
+231
+00:13:22,078 --> 00:13:29,000
+regression and so why don't we just
+
+232
+00:13:26,039 --> 00:13:32,819
+create a logistic regression and fit it
+
+233
+00:13:29,000 --> 00:13:35,458
+okay and it's going to be give us the
+
+234
+00:13:32,820 --> 00:13:37,920
+same thing but rather than coefficients
+
+235
+00:13:35,458 --> 00:13:40,409
+and biases which are theoretically
+
+236
+00:13:37,919 --> 00:13:42,120
+correct based on you know this
+
+237
+00:13:40,409 --> 00:13:44,730
+assumption of Independence and based on
+
+238
+00:13:42,120 --> 00:13:47,759
+Bayes rule there'll be the coefficients
+
+239
+00:13:44,730 --> 00:13:50,310
+and biases that are actually the best in
+
+240
+00:13:47,759 --> 00:13:55,799
+this data right so that was kind of
+
+241
+00:13:50,309 --> 00:14:01,349
+where we got to and so the kind of key
+
+242
+00:13:55,799 --> 00:14:03,990
+insight here is like just about
+
+243
+00:14:01,350 --> 00:14:08,420
+everything I find a machine learning
+
+244
+00:14:03,990 --> 00:14:11,190
+ends up being either like a tree or you
+
+245
+00:14:08,419 --> 00:14:13,139
+know a bunch of matrix products and
+
+246
+00:14:11,190 --> 00:14:14,940
+monomi era T's right like it's
+
+247
+00:14:13,139 --> 00:14:17,759
+everything seems to end up kind of
+
+248
+00:14:14,940 --> 00:14:21,360
+coming down to the same thing including
+
+249
+00:14:17,759 --> 00:14:23,519
+as it turns out Bayes rule okay and then
+
+250
+00:14:21,360 --> 00:14:27,509
+it turns out that nearly all of the time
+
+251
+00:14:23,519 --> 00:14:30,028
+then whatever the parameters are in that
+
+252
+00:14:27,509 --> 00:14:33,588
+function nearly all the time it turns
+
+253
+00:14:30,028 --> 00:14:36,179
+out that they're better learnt then
+
+254
+00:14:33,589 --> 00:14:37,860
+calculated based on the theory right and
+
+255
+00:14:36,179 --> 00:14:39,059
+indeed that's what happened when we
+
+256
+00:14:37,860 --> 00:14:44,818
+actually tried learning those
+
+257
+00:14:39,059 --> 00:14:48,809
+coefficients we got you know 85% okay so
+
+258
+00:14:44,818 --> 00:14:50,818
+then we noticed that we could also
+
+259
+00:14:48,809 --> 00:14:52,708
+rather than take the whole term document
+
+260
+00:14:50,818 --> 00:14:55,679
+matrix we could instead just take them
+
+261
+00:14:52,708 --> 00:14:58,888
+the you know ones and zeros for presence
+
+262
+00:14:55,679 --> 00:15:01,049
+or absence of a word and you know
+
+263
+00:14:58,889 --> 00:15:04,649
+sometimes it was you know this equally
+
+264
+00:15:01,049 --> 00:15:05,849
+as good but then we actually tried
+
+265
+00:15:04,649 --> 00:15:08,059
+something else which is we tried adding
+
+266
+00:15:05,850 --> 00:15:10,528
+regularization and with regularization
+
+267
+00:15:08,059 --> 00:15:12,599
+the binarized approach turned out to be
+
+268
+00:15:10,528 --> 00:15:16,559
+a little better all right so then
+
+269
+00:15:12,600 --> 00:15:21,028
+regularization was where we took the
+
+270
+00:15:16,559 --> 00:15:22,409
+loss function and again let's start with
+
+271
+00:15:21,028 --> 00:15:27,600
+our MSE and then we'll talk about
+
+272
+00:15:22,409 --> 00:15:29,328
+cross-entropy loss function was our
+
+273
+00:15:27,600 --> 00:15:31,960
+predictions
+
+274
+00:15:29,328 --> 00:15:39,599
+- our actuals
+
+275
+00:15:31,960 --> 00:15:39,600
+sum that up take the average plus a
+
+276
+00:15:39,779 --> 00:15:44,889
+penalty okay
+
+277
+00:15:42,340 --> 00:15:49,300
+and so this specifically is the l2
+
+278
+00:15:44,889 --> 00:15:52,899
+penalty if this instead was the absolute
+
+279
+00:15:49,299 --> 00:16:01,029
+value of W then that would be the l1
+
+280
+00:15:52,899 --> 00:16:03,309
+penalty okay we also noted that we don't
+
+281
+00:16:01,029 --> 00:16:05,379
+really care about the loss function per
+
+282
+00:16:03,309 --> 00:16:06,969
+se we only care about its derivatives
+
+283
+00:16:05,379 --> 00:16:09,879
+that's actually the thing that updates
+
+284
+00:16:06,970 --> 00:16:12,129
+the weights so we can because this is a
+
+285
+00:16:09,879 --> 00:16:14,379
+sum we can take the derivative of each
+
+286
+00:16:12,129 --> 00:16:20,200
+part separately and so the derivative of
+
+287
+00:16:14,379 --> 00:16:21,639
+this part was just that right and so we
+
+288
+00:16:20,200 --> 00:16:23,470
+kind of learnt that even though these
+
+289
+00:16:21,639 --> 00:16:25,960
+are mathematically equivalent they have
+
+290
+00:16:23,470 --> 00:16:27,879
+different names this version it's called
+
+291
+00:16:25,960 --> 00:16:30,280
+weight decay and it's kind of what's
+
+292
+00:16:27,879 --> 00:16:36,070
+used that term is used in the neural net
+
+293
+00:16:30,279 --> 00:16:38,559
+literature okay so cross-entropy
+
+294
+00:16:36,070 --> 00:16:40,480
+on the other hand you know it's just
+
+295
+00:16:38,559 --> 00:16:50,259
+another loss function like root mean
+
+296
+00:16:40,480 --> 00:16:54,789
+squared error but it's specifically
+
+297
+00:16:50,259 --> 00:16:57,129
+designed for classification alright and
+
+298
+00:16:54,789 --> 00:16:58,240
+so here's an example of a binary
+
+299
+00:16:57,129 --> 00:17:00,759
+cross-entropy
+
+300
+00:16:58,240 --> 00:17:03,549
+so let's say this is our you know is it
+
+301
+00:17:00,759 --> 00:17:04,269
+a cat or a dog so as to say is cat one
+
+302
+00:17:03,549 --> 00:17:08,549
+or a zero
+
+303
+00:17:04,269 --> 00:17:11,519
+so Cat Cat Cat and these are our
+
+304
+00:17:08,549 --> 00:17:13,659
+predictions this is the output of our
+
+305
+00:17:11,519 --> 00:17:16,779
+final layer of our neural net or a
+
+306
+00:17:13,660 --> 00:17:20,470
+logistic regression or whatever all
+
+307
+00:17:16,779 --> 00:17:26,619
+right then all we do is we say okay
+
+308
+00:17:20,470 --> 00:17:30,039
+let's take the actual times the log of
+
+309
+00:17:26,619 --> 00:17:32,500
+the prediction and then we add to that 1
+
+310
+00:17:30,039 --> 00:17:34,720
+minus actual times the log of 1 minus
+
+311
+00:17:32,500 --> 00:17:40,069
+the prediction and then take the
+
+312
+00:17:34,720 --> 00:17:43,339
+negative of that whole thing right so
+
+313
+00:17:40,069 --> 00:17:44,899
+I suggested to to you all that you tried
+
+314
+00:17:43,339 --> 00:17:46,639
+to kind of write the if statement
+
+315
+00:17:44,900 --> 00:17:48,290
+version of this so hopefully you've done
+
+316
+00:17:46,640 --> 00:17:56,020
+that by now otherwise I'm about to spoil
+
+317
+00:17:48,289 --> 00:18:05,269
+it for you so this was Y times log y
+
+318
+00:17:56,019 --> 00:18:08,539
+plus 1 minus y times log 1 minus y right
+
+319
+00:18:05,269 --> 00:18:09,950
+and negative of that okay so here wants
+
+320
+00:18:08,539 --> 00:18:21,440
+to tell me how to write this as an if
+
+321
+00:18:09,950 --> 00:18:25,610
+statement can she hit me okay if y equal
+
+322
+00:18:21,440 --> 00:18:26,059
+to sorry if y equal to 1 mm-hmm then in
+
+323
+00:18:25,609 --> 00:18:31,099
+return
+
+324
+00:18:26,059 --> 00:18:34,879
+I love Y mm-hmm otherwise well um else
+
+325
+00:18:31,099 --> 00:18:37,099
+return log 1 minus 1 okay oh that's the
+
+326
+00:18:34,880 --> 00:18:37,940
+things at brackets and you take C my
+
+327
+00:18:37,099 --> 00:18:40,159
+name is good
+
+328
+00:18:37,940 --> 00:18:43,340
+so the key inside Chen she's using is
+
+329
+00:18:40,160 --> 00:18:48,230
+that Y has two possibilities 1 or 0 okay
+
+330
+00:18:43,339 --> 00:18:50,329
+and so very often the math can hide the
+
+331
+00:18:48,230 --> 00:18:51,980
+key insight which I think happens here
+
+332
+00:18:50,329 --> 00:18:56,619
+until you actually think about what the
+
+333
+00:18:51,980 --> 00:18:59,779
+values it can take right so that's
+
+334
+00:18:56,619 --> 00:19:02,750
+that's all it's doing it's saying either
+
+335
+00:18:59,779 --> 00:19:04,849
+give me that or give me that all right
+
+336
+00:19:02,750 --> 00:19:08,809
+could you pass that to the back please
+
+337
+00:19:04,849 --> 00:19:10,609
+Jason all right I'm missing something
+
+338
+00:19:08,809 --> 00:19:14,089
+but do you know the two variables in
+
+339
+00:19:10,609 --> 00:19:16,279
+that statement if you got Y soon it'd be
+
+340
+00:19:14,089 --> 00:19:18,609
+like white hat on the wires yeah yeah
+
+341
+00:19:16,279 --> 00:19:26,589
+thank you
+
+342
+00:19:18,609 --> 00:19:26,589
+as usual it's me missing something okay
+
+343
+00:19:26,970 --> 00:19:33,269
+okay and so then the you know the multi
+
+344
+00:19:30,740 --> 00:19:35,250
+category version is just the same thing
+
+345
+00:19:33,269 --> 00:19:37,349
+but you're saying you know it four
+
+346
+00:19:35,250 --> 00:19:39,000
+different more than just y equals one or
+
+347
+00:19:37,349 --> 00:19:40,199
+zero but y equals zero one two three
+
+348
+00:19:39,000 --> 00:19:45,660
+four five six seven eight nine
+
+349
+00:19:40,200 --> 00:19:48,210
+for instance okay and so that you know
+
+350
+00:19:45,660 --> 00:19:50,190
+that loss function has a you can figure
+
+351
+00:19:48,210 --> 00:19:53,730
+it out yourself in particularly simple
+
+352
+00:19:50,190 --> 00:19:55,019
+derivative and it also you know another
+
+353
+00:19:53,730 --> 00:19:57,240
+thing you could play with at home if you
+
+354
+00:19:55,019 --> 00:19:59,190
+like is like thinking about how the
+
+355
+00:19:57,240 --> 00:20:01,410
+derivative looks when you add a sigmoid
+
+356
+00:19:59,190 --> 00:20:03,990
+or a softmax before it you know it turns
+
+357
+00:20:01,410 --> 00:20:06,060
+out it all turns out very nicely because
+
+358
+00:20:03,990 --> 00:20:08,099
+you've got an X P thing going into a log
+
+359
+00:20:06,059 --> 00:20:12,990
+e thing so you end up with you know very
+
+360
+00:20:08,099 --> 00:20:14,819
+well behaved derivatives the reason I
+
+361
+00:20:12,990 --> 00:20:18,120
+guess there's lots of reasons that
+
+362
+00:20:14,819 --> 00:20:20,519
+people use IR MSE for aggression and
+
+363
+00:20:18,119 --> 00:20:22,349
+cross-entropy for classification but
+
+364
+00:20:20,519 --> 00:20:25,349
+most of it comes back to this
+
+365
+00:20:22,349 --> 00:20:27,569
+statistical idea of a best linear
+
+366
+00:20:25,349 --> 00:20:29,459
+unbiased estimator you know and based on
+
+367
+00:20:27,569 --> 00:20:31,470
+the likelihood function that kind of
+
+368
+00:20:29,460 --> 00:20:34,230
+turns out that these have some nice
+
+369
+00:20:31,470 --> 00:20:37,230
+statistical properties it turns out
+
+370
+00:20:34,230 --> 00:20:40,140
+however in practice root means great
+
+371
+00:20:37,230 --> 00:20:42,390
+error in particular the properties are
+
+372
+00:20:40,140 --> 00:20:47,160
+perhaps more theoretical than actual and
+
+373
+00:20:42,390 --> 00:20:49,440
+actually nowadays using the the absolute
+
+374
+00:20:47,160 --> 00:20:55,230
+deviation rather than some as grads
+
+375
+00:20:49,440 --> 00:20:56,519
+deviation can often work better so in
+
+376
+00:20:55,230 --> 00:20:58,019
+practice like everything in machine
+
+377
+00:20:56,519 --> 00:21:00,089
+learning I normally try both for
+
+378
+00:20:58,019 --> 00:21:02,430
+particular data set I'll try both loss
+
+379
+00:21:00,089 --> 00:21:04,169
+functions and see which one works better
+
+380
+00:21:02,430 --> 00:21:05,670
+and us of course it's a cattle
+
+381
+00:21:04,170 --> 00:21:07,830
+competition in which case you're told
+
+382
+00:21:05,670 --> 00:21:10,410
+how capital is going to judge it and you
+
+383
+00:21:07,829 --> 00:21:16,589
+should use the same loss function as
+
+384
+00:21:10,410 --> 00:21:18,480
+caracals evaluation metric all right so
+
+385
+00:21:16,589 --> 00:21:20,879
+yeah so this is really the key insight
+
+386
+00:21:18,480 --> 00:21:22,470
+is like hey let's let's not use theory
+
+387
+00:21:20,880 --> 00:21:24,270
+but instead learn things from the data
+
+388
+00:21:22,470 --> 00:21:26,250
+and you know we hope that we're going to
+
+389
+00:21:24,269 --> 00:21:28,589
+get better results particularly with
+
+390
+00:21:26,250 --> 00:21:30,599
+regularization we do and then I think
+
+391
+00:21:28,589 --> 00:21:33,240
+the key regularization insight here is
+
+392
+00:21:30,599 --> 00:21:35,039
+hey let's not like try to reduce the
+
+393
+00:21:33,240 --> 00:21:36,930
+number of parameters in our model but
+
+394
+00:21:35,039 --> 00:21:39,139
+instead like use lots of parameters and
+
+395
+00:21:36,930 --> 00:21:40,299
+then use regularization to figure out
+
+396
+00:21:39,140 --> 00:21:42,970
+which
+
+397
+00:21:40,299 --> 00:21:44,950
+are actually useful and so then we took
+
+398
+00:21:42,970 --> 00:21:46,390
+that a step further by saying hey given
+
+399
+00:21:44,950 --> 00:21:49,360
+we can do that with wrecker ization
+
+400
+00:21:46,390 --> 00:21:52,690
+let's create lots more features by
+
+401
+00:21:49,359 --> 00:21:55,269
+adding by grams and trigrams you know by
+
+402
+00:21:52,690 --> 00:21:58,150
+grams like by vast and by vengeance and
+
+403
+00:21:55,269 --> 00:22:02,170
+trigrams like by vengeance . and by Vera
+
+404
+00:21:58,150 --> 00:22:03,910
+miles right and you know just to keep
+
+405
+00:22:02,170 --> 00:22:06,610
+things a little faster we limited it to
+
+406
+00:22:03,910 --> 00:22:09,070
+800,000 features but you know even with
+
+407
+00:22:06,609 --> 00:22:10,719
+the full 70 million features it works
+
+408
+00:22:09,069 --> 00:22:13,419
+just as well and it's not a hell of a
+
+409
+00:22:10,720 --> 00:22:17,230
+lot slower so we created a term document
+
+410
+00:22:13,420 --> 00:22:19,990
+matrix again using the full set of
+
+411
+00:22:17,230 --> 00:22:23,829
+engrams for the training set the
+
+412
+00:22:19,990 --> 00:22:25,930
+validation set and so now we can go
+
+413
+00:22:23,829 --> 00:22:28,539
+ahead and say okay our labels as the
+
+414
+00:22:25,930 --> 00:22:32,500
+training set labels as before our
+
+415
+00:22:28,539 --> 00:22:37,180
+independent variables is the binarized
+
+416
+00:22:32,500 --> 00:22:40,319
+term document matrix as before and then
+
+417
+00:22:37,180 --> 00:22:45,580
+let's fit a logistic regression to that
+
+418
+00:22:40,319 --> 00:22:48,569
+and do some predictions and we get 90%
+
+419
+00:22:45,579 --> 00:22:58,509
+accuracy so this is looking pretty good
+
+420
+00:22:48,569 --> 00:23:00,250
+okay so the logistic regression let's go
+
+421
+00:22:58,509 --> 00:23:03,099
+back to our naive Bayes right in our
+
+422
+00:23:00,250 --> 00:23:06,309
+naive Bayes we have this term document
+
+423
+00:23:03,099 --> 00:23:09,250
+matrix and then for every feature we're
+
+424
+00:23:06,309 --> 00:23:11,859
+calculating the probability of that
+
+425
+00:23:09,250 --> 00:23:13,420
+feature occurring if it's class 1 that
+
+426
+00:23:11,859 --> 00:23:17,799
+probability of that feature occurring if
+
+427
+00:23:13,420 --> 00:23:20,920
+it's plus 2 and then the ratio of those
+
+428
+00:23:17,799 --> 00:23:22,450
+two all right and in the paper that
+
+429
+00:23:20,920 --> 00:23:27,310
+we're actually load basing this off they
+
+430
+00:23:22,450 --> 00:23:34,000
+call this P this Q and this right maybe
+
+431
+00:23:27,309 --> 00:23:35,409
+I should just fill that in P here maybe
+
+432
+00:23:34,000 --> 00:23:37,920
+then we'll say probability to make it
+
+433
+00:23:35,410 --> 00:23:37,920
+more obvious
+
+434
+00:23:41,210 --> 00:23:49,110
+okay and so then we kind of said hey
+
+435
+00:23:45,720 --> 00:23:53,308
+let's let's not use these ratios as the
+
+436
+00:23:49,109 --> 00:23:54,118
+coefficients in that in that matrix
+
+437
+00:23:53,308 --> 00:23:56,759
+multiply
+
+438
+00:23:54,118 --> 00:23:58,980
+but let's instead like try and learn
+
+439
+00:23:56,759 --> 00:24:05,429
+some coefficients you know so maybe
+
+440
+00:23:58,980 --> 00:24:07,798
+start out with some random numbers you
+
+441
+00:24:05,429 --> 00:24:09,720
+know and then try and use stochastic
+
+442
+00:24:07,798 --> 00:24:11,118
+gradient descent to find slightly better
+
+443
+00:24:09,720 --> 00:24:14,069
+ones
+
+444
+00:24:11,118 --> 00:24:19,589
+so you'll notice you know some important
+
+445
+00:24:14,069 --> 00:24:23,489
+features here the R vector is a vector
+
+446
+00:24:19,589 --> 00:24:27,118
+of Rank 1 and it's length is equal to
+
+447
+00:24:23,489 --> 00:24:29,159
+the number of features and of course our
+
+448
+00:24:27,118 --> 00:24:32,488
+logistic regression coefficient matrix
+
+449
+00:24:29,159 --> 00:24:34,980
+is also of length 1
+
+450
+00:24:32,489 --> 00:24:36,840
+sorry Rank 1 and length 1/4 the number
+
+451
+00:24:34,980 --> 00:24:38,190
+of features right and we know we're
+
+452
+00:24:36,839 --> 00:24:41,189
+saying like they're kind of two ways of
+
+453
+00:24:38,190 --> 00:24:46,919
+calculating the same kind of thing right
+
+454
+00:24:41,190 --> 00:24:49,048
+one based on theory one based on data so
+
+455
+00:24:46,919 --> 00:24:51,659
+here is like some of the numbers in R
+
+456
+00:24:49,048 --> 00:24:54,648
+right remember it's using the log so
+
+457
+00:24:51,659 --> 00:24:58,470
+these numbers which are less than zero
+
+458
+00:24:54,648 --> 00:25:00,298
+represent things which are more likely
+
+459
+00:24:58,470 --> 00:25:02,639
+to be negative and these ones are here
+
+460
+00:25:00,298 --> 00:25:06,298
+are more likely so this one here is more
+
+461
+00:25:02,638 --> 00:25:08,128
+likely to be positive and so here's E ^
+
+462
+00:25:06,298 --> 00:25:13,798
+that and so these are the ones we can
+
+463
+00:25:08,128 --> 00:25:16,798
+compare to one rather than to zero so
+
+464
+00:25:13,798 --> 00:25:21,778
+I'm going to do something that hopefully
+
+465
+00:25:16,798 --> 00:25:24,358
+is going to seem weird and so first of
+
+466
+00:25:21,778 --> 00:25:27,358
+all I'm going to talk about I got to say
+
+467
+00:25:24,358 --> 00:25:29,428
+what we got to do and then I'm gonna try
+
+468
+00:25:27,358 --> 00:25:32,038
+and describe why it's weird and then
+
+469
+00:25:29,429 --> 00:25:33,960
+we'll talk about why it may not be as
+
+470
+00:25:32,038 --> 00:25:35,669
+weird as we first thought so here's what
+
+471
+00:25:33,960 --> 00:25:39,419
+we got to do we're going to take our
+
+472
+00:25:35,669 --> 00:25:43,270
+term document matrix and we're going to
+
+473
+00:25:39,419 --> 00:25:45,820
+multiply it by
+
+474
+00:25:43,269 --> 00:25:48,099
+so what that means is we're gonna I can
+
+475
+00:25:45,819 --> 00:25:51,789
+do it here in Excel right so we're going
+
+476
+00:25:48,099 --> 00:25:55,149
+to say let's grab everything in our term
+
+477
+00:25:51,789 --> 00:25:57,308
+document matrix and multiply it by the
+
+478
+00:25:55,150 --> 00:26:00,990
+equivalent value in the vector of our
+
+479
+00:25:57,308 --> 00:26:03,549
+right so this is like a broadcasted
+
+480
+00:26:00,990 --> 00:26:12,970
+element-wise multiplication not a matrix
+
+481
+00:26:03,549 --> 00:26:14,009
+multiplication okay and that's what that
+
+482
+00:26:12,970 --> 00:26:18,250
+does
+
+483
+00:26:14,009 --> 00:26:21,640
+okay so here is the value of the term
+
+484
+00:26:18,250 --> 00:26:24,039
+document matrix times R in other words
+
+485
+00:26:21,640 --> 00:26:27,580
+everywhere that a zero appears there a
+
+486
+00:26:24,039 --> 00:26:30,129
+zero appears here and every time a one
+
+487
+00:26:27,579 --> 00:26:35,619
+appears here the equivalent value of R
+
+488
+00:26:30,130 --> 00:26:37,840
+appears here so we haven't really we
+
+489
+00:26:35,619 --> 00:26:40,928
+haven't really changed much all right
+
+490
+00:26:37,839 --> 00:26:42,669
+we've just we've just kind of changed
+
+491
+00:26:40,929 --> 00:26:44,800
+the ones into something else than two
+
+492
+00:26:42,670 --> 00:26:47,410
+into the into the odds from that feature
+
+493
+00:26:44,799 --> 00:26:50,470
+all right and so what we're now going to
+
+494
+00:26:47,410 --> 00:26:53,410
+do is we're going to use this as our
+
+495
+00:26:50,470 --> 00:26:56,920
+independent variables instead in our
+
+496
+00:26:53,410 --> 00:27:00,970
+logistic regression okay so here we are
+
+497
+00:26:56,920 --> 00:27:04,390
+multiply x x NB x naive Bayes version is
+
+498
+00:27:00,970 --> 00:27:07,390
+x times R and now let's do a logistic
+
+499
+00:27:04,390 --> 00:27:14,020
+regression fitting using those
+
+500
+00:27:07,390 --> 00:27:16,720
+independent variables and let's then do
+
+501
+00:27:14,019 --> 00:27:20,529
+that for the validation set okay and get
+
+502
+00:27:16,720 --> 00:27:28,329
+the predictions and lo and behold we
+
+503
+00:27:20,529 --> 00:27:31,420
+have a better number okay so let me
+
+504
+00:27:28,329 --> 00:27:36,720
+explain why this hopefully seem
+
+505
+00:27:31,420 --> 00:27:43,179
+surprising given that we're just
+
+506
+00:27:36,720 --> 00:27:48,210
+multiplying oh I picked out the wrong
+
+507
+00:27:43,179 --> 00:27:48,210
+ones I should have said ah not going
+
+508
+00:27:49,269 --> 00:27:53,179
+okay that's actually uh I got the wrong
+
+509
+00:27:52,730 --> 00:27:57,259
+number
+
+510
+00:27:53,179 --> 00:27:59,720
+okay so that's our independent variables
+
+511
+00:27:57,259 --> 00:28:01,849
+right and then the the logistic
+
+512
+00:27:59,720 --> 00:28:03,860
+regression has come up with some set of
+
+513
+00:28:01,849 --> 00:28:05,839
+coefficients let's pretend for a moment
+
+514
+00:28:03,859 --> 00:28:11,419
+that these are the coefficients that it
+
+515
+00:28:05,839 --> 00:28:15,289
+happened to come up with okay we could
+
+516
+00:28:11,420 --> 00:28:18,558
+now say well let's not use this set
+
+517
+00:28:15,289 --> 00:28:20,029
+let's not use this set of independent
+
+518
+00:28:18,558 --> 00:28:23,450
+variables but let's use the original
+
+519
+00:28:20,029 --> 00:28:27,500
+binarized feature matrix right and then
+
+520
+00:28:23,450 --> 00:28:30,350
+divide all of our coefficients by the
+
+521
+00:28:27,500 --> 00:28:34,460
+values in R and we're going to get
+
+522
+00:28:30,349 --> 00:28:42,980
+exactly the same result mathematically
+
+523
+00:28:34,460 --> 00:28:45,590
+so you know we've got our X naivebayes
+
+524
+00:28:42,980 --> 00:28:50,000
+version of the independent variables and
+
+525
+00:28:45,589 --> 00:28:52,869
+we've got some some set of weights some
+
+526
+00:28:50,000 --> 00:28:58,640
+some sort of coefficients I'll call it W
+
+527
+00:28:52,869 --> 00:29:00,079
+right W one let's see where it's found
+
+528
+00:28:58,640 --> 00:29:02,540
+like this is a good set of coefficients
+
+529
+00:29:00,079 --> 00:29:10,220
+for making our predictions from right
+
+530
+00:29:02,539 --> 00:29:16,399
+that X and B is simply equal to x times
+
+531
+00:29:10,220 --> 00:29:24,400
+as in element wise x ah right so in
+
+532
+00:29:16,400 --> 00:29:27,919
+other words this is equal to x times ah
+
+533
+00:29:24,400 --> 00:29:32,419
+times the weights and so like we could
+
+534
+00:29:27,919 --> 00:29:36,950
+just change the weights to be that right
+
+535
+00:29:32,419 --> 00:29:41,059
+and get the same number so this ought to
+
+536
+00:29:36,950 --> 00:29:42,650
+mean that the change that we made to the
+
+537
+00:29:41,058 --> 00:29:46,250
+dependent variable shouldn't have made
+
+538
+00:29:42,650 --> 00:29:47,960
+any difference because we can calculate
+
+539
+00:29:46,250 --> 00:29:52,400
+exactly the same thing without making
+
+540
+00:29:47,960 --> 00:29:56,000
+that change so there's the question why
+
+541
+00:29:52,400 --> 00:29:57,470
+did it make a difference so in order to
+
+542
+00:29:56,000 --> 00:29:58,940
+answer this question I got to try and
+
+543
+00:29:57,470 --> 00:30:00,470
+get you all to try and think about this
+
+544
+00:29:58,940 --> 00:30:02,149
+in order to answer this question you
+
+545
+00:30:00,470 --> 00:30:05,139
+need to think about like okay
+
+546
+00:30:02,148 --> 00:30:07,368
+what are the things that aren't
+
+547
+00:30:05,138 --> 00:30:09,468
+mathematically the same why is why is it
+
+548
+00:30:07,368 --> 00:30:11,388
+not identical what are the reasons like
+
+549
+00:30:09,469 --> 00:30:13,969
+come up with some hypotheses what are
+
+550
+00:30:11,388 --> 00:30:17,298
+some reasons that maybe we've actually
+
+551
+00:30:13,969 --> 00:30:18,469
+ended up with a better answer and to
+
+552
+00:30:17,298 --> 00:30:19,668
+figure that out we need to first of all
+
+553
+00:30:18,469 --> 00:30:21,318
+start with like well why is it even a
+
+554
+00:30:19,669 --> 00:30:33,259
+different answer why is that different
+
+555
+00:30:21,318 --> 00:30:35,028
+to that is it subtle all right what do
+
+556
+00:30:33,259 --> 00:30:36,679
+you think I just wondering if there was
+
+557
+00:30:35,028 --> 00:30:38,328
+two different kinds of multiplications
+
+558
+00:30:36,679 --> 00:30:40,879
+you said that one is the element wise
+
+559
+00:30:38,328 --> 00:30:42,969
+multiplication no they do end up
+
+560
+00:30:40,878 --> 00:30:45,648
+mathematically being the same okay
+
+561
+00:30:42,969 --> 00:30:47,659
+pretty much there's a minor in corporate
+
+562
+00:30:45,648 --> 00:30:49,878
+not it's not that it's not some order
+
+563
+00:30:47,659 --> 00:30:52,969
+operation see let's try
+
+564
+00:30:49,878 --> 00:30:55,009
+kimchee you are on a roll today so let's
+
+565
+00:30:52,969 --> 00:30:59,259
+see how you go I feel like Z features
+
+566
+00:30:55,009 --> 00:31:02,808
+aren't less correlated to each other I
+
+567
+00:30:59,259 --> 00:31:07,878
+mean I've made a claim that these are
+
+568
+00:31:02,808 --> 00:31:10,368
+mathematically equivalent so so what are
+
+569
+00:31:07,878 --> 00:31:17,748
+you saying really you know why are we
+
+570
+00:31:10,368 --> 00:31:19,009
+getting different answers it's good keep
+
+571
+00:31:17,749 --> 00:31:20,568
+on coming up with hypotheses we need
+
+572
+00:31:19,009 --> 00:31:21,739
+lots of wrong answers before we start
+
+573
+00:31:20,568 --> 00:31:24,019
+finding it's really right ones it's like
+
+574
+00:31:21,739 --> 00:31:25,519
+that you know warmer hotter colder you
+
+575
+00:31:24,019 --> 00:31:27,108
+know Ernest you're gonna get as hot Oh
+
+576
+00:31:25,519 --> 00:31:29,838
+does it have anything to do with the
+
+577
+00:31:27,108 --> 00:31:31,968
+regularization ah yes and is it the fact
+
+578
+00:31:29,838 --> 00:31:34,608
+that when you let's start there right so
+
+579
+00:31:31,969 --> 00:31:36,439
+Ernest point here is like okay Jeremy
+
+580
+00:31:34,608 --> 00:31:38,989
+you've said they're equivalent but
+
+581
+00:31:36,439 --> 00:31:40,339
+they're equivalent outcomes right but
+
+582
+00:31:38,989 --> 00:31:42,108
+you got through and through a process to
+
+583
+00:31:40,338 --> 00:31:43,938
+get there and that process included
+
+584
+00:31:42,108 --> 00:31:45,948
+regularization and they're not
+
+585
+00:31:43,939 --> 00:31:49,939
+necessarily equivalent regularization
+
+586
+00:31:45,949 --> 00:31:51,558
+like our loss function as a penalty so
+
+587
+00:31:49,939 --> 00:31:53,629
+yeah help us think through Ernest how
+
+588
+00:31:51,558 --> 00:31:56,538
+much that might impact things well this
+
+589
+00:31:53,628 --> 00:31:58,218
+is I'm just noticing that the numbers
+
+590
+00:31:56,538 --> 00:32:01,519
+are bigger in the ones that have been
+
+591
+00:31:58,219 --> 00:32:05,479
+weighted by the naive phase mm-hmm our
+
+592
+00:32:01,519 --> 00:32:07,009
+weights and so these are bigger and some
+
+593
+00:32:05,479 --> 00:32:08,479
+are smaller some are bigger right but
+
+594
+00:32:07,009 --> 00:32:10,308
+there are some bigger ones like the
+
+595
+00:32:08,479 --> 00:32:12,259
+variance between the columns is much
+
+596
+00:32:10,308 --> 00:32:13,759
+higher the variance is bigger yeah I
+
+597
+00:32:12,259 --> 00:32:15,620
+think that's a very interesting insight
+
+598
+00:32:13,759 --> 00:32:23,808
+okay that's all yeah okay
+
+599
+00:32:15,619 --> 00:32:24,589
+so build on that prince has been on a
+
+600
+00:32:23,808 --> 00:32:28,940
+roll or month
+
+601
+00:32:24,589 --> 00:32:30,859
+so here's not sure is it also consider
+
+602
+00:32:28,940 --> 00:32:32,769
+like considering the dependency of
+
+603
+00:32:30,859 --> 00:32:36,219
+different words instead why this
+
+604
+00:32:32,769 --> 00:32:38,599
+performing better rather than all but
+
+605
+00:32:36,220 --> 00:32:39,860
+independent of each other no really I
+
+606
+00:32:38,599 --> 00:32:42,740
+mean it's it's you know again
+
+607
+00:32:39,859 --> 00:32:46,359
+theoretically these are creating
+
+608
+00:32:42,740 --> 00:32:49,308
+mathematically equivalent outputs so
+
+609
+00:32:46,359 --> 00:32:52,369
+they're not they're not doing something
+
+610
+00:32:49,308 --> 00:32:55,788
+different except as Ernest mentioned
+
+611
+00:32:52,369 --> 00:32:59,329
+they're getting impacted differently by
+
+612
+00:32:55,788 --> 00:33:02,629
+regularization so what's so what's
+
+613
+00:32:59,329 --> 00:33:07,819
+regularization right regularization is
+
+614
+00:33:02,630 --> 00:33:08,929
+we start out with our that was the
+
+615
+00:33:07,819 --> 00:33:11,750
+weirdest thing I forgot to go to
+
+616
+00:33:08,929 --> 00:33:13,220
+screenwriting mode and it just turns out
+
+617
+00:33:11,750 --> 00:33:17,329
+that you can actually write in Excel and
+
+618
+00:33:13,220 --> 00:33:18,980
+I had no idea that was true I still use
+
+619
+00:33:17,329 --> 00:33:23,720
+screenwriting Rosewood's could kill up
+
+620
+00:33:18,980 --> 00:33:27,440
+my spreadsheet I'd never trade so our
+
+621
+00:33:23,720 --> 00:33:34,548
+loss was equal to like our cross entropy
+
+622
+00:33:27,440 --> 00:33:39,110
+loss you know based on the predictions
+
+623
+00:33:34,548 --> 00:33:50,569
+of the predictions and the actuals right
+
+624
+00:33:39,109 --> 00:33:55,028
+plus our penalty so if your if your
+
+625
+00:33:50,569 --> 00:33:59,480
+weights a large right then that piece
+
+626
+00:33:55,028 --> 00:34:01,640
+gets bigger right and it drowns out that
+
+627
+00:33:59,480 --> 00:34:03,620
+piece right but that's actually the
+
+628
+00:34:01,640 --> 00:34:06,770
+piece we care about right we actually
+
+629
+00:34:03,619 --> 00:34:08,750
+want it to be a good fit so we want to
+
+630
+00:34:06,769 --> 00:34:10,699
+have as little regularization going on
+
+631
+00:34:08,750 --> 00:34:15,858
+as we can get away with we want so we
+
+632
+00:34:10,699 --> 00:34:19,819
+want to have less weights so here's the
+
+633
+00:34:15,858 --> 00:34:24,440
+thing right our value yes can you pass
+
+634
+00:34:19,820 --> 00:34:27,230
+it over here we should let less weights
+
+635
+00:34:24,440 --> 00:34:28,700
+did you mean lesser weights I do yeah
+
+636
+00:34:27,230 --> 00:34:31,099
+yeah and I
+
+637
+00:34:28,699 --> 00:34:32,928
+use the two words are level equivalently
+
+638
+00:34:31,099 --> 00:34:34,039
+which is not quite fair I agree but the
+
+639
+00:34:32,929 --> 00:34:39,530
+idea is that weights that are pretty
+
+640
+00:34:34,039 --> 00:34:43,309
+close to zero were kind of not there so
+
+641
+00:34:39,530 --> 00:34:45,050
+here's the thing our values of ah you
+
+642
+00:34:43,309 --> 00:34:46,820
+know and I'm not a Bayesian weenie but
+
+643
+00:34:45,050 --> 00:34:49,429
+I'm still gonna use the word prior right
+
+644
+00:34:46,820 --> 00:34:54,649
+they're kind of like a prior so like we
+
+645
+00:34:49,429 --> 00:34:57,108
+think that the the different levels of
+
+646
+00:34:54,648 --> 00:34:59,539
+importance and positive or negative of
+
+647
+00:34:57,108 --> 00:35:02,598
+these different features might be
+
+648
+00:34:59,539 --> 00:35:08,838
+something like that right we think that
+
+649
+00:35:02,599 --> 00:35:12,109
+like bad you know might be more
+
+650
+00:35:08,838 --> 00:35:18,519
+correlated with negative then and good
+
+651
+00:35:12,108 --> 00:35:18,519
+right so our kind of implicit assumption
+
+652
+00:35:18,550 --> 00:35:24,589
+the before was that we have no priors so
+
+653
+00:35:22,250 --> 00:35:27,500
+in other words when we'd said squared
+
+654
+00:35:24,588 --> 00:35:29,659
+weights we're saying a nonzero weight is
+
+655
+00:35:27,500 --> 00:35:31,730
+something we don't want to have right
+
+656
+00:35:29,659 --> 00:35:36,139
+but actually I think what I really want
+
+657
+00:35:31,730 --> 00:35:39,108
+to say is that differing from the naive
+
+658
+00:35:36,139 --> 00:35:41,868
+Bayes expectation is something I don't
+
+659
+00:35:39,108 --> 00:35:45,289
+want to do right like only very from the
+
+660
+00:35:41,869 --> 00:35:47,650
+naive Bayes prior unless you have good
+
+661
+00:35:45,289 --> 00:35:50,630
+reason to believe otherwise
+
+662
+00:35:47,650 --> 00:35:53,539
+right and so that's actually what this
+
+663
+00:35:50,630 --> 00:35:57,170
+ends up doing right we end up saying you
+
+664
+00:35:53,539 --> 00:36:01,309
+know what we think this value is
+
+665
+00:35:57,170 --> 00:36:03,650
+probably three right and so if you're
+
+666
+00:36:01,309 --> 00:36:06,289
+going to like make it a lot bigger or a
+
+667
+00:36:03,650 --> 00:36:09,349
+lot smaller right that's going to create
+
+668
+00:36:06,289 --> 00:36:11,000
+the kind of variation in weights that's
+
+669
+00:36:09,349 --> 00:36:16,130
+going to cause that squared term to go
+
+670
+00:36:11,000 --> 00:36:18,679
+up right so so if you can you know just
+
+671
+00:36:16,130 --> 00:36:20,838
+leave all these values about similar to
+
+672
+00:36:18,679 --> 00:36:22,879
+where they are now all right and so
+
+673
+00:36:20,838 --> 00:36:25,039
+that's what the penalty term is now
+
+674
+00:36:22,880 --> 00:36:27,519
+doing right the penalty term when our
+
+675
+00:36:25,039 --> 00:36:31,309
+inputs is already multiplied by our is
+
+676
+00:36:27,519 --> 00:36:36,039
+saying penalize things where we're
+
+677
+00:36:31,309 --> 00:36:39,578
+burying it from our naive Bayes prior
+
+678
+00:36:36,039 --> 00:36:39,579
+can you pass it
+
+679
+00:36:40,699 --> 00:36:46,069
+why multiply only with our not constant
+
+680
+00:36:44,150 --> 00:36:47,090
+like a square or something later when
+
+681
+00:36:46,070 --> 00:36:53,480
+the variance would be much higher
+
+682
+00:36:47,090 --> 00:36:55,850
+deciding because our our prior comes
+
+683
+00:36:53,480 --> 00:36:57,530
+from an actual theoretical model right
+
+684
+00:36:55,849 --> 00:37:00,289
+so I said like I don't like to rely on
+
+685
+00:36:57,530 --> 00:37:03,740
+the theory but I have if I have some
+
+686
+00:37:00,289 --> 00:37:05,989
+theory then you know maybe we should use
+
+687
+00:37:03,739 --> 00:37:07,729
+that as our starting point rather than
+
+688
+00:37:05,989 --> 00:37:10,639
+starting off by assuming everything's
+
+689
+00:37:07,730 --> 00:37:12,380
+equal so our prior said hey we've got
+
+690
+00:37:10,639 --> 00:37:15,799
+this model coordinate phase and the
+
+691
+00:37:12,380 --> 00:37:19,130
+naive Bayes model said if the naive
+
+692
+00:37:15,800 --> 00:37:22,130
+Bayes assumptions were correct then R is
+
+693
+00:37:19,130 --> 00:37:25,910
+the correct coefficient right in this
+
+694
+00:37:22,130 --> 00:37:28,610
+specific formulation that that's why we
+
+695
+00:37:25,909 --> 00:37:36,739
+pick that because our our prior is based
+
+696
+00:37:28,610 --> 00:37:40,730
+on that that theory okay so this is a
+
+697
+00:37:36,739 --> 00:37:44,119
+really interesting insight which I never
+
+698
+00:37:40,730 --> 00:37:46,639
+really see covered which is this idea is
+
+699
+00:37:44,119 --> 00:37:49,909
+that we can use these like you know
+
+700
+00:37:46,639 --> 00:37:52,009
+traditional machine learning techniques
+
+701
+00:37:49,909 --> 00:37:58,009
+we can imbue them with this kind of
+
+702
+00:37:52,010 --> 00:38:00,160
+Bayesian sense by by starting out you
+
+703
+00:37:58,010 --> 00:38:04,010
+know incorporating our theoretical
+
+704
+00:38:00,159 --> 00:38:06,670
+expectations into the data that we give
+
+705
+00:38:04,010 --> 00:38:09,860
+our model right and when we do so that
+
+706
+00:38:06,670 --> 00:38:12,349
+then means we don't have to regularize
+
+707
+00:38:09,860 --> 00:38:18,079
+as much and that's good right because if
+
+708
+00:38:12,349 --> 00:38:23,739
+we regularize a lot let's try it let's
+
+709
+00:38:18,079 --> 00:38:23,739
+go back to you know here's our
+
+710
+00:38:28,949 --> 00:38:33,730
+remember the the way they do it in the
+
+711
+00:38:31,719 --> 00:38:36,629
+eschaton logistic regression is this is
+
+712
+00:38:33,730 --> 00:38:41,338
+the reciprocal of the amount of
+
+713
+00:38:36,630 --> 00:38:44,410
+vectorization penalty so will kind of
+
+714
+00:38:41,338 --> 00:38:51,088
+add lots of regularization by making a
+
+715
+00:38:44,409 --> 00:38:53,529
+small so that like really hurts
+
+716
+00:38:51,088 --> 00:38:57,639
+that really hurts our accuracy because
+
+717
+00:38:53,530 --> 00:38:59,140
+now it's trying really hard to get those
+
+718
+00:38:57,639 --> 00:39:02,078
+weights down the loss function is
+
+719
+00:38:59,139 --> 00:39:03,940
+overwhelmed by the need to reduce the
+
+720
+00:39:02,079 --> 00:39:06,700
+weights and the need to make it
+
+721
+00:39:03,940 --> 00:39:12,970
+predictive is kind of now seen as
+
+722
+00:39:06,699 --> 00:39:14,618
+totally unimportant right so so by kind
+
+723
+00:39:12,969 --> 00:39:17,199
+of starting out and saying you know what
+
+724
+00:39:14,619 --> 00:39:22,030
+don't push the weights down so that you
+
+725
+00:39:17,199 --> 00:39:24,460
+end up ignoring the the terms but
+
+726
+00:39:22,030 --> 00:39:26,190
+instead push them down so that you try
+
+727
+00:39:24,460 --> 00:39:29,409
+to get rid of you know ignore
+
+728
+00:39:26,190 --> 00:39:38,010
+differences from our expectation based
+
+729
+00:39:29,409 --> 00:39:43,139
+on the naive Bayes formulation so that
+
+730
+00:39:38,010 --> 00:39:46,150
+ends up giving us a very nice result
+
+731
+00:39:43,139 --> 00:39:48,039
+which actually was originally this this
+
+732
+00:39:46,150 --> 00:39:51,160
+technique was originally presented I
+
+733
+00:39:48,039 --> 00:39:52,989
+think about 2012 Chris Manning who's a
+
+734
+00:39:51,159 --> 00:39:56,170
+terrific NLP researcher up at Stanford
+
+735
+00:39:52,989 --> 00:39:57,608
+and CETA Wang who I don't know but I
+
+736
+00:39:56,170 --> 00:40:00,818
+assume is awesome because his paper is
+
+737
+00:39:57,608 --> 00:40:05,500
+awesome they basically came up with this
+
+738
+00:40:00,818 --> 00:40:08,588
+with this idea and what they did was
+
+739
+00:40:05,500 --> 00:40:11,469
+they compared it to a number of other
+
+740
+00:40:08,588 --> 00:40:12,940
+approaches on a number of other data
+
+741
+00:40:11,469 --> 00:40:15,399
+sets so one of the things they tried is
+
+742
+00:40:12,940 --> 00:40:18,220
+this one is the IMDB data set that and
+
+743
+00:40:15,400 --> 00:40:21,660
+so here's naive Bayes SVM on diagrams
+
+744
+00:40:18,219 --> 00:40:24,608
+and as you can see this approach
+
+745
+00:40:21,659 --> 00:40:26,588
+outperformed the other linear based
+
+746
+00:40:24,608 --> 00:40:31,539
+approaches that they looked at and also
+
+747
+00:40:26,588 --> 00:40:33,190
+some restricted Boltzmann machine kind
+
+748
+00:40:31,539 --> 00:40:36,068
+of neural net based approaches they
+
+749
+00:40:33,190 --> 00:40:37,599
+looked at now nowadays there are better
+
+750
+00:40:36,068 --> 00:40:39,009
+ways there are you know there are better
+
+751
+00:40:37,599 --> 00:40:40,369
+ways to do this and in fact in the deep
+
+752
+00:40:39,010 --> 00:40:41,990
+learning course we showed
+
+753
+00:40:40,369 --> 00:40:44,660
+new state-of-the-art result that we just
+
+754
+00:40:41,989 --> 00:40:48,439
+developed at first a a that gets well
+
+755
+00:40:44,659 --> 00:40:49,940
+over ninety four percent but still you
+
+756
+00:40:48,440 --> 00:40:52,278
+know like particularly for a linear
+
+757
+00:40:49,940 --> 00:40:54,108
+technique that's easy fast and intuitive
+
+758
+00:40:52,278 --> 00:40:56,659
+this is pretty good and you'll notice
+
+759
+00:40:54,108 --> 00:40:58,788
+when they when they did this they only
+
+760
+00:40:56,659 --> 00:41:00,618
+used by grams and I assume that's
+
+761
+00:40:58,789 --> 00:41:03,170
+because they I looked at their code and
+
+762
+00:41:00,619 --> 00:41:05,480
+it was kind of pretty slow and ugly you
+
+763
+00:41:03,170 --> 00:41:07,759
+know I figured out a way to optimize it
+
+764
+00:41:05,480 --> 00:41:11,960
+a lot more as you saw and so we were
+
+765
+00:41:07,759 --> 00:41:13,278
+able to use here try grams and so we get
+
+766
+00:41:11,960 --> 00:41:14,960
+quite a lot better so we've got ninety
+
+767
+00:41:13,278 --> 00:41:16,309
+one point eight versus a ninety one
+
+768
+00:41:14,960 --> 00:41:19,400
+point two but other than that it's
+
+769
+00:41:16,309 --> 00:41:21,619
+identical also I mean they used a
+
+770
+00:41:19,400 --> 00:41:24,410
+support vector machine which is almost
+
+771
+00:41:21,619 --> 00:41:28,430
+identical to a logistic regression in
+
+772
+00:41:24,409 --> 00:41:31,219
+this case so there's some minor
+
+773
+00:41:28,429 --> 00:41:34,278
+differences right so I think that's a
+
+774
+00:41:31,219 --> 00:41:38,239
+pretty cool result and you know I will
+
+775
+00:41:34,278 --> 00:41:42,818
+mention you know what you get to see
+
+776
+00:41:38,239 --> 00:41:45,528
+here in class is the result of like many
+
+777
+00:41:42,818 --> 00:41:47,748
+weeks and often many months of research
+
+778
+00:41:45,528 --> 00:41:50,119
+that I do and so I don't want you to
+
+779
+00:41:47,748 --> 00:41:52,689
+think like this stuff is obvious it's
+
+780
+00:41:50,119 --> 00:41:55,640
+not at all like reading this paper
+
+781
+00:41:52,690 --> 00:41:59,088
+there's no description in the paper of
+
+782
+00:41:55,639 --> 00:42:01,460
+like why they use this model how it's
+
+783
+00:41:59,088 --> 00:42:03,858
+different why they thought it works you
+
+784
+00:42:01,460 --> 00:42:05,720
+know it took me a week or two to even
+
+785
+00:42:03,858 --> 00:42:07,369
+realize that it's kind of like
+
+786
+00:42:05,719 --> 00:42:10,189
+mathematically equivalent to a normal
+
+787
+00:42:07,369 --> 00:42:11,720
+logistic regression and then a few more
+
+788
+00:42:10,190 --> 00:42:15,230
+weeks to realize that the difference is
+
+789
+00:42:11,719 --> 00:42:18,018
+actually in the regularization you know
+
+790
+00:42:15,230 --> 00:42:19,789
+like this is kind of like machine
+
+791
+00:42:18,018 --> 00:42:21,649
+learning as I'm sure you've noticed from
+
+792
+00:42:19,789 --> 00:42:23,720
+the Carroll competitions you enter you
+
+793
+00:42:21,650 --> 00:42:27,079
+know like you come up with a thousand
+
+794
+00:42:23,719 --> 00:42:28,159
+good ideas 999 of them no matter how
+
+795
+00:42:27,079 --> 00:42:29,509
+confident you are they're going to be
+
+796
+00:42:28,159 --> 00:42:31,940
+great they always turn out to be
+
+797
+00:42:29,509 --> 00:42:34,998
+you know and then finally after four
+
+798
+00:42:31,940 --> 00:42:37,190
+weeks one of them finally works and kind
+
+799
+00:42:34,998 --> 00:42:39,768
+of gives you the enthusiasm to spend
+
+800
+00:42:37,190 --> 00:42:43,130
+another four weeks of misery and
+
+801
+00:42:39,768 --> 00:42:49,118
+frustration this is the norm right and
+
+802
+00:42:43,130 --> 00:42:51,259
+and like for sure that the the best
+
+803
+00:42:49,119 --> 00:42:53,749
+practitioners I know in machine learning
+
+804
+00:42:51,259 --> 00:42:54,260
+all share one particular trait in common
+
+805
+00:42:53,748 --> 00:42:56,809
+which
+
+806
+00:42:54,260 --> 00:42:59,210
+they're very very tenacious you know
+
+807
+00:42:56,809 --> 00:43:01,880
+also known as stubborn and bloody-minded
+
+808
+00:42:59,210 --> 00:43:06,170
+right which is definitely a reputation I
+
+809
+00:43:01,880 --> 00:43:08,090
+seem to have probably fare along with
+
+810
+00:43:06,170 --> 00:43:10,400
+another thing which is that they're all
+
+811
+00:43:08,090 --> 00:43:12,170
+very good coders you know they're very
+
+812
+00:43:10,400 --> 00:43:17,300
+good at turning their ideas into new
+
+813
+00:43:12,170 --> 00:43:19,159
+code so yeah so you know this was like a
+
+814
+00:43:17,300 --> 00:43:21,380
+really interesting experience for me
+
+815
+00:43:19,159 --> 00:43:24,789
+working through this a few months ago to
+
+816
+00:43:21,380 --> 00:43:28,369
+try and like figure out how to at least
+
+817
+00:43:24,789 --> 00:43:29,420
+you know how to explain why this at
+
+818
+00:43:28,369 --> 00:43:31,759
+there at the time kind of
+
+819
+00:43:29,420 --> 00:43:33,500
+state-of-the-art result exists and so
+
+820
+00:43:31,760 --> 00:43:35,710
+once I figured that out I was actually
+
+821
+00:43:33,500 --> 00:43:38,900
+able to build on top of it and make it
+
+822
+00:43:35,710 --> 00:43:41,539
+quite a bit better and I'll show you
+
+823
+00:43:38,900 --> 00:43:44,599
+what I did and this is where it was very
+
+824
+00:43:41,539 --> 00:43:47,719
+very handy to have hi torch at my
+
+825
+00:43:44,599 --> 00:43:49,909
+disposal because I was able to kind of
+
+826
+00:43:47,719 --> 00:43:52,279
+create something that was customized
+
+827
+00:43:49,909 --> 00:43:56,629
+just the way that I want it to be and
+
+828
+00:43:52,280 --> 00:43:58,880
+also very fast by using the GPU so
+
+829
+00:43:56,630 --> 00:44:02,809
+here's the kind of fast AI version of
+
+830
+00:43:58,880 --> 00:44:06,829
+the NBS vm actually my friend Steven
+
+831
+00:44:02,809 --> 00:44:10,400
+marady who's a terrific researcher in
+
+832
+00:44:06,829 --> 00:44:12,349
+NLP has christened this the NBS VM plus
+
+833
+00:44:10,400 --> 00:44:14,480
+plus which I thought was lovely so
+
+834
+00:44:12,349 --> 00:44:16,429
+here's that even though there is no SVM
+
+835
+00:44:14,480 --> 00:44:20,059
+it's a logistic regression but as I said
+
+836
+00:44:16,429 --> 00:44:22,730
+nearly exactly the same thing so let me
+
+837
+00:44:20,059 --> 00:44:24,230
+first of all show you like the code so
+
+838
+00:44:22,730 --> 00:44:25,760
+this is like we try to like once I
+
+839
+00:44:24,230 --> 00:44:27,230
+figure out like okay this is like the
+
+840
+00:44:25,760 --> 00:44:29,240
+best way I can come up with to do a
+
+841
+00:44:27,230 --> 00:44:31,309
+linear bag of words model I kind of
+
+842
+00:44:29,239 --> 00:44:32,869
+embed it into fast AI so you can just
+
+843
+00:44:31,309 --> 00:44:34,900
+write a couple of lines of code so the
+
+844
+00:44:32,869 --> 00:44:38,089
+code is basically hey I want to create a
+
+845
+00:44:34,900 --> 00:44:40,180
+data class for text classification I
+
+846
+00:44:38,090 --> 00:44:43,789
+want to create it from a bag of words
+
+847
+00:44:40,179 --> 00:44:46,940
+all right here is my bag of words here
+
+848
+00:44:43,789 --> 00:44:52,369
+are my labels here is the same thing for
+
+849
+00:44:46,940 --> 00:44:55,429
+the validation set and use up to 2,000
+
+850
+00:44:52,369 --> 00:45:02,049
+unique words per review right which is
+
+851
+00:44:55,429 --> 00:45:05,239
+plenty so then from that model data
+
+852
+00:45:02,050 --> 00:45:07,519
+construct a learner which is kind of the
+
+853
+00:45:05,239 --> 00:45:11,329
+faster I generalization of a moral
+
+854
+00:45:07,519 --> 00:45:16,130
+which is based on a dot product of naive
+
+855
+00:45:11,329 --> 00:45:19,579
+Bayes and then fit that model and then
+
+856
+00:45:16,130 --> 00:45:21,920
+do a few epochs and after five epochs I
+
+857
+00:45:19,579 --> 00:45:24,679
+was already up to ninety two point two
+
+858
+00:45:21,920 --> 00:45:28,220
+okay so this is now like you know
+
+859
+00:45:24,679 --> 00:45:32,539
+getting quite well above this this
+
+860
+00:45:28,219 --> 00:45:42,609
+linear based one so let me show you the
+
+861
+00:45:32,539 --> 00:45:46,699
+code for for that so the code is like
+
+862
+00:45:42,610 --> 00:45:50,030
+horrifyingly short that's it right and
+
+863
+00:45:46,699 --> 00:45:52,129
+it'll also look on the whole extremely
+
+864
+00:45:50,030 --> 00:45:54,830
+familiar right there's if there's a few
+
+865
+00:45:52,130 --> 00:45:56,240
+tweaks here pretend this thing that says
+
+866
+00:45:54,829 --> 00:45:57,949
+embedding pretend it actually says
+
+867
+00:45:56,239 --> 00:45:59,179
+linear okay I'm going to show you
+
+868
+00:45:57,949 --> 00:46:00,710
+embedding in a moment pretend it says
+
+869
+00:45:59,179 --> 00:46:02,809
+linear so we've got basically a linear
+
+870
+00:46:00,710 --> 00:46:04,880
+layer where the number of features
+
+871
+00:46:02,809 --> 00:46:08,179
+coming with the number of features as
+
+872
+00:46:04,880 --> 00:46:11,599
+the rows and remember SK learn features
+
+873
+00:46:08,179 --> 00:46:14,079
+means number of words basically and then
+
+874
+00:46:11,599 --> 00:46:16,969
+for each row we're going to create one
+
+875
+00:46:14,079 --> 00:46:19,940
+weight which makes sense right for like
+
+876
+00:46:16,969 --> 00:46:21,889
+a logistic regression every every sort
+
+877
+00:46:19,940 --> 00:46:26,510
+of for each row for each word each word
+
+878
+00:46:21,889 --> 00:46:30,019
+has one weight and then we're going to
+
+879
+00:46:26,510 --> 00:46:35,000
+be multiplying it by the our values so
+
+880
+00:46:30,019 --> 00:46:36,800
+each word we have one our value per
+
+881
+00:46:35,000 --> 00:46:39,289
+class so I actually made this so this
+
+882
+00:46:36,800 --> 00:46:40,820
+can handle like not just positive versus
+
+883
+00:46:39,289 --> 00:46:43,279
+negative but maybe figuring out like
+
+884
+00:46:40,820 --> 00:46:45,260
+which author created this work they're
+
+885
+00:46:43,280 --> 00:46:49,070
+cooking five or six authors whatever
+
+886
+00:46:45,260 --> 00:46:54,350
+right and basically we kind of use those
+
+887
+00:46:49,070 --> 00:46:56,170
+linear layers to to get the the value of
+
+888
+00:46:54,349 --> 00:47:01,659
+the weight and the value of the R and
+
+889
+00:46:56,170 --> 00:47:04,519
+then we take the weight times the R and
+
+890
+00:47:01,659 --> 00:47:08,329
+then sum it up and so that's just a dot
+
+891
+00:47:04,519 --> 00:47:09,650
+product okay so just just a simple dot
+
+892
+00:47:08,329 --> 00:47:12,710
+product just as we would do for any
+
+893
+00:47:09,650 --> 00:47:14,380
+logistic regression and then do the
+
+894
+00:47:12,710 --> 00:47:20,920
+softmax
+
+895
+00:47:14,380 --> 00:47:22,990
+so the very minor tweak the
+
+896
+00:47:20,920 --> 00:47:25,300
+we add to get the the better result is
+
+897
+00:47:22,989 --> 00:47:28,329
+this the main one really is this year
+
+898
+00:47:25,300 --> 00:47:31,360
+this plus something right and the thing
+
+899
+00:47:28,329 --> 00:47:33,250
+I'm adding is it's a parameter but I
+
+900
+00:47:31,360 --> 00:47:36,539
+pretty much always use this this version
+
+901
+00:47:33,250 --> 00:47:40,630
+of this value 2.4 so what does this do
+
+902
+00:47:36,539 --> 00:47:43,869
+so what this is doing is it's again kind
+
+903
+00:47:40,630 --> 00:47:51,970
+of changing the prior right so if you
+
+904
+00:47:43,869 --> 00:47:54,250
+think about it even once we used this R
+
+905
+00:47:51,969 --> 00:47:57,459
+times the term document matrix as their
+
+906
+00:47:54,250 --> 00:48:00,039
+independent variables you really want to
+
+907
+00:47:57,460 --> 00:48:02,199
+start with a question okay the penalty
+
+908
+00:48:00,039 --> 00:48:07,239
+terms are still pushing W down to 0
+
+909
+00:48:02,199 --> 00:48:09,909
+right so what did it mean for W to be 0
+
+910
+00:48:07,239 --> 00:48:16,269
+all right so what would it mean if we
+
+911
+00:48:09,909 --> 00:48:18,250
+had you know coefficient 0 0 0 0 0 all
+
+912
+00:48:16,269 --> 00:48:21,639
+right so what that would do when we
+
+913
+00:48:18,250 --> 00:48:25,329
+go.okay this matrix times these
+
+914
+00:48:21,639 --> 00:48:28,599
+coefficients we still get 0 right so a
+
+915
+00:48:25,329 --> 00:48:29,920
+weight of 0 still ends up saying I have
+
+916
+00:48:28,599 --> 00:48:33,519
+no opinion on whether this thing is
+
+917
+00:48:29,920 --> 00:48:39,130
+positive or negative on the other hand
+
+918
+00:48:33,519 --> 00:48:42,130
+if they were all one right then it's
+
+919
+00:48:39,130 --> 00:48:45,250
+basically says my opinion is that the
+
+920
+00:48:42,130 --> 00:48:50,140
+naive Bayes coefficients are exactly
+
+921
+00:48:45,250 --> 00:48:56,469
+right okay and so the idea is that I
+
+922
+00:48:50,139 --> 00:48:58,779
+said 0 is almost certainly not the right
+
+923
+00:48:56,469 --> 00:49:00,519
+prior right we shouldn't really be
+
+924
+00:48:58,780 --> 00:49:02,910
+saying if there's no coefficient it
+
+925
+00:49:00,519 --> 00:49:06,190
+means ignore the naive Bayes coefficient
+
+926
+00:49:02,909 --> 00:49:08,469
+one is probably too high right because
+
+927
+00:49:06,190 --> 00:49:10,570
+we actually think that naive Bayes is
+
+928
+00:49:08,469 --> 00:49:12,459
+only kind of part of the answer all
+
+929
+00:49:10,570 --> 00:49:14,620
+right and so I played around with a few
+
+930
+00:49:12,460 --> 00:49:21,449
+different data sets where I basically
+
+931
+00:49:14,619 --> 00:49:26,199
+said take the weights and add to them
+
+932
+00:49:21,449 --> 00:49:29,559
+some constant right and so 0 would
+
+933
+00:49:26,199 --> 00:49:33,129
+become in this case 0.4
+
+934
+00:49:29,559 --> 00:49:35,068
+all right so in other words the the
+
+935
+00:49:33,130 --> 00:49:38,260
+regularization
+
+936
+00:49:35,068 --> 00:49:41,199
+penalty is pushing the weights not
+
+937
+00:49:38,260 --> 00:49:43,810
+towards zero but towards this value
+
+938
+00:49:41,199 --> 00:49:46,629
+right and I found that across a number
+
+939
+00:49:43,809 --> 00:49:48,549
+of data sets zero point four works
+
+940
+00:49:46,630 --> 00:49:51,099
+pretty well but and it's pretty
+
+941
+00:49:48,550 --> 00:49:54,609
+resilient alright so again this is the
+
+942
+00:49:51,099 --> 00:49:56,740
+basic idea is to kind of like get the
+
+943
+00:49:54,608 --> 00:49:59,769
+best of both worlds you know where where
+
+944
+00:49:56,739 --> 00:50:04,239
+we're learning from the data using a
+
+945
+00:49:59,769 --> 00:50:07,420
+simple model but we're incorporating you
+
+946
+00:50:04,239 --> 00:50:09,818
+know our prior knowledge as best as we
+
+947
+00:50:07,420 --> 00:50:13,119
+can and so it turns out when you say
+
+948
+00:50:09,818 --> 00:50:16,420
+okay let's let's tell it you know as
+
+949
+00:50:13,119 --> 00:50:18,190
+white matrix of zeros actually means
+
+950
+00:50:16,420 --> 00:50:23,800
+that you should use about you know about
+
+951
+00:50:18,190 --> 00:50:25,929
+half of the values that ends up that
+
+952
+00:50:23,800 --> 00:50:32,260
+ends up working better than the prior
+
+953
+00:50:25,929 --> 00:50:35,980
+that the weights should all be 0 yes is
+
+954
+00:50:32,260 --> 00:50:38,859
+the the weights the W is it that the
+
+955
+00:50:35,980 --> 00:50:43,230
+point for the amount of regression
+
+956
+00:50:38,858 --> 00:50:46,119
+required the amount of so we have this
+
+957
+00:50:43,230 --> 00:50:48,550
+you know bad things we have the term
+
+958
+00:50:46,119 --> 00:50:51,160
+where we reduce the amount of error the
+
+959
+00:50:48,550 --> 00:50:53,769
+prediction error rmse plus we have the
+
+960
+00:50:51,159 --> 00:50:55,299
+regularization and is it W to the point
+
+961
+00:50:53,769 --> 00:50:59,920
+for denote the amount of visualization
+
+962
+00:50:55,300 --> 00:51:02,950
+required so W are the weights right so
+
+963
+00:50:59,920 --> 00:51:05,170
+this is calculating our activations okay
+
+964
+00:51:02,949 --> 00:51:11,549
+so we calculate our activations as being
+
+965
+00:51:05,170 --> 00:51:17,430
+equal to the weights times there are
+
+966
+00:51:11,550 --> 00:51:17,430
+some right so that's just our normal
+
+967
+00:51:18,960 --> 00:51:28,119
+normal linear function right so so the
+
+968
+00:51:23,889 --> 00:51:31,259
+the thing which is being penalized is my
+
+969
+00:51:28,119 --> 00:51:33,789
+weight matrix that's what gets penalized
+
+970
+00:51:31,260 --> 00:51:38,050
+so by saying hey you know what don't
+
+971
+00:51:33,789 --> 00:51:39,009
+just use W use W plus 0.4 so that's not
+
+972
+00:51:38,050 --> 00:51:42,400
+being penalized
+
+973
+00:51:39,010 --> 00:51:45,599
+it's not part of the weight matrix okay
+
+974
+00:51:42,400 --> 00:51:48,170
+so effectively the weight matrix gets
+
+975
+00:51:45,599 --> 00:51:54,080
+point four for free
+
+976
+00:51:48,170 --> 00:51:58,059
+yeah so by doing this even after
+
+977
+00:51:54,079 --> 00:52:00,710
+regularization then every I'm sorry
+
+978
+00:51:58,059 --> 00:52:03,199
+every feature is getting some form of
+
+979
+00:52:00,710 --> 00:52:05,690
+fate some form of weight or something
+
+980
+00:52:03,199 --> 00:52:07,789
+um not necessarily because it could end
+
+981
+00:52:05,690 --> 00:52:11,740
+up choosing a coefficient of negative
+
+982
+00:52:07,789 --> 00:52:13,369
+0.4 for a feature and so that would say
+
+983
+00:52:11,739 --> 00:52:14,959
+you know what
+
+984
+00:52:13,369 --> 00:52:16,429
+even though though naive Bayes says it's
+
+985
+00:52:14,960 --> 00:52:18,470
+the AH should be whatever for this
+
+986
+00:52:16,429 --> 00:52:27,199
+feature I think you should totally
+
+987
+00:52:18,469 --> 00:52:32,179
+ignore it yeah great questions okay we
+
+988
+00:52:27,199 --> 00:52:35,239
+started at 20 past - okay
+
+989
+00:52:32,179 --> 00:52:39,819
+let's take a break for about eight
+
+990
+00:52:35,239 --> 00:52:39,819
+minutes or so and start back about 25 -
+
+991
+00:52:44,110 --> 00:52:54,849
+okay so a couple of questions at the
+
+992
+00:52:48,409 --> 00:52:57,679
+break the first was just for a kind of
+
+993
+00:52:54,849 --> 00:53:02,299
+reminder or a bit of a summary as to
+
+994
+00:52:57,679 --> 00:53:10,940
+what's going on here right and so here
+
+995
+00:53:02,300 --> 00:53:15,140
+we have W plus I'm writing it out yeah
+
+996
+00:53:10,940 --> 00:53:21,079
+plus adjusted weight of weight
+
+997
+00:53:15,139 --> 00:53:27,230
+adjustment times right so so normally
+
+998
+00:53:21,079 --> 00:53:28,639
+what we were doing so normally what we
+
+999
+00:53:27,230 --> 00:53:33,199
+are doing is saying hey logistic
+
+1000
+00:53:28,639 --> 00:53:35,719
+regression is basically WX right I'm
+
+1001
+00:53:33,199 --> 00:53:43,119
+going to ignore the bias okay and then
+
+1002
+00:53:35,719 --> 00:53:46,089
+we were changing it to be W dot times X
+
+1003
+00:53:43,119 --> 00:53:53,210
+right and then we were kind of saying
+
+1004
+00:53:46,090 --> 00:53:54,950
+let's do that bit first right although
+
+1005
+00:53:53,210 --> 00:53:57,559
+in this particular case actually now I
+
+1006
+00:53:54,949 --> 00:53:58,639
+look at it I'm doing it in this code it
+
+1007
+00:53:57,559 --> 00:54:01,179
+doesn't matter obviously in this code
+
+1008
+00:53:58,639 --> 00:54:01,179
+I'm actually doing
+
+1009
+00:54:04,389 --> 00:54:20,900
+and during this bit first and so so this
+
+1010
+00:54:17,809 --> 00:54:22,429
+thing here actually I call it W which is
+
+1011
+00:54:20,900 --> 00:54:29,809
+probably pretty bad it's actually W
+
+1012
+00:54:22,429 --> 00:54:35,230
+times X right so so instead of W times X
+
+1013
+00:54:29,809 --> 00:54:41,750
+times R I've got W times X plus a
+
+1014
+00:54:35,230 --> 00:54:50,119
+constant times R right so the key idea
+
+1015
+00:54:41,750 --> 00:54:52,929
+here is that regularization can't draw
+
+1016
+00:54:50,119 --> 00:54:58,069
+in yellow that's fair enough
+
+1017
+00:54:52,929 --> 00:55:01,669
+regularization wants the weights to be 0
+
+1018
+00:54:58,070 --> 00:55:07,880
+right because we're trying it's trying
+
+1019
+00:55:01,670 --> 00:55:10,880
+to reduce that okay and so what we're
+
+1020
+00:55:07,880 --> 00:55:12,710
+saying is like ok we want to push the
+
+1021
+00:55:10,880 --> 00:55:15,710
+weights towards 0 because we're saying
+
+1022
+00:55:12,710 --> 00:55:18,920
+like that's our like default starting
+
+1023
+00:55:15,710 --> 00:55:21,289
+point expectation is the weights 0 and
+
+1024
+00:55:18,920 --> 00:55:24,260
+so we want to be in a situation where if
+
+1025
+00:55:21,289 --> 00:55:28,460
+the weights are 0 then we have a model
+
+1026
+00:55:24,260 --> 00:55:34,100
+that like makes theoretical or intuitive
+
+1027
+00:55:28,460 --> 00:55:36,050
+sense to us right this model if the
+
+1028
+00:55:34,099 --> 00:55:38,630
+weights are 0 doesn't make intuitive
+
+1029
+00:55:36,050 --> 00:55:41,180
+sense to us right because it's saying
+
+1030
+00:55:38,630 --> 00:55:43,000
+hey multiply everything by 0 gets rid of
+
+1031
+00:55:41,179 --> 00:55:45,169
+all of that and gets rid of that as well
+
+1032
+00:55:43,000 --> 00:55:47,840
+and we were actually saying no we
+
+1033
+00:55:45,170 --> 00:55:53,480
+actually think our R is useful we
+
+1034
+00:55:47,840 --> 00:55:56,329
+actually want to keep that right so so
+
+1035
+00:55:53,480 --> 00:56:02,659
+instead we say you know what let's take
+
+1036
+00:55:56,329 --> 00:56:05,449
+that piece here and add 0.4 to it all
+
+1037
+00:56:02,659 --> 00:56:08,089
+right so now if the regularizer is
+
+1038
+00:56:05,449 --> 00:56:11,239
+pushing the weights towards 0 then it's
+
+1039
+00:56:08,090 --> 00:56:12,720
+pushing the value of this sum towards
+
+1040
+00:56:11,239 --> 00:56:15,449
+0.4
+
+1041
+00:56:12,719 --> 00:56:20,098
+right and so therefore it's pushing a
+
+1042
+00:56:15,449 --> 00:56:23,789
+whole model to 0.4 times R right so in
+
+1043
+00:56:20,099 --> 00:56:25,619
+other words our kind of default starting
+
+1044
+00:56:23,789 --> 00:56:27,389
+point if you've regularize to all the
+
+1045
+00:56:25,619 --> 00:56:29,910
+weights out altogether is to say yeah
+
+1046
+00:56:27,389 --> 00:56:33,819
+you know let's use a bit of our that's
+
+1047
+00:56:29,909 --> 00:56:35,088
+probably a good idea okay
+
+1048
+00:56:33,820 --> 00:56:37,740
+[Music]
+
+1049
+00:56:35,088 --> 00:56:40,730
+so that's the idea right that's the idea
+
+1050
+00:56:37,739 --> 00:56:43,799
+is basically you know what happens when
+
+1051
+00:56:40,730 --> 00:56:46,260
+when that's zero but you and you want
+
+1052
+00:56:43,800 --> 00:56:50,250
+that to like be something sensible
+
+1053
+00:56:46,260 --> 00:56:51,589
+because otherwise regularizing the
+
+1054
+00:56:50,250 --> 00:56:55,679
+weights to move in that direction
+
+1055
+00:56:51,588 --> 00:57:06,690
+wouldn't be such a good idea okay second
+
+1056
+00:56:55,679 --> 00:57:10,379
+question was about engrams so the N in
+
+1057
+00:57:06,690 --> 00:57:13,679
+Engram can be uni by try whatever one
+
+1058
+00:57:10,380 --> 00:57:19,710
+two three whatever grounds so so the
+
+1059
+00:57:13,679 --> 00:57:25,199
+this movie is good right it has four
+
+1060
+00:57:19,710 --> 00:57:30,389
+unique grams this movie is good it has
+
+1061
+00:57:25,199 --> 00:57:35,689
+three by grams this movie movie is is
+
+1062
+00:57:30,389 --> 00:57:44,929
+good it has two trigrams this movie is
+
+1063
+00:57:35,690 --> 00:57:44,929
+movie is good okay doc can you pass it
+
+1064
+00:57:45,380 --> 00:57:50,400
+do you mind go back to the double ad
+
+1065
+00:57:48,539 --> 00:57:53,279
+change that zero point four stuff yeah
+
+1066
+00:57:50,400 --> 00:57:55,380
+so I was wondering if this adjustment
+
+1067
+00:57:53,280 --> 00:57:58,950
+will harm the predictability of the
+
+1068
+00:57:55,380 --> 00:58:01,530
+model because think of extreme extreme
+
+1069
+00:57:58,949 --> 00:58:04,858
+case if it's not zero point four if it's
+
+1070
+00:58:01,530 --> 00:58:08,040
+four thousand and or black coefficients
+
+1071
+00:58:04,858 --> 00:58:11,578
+will be like right so so exactly so so
+
+1072
+00:58:08,039 --> 00:58:13,858
+our prior needs to make sense and so our
+
+1073
+00:58:11,579 --> 00:58:16,769
+prior here and you know this is why it's
+
+1074
+00:58:13,858 --> 00:58:18,509
+called dot prod NB is there prior is
+
+1075
+00:58:16,769 --> 00:58:22,050
+that this is something where we think
+
+1076
+00:58:18,510 --> 00:58:26,470
+naive Bayes is a good prior right and so
+
+1077
+00:58:22,050 --> 00:58:31,720
+naive Bayes says that our equals
+
+1078
+00:58:26,469 --> 00:58:35,379
+p over that's not how you write P P over
+
+1079
+00:58:31,719 --> 00:58:37,629
+Q I have not had much sleep P over Q is
+
+1080
+00:58:35,380 --> 00:58:42,420
+a good prayer and not only do we think
+
+1081
+00:58:37,630 --> 00:58:48,130
+it's a good prior that we think our
+
+1082
+00:58:42,420 --> 00:58:49,990
+times X plus B is a good model that's
+
+1083
+00:58:48,130 --> 00:58:53,230
+that's the naive Bayes model so in other
+
+1084
+00:58:49,989 --> 00:58:57,009
+words we expect that you know a
+
+1085
+00:58:53,230 --> 00:59:00,400
+coefficient of one is a good coefficient
+
+1086
+00:58:57,010 --> 00:59:02,790
+not not 4,000 yeah so we think
+
+1087
+00:59:00,400 --> 00:59:05,980
+specifically we don't think we think 0
+
+1088
+00:59:02,789 --> 00:59:09,519
+is probably not a good coefficient all
+
+1089
+00:59:05,980 --> 00:59:11,079
+right but we also think that maybe the
+
+1090
+00:59:09,519 --> 00:59:12,099
+naive Bayes version is a little
+
+1091
+00:59:11,079 --> 00:59:14,679
+overconfident
+
+1092
+00:59:12,099 --> 00:59:16,630
+so maybe one's a little high so we're
+
+1093
+00:59:14,679 --> 00:59:19,118
+pretty sure that the right number
+
+1094
+00:59:16,630 --> 00:59:23,550
+assuming that our moral only Bayes model
+
+1095
+00:59:19,119 --> 00:59:27,309
+is appropriate is between 0 &amp; 1
+
+1096
+00:59:23,550 --> 00:59:30,900
+no but what I was thinking is as long as
+
+1097
+00:59:27,309 --> 00:59:32,949
+it's not 0 you are pushing those
+
+1098
+00:59:30,900 --> 00:59:36,880
+coefficients that are supposed to be 0
+
+1099
+00:59:32,949 --> 00:59:40,088
+to something not zero and make the like
+
+1100
+00:59:36,880 --> 00:59:42,849
+high coefficients less distinctive from
+
+1101
+00:59:40,088 --> 00:59:45,130
+0 coefficients well but you see they're
+
+1102
+00:59:42,849 --> 00:59:48,160
+not supposed to be 0 they're supposed to
+
+1103
+00:59:45,130 --> 00:59:50,410
+be are like that's that's what they're
+
+1104
+00:59:48,159 --> 00:59:55,358
+supposed to be they're supposed to be
+
+1105
+00:59:50,409 --> 00:59:57,309
+are right and so and remember this is
+
+1106
+00:59:55,358 --> 00:59:59,409
+inside our forward function so this is
+
+1107
+00:59:57,309 --> 01:00:03,429
+part of what we're taking the gradient
+
+1108
+00:59:59,409 --> 01:00:04,868
+of right so it's basically saying okay
+
+1109
+01:00:03,429 --> 01:00:10,838
+we're still gonna you know you can still
+
+1110
+01:00:04,869 --> 01:00:14,400
+set self W to anything you like but just
+
+1111
+01:00:10,838 --> 01:00:17,679
+the regularizer wants it to be zero and
+
+1112
+01:00:14,400 --> 01:00:19,570
+so all we're saying is okay if if you
+
+1113
+01:00:17,679 --> 01:00:23,789
+want it to be zero then I'll try to make
+
+1114
+01:00:19,570 --> 01:00:26,710
+0 B you know give a sensible answer
+
+1115
+01:00:23,789 --> 01:00:28,869
+that's the basic idea and like yeah
+
+1116
+01:00:26,710 --> 01:00:30,130
+nothing says point fours perfect for
+
+1117
+01:00:28,869 --> 01:00:32,440
+every data set I've tried a few
+
+1118
+01:00:30,130 --> 01:00:33,910
+different data sets and found various
+
+1119
+01:00:32,440 --> 01:00:36,039
+numbers between point three and point
+
+1120
+01:00:33,909 --> 01:00:39,879
+six that are optimal but I've never
+
+1121
+01:00:36,039 --> 01:00:40,119
+found one where point four is less good
+
+1122
+01:00:39,880 --> 01:00:42,190
+than
+
+1123
+01:00:40,119 --> 01:00:44,170
+zero which is not surprising and I've
+
+1124
+01:00:42,190 --> 01:00:46,510
+also never found one where one it's
+
+1125
+01:00:44,170 --> 01:00:47,860
+better right so the idea is like this is
+
+1126
+01:00:46,510 --> 01:00:49,450
+a reasonable default but it's another
+
+1127
+01:00:47,860 --> 01:00:50,860
+parameter you can play with which I kind
+
+1128
+01:00:49,449 --> 01:00:54,699
+of like right it's another thing you
+
+1129
+01:00:50,860 --> 01:00:56,559
+could use grid search or whatever to
+
+1130
+01:00:54,699 --> 01:00:58,539
+figure out from your data set what's
+
+1131
+01:00:56,559 --> 01:01:03,309
+best and you know really the key here
+
+1132
+01:00:58,539 --> 01:01:05,590
+being every model before this one as far
+
+1133
+01:01:03,309 --> 01:01:07,269
+as I know has implicitly assumed it
+
+1134
+01:01:05,590 --> 01:01:09,640
+should be zero because they just they
+
+1135
+01:01:07,269 --> 01:01:10,690
+don't have this parameter right and you
+
+1136
+01:01:09,639 --> 01:01:13,629
+know by the way I've actually got a
+
+1137
+01:01:10,690 --> 01:01:15,369
+second parameter here as well which is
+
+1138
+01:01:13,630 --> 01:01:19,240
+the same thing I do to R is actually
+
+1139
+01:01:15,369 --> 01:01:20,619
+divided by a parameter which I'm not
+
+1140
+01:01:19,239 --> 01:01:22,569
+going to worry too much about it now but
+
+1141
+01:01:20,619 --> 01:01:24,789
+again it's another parameter you can use
+
+1142
+01:01:22,570 --> 01:01:28,570
+to kind of adjust what the nature of the
+
+1143
+01:01:24,789 --> 01:01:31,179
+regularization is you know and I mean in
+
+1144
+01:01:28,570 --> 01:01:32,830
+the end I'm a empiricist not a
+
+1145
+01:01:31,179 --> 01:01:33,699
+theoretician you know the I thought this
+
+1146
+01:01:32,829 --> 01:01:35,799
+seemed like a good idea
+
+1147
+01:01:33,699 --> 01:01:37,689
+nearly all of my things that seem like a
+
+1148
+01:01:35,800 --> 01:01:40,360
+good idea turn out to be stupid
+
+1149
+01:01:37,690 --> 01:01:43,059
+this particular one Dave good results
+
+1150
+01:01:40,360 --> 01:01:45,460
+you know on this data set and a few
+
+1151
+01:01:43,059 --> 01:01:48,670
+other ones as well okay could you pass
+
+1152
+01:01:45,460 --> 01:01:51,250
+that newest data yep yeah I'm sure a
+
+1153
+01:01:48,670 --> 01:01:56,289
+little bit confused about the W plus W
+
+1154
+01:01:51,250 --> 01:01:59,170
+is it huh so you mentioned that we do W
+
+1155
+01:01:56,289 --> 01:02:01,840
+plus W adjusted so that the coefficients
+
+1156
+01:01:59,170 --> 01:02:04,240
+don't get set to zero that we place some
+
+1157
+01:02:01,840 --> 01:02:07,809
+importance on the priors but you also
+
+1158
+01:02:04,239 --> 01:02:09,849
+said that the the effect of learning can
+
+1159
+01:02:07,809 --> 01:02:13,719
+be that W get set to a negative value
+
+1160
+01:02:09,849 --> 01:02:16,299
+which is mentally W plus W right zero so
+
+1161
+01:02:13,719 --> 01:02:19,089
+if if we are we are allowing the
+
+1162
+01:02:16,300 --> 01:02:24,580
+learning process to indeed set the
+
+1163
+01:02:19,090 --> 01:02:26,590
+priors to zero so why is that in any way
+
+1164
+01:02:24,579 --> 01:02:27,789
+different from just having W because
+
+1165
+01:02:26,590 --> 01:02:29,410
+yeah great question because of
+
+1166
+01:02:27,789 --> 01:02:35,650
+regularization because we're penalizing
+
+1167
+01:02:29,409 --> 01:02:37,659
+it by that right so in other words we're
+
+1168
+01:02:35,650 --> 01:02:39,430
+saying you know what if you're if the
+
+1169
+01:02:37,659 --> 01:02:42,429
+best thing to do is to ignore the value
+
+1170
+01:02:39,429 --> 01:02:46,419
+of R that'll cost you you're going to
+
+1171
+01:02:42,429 --> 01:02:49,719
+have to set W to a negative number right
+
+1172
+01:02:46,420 --> 01:02:51,909
+so only do that if that's fairly a good
+
+1173
+01:02:49,719 --> 01:02:53,980
+idea unless it's clearly a good idea
+
+1174
+01:02:51,909 --> 01:02:57,670
+then you should leave
+
+1175
+01:02:53,980 --> 01:02:59,949
+leave it where it is that that's the
+
+1176
+01:02:57,670 --> 01:03:03,420
+only reason like all of this stuff we've
+
+1177
+01:02:59,949 --> 01:03:06,219
+done today is basically entirely about
+
+1178
+01:03:03,420 --> 01:03:07,480
+you know maximizing the advantage we get
+
+1179
+01:03:06,219 --> 01:03:11,230
+from regularization and saying
+
+1180
+01:03:07,480 --> 01:03:14,289
+regularization pushes us towards some
+
+1181
+01:03:11,230 --> 01:03:15,909
+default assumption and nearly all of the
+
+1182
+01:03:14,289 --> 01:03:18,880
+machine learning literature assumes that
+
+1183
+01:03:15,909 --> 01:03:22,059
+default assumption is everything zero
+
+1184
+01:03:18,880 --> 01:03:23,440
+and I'm saying like it turns out you
+
+1185
+01:03:22,059 --> 01:03:25,690
+know it makes sense theoretically and
+
+1186
+01:03:23,440 --> 01:03:26,980
+turns out empirically that actually you
+
+1187
+01:03:25,690 --> 01:03:29,980
+should decide what your default
+
+1188
+01:03:26,980 --> 01:03:31,840
+assumption is and that'll give you
+
+1189
+01:03:29,980 --> 01:03:35,019
+better results so would it be right to
+
+1190
+01:03:31,840 --> 01:03:37,809
+say that in a way you are putting an
+
+1191
+01:03:35,019 --> 01:03:39,550
+additional hurdle in the along the way
+
+1192
+01:03:37,809 --> 01:03:42,309
+towards getting all coefficients to zero
+
+1193
+01:03:39,550 --> 01:03:44,289
+so it will be able to do that if it is
+
+1194
+01:03:42,309 --> 01:03:46,570
+really worth it yeah exactly so I'd say
+
+1195
+01:03:44,289 --> 01:03:49,659
+like the default herd or without this is
+
+1196
+01:03:46,570 --> 01:03:53,220
+is making a coefficient non zero is the
+
+1197
+01:03:49,659 --> 01:04:04,059
+heck hurdle and now I'm saying no the
+
+1198
+01:03:53,219 --> 01:04:09,099
+coefficient not be equal to 0.40 so this
+
+1199
+01:04:04,059 --> 01:04:11,949
+is some of the W squared in to see some
+
+1200
+01:04:09,099 --> 01:04:14,679
+of into some lambda or C penalty
+
+1201
+01:04:11,949 --> 01:04:16,719
+constant yeah yeah times something yeah
+
+1202
+01:04:14,679 --> 01:04:20,529
+so the beta K should also depend on the
+
+1203
+01:04:16,719 --> 01:04:25,480
+value of C if it is very less like if C
+
+1204
+01:04:20,530 --> 01:04:28,740
+is I say to you - hey yeah so if a is
+
+1205
+01:04:25,480 --> 01:04:31,119
+point one then the wage might not go
+
+1206
+01:04:28,739 --> 01:04:34,449
+towards zero yeah then we might not need
+
+1207
+01:04:31,119 --> 01:04:36,460
+weight decay so well that the whatever
+
+1208
+01:04:34,449 --> 01:04:37,719
+this value I mean if the if the value of
+
+1209
+01:04:36,460 --> 01:04:40,780
+this is zero then there is no
+
+1210
+01:04:37,719 --> 01:04:43,239
+recordation right but if this value is
+
+1211
+01:04:40,780 --> 01:04:46,510
+higher than zero then there is some
+
+1212
+01:04:43,239 --> 01:04:48,069
+penalty right and and presumably we've
+
+1213
+01:04:46,510 --> 01:04:50,320
+set it to non zero because we're
+
+1214
+01:04:48,070 --> 01:04:55,510
+overfitting so he wants some penalty and
+
+1215
+01:04:50,320 --> 01:04:58,090
+so if there is some penalty then then my
+
+1216
+01:04:55,510 --> 01:04:59,980
+assertion is that we should penalize
+
+1217
+01:04:58,090 --> 01:05:02,350
+things that are different to our prior
+
+1218
+01:04:59,980 --> 01:05:06,139
+not that we should penalize things that
+
+1219
+01:05:02,349 --> 01:05:09,909
+are different to zero and
+
+1220
+01:05:06,139 --> 01:05:15,139
+prior is that things should be you know
+
+1221
+01:05:09,909 --> 01:05:18,469
+around about equal to our ok let's move
+
+1222
+01:05:15,139 --> 01:05:26,509
+on thanks for the great questions I want
+
+1223
+01:05:18,469 --> 01:05:28,730
+to talk about embedding I said pretend
+
+1224
+01:05:26,510 --> 01:05:30,170
+it's linear and indeed we can pretend
+
+1225
+01:05:28,730 --> 01:05:32,690
+it's linear let me show you how much we
+
+1226
+01:05:30,170 --> 01:05:37,210
+can pretend it's linear as in n n dot
+
+1227
+01:05:32,690 --> 01:05:41,349
+linear create a linear layer here is our
+
+1228
+01:05:37,210 --> 01:05:43,130
+data matrix alright here are our
+
+1229
+01:05:41,349 --> 01:05:47,510
+coefficients if we're in the R version
+
+1230
+01:05:43,130 --> 01:05:54,700
+here are coefficients are right so if we
+
+1231
+01:05:47,510 --> 01:05:54,700
+were to put those into a column vector
+
+1232
+01:05:55,480 --> 01:06:06,829
+like so right then we could do a matrix
+
+1233
+01:05:59,989 --> 01:06:13,278
+multiply of that by that right and so
+
+1234
+01:06:06,829 --> 01:06:22,548
+we're going to end up with so here's our
+
+1235
+01:06:13,278 --> 01:06:26,539
+matrix here's our vector right so we're
+
+1236
+01:06:22,548 --> 01:06:39,288
+going to end up with 1 times 1 plus 1
+
+1237
+01:06:26,539 --> 01:06:44,059
+times 1 1 times 1 1 times 3 right 0
+
+1238
+01:06:39,289 --> 01:06:46,460
+times 1 0 times point 3 all right and
+
+1239
+01:06:44,059 --> 01:06:48,048
+then the next one 0 times 1 1 times 1 so
+
+1240
+01:06:46,460 --> 01:06:54,190
+forth ok so like that the matrix
+
+1241
+01:06:48,048 --> 01:06:58,400
+multiply you know of this independent
+
+1242
+01:06:54,190 --> 01:07:00,950
+variable matrix by this coefficient
+
+1243
+01:06:58,400 --> 01:07:03,349
+matrix is going to give us an answer
+
+1244
+01:07:00,949 --> 01:07:06,919
+ok so that's that is just a matrix
+
+1245
+01:07:03,349 --> 01:07:10,369
+multiply so the question is like ok well
+
+1246
+01:07:06,920 --> 01:07:13,519
+why didn't Jeremy right and n minion why
+
+1247
+01:07:10,369 --> 01:07:16,640
+did Jeremy right and n dot embedding and
+
+1248
+01:07:13,518 --> 01:07:18,768
+the reason is because if you recall we
+
+1249
+01:07:16,639 --> 01:07:20,058
+don't actually store it like this
+
+1250
+01:07:18,768 --> 01:07:25,179
+because this
+
+1251
+01:07:20,059 --> 01:07:27,349
+actually of whit's 800,000 and of height
+
+1252
+01:07:25,179 --> 01:07:30,798
+25,000 right
+
+1253
+01:07:27,349 --> 01:07:40,789
+so rather than storing it like this we
+
+1254
+01:07:30,798 --> 01:07:53,170
+actually store it as 0 1 2 3 right 1 2 3
+
+1255
+01:07:40,789 --> 01:07:53,170
+4 0 1 2 5 1 2 4 5 okay
+
+1256
+01:07:53,858 --> 01:08:01,369
+that's actually how we store it that is
+
+1257
+01:07:57,438 --> 01:08:06,379
+this bag of words contains which word
+
+1258
+01:08:01,369 --> 01:08:11,140
+indexes that makes sense ok so that's
+
+1259
+01:08:06,380 --> 01:08:14,719
+like this is like a sparse way of
+
+1260
+01:08:11,139 --> 01:08:20,229
+storing it right it's just list out the
+
+1261
+01:08:14,719 --> 01:08:24,859
+indexes in each sentence so given that I
+
+1262
+01:08:20,229 --> 01:08:27,068
+want to now do that matrix multiply that
+
+1263
+01:08:24,859 --> 01:08:31,250
+I just showed you to create that same
+
+1264
+01:08:27,069 --> 01:08:35,029
+outcome right but I want to do it from
+
+1265
+01:08:31,250 --> 01:08:39,939
+this representation so if you think
+
+1266
+01:08:35,029 --> 01:08:43,639
+about it all this is actually doing is
+
+1267
+01:08:39,939 --> 01:08:46,308
+it saying a 1 hot you know this is
+
+1268
+01:08:43,639 --> 01:08:48,020
+basically one hot encoded right it's
+
+1269
+01:08:46,309 --> 01:08:49,759
+kind of like a dummy dummy matrix
+
+1270
+01:08:48,020 --> 01:08:51,409
+version does it have the word this
+
+1271
+01:08:49,759 --> 01:08:55,189
+doesn't have the word movie doesn't have
+
+1272
+01:08:51,408 --> 01:08:56,988
+the word is and so forth so if we took
+
+1273
+01:08:55,189 --> 01:09:02,568
+the simple version of like doesn't have
+
+1274
+01:08:56,988 --> 01:09:09,888
+the word this 100 right and we
+
+1275
+01:09:02,569 --> 01:09:12,679
+multiplied that by that right then
+
+1276
+01:09:09,889 --> 01:09:20,469
+that's just going to return the first
+
+1277
+01:09:12,679 --> 01:09:27,009
+item that makes sense so in general a
+
+1278
+01:09:20,469 --> 01:09:31,099
+one hot encoded vector times a matrix is
+
+1279
+01:09:27,009 --> 01:09:32,679
+identical to looking up that matrix to
+
+1280
+01:09:31,099 --> 01:09:35,979
+find the end
+
+1281
+01:09:32,679 --> 01:09:39,069
+row in it all right so this is identical
+
+1282
+01:09:35,979 --> 01:09:43,599
+to saying find the zero first second and
+
+1283
+01:09:39,069 --> 01:09:45,009
+fifth coefficients right so they're
+
+1284
+01:09:43,599 --> 01:09:47,889
+they're the same they're exactly the
+
+1285
+01:09:45,009 --> 01:09:51,069
+same thing and like it doesn't like in
+
+1286
+01:09:47,889 --> 01:09:54,130
+this case I only have one coefficient
+
+1287
+01:09:51,069 --> 01:09:59,199
+per feature right but actually the way I
+
+1288
+01:09:54,130 --> 01:10:02,650
+did this was to have one coefficient per
+
+1289
+01:09:59,198 --> 01:10:05,379
+feature for each class right so in this
+
+1290
+01:10:02,649 --> 01:10:07,478
+case is both positive and negative so I
+
+1291
+01:10:05,380 --> 01:10:11,618
+actually had kind of like an AA positive
+
+1292
+01:10:07,479 --> 01:10:13,920
+and a negative so our negative would be
+
+1293
+01:10:11,618 --> 01:10:17,799
+just the opposite right equals that
+
+1294
+01:10:13,920 --> 01:10:20,050
+divided by that now in the binary case
+
+1295
+01:10:17,800 --> 01:10:23,139
+obviously it's redundant to have both
+
+1296
+01:10:20,050 --> 01:10:27,729
+but what if it was like what's the
+
+1297
+01:10:23,139 --> 01:10:30,550
+author of this text is it Jeremy or
+
+1298
+01:10:27,729 --> 01:10:33,939
+Savannah or Terrence right now we've got
+
+1299
+01:10:30,550 --> 01:10:36,998
+three categories we want three values of
+
+1300
+01:10:33,939 --> 01:10:39,789
+R right so the nice thing is doing this
+
+1301
+01:10:36,998 --> 01:10:43,719
+sparse version you know you can just
+
+1302
+01:10:39,788 --> 01:10:47,828
+look up you know the 0th and the first
+
+1303
+01:10:43,719 --> 01:10:50,439
+and the second and the fifth alright and
+
+1304
+01:10:47,828 --> 01:10:53,349
+again it's identical mathematically
+
+1305
+01:10:50,439 --> 01:10:57,099
+identical to a multiplying by a one
+
+1306
+01:10:53,349 --> 01:11:00,939
+Haughton coded matrix but when you have
+
+1307
+01:10:57,099 --> 01:11:06,449
+sparse inputs it's obviously much much
+
+1308
+01:11:00,939 --> 01:11:10,209
+more efficient so this computational
+
+1309
+01:11:06,448 --> 01:11:12,368
+trick which is mathematically identical
+
+1310
+01:11:10,208 --> 01:11:15,038
+to not conceptually analogous to
+
+1311
+01:11:12,368 --> 01:11:17,799
+mathematically identical to multiplying
+
+1312
+01:11:15,038 --> 01:11:20,469
+by a one hot encoded matrix is called an
+
+1313
+01:11:17,800 --> 01:11:21,969
+embedding right so I'm sure you've all
+
+1314
+01:11:20,469 --> 01:11:24,219
+heard or most of you probably heard
+
+1315
+01:11:21,969 --> 01:11:27,389
+about embeddings like word embeddings
+
+1316
+01:11:24,219 --> 01:11:31,439
+word to their core glove or whatever and
+
+1317
+01:11:27,389 --> 01:11:35,078
+people love to make them sound like this
+
+1318
+01:11:31,439 --> 01:11:40,229
+amazing new complex neural net thing
+
+1319
+01:11:35,078 --> 01:11:42,340
+right they're not embedding means make a
+
+1320
+01:11:40,229 --> 01:11:45,099
+multiplication by a one hot encoded
+
+1321
+01:11:42,340 --> 01:11:46,150
+matrix faster by replacing it with a
+
+1322
+01:11:45,099 --> 01:11:50,679
+simple array
+
+1323
+01:11:46,149 --> 01:11:54,129
+cup okay so that's why I said you can
+
+1324
+01:11:50,679 --> 01:11:57,760
+think of this as if it said self W
+
+1325
+01:11:54,130 --> 01:12:01,539
+equals n n dot linear and F plus one by
+
+1326
+01:11:57,760 --> 01:12:04,600
+one right because it actually does the
+
+1327
+01:12:01,539 --> 01:12:06,908
+same thing right it actually is a matrix
+
+1328
+01:12:04,600 --> 01:12:09,100
+with those dimensions this actually is a
+
+1329
+01:12:06,908 --> 01:12:14,379
+matrix with those dimensions right it's
+
+1330
+01:12:09,100 --> 01:12:15,789
+a linear layer but it's expecting that
+
+1331
+01:12:14,380 --> 01:12:19,900
+the input we're going to give it is not
+
+1332
+01:12:15,789 --> 01:12:22,869
+actually one hot encoded matrix but is
+
+1333
+01:12:19,899 --> 01:12:27,099
+actually a list of integers right the
+
+1334
+01:12:22,869 --> 01:12:28,979
+indexes for each word of each item so
+
+1335
+01:12:27,100 --> 01:12:32,590
+you can see that the forward function in
+
+1336
+01:12:28,979 --> 01:12:36,609
+fast AI automatically gets for this
+
+1337
+01:12:32,590 --> 01:12:39,400
+Werner for feature indexes right so they
+
+1338
+01:12:36,609 --> 01:12:41,319
+come from the sparse matrix
+
+1339
+01:12:39,399 --> 01:12:47,170
+automatically numpy makes it very easy
+
+1340
+01:12:41,319 --> 01:12:49,059
+to just grab those those indexes okay so
+
+1341
+01:12:47,170 --> 01:12:53,230
+in other words there we've got here
+
+1342
+01:12:49,060 --> 01:12:55,270
+we've got a list of H word index of a of
+
+1343
+01:12:53,229 --> 01:12:59,619
+the 800-thousand that are in this
+
+1344
+01:12:55,270 --> 01:13:02,290
+document and so then this here says look
+
+1345
+01:12:59,619 --> 01:13:05,729
+up each of those in our embedding matrix
+
+1346
+01:13:02,289 --> 01:13:10,779
+which is got 800,000 rows and return
+
+1347
+01:13:05,729 --> 01:13:15,158
+each thing that you find okay so
+
+1348
+01:13:10,779 --> 01:13:19,479
+mathematically identical to multiplying
+
+1349
+01:13:15,158 --> 01:13:21,939
+by the one hunting coded matrix so make
+
+1350
+01:13:19,479 --> 01:13:32,309
+sense so that's all an embedding is and
+
+1351
+01:13:21,939 --> 01:13:35,559
+so what that means is we can now handle
+
+1352
+01:13:32,310 --> 01:13:37,199
+building any kind of model like a you
+
+1353
+01:13:35,560 --> 01:13:39,640
+know whatever kind of neural network
+
+1354
+01:13:37,198 --> 01:13:42,639
+where we have potentially very high
+
+1355
+01:13:39,640 --> 01:13:48,310
+cardinality categorical variables as our
+
+1356
+01:13:42,640 --> 01:13:50,469
+inputs we can then just turn them into a
+
+1357
+01:13:48,310 --> 01:13:56,409
+numeric code between zero and the number
+
+1358
+01:13:50,469 --> 01:13:59,810
+of levels and then we can learn a you
+
+1359
+01:13:56,408 --> 01:14:01,909
+know a linear layer
+
+1360
+01:13:59,810 --> 01:14:05,120
+from that as if we had one hot encoded
+
+1361
+01:14:01,909 --> 01:14:07,909
+it without ever actually constructing
+
+1362
+01:14:05,119 --> 01:14:09,619
+the one hot encoded version and without
+
+1363
+01:14:07,909 --> 01:14:12,949
+ever actually doing that matrix model
+
+1364
+01:14:09,619 --> 01:14:15,739
+play okay instead we will just store the
+
+1365
+01:14:12,949 --> 01:14:18,769
+index version and simply do the array
+
+1366
+01:14:15,739 --> 01:14:21,229
+lookup okay and so the gradients that
+
+1367
+01:14:18,770 --> 01:14:22,610
+are flowing back you know basically in
+
+1368
+01:14:21,229 --> 01:14:25,039
+the one hot encoded version everything
+
+1369
+01:14:22,609 --> 01:14:26,869
+that was a zero has no gradient so the
+
+1370
+01:14:25,039 --> 01:14:29,269
+gradients flowing back is best go to
+
+1371
+01:14:26,869 --> 01:14:32,539
+update the particular row of the
+
+1372
+01:14:29,270 --> 01:14:36,770
+embedding matrix that we used okay and
+
+1373
+01:14:32,539 --> 01:14:40,670
+so that's fundamentally important for
+
+1374
+01:14:36,770 --> 01:14:44,660
+NLP just like here like you know I
+
+1375
+01:14:40,670 --> 01:14:48,079
+wanted to create a PI torch model that
+
+1376
+01:14:44,659 --> 01:14:52,340
+would implement this this ridiculously
+
+1377
+01:14:48,079 --> 01:14:55,159
+simple little equation alright and to do
+
+1378
+01:14:52,340 --> 01:14:57,050
+what without this trick would have meant
+
+1379
+01:14:55,159 --> 01:15:02,439
+I was feeding in a twenty five thousand
+
+1380
+01:14:57,050 --> 01:15:02,440
+by adherence to 800,000 element array
+
+1381
+01:15:02,470 --> 01:15:06,619
+which would have been kind of crazy
+
+1382
+01:15:04,250 --> 01:15:08,479
+right and so this this trick allowed me
+
+1383
+01:15:06,619 --> 01:15:10,269
+to write you know you know I've just
+
+1384
+01:15:08,479 --> 01:15:13,369
+replaced the word linear with embedding
+
+1385
+01:15:10,270 --> 01:15:14,900
+replace the thing that feeds the one-hot
+
+1386
+01:15:13,369 --> 01:15:17,569
+encodings in with something to dispense
+
+1387
+01:15:14,899 --> 01:15:20,619
+the indexes in and that was it that then
+
+1388
+01:15:17,569 --> 01:15:26,920
+it kept working and so this now trains
+
+1389
+01:15:20,619 --> 01:15:26,920
+you know in about a minute per epoch
+
+1390
+01:15:28,390 --> 01:15:37,369
+okay so what we can now do is we can now
+
+1391
+01:15:34,279 --> 01:15:41,389
+take this idea and apply it not just to
+
+1392
+01:15:37,369 --> 01:15:45,920
+language but to anything right for
+
+1393
+01:15:41,390 --> 01:15:53,300
+example predicting the sales of items at
+
+1394
+01:15:45,920 --> 01:15:54,829
+a grocery yes where's that asset just a
+
+1395
+01:15:53,300 --> 01:15:56,930
+quick question so you're not actually
+
+1396
+01:15:54,829 --> 01:15:58,760
+looking up anything right we are just
+
+1397
+01:15:56,930 --> 01:16:02,090
+seeing that now that array with the
+
+1398
+01:15:58,760 --> 01:16:04,250
+indices that is the representation so
+
+1399
+01:16:02,090 --> 01:16:06,560
+the represent so we are doing a lookup
+
+1400
+01:16:04,250 --> 01:16:08,300
+right the representation that's being
+
+1401
+01:16:06,560 --> 01:16:12,500
+stored it for the book but for the bag
+
+1402
+01:16:08,300 --> 01:16:13,820
+of words is now not one one 100 one but
+
+1403
+01:16:12,500 --> 01:16:17,779
+oh one two
+
+1404
+01:16:13,819 --> 01:16:21,319
+five right and so then we actually have
+
+1405
+01:16:17,779 --> 01:16:22,789
+to do our matrix product right but
+
+1406
+01:16:21,319 --> 01:16:26,420
+rather than doing the matrix product we
+
+1407
+01:16:22,789 --> 01:16:29,029
+look up the zero thing and the first
+
+1408
+01:16:26,420 --> 01:16:32,779
+thing and the second thing and the fifth
+
+1409
+01:16:29,029 --> 01:16:35,448
+thing so that means we are still
+
+1410
+01:16:32,779 --> 01:16:37,670
+retaining the one hard encoded matrix no
+
+1411
+01:16:35,448 --> 01:16:39,379
+we didn't there's no one hot encoded
+
+1412
+01:16:37,670 --> 01:16:41,359
+matrix used here this here's the one who
+
+1413
+01:16:39,380 --> 01:16:45,440
+decoded matrix which is not currently
+
+1414
+01:16:41,359 --> 01:16:48,848
+highlighted we've currently highlighted
+
+1415
+01:16:45,439 --> 01:16:52,609
+the list of indexes and the list of
+
+1416
+01:16:48,849 --> 01:16:59,179
+coefficients from the weight matrix so
+
+1417
+01:16:52,609 --> 01:17:01,069
+it says okay okay so what we're going to
+
+1418
+01:16:59,179 --> 01:17:03,679
+do now is we're kind of go to just go to
+
+1419
+01:17:01,069 --> 01:17:06,529
+go a step further and saying like let's
+
+1420
+01:17:03,679 --> 01:17:09,349
+not use a linear model at all let's use
+
+1421
+01:17:06,529 --> 01:17:11,689
+a multi-layer neural network right and
+
+1422
+01:17:09,349 --> 01:17:14,828
+let's have the input to that potentially
+
+1423
+01:17:11,689 --> 01:17:17,629
+be include some categorical variables
+
+1424
+01:17:14,828 --> 01:17:23,479
+and those categorical variables we will
+
+1425
+01:17:17,630 --> 01:17:25,489
+just have as numeric indexes and so the
+
+1426
+01:17:23,479 --> 01:17:26,118
+first layer for those won't be a normal
+
+1427
+01:17:25,488 --> 01:17:28,638
+linear layer
+
+1428
+01:17:26,118 --> 01:17:31,630
+there'll be an embedding layer which we
+
+1429
+01:17:28,639 --> 01:17:34,849
+know behaves exactly like a linear layer
+
+1430
+01:17:31,630 --> 01:17:37,489
+mathematically and so then our hope will
+
+1431
+01:17:34,849 --> 01:17:40,460
+be that we can now use this to create a
+
+1432
+01:17:37,488 --> 01:17:46,209
+neural network for any kind of data all
+
+1433
+01:17:40,460 --> 01:17:49,789
+right and so there was a competition on
+
+1434
+01:17:46,210 --> 01:17:52,599
+Kaggle a few years ago called
+
+1435
+01:17:49,789 --> 01:17:56,328
+rossmann which is a German grocery chain
+
+1436
+01:17:52,599 --> 01:18:01,219
+where they asked to predict the sales of
+
+1437
+01:17:56,328 --> 01:18:02,750
+items in in their stores right and that
+
+1438
+01:18:01,219 --> 01:18:04,849
+included the mixture of categorical and
+
+1439
+01:18:02,750 --> 01:18:07,250
+continuous variables and in this paper
+
+1440
+01:18:04,849 --> 01:18:10,940
+by Gordon Burke and they described their
+
+1441
+01:18:07,250 --> 01:18:13,639
+third-place winning entry which was much
+
+1442
+01:18:10,939 --> 01:18:18,319
+simpler than the first placed winning
+
+1443
+01:18:13,639 --> 01:18:20,210
+entry but nearly as good but much much
+
+1444
+01:18:18,319 --> 01:18:22,488
+simpler because they took advantage of
+
+1445
+01:18:20,210 --> 01:18:24,828
+this idea of what they call ng
+
+1446
+01:18:22,488 --> 01:18:27,649
+embeddings
+
+1447
+01:18:24,828 --> 01:18:29,389
+in the paper they they thought I think
+
+1448
+01:18:27,649 --> 01:18:32,238
+that they had invented this actually had
+
+1449
+01:18:29,389 --> 01:18:34,038
+been written before earlier by yoshua
+
+1450
+01:18:32,238 --> 01:18:35,988
+bengio and his co-authors in another
+
+1451
+01:18:34,038 --> 01:18:38,960
+cackle competition which was predicting
+
+1452
+01:18:35,988 --> 01:18:43,189
+taxi destinations although I will say I
+
+1453
+01:18:38,960 --> 01:18:46,519
+feel like war went a lot further in
+
+1454
+01:18:43,189 --> 01:18:49,609
+describing how this can be used in many
+
+1455
+01:18:46,519 --> 01:18:58,639
+other ways and so will will talk about
+
+1456
+01:18:49,609 --> 01:19:00,679
+that as well so the so this one is
+
+1457
+01:18:58,639 --> 01:19:05,199
+actually in the is in the deep learning
+
+1458
+01:19:00,679 --> 01:19:07,368
+one repo okay deal one lesson three okay
+
+1459
+01:19:05,198 --> 01:19:08,839
+because we talked about some of the deep
+
+1460
+01:19:07,368 --> 01:19:10,009
+learning specific aspects in the deep
+
+1461
+01:19:08,840 --> 01:19:12,019
+learning course where else in this
+
+1462
+01:19:10,010 --> 01:19:14,960
+course we're going to be talking mainly
+
+1463
+01:19:12,019 --> 01:19:16,880
+about the feature engineering and we're
+
+1464
+01:19:14,960 --> 01:19:24,139
+also going to be talking about you know
+
+1465
+01:19:16,880 --> 01:19:26,480
+kind of this this embedding idea so
+
+1466
+01:19:24,139 --> 01:19:30,498
+let's start with the data right so the
+
+1467
+01:19:26,479 --> 01:19:36,678
+data was you know store number one on
+
+1468
+01:19:30,498 --> 01:19:39,170
+the 31st of July 2015 was open they had
+
+1469
+01:19:36,679 --> 01:19:41,840
+a promotion going on there was a school
+
+1470
+01:19:39,170 --> 01:19:43,819
+holiday it was not a state holiday and
+
+1471
+01:19:41,840 --> 01:19:50,360
+they sold five thousand two hundred and
+
+1472
+01:19:43,819 --> 01:19:52,279
+sixty three items so that's the key data
+
+1473
+01:19:50,359 --> 01:19:55,670
+they provided and so the goal is
+
+1474
+01:19:52,279 --> 01:19:57,170
+obviously to predict sales in a test set
+
+1475
+01:19:55,670 --> 01:20:02,118
+that has the same information without
+
+1476
+01:19:57,170 --> 01:20:06,769
+sales they also tell you that for each
+
+1477
+01:20:02,118 --> 01:20:08,509
+store it's of some particular type it
+
+1478
+01:20:06,769 --> 01:20:11,960
+sells some particular assortment of
+
+1479
+01:20:08,510 --> 01:20:14,630
+goods its nearest competitor competitor
+
+1480
+01:20:11,960 --> 01:20:18,769
+is some distance away the competitor
+
+1481
+01:20:14,630 --> 01:20:20,630
+opened in September 2008 and there's
+
+1482
+01:20:18,769 --> 01:20:21,920
+some more information about promos I
+
+1483
+01:20:20,630 --> 01:20:27,288
+don't know the details of what that
+
+1484
+01:20:21,920 --> 01:20:31,849
+means like in many Carroll competitions
+
+1485
+01:20:27,288 --> 01:20:34,158
+they let you download external data sets
+
+1486
+01:20:31,849 --> 01:20:37,819
+if you wish as long as you share them
+
+1487
+01:20:34,158 --> 01:20:38,599
+with other competitors so people oh they
+
+1488
+01:20:37,819 --> 01:20:40,309
+also told you what's
+
+1489
+01:20:38,600 --> 01:20:42,020
+date each store is in so people
+
+1490
+01:20:40,310 --> 01:20:44,300
+downloaded a list of the names of the
+
+1491
+01:20:42,020 --> 01:20:46,880
+different states of Germany they
+
+1492
+01:20:44,300 --> 01:20:50,000
+downloaded a file for each state in
+
+1493
+01:20:46,880 --> 01:20:51,980
+Germany for each week some kind of
+
+1494
+01:20:50,000 --> 01:20:54,680
+Google trend data I don't know what
+
+1495
+01:20:51,979 --> 01:20:57,409
+specific Google trend they got but there
+
+1496
+01:20:54,680 --> 01:21:00,619
+was that for each date they downloaded a
+
+1497
+01:20:57,409 --> 01:21:01,960
+whole bunch of temperature information
+
+1498
+01:21:00,619 --> 01:21:04,449
+[Music]
+
+1499
+01:21:01,960 --> 01:21:08,420
+that's it and then here's the test set
+
+1500
+01:21:04,449 --> 01:21:10,399
+okay so I mean one interesting insight
+
+1501
+01:21:08,420 --> 01:21:13,190
+here is that the it was probably a
+
+1502
+01:21:10,399 --> 01:21:14,869
+mistake in some ways for Russman to
+
+1503
+01:21:13,189 --> 01:21:15,979
+design this competition as being one
+
+1504
+01:21:14,869 --> 01:21:18,769
+where you could use external data
+
+1505
+01:21:15,979 --> 01:21:21,019
+because in reality you don't actually
+
+1506
+01:21:18,770 --> 01:21:24,440
+get to find out next week's weather or
+
+1507
+01:21:21,020 --> 01:21:25,730
+next week's Google Trends you know but
+
+1508
+01:21:24,439 --> 01:21:27,079
+you know when you're competing in
+
+1509
+01:21:25,729 --> 01:21:29,689
+category you don't care about that you
+
+1510
+01:21:27,079 --> 01:21:37,460
+just want to win so you use whatever you
+
+1511
+01:21:29,689 --> 01:21:39,619
+can get so let's talk first of all about
+
+1512
+01:21:37,460 --> 01:21:41,960
+data cleaning you know that there wasn't
+
+1513
+01:21:39,619 --> 01:21:45,199
+really much feature engineering done in
+
+1514
+01:21:41,960 --> 01:21:47,689
+this third place winning entry like by
+
+1515
+01:21:45,199 --> 01:21:52,069
+particularly by cattle standards where
+
+1516
+01:21:47,689 --> 01:21:53,869
+normally every last thing counts this is
+
+1517
+01:21:52,069 --> 01:21:56,359
+a great example of how far you can get
+
+1518
+01:21:53,869 --> 01:21:59,000
+with with a neural net and it certainly
+
+1519
+01:21:56,359 --> 01:22:00,799
+reminds me of the claims prediction
+
+1520
+01:21:59,000 --> 01:22:03,020
+competition we talked about yesterday
+
+1521
+01:22:00,800 --> 01:22:05,239
+where the winner did no feature
+
+1522
+01:22:03,020 --> 01:22:11,060
+engineering and entirely relied on deep
+
+1523
+01:22:05,239 --> 01:22:12,590
+learning the laughter in the room I
+
+1524
+01:22:11,060 --> 01:22:15,080
+guess is from people who did a little
+
+1525
+01:22:12,590 --> 01:22:19,310
+bit more than no feature engineering in
+
+1526
+01:22:15,079 --> 01:22:22,760
+that competition so you know I should
+
+1527
+01:22:19,310 --> 01:22:24,200
+mention by the way like I find that bit
+
+1528
+01:22:22,760 --> 01:22:27,619
+where like you work hard at a
+
+1529
+01:22:24,199 --> 01:22:29,779
+competition and then it closes and you
+
+1530
+01:22:27,619 --> 01:22:32,180
+didn't win and the winner comes out and
+
+1531
+01:22:29,779 --> 01:22:34,779
+says this is how I won like that's the
+
+1532
+01:22:32,180 --> 01:22:37,100
+bit where you learn the most right like
+
+1533
+01:22:34,779 --> 01:22:40,729
+sometimes that's happened to me and it's
+
+1534
+01:22:37,100 --> 01:22:43,340
+been like oh I thought of that I thought
+
+1535
+01:22:40,729 --> 01:22:46,189
+I tried that and then I go back and I
+
+1536
+01:22:43,340 --> 01:22:48,650
+realize I like had a bug there I didn't
+
+1537
+01:22:46,189 --> 01:22:51,139
+test properly and I learn like oh okay
+
+1538
+01:22:48,649 --> 01:22:51,939
+like I really need to learn to like test
+
+1539
+01:22:51,140 --> 01:22:55,570
+this thing in this
+
+1540
+01:22:51,939 --> 01:22:57,639
+away sometimes it's like oh I thought of
+
+1541
+01:22:55,569 --> 01:22:58,689
+that but I assumed it wouldn't work I've
+
+1542
+01:22:57,640 --> 01:23:01,000
+really got to remember to check
+
+1543
+01:22:58,689 --> 01:23:03,369
+everything before I make any assumptions
+
+1544
+01:23:01,000 --> 01:23:07,449
+and you know sometimes it's just like oh
+
+1545
+01:23:03,369 --> 01:23:09,609
+I I did not think of that technique Wow
+
+1546
+01:23:07,449 --> 01:23:11,260
+now I know it's better than everything I
+
+1547
+01:23:09,609 --> 01:23:13,569
+just tried because like otherwise
+
+1548
+01:23:11,260 --> 01:23:15,369
+somebody says like hey you know here's a
+
+1549
+01:23:13,569 --> 01:23:15,909
+really good technique you're like okay
+
+1550
+01:23:15,369 --> 01:23:17,710
+great
+
+1551
+01:23:15,909 --> 01:23:20,170
+right but when you spent months trying
+
+1552
+01:23:17,710 --> 01:23:22,480
+to do something and like somebody else
+
+1553
+01:23:20,170 --> 01:23:25,600
+did it better by using that technique
+
+1554
+01:23:22,479 --> 01:23:27,069
+that's pretty convincing right and so
+
+1555
+01:23:25,600 --> 01:23:29,289
+like it's kind of hard like I'm standing
+
+1556
+01:23:27,069 --> 01:23:31,449
+up in front of you saying here's a bunch
+
+1557
+01:23:29,289 --> 01:23:33,640
+of techniques that I've I've used and
+
+1558
+01:23:31,449 --> 01:23:34,960
+I've won some capital competitions and
+
+1559
+01:23:33,640 --> 01:23:36,880
+I've got some state of the art results
+
+1560
+01:23:34,960 --> 01:23:38,350
+but it's like that's kind of second-hand
+
+1561
+01:23:36,880 --> 01:23:42,520
+information by the time it hits you
+
+1562
+01:23:38,350 --> 01:23:45,100
+right so it's really great to yeah try
+
+1563
+01:23:42,520 --> 01:23:47,770
+things out and and also like it's been
+
+1564
+01:23:45,100 --> 01:23:48,940
+kind of nice to see particularly I've
+
+1565
+01:23:47,770 --> 01:23:50,920
+noticed in the deep learning course
+
+1566
+01:23:48,939 --> 01:23:52,419
+quite a few of my students have you know
+
+1567
+01:23:50,920 --> 01:23:54,190
+I've said like this technique works
+
+1568
+01:23:52,420 --> 01:23:55,899
+really well and they've tried it and
+
+1569
+01:23:54,189 --> 01:23:57,369
+they've got into the top ten of a Keagle
+
+1570
+01:23:55,899 --> 01:23:59,859
+competition the next day and they're
+
+1571
+01:23:57,369 --> 01:24:02,260
+like okay that that counts is working
+
+1572
+01:23:59,859 --> 01:24:05,769
+really well so so yeah caryl
+
+1573
+01:24:02,260 --> 01:24:07,270
+competitions are helpful for lots and
+
+1574
+01:24:05,770 --> 01:24:08,830
+lots of reasons but you know one of the
+
+1575
+01:24:07,270 --> 01:24:11,350
+best ways is what happens after it
+
+1576
+01:24:08,829 --> 01:24:13,059
+finishes and so definitely like for the
+
+1577
+01:24:11,350 --> 01:24:15,270
+ones that you that are now finishing up
+
+1578
+01:24:13,060 --> 01:24:17,890
+make sure you you know watch the forums
+
+1579
+01:24:15,270 --> 01:24:21,430
+see what people are sharing in terms of
+
+1580
+01:24:17,890 --> 01:24:23,140
+their solutions and you know if you want
+
+1581
+01:24:21,430 --> 01:24:25,810
+to learn more about them like don't feel
+
+1582
+01:24:23,140 --> 01:24:27,130
+free to ask the winners like hey could
+
+1583
+01:24:25,810 --> 01:24:28,960
+you tell me more about this or that
+
+1584
+01:24:27,130 --> 01:24:32,980
+people are normally pretty pretty good
+
+1585
+01:24:28,960 --> 01:24:35,289
+about explaining and then ideally try
+
+1586
+01:24:32,979 --> 01:24:37,359
+and replicate it yourself right and that
+
+1587
+01:24:35,289 --> 01:24:39,369
+can turn into a great blog post you know
+
+1588
+01:24:37,359 --> 01:24:41,500
+or a great kernel is to be able to say
+
+1589
+01:24:39,369 --> 01:24:43,300
+okay such-and-such said that they use
+
+1590
+01:24:41,500 --> 01:24:45,039
+this technique here's a really short
+
+1591
+01:24:43,300 --> 01:24:47,289
+explanation of what that technique is
+
+1592
+01:24:45,039 --> 01:24:49,149
+and here's a little bit of code showing
+
+1593
+01:24:47,289 --> 01:24:50,680
+how it's implemented and you know here's
+
+1594
+01:24:49,149 --> 01:24:52,329
+the results showing you you can get the
+
+1595
+01:24:50,680 --> 01:24:55,920
+same result that can be a really
+
+1596
+01:24:52,329 --> 01:24:55,920
+interesting write-up as well
+
+1597
+01:24:57,118 --> 01:25:06,929
+okay so you know it's it's always nice
+
+1598
+01:25:01,649 --> 01:25:09,839
+to kind of have your data reflect like
+
+1599
+01:25:06,929 --> 01:25:11,789
+oh no bee is kind of easy to understand
+
+1600
+01:25:09,840 --> 01:25:14,429
+as possible so in this case the data
+
+1601
+01:25:11,789 --> 01:25:16,829
+that came from Kegel used various you
+
+1602
+01:25:14,429 --> 01:25:18,599
+know integers for the holidays we can
+
+1603
+01:25:16,829 --> 01:25:21,929
+just use a boolean if like was it a
+
+1604
+01:25:18,599 --> 01:25:24,810
+holiday or not so like just clean that
+
+1605
+01:25:21,929 --> 01:25:26,520
+up we've got quite a few different
+
+1606
+01:25:24,810 --> 01:25:29,670
+tables we need to join them all together
+
+1607
+01:25:26,520 --> 01:25:32,940
+right I have a standard way of joining
+
+1608
+01:25:29,670 --> 01:25:35,670
+things together with pandas I just used
+
+1609
+01:25:32,939 --> 01:25:39,089
+the pandas merge function and
+
+1610
+01:25:35,670 --> 01:25:42,260
+specifically I always do a left joint so
+
+1611
+01:25:39,090 --> 01:25:46,829
+who wants to tell me what a left join is
+
+1612
+01:25:42,260 --> 01:25:49,020
+since it's there go ahead you retain all
+
+1613
+01:25:46,829 --> 01:25:51,539
+the rows in the left table and you take
+
+1614
+01:25:49,020 --> 01:25:52,949
+so you have a key column you match that
+
+1615
+01:25:51,539 --> 01:25:55,380
+with a key column in the right side
+
+1616
+01:25:52,948 --> 01:25:56,848
+table and you just merge the rules that
+
+1617
+01:25:55,380 --> 01:25:58,529
+are also present in the right side table
+
+1618
+01:25:56,849 --> 01:26:00,630
+yeah that's a great explanation good job
+
+1619
+01:25:58,529 --> 01:26:03,259
+I don't have much to add to that the key
+
+1620
+01:26:00,630 --> 01:26:07,050
+reason that I always do a left join is
+
+1621
+01:26:03,260 --> 01:26:09,389
+that after I do the join I always then
+
+1622
+01:26:07,050 --> 01:26:12,900
+check if there were things in the
+
+1623
+01:26:09,389 --> 01:26:15,300
+right-hand side that a noun no right
+
+1624
+01:26:12,899 --> 01:26:17,819
+because if so it means that I some
+
+1625
+01:26:15,300 --> 01:26:19,699
+things yeah I haven't shown it here but
+
+1626
+01:26:17,819 --> 01:26:23,130
+I also check that the number of rows
+
+1627
+01:26:19,698 --> 01:26:24,988
+hasn't varied before and after if it has
+
+1628
+01:26:23,130 --> 01:26:30,090
+that means that the right hand side
+
+1629
+01:26:24,988 --> 01:26:33,388
+table wasn't unique okay so even when
+
+1630
+01:26:30,090 --> 01:26:36,029
+I'm sure something's true I always also
+
+1631
+01:26:33,389 --> 01:26:39,210
+assume that I've screwed it up so I
+
+1632
+01:26:36,029 --> 01:26:42,149
+always check so I could go ahead and
+
+1633
+01:26:39,210 --> 01:26:51,060
+merge the state names into the whether I
+
+1634
+01:26:42,149 --> 01:26:54,509
+can also if you look at the Google
+
+1635
+01:26:51,060 --> 01:26:57,119
+Trends table it's got this week range
+
+1636
+01:26:54,510 --> 01:26:59,550
+which I need to turn into a date in
+
+1637
+01:26:57,118 --> 01:27:01,559
+order to join it right and so the nice
+
+1638
+01:26:59,550 --> 01:27:04,770
+thing about doing this in pandas is that
+
+1639
+01:27:01,560 --> 01:27:08,010
+pandas gives us access to you know all
+
+1640
+01:27:04,770 --> 01:27:10,989
+of Python right and so for example
+
+1641
+01:27:08,010 --> 01:27:13,840
+inside the the series object
+
+1642
+01:27:10,988 --> 01:27:16,448
+Str attribute that gives you access to
+
+1643
+01:27:13,840 --> 01:27:18,159
+all the string processing functions not
+
+1644
+01:27:16,448 --> 01:27:20,408
+just like cat gives you access to the
+
+1645
+01:27:18,158 --> 01:27:22,420
+categorical functions DT gives you
+
+1646
+01:27:20,408 --> 01:27:24,638
+access to the date/time functions so I
+
+1647
+01:27:22,420 --> 01:27:26,230
+can now split everything in that column
+
+1648
+01:27:24,639 --> 01:27:29,288
+and it's really important to try and use
+
+1649
+01:27:26,229 --> 01:27:30,939
+these pandas functions because they you
+
+1650
+01:27:29,288 --> 01:27:33,130
+know they're going to be vectorized
+
+1651
+01:27:30,939 --> 01:27:35,408
+accelerated through you know often
+
+1652
+01:27:33,130 --> 01:27:41,760
+threesome D at least through you know C
+
+1653
+01:27:35,408 --> 01:27:44,979
+code so that runs nice and quickly and
+
+1654
+01:27:41,760 --> 01:27:52,420
+then you know as per usual let's add
+
+1655
+01:27:44,979 --> 01:27:54,129
+date metadata to our dates in the end we
+
+1656
+01:27:52,420 --> 01:27:55,269
+are basically denormalizing all these
+
+1657
+01:27:54,130 --> 01:27:59,429
+tables we're going to put them all into
+
+1658
+01:27:55,269 --> 01:28:02,409
+one table so in the Google trend table
+
+1659
+01:27:59,429 --> 01:28:03,998
+there was also though they were mainly
+
+1660
+01:28:02,408 --> 01:28:06,908
+trends by state but there was also
+
+1661
+01:28:03,998 --> 01:28:09,038
+trends for the whole of Germany so we
+
+1662
+01:28:06,908 --> 01:28:10,748
+kind of put the Germany on you know the
+
+1663
+01:28:09,038 --> 01:28:12,969
+whole of Germany ones into a separate
+
+1664
+01:28:10,748 --> 01:28:14,198
+data frame so that we can join that so
+
+1665
+01:28:12,969 --> 01:28:16,868
+we're going to have that Google trend
+
+1666
+01:28:14,198 --> 01:28:20,710
+for this state and Google trend for the
+
+1667
+01:28:16,868 --> 01:28:23,139
+whole of Germany and so now we can go
+
+1668
+01:28:20,710 --> 01:28:25,059
+ahead and start joining both for the
+
+1669
+01:28:23,139 --> 01:28:27,099
+training set and for the test set and
+
+1670
+01:28:25,059 --> 01:28:35,800
+then which both check that we don't have
+
+1671
+01:28:27,099 --> 01:28:37,630
+zeros my merge function i set the suffix
+
+1672
+01:28:35,800 --> 01:28:39,070
+if there are two columns are the same I
+
+1673
+01:28:37,630 --> 01:28:40,840
+set their suffix on the left to be
+
+1674
+01:28:39,069 --> 01:28:42,969
+nothing at all so it doesn't screw
+
+1675
+01:28:40,840 --> 01:28:45,159
+around with the name and the right hand
+
+1676
+01:28:42,969 --> 01:28:46,809
+side to be underscore Y and in this case
+
+1677
+01:28:45,158 --> 01:28:51,368
+I didn't want any of that you look at
+
+1678
+01:28:46,809 --> 01:28:55,989
+ones so I just went through and deleted
+
+1679
+01:28:51,368 --> 01:29:00,598
+them okay and then we're gonna in a
+
+1680
+01:28:55,988 --> 01:29:02,828
+moment we're going to try to create a
+
+1681
+01:29:00,599 --> 01:29:04,989
+competition you know the the the main
+
+1682
+01:29:02,828 --> 01:29:08,170
+competitor for this store has been open
+
+1683
+01:29:04,988 --> 01:29:10,419
+since some date right and so you can
+
+1684
+01:29:08,170 --> 01:29:15,788
+just use pandas to date I'm passing in
+
+1685
+01:29:10,420 --> 01:29:17,260
+the year the month and the day right and
+
+1686
+01:29:15,788 --> 01:29:19,448
+so that's going to give us an error
+
+1687
+01:29:17,260 --> 01:29:21,039
+unless they all have years and months so
+
+1688
+01:29:19,448 --> 01:29:25,149
+so we're going to fill in the missing
+
+1689
+01:29:21,038 --> 01:29:26,529
+ones with the 1900 and a1 okay
+
+1690
+01:29:25,149 --> 01:29:28,089
+and then what we really know it we
+
+1691
+01:29:26,529 --> 01:29:31,268
+didn't want to know is like how long is
+
+1692
+01:29:28,090 --> 01:29:33,489
+this store been open for at the time of
+
+1693
+01:29:31,269 --> 01:29:39,248
+this particular record all right so we
+
+1694
+01:29:33,488 --> 01:29:41,259
+can just do a date subtract okay now if
+
+1695
+01:29:39,248 --> 01:29:44,978
+you think about it sometimes the
+
+1696
+01:29:41,260 --> 01:29:47,019
+competition you know open later than
+
+1697
+01:29:44,979 --> 01:29:48,789
+this particular row so sometimes it's
+
+1698
+01:29:47,019 --> 01:29:52,300
+going to be negative and it doesn't
+
+1699
+01:29:48,788 --> 01:29:54,578
+probably make sense to have negative
+
+1700
+01:29:52,300 --> 01:29:58,329
+spending like it's going to open in X
+
+1701
+01:29:54,578 --> 01:30:02,710
+days time now having said that I would
+
+1702
+01:29:58,328 --> 01:30:05,288
+never put in something like this without
+
+1703
+01:30:02,710 --> 01:30:08,368
+first of all running a model with it in
+
+1704
+01:30:05,288 --> 01:30:12,038
+and without it in right because like our
+
+1705
+01:30:08,368 --> 01:30:14,078
+assumptions about about the data very
+
+1706
+01:30:12,038 --> 01:30:17,578
+often turned out not to be true now in
+
+1707
+01:30:14,078 --> 01:30:20,738
+this case I didn't invent any of these
+
+1708
+01:30:17,578 --> 01:30:23,288
+pre-processing steps I wrote all the
+
+1709
+01:30:20,738 --> 01:30:27,658
+code but it's all based on the
+
+1710
+01:30:23,288 --> 01:30:29,920
+third-place winners github repo right so
+
+1711
+01:30:27,658 --> 01:30:32,228
+knowing what it takes to get third place
+
+1712
+01:30:29,920 --> 01:30:33,880
+in the cable competition I'm pretty sure
+
+1713
+01:30:32,229 --> 01:30:35,739
+they would have checked every one of
+
+1714
+01:30:33,880 --> 01:30:37,929
+these pre-processing steps and made sure
+
+1715
+01:30:35,738 --> 01:30:45,939
+it actually improved their their
+
+1716
+01:30:37,929 --> 01:30:50,078
+validation set score okay so what we're
+
+1717
+01:30:45,939 --> 01:30:52,839
+going to be doing is creating a neural
+
+1718
+01:30:50,078 --> 01:30:56,518
+network where some of the inputs to it
+
+1719
+01:30:52,840 --> 01:30:59,650
+are continuous and some of them are
+
+1720
+01:30:56,519 --> 01:31:02,979
+categorical and so what that means in
+
+1721
+01:30:59,649 --> 01:31:11,109
+the in the neural net that you know we
+
+1722
+01:31:02,979 --> 01:31:13,619
+have we're basically going to have you
+
+1723
+01:31:11,109 --> 01:31:16,799
+know this kind of initial weight matrix
+
+1724
+01:31:13,618 --> 01:31:20,408
+right and we're going to have this this
+
+1725
+01:31:16,800 --> 01:31:22,690
+input feature vector right and so some
+
+1726
+01:31:20,408 --> 01:31:24,879
+of the inputs are just going to be plain
+
+1727
+01:31:22,689 --> 01:31:26,799
+continuous numbers like you know what's
+
+1728
+01:31:24,880 --> 01:31:28,779
+the maximum temperature here or what's
+
+1729
+01:31:26,800 --> 01:31:34,679
+the number of kilometers to the nearest
+
+1730
+01:31:28,779 --> 01:31:34,679
+store and some of them are going to be
+
+1731
+01:31:35,698 --> 01:31:43,178
+one HUD encoded effectively right but
+
+1732
+01:31:41,948 --> 01:31:45,158
+we're not actually going to store it as
+
+1733
+01:31:43,179 --> 01:31:49,748
+one hot encoded we're actually going to
+
+1734
+01:31:45,158 --> 01:31:51,819
+store it as the index right and so the
+
+1735
+01:31:49,748 --> 01:31:55,090
+neural net model is going to need to
+
+1736
+01:31:51,819 --> 01:31:57,009
+know which of these columns should you
+
+1737
+01:31:55,090 --> 01:31:59,260
+should you basically create an embedding
+
+1738
+01:31:57,010 --> 01:32:01,150
+for which ones should you treat you know
+
+1739
+01:31:59,260 --> 01:32:03,998
+as if they were kind of one hot encoded
+
+1740
+01:32:01,149 --> 01:32:07,029
+and which ones should you just you feed
+
+1741
+01:32:03,998 --> 01:32:10,090
+directly into the linear layer right and
+
+1742
+01:32:07,029 --> 01:32:12,399
+so we're going to tell the model when we
+
+1743
+01:32:10,090 --> 01:32:14,529
+get there which is which but we actually
+
+1744
+01:32:12,399 --> 01:32:16,509
+need to think ahead of time about like
+
+1745
+01:32:14,529 --> 01:32:18,309
+which ones do we want to treat as
+
+1746
+01:32:16,510 --> 01:32:21,340
+categorical and which ones are
+
+1747
+01:32:18,309 --> 01:32:23,650
+continuous in particular things that
+
+1748
+01:32:21,340 --> 01:32:26,349
+were going to treat it as categorical we
+
+1749
+01:32:23,649 --> 01:32:28,299
+don't want to create more categories
+
+1750
+01:32:26,349 --> 01:32:33,340
+than we need right and so let me show
+
+1751
+01:32:28,300 --> 01:32:35,260
+you what I mean the the the third-place
+
+1752
+01:32:33,340 --> 01:32:36,400
+getters in this competition decided that
+
+1753
+01:32:35,260 --> 01:32:37,989
+the number of months that the
+
+1754
+01:32:36,399 --> 01:32:39,339
+competition was open was something that
+
+1755
+01:32:37,988 --> 01:32:42,368
+they were going to use as a categorical
+
+1756
+01:32:39,340 --> 01:32:43,809
+variable all right and so in order to
+
+1757
+01:32:42,368 --> 01:32:47,469
+avoid having more categories than they
+
+1758
+01:32:43,809 --> 01:32:49,208
+needed they truncated it at 24 months
+
+1759
+01:32:47,469 --> 01:32:52,569
+they said anything more than 24 months
+
+1760
+01:32:49,208 --> 01:32:54,698
+old truncate to 24 so here are the
+
+1761
+01:32:52,569 --> 01:32:56,408
+unique values of competition months open
+
+1762
+01:32:54,698 --> 01:33:01,779
+and it's all the numbers from naught to
+
+1763
+01:32:56,408 --> 01:33:03,339
+24 right so what that means is that
+
+1764
+01:33:01,779 --> 01:33:05,380
+there's going to be you know an
+
+1765
+01:33:03,340 --> 01:33:07,900
+embedding matrix that's going to have
+
+1766
+01:33:05,380 --> 01:33:10,300
+basically an embedding vector for things
+
+1767
+01:33:07,899 --> 01:33:11,708
+that aren't open yet for things that are
+
+1768
+01:33:10,300 --> 01:33:15,038
+open a month for things that are open
+
+1769
+01:33:11,708 --> 01:33:18,248
+two months and so forth now they
+
+1770
+01:33:15,038 --> 01:33:20,050
+absolutely could have done that as a
+
+1771
+01:33:18,248 --> 01:33:22,149
+continuous variable right they could
+
+1772
+01:33:20,050 --> 01:33:23,559
+have just had a number here which is
+
+1773
+01:33:22,149 --> 01:33:25,238
+just a single number of how many months
+
+1774
+01:33:23,559 --> 01:33:26,829
+has it been open and they could have
+
+1775
+01:33:25,238 --> 01:33:30,359
+treated it as continuous and fed it
+
+1776
+01:33:26,828 --> 01:33:34,149
+straight into the initial weight matrix
+
+1777
+01:33:30,359 --> 01:33:37,899
+what I found though and obviously what
+
+1778
+01:33:34,149 --> 01:33:40,629
+these competitors found is where
+
+1779
+01:33:37,899 --> 01:33:45,879
+possible it's best to treat things as
+
+1780
+01:33:40,630 --> 01:33:48,130
+categorical variables right and the
+
+1781
+01:33:45,880 --> 01:33:48,788
+reason for that is that like when you
+
+1782
+01:33:48,130 --> 01:33:51,878
+feed some
+
+1783
+01:33:48,788 --> 01:33:53,948
+things through an embedding matrix you
+
+1784
+01:33:51,878 --> 01:33:55,479
+basically mean it means every level can
+
+1785
+01:33:53,948 --> 01:33:58,408
+be treated like totally differently
+
+1786
+01:33:55,479 --> 01:34:00,639
+right and so for example in this case
+
+1787
+01:33:58,408 --> 01:34:03,998
+whether something's been open for zero
+
+1788
+01:34:00,639 --> 01:34:06,548
+months or one months is right really
+
+1789
+01:34:03,998 --> 01:34:08,618
+different right and so if you fed that
+
+1790
+01:34:06,548 --> 01:34:10,569
+in as a continuous variable it would be
+
+1791
+01:34:08,618 --> 01:34:13,268
+kind of difficult for the neural net to
+
+1792
+01:34:10,569 --> 01:34:14,979
+try and find a functional form that kind
+
+1793
+01:34:13,269 --> 01:34:16,359
+of has that that big difference as
+
+1794
+01:34:14,979 --> 01:34:18,189
+possible because neural Nets can do
+
+1795
+01:34:16,359 --> 01:34:20,349
+anything right but you're not making it
+
+1796
+01:34:18,189 --> 01:34:22,569
+easy for it where else if you used an
+
+1797
+01:34:20,349 --> 01:34:24,099
+embedding treated it as categorical then
+
+1798
+01:34:22,569 --> 01:34:26,949
+it will have a totally different vector
+
+1799
+01:34:24,099 --> 01:34:28,838
+for zero versus one right so it seems
+
+1800
+01:34:26,948 --> 01:34:33,668
+like particularly as long as you've got
+
+1801
+01:34:28,838 --> 01:34:35,708
+enough data that the treating columns as
+
+1802
+01:34:33,668 --> 01:34:36,788
+categorical variables where possible is
+
+1803
+01:34:35,708 --> 01:34:38,979
+a better idea
+
+1804
+01:34:36,788 --> 01:34:43,418
+and so I say when I say we're possible
+
+1805
+01:34:38,979 --> 01:34:46,599
+that kind of basically means like where
+
+1806
+01:34:43,418 --> 01:34:52,448
+the cardinalities not too high you know
+
+1807
+01:34:46,599 --> 01:34:54,489
+so if this was like you know the sales
+
+1808
+01:34:52,448 --> 01:34:57,188
+ID number that was like uniquely
+
+1809
+01:34:54,488 --> 01:34:59,288
+different on every row you can't treat
+
+1810
+01:34:57,189 --> 01:35:01,689
+that as a categorical variable right
+
+1811
+01:34:59,288 --> 01:35:03,099
+because you know it would be a huge
+
+1812
+01:35:01,689 --> 01:35:05,439
+embedding matrix and everything only
+
+1813
+01:35:03,099 --> 01:35:07,679
+appears once or ditto for like
+
+1814
+01:35:05,439 --> 01:35:10,899
+kilometers away from the nearest store
+
+1815
+01:35:07,679 --> 01:35:14,739
+to two decimal places you wouldn't make
+
+1816
+01:35:10,899 --> 01:35:16,479
+a categorical variable all right so
+
+1817
+01:35:14,738 --> 01:35:18,998
+that's kind of that's kind of the rule
+
+1818
+01:35:16,479 --> 01:35:21,760
+of thumb that they both used in this
+
+1819
+01:35:18,998 --> 01:35:26,349
+competition in fact if we scroll down to
+
+1820
+01:35:21,760 --> 01:35:29,319
+their choices here is how they did it
+
+1821
+01:35:26,349 --> 01:35:31,328
+right they're continuous variables with
+
+1822
+01:35:29,319 --> 01:35:33,069
+things that were genuinely continuous
+
+1823
+01:35:31,328 --> 01:35:36,458
+like number of kilometers away to the
+
+1824
+01:35:33,069 --> 01:35:39,249
+competitor the temperature stuff right
+
+1825
+01:35:36,458 --> 01:35:43,148
+the number you know the specific number
+
+1826
+01:35:39,248 --> 01:35:44,858
+in the Google trend right where else
+
+1827
+01:35:43,149 --> 01:35:51,280
+everything else basically they treated
+
+1828
+01:35:44,859 --> 01:35:56,229
+as categorical okay so that's it for
+
+1829
+01:35:51,279 --> 01:35:58,389
+today so yeah next time we'll we'll
+
+1830
+01:35:56,229 --> 01:36:01,490
+finish this off we'll see we'll see how
+
+1831
+01:35:58,389 --> 01:36:05,659
+to turn this into a neural network
+
+1832
+01:36:01,489 --> 01:36:07,840
+and yeah kind of wrap things up so see
+
+1833
+01:36:05,659 --> 01:36:07,840
+then
+

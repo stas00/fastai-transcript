@@ -1,0 +1,84 @@
+<p><strong>Lesson 12</strong></p>
+<p><strong>Note: you may want to pay specific attention to the second part of this final lesson, where Jeremy brings up delicate issues on Data Science &amp; Ethics.</strong><br>
+<strong>This goes beyond what most courses on DS cover.</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=2s">00:00:01</a> Final lesson program !</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1m2s">00:01:01</a> Review of Rossmann Kaggle competition with ‘lesson3-rossman.ipynb’<br>
+Using “df.apply(lambda x:…)” and “create_promo2since(x)”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=4m30s">00:04:30</a> Durations function “get_elapsed(fld, pre):” using “zip()”<br>
+Check the notebook for detailed explanations.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=16m10s">00:16:10</a> Rolling function (or windowing function) for moving-average<br>
+Hint: learn the Pandas API for Time-Series, it’s extremely diverse and powerful</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=21m40s">00:21:40</a> Create Features, assign to ‘cat_vars’ and ‘contin_vars’<br>
+‘joined_samp’, ‘do_scale=True’, ‘mapper’,<br>
+‘yl = np.log(y)’ for RMSPE (Root Mean Squared Percent Error)<br>
+Selecting a most recent Validation set in Time-Series, if possible of the exact same length as Test set.<br>
+Then dropping the Validation set with ‘val_idx = [0]’ for final training of the model.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=32m30s">00:32:30</a> How to create our Deep Learning algorithm (or model), using ‘ColumnarModelData.from_data_frame()’<br>
+Use the cardinality of each variable to decide how large to make its embeddings.<br>
+Jeremy’s Golden Rule on difference between modern ML and old ML:<br>
+“In old ML, we controlled complexity by reducing the number of parameters.<br>
+In modern ML, we control it by regularization. We are not much concerned about Overfitting because we use increasing Dropout or Weight-Decay to avoid it”</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=39m20s">00:39:20</a> Checking our submission vs Kaggle Public Leaderboard (not great), then Private Leaderboard (great!).<br>
+Why Kaggle Public LB (LeaderBoard) is NOT a good replacement to your own Validation set.<br>
+What is the relation between Kaggle Public LB and Private LB ?</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=44m15s">00:44:15</a> Course review (lessons 1 to 12)<br>
+Two ways to train a model: one by building a tree, one with SGD (Stochastic Gradient Descent)<br>
+Reminder: Tree-building can be combined with Bagging (Random Forests) or Boosting (GBM)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=46m15s">00:46:15</a> How to represent Categorical variables with Decision Trees<br>
+One-hot encoding a vector and its relation with embedding</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=55m50s">00:55:50</a> Interpreting Decision Trees, Random Forests in particular, with Feature Importance.<br>
+Use the same techniques to interpret Neural Networks, shuffling Features.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=59m">00:59:00</a> Why Jeremy usually doesn’t care about ‘Statistical Significant’ in ML, due to Data volume, but more about ‘Practical Significance’.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h3m10s">01:03:10</a> Jeremy talks about “The most important part in this course: Ethics and Data Science, it matters.”<br>
+How does Machine Learning influence people’s behavior, and the responsibility that comes with it ?<br>
+As a ML practicioner, you should care about the ethics and think about them BEFORE you are involved in one situation.<br>
+BTW, you can end up in jail/prison as a techie doing “his job”.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h8m15s">01:08:15</a> IBM and the “Death’s Calculator” used in gas chamber by the Nazis.<br>
+Facebook data science algorithm and the ethnic cleansing in Myanmar’s Rohingya crisis: the Myth of Neutral Platforms.<br>
+Facebook lets advertisers exclude users by race enabled advertisers to reach “Jew Haters”.<br>
+Your algorithm/model could be exploited by trolls, harassers, authoritarian governements for surveillance, for propaganda or disinformation.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h66m45s">01:16:45</a> Runaway feedback loops: when Recommendation Systems go bad.<br>
+Social Network algorithms are distorting reality by boosting conspiracy theories.<br>
+Runaway feedback loops in Predictive Policing: an algorithm biased by race and impacting Justice.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h21m45s">01:21:45</a> Bias in Image Software (Computer Vision), an example with Faceapp or Google Photos. The first International Beauty Contest judged by A.I.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h25m15s">01:25:15</a> Bias in Natural Language Processing (NLP)<br>
+Another example with an A.I. built to help US Judicial system.<br>
+Taser invests in A.I. and body-cameras to “anticipate criminal activity”.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/5_xFdhfUnvQ?t=1h34m30s">01:34:30</a> Questions you should ask yourself when you work on A.I.<br>
+You have options !</p></li></ul>
+
+

@@ -1,0 +1,50 @@
+<p><strong>Lesson 05</strong></p>
+<ul>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=4s">00:00:04</a> Review of Training, Test set and OOB score, intro to Cross-Validation (CV),<br>
+In Machine Learning, we care about Generalization Accuracy/Error.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=11m35s">00:11:35</a> Kaggle Public and Private test sets for Leaderboard,<br>
+the risk of using a totally random validation set, rerun the model including Validation set.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=22m15s">00:22:15</a> Is my Validation set truly representative of my Test set. Build 5 very different models and score them on Validation and on Test. Examples with Favorita Grocery.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=28m10s">00:28:10</a> Why building a representative Test set is crucial in the Real World machine learning (not in Kaggle),<br>
+Sklearn make train/test split or cross-validation = bad in real life (for Time Series) !</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=31m">00:31:04</a> What is Cross-Validation and why you shouldn’t use it most of the time (hint: random is bad)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=38m4s">00:38:04</a> Tree interpretation revisited, lesson2-rf_interpreter.ipynb, waterfall plot for increase and decrease in tree splits,<br>
+‘ti.predict(m, row)’</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=48m50s">00:48:50</a> Dealing with Extrapolation in Random Forests,<br>
+RF can’t extrapolate like Linear Model, avoid Time variables as predictors if possible ?<br>
+Trick: find the differences between Train and Valid sets, ie. any temporal predictor ? Build a RF to identify components present in Valid only and not in Train ‘x,y = proc_df(df_ext, ‘is_valid’)’,<br>
+Use it in Kaggle by putting Train and Test sets together and add a column ‘is_test’, to check if Test is a random sample or not.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=59m15s">00:59:15</a> Our final model of Random Forests, almost as good as Kaggle #1 (Leustagos &amp; Giba)</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=1h3m">01:03:04</a> What to expect for the in-class exam</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=1h5m">01:05:04</a> Lesson3-rf_foundations.ipynb, writing our own Random Forests code.<br>
+Basic data structures code,  class ‘TreeEnsemble()’, np.random.seed(42)’ as pseudo random number generator<br>
+How to make a prediction in Random Forests (theory) ?</p>
+</li>
+<li>
+<p><a href="https://youtu.be/3jl2h9hSRvc?t=1h21m">01:21:04</a> class ‘DecisionTree()’,<br>
+Bonus: Object-Oriented-Programming (OOP) overview, critical for PyTorch<br>
+<br>
+</p>
+</li>
+</ul>
+
+
