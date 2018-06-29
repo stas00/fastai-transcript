@@ -10,9 +10,9 @@ The outcome is usable, but it can be made very useful if the community will make
 
 # Download PDFs
 You can download the final pdfs here:
-1. [fast.ai - Deep Learning Part 1 (v2) Transcript (2018).pdf]()
-2. [fast.ai - Deep Learning Part 2 (v2) Transcript (2018).pdf]()
-3. [fast.ai - Intro To Machine Learning 1 (v1) Transcript (2018).pdf]()
+1. [fast.ai - Deep Learning Part 1 (v2) Transcript (2018).pdf](https://raw.githubusercontent.com/stas00/fastai-transcript/master/dl1-v2/fast.ai%20-%20Deep%20Learning%20Part%201%20(v2)%20Transcript%20(2018).pdf)
+2. [fast.ai - Deep Learning Part 2 (v2) Transcript (2018).pdf](https://raw.githubusercontent.com/stas00/fastai-transcript/master/dl2-v2/fast.ai%20-%20Deep%20Learning%20Part%202%20(v2)%20Transcript%20(2018).pdf)
+3. [fast.ai - Intro To Machine Learning 1 (v1) Transcript (2018).pdf](https://raw.githubusercontent.com/stas00/fastai-transcript/master/ml1-v1/fast.ai%20-%20Intro%20To%20Machine%20Learning%201%20(v1)%20Transcript%20(2018).pdf)
 
 # Your Proofreading Help is needed
 If you'd like to contribute you can just proofread a single section of a few paragraphs, or a few. And if you feel inspired -- even more ;)
@@ -20,9 +20,9 @@ If you'd like to contribute you can just proofread a single section of a few par
 The git repository contains multiple files but please ignore the files in the `build` directories and only work on the "lesson NN.html" files.
 
 The following course transcripts currently need work:
-1. [fast.ai - Deep Learning Part 1 (v2)]()
-2. [fast.ai - Deep Learning Part 2 (v2)]()
-3. [fast.ai - Intro To Machine Learning]()
+1. [fast.ai - Deep Learning Part 1 (v2)](https://github.com/stas00/fastai-transcript/tree/master/dl1-v2)
+2. [fast.ai - Deep Learning Part 2 (v2)](https://github.com/stas00/fastai-transcript/tree/master/dl2-v2)
+3. [fast.ai - Intro To Machine Learning](https://github.com/stas00/fastai-transcript/tree/master/ml1-v1)
 
 # Proofreading Notes
 Since the files were generated automatically, including paragraphs, and punctuation - often sentences got split in the wrong place. So you may need to move some parts of the sentence around to make them whole again. At time the first half of the sentence is in one section of the document, and the second half is in the following section. Please move them together to where the whole sentence belongs.
